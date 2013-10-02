@@ -1,0 +1,177 @@
+{% extends "event/base.html" %}
+{% load i18n thumbnail %}
+{% block page_title %}Event List{% endblock %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% if tag %}
+        <li><a href="{% url 'sinn_event-entry-list' group=group.pk %}">{% trans "List" %}</a> <span class="divider">/</span></li>
+        <li class="active">{{ tag.name }}</li>
+    {% else %}
+        <li class="active">{% trans "List" %}</li>
+    {% endif %}
+{% endblock %}
+
+{% block subnav_add_right %}
+<a href="{% url 'sinn_event-entry-create' group=group.pk %}" class="btn">{% trans "New event" %}</a>
+{{ block.super }}
+{% endblock %}
+
+{% block content %}
+{% if tags %}
+  {% for tag in tags %}
+    <a href="{% url 'sinn_event-entry-list-filtered' group=group.pk tag=tag.slug %}"><span class="label">{{ tag.name }}</span></a>
+  {% endfor %}
+{% else %}
+  {% trans "No tags available." %}
+{% endif %}
+
+{% if not future_events and not past_events %}
+    {% trans "There are no events." %}
+{% else %}
+
+     <div class="accordion-group">
+        <div id="future-events-accordion-heading" class="accordion-heading">
+            <a class="accordion-toggle">
+            {% trans "Future events." %}
+            </a>
+        </div>
+        <div id="collapseFutureEvents" class="accordion-body collapse in">
+            <div class="accordion-inner">
+
+                {% if future_events%}
+
+                <table class="table table-striped">
+                    <thead>
+                        <td>{% trans "Image" %}</td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_title }}">{% trans "Title" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_from_date }}">{% trans "Start" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_to_date }}">{% trans "End" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_city }}">{% trans "City" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_state }}">{% trans "State" %}</a></td>
+                        <td>{% trans "Tags" %}</td>
+                        <td>{% trans "Actions" %}</td>
+                    </thead>
+                    {% for object in future_events %}
+                        <tr>
+                            <td>{% if object.image %}<img src="{% thumbnail object.image "70x0" crop=1 upscale=1 %}" />{% endif %}</td>
+                            <td><a href="{% url 'sinn_event-entry-detail' group=group.pk event=object.id %}">{{ object.title }}</a></td>
+                            <td>{{ object.from_date|date:"SHORT_DATE_FORMAT" }}</td>
+                            <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"SHORT_DATE_FORMAT" }}{% endif %}</td>
+                            <td>{{ object.city|default_if_none:"" }}</td>
+                            <td>
+                                <span class="label
+                                {% if object.state == 1 %}
+                                    label-success
+                                {% elif object.state == 2 %}
+                                    label-info
+                                {% elif object.state == 3 %}
+                                {% endif %}
+                                ">{{ object.get_state_display }}</span>
+                            </td>
+                            <td>
+                                {% for tag in object.tags.all %}
+                                    <a href="{% url 'sinn_event-entry-list-filtered' group=group.pk tag=tag.slug %}"><span class="label">{{ tag.name }}</span></a>
+                                {% empty %}
+                                -
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary btn-mini" href="{% url 'sinn_event-entry-detail' group=group.pk event=object.id %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
+                                    <a class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'sinn_event-entry-update' group=group.pk event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                                        <li><a href="{% url 'sinn_event-entry-delete' group=group.pk event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{% url 'sinn_event-entry-vote' group=group.pk event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                {% else %}
+                    {% trans "There are no future events." %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% if past_events %}
+
+<div class="accordion" id="eventsAccordion">
+    <div class="accordion-group">
+        <div id="past-events-accordion-heading" class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#eventsAccordion" href="#collapsePastEvents">
+            {% trans "Past events." %}
+            </a>
+        </div>
+        <div id="collapsePastEvents" class="accordion-body collapse">
+            <div class="accordion-inner">
+
+                {% if past_events%}
+                <table class="table table-striped">
+                    <thead>
+                        <td>{% trans "Image" %}</td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_title }}">{% trans "Title" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_from_date }}">{% trans "Start" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_to_date }}">{% trans "End" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_city }}">{% trans "City" %}</a></td>
+                        <td><a href="{{ request.path }}{{ sort_helper.get_sort_query_by_state }}">{% trans "State" %}</a></td>
+                        <td>{% trans "Tags" %}</td>
+                        <td>{% trans "Actions" %}</td>
+                    </thead>
+                    {% for object in past_events %}
+                        <tr>
+                            <td>{% if object.image %}<img src="{% thumbnail object.image "70x0" crop=1 upscale=1 %}" />{% endif %}</td>
+                            <td><a href="{% url 'sinn_event-entry-detail' group=group.pk event=object.id %}">{{ object.title }}</a></td>
+                            <td>{{ object.from_date|date:"SHORT_DATE_FORMAT" }}</td>
+                            <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"SHORT_DATE_FORMAT" }}{% endif %}</td>
+                            <td>{{ object.city|default_if_none:"" }}</td>
+                            <td>
+                                <span class="label
+                                {% if object.state == 1 %}
+                                    label-success
+                                {% elif object.state == 2 %}
+                                    label-info
+                                {% elif object.state == 3 %}
+                                {% endif %}
+                                ">{{ object.get_state_display }}</span>
+                            </td>
+                            <td>
+                                {% for tag in object.tags.all %}
+                                    <a href="{% url 'sinn_event-entry-list-filtered' group=group.pk tag=tag.slug %}"><span class="label">{{ tag.name }}</span></a>
+                                {% empty %}
+                                -
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary btn-mini" href="{% url 'sinn_event-entry-detail' group=group.pk event=object.id %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
+                                    <a class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'sinn_event-entry-update' group=group.pk event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                                        <li><a href="{% url 'sinn_event-entry-delete' group=group.pk event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{% url 'sinn_event-entry-vote' group=group.pk event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                {% trans "There are no past events." %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

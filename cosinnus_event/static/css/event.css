@@ -1,0 +1,6 @@
+.event .geoposition {
+    display: none;
+}
+.event td .geoposition-search {
+    display: none;
+}

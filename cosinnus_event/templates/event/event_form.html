@@ -1,0 +1,123 @@
+{% extends "event/base.html" %}
+{% load i18n bootstrap_toolkit %}
+{% load static from staticfiles %}
+{% block page_title %}Event{% endblock %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% if event %}
+        <li><a href="{% url 'sinn_event-entry-detail' group=group.pk event=event.pk %}">{{ event.title }}</a> <span class="divider">/</span></li>
+        {% if form_view == 'update' %}
+            <li class="active">{% trans "Update" %}</li>
+        {% endif %}
+    {% else %}
+        <li class="active">{% trans "New event" %}</li>
+    {% endif %}
+{% endblock %}
+
+{% block subnav_add_right %}{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {{ form.media }}
+    {% for formset in inlines %}
+        {{ formset.media }}
+    {% endfor %}
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery-ui-autocomplete.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row event">
+  <div class="span9">
+    <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form_view == 'create' or form_view == 'update' %}
+    {{ form|as_bootstrap }}
+
+    {% for formset in inlines %}
+    <fieldset id="formset{{ formset.prefix }}">
+        {{ formset.management_form }}
+        <label class="control-label" for="">{% trans "Suggestions" %}</label>
+        {% for inlineform in formset.forms %}
+        <div class="control-group{% if inlineform.errors %} error{% endif %}">
+            <div class="controls form-inline">
+                {% with inlineform.from_date as field %}
+                    <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
+                    {% include "bootstrap_toolkit/field_default.html" %}
+                {% endwith %}
+                {% with inlineform.to_date as field %}
+                    <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
+                    {% include "bootstrap_toolkit/field_default.html" %}
+                {% endwith %}
+                {% with inlineform.DELETE as field %}
+                    {% include "bootstrap_toolkit/field_default.html" %}
+                {% endwith %}
+                {{ inlineform.id.as_widget }}
+                {{ inlineform.event.as_widget }}
+            </div>
+        </div>
+        {% endfor %}
+    </fieldset>
+    {% endfor %}
+
+    <div class="control-group">
+        <div class="controls">
+            {% if not object %}
+                <button type="submit" class="btn btn-primary">{% trans "Create" %}</button>
+            {% else %}
+                <button type="submit" class="btn btn-primary">{% trans "Save" context "sinn" %}</button>
+            {% endif %}
+            <a href="{% url 'sinn_event-entry-list' group=group.pk %}" class="btn">{% trans "Cancel" %}</a>
+        </div>
+    </div>
+    {% elif form_view == 'delete' %}
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label">{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</label>
+            <div class="controls">
+                <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                <a href="{% url 'sinn_event-entry-list' group=group.pk %}" class="btn">{% trans "Cancel" %}</a>
+            </div>
+        </div>
+    </fieldset>
+    {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extrafooter %}
+{{ block.super }}
+<script type="text/javascript" src="{% static "js/bootstrap.inline.js" %}"></script>
+<script type="text/javascript" src="{% static "js/vendor/jquery-ui-autocomplete.min.js" %}"></script>
+<script type="text/javascript">
+{% for formset in inlines %}
+   $(function() {
+       $('#formset{{ formset.prefix }} div.control-group').formset({
+            addCssClass: 'add-row btn',
+            addText: '<i class="icon-plus"></i> {% trans "Add suggestion" %}',
+            deleteCssClass: 'delete-row',
+            deleteText: '<i class="icon-remove"></i>',
+            insertAddInSelector: true,
+            insertDeleteAfter: 'div.controls.form-inline',
+            prefix: '{{ formset.prefix }}',
+            added: function(row) {
+                $('input[data-bootstrap-widget=datetimepicker]', row).datetimepicker();
+            },
+       });
+   });
+{% endfor %}
+</script>
+<script type="text/javascript">
+{% if not event %}
+$("#id_title").focus();
+{% endif %}
+
+var availableTags = [
+    {% for tag in tags %}
+        "{{ tag }}",
+    {% endfor %}
+];
+</script>
+<script type="text/javascript" src="{% static "js/vendor/jquery.ui.autocomplete-tags.js" %}"></script>
+{% endblock %}

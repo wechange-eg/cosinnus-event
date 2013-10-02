@@ -1,0 +1,247 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Markus Holtermann <info@markusholtermann.eu>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-24 12:09+0200\n"
+"PO-Revision-Date: 2013-07-22 13:37+0200\n"
+"Last-Translator: Markus Holtermann <info@markusholtermann.eu>\n"
+"Language-Team: German <>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: forms.py:45
+msgid "Yes"
+msgstr "Ja"
+
+#: forms.py:46
+msgid "No"
+msgstr "Nein"
+
+#: models.py:39
+msgid "Scheduld"
+msgstr "Geplant"
+
+#: models.py:40
+msgid "Voting open"
+msgstr "Umfrage"
+
+#: models.py:41
+msgid "Canceled"
+msgstr "Abgebrochen"
+
+#: models.py:44 templates/event/event_detail.html:21
+#: templates/event/event_list.html:47 templates/event/event_list.html:119
+msgid "Title"
+msgstr "Titel"
+
+#: models.py:45 models.py:133 templates/event/event_detail.html:25
+#: templates/event/event_list.html:48 templates/event/event_list.html:120
+msgid "Start"
+msgstr "Start"
+
+#: models.py:47 models.py:135 templates/event/event_detail.html:29
+#: templates/event/event_list.html:49 templates/event/event_list.html:121
+msgid "End"
+msgstr "Ende"
+
+#: models.py:49 templates/event/event_detail.html:33
+msgid "Created by"
+msgstr "Erstellt durch"
+
+#: models.py:52 templates/event/event_detail.html:41
+msgid "Group"
+msgstr "Gruppe"
+
+#: models.py:53 templates/event/event_detail.html:37
+#: templates/event/event_list.html:51 templates/event/event_list.html:123
+msgid "State"
+msgstr "Status"
+
+#: models.py:57 templates/event/event_detail.html:45
+msgid "Note"
+msgstr "Beschreibung"
+
+#: models.py:58
+msgid "Event date"
+msgstr "Veranstaltungsdatum"
+
+#: models.py:62 templates/event/event_detail.html:49
+msgid "Location"
+msgstr "Ort"
+
+#: models.py:63 templates/event/event_detail.html:58
+msgid "Street"
+msgstr "Straße"
+
+#: models.py:64 templates/event/event_detail.html:62
+msgid "ZIP code"
+msgstr "PLZ"
+
+#: models.py:65 templates/event/event_detail.html:66
+#: templates/event/event_list.html:50 templates/event/event_list.html:122
+msgid "City"
+msgstr "Stadt"
+
+#: models.py:67
+msgid "Is public (on website)"
+msgstr "Öffentlich anzeigen"
+
+#: models.py:68 templates/event/event_list.html:46
+#: templates/event/event_list.html:118
+msgid "Image"
+msgstr "Bild"
+
+#: models.py:69
+msgid "Page"
+msgstr "Seite"
+
+#: models.py:70
+msgid "URL"
+msgstr "URL"
+
+#: models.py:76 models.py:137
+msgid "Event"
+msgstr "Veranstaltung"
+
+#: models.py:77 templates/event/base.html:8
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: models.py:140 models.py:188
+msgctxt "the subject"
+msgid "Votes"
+msgstr "Stimmen"
+
+#: models.py:146 models.py:178
+msgid "Suggestion"
+msgstr "Terminvorschlag"
+
+#: models.py:147 templates/event/event_form.html:40
+msgid "Suggestions"
+msgstr "Terminvorschläge"
+
+#: models.py:181
+msgid "Voter"
+msgstr "Wähler"
+
+#: models.py:187
+msgctxt "the subject"
+msgid "Vote"
+msgstr "Stimme"
+
+#: views.py:76 views.py:181
+msgid "You should define at least one date suggestion."
+msgstr "Es sollte mindestens ein Terminvorschlag eingegeben werden."
+
+#: views.py:79 views.py:184
+msgid "Automatically selected the only given date suggestion as event date."
+msgstr ""
+"Es wurde automatisch der einzig eingetragene Terminvorschlag als "
+"Veranstaltungsdatum gewählt."
+
+#: views.py:112 views.py:119 views.py:204 views.py:211
+msgid "Event does not exist or you are not allowed to modify it."
+msgstr ""
+"Entweder existiert diese Veranstaltung nicht oder Ihnen fehlen die Rechte um "
+"die Veranstaltung zu bearbeiten."
+
+#: templates/event/event_detail.html:70 templates/event/event_detail.html:73
+#: templates/event/event_list.html:53 templates/event/event_list.html:125
+msgid "Actions"
+msgstr "Aktionen"
+
+#: templates/event/event_detail.html:75 templates/event/event_form.html:11
+msgid "Update"
+msgstr "Bearbeiten"
+
+#: templates/event/event_detail.html:76 templates/event/event_form.html:78
+#: templates/event/event_list.html:85 templates/event/event_list.html:157
+msgid "Delete"
+msgstr "Löschen"
+
+#: templates/event/event_detail.html:78 templates/event/event_list.html:87
+#: templates/event/event_list.html:159 templates/event/vote_form.html:8
+#: templates/event/vote_form.html.py:42
+msgctxt "the verb"
+msgid "Vote"
+msgstr "Abstimmen"
+
+#: templates/event/event_detail.html:99
+msgid "No votes for this suggestion."
+msgstr "Es gibt keine Stimmen für diesen Vorschlag."
+
+#: templates/event/event_form.html:14 templates/event/event_list.html:16
+msgid "New event"
+msgstr "Neue Veranstaltung"
+
+#: templates/event/event_form.html:66
+msgid "Create"
+msgstr "Erstellen"
+
+#: templates/event/event_form.html:68
+msgctxt "sinn"
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/event/event_form.html:70 templates/event/event_form.html.py:79
+#: templates/event/vote_form.html:43
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: templates/event/event_form.html:76
+msgid "Are you sure to remove this event with all its suggestions and votes?"
+msgstr ""
+"Sind Sie sich sicher, dass Sie diese Veranstaltung mit den dazugehörigen "
+"Vorschläge und Abstimmungen löschen möchten?"
+
+#: templates/event/event_form.html:98
+msgid "Add suggestion"
+msgstr "Terminvorschlag hinzufügen"
+
+#: templates/event/event_list.html:8 templates/event/event_list.html.py:11
+msgid "List"
+msgstr "Liste"
+
+#: templates/event/event_list.html:26
+msgid "No tags available."
+msgstr "Keine Schlagwörter vorhanden."
+
+#: templates/event/event_list.html:30
+msgid "There are no events."
+msgstr "Es gibt keine Veranstaltungen."
+
+#: templates/event/event_list.html:36
+msgid "Future events."
+msgstr "Aktuelle Veranstaltungen"
+
+#: templates/event/event_list.html:52 templates/event/event_list.html:124
+msgid "Tags"
+msgstr "Schlagwörter"
+
+#: templates/event/event_list.html:81 templates/event/event_list.html:153
+msgid "Show"
+msgstr "Anzeigen"
+
+#: templates/event/event_list.html:84 templates/event/event_list.html:156
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: templates/event/event_list.html:96
+msgid "There are no future events."
+msgstr "Es gibt keine aktuelle Veranstaltungen."
+
+#: templates/event/event_list.html:109
+msgid "Past events."
+msgstr "Vergangene Veranstaltungen"
+
+#: templates/event/event_list.html:167
+msgid "There are no past events."
+msgstr "Es gibt keine vergangene Veranstaltungen."

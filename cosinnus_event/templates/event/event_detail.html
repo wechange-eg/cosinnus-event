@@ -1,0 +1,107 @@
+{% extends "event/base.html" %}
+{% load i18n l10n static %}
+{% block page_title %}Event{% endblock %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="active">{{ object.title }}</li>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'geoposition/geoposition.css' %}">
+<script src="{% static 'geoposition/geoposition.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row event">
+  <div class="span9">
+<table class="table">
+<tr>
+    <th class="span2">{% trans "Title" %}</th>
+    <td>{{ object.title }}</td>
+</tr>
+<tr>
+    <th>{% trans "Start" %}</th>
+    <td>{{ object.from_date|date:"d. F Y h:i" }}</td>
+</tr>
+    <tr>
+        <th>{% trans "End" %}</th>
+        <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"d. F Y h:i" }}{% endif %}</td>
+    </tr>
+<tr>
+    <th>{% trans "Created by" %}</th>
+    <td>{{ object.created_by }}</td>
+</tr>
+<tr>
+    <th>{% trans "State" %}</th>
+    <td>{{ object.get_state_display }}</td>
+</tr>
+<tr>
+    <th>{% trans "Group" %}</th>
+    <td>{{ object.group }}</td>
+</tr>
+<tr>
+    <th>{% trans "Note" %}</th>
+    <td>{{ object.note|linebreaksbr }}</td>
+</tr>
+<tr>
+    <th>{% trans "Location" %}:</th>
+    <td>
+        <p class="geoposition-widget">
+            <input class="geoposition" value="{{ object.location.latitude|unlocalize }}">
+            <input class="geoposition" value="{{ object.location.longitude|unlocalize }}">
+        </p>
+    </td>
+</tr>
+<tr>
+    <th>{% trans "Street" %}</th>
+    <td>{{ object.street }}</td>
+</tr>
+<tr>
+    <th>{% trans "ZIP code" %}</th>
+    <td>{{ object.zipcode }}</td>
+</tr>
+<tr>
+    <th>{% trans "City" %}</th>
+    <td>{{ object.city }}</td>
+</tr>
+<tr>
+    <th>{% trans "Actions" %}</th>
+    <td>
+        <div class="btn-group">
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'sinn_event-entry-update' group=group.pk event=object.id %}"><i class="icon-pencil"></i> {% trans "Update" %}</a></li>
+                <li><a href="{% url 'sinn_event-entry-delete' group=group.pk event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                <li class="divider"></li>
+                <li><a href="{% url 'sinn_event-entry-vote' group=group.pk event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+            </ul>
+        </div>
+    </td>
+</tr>
+</table>
+<table class="table">
+    {% for suggestion in object.suggestions.all %}
+        <tr>
+            {% if suggestion.single_day %}
+                <td>{{ suggestion.from_date|date:"d. F Y h:i" }} - {{ suggestion.to_date|date:"h:i" }}</td>
+            {% else %}
+                <td>{{ suggestion.from_date|date:"d. F Y h:i" }} - {{ suggestion.to_date|date:"d. F Y h:i" }}</td>
+            {% endif %}
+            <td>
+                {% if suggestion.votes.all %}
+                    ({{ suggestion.count }})
+                    {% for vote in suggestion.votes.all %}
+                        {% if not forloop.first %}, {% endif %}{{ vote.voter }}
+                    {% endfor %}
+                {% else %}
+                    {% trans "No votes for this suggestion." %}
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}
