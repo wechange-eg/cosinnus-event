@@ -1,4 +1,4 @@
-{% extends "event/base.html" %}
+{% extends "cosinnus_event/base.html" %}
 {% load i18n l10n static %}
 {% block page_title %}Event{% endblock %}
 
@@ -10,7 +10,6 @@
 {% block extrahead %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'geoposition/geoposition.css' %}">
-<script src="{% static 'geoposition/geoposition.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -72,10 +71,10 @@
         <div class="btn-group">
             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="{% url 'sinn_event-entry-update' group=group.pk event=object.id %}"><i class="icon-pencil"></i> {% trans "Update" %}</a></li>
-                <li><a href="{% url 'sinn_event-entry-delete' group=group.pk event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-edit' group=group.name event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
                 <li class="divider"></li>
-                <li><a href="{% url 'sinn_event-entry-vote' group=group.pk event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
             </ul>
         </div>
     </td>
@@ -105,3 +104,11 @@
 </div>
 </div>
 {% endblock %}
+
+
+{% block extrafooter %}
+<script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
+<script src="{% static 'geoposition/geoposition.js' %}"></script>
+{% endblock %}
+
+

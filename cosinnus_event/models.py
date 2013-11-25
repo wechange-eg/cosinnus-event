@@ -13,9 +13,9 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
 from geoposition.fields import GeopositionField
 
-from cosinnus.authentication.models import Group, User
-from cosinnus.utils.models import TaggableModel
+from cosinnus.models import BaseTaggableObjectModel
 
+from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
 
 
@@ -27,7 +27,7 @@ def localize(value, format):
         return dateformat.format(localtime(value), format)
 
 
-class Event(TaggableModel):
+class Event(BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'), ('from_date', 'from_date'), ('to_date', 'to_date'),
@@ -39,7 +39,7 @@ class Event(TaggableModel):
     STATE_CANCELED = 3
 
     STATE_CHOICES = (
-        (STATE_SCHEDULED, _('Scheduld')),
+        (STATE_SCHEDULED, _('Scheduled')),
         (STATE_VOTING_OPEN, _('Voting open')),
         (STATE_CANCELED, _('Canceled')),
     )
@@ -49,10 +49,9 @@ class Event(TaggableModel):
                                      null=True, editable=False)
     to_date = models.DateTimeField(_(u'End'), default=None, blank=True,
                                    null=True, editable=False)
-    created_by = models.ForeignKey(User, verbose_name=_(u'Created by'),
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_(u'Created by'),
                                    on_delete=models.PROTECT,
                                    related_name='events')
-    group = models.ForeignKey(Group, verbose_name=_(u'Group'))
     state = models.PositiveIntegerField(_(u'State'),
                                         choices=STATE_CHOICES,
                                         default=STATE_VOTING_OPEN,
@@ -100,9 +99,9 @@ class Event(TaggableModel):
         })
 
     def get_absolute_url(self):
-        kwargs = {'group': self.group.pk,
+        kwargs = {'group': self.group.name,
                   'event': self.pk}
-        return reverse('sinn_event-entry-detail', kwargs=kwargs)
+        return reverse('cosinnus:event:entry', kwargs=kwargs)
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:
@@ -180,7 +179,7 @@ class Vote(models.Model):
                                    verbose_name=_(u'Suggestion'),
                                    on_delete=models.CASCADE,
                                    related_name='votes')
-    voter = models.ForeignKey(User, verbose_name=_(u'Voter'),
+    voter = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_(u'Voter'),
                               on_delete=models.CASCADE,
                               related_name='votes')
 

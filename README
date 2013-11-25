@@ -1,0 +1,15 @@
+============
+Installation
+============
+
+* Add ``'cosinnus_event', 'appconf', 'easy-thumbnails', 'geoposition', * 'south', 'taggit'`` to ``INSTALLED_APPS``
+* Add a setting for the thumbnailer, e.g.
+```python
+THUMBNAIL_PROCESSORS = (
+ 'easy_thumbnails.processors.colorspace',
+ 'easy_thumbnails.processors.autocrop',
+ 'easy_thumbnails.processors.scale_and_crop',
+ 'easy_thumbnails.processors.filters',
+)
+```
+See https://github.com/SmileyChris/easy-thumbnails for more details .

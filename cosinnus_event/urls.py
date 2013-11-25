@@ -3,45 +3,49 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from cosinnus_event.views import (EventCreateView, EventDeleteView,
-    EventDetailView, EventIndexView, EventListView, EventUpdateView,
-    VoteFormView)
+from cosinnus_event.views import (
+    EventAddView, EventDeleteView, EventView, EventIndexView,
+    EventListView, EventEditView, VoteFormView)
 
 
-urlpatterns = patterns('',
+cosinnus_group_patterns = patterns('',
+    url(r'^$',
+        EventIndexView.as_view(),
+        name='index'),
+
     url(r'^list/$',
         EventListView.as_view(),
-        name='sinn_event-entry-list'),
+        name='list'),
 
     url(r'^list/(?P<tag>[^/]+)/$',
         EventListView.as_view(),
-        name='sinn_event-entry-list-filtered'),
+        name='list-filtered'),
 
-    url(r'^create/$',
-        EventCreateView.as_view(),
-        {'form_view': 'create'},
-        name='sinn_event-entry-create'),
+    url(r'^add/$',
+        EventAddView.as_view(),
+        {'form_view': 'add'},
+        name='add'),
 
-    url(r'^entry/(?P<event>[^/]+)/$',
-        EventDetailView.as_view(),
-        name='sinn_event-entry-detail'),
+    url(r'^(?P<event>[^/]+)/$',
+        EventView.as_view(),
+        name='entry'),
 
-    url(r'^entry/(?P<event>[^/]+)/delete/$',
+    url(r'^(?P<event>[^/]+)/delete/$',
         EventDeleteView.as_view(),
         {'form_view': 'delete'},
-        name='sinn_event-entry-delete'),
+        name='entry-delete'),
 
-    url(r'^entry/(?P<event>[^/]+)/update/$',
-        EventUpdateView.as_view(),
-        {'form_view': 'update'},
-        name='sinn_event-entry-update'),
+    url(r'^(?P<event>[^/]+)/edit/$',
+        EventEditView.as_view(),
+        {'form_view': 'edit'},
+        name='entry-edit'),
 
-    url(r'^entry/(?P<event>[^/]+)/vote/$',
+    url(r'^(?P<event>[^/]+)/vote/$',
         VoteFormView.as_view(),
         {'form_view': 'vote'},
-        name='sinn_event-entry-vote'),
-
-    url(r'^$',
-        EventIndexView.as_view(),
-        name='sinn_event-entry-index'),
+        name='entry-vote'),
 )
+
+
+cosinnus_root_patterns = patterns(None)
+urlpatterns = cosinnus_group_patterns + cosinnus_root_patterns

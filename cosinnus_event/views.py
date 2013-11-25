@@ -14,14 +14,18 @@ from django.utils.timezone import now
 from extra_views import (CreateWithInlinesView, FormSetView,
                          InlineFormSet, UpdateWithInlinesView, SortableListMixin)
 
-from cosinnus.authentication.views import FilterGroupMixin, RequireGroupMixin
-from cosinnus.utils.views import TaggedListMixin
+from cosinnus.views.mixins.group import (
+    RequireGroupMixin, FilterGroupMixin, GroupFormKwargsMixin)
+from cosinnus.views.mixins.tagged import TaggedListMixin
+
 
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm
 from cosinnus_event.models import Event, Suggestion, Vote
 
 
 class EventFormMixin(object):
+    template_name = 'cosinnus_event/event_form.html'
+
     def dispatch(self, request, *args, **kwargs):
         self.form_view = kwargs.get('form_view', None)
         return super(EventFormMixin, self).dispatch(request, *args, **kwargs)
@@ -32,8 +36,7 @@ class EventFormMixin(object):
         return context
 
     def get_success_url(self):
-        return reverse('sinn_event-entry-list',
-                       kwargs={'group': self.group.pk})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
 
 
 class SuggestionInlineView(InlineFormSet):
@@ -43,20 +46,20 @@ class SuggestionInlineView(InlineFormSet):
 
 
 class EventIndexView(RequireGroupMixin, RedirectView):
+
     def get_redirect_url(self, **kwargs):
-        return reverse('sinn_event-entry-list',
-                       kwargs={'group': self.group.pk})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
 
 
-class EventCreateView(RequireGroupMixin, FilterGroupMixin,
-                      EventFormMixin, CreateWithInlinesView):
+class EventAddView(
+    RequireGroupMixin, FilterGroupMixin, EventFormMixin, CreateWithInlinesView):
+
     form_class = EventForm
     model = Event
     inlines = [SuggestionInlineView]
-    template_name = 'event/event_form.html'
 
     def get_context_data(self, **kwargs):
-        context = super(EventCreateView, self).get_context_data(**kwargs)
+        context = super(EventAddView, self).get_context_data(**kwargs)
         tags = Event.objects.tags()
         context.update({
             'tags': tags
@@ -84,11 +87,11 @@ class EventCreateView(RequireGroupMixin, FilterGroupMixin,
         return HttpResponseRedirect(self.get_success_url())
 
 
-class EventDeleteView(RequireGroupMixin, FilterGroupMixin, EventFormMixin,
-                      DeleteView):
+class EventDeleteView(
+    RequireGroupMixin, FilterGroupMixin, EventFormMixin, DeleteView):
+
     model = Event
     pk_url_kwarg = 'event'
-    template_name = 'event/event_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.form_view = kwargs.get('form_view', None)
@@ -106,8 +109,7 @@ class EventDeleteView(RequireGroupMixin, FilterGroupMixin, EventFormMixin,
         return qs.filter(created_by=self.request.user)
 
     def get_success_url(self):
-        return reverse('sinn_event-entry-list',
-                       kwargs={'group': self.group.pk})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
 
     def get(self, request, *args, **kwargs):
         try:
@@ -124,13 +126,16 @@ class EventDeleteView(RequireGroupMixin, FilterGroupMixin, EventFormMixin,
             return HttpResponseRedirect(self.get_success_url())
 
 
-class EventDetailView(RequireGroupMixin, FilterGroupMixin, DetailView):
+class EventView(RequireGroupMixin, FilterGroupMixin, DetailView):
+
     model = Event
     pk_url_kwarg = 'event'
 
 
-class EventListView(RequireGroupMixin, FilterGroupMixin, TaggedListMixin,
-                    SortableListMixin, ListView):
+class EventListView(
+    RequireGroupMixin, FilterGroupMixin, TaggedListMixin, SortableListMixin,
+    ListView):
+
     model = Event
 
     def get(self, request, *args, **kwargs):
@@ -139,11 +144,10 @@ class EventListView(RequireGroupMixin, FilterGroupMixin, TaggedListMixin,
 
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
-        event_list = kwargs["object_list"]
         past_events = []
         future_events = []
 
-        for event in event_list:
+        for event in context['object_list']:
             if event.to_date and event.to_date < now():
                 past_events.append(event)
             else:
@@ -155,16 +159,16 @@ class EventListView(RequireGroupMixin, FilterGroupMixin, TaggedListMixin,
         return context
 
 
-class EventUpdateView(RequireGroupMixin, FilterGroupMixin,
-                      EventFormMixin, UpdateWithInlinesView):
+class EventEditView(
+    RequireGroupMixin, FilterGroupMixin, EventFormMixin, UpdateWithInlinesView):
+
     form_class = EventForm
     inlines = [SuggestionInlineView]
     model = Event
     pk_url_kwarg = 'event'
-    template_name = 'event/event_form.html'
 
     def get_context_data(self, **kwargs):
-        context = super(EventUpdateView, self).get_context_data(**kwargs)
+        context = super(EventEditView, self).get_context_data(**kwargs)
         tags = Event.objects.tags()
         context.update({
             'tags': tags
@@ -198,31 +202,31 @@ class EventUpdateView(RequireGroupMixin, FilterGroupMixin,
         return qs.filter(created_by=self.request.user)
 
     def get_success_url(self):
-        return reverse('sinn_event-entry-list',
-                       kwargs={'group': self.group.pk})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
 
     def get(self, request, *args, **kwargs):
         try:
-            return super(EventUpdateView, self).get(request, *args, **kwargs)
+            return super(EventEditView, self).get(request, *args, **kwargs)
         except Http404:
             messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
     def post(self, request, *args, **kwargs):
         try:
-            return super(EventUpdateView, self).post(request, *args, **kwargs)
+            return super(EventEditView, self).post(request, *args, **kwargs)
         except Http404:
             messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
 
-class VoteFormView(RequireGroupMixin, FilterGroupMixin,
-                   SingleObjectMixin, FormSetView):
+class VoteFormView(
+    RequireGroupMixin, FilterGroupMixin, SingleObjectMixin, FormSetView):
+
     extra = 0
     form_class = VoteForm
     model = Event
     pk_url_kwarg = 'event'
-    template_name = 'event/vote_form.html'
+    template_name = 'cosinnus_event/vote_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
@@ -252,10 +256,10 @@ class VoteFormView(RequireGroupMixin, FilterGroupMixin,
 
     def get_success_url(self):
         kwargs = {
-            'group': self.group.pk,
+            'group': self.group.name,
             'event': self.object.pk,
         }
-        return reverse('sinn_event-entry-detail', kwargs=kwargs)
+        return reverse('cosinnus:event:entry', kwargs=kwargs)
 
     def formset_valid(self, formset):
         for form in formset:

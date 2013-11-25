@@ -16,7 +16,7 @@ class EventManager(models.Manager):
         return self.public().filter(to_date__gte=now()).order_by("from_date").all()[:count]
 
     def tags(self):
-        event_type = ContentType.objects.get(app_label="event", model="event")
+        event_type = ContentType.objects.get(app_label="cosinnus_event", model="event")
 
         tag_names = []
         for ti in TaggedItem.objects.filter(content_type_id=event_type):
