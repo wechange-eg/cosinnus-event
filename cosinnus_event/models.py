@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from geoposition.fields import GeopositionField
 
 from cosinnus.models import BaseTaggableObjectModel
+from cosinnus.utils.functions import unique_aware_slugify
 
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
@@ -45,6 +46,7 @@ class Event(BaseTaggableObjectModel):
     )
 
     title = models.CharField(_(u'Title'), max_length=140)
+    slug = models.SlugField(max_length=145)  # 4 numbers for the slug number should be fine)
     from_date = models.DateTimeField(_(u'Start'), default=None, blank=True,
                                      null=True, editable=False)
     to_date = models.DateTimeField(_(u'End'), default=None, blank=True,
@@ -102,6 +104,14 @@ class Event(BaseTaggableObjectModel):
         kwargs = {'group': self.group.name,
                   'event': self.pk}
         return reverse('cosinnus:event:entry', kwargs=kwargs)
+
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            unique_aware_slugify(self,
+                slug_source='title', slug_field='slug', group=self.group)
+        super(Event, self).save(*args, **kwargs)
+
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:

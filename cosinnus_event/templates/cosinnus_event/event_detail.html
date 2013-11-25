@@ -71,10 +71,10 @@
         <div class="btn-group">
             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="{% url 'cosinnus:event:entry-edit' group=group.name event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
-                <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-edit' group=group.name slug=object.slug %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name slug=object.slug %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
                 <li class="divider"></li>
-                <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name slug=object.slug %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
             </ul>
         </div>
     </td>

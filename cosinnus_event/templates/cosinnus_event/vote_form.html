@@ -4,7 +4,7 @@
 
 {% block breadcrumbs %}
     {{ block.super }}
-    <li><a href="{% url 'cosinnus:event:entry' group=group.name event=event.pk %}">{{ event.title }}</a> <span class="divider">/</span></li>
+    <li><a href="{% url 'cosinnus:event:entry' group=group.name slug=event.slug %}">{{ event.title }}</a> <span class="divider">/</span></li>
     <li class="active">{% trans "Vote" context "the verb" %}</li>
 {% endblock %}
 
@@ -40,7 +40,7 @@
     <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-primary">{% trans "Vote" context "the verb" %}</button>
-            <a href="{% url 'cosinnus:event:entry' group=group.name event=event.pk %}" class="btn">{% trans "Cancel" %}</a>
+            <a href="{% url 'cosinnus:event:entry' group=group.name slug=event.slug %}" class="btn">{% trans "Cancel" %}</a>
         </div>
     </div>
 </form>

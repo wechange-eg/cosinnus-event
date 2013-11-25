@@ -129,7 +129,6 @@ class EventDeleteView(
 class EventView(RequireGroupMixin, FilterGroupMixin, DetailView):
 
     model = Event
-    pk_url_kwarg = 'event'
 
 
 class EventListView(
@@ -257,7 +256,7 @@ class VoteFormView(
     def get_success_url(self):
         kwargs = {
             'group': self.group.name,
-            'event': self.object.pk,
+            'slug': self.object.slug,
         }
         return reverse('cosinnus:event:entry', kwargs=kwargs)
 

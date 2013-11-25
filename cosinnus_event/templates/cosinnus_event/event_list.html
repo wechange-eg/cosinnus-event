@@ -55,7 +55,7 @@
                     {% for object in future_events %}
                         <tr>
                             <td>{% if object.image %}<img src="{% thumbnail object.image "70x0" crop=1 upscale=1 %}" />{% endif %}</td>
-                            <td><a href="{% url 'cosinnus:event:entry' group=group.name event=object.id %}">{{ object.title }}</a></td>
+                            <td><a href="{% url 'cosinnus:event:entry' group=group.name slug=object.slug %}">{{ object.title }}</a></td>
                             <td>{{ object.from_date|date:"SHORT_DATE_FORMAT" }}</td>
                             <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"SHORT_DATE_FORMAT" }}{% endif %}</td>
                             <td>{{ object.city|default_if_none:"" }}</td>
@@ -78,13 +78,13 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary btn-mini" href="{% url 'cosinnus:event:entry' group=group.name event=object.id %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
+                                    <a class="btn btn-primary btn-mini" href="{% url 'cosinnus:event:entry' group=group.name slug=object.slug %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
                                     <a class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{% url 'cosinnus:event:entry-edit' group=group.name event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
-                                        <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-edit' group=group.name slug=object.slug %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name slug=object.slug %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name slug=object.slug %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -127,7 +127,7 @@
                     {% for object in past_events %}
                         <tr>
                             <td>{% if object.image %}<img src="{% thumbnail object.image "70x0" crop=1 upscale=1 %}" />{% endif %}</td>
-                            <td><a href="{% url 'cosinnus:event:entry' group=group.name event=object.id %}">{{ object.title }}</a></td>
+                            <td><a href="{% url 'cosinnus:event:entry' group=group.name slug=object.slug %}">{{ object.title }}</a></td>
                             <td>{{ object.from_date|date:"SHORT_DATE_FORMAT" }}</td>
                             <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"SHORT_DATE_FORMAT" }}{% endif %}</td>
                             <td>{{ object.city|default_if_none:"" }}</td>
@@ -150,13 +150,13 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a class="btn btn-primary btn-mini" href="{% url 'cosinnus:event:entry' group=group.name event=object.id %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
+                                    <a class="btn btn-primary btn-mini" href="{% url 'cosinnus:event:entry' group=group.name slug=object.slug %}"><i class="icon-eye-open icon-white"></i> {% trans "Show" %}</a>
                                     <a class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{% url 'cosinnus:event:entry-update' group=group.name event=object.id %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
-                                        <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name event=object.id %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-update' group=group.name slug=object.slug %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-delete' group=group.name slug=object.slug %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name event=object.id %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                                        <li><a href="{% url 'cosinnus:event:entry-vote' group=group.name slug=object.slug %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
                                     </ul>
                                 </div>
                             </td>
