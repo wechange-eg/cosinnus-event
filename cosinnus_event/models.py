@@ -31,8 +31,11 @@ def localize(value, format):
 class Event(BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
-        ('title', 'title'), ('from_date', 'from_date'), ('to_date', 'to_date'),
-        ('city', 'city'), ('state', 'state')
+        ('title', 'title'),
+        ('from_date', 'from_date'),
+        ('to_date', 'to_date'),
+        ('city', 'city'),
+        ('state', 'state'),
     ]
 
     STATE_SCHEDULED = 1
@@ -45,31 +48,50 @@ class Event(BaseTaggableObjectModel):
         (STATE_CANCELED, _('Canceled')),
     )
 
-    title = models.CharField(_(u'Title'), max_length=140)
-    slug = models.SlugField(max_length=145)  # 4 numbers for the slug number should be fine)
-    from_date = models.DateTimeField(_(u'Start'), default=None, blank=True,
-                                     null=True, editable=False)
-    to_date = models.DateTimeField(_(u'End'), default=None, blank=True,
-                                   null=True, editable=False)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_(u'Created by'),
-                                   on_delete=models.PROTECT,
-                                   related_name='events')
-    state = models.PositiveIntegerField(_(u'State'),
-                                        choices=STATE_CHOICES,
-                                        default=STATE_VOTING_OPEN,
-                                        editable=False)
+    from_date = models.DateTimeField(
+        _(u'Start'), default=None, blank=True, null=True, editable=False)
+
+    to_date = models.DateTimeField(
+        _(u'End'), default=None, blank=True, null=True, editable=False)
+
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_(u'Created by'),
+        on_delete=models.PROTECT,
+        related_name='events',
+    )
+
+    state = models.PositiveIntegerField(
+        _(u'State'),
+        choices=STATE_CHOICES,
+        default=STATE_VOTING_OPEN,
+        editable=False,
+    )
+
     note = models.TextField(_(u'Note'), blank=True, null=True)
-    suggestion = models.ForeignKey('Suggestion', verbose_name=_(u'Event date'),
-                                   on_delete=models.SET_NULL,
-                                   null=True, blank=True,
-                                   related_name='selected_name')
+
+    suggestion = models.ForeignKey(
+        'Suggestion',
+        verbose_name=_(u'Event date'),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='selected_name',
+    )
+
     location = GeopositionField(_(u'Location'), blank=True, null=True)
+
     street = models.CharField(_('Street'), blank=True, max_length=50, null=True)
+
     zipcode = models.PositiveIntegerField(_('ZIP code'), blank=True, null=True)
+
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
     public = models.BooleanField(_(u'Is public (on website)'))
-    image = models.ImageField(_(u'Image'), upload_to='events', blank=True, null=True)
+
+    image = models.ImageField(
+        _(u'Image'), upload_to='events', blank=True, null=True)
+
     url = models.URLField(_(u'URL'), blank=True, null=True)
 
     objects = EventManager()
@@ -140,16 +162,23 @@ class Event(BaseTaggableObjectModel):
         else:
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
 
+
 class Suggestion(models.Model):
-    from_date = models.DateTimeField(_(u'Start'), default=None, blank=False,
-                                     null=False)
-    to_date = models.DateTimeField(_(u'End'), default=None, blank=False,
-                                   null=False)
-    event = models.ForeignKey(Event, verbose_name=_(u'Event'),
-                              on_delete=models.CASCADE,
-                              related_name='suggestions')
-    count = models.PositiveIntegerField(pgettext_lazy('the subject', u'Votes'),
-                                        default=0, editable=False)
+    from_date = models.DateTimeField(
+        _(u'Start'), default=None, blank=False, null=False)
+
+    to_date = models.DateTimeField(
+        _(u'End'), default=None, blank=False, null=False)
+
+    event = models.ForeignKey(
+        Event,
+        verbose_name=_(u'Event'),
+        on_delete=models.CASCADE,
+        related_name='suggestions',
+    )
+
+    count = models.PositiveIntegerField(
+        pgettext_lazy('the subject', u'Votes'), default=0, editable=False)
 
     class Meta:
         ordering = ['event', '-count']
@@ -185,13 +214,19 @@ class Suggestion(models.Model):
 
 
 class Vote(models.Model):
-    suggestion = models.ForeignKey(Suggestion,
-                                   verbose_name=_(u'Suggestion'),
-                                   on_delete=models.CASCADE,
-                                   related_name='votes')
-    voter = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_(u'Voter'),
-                              on_delete=models.CASCADE,
-                              related_name='votes')
+    suggestion = models.ForeignKey(
+        Suggestion,
+        verbose_name=_(u'Suggestion'),
+        on_delete=models.CASCADE,
+        related_name='votes',
+    )
+
+    voter = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_(u'Voter'),
+        on_delete=models.CASCADE,
+        related_name='votes',
+    )
 
     class Meta:
         unique_together = ('suggestion', 'voter')
