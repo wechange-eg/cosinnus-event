@@ -36,7 +36,7 @@ class EventFormMixin(object):
         return context
 
     def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 
 class SuggestionInlineView(InlineFormSet):
@@ -48,7 +48,7 @@ class SuggestionInlineView(InlineFormSet):
 class EventIndexView(RequireGroupMixin, RedirectView):
 
     def get_redirect_url(self, **kwargs):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 
 class EventAddView(
@@ -109,7 +109,7 @@ class EventDeleteView(
         return qs.filter(created_by=self.request.user)
 
     def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
     def get(self, request, *args, **kwargs):
         try:
@@ -201,7 +201,7 @@ class EventEditView(
         return qs.filter(created_by=self.request.user)
 
     def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.name})
+        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
     def get(self, request, *args, **kwargs):
         try:
@@ -254,10 +254,7 @@ class VoteFormView(
         return self.initial
 
     def get_success_url(self):
-        kwargs = {
-            'group': self.group.name,
-            'slug': self.object.slug,
-        }
+        kwargs = { 'group': self.group.slug, 'slug': self.object.slug }
         return reverse('cosinnus:event:entry', kwargs=kwargs)
 
     def formset_valid(self, formset):

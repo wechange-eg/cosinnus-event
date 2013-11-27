@@ -123,8 +123,7 @@ class Event(BaseTaggableObjectModel):
         })
 
     def get_absolute_url(self):
-        kwargs = {'group': self.group.name,
-                  'event': self.pk}
+        kwargs = {'group': self.group.slug, 'event': self.pk}
         return reverse('cosinnus:event:entry', kwargs=kwargs)
 
 
