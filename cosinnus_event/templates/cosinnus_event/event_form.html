@@ -1,5 +1,6 @@
 {% extends "cosinnus_event/base.html" %}
-{% load i18n bootstrap_toolkit %}
+{% load i18n %}
+{% load crispy_forms_tags %}
 {% load static from staticfiles %}
 {% block page_title %}Event{% endblock %}
 
@@ -32,7 +33,7 @@
     <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
     {% csrf_token %}
     {% if form_view == 'add' or form_view == 'edit' %}
-    {{ form.as_p }}
+    {{ form|crispy }}
 
     {% for formset in inlines %}
     <fieldset id="formset{{ formset.prefix }}">
