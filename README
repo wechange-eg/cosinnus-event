@@ -2,7 +2,7 @@
 Installation
 ============
 
-* Add ``'cosinnus_event', 'appconf', 'crispy_forms', 'easy-thumbnails', 'geoposition', * 'south', 'taggit'`` to ``INSTALLED_APPS``
+* Add ``'cosinnus_event', 'appconf', 'bootstrap3', 'easy-thumbnails', 'geoposition', * 'south', 'taggit'`` to ``INSTALLED_APPS``
 * Add a setting for the thumbnailer, e.g.
 ```python
 THUMBNAIL_PROCESSORS = (

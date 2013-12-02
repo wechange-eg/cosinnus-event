@@ -1,6 +1,6 @@
 {% extends "cosinnus_event/base.html" %}
 {% load i18n %}
-{% load crispy_forms_tags %}
+{% load bootstrap3 %}
 {% load static from staticfiles %}
 {% block page_title %}Event{% endblock %}
 
@@ -33,7 +33,7 @@
     <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
     {% csrf_token %}
     {% if form_view == 'add' or form_view == 'edit' %}
-    {{ form|crispy }}
+    {% bootstrap_form form %}
 
     {% for formset in inlines %}
     <fieldset id="formset{{ formset.prefix }}">
@@ -90,9 +90,8 @@
 
 {% block extrafooter %}
 {{ block.super }}
-{# need jquery _before_ geoposition widget is included #}
+{# need jquery _before_ geoposition widget (via form.media_js) is included #}
 <script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/bootstrap.inline.js" %}"></script>
 <script type="text/javascript" src="{% static "js/vendor/jquery-ui-autocomplete.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/vendor/jquery.ui.autocomplete-tags.js" %}"></script>
 {{ form.media.js }}
