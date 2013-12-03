@@ -7,6 +7,8 @@ from django.forms.widgets import HiddenInput, RadioSelect
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
+from bootstrap3_datetime.widgets import DateTimePicker
+
 from cosinnus_event.models import Event, Suggestion
 
 
@@ -26,10 +28,16 @@ class EventForm(ModelForm):
         else:
             del self.fields['suggestion']
 
+
 class SuggestionForm(forms.ModelForm):
 
     class Meta:
         model = Suggestion
+
+    from_date = forms.DateField(widget=
+        DateTimePicker(options={'format': 'YYYY-MM-DD', 'pickTime': True}))
+    to_date = forms.DateField(widget=
+        DateTimePicker(options={'format': 'YYYY-MM-DD', 'pickTime': True}))
 
 
 class VoteForm(forms.Form):

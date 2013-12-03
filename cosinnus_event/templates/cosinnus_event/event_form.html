@@ -21,10 +21,7 @@
 {% block extrahead %}
     {{ block.super }}
     {{ form.media.css }}
-    {% for formset in inlines %}
-        {{ formset.media }}
-    {% endfor %}
-    <link rel="stylesheet" href="{% static 'css/vendor/jquery-ui-autocomplete.min.css' %}">
+    {% for formset in inlines %}{{ formset.media.css }}{% endfor %}
 {% endblock %}
 
 {% block content %}
@@ -37,7 +34,6 @@
 
     {% for formset in inlines %}
     <fieldset id="formset{{ formset.prefix }}">
-        {{ formset.media }}
         {{ formset.management_form }}
         <label class="control-label" for="">{% trans "Suggestions" %}</label>
         {% for inlineform in formset.forms %}
@@ -90,11 +86,13 @@
 
 {% block extrafooter %}
 {{ block.super }}
-{# need jquery _before_ geoposition widget (via form.media_js) is included #}
-<script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/vendor/jquery-ui-autocomplete.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/vendor/jquery.ui.autocomplete-tags.js" %}"></script>
+<script type="text/javascript" src="{% static "js/vendor/bootstrap3-typeahead.min.js" %}"></script>
+{# for suggestions #}
+<script type="text/javascript" src="{% static "js/vendor/bootstrap.inline.js" %}"></script>
 {{ form.media.js }}
+{% for formset in inlines %}{{ formset.media.js }}{% endfor %}
+
+
 <script type="text/javascript">
 {% for formset in inlines %}
    $(function() {
@@ -106,22 +104,22 @@
             insertAddInSelector: true,
             insertDeleteAfter: 'div.controls.form-inline',
             prefix: '{{ formset.prefix }}',
-            added: function(row) {
-                $('input[data-bootstrap-widget=datetimepicker]', row).datetimepicker();
-            },
        });
    });
 {% endfor %}
-</script>
-<script type="text/javascript">
+
 {% if not event %}
 $("#id_title").focus();
 {% endif %}
 
-var availableTags = [
-    {% for tag in tags %}
-        "{{ tag }}",
-    {% endfor %}
-];
+$(function() {
+  var tags = [{% for tag in tags %}"{{ tag }}", {% endfor %}];
+  $('#id_tags')
+    .attr('data-provide', 'typeahead')
+    .attr('autocomplete', 'off')
+    .typeahead({
+      source: tags,
+    });
+});
 </script>
 {% endblock %}

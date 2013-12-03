@@ -53,6 +53,7 @@ setup(
     data_files=data_files,
     install_requires=[
         'cosinnus>=0.1dev',
+        'django-bootstrap3-datetimepicker>=2.1.0',
         'django-extra-views>=0.6.3',
         'django-geoposition>=0.1.5',
         'easy-thumbnails>=1.4',
