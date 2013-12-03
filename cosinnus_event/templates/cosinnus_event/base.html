@@ -2,12 +2,6 @@
 {% load i18n %}
 {% load static from staticfiles %}
 
-{% block breadcrumbs %}
-    {{ block.super }}
-    <li><a href="{% url 'cosinnus:group-detail' group=group.slug %}">{{ group.name }}</a> <span class="divider">/</span></li>
-    <li><a href="{% url 'cosinnus:event:list' group=group.slug %}">{% trans "Events" %}</a> <span class="divider">/</span></li>
-{% endblock %}
-
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/event.css' %}">
+<link rel="stylesheet" href="{% static 'css/cosinnus_event.css' %}">
 {% endblock %}

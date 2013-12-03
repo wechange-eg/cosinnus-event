@@ -1,0 +1,10 @@
+.cosinnus-event .panel {
+    overflow: visible;
+}
+
+.cosinnus-event .geoposition {
+    display: none;
+}
+.cosinnus-event td .geoposition-search {
+    display: none;
+}
