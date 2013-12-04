@@ -15,7 +15,7 @@ from extra_views import (CreateWithInlinesView, FormSetView,
                          InlineFormSet, UpdateWithInlinesView, SortableListMixin)
 
 from cosinnus.views.mixins.group import (
-    RequireGroupMixin, FilterGroupMixin, GroupFormKwargsMixin)
+    RequireReadMixin, RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin)
 from cosinnus.views.mixins.tagged import TaggedListMixin
 
 
@@ -45,14 +45,14 @@ class SuggestionInlineView(InlineFormSet):
     model = Suggestion
 
 
-class EventIndexView(RequireGroupMixin, RedirectView):
+class EventIndexView(RequireReadMixin, RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 
 class EventAddView(
-    RequireGroupMixin, FilterGroupMixin, EventFormMixin, CreateWithInlinesView):
+    RequireWriteMixin, FilterGroupMixin, EventFormMixin, CreateWithInlinesView):
 
     form_class = EventForm
     model = Event
@@ -88,7 +88,7 @@ class EventAddView(
 
 
 class EventDeleteView(
-    RequireGroupMixin, FilterGroupMixin, EventFormMixin, DeleteView):
+    RequireWriteMixin, FilterGroupMixin, EventFormMixin, DeleteView):
 
     model = Event
     pk_url_kwarg = 'event'
@@ -126,13 +126,13 @@ class EventDeleteView(
             return HttpResponseRedirect(self.get_success_url())
 
 
-class EventView(RequireGroupMixin, FilterGroupMixin, DetailView):
+class EventView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     model = Event
 
 
 class EventListView(
-    RequireGroupMixin, FilterGroupMixin, TaggedListMixin, SortableListMixin,
+    RequireReadMixin, FilterGroupMixin, TaggedListMixin, SortableListMixin,
     ListView):
 
     model = Event
@@ -159,7 +159,7 @@ class EventListView(
 
 
 class EventEditView(
-    RequireGroupMixin, FilterGroupMixin, EventFormMixin, UpdateWithInlinesView):
+    RequireWriteMixin, FilterGroupMixin, EventFormMixin, UpdateWithInlinesView):
 
     form_class = EventForm
     inlines = [SuggestionInlineView]
@@ -219,7 +219,7 @@ class EventEditView(
 
 
 class VoteFormView(
-    RequireGroupMixin, FilterGroupMixin, SingleObjectMixin, FormSetView):
+    RequireWriteMixin, FilterGroupMixin, SingleObjectMixin, FormSetView):
 
     extra = 0
     form_class = VoteForm
