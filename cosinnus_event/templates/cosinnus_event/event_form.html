@@ -7,7 +7,7 @@
 {% block breadcrumbs %}
     {{ block.super }}
     {% if event %}
-        <li><a href="{% url 'cosinnus:event:entry' group=group.slug slug=event.slug %}">{{ event.title }}</a> <span class="divider">/</span></li>
+        <li><a href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">{{ event.title }}</a> <span class="divider">/</span></li>
         {% if form_view == 'edit' %}
             <li class="active">{% trans "Edit" %}</li>
         {% endif %}

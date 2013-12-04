@@ -123,7 +123,7 @@ class Event(BaseTaggableObjectModel):
 
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'event': self.pk}
-        return reverse('cosinnus:event:entry', kwargs=kwargs)
+        return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
 
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):

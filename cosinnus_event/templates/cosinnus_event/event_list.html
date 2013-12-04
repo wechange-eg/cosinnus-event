@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block page_title %}{% trans "Events" %}{% endblock %}
 
-<a href="{% url 'cosinnus:event:add' group=group.slug %}" class="btn">{% trans "Add event" %}</a>
+<a href="{% url 'cosinnus:event:entry-add' group=group.slug %}" class="btn">{% trans "Add event" %}</a>
 {{ block.super }}
 
 {% block content %}
@@ -16,7 +16,7 @@
 {% endif %}
 
 <ul class="nav nav-pills pull-right">
-  <li class="active"><a href="{% url 'cosinnus:event:add' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+  <li class="active"><a href="{% url 'cosinnus:event:entry-add' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
 </ul>
 <div class="clearfix"></div>
 <br />
