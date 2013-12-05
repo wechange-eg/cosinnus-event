@@ -2,33 +2,43 @@
 {% load i18n %}
 {% load bootstrap3 %}
 {% load static from staticfiles %}
-{% block page_title %}Event{% endblock %}
 
-{% block breadcrumbs %}
-    {{ block.super }}
-    {% if event %}
-        <li><a href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">{{ event.title }}</a> <span class="divider">/</span></li>
-        {% if form_view == 'edit' %}
-            <li class="active">{% trans "Edit" %}</li>
-        {% endif %}
-    {% else %}
-        <li class="active">{% trans "Add" %}</li>
-    {% endif %}
-{% endblock %}
 
-{% block subnav_add_right %}{% endblock %}
+{% block page_title %}
+{% if form_view == "add" %}
+  {% trans "Add event" %}
+{% elif form_view == "edit" %}
+  {% trans "Edit" %} {{ event.title }}
+{% elif form_view == "delete" %}
+  {% trans "Delete" %} {{ event.title }}
+{% endif %}
+: {{ block.super }}
+{% endblock page_title %}
+
 
 {% block extrahead %}
-    {{ block.super }}
-    {{ form.media.css }}
-    {% for formset in inlines %}{{ formset.media.css }}{% endfor %}
-{% endblock %}
+{{ block.super }}
+{{ form.media.css }}
+{% for formset in inlines %}{{ formset.media.css }}{% endfor %}
+{% endblock extrahead %}
+
 
 {% block content %}
-<div class="row event">
-  <div class="span9">
+<div class="row cosinnus-event">
+<h1>
+{% if form_view == "add" %}
+  {% trans "Add event" %}
+{% elif form_view == "edit" %}
+  {% trans "Edit" %} {{ event.title }}
+{% elif form_view == "delete" %}
+  {% trans "Delete" %} {{ event.title }}
+{% endif %}
+: {{ group.name }}
+</h1>
+
     <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
     {% csrf_token %}
+
     {% if form_view == 'add' or form_view == 'edit' %}
     {% bootstrap_form form %}
 
@@ -68,10 +78,13 @@
             <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
         </div>
     </div>
+
     {% elif form_view == 'delete' %}
     <fieldset>
         <div class="control-group">
-            <label class="control-label">{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</label>
+            <label class="control-label">
+              <h3>{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</h3>
+            </label>
             <div class="controls">
                 <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
                 <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
@@ -79,38 +92,33 @@
         </div>
     </fieldset>
     {% endif %}
+
     </form>
-  </div>
 </div>
-{% endblock %}
+{% endblock content %}
+
 
 {% block extrafooter %}
 {{ block.super }}
+{{ form.media.js }}
+{% for formset in inlines %}{{ formset.media.js }}{% endfor %}
 <script type="text/javascript" src="{% static "js/vendor/bootstrap3-typeahead.min.js" %}"></script>
 {# for suggestions #}
 <script type="text/javascript" src="{% static "js/vendor/bootstrap.inline.js" %}"></script>
-{{ form.media.js }}
-{% for formset in inlines %}{{ formset.media.js }}{% endfor %}
-
-
 <script type="text/javascript">
 {% for formset in inlines %}
    $(function() {
        $('#formset{{ formset.prefix }} div.control-group').formset({
             addCssClass: 'add-row btn',
-            addText: '<i class="icon-plus"></i> {% trans "Add suggestion" %}',
+            addText: '<span class="glyphicon glyphicon-plus"></span> {% trans "Add suggestion" %}',
             deleteCssClass: 'delete-row',
-            deleteText: '<i class="icon-remove"></i>',
+            deleteText: '<span class="glyphicon glyphicon-remove"></span>',
             insertAddInSelector: true,
             insertDeleteAfter: 'div.controls.form-inline',
             prefix: '{{ formset.prefix }}',
        });
    });
 {% endfor %}
-
-{% if not event %}
-$("#id_title").focus();
-{% endif %}
 
 $(function() {
   var tags = [{% for tag in tags %}"{{ tag }}", {% endfor %}];
@@ -120,6 +128,10 @@ $(function() {
     .typeahead({
       source: tags,
     });
+
+{% if not event %}
+  $("#id_title").focus();
+{% endif %}
 });
 </script>
-{% endblock %}
+{% endblock extrafooter %}

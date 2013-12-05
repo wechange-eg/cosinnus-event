@@ -1,49 +1,58 @@
 {% extends "cosinnus_event/base.html" %}
 {% load i18n l10n static %}
-{% block page_title %}Event{% endblock %}
 
-{% block breadcrumbs %}
-    {{ block.super }}
-    <li class="active">{{ object.title }}</li>
-{% endblock %}
+
+{% block page_title %}
+{{ object.title }} : {{ block.super }}
+{% endblock page_title %}
+
 
 {% block extrahead %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'geoposition/geoposition.css' %}">
-{% endblock %}
+{% endblock extrahead %}
+
 
 {% block content %}
-<div class="row event">
-  <div class="span9">
+<div class="cosinnus-event">
+
+<h1>{% trans "Event" %} {{ object.title }} : {{ group.name }} </h1>
+
 <table class="table">
-<tr>
-    <th class="span2">{% trans "Title" %}</th>
-    <td>{{ object.title }}</td>
-</tr>
+{% if object.from_date %}
 <tr>
     <th>{% trans "Start" %}</th>
     <td>{{ object.from_date|date:"d. F Y h:i" }}</td>
 </tr>
-    <tr>
-        <th>{% trans "End" %}</th>
-        <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"d. F Y h:i" }}{% endif %}</td>
-    </tr>
+{% endif %}
+
+{% if object.to_date %}
+<tr>
+    <th>{% trans "End" %}</th>
+    <td>{% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"d. F Y h:i" }}{% endif %}</td>
+</tr>
+{% endif %}
+
 <tr>
     <th>{% trans "Created by" %}</th>
     <td>{{ object.created_by }}</td>
 </tr>
+
+{% if object.state %}
 <tr>
     <th>{% trans "State" %}</th>
     <td>{{ object.get_state_display }}</td>
 </tr>
-<tr>
-    <th>{% trans "Group" %}</th>
-    <td>{{ object.group.name }}</td>
-</tr>
+{% endif %}
+
+{% if object.note %}
 <tr>
     <th>{% trans "Note" %}</th>
     <td>{{ object.note|linebreaksbr }}</td>
 </tr>
+{% endif %}
+
+{% if object.location %}
 <tr>
     <th>{% trans "Location" %}:</th>
     <td>
@@ -53,28 +62,38 @@
         </p>
     </td>
 </tr>
+{% endif %}
+
+{% if object.street %}
 <tr>
     <th>{% trans "Street" %}</th>
     <td>{{ object.street }}</td>
 </tr>
+{% endif %}
+
+{% if object.zipcode %}
 <tr>
     <th>{% trans "ZIP code" %}</th>
     <td>{{ object.zipcode }}</td>
 </tr>
+{% endif %}
+
+{% if object.city %}
 <tr>
     <th>{% trans "City" %}</th>
     <td>{{ object.city }}</td>
 </tr>
+{% endif %}
+
 <tr>
-    <th>{% trans "Actions" %}</th>
-    <td>
+    <td colspan="2">
         <div class="btn-group">
             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="{% url 'cosinnus:event:entry-edit' group=group.slug slug=object.slug %}"><i class="icon-pencil"></i> {% trans "Edit" %}</a></li>
-                <li><a href="{% url 'cosinnus:event:entry-delete' group=group.slug slug=object.slug %}"><i class="icon-trash"></i> {% trans "Delete" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-edit' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-pencil"></span> {% trans "Edit" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-delete' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-trash"></span> {% trans "Delete" %}</a></li>
                 <li class="divider"></li>
-                <li><a href="{% url 'cosinnus:event:entry-vote' group=group.slug slug=object.slug %}"><i class="icon-user"></i> {% trans "Vote" context "the verb" %}</a></li>
+                <li><a href="{% url 'cosinnus:event:entry-vote' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-user"></span> {% trans "Vote" context "the verb" %}</a></li>
             </ul>
         </div>
     </td>
@@ -103,12 +122,10 @@
 </table>
 </div>
 </div>
-{% endblock %}
+{% endblock content %}
 
 
 {% block extrafooter %}
-<script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
+{{ block.super }}
 <script src="{% static 'geoposition/geoposition.js' %}"></script>
-{% endblock %}
-
-
+{% endblock extrafooter %}

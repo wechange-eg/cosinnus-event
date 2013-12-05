@@ -1,17 +1,15 @@
 {% extends "cosinnus_event/base.html" %}
 {% load i18n %}
-{% block page_title %}Event{% endblock %}
 
-{% block breadcrumbs %}
-    {{ block.super }}
-    <li><a href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">{{ event.title }}</a> <span class="divider">/</span></li>
-    <li class="active">{% trans "Vote" context "the verb" %}</li>
-{% endblock %}
+{% block page_title %}
+{{ object.title }} : {% trans "Vote" %} : {{ block.super }}
+{% endblock page_title %}
 
-{% block subnav_add_right %}{% endblock %}
 
 {% block content %}
-<form action="." method="post" class="form-horizontal">
+<h1>{% trans "Vote" context "the verb" %} {{ object.title }} : {{ group.name }} </h1>
+
+<form action="" method="post" class="form-horizontal">
     {% csrf_token %}
     {{ formset.management_form }}
     <table class="table">
