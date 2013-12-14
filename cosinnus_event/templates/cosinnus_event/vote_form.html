@@ -2,12 +2,12 @@
 {% load i18n %}
 
 {% block page_title %}
-{{ object.title }} : {% trans "Vote" %} : {{ block.super }}
+{{ object.title }} : {% trans "Vote" context "the verb" %} {{ block.super }}
 {% endblock page_title %}
 
 
 {% block content %}
-<h1>{% trans "Vote" context "the verb" %} {{ object.title }} : {{ group.name }} </h1>
+<h1>{{ group.name }}: {% trans "Vote" context "the verb" %} {{ object.title }}</h1>
 
 <form action="" method="post" class="form-horizontal">
     {% csrf_token %}

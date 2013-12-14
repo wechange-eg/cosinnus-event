@@ -3,7 +3,7 @@
 
 
 {% block page_title %}
-{{ object.title }} : {{ block.super }}
+{{ object.title }} {{ block.super }}
 {% endblock page_title %}
 
 
@@ -16,7 +16,7 @@
 {% block content %}
 <div class="cosinnus-event">
 
-<h1>{% trans "Event" %} {{ object.title }} : {{ group.name }} </h1>
+<h1>{{ group.name }}: {{ object.title }}</h1>
 
 <table class="table">
 {% if object.from_date %}

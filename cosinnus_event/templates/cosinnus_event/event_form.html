@@ -12,7 +12,7 @@
 {% elif form_view == "delete" %}
   {% trans "Delete" %} {{ event.title }}
 {% endif %}
-: {{ block.super }}
+{{ block.super }}
 {% endblock page_title %}
 
 
@@ -25,75 +25,75 @@
 
 {% block content %}
 <div class="row cosinnus-event">
-<h1>
-{% if form_view == "add" %}
-  {% trans "Add event" %}
-{% elif form_view == "edit" %}
-  {% trans "Edit" %} {{ event.title }}
-{% elif form_view == "delete" %}
-  {% trans "Delete" %} {{ event.title }}
-{% endif %}
-: {{ group.name }}
-</h1>
+  <h1>
+  {{ group.name }}:
+  {% if form_view == "add" %}
+    {% trans "Add event" %}
+  {% elif form_view == "edit" %}
+    {% trans "Edit" %} {{ event.title }}
+  {% elif form_view == "delete" %}
+    {% trans "Delete" %} {{ event.title }}
+  {% endif %}
+  </h1>
 
-    <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
-    {% csrf_token %}
+  <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
+  {% csrf_token %}
 
-    {% if form_view == 'add' or form_view == 'edit' %}
-    {% bootstrap_form form %}
+  {% if form_view == 'add' or form_view == 'edit' %}
+  {% bootstrap_form form %}
 
-    {% for formset in inlines %}
-    <fieldset id="formset{{ formset.prefix }}">
-        {{ formset.management_form }}
-        <label class="control-label" for="">{% trans "Suggestions" %}</label>
-        {% for inlineform in formset.forms %}
-        <div class="control-group{% if inlineform.errors %} error{% endif %}">
-            <div class="controls form-inline">
-                {% with inlineform.from_date as field %}
-                    <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
-                    {{ field }}
-                {% endwith %}
-                {% with inlineform.to_date as field %}
-                    <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
-                    {{ field }}
-                {% endwith %}
-                {% with inlineform.DELETE as field %}
-                    {{ field }}
-                {% endwith %}
-                {{ inlineform.id.as_widget }}
-                {{ inlineform.event.as_widget }}
-            </div>
-        </div>
-        {% endfor %}
-    </fieldset>
-    {% endfor %}
+  {% for formset in inlines %}
+  <fieldset id="formset{{ formset.prefix }}">
+      {{ formset.management_form }}
+      <label class="control-label" for="">{% trans "Suggestions" %}</label>
+      {% for inlineform in formset.forms %}
+      <div class="control-group{% if inlineform.errors %} error{% endif %}">
+          <div class="controls form-inline">
+              {% with inlineform.from_date as field %}
+                  <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
+                  {{ field }}
+              {% endwith %}
+              {% with inlineform.to_date as field %}
+                  <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
+                  {{ field }}
+              {% endwith %}
+              {% with inlineform.DELETE as field %}
+                  {{ field }}
+              {% endwith %}
+              {{ inlineform.id.as_widget }}
+              {{ inlineform.event.as_widget }}
+          </div>
+      </div>
+      {% endfor %}
+  </fieldset>
+  {% endfor %}
 
-    <div class="control-group">
-        <div class="controls">
-            {% if not object %}
-                <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
-            {% else %}
-                <button type="submit" class="btn btn-primary">{% trans "Save" context "sinn" %}</button>
-            {% endif %}
-            <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
-        </div>
-    </div>
+  <div class="control-group">
+      <div class="controls">
+          {% if not object %}
+              <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
+          {% else %}
+              <button type="submit" class="btn btn-primary">{% trans "Save" context "sinn" %}</button>
+          {% endif %}
+          <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
+      </div>
+  </div>
 
-    {% elif form_view == 'delete' %}
-    <fieldset>
-        <div class="control-group">
-            <label class="control-label">
-              <h3>{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</h3>
-            </label>
-            <div class="controls">
-                <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
-                <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
-            </div>
-        </div>
-    </fieldset>
-    {% endif %}
+  {% elif form_view == 'delete' %}
+  <fieldset>
+      <div class="control-group">
+          <label class="control-label">
+            <h3>{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</h3>
+          </label>
+          <div class="controls">
+              <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+              <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
+          </div>
+      </div>
+  </fieldset>
+  {% endif %}
 
-    </form>
+  </form>
 </div>
 {% endblock content %}
 

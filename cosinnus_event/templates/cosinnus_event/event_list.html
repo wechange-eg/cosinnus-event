@@ -1,13 +1,14 @@
 {% extends "cosinnus_event/base.html" %}
 {% load i18n %}
 
-{% block page_title %}{% trans "Events" %}{% endblock %}
-
+{% block page_title %}
+{% trans "Events" %} {{ block.super }}
+{% endblock page_title %}
 
 
 {% block content %}
 <div class="cosinnus-event">
-  <h1>{% trans "Events" %} : {{ group.name }}</h1>
+  <h1>{{ group.name }}: {% trans "Events" %}</h1>
 
   {% if tags %}
     {% for tag in tags %}
