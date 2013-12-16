@@ -73,7 +73,8 @@ class EntryFormMixin(object):
         return context
 
     def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
+        kwargs = { 'group': self.group.slug, 'slug': self.object.slug }
+        return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
 
 
 class SuggestionInlineView(InlineFormSet):
@@ -209,9 +210,6 @@ class EntryEditView(
         if self.request.user.is_superuser:
             return qs
         return qs.filter(created_by=self.request.user)
-
-    def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
     def get(self, request, *args, **kwargs):
         try:
