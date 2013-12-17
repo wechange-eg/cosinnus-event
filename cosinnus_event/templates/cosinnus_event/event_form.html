@@ -38,7 +38,7 @@
 
 {% block content %}
 <div class="cosinnus-event">
-  <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
+  <form action="." method="post" class="form-inline" enctype="multipart/form-data">
   {% csrf_token %}
 
   {% if form_view == 'add' or form_view == 'edit' %}
@@ -85,7 +85,7 @@
     </div>
   </div>
 
-  <div class="row control-group">
+  <div class="control-group">
       <div class="controls">
           {% if not object %}
               <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
@@ -97,7 +97,7 @@
   </div>
 
   {% elif form_view == 'delete' %}
-  <div class="row control-group">
+  <div class="control-group">
       <label class="control-label">
         <h3>{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</h3>
       </label>
