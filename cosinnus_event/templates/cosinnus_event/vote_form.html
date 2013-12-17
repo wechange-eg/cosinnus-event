@@ -6,9 +6,12 @@
 {% endblock page_title %}
 
 
-{% block content %}
-<h1>{{ group.name }}: {% trans "Vote" context "the verb" %} {{ object.title }}</h1>
+{% block content_title %}
+{{ group.name }}: {% trans "Vote" context "the verb" %} {{ object.title }}
+{% endblock content_title %}
 
+
+{% block content %}
 <form action="" method="post" class="form-horizontal">
     {% csrf_token %}
     {{ formset.management_form }}

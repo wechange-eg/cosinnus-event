@@ -6,10 +6,13 @@
 {% endblock page_title %}
 
 
+{% block content_title %}
+{{ group.name }}: {% trans "Events" %}
+{% endblock content_title %}
+
+
 {% block content %}
 <div class="cosinnus-event">
-  <h1>{{ group.name }}: {% trans "Events" %}</h1>
-
   {% if tags %}
     {% for tag in tags %}
       <a href="{% url 'cosinnus:event:list-filtered' group=group.slug tag=tag.slug %}"><span class="label label-default">{{ tag.name }}</span></a>

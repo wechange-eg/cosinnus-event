@@ -23,19 +23,21 @@
 {% endblock extrahead %}
 
 
+{% block content_title %}
+{{ group.name }}:
+{% if form_view == "add" %}
+  {% trans "Add event" %}
+{% elif form_view == "edit" %}
+  {% trans "Edit" %} {{ event.title }}
+{% elif form_view == "delete" %}
+  {% trans "Delete" %} {{ event.title }}
+{% endif %}
+{% endblock content_title %}
+
+
+
 {% block content %}
 <div class="cosinnus-event">
-  <div class="row"><h1>
-  {{ group.name }}:
-  {% if form_view == "add" %}
-    {% trans "Add event" %}
-  {% elif form_view == "edit" %}
-    {% trans "Edit" %} {{ event.title }}
-  {% elif form_view == "delete" %}
-    {% trans "Delete" %} {{ event.title }}
-  {% endif %}
-  </h1></div>
-
   <form action="." method="post" class="form-horizontal" enctype="multipart/form-data">
   {% csrf_token %}
 

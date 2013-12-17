@@ -13,10 +13,13 @@
 {% endblock extrahead %}
 
 
+{% block content_title %}
+{{ group.name }}: {{ object.title }}
+{% endblock content_title %}
+
+
 {% block content %}
 <div class="cosinnus-event">
-  <h1>{{ group.name }}: {{ object.title }}</h1>
-
   <div class="row">
     <div class="col-md-6">
       {% if object.from_date %}
