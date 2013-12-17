@@ -103,23 +103,20 @@ class Event(BaseTaggableObjectModel):
     def __unicode__(self):
         if self.state == Event.STATE_SCHEDULED:
             if self.single_day:
-                return force_unicode(
-                    u'Date: %(date)s - %(end)s (%(event)s)' % {
-                        'date': localize(self.from_date, 'd. F Y h:i'),
-                        'end': localize(self.to_date, 'h:i'),
-                        'event': self.title,
-                    }
-                )
-            return force_unicode(
-                u'From: %(from)s - To: %(to)s (%(event)s)' % {
+                readable = _('%(event)s (%(date)s - %(end)s)') % {
+                    'event': self.title,
+                    'date': localize(self.from_date, 'd. F Y h:i'),
+                    'end': localize(self.to_date, 'h:i'),
+                }
+            else:
+                readable = _('%(event)s (%(from)s - %(to)s)') % {
+                    'event': self.title,
                     'from': localize(self.from_date, 'd. F Y h:i'),
                     'to': localize(self.to_date, 'd. F Y h:i'),
-                    'event': self.title,
                 }
-            )
-        return force_unicode(u'Pending event: %(event)s' % {
-            'event': self.title,
-        })
+        else:
+            readable = _('%(event)s (pending)') % {'event': self.title}
+        return readable
 
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'event': self.pk}

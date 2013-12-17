@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-17 16:01+0100\n"
-"PO-Revision-Date: 2013-12-17 16:02+0200\n"
+"POT-Creation-Date: 2013-12-17 16:46+0100\n"
+"PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -15,9 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cosinnus_app.py:8 models.py:101
-#: templates/cosinnus_event/attached_events.html:8
-#: templates/cosinnus_event/event_list.html:5
+#: cosinnus_app.py:8 models.py:101 templates/cosinnus_event/event_list.html:5
 #: templates/cosinnus_event/event_list.html:10
 msgid "Events"
 msgstr "Veranstaltungen"
@@ -42,13 +40,13 @@ msgstr "Umfrage"
 msgid "Canceled"
 msgstr "Abgebrochen"
 
-#: models.py:51 models.py:159 templates/cosinnus_event/event_detail.html:26
+#: models.py:51 models.py:156 templates/cosinnus_event/event_detail.html:26
 #: templates/cosinnus_event/event_list.html:50
 #: templates/cosinnus_event/event_list.html:85
 msgid "Start"
 msgstr "Start"
 
-#: models.py:54 models.py:162 templates/cosinnus_event/event_detail.html:29
+#: models.py:54 models.py:159 templates/cosinnus_event/event_detail.html:29
 #: templates/cosinnus_event/event_list.html:51
 #: templates/cosinnus_event/event_list.html:86
 msgid "End"
@@ -103,29 +101,44 @@ msgstr "Bild"
 msgid "URL"
 msgstr "URL"
 
-#: models.py:100 models.py:166 templates/cosinnus_event/base.html:6
+#: models.py:100 models.py:163 templates/cosinnus_event/base.html:6
 msgid "Event"
 msgstr "Veranstaltung"
 
-#: models.py:172 models.py:225
+#: models.py:106
+#, python-format
+msgid "%(event)s (%(date)s - %(end)s)"
+msgstr "%(event)s (%(date)s - %(end)s)"
+
+#: models.py:112
+#, python-format
+msgid "%(event)s (%(from)s - %(to)s)"
+msgstr "%(event)s (%(from)s - %(to)s)"
+
+#: models.py:118
+#, python-format
+msgid "%(event)s (pending)"
+msgstr "%(event)s (Termin in der Schwebe)"
+
+#: models.py:169 models.py:222
 msgctxt "the subject"
 msgid "Votes"
 msgstr "Stimmen"
 
-#: models.py:177 models.py:210
+#: models.py:174 models.py:207
 msgid "Suggestion"
 msgstr "Terminvorschlag"
 
-#: models.py:178 templates/cosinnus_event/event_detail.html:75
+#: models.py:175 templates/cosinnus_event/event_detail.html:75
 #: templates/cosinnus_event/event_form.html:57
 msgid "Suggestions"
 msgstr "Terminvorschläge"
 
-#: models.py:217
+#: models.py:214
 msgid "Voter"
 msgstr "Wähler"
 
-#: models.py:224
+#: models.py:221
 msgctxt "the subject"
 msgid "Vote"
 msgstr "Stimme"
@@ -152,7 +165,8 @@ msgstr "Angehängte Veranstaltungen"
 
 #: templates/cosinnus_event/attached_events.html:11
 msgid "Template was called but no events are passed to be shown."
-msgstr "Das Template wurde gerufen, aber keine Veranstaltungen wurden übergeben."
+msgstr ""
+"Das Template wurde gerufen, aber keine Veranstaltungen wurden übergeben."
 
 #: templates/cosinnus_event/event_detail.html:64
 #: templates/cosinnus_event/event_list.html:55
@@ -256,3 +270,15 @@ msgstr "Es gibt keine vergangene Veranstaltungen."
 #: templates/cosinnus_event/event_list_object.html:27
 msgid "Show"
 msgstr "Anzeigen"
+
+#~ msgid "From: %(from)s To: %(to)s (%(event)s)"
+#~ msgstr "Von: %(from)s Bis: %(to)s (%(event)s)"
+
+#~ msgid "Pending event: %(event)s"
+#~ msgstr "Noch schwebend: %(event)s"
+
+#~ msgid "Date: %s - %s (%s)"
+#~ msgstr "Am: %s - %s (%s)"
+
+#~ msgid "foobarbaz"
+#~ msgstr "fds"
