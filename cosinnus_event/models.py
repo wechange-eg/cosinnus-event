@@ -48,37 +48,37 @@ class Event(BaseTaggableObjectModel):
     )
 
     from_date = models.DateTimeField(
-        _(u'Start'), default=None, blank=True, null=True, editable=False)
+        _('Start'), default=None, blank=True, null=True, editable=False)
 
     to_date = models.DateTimeField(
-        _(u'End'), default=None, blank=True, null=True, editable=False)
+        _('End'), default=None, blank=True, null=True, editable=False)
 
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        verbose_name=_(u'Created by'),
+        verbose_name=_('Created by'),
         on_delete=models.PROTECT,
         related_name='events',
     )
 
     state = models.PositiveIntegerField(
-        _(u'State'),
+        _('State'),
         choices=STATE_CHOICES,
         default=STATE_VOTING_OPEN,
         editable=False,
     )
 
-    note = models.TextField(_(u'Note'), blank=True, null=True)
+    note = models.TextField(_('Note'), blank=True, null=True)
 
     suggestion = models.ForeignKey(
         'Suggestion',
-        verbose_name=_(u'Event date'),
+        verbose_name=_('Event date'),
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name='selected_name',
     )
 
-    location = GeopositionField(_(u'Location'), blank=True, null=True)
+    location = GeopositionField(_('Location'), blank=True, null=True)
 
     street = models.CharField(_('Street'), blank=True, max_length=50, null=True)
 
@@ -86,12 +86,12 @@ class Event(BaseTaggableObjectModel):
 
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
-    public = models.BooleanField(_(u'Is public (on website)'))
+    public = models.BooleanField(_('Is public (on website)'))
 
     image = models.ImageField(
-        _(u'Image'), upload_to='events', blank=True, null=True)
+        _('Image'), upload_to='events', blank=True, null=True)
 
-    url = models.URLField(_(u'URL'), blank=True, null=True)
+    url = models.URLField(_('URL'), blank=True, null=True)
 
     objects = EventManager()
 
@@ -154,20 +154,20 @@ class Event(BaseTaggableObjectModel):
 @python_2_unicode_compatible
 class Suggestion(models.Model):
     from_date = models.DateTimeField(
-        _(u'Start'), default=None, blank=False, null=False)
+        _('Start'), default=None, blank=False, null=False)
 
     to_date = models.DateTimeField(
-        _(u'End'), default=None, blank=False, null=False)
+        _('End'), default=None, blank=False, null=False)
 
     event = models.ForeignKey(
         Event,
-        verbose_name=_(u'Event'),
+        verbose_name=_('Event'),
         on_delete=models.CASCADE,
         related_name='suggestions',
     )
 
     count = models.PositiveIntegerField(
-        pgettext_lazy('the subject', u'Votes'), default=0, editable=False)
+        pgettext_lazy('the subject', 'Votes'), default=0, editable=False)
 
     class Meta:
         ordering = ['event', '-count']
@@ -204,22 +204,22 @@ class Suggestion(models.Model):
 class Vote(models.Model):
     suggestion = models.ForeignKey(
         Suggestion,
-        verbose_name=_(u'Suggestion'),
+        verbose_name=_('Suggestion'),
         on_delete=models.CASCADE,
         related_name='votes',
     )
 
     voter = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        verbose_name=_(u'Voter'),
+        verbose_name=_('Voter'),
         on_delete=models.CASCADE,
         related_name='votes',
     )
 
     class Meta:
         unique_together = ('suggestion', 'voter')
-        verbose_name = pgettext_lazy('the subject', u'Vote')
-        verbose_name_plural = pgettext_lazy('the subject', u'Votes')
+        verbose_name = pgettext_lazy('the subject', 'Vote')
+        verbose_name_plural = pgettext_lazy('the subject', 'Votes')
 
     def __str__(self):
         return 'Vote for %(event)s: %(from)s - %(to)s' % {

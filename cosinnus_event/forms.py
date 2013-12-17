@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django import forms
 from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput, RadioSelect
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from bootstrap3_datetime.widgets import DateTimePicker
@@ -44,8 +43,8 @@ class SuggestionForm(forms.ModelForm):
 
 class VoteForm(forms.Form):
     YES_NO = (
-        (1, _(u'Yes')),
-        (0, _(u'No')),
+        (1, _('Yes')),
+        (0, _('No')),
     )
     suggestion = forms.IntegerField(required=True, widget=HiddenInput)
     vote = forms.ChoiceField(choices=YES_NO, required=True, widget=RadioSelect)

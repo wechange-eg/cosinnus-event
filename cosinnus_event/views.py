@@ -11,11 +11,11 @@ from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 from django.utils.timezone import now
 
-from extra_views import (CreateWithInlinesView, FormSetView,
-                         InlineFormSet, UpdateWithInlinesView, SortableListMixin)
+from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
+    UpdateWithInlinesView, SortableListMixin)
 
-from cosinnus.views.mixins.group import (
-    RequireReadMixin, RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin)
+from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
+    FilterGroupMixin)
 from cosinnus.views.mixins.tagged import TaggedListMixin
 
 
@@ -112,10 +112,10 @@ class EntryAddView(
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()
         if num_suggs == 0:
-            messages.info(self.request, _(u'You should define at least one date suggestion.'))
+            messages.info(self.request, _('You should define at least one date suggestion.'))
         elif num_suggs == 1:
             self.object.set_suggestion(self.object.suggestions.get())
-            messages.info(self.request, _(u'Automatically selected the only given date suggestion as event date.'))
+            messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
         return HttpResponseRedirect(self.get_success_url())
 
 entry_add_view = EntryAddView.as_view()
@@ -149,14 +149,14 @@ class EntryDeleteView(
         try:
             return super(EntryDeleteView, self).get(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
     def post(self, request, *args, **kwargs):
         try:
             return super(EntryDeleteView, self).post(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
 entry_delete_view = EntryDeleteView.as_view()
@@ -196,10 +196,10 @@ class EntryEditView(
             num_suggs = self.object.suggestions.count()
             if num_suggs == 0:
                 suggestion = None
-                messages.info(self.request, _(u'You should define at least one date suggestion.'))
+                messages.info(self.request, _('You should define at least one date suggestion.'))
             elif num_suggs == 1:
                 suggestion = self.object.suggestions.get()
-                messages.info(self.request, _(u'Automatically selected the only given date suggestion as event date.'))
+                messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
         # update_fields=None leads to saving the complete model, we don't need to call obj.self here
         self.object.set_suggestion(suggestion, update_fields=None)
         form.save_m2m()
@@ -215,14 +215,14 @@ class EntryEditView(
         try:
             return super(EntryEditView, self).get(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
     def post(self, request, *args, **kwargs):
         try:
             return super(EntryEditView, self).post(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _(u'Event does not exist or you are not allowed to modify it.'))
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
 entry_edit_view = EntryEditView.as_view()
