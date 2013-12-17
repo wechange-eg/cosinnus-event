@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from bootstrap3_datetime.widgets import DateTimePicker
 
+from cosinnus_event.conf import settings
 from cosinnus_event.models import Event, Suggestion
 
 
@@ -33,11 +34,12 @@ class SuggestionForm(forms.ModelForm):
 
     class Meta:
         model = Suggestion
-
-    from_date = forms.DateField(widget=
-        DateTimePicker(options={'format': 'YYYY-MM-DD', 'pickTime': True}))
-    to_date = forms.DateField(widget=
-        DateTimePicker(options={'format': 'YYYY-MM-DD', 'pickTime': True}))
+        widgets = {
+            'from_date': DateTimePicker(options={
+                'format': settings.COSINNUS_EVENT_DATETIME_PICK_FORMAT}),
+            'to_date': DateTimePicker(options={
+                'format': settings.COSINNUS_EVENT_DATETIME_PICK_FORMAT}),
+        }
 
 
 class VoteForm(forms.Form):

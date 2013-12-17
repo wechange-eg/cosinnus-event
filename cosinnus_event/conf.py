@@ -6,4 +6,5 @@ from appconf import AppConf
 
 
 class CosinnusEventConf(AppConf):
-    pass
+    DATETIME_PICK_FORMAT = getattr(
+        settings, 'COSINNUS_DATETIME_PICK_FORMAT', None) or 'YYYY-MM-DD HH:mm'

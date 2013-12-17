@@ -13,3 +13,6 @@ THUMBNAIL_PROCESSORS = (
 )
 ```
 See https://github.com/SmileyChris/easy-thumbnails for more details .
+* Optionally set a format for the date picker (Javascript-compatible!) by
+setting ``COSINNUS_DATETIME_PICK_FORMAT`` globally or
+``COSINNUS_EVENT_DATETIME_PICK_FORMAT`` just for this app.
