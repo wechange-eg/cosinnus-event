@@ -6,7 +6,7 @@ from django.db import models
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils import dateformat
-from django.utils.encoding import force_unicode
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
 from django.utils.timezone import localtime
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
@@ -100,7 +100,7 @@ class Event(BaseTaggableObjectModel):
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
 
-    def __unicode__(self):
+    def __str__(self):
         if self.state == Event.STATE_SCHEDULED:
             if self.single_day:
                 readable = _('%(event)s (%(date)s - %(end)s)') % {
@@ -151,6 +151,7 @@ class Event(BaseTaggableObjectModel):
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
 
 
+@python_2_unicode_compatible
 class Suggestion(models.Model):
     from_date = models.DateTimeField(
         _(u'Start'), default=None, blank=False, null=False)
@@ -174,20 +175,18 @@ class Suggestion(models.Model):
         verbose_name = _('Suggestion')
         verbose_name_plural = _('Suggestions')
 
-    def __unicode__(self):
+    def __str__(self):
         if self.single_day:
-            return force_unicode(
-                u'%(date)s - %(end)s (%(count)d)' % {
-                    'date': localize(self.from_date, 'd. F Y H:i'),
-                    'end': localize(self.to_date, 'H:i'),
-                    'count': self.count,
-                }
-            )
-        return force_unicode(u'%(from)s - %(to)s (%(count)d)' % {
+            return '%(date)s - %(end)s (%(count)d)' % {
+                'date': localize(self.from_date, 'd. F Y H:i'),
+                'end': localize(self.to_date, 'H:i'),
+                'count': self.count,
+            }
+        return '%(from)s - %(to)s (%(count)d)' % {
             'from': localize(self.from_date, 'd. F Y H:i'),
             'to': localize(self.to_date, 'd. F Y H:i'),
             'count': self.count,
-        })
+        }
 
     def get_absolute_url(self):
         return self.event.get_absolute_url()
@@ -201,6 +200,7 @@ class Suggestion(models.Model):
         return localtime(self.from_date).date() == localtime(self.to_date).date()
 
 
+@python_2_unicode_compatible
 class Vote(models.Model):
     suggestion = models.ForeignKey(
         Suggestion,
@@ -221,12 +221,12 @@ class Vote(models.Model):
         verbose_name = pgettext_lazy('the subject', u'Vote')
         verbose_name_plural = pgettext_lazy('the subject', u'Votes')
 
-    def __unicode__(self):
-        return force_unicode(u'Vote for %(event)s: %(from)s - %(to)s' % {
+    def __str__(self):
+        return 'Vote for %(event)s: %(from)s - %(to)s' % {
             'event': self.suggestion.event.title,
             'from': localize(self.suggestion.from_date, 'd. F Y h:i'),
             'to': localize(self.suggestion.to_date, 'd. F Y h:i'),
-        })
+        }
 
     def get_absolute_url(self):
         return self.suggestion.event.get_absolute_url()
