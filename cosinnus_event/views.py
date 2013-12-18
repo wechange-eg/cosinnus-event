@@ -31,9 +31,8 @@ class EventIndexView(RequireReadMixin, RedirectView):
 index_view = EventIndexView.as_view()
 
 
-class EventListView(
-    RequireReadMixin, FilterGroupMixin, TaggedListMixin, SortableListMixin,
-    ListView):
+class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
+        SortableListMixin, ListView):
 
     model = Event
 
@@ -73,7 +72,7 @@ class EntryFormMixin(object):
         return context
 
     def get_success_url(self):
-        kwargs = { 'group': self.group.slug, 'slug': self.object.slug }
+        kwargs = {'group': self.group.slug, 'slug': self.object.slug}
         return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
 
 
@@ -83,8 +82,8 @@ class SuggestionInlineView(InlineFormSet):
     model = Suggestion
 
 
-class EntryAddView(
-    RequireWriteMixin, FilterGroupMixin, EntryFormMixin, CreateWithInlinesView):
+class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
+        CreateWithInlinesView):
 
     form_class = EventForm
     model = Event
@@ -121,8 +120,8 @@ class EntryAddView(
 entry_add_view = EntryAddView.as_view()
 
 
-class EntryDeleteView(
-    RequireWriteMixin, FilterGroupMixin, EntryFormMixin, DeleteView):
+class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
+        DeleteView):
 
     model = Event
     pk_url_kwarg = 'event'
@@ -169,8 +168,8 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 entry_detail_view = EntryDetailView.as_view()
 
 
-class EntryEditView(
-    RequireWriteMixin, FilterGroupMixin, EntryFormMixin, UpdateWithInlinesView):
+class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
+        UpdateWithInlinesView):
 
     form_class = EventForm
     inlines = [SuggestionInlineView]
@@ -228,8 +227,8 @@ class EntryEditView(
 entry_edit_view = EntryEditView.as_view()
 
 
-class EntryVoteView(
-    RequireWriteMixin, FilterGroupMixin, SingleObjectMixin, FormSetView):
+class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
+        FormSetView):
 
     extra = 0
     form_class = VoteForm
@@ -264,7 +263,7 @@ class EntryVoteView(
         return self.initial
 
     def get_success_url(self):
-        kwargs = { 'group': self.group.slug, 'slug': self.object.slug }
+        kwargs = {'group': self.group.slug, 'slug': self.object.slug}
         return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
 
     def formset_valid(self, formset):

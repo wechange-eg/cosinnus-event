@@ -19,7 +19,6 @@ from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
 
 
-
 def localize(value, format):
     if (not format) or ("FORMAT" in format):
         return date_format(localtime(value), format)
@@ -121,7 +120,6 @@ class Event(BaseTaggableObjectModel):
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'event': self.pk}
         return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
-
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:

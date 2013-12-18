@@ -8,4 +8,4 @@ COSINNUS_APP_NAME = 'event'
 COSINNUS_APP_LABEL = _('Events')
 
 ATTACHABLE_OBJECT_MODELS = ['cosinnus_event.Event']
-ATTACHABLE_OBJECT_RENDERERS = {'cosinnus_event.Event':renderer.EventRenderer}
+ATTACHABLE_OBJECT_RENDERERS = {'cosinnus_event.Event': renderer.EventRenderer}
