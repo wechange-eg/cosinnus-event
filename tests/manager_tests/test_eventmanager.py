@@ -85,8 +85,8 @@ class EventManagerTest(TestCase):
                 public=True,
                 title='testevent %d' % i,
                 state=Event.STATE_SCHEDULED,
-                from_date = now(),
-                to_date = now() + timedelta(days=1))
+                from_date=now(),
+                to_date=now() + timedelta(days=1))
 
         num_events = len(Event.objects.all())
         self.assertLess(count, num_events)
@@ -94,4 +94,3 @@ class EventManagerTest(TestCase):
         num_upcoming_all = len(Event.objects.upcoming(count=num_events))
         num_upcoming_count = len(Event.objects.upcoming(count=count))
         self.assertLess(num_upcoming_count, num_upcoming_all)
-
