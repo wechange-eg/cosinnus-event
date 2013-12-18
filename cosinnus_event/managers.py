@@ -10,7 +10,9 @@ from taggit.models import TaggedItem
 
 class EventManager(models.Manager):
     def public(self):
-        return self.get_query_set().filter(public=True, state=self.model.STATE_SCHEDULED)
+        # Django 1.5: get_query_set, 1.7: get_queryset
+        qs = getattr(self, 'get_queryset', self.get_query_set)()
+        return qs.filter(public=True, state=self.model.STATE_SCHEDULED)
 
     def upcoming(self, count):
         return self.public().filter(to_date__gte=now()).order_by("from_date").all()[:count]
