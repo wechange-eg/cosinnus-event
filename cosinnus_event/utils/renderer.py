@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.template.loader import render_to_string
+from cosinnus.utils.renderer import BaseRenderer
 
-
-class EventRenderer(object):
+class EventRenderer(BaseRenderer):
     """
     EventRenderer for Cosinnus attached objects
     """
-
-    @staticmethod
-    def render_attached_objects(context, events):
-        template = "cosinnus_event/attached_events.html"
-
-        context['events'] = events
-
-        return render_to_string(template, context)
+    template = 'cosinnus_event/attached_events.html'
+    
+    @classmethod
+    def render(cls, context, myobjs):
+        return super(EventRenderer, cls).render(context, events=myobjs)
