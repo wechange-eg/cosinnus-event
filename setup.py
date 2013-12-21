@@ -52,8 +52,7 @@ setup(
     packages=find_packages(exclude=["tests"]),
     data_files=data_files,
     install_requires=[
-        'cosinnus>=0.1.dev',
-        'django-bootstrap3-datetimepicker>=2.1.0',
+        'cosinnus>=0.2.dev0',
         'django-extra-views>=0.6.3',
         'django-geoposition>=0.1.5',
         'easy-thumbnails>=1.4',
