@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput, RadioSelect
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from bootstrap3_datetime.widgets import DateTimePicker
@@ -53,5 +54,5 @@ class VoteForm(forms.Form):
     def get_label(self):
         pk = self.initial.get('suggestion', None)
         if pk:
-            return unicode(Suggestion.objects.get(pk=pk))
+            return force_text(Suggestion.objects.get(pk=pk))
         return ''
