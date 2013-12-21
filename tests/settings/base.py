@@ -31,6 +31,8 @@ INSTALLED_APPS = (
     'appconf',
     'bootstrap3',
     'bootstrap3_datetime',
+    'easy_thumbnails',
+    'geoposition',
     'taggit',
 
     'cosinnus',
