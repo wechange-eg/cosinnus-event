@@ -26,6 +26,7 @@ def localize(value, format):
         return dateformat.format(localtime(value), format)
 
 
+@python_2_unicode_compatible
 class Event(BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
