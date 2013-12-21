@@ -2,30 +2,16 @@
 from __future__ import unicode_literals
 
 from datetime import timedelta
-from django.contrib.auth.models import User
-from django.test import TestCase
-from django.utils.timezone import now
+from django.utils import dateformat
+from django.utils.encoding import force_text
+from django.utils.formats import date_format
+from django.utils.timezone import now, localtime
 
-from cosinnus.models import CosinnusGroup
 from cosinnus_event.models import Event, Suggestion, localize
+from tests.model_tests.base import ModelTestCase
 
 
-class EventTest(TestCase):
-
-    def setUp(self):
-        super(EventTest, self).setUp()
-        self.group = CosinnusGroup.objects.create(name='testgroup')
-        self.admin = User.objects.create_superuser(
-            username='admin', email=None, password=None)
-        dt = now()
-        self.event = Event.objects.create(
-            group=self.group,
-            created_by=self.admin,
-            public=True,
-            title='testevent',
-            from_date=dt,
-            to_date=dt,
-            state=Event.STATE_SCHEDULED)
+class EventTest(ModelTestCase):
 
     def test_string_repr_scheduled_single_day(self):
         """
@@ -36,7 +22,7 @@ class EventTest(TestCase):
             'date': localize(self.event.from_date, 'd. F Y h:i'),
             'end': localize(self.event.to_date, 'h:i'),
         }
-        self.assertEqual(expected, str(self.event))
+        self.assertEqual(expected, force_text(self.event))
 
     def test_string_repr_scheduled_multi_day(self):
         """
@@ -49,7 +35,7 @@ class EventTest(TestCase):
             'from': localize(self.event.from_date, 'd. F Y h:i'),
             'to': localize(self.event.to_date, 'd. F Y h:i'),
         }
-        self.assertEqual(expected, str(self.event))
+        self.assertEqual(expected, force_text(self.event))
 
     def test_string_repr_pending(self):
         """
@@ -58,7 +44,7 @@ class EventTest(TestCase):
         self.event.state = Event.STATE_VOTING_OPEN
         self.event.save()
         expected = '%(event)s (pending)' % {'event': self.event.title}
-        self.assertEqual(expected, str(self.event))
+        self.assertEqual(expected, force_text(self.event))
 
     def test_set_suggestion_none(self):
         """
@@ -109,7 +95,7 @@ class EventTest(TestCase):
 
     def test_period_same_day(self):
         """
-        Should be from date on same day for period
+        Period should be same as from date on same day
         """
         self.event.from_date = self.event.to_date
         self.event.save()
@@ -118,11 +104,38 @@ class EventTest(TestCase):
 
     def test_period_other_day(self):
         """
-        Should be certain string on different days for period
+        Period should be a certain string on different from and to dates
         """
         self.event.from_date = now()
         self.event.to_date = self.event.from_date + timedelta(days=1)
         self.event.save()
-        expected = '%s - %s' % (localize(self.event.from_date, "d.m."),
-            localize(self.event.to_date, "d.m.Y"))
+        expected = '%s - %s' % (localize(self.event.from_date, 'd.m.'),
+            localize(self.event.to_date, 'd.m.Y'))
         self.assertEqual(expected, self.event.get_period())
+
+    def test_localize_no_format(self):
+        """
+        Localize should return a certain localtime date_format when no format
+        string is given
+        """
+        format = None
+        expected = date_format(localtime(self.event.from_date), format)
+        self.assertEqual(expected, localize(self.event.from_date, format))
+
+    def test_localize_datetime_format(self):
+        """
+        Localize should return a certain localtime date_format when a
+        predefined format string is given
+        """
+        format = 'DATETIME_FORMAT'
+        expected = date_format(localtime(self.event.from_date), format)
+        self.assertEqual(expected, localize(self.event.from_date, format))
+
+    def test_localize_custom_format(self):
+        """
+        Localize should return a certain localtime date_format when a
+        custom format string is given
+        """
+        format = 'd.m'
+        expected = dateformat.format(localtime(self.event.from_date), format)
+        self.assertEqual(expected, localize(self.event.from_date, format))
