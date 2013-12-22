@@ -1,6 +1,5 @@
 {% extends "cosinnus_event/base.html" %}
-{% load i18n %}
-{% load bootstrap3 %}
+{% load i18n bootstrap3 cosinnus_tags %}
 {% load static from staticfiles %}
 
 
@@ -118,6 +117,8 @@
 {{ form.media.js }}
 {% for formset in inlines %}{{ formset.media.js }}{% endfor %}
 <script type="text/javascript" src="{% static "js/vendor/bootstrap3-typeahead.min.js" %}"></script>
+{% cosinnus_autocomplete '#id_tags' tags %}
+
 {# for suggestions #}
 <script type="text/javascript" src="{% static "js/vendor/bootstrap.inline.js" %}"></script>
 <script type="text/javascript">
@@ -134,15 +135,6 @@
        });
    });
 {% endfor %}
-
-$(function() {
-  var tags = [{% for tag in tags %}"{{ tag }}", {% endfor %}];
-  $('#id_tags')
-    .attr('data-provide', 'typeahead')
-    .attr('autocomplete', 'off')
-    .typeahead({
-      source: tags,
-    });
 
 {% if not event %}
   $("#id_title").focus();
