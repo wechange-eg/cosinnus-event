@@ -7,9 +7,8 @@ from django.forms.widgets import HiddenInput, RadioSelect
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from bootstrap3_datetime.widgets import DateTimePicker
+from cosinnus.forms.widgets import DateTimeL10nPicker
 
-from cosinnus_event.conf import settings
 from cosinnus_event.models import Event, Suggestion
 
 
@@ -36,10 +35,8 @@ class SuggestionForm(forms.ModelForm):
         model = Suggestion
         fields = ('from_date', 'to_date',)
         widgets = {
-            'from_date': DateTimePicker(options={
-                'format': settings.COSINNUS_EVENT_DATETIME_PICK_FORMAT}),
-            'to_date': DateTimePicker(options={
-                'format': settings.COSINNUS_EVENT_DATETIME_PICK_FORMAT}),
+            'from_date': DateTimeL10nPicker(),
+            'to_date': DateTimeL10nPicker(),
         }
 
 
