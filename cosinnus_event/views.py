@@ -19,6 +19,7 @@ from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
 from cosinnus.views.mixins.tagged import TaggedListMixin
 
 
+from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm
 from cosinnus_event.models import Event, Suggestion, Vote
 
@@ -164,6 +165,13 @@ entry_delete_view = EntryDeleteView.as_view()
 class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     model = Event
+
+    def get_context_data(self, **kwargs):
+        context = super(EntryDetailView, self).get_context_data(**kwargs)
+        context.update({
+            'map_widget_height': settings.GEOPOSITION_MAP_WIDGET_HEIGHT,
+        })
+        return context
 
 entry_detail_view = EntryDetailView.as_view()
 

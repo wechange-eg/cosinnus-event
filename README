@@ -13,3 +13,7 @@ THUMBNAIL_PROCESSORS = (
 )
 ```
 See https://github.com/SmileyChris/easy-thumbnails for more details .
+* You might want to specify another value than the default 480 for the height of the map widget:
+```
+GEOPOSITION_MAP_WIDGET_HEIGHT = '500'
+```

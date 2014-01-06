@@ -54,8 +54,11 @@ setup(
     install_requires=[
         'cosinnus>=0.2.dev0',
         'django-extra-views>=0.6.3',
-        'django-geoposition>=0.1.5',
+        'django-geoposition',
         'easy-thumbnails>=1.4',
+    ],
+    dependency_links=[
+        'git+git://github.com/philippbosch/django-geoposition@0a46ff3f31954a2f193f7df4480ca65c2a5eff75#egg=django_geoposition',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

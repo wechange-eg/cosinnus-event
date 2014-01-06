@@ -41,10 +41,10 @@
     <div class="col-md-6">
       {% if object.location %}
       <strong>{% trans "Location" %}:</strong>
-      <p class="geoposition-widget">
+      <div class="geoposition-widget" data-map-widget-height="{{ map_widget_height }}">
           <input class="geoposition" value="{{ object.location.latitude|unlocalize }}">
           <input class="geoposition" value="{{ object.location.longitude|unlocalize }}">
-      </p>
+      </div>
       {% endif %}
       {% if object.street %}
       <strong>{% trans "Street" %}</strong> {{ object.street }}<br />
@@ -97,5 +97,6 @@
 
 {% block extrafooter %}
 {{ block.super }}
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script src="{% static 'geoposition/geoposition.js' %}"></script>
 {% endblock extrafooter %}
