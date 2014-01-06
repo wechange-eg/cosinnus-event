@@ -78,7 +78,7 @@ class EventManagerTest(TestCase):
         Should have upcoming count events if event is in future
         """
         count = 3
-        for i in xrange(1, count + 2):  # + 2 to get count+1 upcoming events
+        for i in range(1, count + 2):  # + 2 to get count+1 upcoming events
             Event.objects.create(
                 group=self.group,
                 created_by=self.admin,
