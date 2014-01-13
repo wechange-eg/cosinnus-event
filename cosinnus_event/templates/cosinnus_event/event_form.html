@@ -8,8 +8,6 @@
   {% trans "Add event" %}
 {% elif form_view == "edit" %}
   {% trans "Edit" %} {{ event.title }}
-{% elif form_view == "delete" %}
-  {% trans "Delete" %} {{ event.title }}
 {% endif %}
 {{ block.super }}
 {% endblock page_title %}
@@ -28,8 +26,6 @@
   {% trans "Add event" %}
 {% elif form_view == "edit" %}
   {% trans "Edit" %} {{ event.title }}
-{% elif form_view == "delete" %}
-  {% trans "Delete" %} {{ event.title }}
 {% endif %}
 {% endblock content_title %}
 
@@ -91,17 +87,6 @@
           {% else %}
               <button type="submit" class="btn btn-primary">{% trans "Save" context "sinn" %}</button>
           {% endif %}
-          <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
-      </div>
-  </div>
-
-  {% elif form_view == 'delete' %}
-  <div class="control-group">
-      <label class="control-label">
-        <h3>{% trans "Are you sure to remove this event with all its suggestions and votes?" %}</h3>
-      </label>
-      <div class="controls">
-          <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
           <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
       </div>
   </div>

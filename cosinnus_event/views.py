@@ -121,20 +121,10 @@ class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
 entry_add_view = EntryAddView.as_view()
 
 
-class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
-        DeleteView):
+class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
 
     model = Event
     pk_url_kwarg = 'event'
-
-    def dispatch(self, request, *args, **kwargs):
-        self.form_view = kwargs.get('form_view', None)
-        return super(EntryDeleteView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(EntryDeleteView, self).get_context_data(**kwargs)
-        context.update({'form_view': self.form_view})
-        return context
 
     def get_queryset(self):
         qs = super(EntryDeleteView, self).get_queryset()
