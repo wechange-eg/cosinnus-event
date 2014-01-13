@@ -66,3 +66,19 @@ class DeleteTest(ViewTestCase):
             reverse('cosinnus:event:list', kwargs=kwargs),
             response.get('location'))
         self.assertEqual(len(Event.objects.all()), 0)
+
+    def test_other_user(self):
+        """
+        Should redirect to list page and event not deleted
+        """
+        credential = 'test'
+        self.add_user(credential)
+        self.client.login(username=credential, password=credential)
+        response = self.client.get(self.url, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        kwargs = {'group': self.group.slug}
+        list_url = reverse('cosinnus:event:list', kwargs=kwargs)
+        self.assertRedirects(response, list_url)
+
+        self.assertEqual(len(Event.objects.all()), 1)

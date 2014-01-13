@@ -80,3 +80,17 @@ class EditTest(ViewTestCase):
         num_tags = len(self.event.tags.filter(name=tag))
         self.assertEqual(num_tags, 1)
         self.assertEqual(len(self.event.suggestions.all()), 1)
+
+    def test_other_user(self):
+        """
+        Should redirect to list page instead of edit
+        """
+        credential = 'test'
+        self.add_user(credential)
+        self.client.login(username=credential, password=credential)
+        response = self.client.get(self.url, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        kwargs = {'group': self.group.slug}
+        list_url = reverse('cosinnus:event:list', kwargs=kwargs)
+        self.assertRedirects(response, list_url)
