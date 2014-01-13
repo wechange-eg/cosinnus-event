@@ -170,7 +170,6 @@ entry_edit_view = EntryEditView.as_view()
 class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
 
     model = Event
-    pk_url_kwarg = 'event'
 
     def get_queryset(self):
         qs = super(EntryDeleteView, self).get_queryset()
@@ -218,7 +217,6 @@ class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
     extra = 0
     form_class = VoteForm
     model = Event
-    pk_url_kwarg = 'event'
     template_name = 'cosinnus_event/vote_form.html'
 
     def dispatch(self, request, *args, **kwargs):
