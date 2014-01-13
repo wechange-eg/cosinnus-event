@@ -60,8 +60,16 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
 list_view = EventListView.as_view()
 
 
+class SuggestionInlineView(InlineFormSet):
+    extra = 1
+    form_class = SuggestionForm
+    model = Suggestion
+
+
 class EntryFormMixin(object):
-    template_name = 'cosinnus_event/event_form.html'
+    form_class = EventForm
+    model = Event
+    inlines = [SuggestionInlineView]
 
     def dispatch(self, request, *args, **kwargs):
         self.form_view = kwargs.get('form_view', None)
@@ -69,34 +77,26 @@ class EntryFormMixin(object):
 
     def get_context_data(self, **kwargs):
         context = super(EntryFormMixin, self).get_context_data(**kwargs)
-        context.update({'form_view': self.form_view})
+        tags = Event.objects.tags()
+        context.update({
+            'tags': tags,
+            'form_view': self.form_view,
+        })
         return context
 
     def get_success_url(self):
-        kwargs = {'group': self.group.slug, 'slug': self.object.slug}
-        return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
-
-
-class SuggestionInlineView(InlineFormSet):
-    extra = 1
-    form_class = SuggestionForm
-    model = Suggestion
+        kwargs = {'group': self.group.slug}
+        # no self.object if get_queryset from add/edit view returns empty
+        if hasattr(self, 'object'):
+            kwargs['slug'] = self.object.slug
+            urlname = 'cosinnus:event:entry-detail'
+        else:
+            urlname = 'cosinnus:event:list'
+        return reverse(urlname, kwargs=kwargs)
 
 
 class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
         CreateWithInlinesView):
-
-    form_class = EventForm
-    model = Event
-    inlines = [SuggestionInlineView]
-
-    def get_context_data(self, **kwargs):
-        context = super(EntryAddView, self).get_context_data(**kwargs)
-        tags = Event.objects.tags()
-        context.update({
-            'tags': tags
-        })
-        return context
 
     def forms_valid(self, form, inlines):
         self.object = form.save(commit=False)
@@ -119,6 +119,52 @@ class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
         return HttpResponseRedirect(self.get_success_url())
 
 entry_add_view = EntryAddView.as_view()
+
+
+class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
+        UpdateWithInlinesView):
+
+    def forms_valid(self, form, inlines):
+        # Save the suggestions first so we can directly access the amount of suggestions afterwards
+        for formset in inlines:
+            formset.save()
+
+        self.object = form.save(commit=False)
+        suggestion = form.cleaned_data.get('suggestion')
+        if not suggestion:
+            num_suggs = self.object.suggestions.count()
+            if num_suggs == 0:
+                suggestion = None
+                messages.info(self.request, _('You should define at least one date suggestion.'))
+            elif num_suggs == 1:
+                suggestion = self.object.suggestions.get()
+                messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
+        # update_fields=None leads to saving the complete model, we don't need to call obj.self here
+        self.object.set_suggestion(suggestion, update_fields=None)
+        form.save_m2m()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_queryset(self):
+        qs = super(EntryEditView, self).get_queryset()
+        if self.request.user.is_superuser:
+            return qs
+        return qs.filter(created_by=self.request.user)
+
+    def get(self, request, *args, **kwargs):
+        try:
+            return super(EntryEditView, self).get(request, *args, **kwargs)
+        except Http404:
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
+            return HttpResponseRedirect(self.get_success_url())
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super(EntryEditView, self).post(request, *args, **kwargs)
+        except Http404:
+            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
+            return HttpResponseRedirect(self.get_success_url())
+
+entry_edit_view = EntryEditView.as_view()
 
 
 class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
@@ -164,65 +210,6 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
         return context
 
 entry_detail_view = EntryDetailView.as_view()
-
-
-class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
-        UpdateWithInlinesView):
-
-    form_class = EventForm
-    inlines = [SuggestionInlineView]
-    model = Event
-    pk_url_kwarg = 'event'
-
-    def get_context_data(self, **kwargs):
-        context = super(EntryEditView, self).get_context_data(**kwargs)
-        tags = Event.objects.tags()
-        context.update({
-            'tags': tags
-        })
-        return context
-
-    def forms_valid(self, form, inlines):
-        # Save the suggestions first so we can directly access the amount of suggestions afterwards
-        for formset in inlines:
-            formset.save()
-
-        self.object = form.save(commit=False)
-        suggestion = form.cleaned_data.get('suggestion')
-        if not suggestion:
-            num_suggs = self.object.suggestions.count()
-            if num_suggs == 0:
-                suggestion = None
-                messages.info(self.request, _('You should define at least one date suggestion.'))
-            elif num_suggs == 1:
-                suggestion = self.object.suggestions.get()
-                messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
-        # update_fields=None leads to saving the complete model, we don't need to call obj.self here
-        self.object.set_suggestion(suggestion, update_fields=None)
-        form.save_m2m()
-        return HttpResponseRedirect(self.get_success_url())
-
-    def get_queryset(self):
-        qs = super(EntryFormMixin, self).get_queryset()
-        if self.request.user.is_superuser:
-            return qs
-        return qs.filter(created_by=self.request.user)
-
-    def get(self, request, *args, **kwargs):
-        try:
-            return super(EntryEditView, self).get(request, *args, **kwargs)
-        except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return super(EntryEditView, self).post(request, *args, **kwargs)
-        except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-entry_edit_view = EntryEditView.as_view()
 
 
 class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
