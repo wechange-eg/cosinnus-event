@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from os.path import join
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import post_delete, post_save
@@ -89,7 +90,10 @@ class Event(BaseTaggableObjectModel):
     public = models.BooleanField(_('Is public (on website)'))
 
     image = models.ImageField(
-        _('Image'), upload_to='events', blank=True, null=True)
+        _('Image'),
+        upload_to=join('cosinnus_events', 'images'),
+        blank=True,
+        null=True)
 
     url = models.URLField(_('URL'), blank=True, null=True)
 
