@@ -35,7 +35,10 @@
       {% if object.note %}
       <strong>{% trans "Note" %}</strong><br />
       <div class="well">{{ object.note|linebreaksbr }}</div>
-      <br />
+      {% endif %}
+      {% if object.image %}
+      <strong>{% trans "Image" %}</strong><br />
+      <img src="{{ object.image.url }}" />
       {% endif %}
     </div>
     <div class="col-md-6">
