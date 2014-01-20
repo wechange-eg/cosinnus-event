@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
+from __future__ import unicode_literals
 
-from cosinnus_event.utils import renderer
 
-IS_COSINNUS_APP = True
-COSINNUS_APP_NAME = 'event'
-COSINNUS_APP_LABEL = _('Events')
+def register():
+    # Import here to prevent import side effects
+    from django.utils.translation import ugettext_lazy as _
 
-ATTACHABLE_OBJECT_MODELS = ['cosinnus_event.Event']
-ATTACHABLE_OBJECT_RENDERERS = {'cosinnus_event.Event': renderer.EventRenderer}
+    from cosinnus.core.registries import (app_registry,
+        attached_object_registry, url_registry)
+
+    from cosinnus_event.urls import (cosinnus_group_patterns,
+        cosinnus_root_patterns)
+
+    app_registry.register('cosinnus_event', 'event', _('Events'))
+    attached_object_registry.register('cosinnus_event.Event',
+                             'cosinnus_event.renderer.EventRenderer')
+    url_registry.register('cosinnus_event', cosinnus_root_patterns,
+        cosinnus_group_patterns)

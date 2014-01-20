@@ -239,3 +239,9 @@ def post_vote_delete(sender, **kwargs):
 @receiver(post_save, sender=Vote)
 def post_vote_save(sender, **kwargs):
     kwargs['instance'].suggestion.update_vote_count()
+
+
+import django
+if django.VERSION[:2] < (1, 7):
+    from cosinnus_event import cosinnus_app
+    cosinnus_app.register()
