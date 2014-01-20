@@ -14,6 +14,7 @@ from django.utils.timezone import now
 from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
     UpdateWithInlinesView, SortableListMixin)
 
+from cosinnus.views.export import JSONExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
     FilterGroupMixin)
 from cosinnus.views.mixins.tagged import TaggedListMixin
@@ -263,3 +264,24 @@ class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
         return super(EntryVoteView, self).formset_valid(formset)
 
 entry_vote_view = EntryVoteView.as_view()
+
+
+class EventExportView(JSONExportView):
+    fields = [
+        'from_date',
+        'to_date',
+        'created_by',
+        'state',
+        'note',
+        'location',
+        'street',
+        'zipcode',
+        'city',
+        'public',
+        'image',
+        'url',
+    ]
+    model = Event
+    file_prefix = 'cosinnus_event'
+
+export_view = EventExportView.as_view()

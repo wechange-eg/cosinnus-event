@@ -1,5 +1,5 @@
 {% extends "cosinnus_event/base.html" %}
-{% load i18n %}
+{% load i18n cosinnus_tags %}
 
 {% block page_title %}
 {% trans "Events" %} {{ block.super }}
@@ -23,6 +23,9 @@
 
   <ul class="nav nav-pills pull-right">
     <li class="active"><a href="{% url 'cosinnus:event:entry-add' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+  {% if user.is_superuser or user|is_group_admin:object %}
+  <li class="active"><a href="{% url 'cosinnus:event:export' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-export"></span> {% trans "Export" context "the verb" %}</a></li>
+  {% endif %}
   </ul>
   <div class="clearfix"></div>
   <br />
