@@ -12,10 +12,21 @@ from tests.view_tests.base import ViewTestCase
 
 class ListTest(ViewTestCase):
 
-    def test_list(self):
+    def test_list_not_logged_in(self):
+        """
+        Should return 200
+        """
+        kwargs = {'group': self.group.slug}
+        url = reverse('cosinnus:event:list', kwargs=kwargs)
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_list_logged_in_admin(self):
         """
         Should return 200 and contain URL to add an event
         """
+        self.client.login(username=self.credential, password=self.credential)
         kwargs = {'group': self.group.slug}
         url = reverse('cosinnus:event:list', kwargs=kwargs)
         response = self.client.get(url)
@@ -85,5 +96,5 @@ class ListTest(ViewTestCase):
 
         kwargs = {'group': self.group.slug, 'slug': event.slug}
         self.assertIn(
-            reverse('cosinnus:event:entry-edit', kwargs=kwargs),
+            reverse('cosinnus:event:entry-detail', kwargs=kwargs),
             force_text(response.content))

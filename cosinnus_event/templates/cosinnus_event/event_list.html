@@ -22,7 +22,9 @@
   {% endif %}
 
   <ul class="nav nav-pills pull-right">
+  {% if user.is_superuser or user|is_group_member:object %}
     <li class="active"><a href="{% url 'cosinnus:event:entry-add' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+  {% endif %}
   {% if user.is_superuser or user|is_group_admin:object %}
   <li class="active"><a href="{% url 'cosinnus:event:export' group=group.slug %}" class="btn"><span class="glyphicon glyphicon-export"></span> {% trans "Export" context "the verb" %}</a></li>
   {% endif %}

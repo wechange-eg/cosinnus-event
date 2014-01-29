@@ -1,5 +1,5 @@
 {% extends "cosinnus_event/base.html" %}
-{% load i18n l10n static %}
+{% load i18n l10n static cosinnus_tags %}
 
 
 {% block page_title %}
@@ -63,18 +63,6 @@
 
   <hr />
 
-    <div class="btn-group">
-        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="{% url 'cosinnus:event:entry-edit' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-pencil"></span> {% trans "Edit" %}</a></li>
-            <li><a href="{% url 'cosinnus:event:entry-delete' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-trash"></span> {% trans "Delete" %}</a></li>
-            <li class="divider"></li>
-            <li><a href="{% url 'cosinnus:event:entry-vote' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-user"></span> {% trans "Vote" context "the verb" %}</a></li>
-        </ul>
-    </div>
-
-  <hr />
-
   <h3>{% trans "Suggestions" %}</h3>
   <ul class="list-group">
     {% for suggestion in object.suggestions.all %}
@@ -95,6 +83,22 @@
     </li>
     {% endfor %}
   </ul>
+
+  <hr />
+
+  {% if user.is_superuser or user|is_group_member:object %}
+  <div class="btn-group">
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{% trans "Actions" %} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li><a href="{% url 'cosinnus:event:entry-edit' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-pencil"></span> {% trans "Edit" %}</a></li>
+          <li><a href="{% url 'cosinnus:event:entry-delete' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-trash"></span> {% trans "Delete" %}</a></li>
+          <li class="divider"></li>
+          <li><a href="{% url 'cosinnus:event:entry-vote' group=group.slug slug=object.slug %}"><span class="glyphicon glyphicon-user"></span> {% trans "Vote" context "the verb" %}</a></li>
+      </ul>
+  </div>
+  {% endif %}
+
+
 {% endblock content %}
 
 
