@@ -42,7 +42,7 @@ class ListTest(ViewTestCase):
         """
         Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='past testevent',
             from_date=now(),
@@ -50,7 +50,7 @@ class ListTest(ViewTestCase):
             state=Event.STATE_SCHEDULED)
         Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='future testevent',
             from_date=now() + timedelta(days=1),
@@ -82,7 +82,7 @@ class ListTest(ViewTestCase):
         tag = 'foo'
         event = Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='past testevent',
             from_date=now(),

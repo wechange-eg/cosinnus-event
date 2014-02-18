@@ -68,7 +68,7 @@ class EventTest(ModelTestCase):
         """
         event = Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='testevent')
         suggestion = Suggestion.objects.create(

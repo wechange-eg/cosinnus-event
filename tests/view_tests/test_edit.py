@@ -14,7 +14,7 @@ class EditTest(ViewTestCase):
         super(EditTest, self).setUp(*args, **kwargs)
         self.event = Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='testevent',
             from_date=now(),

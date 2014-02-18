@@ -15,7 +15,7 @@ class VoteInlineAdmin(admin.TabularInline):
 class SuggestionAdmin(admin.ModelAdmin):
     inlines = (VoteInlineAdmin,)
     list_display = ('from_date', 'to_date', 'event', 'count')
-    list_filter = ('event__state', 'event__created_by', 'event__group',)
+    list_filter = ('event__state', 'event__creator', 'event__group',)
     readonly_fields = ('event', 'count')
 
     def get_readonly_fields(self, request, obj=None):
@@ -35,9 +35,9 @@ class SuggestionInlineAdmin(admin.TabularInline):
 
 class EventAdmin(admin.ModelAdmin):
     inlines = (SuggestionInlineAdmin,)
-    list_display = ('title', 'from_date', 'to_date', 'created_by', 'group',
+    list_display = ('title', 'from_date', 'to_date', 'creator', 'group',
                     'state')
-    list_filter = ('state', 'created_by', 'group',)
+    list_filter = ('state', 'creator', 'group',)
     search_fields = ('title', 'note')
 
 

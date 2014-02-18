@@ -54,13 +54,6 @@ class Event(BaseTaggableObjectModel):
     to_date = models.DateTimeField(
         _('End'), default=None, blank=True, null=True, editable=False)
 
-    created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        verbose_name=_('Created by'),
-        on_delete=models.PROTECT,
-        related_name='events',
-    )
-
     state = models.PositiveIntegerField(
         _('State'),
         choices=STATE_CHOICES,

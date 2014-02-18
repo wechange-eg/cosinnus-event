@@ -17,7 +17,7 @@ class DetailTest(ViewTestCase):
         """
         event = Event.objects.create(
             group=self.group,
-            created_by=self.admin,
+            creator=self.admin,
             public=True,
             title='testevent',
             from_date=now(),

@@ -68,5 +68,5 @@ class AddTest(ViewTestCase):
             reverse('cosinnus:event:entry-detail', kwargs=kwargs),
             response.get('location'))
         # set by EntryAddView.form_valid
-        self.assertEqual(event.created_by, self.admin)
+        self.assertEqual(event.creator, self.admin)
         self.assertEqual(event.group, self.group)

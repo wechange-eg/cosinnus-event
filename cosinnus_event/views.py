@@ -101,7 +101,7 @@ class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
 
     def forms_valid(self, form, inlines):
         self.object = form.save(commit=False)
-        self.object.created_by = self.request.user
+        self.object.creator = self.request.user
         self.object.group = self.group
         self.object.save()
         form.save_m2m()
@@ -149,7 +149,7 @@ class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
         qs = super(EntryEditView, self).get_queryset()
         if self.request.user.is_superuser:
             return qs
-        return qs.filter(created_by=self.request.user)
+        return qs.filter(creator=self.request.user)
 
     def get(self, request, *args, **kwargs):
         try:
@@ -176,7 +176,7 @@ class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
         qs = super(EntryDeleteView, self).get_queryset()
         if self.request.user.is_superuser:
             return qs
-        return qs.filter(created_by=self.request.user)
+        return qs.filter(creator=self.request.user)
 
     def get_success_url(self):
         return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
@@ -270,7 +270,7 @@ class EventExportView(CSVExportView):
     fields = [
         'from_date',
         'to_date',
-        'created_by',
+        'creator',
         'state',
         'note',
         'location',

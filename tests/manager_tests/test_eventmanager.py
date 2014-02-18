@@ -18,7 +18,7 @@ class EventManagerTest(TestCase):
         self.admin = User.objects.create_superuser(
             username='admin', email=None, password=None)
         self.event = Event.objects.create(group=self.group,
-            created_by=self.admin, public=True, state=Event.STATE_SCHEDULED,
+            creator=self.admin, public=True, state=Event.STATE_SCHEDULED,
             title='testevent')
 
     def test_tags(self):
@@ -81,7 +81,7 @@ class EventManagerTest(TestCase):
         for i in range(1, count + 2):  # + 2 to get count+1 upcoming events
             Event.objects.create(
                 group=self.group,
-                created_by=self.admin,
+                creator=self.admin,
                 public=True,
                 title='testevent %d' % i,
                 state=Event.STATE_SCHEDULED,

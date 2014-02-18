@@ -23,7 +23,7 @@ class SuggestionFormTest(TestCase):
         admin = User.objects.create_superuser(
             username=credential, email=None, password=credential)
         event = Event.objects.create(group=group,
-            created_by=admin, public=True, title='testevent')
+            creator=admin, public=True, title='testevent')
         Suggestion.objects.create(
             event=event, from_date=now(), to_date=now())
 

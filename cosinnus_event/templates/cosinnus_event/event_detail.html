@@ -28,7 +28,7 @@
       {% if object.to_date %}
       <strong>{% trans "End" %}</strong> {% if object.single_day %}{{ object.to_date|date:"h:i" }}{% else %}{{ object.to_date|date:"d. F Y h:i" }}{% endif %}<br />
       {% endif %}
-      <strong>{% trans "Created by" %}</strong> {{ object.created_by }}<br />
+      <strong>{% trans "Created by" %}</strong> {{ object.creator }}<br />
       {% if object.state %}
       <strong>{% trans "State" %}</strong> {{ object.get_state_display }}<br />
       {% endif %}

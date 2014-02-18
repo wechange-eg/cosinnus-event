@@ -19,7 +19,7 @@ class VoteFormTest(TestCase):
         self.admin = User.objects.create_superuser(
             username=self.credential, email=None, password=self.credential)
         self.event = Event.objects.create(group=self.group,
-            created_by=self.admin, public=True, title='testevent')
+            creator=self.admin, public=True, title='testevent')
 
     def test_label_if_suggestion(self):
         """
