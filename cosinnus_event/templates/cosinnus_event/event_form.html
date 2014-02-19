@@ -62,6 +62,7 @@
                       {{ field }}
                   {% endwith %}
                   {% with inlineform.DELETE as field %}
+                      <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
                       {{ field }}
                   {% endwith %}
                   {{ inlineform.id.as_widget }}
