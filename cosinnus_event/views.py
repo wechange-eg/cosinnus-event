@@ -16,7 +16,7 @@ from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
 
 from cosinnus.views.export import CSVExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
-    FilterGroupMixin)
+    GroupFormKwargsMixin, FilterGroupMixin)
 from cosinnus.views.mixins.tagged import TaggedListMixin
 
 
@@ -67,10 +67,12 @@ class SuggestionInlineView(InlineFormSet):
     model = Suggestion
 
 
-class EntryFormMixin(object):
+class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin):
     form_class = EventForm
     model = Event
     inlines = [SuggestionInlineView]
+    message_success = _('Event "%(title)s" was edited successfully.')
+    message_error = _('Event "%(title)s" could not be edited.')
 
     def dispatch(self, request, *args, **kwargs):
         self.form_view = kwargs.get('form_view', None)
@@ -95,9 +97,20 @@ class EntryFormMixin(object):
             urlname = 'cosinnus:event:list'
         return reverse(urlname, kwargs=kwargs)
 
+    def post(self, request, *args, **kwargs):
+        ret = super(EntryFormMixin, self).post(request, *args, **kwargs)
+        if ret.get('location', '') == self.get_success_url():
+            messages.success(request, self.message_success % {
+                'title': self.object.title})
+        else:
+            messages.error(request, self.message_error % {
+                'title': self.object.title})
+        return ret
 
-class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
-        CreateWithInlinesView):
+
+class EntryAddView(EntryFormMixin, CreateWithInlinesView):
+    message_success = _('Event "%(title)s" was added successfully.')
+    message_error = _('Event "%(title)s" could not be added.')
 
     def forms_valid(self, form, inlines):
         self.object = form.save(commit=False)
@@ -122,8 +135,7 @@ class EntryAddView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
 entry_add_view = EntryAddView.as_view()
 
 
-class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
-        UpdateWithInlinesView):
+class EntryEditView(EntryFormMixin, UpdateWithInlinesView):
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly access the amount of suggestions afterwards
@@ -168,32 +180,12 @@ class EntryEditView(RequireWriteMixin, FilterGroupMixin, EntryFormMixin,
 entry_edit_view = EntryEditView.as_view()
 
 
-class EntryDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
-
-    model = Event
-
-    def get_queryset(self):
-        qs = super(EntryDeleteView, self).get_queryset()
-        if self.request.user.is_superuser:
-            return qs
-        return qs.filter(creator=self.request.user)
+class EntryDeleteView(EntryFormMixin, DeleteView):
+    message_success = _('Event "%(title)s" was deleted successfully.')
+    message_error = _('Event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
         return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
-
-    def get(self, request, *args, **kwargs):
-        try:
-            return super(EntryDeleteView, self).get(request, *args, **kwargs)
-        except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return super(EntryDeleteView, self).post(request, *args, **kwargs)
-        except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
 
 entry_delete_view = EntryDeleteView.as_view()
 

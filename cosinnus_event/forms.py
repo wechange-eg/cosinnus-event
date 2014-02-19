@@ -7,12 +7,13 @@ from django.forms.widgets import HiddenInput, RadioSelect
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from cosinnus.forms.group import GroupKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker
 
 from cosinnus_event.models import Event, Suggestion
 
 
-class EventForm(ModelForm):
+class EventForm(GroupKwargModelFormMixin, ModelForm):
 
     class Meta:
         model = Event
