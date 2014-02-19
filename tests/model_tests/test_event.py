@@ -139,3 +139,9 @@ class EventTest(ModelTestCase):
         format = 'd.m'
         expected = dateformat.format(localtime(self.event.from_date), format)
         self.assertEqual(expected, localize(self.event.from_date, format))
+
+    def test_public(self):
+        """
+        Public should be set to False per default
+        """
+        self.assertFalse(self.event.public)

@@ -20,7 +20,6 @@ class ModelTestCase(TestCase):
         self.event = Event.objects.create(
             group=self.group,
             creator=self.admin,
-            public=True,
             title='testevent',
             from_date=self.now,
             to_date=self.now,

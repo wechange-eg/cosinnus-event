@@ -80,7 +80,7 @@ class Event(BaseTaggableObjectModel):
 
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
-    public = models.BooleanField(_('Is public (on website)'))
+    public = models.BooleanField(_('Is public (on website)'), default=False)
 
     image = models.ImageField(
         _('Image'),
