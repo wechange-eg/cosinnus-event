@@ -14,6 +14,6 @@ def register():
 
     app_registry.register('cosinnus_event', 'event', _('Events'))
     attached_object_registry.register('cosinnus_event.Event',
-                             'cosinnus_event.renderer.EventRenderer')
+                             'cosinnus_event.utils.renderer.EventRenderer')
     url_registry.register('cosinnus_event', cosinnus_root_patterns,
         cosinnus_group_patterns)
