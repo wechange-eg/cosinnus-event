@@ -92,7 +92,7 @@ class Event(BaseTaggableObjectModel):
 
     objects = EventManager()
 
-    class Meta:
+    class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date']
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
