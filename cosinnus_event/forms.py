@@ -2,18 +2,18 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.forms.models import ModelForm
 from django.forms.widgets import HiddenInput, RadioSelect
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus.forms.group import GroupKwargModelFormMixin
+from cosinnus.forms.tagged import TagObjectFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker
 
 from cosinnus_event.models import Event, Suggestion
 
 
-class EventForm(GroupKwargModelFormMixin, ModelForm):
+class EventForm(GroupKwargModelFormMixin, TagObjectFormMixin, forms.ModelForm):
 
     class Meta:
         model = Event

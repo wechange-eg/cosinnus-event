@@ -113,24 +113,21 @@ class EntryAddView(EntryFormMixin, CreateWithInlinesView):
     message_error = _('Event "%(title)s" could not be added.')
 
     def forms_valid(self, form, inlines):
-        self.object = form.save(commit=False)
-        self.object.creator = self.request.user
-        self.object.group = self.group
-        self.object.save()
-        form.save_m2m()
+        form.instance.creator = self.request.user
 
-        # Save the suggestions
-        for formset in inlines:
-            formset.save()
+        ret = super(EntryAddView, self).forms_valid(form, inlines)
 
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()
         if num_suggs == 0:
-            messages.info(self.request, _('You should define at least one date suggestion.'))
+            messages.info(self.request,
+                _('You should define at least one date suggestion.'))
         elif num_suggs == 1:
             self.object.set_suggestion(self.object.suggestions.get())
-            messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
-        return HttpResponseRedirect(self.get_success_url())
+            messages.info(self.request,
+                _('Automatically selected the only given date suggestion '
+                  'as event date.'))
+        return ret
 
 entry_add_view = EntryAddView.as_view()
 
@@ -138,23 +135,28 @@ entry_add_view = EntryAddView.as_view()
 class EntryEditView(EntryFormMixin, UpdateWithInlinesView):
 
     def forms_valid(self, form, inlines):
-        # Save the suggestions first so we can directly access the amount of suggestions afterwards
+        # Save the suggestions first so we can directly
+        # access the amount of suggestions afterwards
         for formset in inlines:
             formset.save()
 
-        self.object = form.save(commit=False)
         suggestion = form.cleaned_data.get('suggestion')
         if not suggestion:
-            num_suggs = self.object.suggestions.count()
+            num_suggs = form.instance.suggestions.count()
             if num_suggs == 0:
                 suggestion = None
-                messages.info(self.request, _('You should define at least one date suggestion.'))
+                messages.info(self.request,
+                    _('You should define at least one date suggestion.'))
             elif num_suggs == 1:
-                suggestion = self.object.suggestions.get()
-                messages.info(self.request, _('Automatically selected the only given date suggestion as event date.'))
-        # update_fields=None leads to saving the complete model, we don't need to call obj.self here
-        self.object.set_suggestion(suggestion, update_fields=None)
-        form.save_m2m()
+                suggestion = form.instance.suggestions.get()
+                messages.info(self.request,
+                    _('Automatically selected the only given date suggestion '
+                      'as event date.'))
+        # update_fields=None leads to saving the complete model, we
+        # don't need to call obj.self here
+        # INFO: set_suggestion saves the instance
+        form.instance.set_suggestion(suggestion, update_fields=None)
+        self.object = form.save()
         return HttpResponseRedirect(self.get_success_url())
 
     def get_queryset(self):
@@ -167,14 +169,16 @@ class EntryEditView(EntryFormMixin, UpdateWithInlinesView):
         try:
             return super(EntryEditView, self).get(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
+            messages.error(request,
+                _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
     def post(self, request, *args, **kwargs):
         try:
             return super(EntryEditView, self).post(request, *args, **kwargs)
         except Http404:
-            messages.error(request, _('Event does not exist or you are not allowed to modify it.'))
+            messages.error(request,
+                _('Event does not exist or you are not allowed to modify it.'))
             return HttpResponseRedirect(self.get_success_url())
 
 entry_edit_view = EntryEditView.as_view()
@@ -196,8 +200,9 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EntryDetailView, self).get_context_data(**kwargs)
+        height = getattr(settings, 'GEOPOSITION_MAP_WIDGET_HEIGHT', 200)
         context.update({
-            'map_widget_height': settings.GEOPOSITION_MAP_WIDGET_HEIGHT,
+            'map_widget_height': height,
         })
         return context
 

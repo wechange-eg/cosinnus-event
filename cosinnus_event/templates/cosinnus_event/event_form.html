@@ -39,15 +39,19 @@
   {% if form_view == 'add' or form_view == 'edit' %}
   <div class="row">
     <div class="col-md-6">
-    {% bootstrap_field form.title %}
-    {% bootstrap_field form.note %}
-    {% bootstrap_field form.tags %}
-    {% bootstrap_field form.public %}
-    {% bootstrap_field form.image %}
-    {% bootstrap_field form.url %}
+      {% bootstrap_field form.title %}
+      {% bootstrap_field form.note %}
+      {% bootstrap_field form.tags %}
+      {% bootstrap_field form.public %}
+      {% bootstrap_field form.image %}
+      {% bootstrap_field form.url %}
+
+      {% bootstrap_field form.location_place %}
+      {% bootstrap_field form.people_name %}
+      {% bootstrap_field form.public %}
 
       {% for formset in inlines %}
-      <fieldset id="formset{{ formset.prefix }}">
+        <fieldset id="formset{{ formset.prefix }}">
           {{ formset.management_form }}
           <label class="control-label" for="">{% trans "Suggestions" %}</label>
           {% for inlineform in formset.forms %}
@@ -70,7 +74,7 @@
               </div>
           </div>
           {% endfor %}
-      </fieldset>
+        </fieldset>
       {% endfor %}
     </div>
     <div class="col-md-5 pull-right">
