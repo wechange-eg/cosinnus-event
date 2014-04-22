@@ -97,14 +97,17 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin):
             urlname = 'cosinnus:event:list'
         return reverse(urlname, kwargs=kwargs)
 
-    def post(self, request, *args, **kwargs):
-        ret = super(EntryFormMixin, self).post(request, *args, **kwargs)
-        if ret.get('location', '') == self.get_success_url():
-            messages.success(request, self.message_success % {
-                'title': self.object.title})
-        else:
-            messages.error(request, self.message_error % {
-                'title': self.object.title})
+    def forms_valid(self, form, inlines):
+        ret = super(EntryFormMixin, self).forms_valid(form, inlines)
+        messages.success(self.request,
+            self.message_success % {'title': self.object.title})
+        return ret
+
+    def forms_invalid(self, form, inlines):
+        ret = super(EntryFormMixin, self).forms_invalid(form, inlines)
+        if self.object:
+            messages.error(self.request,
+                self.message_error % {'title': self.object.title})
         return ret
 
 
@@ -156,8 +159,7 @@ class EntryEditView(EntryFormMixin, UpdateWithInlinesView):
         # don't need to call obj.self here
         # INFO: set_suggestion saves the instance
         form.instance.set_suggestion(suggestion, update_fields=None)
-        self.object = form.save()
-        return HttpResponseRedirect(self.get_success_url())
+        return super(EntryEditView, self).forms_valid(form, inlines)
 
     def get_queryset(self):
         qs = super(EntryEditView, self).get_queryset()
