@@ -13,7 +13,6 @@ from cosinnus_event.models import Event, Suggestion
 class EventFormTest(TestCase):
 
     def setUp(self):
-        super(EventFormTest, self).setUp()
         self.group = CosinnusGroup.objects.create(name='testgroup')
         self.credential = 'admin'
         self.admin = User.objects.create_superuser(
@@ -25,7 +24,7 @@ class EventFormTest(TestCase):
         """
         Should have suggestion field in form if instance given
         """
-        form = EventForm(instance=self.event)
+        form = EventForm(group=self.group, instance=self.event).forms['obj']
         Suggestion.objects.create(
             event=self.event, from_date=now(), to_date=now())
         self.assertIn('suggestion', form.fields)
@@ -36,5 +35,5 @@ class EventFormTest(TestCase):
         """
         Should have no suggestion field in form if no instance given
         """
-        form = EventForm()
+        form = EventForm(group=self.group, ).forms['obj']
         self.assertNotIn('suggestion', form.fields)

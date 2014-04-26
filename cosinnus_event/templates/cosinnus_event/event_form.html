@@ -39,16 +39,14 @@
   {% if form_view == 'add' or form_view == 'edit' %}
   <div class="row">
     <div class="col-md-6">
-      {% bootstrap_field form.title %}
-      {% bootstrap_field form.note %}
-      {% bootstrap_field form.tags %}
-      {% bootstrap_field form.public %}
-      {% bootstrap_field form.image %}
-      {% bootstrap_field form.url %}
+      {% bootstrap_field form.forms.obj.title %}
+      {% bootstrap_field form.forms.obj.note %}
+      {% bootstrap_field form.forms.obj.tags %}
+      {% bootstrap_field form.forms.obj.public %}
+      {% bootstrap_field form.forms.obj.image %}
+      {% bootstrap_field form.forms.obj.url %}
 
-      {% bootstrap_field form.location_place %}
-      {% bootstrap_field form.people_name %}
-      {% bootstrap_field form.public %}
+      {% bootstrap_form form.forms.media_tag %}
 
       {% for formset in inlines %}
         <fieldset id="formset{{ formset.prefix }}">
@@ -78,10 +76,10 @@
       {% endfor %}
     </div>
     <div class="col-md-5 pull-right">
-    {% bootstrap_field form.location %}
-    {% bootstrap_field form.street %}
-    {% bootstrap_field form.zipcode %}
-    {% bootstrap_field form.city %}
+    {% bootstrap_field form.forms.obj.location %}
+    {% bootstrap_field form.forms.obj.street %}
+    {% bootstrap_field form.forms.obj.zipcode %}
+    {% bootstrap_field form.forms.obj.city %}
     </div>
   </div>
 
