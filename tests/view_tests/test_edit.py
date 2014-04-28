@@ -60,7 +60,6 @@ class EditTest(ViewTestCase):
 
         tag = 'foo'
         params = {
-            'csrfmiddlewaretoken': response.cookies['csrftoken'].value,
             'title': self.event.title,
             'tags': tag,
             'suggestions-TOTAL_FORMS': '1',

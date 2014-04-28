@@ -7,13 +7,15 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus.forms.group import GroupKwargModelFormMixin
-from cosinnus.forms.tagged import TagObjectFormMixin
+from cosinnus.forms.tagged import get_form
+from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker
 
 from cosinnus_event.models import Event, Suggestion
 
 
-class EventForm(GroupKwargModelFormMixin, TagObjectFormMixin, forms.ModelForm):
+class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
+                 forms.ModelForm):
 
     class Meta:
         model = Event
@@ -21,13 +23,16 @@ class EventForm(GroupKwargModelFormMixin, TagObjectFormMixin, forms.ModelForm):
                   'zipcode', 'city', 'public', 'image', 'url')
 
     def __init__(self, *args, **kwargs):
-        super(EventForm, self).__init__(*args, **kwargs)
+        super(_EventForm, self).__init__(*args, **kwargs)
         instance = kwargs.get('instance')
         if instance:
             self.fields['suggestion'].queryset = Suggestion.objects.filter(
                 event=instance)
         else:
             del self.fields['suggestion']
+
+
+EventForm = get_form(_EventForm, attachable=False)
 
 
 class SuggestionForm(forms.ModelForm):

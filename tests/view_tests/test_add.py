@@ -49,7 +49,6 @@ class AddTest(ViewTestCase):
 
         title = 'testevent2'
         params = {
-            'csrfmiddlewaretoken': response.cookies['csrftoken'].value,
             'title': title,
             'suggestions-TOTAL_FORMS': '1',
             'suggestions-INITIAL_FORMS': '0',
