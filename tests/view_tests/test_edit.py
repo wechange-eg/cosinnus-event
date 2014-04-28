@@ -60,8 +60,8 @@ class EditTest(ViewTestCase):
 
         tag = 'foo'
         params = {
-            'obj-title': self.event.title,
-            'obj-tags': tag,
+            'title': self.event.title,
+            'tags': tag,
             'suggestions-TOTAL_FORMS': '1',
             'suggestions-INITIAL_FORMS': '0',
             'suggestions-MAX_NUM_FORMS': '1000',

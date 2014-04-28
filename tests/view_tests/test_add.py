@@ -49,7 +49,7 @@ class AddTest(ViewTestCase):
 
         title = 'testevent2'
         params = {
-            'obj-title': title,
+            'title': title,
             'suggestions-TOTAL_FORMS': '1',
             'suggestions-INITIAL_FORMS': '0',
             'suggestions-MAX_NUM_FORMS': '1000',
