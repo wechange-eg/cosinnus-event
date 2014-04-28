@@ -8,12 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from cosinnus.forms.group import GroupKwargModelFormMixin
 from cosinnus.forms.tagged import get_form
+from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker
 
 from cosinnus_event.models import Event, Suggestion
 
 
-class _EventForm(GroupKwargModelFormMixin, forms.ModelForm):
+class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
+                 forms.ModelForm):
 
     class Meta:
         model = Event
