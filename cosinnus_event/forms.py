@@ -12,10 +12,11 @@ from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker
 
 from cosinnus_event.models import Event, Suggestion
+from cosinnus.forms.attached_object import FormAttachable
 
 
 class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
-                 forms.ModelForm):
+                 FormAttachable):
 
     class Meta:
         model = Event
@@ -32,7 +33,7 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
             del self.fields['suggestion']
 
 
-EventForm = get_form(_EventForm, attachable=False)
+EventForm = get_form(_EventForm)
 
 
 class SuggestionForm(forms.ModelForm):

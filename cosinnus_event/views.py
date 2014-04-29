@@ -20,6 +20,7 @@ from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
 from cosinnus.views.mixins.tagged import TaggedListMixin
 from cosinnus.views.mixins.user import UserFormKwargsMixin
 
+from cosinnus.views.attached_object import AttachableViewMixin
 
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm
@@ -113,7 +114,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         return ret
 
 
-class EntryAddView(EntryFormMixin, CreateWithInlinesView):
+class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
     message_success = _('Event "%(title)s" was added successfully.')
     message_error = _('Event "%(title)s" could not be added.')
 
@@ -137,7 +138,7 @@ class EntryAddView(EntryFormMixin, CreateWithInlinesView):
 entry_add_view = EntryAddView.as_view()
 
 
-class EntryEditView(EntryFormMixin, UpdateWithInlinesView):
+class EntryEditView(EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly
