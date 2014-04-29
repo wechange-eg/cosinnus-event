@@ -190,7 +190,6 @@ msgid "Event \"%(title)s\" could not be deleted."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht gelöscht werden."
 
 #: .\templates\cosinnus_event\attached_events.html.py:4
-#, fuzzy
 msgid "attached__cosinnus_event__Event"
 msgstr "Angehängte Veranstaltungen"
 
