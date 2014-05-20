@@ -17,95 +17,72 @@
 {% block content %}
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
-	    {% with obj_form=form.forms.obj %}
-	    <form action="" method="post" class="form-horizontal">{% csrf_token %}
-		    {{ obj_form.non_field_errors }}
-			<div type="button" class="btn btn-default w100 large-space">
-			    <ul class="media-list">
-			        <li class="media">
-			            <a class="pull-left" href="#">
-			                <i class="fa fa-plus"></i>
-			            </a>
-			            <div class="media-body">
-			                {{ obj_form.title.errors }}
-			                {% captureas placeholder %}{% trans "Gib den Titel für ein neues Dokument ein." %}{% endcaptureas %}
-			                {% render_field obj_form.title class+="form-control" placeholder=placeholder id="etherpadCreateInput" %}
-			            </div>
-			        </li>
-			    </ul>
-			</div>
-			<button type="submit" class="btn btn-emphasized large-space" id="etherpadCreateButton">
-			    <ul class="media-list">
-			        <li class="media">
-			            <a class="pull-left" href="#">
-			                <i class="fa fa-floppy-o"></i>
-			            </a>
-			            <div class="media-body">
-			                Speichern
-			            </div>
-			        </li>
-			    </ul>
-			</button>
-	    </form>
-	    {% endwith %}
-	    
-	    {% for object in objects %}
-		    <div class="fadedown regular-space">
-		        <div class="btn btn-emphasized w100">
-		            <ul class="media-list">
-		                <li class="media">
-		                    <a class="pull-left" href="#">
-		                        <i class="fa fa-book"></i>
-		                    </a>
-		                    <a class="pull-right" href="#">
-		                        <i class="fa fa-chevron-down"></i>
-		                    </a>
-		                    <a class="pull-right" href="{{ object.get_absolute_url }}">
-		                        <i class="fa fa-chain"></i>
-		                    </a>
-		                    <div class="media-body">
-		                        <a href="{% url 'cosinnus:etherpad:pad-edit' group=group.slug slug=object.slug %}">
-		                            {{ object.title }}
-		                        </a>
-		                    </div>
-		                </li>
-		            </ul>
-		        </div>
-		        
-		        {% include 'cosinnus/media_tags_readonly.html' %}
-		        
-		        {% captureas modal_id %}deleteModal_{{object.slug}}{% endcaptureas %}
-		        <button type="button" class="btn btn-emphasized" data-toggle="modal" data-target="#{{modal_id}}">
-		            <ul class="media-list">
-		                <li class="media">
-		                    <a class="pull-left" href="#">
-		                        <i class="fa fa-eraser"></i>
-		                    </a>
-		                    <div class="media-body">
-		                        {% trans "Löschen" %}
-		                    </div>
-		                </li>
-		            </ul>
-		        </button>
-		        <button type="button" class="btn btn-emphasized" href="{{ object.get_absolute_url }}">
-		            <ul class="media-list">
-		                <li class="media">
-		                    <a class="pull-left" href="#">
-		                        <i class="fa fa-pencil"></i>
-		                    </a>
-		                    <div class="media-body">
-		                        {% trans "Bearbeiten" %}
-		                    </div>
-		                </li>
-		            </ul>
-		        </button> 
-		    </div><!-- fadedown -->
-		    {% captureas label %}{% blocktrans with title=object.title %}Do you really want to delete etherpad „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
-            {% captureas title %}{% trans "Etherpad löschen" %}{% endcaptureas %}
-            {% captureas action %}{% url 'cosinnus:etherpad:pad-delete' group=group.slug slug=object.slug%}{% endcaptureas %}
-            {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
-               
-	    {% endfor %}
+	
+        <div class="big-calendar large-space"></div>
+
+        <div type="button" class="btn btn-default w100 large-space">
+            <ul class="media-list">
+                <li class="media">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                    <div class="media-body">
+                        <input class="form-control"
+                            placeholder="Gib den Titel für einen neuen Termin ein."
+                            value="" />
+                    </div>
+                </li>
+            </ul>
+        </div>
 	
 	</div><!-- content-box -->
+	
+	
+    <!-- Modal: Really sure you want to add the event? -->
+    <div class="modal fade" id="confirmEventModal" tabindex="1" role="dialog" aria-labelledby="confirmEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <h4 class="modal-title" id="confirmEventModalLabel">
+                        <i class="fa fa-calendar"></i>
+                        {% trans "Termin eintragen
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <span id="calendarConfirmEventOneday">Möchtest du einen Termin für <strong id="calendarConfirmEventDate" /></strong> anlegen?</span>
+                    <span id="calendarConfirmEventMultiday">Möchtest du einen Termin von <strong id="calendarConfirmEventStart" /></strong> bis <strong id="calendarConfirmEventEnd" /></strong> anlegen?</span>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-emphasized" data-dismiss="modal">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                                <div class="media-body">
+                                    {% trans "Abbrechen" %}
+                                </div>
+                            </li>
+                        </ul>
+                    </button>
+                    <button type="button" class="btn btn-emphasized" id="calendarConfirmEventButton">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left" href="#">
+                                    <i class="fa fa-check"></i>
+                                </a>
+                                <div class="media-body">
+                                    {% trans "OK" %}
+                                </div>
+                            </li>
+                        </ul>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div><!-- modal -->
 {% endblock content %}
