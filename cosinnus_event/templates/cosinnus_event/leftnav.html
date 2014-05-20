@@ -1,0 +1,34 @@
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
+
+<button type="button" class="btn w100 btn-emphasized fine-space">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                4
+            </a>
+            <a class="pull-right" href="#">
+                <i class="fa fa-caret-right"></i>
+            </a>
+            <div class="media-body">
+                {% trans "Kalender" %}
+            </div>
+        </li>
+    </ul>
+</button>
+
+<button type="button" class="btn w100 btn-emphasized regular-space">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                3
+            </a>
+            <a class="pull-right" href="#"></a><!-- only block width -->
+            <div class="media-body">
+                {% trans "Termin finden" %}
+            </div>
+        </li>
+    </ul>
+</button>
+
