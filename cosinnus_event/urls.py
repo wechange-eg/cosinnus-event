@@ -10,24 +10,15 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^list/(?P<tag>[^/]+)/$', 'list_view', name='list-filtered'),
     url(r'^export/$', 'export_view', name='export'),
 
-    url(r'^add/$',
-        'entry_add_view',
-        {'form_view': 'add'},
-        name='event-add'),
-
-    url(r'^(?P<slug>[^/]+)/$',
-        'entry_detail_view',
-        name='event-detail'),
+    url(r'^add/$', 'entry_add_view',  {'form_view': 'add'},  name='event-add'),
+    #url(r'^(?P<slug>[^/]+)/$', 'entry_detail_view', name='event-detail'),
+    url(r'^(?P<slug>[^/]+)/edit/$', 'entry_edit_view',  {'form_view': 'edit'}, name='event-edit'),
+    url(r'^(?P<slug>[^/]+)/edit/$', 'entry_detail_view',  {'form_view': 'edit'}, name='event-detail'),
 
     url(r'^(?P<slug>[^/]+)/delete/$',
         'entry_delete_view',
         {'form_view': 'delete'},
         name='entry-delete'),
-
-    url(r'^(?P<slug>[^/]+)/edit/$',
-        'entry_edit_view',
-        {'form_view': 'edit'},
-        name='entry-edit'),
 
     url(r'^(?P<slug>[^/]+)/vote/$',
         'entry_vote_view',

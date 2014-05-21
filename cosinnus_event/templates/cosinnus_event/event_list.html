@@ -20,10 +20,6 @@
 	
         <div class="big-calendar large-space"></div>
         
-        {% for event in object_list %}
-                alert(moment("{{ event.from_date|date:"c"}}", "{{COSINNUS_DATETIME_FORMAT}}"));
-            {% endfor %}
-        
         <script type="application/javascript">
 	        var cosinnus_calendarEvents = [
 		        {% for event in object_list %}
@@ -34,7 +30,7 @@
 	                    {% if event.to_date %}
 	                    end: moment("{{ event.to_date|date:"c"}}"),
 	                    {% endif %}
-	                    url: '{% url "cosinnus:event:event-detail" group=group.slug slug=event.slug %}'
+	                    url: '{% url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}'
 	                },
 	                {% endif %}
 	            

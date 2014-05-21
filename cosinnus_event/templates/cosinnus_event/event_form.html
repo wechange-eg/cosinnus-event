@@ -26,98 +26,112 @@
 {% endblock leftnav %}
 
 {% block content %}
+
     <!-- a box with semi transparent background -->
 	<div class="content-box">
+	   <form method="POST" action="">{% csrf_token %}
+		    <div type="button" class="btn btn-default w100">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left btn-emphasized" href="#">
+		                    <i class="fa fa-plus"></i>
+		                </a>
+		                <div class="media-body">
+		                    
+		                    {{ form.forms.obj.title.errors }}
+	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
+	                        {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
+	                        
+		                    <ol class="input-area">
+		                                <li class="calendar-date-time-chooser">
+                                            {{ form.forms.obj.from_date.errors }}
+		                                    {% trans "Von" %} <i class="fa fa-calendar"></i>
+		                                    <input
+		                                        placeholder="Datum"
+		                                        readonly ="readonly"
+		                                        class="calendar-date-time-chooser-date" />
+				                            {% captureas placeholder %}{% trans "Anfangstermin." %}{% endcaptureas %}
+				                            <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
+				                                placeholder="Anfangstermin." type="hidden" 
+				                                {% if form_view == "add" and request.GET.start %}
+                                                value="{{ request.GET.start }}" 
+                                                {% else %}
+                                                value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
+                                                {% endif %}
+                                            >
+                                            <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
+                                                placeholder="Zeit." type="text" 
+                                                value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
+                                            >                                           
+		                                    <div class="small-calendar"></div>
+		                                </li>
+		                                <li class="calendar-date-time-chooser">
+                                            {{ form.forms.obj.to_date.errors }}
+		                                    {% trans "Bis" %} <i class="fa fa-calendar"></i>
+		                                    <input
+		                                        placeholder="Datum"
+		                                        readonly ="readonly"
+		                                        class="calendar-date-time-chooser-date" />
+                                            {% captureas placeholder %}{% trans "Endtermin." %}{% endcaptureas %}
+                                            <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
+                                                placeholder="Anfangstermin." type="hidden" 
+                                                {% if form_view == "add" and request.GET.start %}
+                                                value="{{ request.GET.start }}" 
+                                                {% else %}
+                                                value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
+                                                {% endif %}
+                                            >
+                                            <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
+                                                placeholder="Zeit." type="text" 
+                                                value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
+                                            >    
+		                                    <div class="small-calendar"></div>
+		                                </li>
+		                                
+		                                
+		                    </ol>
+		
+		                    <ol class="input-area">
+		                                <li>
+		                                    <i class="fa fa-map-marker"></i>
+		                                    <input type="hidden" class="location-selector" data-tags="Berlin, Kreuzberg, Oranienhof, Köln, Paris, London, Frankfurt, New York, Peking" data-placeholder="Ort" />
+		                                </li>
+		                    </ol>
+		
+	                        {% include 'cosinnus/media_tags.html' %}
 	
-	    <div type="button" class="btn btn-default w100">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left btn-emphasized" href="#">
-	                    <i class="fa fa-plus"></i>
-	                </a>
-	                <div class="media-body">
-	                    {{ form.forms.obj.title.errors }}
-                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
-                        {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
-                        
-	                    <ol class="input-area">
-	                                <li class="calendar-date-time-chooser">
-	                                    Von
-	                                    <i class="fa fa-calendar"></i>
-	                                    <input
-	                                        placeholder="Datum"
-	                                        readonly ="readonly"
-	                                        class="calendar-date-time-chooser-date" />
-	                                    <input
-	                                        placeholder="Zeit"
-	                                        class="calendar-date-time-chooser-time"
-	                                        value="" />
-	                                    <input type="hidden"
-	                                        class="calendar-date-time-chooser-hiddendate"
-	                                        value="2014-04-28" />
-	                                    <div class="small-calendar"></div>
-	                                </li>
-	                                <li class="calendar-date-time-chooser">
-	                                    Bis
-	                                    <i class="fa fa-calendar"></i>
-	                                    <input
-	                                        placeholder="Datum"
-	                                        readonly ="readonly"
-	                                        class="calendar-date-time-chooser-date" />
-	                                    <input
-	                                        placeholder="Zeit"
-	                                        class="calendar-date-time-chooser-time"
-	                                        value="morgens" />
-	                                    <input type="hidden"
-	                                        class="calendar-date-time-chooser-hiddendate"
-	                                        value="2014-05-28" />
-	                                    <div class="small-calendar"></div>
-	                                </li>
-	                    </ol>
-	
-	                    <ol class="input-area">
-	                                <li>
-	                                    <i class="fa fa-map-marker"></i>
-	                                    <input type="hidden" class="location-selector" data-tags="Berlin, Kreuzberg, Oranienhof, Köln, Paris, London, Frankfurt, New York, Peking" data-placeholder="Ort" />
-	                                </li>
-	                    </ol>
-	
-                        {% include 'cosinnus/media_tags.html' %}
-
-                        {{ form.forms.obj.note.errors }}
-                        {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
-                        {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
-                        
-                        {{ form.forms.obj.url.errors }}
-                        {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
-                        {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
-                        
-                        {{ form.forms.obj.location.errors }}
-                        {% captureas placeholder %}{% trans "Location (optional)." %}{% endcaptureas %}
-                        {% render_field form.forms.obj.location class+="form-control" placeholder=placeholder %}
-                        
-                        
-                        
-	                </div>
-	            </li>
-	        </ul>
-	    </div>
-	
-	
-	    <button type="button" class="btn btn-emphasized" id="createDoodleButton">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-pencil"></i>
-	                </a>
-	                <div class="media-body">
-	                    Erstellen
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	
-	
+	                        {{ form.forms.obj.note.errors }}
+	                        {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
+	                        {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
+	                        
+	                        {{ form.forms.obj.url.errors }}
+	                        {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
+	                        {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
+	                        
+	                        <!--
+	                        {{ form.forms.obj.location.errors }}
+	                        {% captureas placeholder %}{% trans "Location (optional)." %}{% endcaptureas %}
+	                        {% render_field form.forms.obj.location class+="form-control" placeholder=placeholder %}
+		                    -->    
+		                </div>
+		            </li>
+		        </ul>
+		    </div>
+		
+		    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left" href="#">
+		                    <i class="fa fa-pencil"></i>
+		                </a>
+		                <div class="media-body">
+		                    Erstellen
+		                </div>
+		            </li>
+		        </ul>
+		    </button>
+	   
+        </form>
 	
 	</div><!-- content-box -->
     

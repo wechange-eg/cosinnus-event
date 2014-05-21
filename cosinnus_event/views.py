@@ -73,7 +73,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
                      UserFormKwargsMixin):
     form_class = EventForm
     model = Event
-    inlines = [SuggestionInlineView]
+    #inlines = [SuggestionInlineView]
     message_success = _('Event "%(title)s" was edited successfully.')
     message_error = _('Event "%(title)s" could not be edited.')
 
@@ -95,7 +95,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         # no self.object if get_queryset from add/edit view returns empty
         if hasattr(self, 'object'):
             kwargs['slug'] = self.object.slug
-            urlname = 'cosinnus:event:entry-detail'
+            urlname = 'cosinnus:event:event-detail'
         else:
             urlname = 'cosinnus:event:list'
         return reverse(urlname, kwargs=kwargs)
@@ -250,7 +250,7 @@ class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
 
     def get_success_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.object.slug}
-        return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
+        return reverse('cosinnus:event:event-detail', kwargs=kwargs)
 
     def formset_valid(self, formset):
         for form in formset:
