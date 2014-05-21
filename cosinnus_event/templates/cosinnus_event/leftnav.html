@@ -2,33 +2,54 @@
 
 {% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
 
-<button type="button" class="btn w100 btn-emphasized fine-space">
-    <ul class="media-list">
-        <li class="media">
-            <a class="pull-left" href="#">
-                4
-            </a>
-            <a class="pull-right" href="#">
-                <i class="fa fa-caret-right"></i>
-            </a>
-            <div class="media-body">
-                {% trans "Kalender" %}
-            </div>
-        </li>
-    </ul>
-</button>
+{% if return_to == "events" %}
 
-<button type="button" class="btn w100 btn-emphasized regular-space">
-    <ul class="media-list">
-        <li class="media">
-            <a class="pull-left" href="#">
-                3
-            </a>
-            <a class="pull-right" href="#"></a><!-- only block width -->
-            <div class="media-body">
-                {% trans "Termin finden" %}
-            </div>
-        </li>
-    </ul>
-</button>
+	<button type="button" class="btn w100 btn-emphasized" href="{% url 'cosinnus:event:list' group=group.slug %}">
+	    <ul class="media-list">
+	        <li class="media">
+	            <a class="pull-left" href="#">
+	                <i class="fa fa-reply"></i>
+	            </a>
+	            <a class="pull-right" href="#"></a><!-- only block width -->
+	            <div class="media-body">
+	                {% trans "Zurück zu Termine" %}
+	            </div>
+	        </li>
+	    </ul>
+	</button>
+	
+{% elif return_to == "doodle" %}
 
+{% else %}
+	
+	<button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list' group=group.slug %}">
+	    <ul class="media-list">
+	        <li class="media">
+	            <a class="pull-left" href="#">
+	                4
+	            </a>
+	            <a class="pull-right" href="#">
+	                <i class="fa fa-caret-right"></i>
+	            </a>
+	            <div class="media-body">
+	                {% trans "Kalender" %}
+	            </div>
+	        </li>
+	    </ul>
+	</button>
+	
+	<button type="button" class="btn w100 btn-emphasized regular-space">
+	    <ul class="media-list">
+	        <li class="media">
+	            <a class="pull-left" href="#">
+	                3
+	            </a>
+	            <a class="pull-right" href="#"></a><!-- only block width -->
+	            <div class="media-body">
+	                {% trans "Termin finden" %}
+	            </div>
+	        </li>
+	    </ul>
+	</button>
+
+{% endif %}
