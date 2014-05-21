@@ -12,8 +12,7 @@ from django.utils.formats import date_format
 from django.utils.timezone import localtime
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
-from geoposition.fields import GeopositionField
-
+from osm_field.fields import OSMField
 from cosinnus.models import BaseTaggableObjectModel
 
 from cosinnus_event.conf import settings
@@ -72,7 +71,7 @@ class Event(BaseTaggableObjectModel):
         related_name='selected_name',
     )
 
-    location = GeopositionField(_('Location'), blank=True, null=True)
+    location = OSMField(_('Location'), blank=True, null=True, geo_blank=True, geo_null=True)
 
     street = models.CharField(_('Street'), blank=True, max_length=50, null=True)
 
