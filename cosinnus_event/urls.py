@@ -13,11 +13,11 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^add/$',
         'entry_add_view',
         {'form_view': 'add'},
-        name='entry-add'),
+        name='event-add'),
 
     url(r'^(?P<slug>[^/]+)/$',
         'entry_detail_view',
-        name='entry-detail'),
+        name='event-detail'),
 
     url(r'^(?P<slug>[^/]+)/delete/$',
         'entry_delete_view',

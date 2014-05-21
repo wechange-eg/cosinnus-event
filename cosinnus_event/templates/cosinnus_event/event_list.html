@@ -2,7 +2,7 @@
 {% load i18n static cosinnus_tags widget_tweaks %}
 
 {% block page_title %}
-{% trans "Pads" %} {{ block.super }}
+{% trans "Events" %} {{ block.super }}
 {% endblock page_title %}
 
 {% block breadcrumb %}
@@ -19,6 +19,29 @@
 	<div class="content-box">
 	
         <div class="big-calendar large-space"></div>
+        
+        {% for event in object_list %}
+                alert(moment("{{ event.from_date|date:"c"}}", "{{COSINNUS_DATETIME_FORMAT}}"));
+            {% endfor %}
+        
+        <script type="application/javascript">
+	        var cosinnus_calendarEvents = [
+		        {% for event in object_list %}
+		            {% if event.from_date %}
+	                {
+	                    title: '{{ event.title }}',
+	                    start: moment("{{ event.from_date|date:"c"}}"),
+	                    {% if event.to_date %}
+	                    end: moment("{{ event.to_date|date:"c"}}"),
+	                    {% endif %}
+	                    url: '{% url "cosinnus:event:event-detail" group=group.slug slug=event.slug %}'
+	                },
+	                {% endif %}
+	            
+	            {% endfor %}
+            
+            ];
+        </script>
 
         <div type="button" class="btn btn-default w100 large-space">
             <ul class="media-list">
@@ -48,7 +71,7 @@
                     </button>
                     <h4 class="modal-title" id="confirmEventModalLabel">
                         <i class="fa fa-calendar"></i>
-                        {% trans "Termin eintragen
+                        {% trans "Termin eintragen" %}
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -69,7 +92,11 @@
                             </li>
                         </ul>
                     </button>
-                    <button type="button" class="btn btn-emphasized" id="calendarConfirmEventButton">
+                    
+                    <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
+                    <input type="hidden" name="start" id="calendarConfirmStartDate" />
+                    <input type="hidden" name="end" id="calendarConfirmEndDate" />
+                    <button type="submit" class="btn btn-emphasized" id="calendarConfirmEventButton">
                         <ul class="media-list">
                             <li class="media">
                                 <a class="pull-left" href="#">
@@ -81,6 +108,7 @@
                             </li>
                         </ul>
                     </button>
+                    </form>
                 </div>
             </div>
         </div>

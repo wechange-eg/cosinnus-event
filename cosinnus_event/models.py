@@ -49,10 +49,10 @@ class Event(BaseTaggableObjectModel):
     )
 
     from_date = models.DateTimeField(
-        _('Start'), default=None, blank=True, null=True, editable=False)
+        _('Start'), default=None, blank=True, null=True, editable=settings.DEBUG)
 
     to_date = models.DateTimeField(
-        _('End'), default=None, blank=True, null=True, editable=False)
+        _('End'), default=None, blank=True, null=True, editable=settings.DEBUG)
 
     state = models.PositiveIntegerField(
         _('State'),
