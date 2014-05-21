@@ -7,13 +7,10 @@ def register():
     from django.utils.translation import ugettext_lazy as _
 
     from cosinnus.core.registries import (app_registry,
-        attached_object_registry, url_registry)
-
-    from cosinnus_event.urls import (cosinnus_group_patterns,
-        cosinnus_root_patterns)
+        attached_object_registry, url_registry, widget_registry)
 
     app_registry.register('cosinnus_event', 'event', _('Events'))
     attached_object_registry.register('cosinnus_event.Event',
                              'cosinnus_event.utils.renderer.EventRenderer')
-    url_registry.register('cosinnus_event', cosinnus_root_patterns,
-        cosinnus_group_patterns)
+    url_registry.register_urlconf('cosinnus_event', 'cosinnus_event.urls')
+    widget_registry.register('event', 'cosinnus_event.dashboard.UpcomingEvents')
