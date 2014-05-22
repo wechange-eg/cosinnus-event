@@ -1,0 +1,7 @@
+<div class="event">
+  <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
+  <p>{{ object.note }}</p>
+  <p>{{ object.location }}, {{ object.street }}, {{ object.zipcode }} {{ object.city }}</p>
+  <p>{{ object.url }}</p>
+  {% include "search/indexes/cosinnus/_media_tag_rendered.txt" %}
+</div>

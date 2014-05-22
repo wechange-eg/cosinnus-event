@@ -1,0 +1,7 @@
+{{ object.title }}
+{{ object.note }}
+{{ object.location }}
+{{ object.street }}
+{{ object.zipcode }}
+{{ object.city }}
+{% include "search/indexes/cosinnus/_media_tag_text.txt" %}

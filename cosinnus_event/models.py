@@ -115,8 +115,8 @@ class Event(BaseTaggableObjectModel):
         return readable
 
     def get_absolute_url(self):
-        kwargs = {'group': self.group.slug, 'event': self.pk}
-        return reverse('cosinnus:event:entry-detail', kwargs=kwargs)
+        kwargs = {'group': self.group.slug, 'slug': self.slug}
+        return reverse('cosinnus:event:event-detail', kwargs=kwargs)
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:
