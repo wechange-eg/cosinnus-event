@@ -39,7 +39,13 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
                     SortableListMixin, ListView):
 
     model = Event
-
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(EventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_SCHEDULED)
+        return qs
+    
     def get(self, request, *args, **kwargs):
         self.sort_fields_aliases = self.model.SORT_FIELDS_ALIASES
         return super(EventListView, self).get(request, *args, **kwargs)
