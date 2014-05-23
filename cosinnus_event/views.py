@@ -54,15 +54,21 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
         context = super(EventListView, self).get_context_data(**kwargs)
         past_events = []
         future_events = []
+        event_count = 0
+        doodle_count = Event.objects.filter(state=Event.STATE_VOTING_OPEN).count()
 
         for event in context['object_list']:
-            if event.to_date and event.to_date < now():
+            if (event.to_date and event.to_date < now()) or \
+                        (not event.to_date and event.from_date and event.from_date < now()):
                 past_events.append(event)
+                event_count += 1
             else:
                 future_events.append(event)
         context.update({
             'past_events': past_events,
-            'future_events': future_events
+            'future_events': future_events,
+            'event_count': event_count,
+            'doodle_count': doodle_count,
         })
         return context
 

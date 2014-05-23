@@ -20,13 +20,13 @@
 	
 {% elif return_to == "doodle" %}
 
-{% else %}
+{% else %} {# Event / Doodle list view #}
 	
 	<button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list' group=group.slug %}">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
-	                4
+	                {{ event_count }}
 	            </a>
 	            <a class="pull-right" href="#">
 	                <i class="fa fa-caret-right"></i>
@@ -42,7 +42,7 @@
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
-	                3
+	                {{ doodle_count }}
 	            </a>
 	            <a class="pull-right" href="#"></a><!-- only block width -->
 	            <div class="media-body">

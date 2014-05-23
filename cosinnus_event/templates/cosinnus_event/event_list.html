@@ -15,6 +15,10 @@
 {% endblock leftnav %}
 
 {% block content %}
+    {% if not request.user or not request.user.is_authenticated %} 
+        {% include "cosinnus/not_logged_in_alert.html" %}
+    {% endif %}
+
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
 	
@@ -39,6 +43,7 @@
             ];
         </script>
         
+        {% if request.user and request.user.is_authenticated %} 
         <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
 	        <div type="button" class="btn btn-default w100 large-space">
 	            <ul class="media-list">
@@ -57,60 +62,63 @@
 	            </ul>
 	        </div>
         </form>
+        {% endif %}
 	
 	</div><!-- content-box -->
 	
-	
-    <!-- Modal: Really sure you want to add the event? -->
-    <div class="modal fade" id="confirmEventModal" tabindex="1" role="dialog" aria-labelledby="confirmEventModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        <i class="fa fa-times"></i>
-                    </button>
-                    <h4 class="modal-title" id="confirmEventModalLabel">
-                        <i class="fa fa-calendar"></i>
-                        {% trans "Termin eintragen" %}
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <span id="calendarConfirmEventOneday">Möchtest du einen Termin für <strong id="calendarConfirmEventDate" /></strong> anlegen?</span>
-                    <span id="calendarConfirmEventMultiday">Möchtest du einen Termin von <strong id="calendarConfirmEventStart" /></strong> bis <strong id="calendarConfirmEventEnd" /></strong> anlegen?</span>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-emphasized" data-dismiss="modal">
-                        <ul class="media-list">
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                                <div class="media-body">
-                                    {% trans "Abbrechen" %}
-                                </div>
-                            </li>
-                        </ul>
-                    </button>
-                    
-                    <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
-                    <input type="hidden" name="start" id="calendarConfirmStartDate" />
-                    <input type="hidden" name="end" id="calendarConfirmEndDate" />
-                    <button type="submit" class="btn btn-emphasized" id="calendarConfirmEventButton">
-                        <ul class="media-list">
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <i class="fa fa-check"></i>
-                                </a>
-                                <div class="media-body">
-                                    {% trans "OK" %}
-                                </div>
-                            </li>
-                        </ul>
-                    </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div><!-- modal -->
+	{% if request.user and request.user.is_authenticated %} 
+	    <!-- Modal: Really sure you want to add the event? -->
+	    <div class="modal fade" id="confirmEventModal" tabindex="1" role="dialog" aria-labelledby="confirmEventModalLabel" aria-hidden="true">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	                        <i class="fa fa-times"></i>
+	                    </button>
+	                    <h4 class="modal-title" id="confirmEventModalLabel">
+	                        <i class="fa fa-calendar"></i>
+	                        {% trans "Termin eintragen" %}
+	                    </h4>
+	                </div>
+	                <div class="modal-body">
+	                    <span id="calendarConfirmEventOneday">Möchtest du einen Termin für <strong id="calendarConfirmEventDate" /></strong> anlegen?</span>
+	                    <span id="calendarConfirmEventMultiday">Möchtest du einen Termin von <strong id="calendarConfirmEventStart" /></strong> bis <strong id="calendarConfirmEventEnd" /></strong> anlegen?</span>
+	                    
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-emphasized" data-dismiss="modal">
+	                        <ul class="media-list">
+	                            <li class="media">
+	                                <a class="pull-left" href="#">
+	                                    <i class="fa fa-times"></i>
+	                                </a>
+	                                <div class="media-body">
+	                                    {% trans "Abbrechen" %}
+	                                </div>
+	                            </li>
+	                        </ul>
+	                    </button>
+	                    
+	                    <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
+	                    <input type="hidden" name="start" id="calendarConfirmStartDate" />
+	                    <input type="hidden" name="end" id="calendarConfirmEndDate" />
+	                    <button type="submit" class="btn btn-emphasized" id="calendarConfirmEventButton">
+	                        <ul class="media-list">
+	                            <li class="media">
+	                                <a class="pull-left" href="#">
+	                                    <i class="fa fa-check"></i>
+	                                </a>
+	                                <div class="media-body">
+	                                    {% trans "OK" %}
+	                                </div>
+	                            </li>
+	                        </ul>
+	                    </button>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div><!-- modal -->
+	{% endif %}
+	    
 {% endblock content %}
