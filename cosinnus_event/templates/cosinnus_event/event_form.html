@@ -76,7 +76,7 @@
                                             <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
                                                 placeholder="Anfangstermin." type="hidden" 
                                                 {% if form_view == "add" and request.GET.start %}
-                                                value="{{ request.GET.start }}" 
+                                                value="{{ request.GET.end }}" 
                                                 {% else %}
                                                 value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
                                                 {% endif %}
