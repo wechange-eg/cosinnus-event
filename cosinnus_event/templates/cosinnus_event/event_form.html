@@ -125,7 +125,11 @@
 		                    <i class="fa fa-pencil"></i>
 		                </a>
 		                <div class="media-body">
-		                    Erstellen
+		                    {% if form_view == "add" %}
+				              {% trans "Create" %}
+				            {% elif form_view == "edit" %}
+				              {% trans "Edit" %}
+				            {% endif %}
 		                </div>
 		            </li>
 		        </ul>

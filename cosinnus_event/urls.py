@@ -11,6 +11,8 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^export/$', 'export_view', name='export'),
 
     url(r'^add/$', 'entry_add_view',  {'form_view': 'add'},  name='event-add'),
+    url(r'^doodle/add/$', 'doodle_add_view',  {'form_view': 'add'},  name='doodle-add'),
+   
     #url(r'^(?P<slug>[^/]+)/$', 'entry_detail_view', name='event-detail'),
     url(r'^(?P<slug>[^/]+)/edit/$', 'entry_edit_view',  {'form_view': 'edit'}, name='event-edit'),
     url(r'^(?P<slug>[^/]+)/edit/$', 'entry_detail_view',  {'form_view': 'edit'}, name='event-detail'),
