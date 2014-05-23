@@ -134,6 +134,8 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
     message_error = _('Event "%(title)s" could not be added.')
     
     def forms_valid(self, form, inlines):
+        form.instance.creator = self.request.user
+        
         # events are created as scheduled. doodle events would be created as VOTING
         form.instance.state = Event.STATE_SCHEDULED
         return super(EntryAddView, self).forms_valid(form, inlines)
