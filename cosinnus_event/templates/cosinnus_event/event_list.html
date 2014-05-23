@@ -38,21 +38,25 @@
             
             ];
         </script>
-
-        <div type="button" class="btn btn-default w100 large-space">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="pull-left" href="#">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                    <div class="media-body">
-                        <input class="form-control"
-                            placeholder="Gib den Titel für einen neuen Termin ein."
-                            value="" />
-                    </div>
-                </li>
-            </ul>
-        </div>
+        
+        <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
+	        <div type="button" class="btn btn-default w100 large-space">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <a class="pull-left" href="#">
+	                        <i class="fa fa-plus"></i>
+	                    </a>
+	                    <div class="media-body">
+	                        {% captureas placeholder %}{% trans "Gib den Titel für eine neue Veranstaltung ein oder klicke auf einen Tag im Kalender." %}{% endcaptureas %}
+	                        <input class="form-control"
+	                            placeholder="{{ placeholder }}"
+	                            name="title"
+	                            value="" />
+	                    </div>
+	                </li>
+	            </ul>
+	        </div>
+        </form>
 	
 	</div><!-- content-box -->
 	

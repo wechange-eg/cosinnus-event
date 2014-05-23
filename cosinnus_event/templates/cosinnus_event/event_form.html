@@ -40,8 +40,11 @@
 		                    
 		                    {{ form.forms.obj.title.errors }}
 	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
-	                        {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
-	                        
+                            {% if request.GET.title %}
+                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
+                            {% else %}
+                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
+	                        {% endif %}
 		                    <ol class="input-area">
 		                                <li class="calendar-date-time-chooser">
                                             {{ form.forms.obj.from_date.errors }}
@@ -55,8 +58,10 @@
 				                                placeholder="Anfangstermin." type="hidden" 
 				                                {% if form_view == "add" and request.GET.start %}
                                                 value="{{ request.GET.start }}" 
-                                                {% else %}
+                                                {% elif form_view == "edit" %}
                                                 value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
+                                                {% else %}
+                                                value="{% now "Y-m-d" %}" 
                                                 {% endif %}
                                             >
                                             <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
@@ -75,10 +80,12 @@
                                             {% captureas placeholder %}{% trans "Endtermin." %}{% endcaptureas %}
                                             <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
                                                 placeholder="Anfangstermin." type="hidden" 
-                                                {% if form_view == "add" and request.GET.start %}
+                                                {% if form_view == "add" and request.GET.end %}
                                                 value="{{ request.GET.end }}" 
-                                                {% else %}
+                                                {% elif form_view == "edit" %}
                                                 value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
+                                                {% else %}
+                                                value="{% now "Y-m-d" %}" 
                                                 {% endif %}
                                             >
                                             <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
