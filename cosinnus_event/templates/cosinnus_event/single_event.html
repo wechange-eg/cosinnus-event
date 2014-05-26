@@ -31,7 +31,7 @@
         </ul>
     </div>
     
-    {% include 'cosinnus/media_tags_readonly.html' %}
+    {% include 'cosinnus/media_tags_readonly.html' with object=event %}
     
     {% if user.is_superuser or user|is_group_member:object %}
         {% captureas modal_id %}deleteModal_{{object.slug}}{% endcaptureas %}
