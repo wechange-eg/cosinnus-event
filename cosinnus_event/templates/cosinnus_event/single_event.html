@@ -1,0 +1,118 @@
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
+
+{# this template expects an {{ event }} object to be passed to it #}
+
+<div class="fadedown">
+    <div class="btn btn-emphasized w100 {% if event.event_image %}button-with-title-image{% endif %}">
+        {% if event.event_image %}
+	        <img src="{{ event.event_image.static_image_url }}" />
+	        <div></div> <!-- Gradient overlay -->
+        {% endif %}
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left square-date-icon" href="#">
+                    <div>{{ event.from_date|date:"d" }}</div>
+                    <div>{{ event.from_date|date:"M" }}</div>
+                </a>
+                <a class="pull-right" href="#">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+                <a class="pull-right" href="{{ event.get_absolute_url }}">
+                    <i class="fa fa-chain"></i>
+                </a>
+                <div class="media-body">
+                    <a href="{{ event.get_absolute_url }}">
+                        {{ event.title }}
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    {% include 'cosinnus/media_tags_readonly.html' %}
+
+    <button type="button" class="btn btn-emphasized large-space">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <i class="fa fa-eraser"></i>
+                </a>
+                <div class="media-body">
+                    Löschen
+                </div>
+            </li>
+        </ul>
+    </button>
+    <button type="button" class="btn btn-emphasized">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <div class="media-body">
+                    Bearbeiten
+                </div>
+            </li>
+        </ul>
+    </button>
+</div><!-- fadedown -->
+
+<div class="btn btn-white w100">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <i class="fa fa-clock-o"></i>
+            </a>
+            <div class="media-body">
+                <span class="moment-data-date" data-date="{{ event.from_date|date:"c" }}" title="{{ event.from_date }}"></span>
+                –
+                <span class="moment-data-date" data-date="{{ event.to_date|date:"c" }}" title="{{ event.to_date }}"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="btn btn-white w100">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <i class="fa fa-map-marker"></i>
+            </a>
+            <div class="media-body">
+                TODO: Location
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="btn btn-white w100 {% if not event.url %}large-space{% endif %}">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <div class="media-body">
+                <p>
+                    {% if event.note and event.note|length > 0 %}
+                        {{ event.note }}</p>
+                    {% else %}
+                        ({% trans "No Description" %})
+                    {% endif %}
+            </div>
+        </li>
+    </ul>
+</div>
+{% if event.url %}
+<div class="btn btn-white w100 large-space">
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <i class="fa fa-chain"></i>
+            </a>
+            <div class="media-body">
+                <a href="{{ event.url }}">{{ event.url }}</a>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endif %}

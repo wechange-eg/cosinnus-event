@@ -1,0 +1,26 @@
+{% extends "cosinnus_event/base.html" %}
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% block page_title %}
+{% trans "Event" %} {{ object.title }}{{ block.super }}
+{% endblock page_title %}
+
+{% block breadcrumb %}
+        {{ block.super }}
+            <li class="active">{% trans "Event" %} {{ object.title }}</li>
+{% endblock %}
+
+{% block leftnav %}
+    {% include "cosinnus_event/leftnav.html" %}
+{% endblock leftnav %}
+
+{% block content %}
+
+	<!-- a box with semi transparent background -->
+	<div class="content-box large-space">
+	   
+	   {% include "cosinnus_event/single_event.html" with event=object %}
+	
+	</div><!-- content-box -->
+	    
+{% endblock content %}
