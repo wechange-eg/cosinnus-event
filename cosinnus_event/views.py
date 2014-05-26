@@ -54,26 +54,27 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
         context = super(EventListView, self).get_context_data(**kwargs)
         past_events = []
         future_events = []
-        event_count = 0
         doodle_count = Event.objects.filter(state=Event.STATE_VOTING_OPEN).count()
 
         for event in context['object_list']:
             if (event.to_date and event.to_date < now()) or \
                         (not event.to_date and event.from_date and event.from_date < now()):
                 past_events.append(event)
-                event_count += 1
             else:
                 future_events.append(event)
         context.update({
             'past_events': past_events,
             'future_events': future_events,
-            'event_count': event_count,
             'doodle_count': doodle_count,
         })
         return context
 
 list_view = EventListView.as_view()
 
+class DetailedEventListView(EventListView):
+    template_name = 'cosinnus_event/event_list_detailed.html'
+    
+detailed_list_view = DetailedEventListView.as_view()
 
 class SuggestionInlineView(InlineFormSet):
     extra = 1

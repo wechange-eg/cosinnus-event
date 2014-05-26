@@ -6,8 +6,9 @@ from django.conf.urls import patterns, url
 
 cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^$', 'index_view', name='index'),
-    url(r'^list/$', 'list_view', name='list'),
-    url(r'^list/(?P<tag>[^/]+)/$', 'list_view', name='list-filtered'),
+    url(r'^calendar/$', 'list_view', name='list'),
+    url(r'^list/$', 'detailed_list_view', name='list_detailed'),
+    url(r'^calendar/(?P<tag>[^/]+)/$', 'list_view', name='list-filtered'),
     url(r'^export/$', 'export_view', name='export'),
 
     url(r'^add/$', 'entry_add_view',  {'form_view': 'add'},  name='event-add'),
