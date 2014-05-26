@@ -20,7 +20,7 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^(?P<slug>[^/]+)/delete/$',
         'entry_delete_view',
         {'form_view': 'delete'},
-        name='entry-delete'),
+        name='event-delete'),
 
     url(r'^(?P<slug>[^/]+)/vote/$',
         'entry_vote_view',
