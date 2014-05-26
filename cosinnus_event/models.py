@@ -17,6 +17,7 @@ from cosinnus.models import BaseTaggableObjectModel
 
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
+from django.utils.functional import cached_property
 
 
 def localize(value, format):
@@ -144,7 +145,14 @@ class Event(BaseTaggableObjectModel):
             return localize(self.from_date, "d.m.Y")
         else:
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
-
+    
+    @cached_property
+    def event_image(self):
+        """ Return the first image file attached to the event as the event's image """
+        for attached_file in self.attached_objects.all():
+            if attached_file.model_name == "cosinnus_file.FileEntry" and attached_file.target_object.is_image:
+                return attached_file.target_object
+        return None
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):

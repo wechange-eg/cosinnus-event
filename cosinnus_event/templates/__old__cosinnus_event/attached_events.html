@@ -1,13 +1,6 @@
-{% load i18n %}
-
-<hr>
-{% trans "attached__cosinnus_event__Event" %}:
-<div class="media-body">
-    {% for event in events %}
-    <div>
-        <a href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">{{ event }}</a>
-    </div>
-    {% empty %}
-        {% trans "Template was called but no events are passed to be shown." %}
-    {% endfor %}
-</div>
+{% for event in events %}
+<a class="app-calendar-attachment" href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">
+    <i class="fa fa-calendar"></i> 
+    {{ event.title|truncatechars:25 }}
+</a>&nbsp;
+{% endfor %}

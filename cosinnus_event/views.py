@@ -39,7 +39,13 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
                     SortableListMixin, ListView):
 
     model = Event
-
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(EventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_SCHEDULED)
+        return qs
+    
     def get(self, request, *args, **kwargs):
         self.sort_fields_aliases = self.model.SORT_FIELDS_ALIASES
         return super(EventListView, self).get(request, *args, **kwargs)
@@ -48,20 +54,27 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
         context = super(EventListView, self).get_context_data(**kwargs)
         past_events = []
         future_events = []
+        doodle_count = Event.objects.filter(state=Event.STATE_VOTING_OPEN).count()
 
         for event in context['object_list']:
-            if event.to_date and event.to_date < now():
+            if (event.to_date and event.to_date < now()) or \
+                        (not event.to_date and event.from_date and event.from_date < now()):
                 past_events.append(event)
             else:
                 future_events.append(event)
         context.update({
             'past_events': past_events,
-            'future_events': future_events
+            'future_events': future_events,
+            'doodle_count': doodle_count,
         })
         return context
 
 list_view = EventListView.as_view()
 
+class DetailedEventListView(EventListView):
+    template_name = 'cosinnus_event/event_list_detailed.html'
+    
+detailed_list_view = DetailedEventListView.as_view()
 
 class SuggestionInlineView(InlineFormSet):
     extra = 1
@@ -73,7 +86,6 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
                      UserFormKwargsMixin):
     form_class = EventForm
     model = Event
-    #inlines = [SuggestionInlineView]
     message_success = _('Event "%(title)s" was edited successfully.')
     message_error = _('Event "%(title)s" could not be edited.')
 
@@ -114,14 +126,32 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         return ret
 
 
+class DoodleFormMixin(EntryFormMixin):
+    inlines = [SuggestionInlineView]
+    template_name = "cosinnus_event/doodle_form.html"
+
 class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
+    message_success = _('Event "%(title)s" was added successfully.')
+    message_error = _('Event "%(title)s" could not be added.')
+    
+    def forms_valid(self, form, inlines):
+        form.instance.creator = self.request.user
+        
+        # events are created as scheduled. doodle events would be created as VOTING
+        form.instance.state = Event.STATE_SCHEDULED
+        return super(EntryAddView, self).forms_valid(form, inlines)
+    
+entry_add_view = EntryAddView.as_view()
+
+
+class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView):
     message_success = _('Event "%(title)s" was added successfully.')
     message_error = _('Event "%(title)s" could not be added.')
 
     def forms_valid(self, form, inlines):
         form.instance.creator = self.request.user
 
-        ret = super(EntryAddView, self).forms_valid(form, inlines)
+        ret = super(DoodleAddView, self).forms_valid(form, inlines)
 
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()
@@ -135,10 +165,41 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
                   'as event date.'))
         return ret
 
-entry_add_view = EntryAddView.as_view()
+doodle_add_view = DoodleAddView.as_view()
 
 
-class EntryEditView(EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
+class BaseEventEditView(AttachableViewMixin, UpdateWithInlinesView):
+
+    def get_queryset(self):
+        qs = super(BaseEventEditView, self).get_queryset()
+        if self.request.user.is_superuser:
+            return qs
+        return qs.filter(creator=self.request.user)
+
+    def get(self, request, *args, **kwargs):
+        try:
+            return super(BaseEventEditView, self).get(request, *args, **kwargs)
+        except Http404:
+            messages.error(request,
+                _('Event does not exist or you are not allowed to modify it.'))
+            return HttpResponseRedirect(self.get_success_url())
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super(BaseEventEditView, self).post(request, *args, **kwargs)
+        except Http404:
+            messages.error(request,
+                _('Event does not exist or you are not allowed to modify it.'))
+            return HttpResponseRedirect(self.get_success_url())
+
+
+class EntryEditView(EntryFormMixin, BaseEventEditView):
+    pass
+
+entry_edit_view = EntryEditView.as_view()
+
+
+class DoodleEditView(DoodleFormMixin, BaseEventEditView):
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly
@@ -162,31 +223,11 @@ class EntryEditView(EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
         # don't need to call obj.self here
         # INFO: set_suggestion saves the instance
         form.instance.set_suggestion(suggestion, update_fields=None)
-        return super(EntryEditView, self).forms_valid(form, inlines)
+        
+        return super(DoodleEditView, self).forms_valid(form, inlines)
 
-    def get_queryset(self):
-        qs = super(EntryEditView, self).get_queryset()
-        if self.request.user.is_superuser:
-            return qs
-        return qs.filter(creator=self.request.user)
+doodle_edit_view = DoodleEditView.as_view()
 
-    def get(self, request, *args, **kwargs):
-        try:
-            return super(EntryEditView, self).get(request, *args, **kwargs)
-        except Http404:
-            messages.error(request,
-                _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return super(EntryEditView, self).post(request, *args, **kwargs)
-        except Http404:
-            messages.error(request,
-                _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-entry_edit_view = EntryEditView.as_view()
 
 
 class EntryDeleteView(EntryFormMixin, DeleteView):

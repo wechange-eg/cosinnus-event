@@ -20,36 +20,67 @@
 	
 {% elif return_to == "doodle" %}
 
-{% else %}
+{% else %} {# Event / Doodle list view #}
 	
-	<button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list' group=group.slug %}">
-	    <ul class="media-list">
-	        <li class="media">
-	            <a class="pull-left" href="#">
-	                4
-	            </a>
-	            <a class="pull-right" href="#">
-	                <i class="fa fa-caret-right"></i>
-	            </a>
-	            <div class="media-body">
-	                {% trans "Kalender" %}
-	            </div>
-	        </li>
-	    </ul>
-	</button>
-	
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list' group=group.slug %}">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    {% if future_events %}
+                        {{ future_events|length }}
+                    {% else %}
+                        <i class="fa fa-calendar"></i>
+                    {% endif %}
+                </a>
+                <a class="pull-right" href="#">
+                    <i class="fa fa-caret-right"></i>
+                </a>
+                <div class="media-body">
+                    {% trans "Kalender" %}
+                </div>
+            </li>
+        </ul>
+    </button>
+    
+    <button type="button" class="btn w100 btn-emphasized regular-space" href="{% url 'cosinnus:event:list_detailed' group=group.slug %}">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    {% if future_events %}
+                        {{ future_events|length }}
+                    {% else %}
+                        <i class="fa fa-calendar"></i>
+                    {% endif %}
+                </a>
+                <a class="pull-right" href="#">
+                    <i class="fa fa-caret-right"></i>
+                </a>
+                <div class="media-body">
+                    {% trans "Events" %}
+                </div>
+            </li>
+        </ul>
+    </button>
+
+<!-- Uncomment this once we add doodles back to events -->
+<!-- Also, give the button above this the "fine-space" instead of the "regular-space" css class. -->
+<!--
 	<button type="button" class="btn w100 btn-emphasized regular-space">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
-	                3
+	                {% if doodle_count %}
+                        {{ doodle_count }}
+                    {% else %}
+                        <i class="fa fa-calendar"></i>
+                    {% endif %}
 	            </a>
-	            <a class="pull-right" href="#"></a><!-- only block width -->
+	            <a class="pull-right" href="#"></a>
 	            <div class="media-body">
 	                {% trans "Termin finden" %}
 	            </div>
 	        </li>
 	    </ul>
 	</button>
-
+-->
 {% endif %}
