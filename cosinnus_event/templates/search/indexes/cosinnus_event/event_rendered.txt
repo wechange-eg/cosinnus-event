@@ -1,7 +1,18 @@
-<div class="event">
-  <h2><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h2>
-  <p>{{ object.note }}</p>
-  <p>{{ object.location }}, {{ object.street }}, {{ object.zipcode }} {{ object.city }}</p>
-  <p>{{ object.url }}</p>
-  {% include "search/indexes/cosinnus/_media_tag_rendered.txt" %}
+<div class="app-calendar">
+  <div class="btn btn-emphasized w100 regular-space">
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="{{ object.get_absolute_url }}">
+          <i class="fa fa-calendar"></i>
+        </a>
+        <div class="media-body">
+          <span class="annotation">{{ object.group.name }}</span>
+          <a href="{{ object.get_absolute_url }}">
+            <strong><span class="moment-data-date" data-date="{{ object.from_date|date:"c" }}"></span>:</strong>
+            {{ object.title }}
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
