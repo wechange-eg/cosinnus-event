@@ -98,22 +98,30 @@
 		                                
 		                    </ol>
 		
-		                    <ol class="input-area">
-		                                <li>
-		                                    <i class="fa fa-map-marker"></i>
-		                                    <input type="hidden" class="location-selector" data-tags="Berlin, Kreuzberg, Oranienhof, Köln, Paris, London, Frankfurt, New York, Peking" data-placeholder="Ort" />
-		                                </li>
+		                    <ol class="input-area" style="display: none;" id="location-selector">
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <input type="hidden" class="location-selector" data-tags="Berlin, Kreuzberg, Oranienhof, Köln, Paris, London, Frankfurt, New York, Peking" data-placeholder="Ort" />
+                                </li>
 		                    </ol>
 		
 	                        {% include 'cosinnus/media_tags.html' %}
-	
-	                        {{ form.forms.obj.note.errors }}
-	                        {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
-	                        {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
 	                        
-	                        {{ form.forms.obj.url.errors }}
-	                        {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
-	                        {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
+	                        <ol class="input-area">
+                                <li class="w100">
+                                    {{ form.forms.obj.note.errors }}
+		                            {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
+		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
+                                </li>
+                            </ol>
+	                        
+	                        <ol class="input-area">
+                                <li class="w100">
+                                    {{ form.forms.obj.url.errors }}
+		                            {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
+		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
+                                </li>
+                            </ol>
 	                        
 	                        <!--
 	                        {{ form.forms.obj.location.errors }}
