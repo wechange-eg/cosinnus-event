@@ -5,6 +5,7 @@ from django import forms
 from django.template.loader import render_to_string
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import Q
 
 from cosinnus.utils.dashboard import DashboardWidget, DashboardWidgetForm
 
@@ -34,11 +35,12 @@ class UpcomingEvents(DashboardWidget):
         else:
             qs = []
         data = {
-            'rows': qs,
+            'events': qs,
             'no_data': _('No upcoming events'),
+            'group': self.config.group,
         }
         return render_to_string('cosinnus_event/widgets/upcoming.html', data)
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
-        return qs.filter(from_date__gte=now())
+        return qs.exclude(to_date__lte=now()).exclude(Q(to_date__isnull=True) & Q(from_date__lte=now()))
