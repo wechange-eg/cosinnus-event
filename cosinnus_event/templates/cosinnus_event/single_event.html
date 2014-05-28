@@ -90,7 +90,11 @@
                 <i class="fa fa-map-marker"></i>
             </a>
             <div class="media-body">
-                TODO: Location
+                {% if event.media_tag_object.location %}
+				      {{ event.media_tag_object.location }}
+                {% else %}
+                    ({% trans "No Event location set" %})
+                {% endif %}
             </div>
         </li>
     </ul>
@@ -104,10 +108,11 @@
             <div class="media-body">
                 <p>
                     {% if event.note and event.note|length > 0 %}
-                        {{ event.note }}</p>
+                        {{ event.note }}
                     {% else %}
                         ({% trans "No Description" %})
                     {% endif %}
+                </p>
             </div>
         </li>
     </ul>
