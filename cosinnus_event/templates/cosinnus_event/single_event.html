@@ -5,9 +5,9 @@
 {# this template expects an {{ event }} object to be passed to it #}
 
 <div class="fadedown">
-    <div class="btn btn-emphasized w100 {% if event.event_image %}button-with-title-image{% endif %}">
-        {% if event.event_image %}
-	        <img src="{{ event.event_image.static_image_url }}" />
+    <div class="btn btn-emphasized w100 {% if event.attached_image %}button-with-title-image{% endif %}">
+        {% if event.attached_image %}
+	        <img src="{{ event.attached_image.static_image_url }}" />
 	        <div></div> <!-- Gradient overlay -->
         {% endif %}
         <ul class="media-list">
