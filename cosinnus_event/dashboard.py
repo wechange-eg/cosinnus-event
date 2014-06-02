@@ -3,13 +3,11 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.template.loader import render_to_string
-from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
-from django.db.models import Q
 
 from cosinnus.utils.dashboard import DashboardWidget, DashboardWidgetForm
 
-from cosinnus_event.models import Event
+from cosinnus_event.models import Event, upcoming_event_filter
 
 
 class UpcomingEventsForm(DashboardWidgetForm):
@@ -43,4 +41,4 @@ class UpcomingEvents(DashboardWidget):
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
-        return qs.exclude(to_date__lte=now()).exclude(Q(to_date__isnull=True) & Q(from_date__lte=now()))
+        return upcoming_event_filter(qs)

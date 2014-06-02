@@ -9,8 +9,9 @@ from django.dispatch import receiver
 from django.utils import dateformat
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
-from django.utils.timezone import localtime
+from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
+from django.db.models import Q
 
 from osm_field.fields import OSMField
 from cosinnus.models import BaseTaggableObjectModel
@@ -146,6 +147,11 @@ class Event(BaseTaggableObjectModel):
         else:
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
     
+    @classmethod
+    def get_current(self, group):
+        """ Returns a queryset of the current upcoming events """
+        return upcoming_event_filter(Event.objects.filter(group=group))
+        
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
@@ -239,6 +245,11 @@ def post_vote_delete(sender, **kwargs):
 @receiver(post_save, sender=Vote)
 def post_vote_save(sender, **kwargs):
     kwargs['instance'].suggestion.update_vote_count()
+
+   
+def upcoming_event_filter(queryset):
+    """ Filters a queryset of events for events that begin in the future, or have an end date in the future """
+    return queryset.exclude(to_date__lte=now()).exclude(Q(to_date__isnull=True) & Q(from_date__lte=now()))
 
 
 import django
