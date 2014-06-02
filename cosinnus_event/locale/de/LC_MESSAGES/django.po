@@ -27,11 +27,11 @@ msgstr "Veranstaltungen"
 
 #: .\dashboard.py:23
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Aktuelle Termine"
 
 #: .\dashboard.py:37
 msgid "No upcoming events"
-msgstr ""
+msgstr "Keine aktuellen Veranstaltungen"
 
 #: .\forms.py:57
 msgid "Yes"
