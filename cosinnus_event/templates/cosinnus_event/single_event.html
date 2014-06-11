@@ -83,6 +83,7 @@
         </li>
     </ul>
 </div>
+{% if event.media_tag_object.location %}
 <div class="btn btn-white w100">
     <ul class="media-list">
         <li class="media">
@@ -90,15 +91,13 @@
                 <i class="fa fa-map-marker"></i>
             </a>
             <div class="media-body">
-                {% if event.media_tag_object.location %}
-				      {{ event.media_tag_object.location }}
-                {% else %}
-                    ({% trans "No Event location set" %})
-                {% endif %}
+			      {{ event.media_tag_object.location }}
             </div>
         </li>
     </ul>
 </div>
+{% endif %}
+{% if event.note and event.note|length > 0 %}
 <div class="btn btn-white w100 {% if not event.url %}large-space{% endif %}">
     <ul class="media-list">
         <li class="media">
@@ -107,16 +106,13 @@
             </a>
             <div class="media-body">
                 <p>
-                    {% if event.note and event.note|length > 0 %}
-                        {{ event.note }}
-                    {% else %}
-                        ({% trans "No Description" %})
-                    {% endif %}
+                    {{ event.note }}
                 </p>
             </div>
         </li>
     </ul>
 </div>
+{% endif %}
 {% if event.url %}
 <div class="btn btn-white w100 large-space">
     <ul class="media-list">
