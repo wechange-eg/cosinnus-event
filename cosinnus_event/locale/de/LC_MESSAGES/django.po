@@ -432,7 +432,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\widgets\upcoming.html.py:37
 msgid "There are no upcoming events"
-msgstr "Es gibt keine aktuell geplanten Veranstaltungen."
+msgstr "Keine aktuellen Veranstaltungen."
 
 #~ msgid "attached__cosinnus_event__Event"
 #~ msgstr "Angehängte Veranstaltungen"
