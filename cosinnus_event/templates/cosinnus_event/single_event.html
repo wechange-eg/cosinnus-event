@@ -106,7 +106,7 @@
             </a>
             <div class="media-body">
                 <p>
-                    {{ event.note }}
+                    {{ event.note|urlizetrunc:25|linebreaks }}
                 </p>
             </div>
         </li>
