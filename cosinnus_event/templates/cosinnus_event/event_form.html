@@ -45,9 +45,11 @@
                             {% else %}
                                 {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
 	                        {% endif %}
+	                        
+                            {{ form.forms.obj.from_date.errors }}
+                            {{ form.forms.obj.to_date.errors }}
 		                    <ol class="input-area">
 		                                <li class="calendar-date-time-chooser">
-                                            {{ form.forms.obj.from_date.errors }}
 		                                    {% trans "Von" %} <i class="fa fa-calendar"></i>
 		                                    <input
 		                                        placeholder="Datum"
@@ -71,7 +73,6 @@
 		                                    <div class="small-calendar"></div>
 		                                </li>
 		                                <li class="calendar-date-time-chooser">
-                                            {{ form.forms.obj.to_date.errors }}
 		                                    {% trans "Bis" %} <i class="fa fa-calendar"></i>
 		                                    <input
 		                                        placeholder="Datum"
