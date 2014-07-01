@@ -168,38 +168,13 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
 doodle_add_view = DoodleAddView.as_view()
 
 
-class BaseEventEditView(AttachableViewMixin, UpdateWithInlinesView):
-
-    def get_queryset(self):
-        qs = super(BaseEventEditView, self).get_queryset()
-        if self.request.user.is_superuser:
-            return qs
-        return qs.filter(creator=self.request.user)
-
-    def get(self, request, *args, **kwargs):
-        try:
-            return super(BaseEventEditView, self).get(request, *args, **kwargs)
-        except Http404:
-            messages.error(request,
-                _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-    def post(self, request, *args, **kwargs):
-        try:
-            return super(BaseEventEditView, self).post(request, *args, **kwargs)
-        except Http404:
-            messages.error(request,
-                _('Event does not exist or you are not allowed to modify it.'))
-            return HttpResponseRedirect(self.get_success_url())
-
-
-class EntryEditView(EntryFormMixin, BaseEventEditView):
+class EntryEditView(EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
     pass
 
 entry_edit_view = EntryEditView.as_view()
 
 
-class DoodleEditView(DoodleFormMixin, BaseEventEditView):
+class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly
