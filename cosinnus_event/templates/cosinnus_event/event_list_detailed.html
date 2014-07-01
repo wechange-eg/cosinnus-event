@@ -141,7 +141,7 @@
 			    {% endif %}
 			</div><!-- fadedown -->
 			
-			{% if user.is_superuser or user|is_group_member:object %}    
+			{% if user.is_superuser or user|is_group_member:group %}    
 			    {% captureas label %}{% blocktrans with title=object.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
 			    {% captureas title %}{% trans "Event löschen" %}{% endcaptureas %}
 			    {% captureas action %}{% url 'cosinnus:event:event-delete' group=group.slug slug=object.slug%}{% endcaptureas %}
