@@ -21,7 +21,7 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
 
     class Meta:
         model = Event
-        fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'tags', 'street',
+        fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'street',
                   'zipcode', 'city', 'public', 'image', 'url')
         widgets = {
             'from_date': SplitHiddenDateWidget,       
