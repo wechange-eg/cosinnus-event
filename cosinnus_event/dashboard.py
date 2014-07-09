@@ -25,13 +25,11 @@ class UpcomingEvents(DashboardWidget):
     widget_name = 'upcoming'
 
     def get_data(self):
-        if self.request.user.is_authenticated():
-            count = int(self.config['amount'])
-            qs = self.get_queryset().select_related('group').all()
-            if count != 0:
-                qs = qs[:count]
-        else:
-            qs = []
+        count = int(self.config['amount'])
+        qs = self.get_queryset().select_related('group').all()
+        if count != 0:
+            qs = qs[:count]
+            
         data = {
             'events': qs,
             'no_data': _('No upcoming events'),
