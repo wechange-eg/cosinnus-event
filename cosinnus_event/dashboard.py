@@ -24,18 +24,19 @@ class UpcomingEvents(DashboardWidget):
     user_model_attr = None  # No filtering on user page
     widget_name = 'upcoming'
 
-    def get_data(self):
+    def get_data(self, offset=0):
         count = int(self.config['amount'])
         qs = self.get_queryset().select_related('group').all()
         if count != 0:
-            qs = qs[:count]
+            qs = qs[offset:offset+count]
             
+        
         data = {
             'events': qs,
             'no_data': _('No upcoming events'),
             'group': self.config.group,
         }
-        return render_to_string('cosinnus_event/widgets/upcoming.html', data)
+        return (render_to_string('cosinnus_event/widgets/upcoming.html', data), len(qs))
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
