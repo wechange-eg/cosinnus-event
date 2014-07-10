@@ -1,0 +1,64 @@
+{% extends "cosinnus_event/base.html" %}
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% block page_title %}
+{% trans "Events" %} {{ block.super }}
+{% endblock page_title %}
+
+{% block breadcrumb %}
+        {{ block.super }}
+            <li class="active">{% trans "Schedule an event" %}</li>
+{% endblock %}
+
+{% block leftnav %}
+    {% include "cosinnus_event/leftnav.html" %}
+{% endblock leftnav %}
+
+{% block content %}
+    {% if not request.user or not request.user.is_authenticated %} 
+        {% include "cosinnus/not_logged_in_alert.html" %}
+    {% endif %}
+
+	<!-- a box with semi transparent background -->
+	<div class="content-box">
+	
+  {% if request.user and request.user.is_authenticated %} 
+  <form method="GET" action="{% url 'cosinnus:event:doodle-add' group=group.slug %}">
+    <div type="button" class="btn btn-default w100 large-space">
+      <ul class="media-list">
+        <li class="media">
+          <a class="pull-left" href="#">
+            <i class="fa fa-plus"></i>
+          </a>
+          <div class="media-body">
+            <input class="form-control next-button-is-for-sending"
+              placeholder="{% trans "Enter a title for the new event to be schedules." %}"
+              name="title"
+              value="" />
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button type="submit" class="btn btn-emphasized" style="display: none;">
+      <ul class="media-list">
+        <li class="media">
+          <a class="pull-left" href="#">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <div class="media-body">
+            {% trans "Create" %}
+          </div>
+        </li>
+      </ul>
+    </button>
+  </form>
+  {% endif %}
+
+  {% for event in object_list %}
+      {% include "cosinnus_event/list_object.html" %}
+  {% empty %}
+      <p>{% trans "There are no events to be scheduled." %}</p>
+  {% endfor %}
+
+	</div><!-- content-box -->
+{% endblock content %}

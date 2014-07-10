@@ -1,127 +1,252 @@
 {% extends "cosinnus_event/base.html" %}
-{% load i18n bootstrap3 cosinnus_tags %}
-{% load static from staticfiles %}
-
+{% load i18n static cosinnus_tags widget_tweaks %}
 
 {% block page_title %}
-{% if form_view == "add" %}
-  {% trans "Add event" %}
-{% elif form_view == "edit" %}
-  {% trans "Edit" %} {{ event.title }}
-{% endif %}
+	{% if form_view == "add" %}
+	  {% trans "Add unscheduled event" %}
+	{% elif form_view == "edit" %}
+	  {% trans "Edit" %} {{ event.title }}
+	{% endif %}
 {{ block.super }}
 {% endblock page_title %}
 
+{% block breadcrumb %}
+        {{ block.super }}
+        <li class="active">
+	        {% if form_view == "add" %}
+			  {% trans "Add unscheduled event" %}
+			{% elif form_view == "edit" %}
+			  {% trans "Edit" %} {{ event.title }}
+			{% endif %}
+        </li>
+{% endblock %}
 
-{% block extrahead %}
-{{ block.super }}
-{{ form.media.css }}
-{% for formset in inlines %}{{ formset.media.css }}{% endfor %}
-{% endblock extrahead %}
-
-
-{% block content_title %}
-{{ group.name }}:
-{% if form_view == "add" %}
-  {% trans "Add event" %}
-{% elif form_view == "edit" %}
-  {% trans "Edit" %} {{ event.title }}
-{% endif %}
-{% endblock content_title %}
-
-
+{% block leftnav %}
+    {% include "cosinnus_event/leftnav.html" %}
+{% endblock leftnav %}
 
 {% block content %}
-<div class="cosinnus-event">
-  <form action="." method="post" class="form-inline" enctype="multipart/form-data">
-  {% csrf_token %}
 
-  {% if form_view == 'add' or form_view == 'edit' %}
-  <div class="row">
-    <div class="col-md-6">
-      {% bootstrap_field form.forms.obj.title %}
-      {% bootstrap_field form.forms.obj.note %}
-      {% bootstrap_field form.forms.obj.tags %}
-      {% bootstrap_field form.forms.obj.public %}
-      {% bootstrap_field form.forms.obj.image %}
-      {% bootstrap_field form.forms.obj.url %}
-      {% bootstrap_field form.forms.obj.attached_objects %}
-
-      {% bootstrap_form form.forms.media_tag %}
-
+    <!-- a box with semi transparent background -->
+	<div class="content-box">
+	   <form method="POST" action="" id="form-event">{% csrf_token %}
       {% for formset in inlines %}
-        <fieldset id="formset{{ formset.prefix }}">
-          {{ formset.management_form }}
-          <label class="control-label" for="">{% trans "Suggestions" %}</label>
-          {% for inlineform in formset.forms %}
-          <div class="control-group{% if inlineform.errors %} error{% endif %}">
-              <div class="controls form-inline">
-                  {% with inlineform.from_date as field %}
-                      <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
-                      {{ field }}
-                  {% endwith %}
-                  {% with inlineform.to_date as field %}
-                      <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
-                      {{ field }}
-                  {% endwith %}
-                  {% with inlineform.DELETE as field %}
-                      <label{% if field.auto_id %} for="{{ field.auto_id }}"{% endif %}>{{ field.label }}</label>:
-                      {{ field }}
-                  {% endwith %}
-                  {{ inlineform.id.as_widget }}
-                  {{ inlineform.event.as_widget }}
-              </div>
-          </div>
-          {% endfor %}
-        </fieldset>
+        {{ formset.management_form }}
       {% endfor %}
-    </div>
-    <div class="col-md-5 pull-right">
-    {{form.forms.obj.location}}
-    {% bootstrap_field form.forms.obj.street %}
-    {% bootstrap_field form.forms.obj.zipcode %}
-    {% bootstrap_field form.forms.obj.city %}
-    </div>
-  </div>
 
-  <div class="control-group">
-      <div class="controls">
-          {% if not object %}
-              <button type="submit" class="btn btn-primary">{% trans "Add" %}</button>
-          {% else %}
-              <button type="submit" class="btn btn-primary">{% trans "Save" context "sinn" %}</button>
-          {% endif %}
-          <a href="{% url 'cosinnus:event:list' group=group.slug %}" class="btn">{% trans "Cancel" %}</a>
-      </div>
-  </div>
-  {% endif %}
+		    <div type="button" class="btn btn-default w100">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left btn-emphasized" href="#">
+		                    <i class="fa fa-plus"></i>
+		                </a>
+		                <div class="media-body">
+		                    
+		                    {{ form.forms.obj.title.errors }}
+	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
+                            {% if request.GET.title %}
+                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
+                            {% else %}
+                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
+	                        {% endif %}
+	                        
+				                <input type="hidden" id="id_from_date_1" name="from_date_1" />
+				                <input type="hidden" id="id_to_date_1" name="to_date_1" />
+												<ol class="input-area">
+															<li id="calendar-doodle-days-selector">
+																<div class="small-calendar"></div>
+																<div id="calendar-doodle-days-selector-list">
+																	<table>
+																		<thead>
+																			<tr>
+																				<th></th>
+																				<th></th>
+																				<th>{% trans "Time 1" %}</th>
+																				<th>{% trans "Time 2" %}</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			<tr style="display:none;">
+																				<td>
+																					<i class="fa fa-trash-o"></i>
+																				</td>
+																				<td></td>
+																				<td><input /></td>
+																				<td><input /></td>
+																			</tr>
+																		</tbody>
+																	</table>
+																	<p>{% trans "Please select the available days in the calendar." %}</p>
+																	<p>{% trans "Time e.g. 10 or 10:30." %}</p>
+																</div>
+															</li>
+												</ol><!-- input-area -->
 
-  </form>
-</div>
+	                        {% include 'cosinnus/media_tags.html' %}
+	                        
+	                        <ol class="input-area">
+                                <li class="w100">
+                                    {{ form.forms.obj.note.errors }}
+		                            {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
+		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
+                                </li>
+                            </ol>
+	                        
+	                        <ol class="input-area">
+                                <li class="w100">
+                                    {{ form.forms.obj.url.errors }}
+		                            {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
+		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
+                                </li>
+                            </ol>
+	                        
+	                        <!--
+	                        {{ form.forms.obj.location.errors }}
+	                        {% captureas placeholder %}{% trans "Location (optional)." %}{% endcaptureas %}
+	                        {% render_field form.forms.obj.location class+="form-control" placeholder=placeholder %}
+		                    -->    
+		                </div>
+		            </li>
+		        </ul>
+		    </div>
+		
+		    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left" href="#">
+		                    <i class="fa fa-pencil"></i>
+		                </a>
+		                <div class="media-body">
+		                    {% if form_view == "add" %}
+				              {% trans "Create" %}
+				            {% elif form_view == "edit" %}
+				              {% trans "Save" %}
+				            {% endif %}
+		                </div>
+		            </li>
+		        </ul>
+		    </button>
+	   
+        </form>
+	
+	</div><!-- content-box -->
+    
 {% endblock content %}
-
 
 {% block extrafooter %}
 {{ block.super }}
-{{ form.media.js }}
-{% for formset in inlines %}{{ formset.media.js }}{% endfor %}
-
-{# for suggestions #}
-<script type="text/javascript" src="{% static "js/vendor/bootstrap.inline.js" %}"></script>
 <script type="text/javascript">
+$(function() {
+  var formEvent = $('#form-event');
+  var hasDates = false;
+  var dateDataAttr = '';
+  var name = '';
+  var formIdx = null;
+
 {% for formset in inlines %}
-   $(function() {
-       $('#formset{{ formset.prefix }} div.control-group').formset({
-            addCssClass: 'add-row btn',
-            addText: '<span class="glyphicon glyphicon-plus"></span> {% trans "Add suggestion" %}',
-            deleteCssClass: 'delete-row',
-            deleteText: '<span class="glyphicon glyphicon-remove"></span>',
-            insertAddInSelector: true,
-            insertDeleteAfter: 'div.controls.form-inline',
-            prefix: '{{ formset.prefix }}',
-       });
-   });
+  {% for form in formset %}
+  {% if form.from_date.value %}
+  hasDates = true;
+  formIdx = {{ forloop.counter0 }};
+  dateDataAttr = '{{ form.from_date.value|date:"Y-m-d" }}';
+console.log(dateDataAttr, 'raw date {{ form.from_date.value}}');
+  time1= '{{ form.from_date.value|date:"H:i" }}';
+console.log('time', time1);
+  time2= '';
+  $('#calendar-doodle-days-selector-list table tr')
+    .last()
+    .clone()
+    .show()
+    .attr('data-date', dateDataAttr)
+    .insertBefore($('#calendar-doodle-days-selector-list table tr').last())
+    .children(":first")
+    .click(function() {
+      $(this).parent().remove();
+      $("#calendar-doodle-days-selector .small-calendar")
+        .fullCalendar('render');
+    })
+    .next()
+    .text(dateDataAttr)
+    .next()
+    .children()
+    .attr('data-form-idx', formIdx)
+    .val(time1)
+    .parent()
+    .next()
+    .children()
+    .val(time2);
+
+    name = 'suggestions-' + formIdx + '-id';
+    $('<input />')
+      .attr('type', 'hidden')
+      .attr('id', 'id_' + name)
+      .attr('name', name)
+      .attr('value', {{ form.id.value }})
+      .appendTo(formEvent);
+  {% endif %}
+  {% endfor %}
 {% endfor %}
 
+  if (hasDates) {
+    $('#calendar-doodle-days-selector-list table thead tr').show();
+  }
+});
+
+
+$('#form-event').submit(function() {
+  var totalForms = 0;
+  var newFormIdx = $('#id_suggestions-INITIAL_FORMS').val();
+  var formEvent = $(this);
+
+  var addSuggestionToForm = function(idx, datum, time) {
+    if (!idx) { // no form index, so a new suggestion form needs creating
+      idx = newFormIdx;
+      newFormIdx++;
+    }
+    console.log(idx);
+
+    var name = 'suggestions-' + idx + '-from_date'
+    var dateTime = moment(datum + ' ' + time).format(cosinnus_datetime_format);
+    console.log('datetime', dateTime);
+
+    // the from_date input
+    $('<input />')
+      .attr('type', 'hidden')
+      .attr('id', 'id_' + name)
+      .attr('name', name)
+      .attr('value', dateTime)
+      .appendTo(formEvent);
+
+    // to_date unused atm; to_date == from_date
+    name = name.replace('from_date', 'to_date');
+    $('<input />')
+      .attr('type', 'hidden')
+      .attr('id', 'id_' + name)
+      .attr('name', name)
+      .attr('value', dateTime)
+      .appendTo(formEvent);
+
+    // increase number of forms for management form
+    totalForms++;
+  };
+
+  $('#calendar-doodle-days-selector-list table tbody tr').each(function() {
+    var datum = $(this).attr('data-date');
+    if (!datum) return;
+
+    var time1 = $(this).find('input').first();
+    if (time1.val()) {
+      addSuggestionToForm(time1.attr('data-form-idx'), datum, time1.val());
+    }
+    var time2 = $(this).find('input').last();
+    if (time2.val()) {
+      addSuggestionToForm(time2.attr('data-form-idx'), datum, time2.val());
+    }
+  });
+
+  $('#id_suggestions-TOTAL_FORMS').val(totalForms);
+
+  return true; // now submit
+})
 </script>
-{% endblock extrafooter %}
+{% endblock %}

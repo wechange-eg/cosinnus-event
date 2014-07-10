@@ -71,6 +71,26 @@ class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
 
 list_view = EventListView.as_view()
 
+
+class DoodleListView(EventListView):
+    template_name = 'cosinnus_event/doodle_list.html'
+
+    def get_queryset(self):
+        """In the doodle list we only show events with open votings"""
+        qs = super(ListView, self).get_queryset()  # not the direct parent!
+        qs = qs.filter(state=Event.STATE_VOTING_OPEN)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(DoodleListView, self).get_context_data(**kwargs)
+        context.update({
+            'return_to': 'doodle',
+        })
+        return context
+
+doodle_list_view = DoodleListView.as_view()
+
+
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
     
@@ -129,6 +149,27 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
 class DoodleFormMixin(EntryFormMixin):
     inlines = [SuggestionInlineView]
     template_name = "cosinnus_event/doodle_form.html"
+    message_success = _('Unscheduled event "%(title)s" was edited successfully.')
+    message_error = _('Unscheduled event "%(title)s" could not be edited.')
+
+    def get_context_data(self, **kwargs):
+        context = super(DoodleFormMixin, self).get_context_data(**kwargs)
+        context.update({
+            'return_to': 'doodle',
+        })
+        return context
+
+    def get_success_url(self):
+        kwargs = {'group': self.group.slug}
+        # no self.object if get_queryset from add/edit view returns empty
+        if hasattr(self, 'object'):
+            kwargs['slug'] = self.object.slug
+            urlname = 'cosinnus:event:doodle-vote'
+        else:
+            urlname = 'cosinnus:event:doodle-list'
+        return reverse(urlname, kwargs=kwargs)
+
+
 
 class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
     message_success = _('Event "%(title)s" was added successfully.')
@@ -137,7 +178,8 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
     def forms_valid(self, form, inlines):
         form.instance.creator = self.request.user
         
-        # events are created as scheduled. doodle events would be created as VOTING
+        # events are created as scheduled.
+        # doodle events would be created as STATE_VOTING_OPEN.
         form.instance.state = Event.STATE_SCHEDULED
         return super(EntryAddView, self).forms_valid(form, inlines)
     
@@ -145,11 +187,12 @@ entry_add_view = EntryAddView.as_view()
 
 
 class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView):
-    message_success = _('Event "%(title)s" was added successfully.')
-    message_error = _('Event "%(title)s" could not be added.')
+    message_success = _('Unscheduled event "%(title)s" was added successfully.')
+    message_error = _('Unscheduled event "%(title)s" could not be added.')
 
     def forms_valid(self, form, inlines):
         form.instance.creator = self.request.user
+        form.instance.state = Event.STATE_VOTING_OPEN  # be explicit
 
         ret = super(DoodleAddView, self).forms_valid(form, inlines)
 
@@ -158,11 +201,6 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
         if num_suggs == 0:
             messages.info(self.request,
                 _('You should define at least one date suggestion.'))
-        elif num_suggs == 1:
-            self.object.set_suggestion(self.object.suggestions.get())
-            messages.info(self.request,
-                _('Automatically selected the only given date suggestion '
-                  'as event date.'))
         return ret
 
 doodle_add_view = DoodleAddView.as_view()
@@ -175,6 +213,9 @@ entry_edit_view = EntryEditView.as_view()
 
 
 class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
+
+    def forms_invalid(self, form, inlines):
+        import ipdb; ipdb.set_trace()
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly
@@ -189,16 +230,11 @@ class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView
                 suggestion = None
                 messages.info(self.request,
                     _('You should define at least one date suggestion.'))
-            elif num_suggs == 1:
-                suggestion = form.instance.suggestions.get()
-                messages.info(self.request,
-                    _('Automatically selected the only given date suggestion '
-                      'as event date.'))
         # update_fields=None leads to saving the complete model, we
         # don't need to call obj.self here
         # INFO: set_suggestion saves the instance
         form.instance.set_suggestion(suggestion, update_fields=None)
-        
+
         return super(DoodleEditView, self).forms_valid(form, inlines)
 
 doodle_edit_view = DoodleEditView.as_view()
@@ -213,6 +249,17 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
         return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 entry_delete_view = EntryDeleteView.as_view()
+
+
+class DoodleDeleteView(EntryFormMixin, DeleteView):
+    message_success = _('Unscheduled event "%(title)s" was deleted successfully.')
+    message_error = _('Unscheduled event "%(title)s" could not be deleted.')
+
+    def get_success_url(self):
+        return reverse('cosinnus:event:doodle-list', kwargs={'group': self.group.slug})
+
+doodle_delete_view = DoodleDeleteView.as_view()
+
 
 
 class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
@@ -230,23 +277,20 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 entry_detail_view = EntryDetailView.as_view()
 
 
-class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
+class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
         FormSetView):
 
     extra = 0
     form_class = VoteForm
     model = Event
-    template_name = 'cosinnus_event/vote_form.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        self.request = request
-        return super(EntryVoteView, self).dispatch(request, *args, **kwargs)
+    template_name = 'cosinnus_event/doodle_vote.html'
 
     def get_context_data(self, **kwargs):
-        context = super(EntryVoteView, self).get_context_data(**kwargs)
+        context = super(DoodleVoteView, self).get_context_data(**kwargs)
         context.update({
             'object': self.object,
             'suggestions': self.suggestions,
+            'return_to': 'doodle',
         })
         return context
 
@@ -279,9 +323,9 @@ class EntryVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
             else:
                 Vote.objects.filter(suggestion_id=suggestion,
                                     voter=self.request.user).delete()
-        return super(EntryVoteView, self).formset_valid(formset)
+        return super(DoodleVoteView, self).formset_valid(formset)
 
-entry_vote_view = EntryVoteView.as_view()
+doodle_vote_view = DoodleVoteView.as_view()
 
 
 class EventExportView(CSVExportView):

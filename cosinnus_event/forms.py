@@ -46,10 +46,6 @@ class SuggestionForm(forms.ModelForm):
     class Meta:
         model = Suggestion
         fields = ('from_date', 'to_date',)
-        widgets = {
-            'from_date': DateTimeL10nPicker(),
-            'to_date': DateTimeL10nPicker(),
-        }
 
 
 class VoteForm(forms.Form):
