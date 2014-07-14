@@ -213,8 +213,8 @@ entry_edit_view = EntryEditView.as_view()
 
 class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
 
-    def forms_invalid(self, form, inlines):
-        import ipdb; ipdb.set_trace()
+    #def forms_invalid(self, form, inlines):
+    #    import ipdb; ipdb.set_trace()
 
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly

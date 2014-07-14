@@ -62,7 +62,6 @@
 																				<th></th>
 																				<th></th>
 																				<th>{% trans "Time 1" %}</th>
-																				<th>{% trans "Time 2" %}</th>
 																			</tr>
 																		</thead>
 																		<tbody>
@@ -71,7 +70,6 @@
 																					<i class="fa fa-trash-o"></i>
 																				</td>
 																				<td></td>
-																				<td><input /></td>
 																				<td><input /></td>
 																			</tr>
 																		</tbody>
@@ -170,11 +168,11 @@ console.log('time', time1);
     .next()
     .children()
     .attr('data-form-idx', formIdx)
-    .val(time1)
-    .parent()
-    .next()
-    .children()
-    .val(time2);
+    .val(time1);
+    //.parent()
+    //.next()
+    //.children()
+    //.val(time2);
 
     name = 'suggestions-' + formIdx + '-id';
     $('<input />')
@@ -235,17 +233,18 @@ $('#form-event').submit(function() {
     if (!datum) return;
 
     var time1 = $(this).find('input').first();
-    if (time1.val()) {
-      addSuggestionToForm(time1.attr('data-form-idx'), datum, time1.val());
+    //var time2 = $(this).find('input').last();
+    
+    // support entries like '2130' and empty entries
+    var time_val = time1.val() || '00:00';
+    if (!isNaN(time_val) && time_val.length >=3 && time_val.length <=4) {
+        time_val = time_val.slice(0,time_val.length-2) + ':' + time_val.slice(time_val.length-2);
     }
-    var time2 = $(this).find('input').last();
-    if (time2.val()) {
-      addSuggestionToForm(time2.attr('data-form-idx'), datum, time2.val());
-    }
+    addSuggestionToForm(time1.attr('data-form-idx'), datum, time_val);
   });
 
   $('#id_suggestions-TOTAL_FORMS').val(totalForms);
-
+  
   return true; // now submit
 })
 </script>
