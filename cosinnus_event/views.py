@@ -17,7 +17,6 @@ from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
 from cosinnus.views.export import CSVExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
     GroupFormKwargsMixin, FilterGroupMixin)
-from cosinnus.views.mixins.tagged import TaggedListMixin
 from cosinnus.views.mixins.user import UserFormKwargsMixin
 
 from cosinnus.views.attached_object import AttachableViewMixin
@@ -35,7 +34,7 @@ class EventIndexView(RequireReadMixin, RedirectView):
 index_view = EventIndexView.as_view()
 
 
-class EventListView(RequireReadMixin, FilterGroupMixin, TaggedListMixin,
+class EventListView(RequireReadMixin, FilterGroupMixin,
                     SortableListMixin, ListView):
 
     model = Event

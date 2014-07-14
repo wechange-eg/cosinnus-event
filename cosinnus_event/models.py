@@ -19,6 +19,7 @@ from cosinnus.models import BaseTaggableObjectModel
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
 from django.utils.functional import cached_property
+from cosinnus.utils.permissions import get_tagged_object_filter_for_user
 
 
 def localize(value, format):
@@ -148,9 +149,13 @@ class Event(BaseTaggableObjectModel):
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
     
     @classmethod
-    def get_current(self, group):
+    def get_current(self, group, user):
         """ Returns a queryset of the current upcoming events """
-        return upcoming_event_filter(Event.objects.filter(group=group))
+        qs = Event.objects.filter(group=group)
+        if user:
+            q = get_tagged_object_filter_for_user(user)
+            qs = qs.filter(q)
+        return upcoming_event_filter(qs)
         
 
 @python_2_unicode_compatible

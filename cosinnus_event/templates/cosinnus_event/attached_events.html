@@ -1,0 +1,6 @@
+{% for event in events %}
+<a class="app-calendar-attachment" href="{{ event.get_absolute_url }}">
+    <i class="fa fa-calendar"></i> 
+    {{ event.title|truncatechars:25 }}
+</a>&nbsp;
+{% endfor %}
