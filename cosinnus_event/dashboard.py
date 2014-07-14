@@ -25,6 +25,9 @@ class UpcomingEvents(DashboardWidget):
     widget_name = 'upcoming'
 
     def get_data(self, offset=0):
+        """ Returns a tuple (data, rows_returned, has_more) of the rendered data and how many items were returned.
+            if has_more == False, the receiving widget will assume no further data can be loaded.
+         """
         count = int(self.config['amount'])
         qs = self.get_queryset().select_related('group').all()
         if count != 0:
@@ -36,7 +39,7 @@ class UpcomingEvents(DashboardWidget):
             'no_data': _('No upcoming events'),
             'group': self.config.group,
         }
-        return (render_to_string('cosinnus_event/widgets/upcoming.html', data), len(qs))
+        return (render_to_string('cosinnus_event/widgets/upcoming.html', data), len(qs), len(qs) >= count)
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
