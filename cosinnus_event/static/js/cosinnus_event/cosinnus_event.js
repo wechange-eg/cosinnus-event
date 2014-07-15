@@ -38,7 +38,8 @@ $('#form-event').submit(function() {
   };
   
   var dateList = [];
-
+  var hasErrors = false;
+  
   $('#calendar-doodle-days-selector-list table tbody tr').each(function() {
     var datum = $(this).attr('data-date');
     if (!datum) return;
@@ -48,14 +49,24 @@ $('#form-event').submit(function() {
     
     // support entries like '2130' and empty entries
     var time_val = time1.val() || '00:00';
-    if (!isNaN(time_val) && time_val.length <=2 && time_val.length >= 1) {
+    if (isNaN(time_val.replace(':',''))) {
+        // some item was entered incorrectly
+        hasErrors = true;
+    }
+    
+    if (time_val.length <=2 && time_val.length >= 1) {
         time_val = time_val + ':00';
     }
-    if (!isNaN(time_val) && time_val.length >=3 && time_val.length <=4) {
+    if (time_val.length >=3 && time_val.length <=4) {
         time_val = time_val.slice(0,time_val.length-2) + ':' + time_val.slice(time_val.length-2);
     }
     dateList.push([time1.attr('data-form-idx'), datum, time_val]);
   });
+  
+  if (hasErrors) {
+      alert("Eine oder mehrere der Zeitangaben haben ein ungültiges Format!");
+      return false;
+  }
   
   // deduplication of selected dates and adding them to the actual django form
   for (i = dateList.length-1; i >= 0; i--) {
