@@ -37,6 +37,8 @@
 		                    <i class="fa fa-plus"></i>
 		                </a>
 		                <div class="media-body">
+		                    {{ form.forms.obj.non_field_errors }}
+                            {{ form.forms.media_tag.non_field_errors }}
 		                    
 		                    {{ form.forms.obj.title.errors }}
 	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
