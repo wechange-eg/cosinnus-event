@@ -133,6 +133,9 @@
 
 {% block extrafooter %}
 {{ block.super }}
+
+<script src="{% static 'js/cosinnus_event/cosinnus_event.js' %}"></script>
+
 <script type="text/javascript">
 $(function() {
   var formEvent = $('#form-event');
@@ -147,9 +150,8 @@ $(function() {
   hasDates = true;
   formIdx = {{ forloop.counter0 }};
   dateDataAttr = '{{ form.from_date.value|date:"Y-m-d" }}';
-console.log(dateDataAttr, 'raw date {{ form.from_date.value}}');
+    console.log('creating item:', dateDataAttr, 'raw date {{ form.from_date.value}}');
   time1= '{{ form.from_date.value|date:"H:i" }}';
-console.log('time', time1);
   time2= '';
   $('#calendar-doodle-days-selector-list table tr')
     .last()
@@ -188,6 +190,8 @@ console.log('time', time1);
   if (hasDates) {
     $('#calendar-doodle-days-selector-list table thead tr').show();
   }
+  
+  $("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
 });
 
 
