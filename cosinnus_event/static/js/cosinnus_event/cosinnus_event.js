@@ -48,6 +48,9 @@ $('#form-event').submit(function() {
     
     // support entries like '2130' and empty entries
     var time_val = time1.val() || '00:00';
+    if (!isNaN(time_val) && time_val.length <=2 && time_val.length >= 1) {
+        time_val = time_val + ':00';
+    }
     if (!isNaN(time_val) && time_val.length >=3 && time_val.length <=4) {
         time_val = time_val.slice(0,time_val.length-2) + ':' + time_val.slice(time_val.length-2);
     }
