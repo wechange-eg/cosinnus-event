@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from collections import defaultdict
+
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponseRedirect
@@ -286,9 +288,20 @@ class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
 
     def get_context_data(self, **kwargs):
         context = super(DoodleVoteView, self).get_context_data(**kwargs)
+        
+        # group the vote formsets in the same order we grouped the suggestions
+        formset_forms_grouped = defaultdict(list)
+        for day, suggestions in self.suggestions_grouped.items():
+            for suggestion in suggestions:
+                for form in context['formset'].forms:
+                    if suggestion.pk == form.initial.get('suggestion', -1):
+                        formset_forms_grouped[day].append(form)
+            
         context.update({
             'object': self.object,
             'suggestions': self.suggestions,
+            'suggestions_grouped': dict(self.suggestions_grouped),
+            'formset_forms_grouped': dict(formset_forms_grouped),
             'return_to': 'doodle',
         })
         return context
@@ -297,13 +310,21 @@ class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
         self.object = self.get_object()
         self.suggestions = self.object.suggestions.order_by('from_date',
                                                             'to_date').all()
+        
+        self.suggestions_grouped = defaultdict(list)
+        for suggestion in self.suggestions:
+            self.suggestions_grouped[suggestion.from_date.date().isoformat()].append(suggestion)
+                                                                    
         self.max_num = self.suggestions.count()
         self.initial = []
         for suggestion in self.suggestions:
-            vote = suggestion.votes.filter(voter=self.request.user).exists()
+            try:
+                vote = suggestion.votes.filter(voter=self.request.user).get()
+            except Vote.DoesNotExist:
+                vote = None
             self.initial.append({
                 'suggestion': suggestion.pk,
-                'vote': 1 if vote else 0,
+                'choice': vote.choice if vote else Vote.VOTE_NO,
             })
         return self.initial
 

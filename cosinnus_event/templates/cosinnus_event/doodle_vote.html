@@ -21,6 +21,46 @@
 
     <!-- a box with semi transparent background -->
 	<div class="content-box">
+	    <div class="well">
+	       {% for day, suggestions in suggestions_grouped.items %}
+	           <p>day: {{ day }}
+	           {% for suggestion in suggestions %} 
+	               Sugg: {{ suggestion }}
+	           {% endfor %}
+	           </br>
+	           </p>
+	       {% endfor %}
+	    </div>
+	
+	    <div class="well">
+	        <form action="" method="post" class="form-horizontal">
+			    {% csrf_token %}
+			    {{ formset.management_form }}
+			    
+			    {% for day, forms in formset_forms_grouped.items %}
+			        <p>day: {{ day }}
+			        {% for form in forms %}
+					    <span>{{ form.get_label }}</span>
+					    {% if form.choice.errors %}
+                            <span style="float:right">
+                                {% for error in form.choice.errors %}
+                                    {{ error }}</br>
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+					    <span>
+					        Choice: {{ form.choice }}
+					        
+					        ID: {{ form.id.as_widget }}
+					        sugg_PK: {{ form.suggestion.as_widget }}
+					    </span>
+					    <br/>
+				    {% endfor %}
+				    <br/>
+				    </p>
+				{% endfor %}
+		    </form>
+	    </div>
 
 		<div class="btn btn-emphasized w100 regular-space">
 			<ul class="media-list">

@@ -209,6 +209,17 @@ class Suggestion(models.Model):
 
 @python_2_unicode_compatible
 class Vote(models.Model):
+    
+    VOTE_YES = 2
+    VOTE_MAYBE = 1
+    VOTE_NO = 0
+    
+    VOTE_CHOICES = (
+        (VOTE_YES, _('Yes')),
+        (VOTE_MAYBE, _('Maybe')),
+        (VOTE_NO, _('No')),     
+    )
+    
     suggestion = models.ForeignKey(
         Suggestion,
         verbose_name=_('Suggestion'),
@@ -222,6 +233,10 @@ class Vote(models.Model):
         on_delete=models.CASCADE,
         related_name='votes',
     )
+    
+    choice = models.PositiveSmallIntegerField(_('Vote'), blank=False, null=False,
+        default=VOTE_NO, choices=VOTE_CHOICES)
+    
 
     class Meta:
         unique_together = ('suggestion', 'voter')
