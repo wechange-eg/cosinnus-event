@@ -278,7 +278,7 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 entry_detail_view = EntryDetailView.as_view()
 
 
-class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
+class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         FormSetView):
 
     extra = 0
@@ -289,19 +289,28 @@ class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
     def get_context_data(self, **kwargs):
         context = super(DoodleVoteView, self).get_context_data(**kwargs)
         
-        # group the vote formsets in the same order we grouped the suggestions
         formset_forms_grouped = defaultdict(list)
+        vote_counts_grouped = defaultdict(list)
         for day, suggestions in self.suggestions_grouped.items():
             for suggestion in suggestions:
+                # group the vote formsets in the same order we grouped the suggestions
                 for form in context['formset'].forms:
                     if suggestion.pk == form.initial.get('suggestion', -1):
                         formset_forms_grouped[day].append(form)
-            
+                # create a grouped total count for all the votes
+                # use sorted_votes here, it's cached
+                counts = [0, 0, 0]
+                for vote in suggestion.sorted_votes:
+                    counts[vote.choice] += 1
+                vote_counts_grouped[day].append(counts)
+        
+        
         context.update({
             'object': self.object,
             'suggestions': self.suggestions,
             'suggestions_grouped': dict(self.suggestions_grouped),
             'formset_forms_grouped': dict(formset_forms_grouped),
+            'vote_counts_grouped': dict(vote_counts_grouped),
             'return_to': 'doodle',
         })
         return context

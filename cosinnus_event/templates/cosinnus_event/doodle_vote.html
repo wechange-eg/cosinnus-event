@@ -22,15 +22,33 @@
     <!-- a box with semi transparent background -->
 	<div class="content-box">
 	    <div class="well">
-	       {% for day, suggestions in suggestions_grouped.items %}
-	           <p>day: {{ day }}
-	           {% for suggestion in suggestions %} 
-	               Sugg: {{ suggestion }}
-	           {% endfor %}
-	           </br>
-	           </p>
-	       {% endfor %}
-	    </div>
+           {% for day, suggestions in suggestions_grouped.items %}
+               <p>day: {{ day }}
+               {% for suggestion in suggestions %} 
+                   Sugg: {{ suggestion }}
+                   <br/>
+                   {% for vote in suggestion.sorted_votes.all %}
+                       {{ vote.choice }}, {{ vote.voter }}  || 
+                   {% endfor %}
+               {% endfor %}
+               <br/>
+               <br/>
+               </p>
+           {% endfor %}
+        </div>
+        
+        <div class="well">
+           {% for day, counts in vote_counts_grouped.items %}
+               <p>day: {{ day }}
+               {% for count in counts %} 
+                   Sugg: {{ count }}
+                   <br/>
+               {% endfor %}
+               <br/>
+               <br/>
+               </p>
+           {% endfor %}
+        </div>
 	
 	    <div class="well">
 	        <form action="" method="post" class="form-horizontal">

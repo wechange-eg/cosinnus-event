@@ -205,7 +205,10 @@ class Suggestion(models.Model):
     @property
     def single_day(self):
         return localtime(self.from_date).date() == localtime(self.to_date).date()
-
+    
+    @cached_property
+    def sorted_votes(self):
+        return self.votes.order_by('voter__first_name', 'voter__last_name')
 
 @python_2_unicode_compatible
 class Vote(models.Model):
