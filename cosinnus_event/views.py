@@ -330,19 +330,19 @@ class DoodleVoteView(RequireWriteMixin, FilterGroupMixin, SingleObjectMixin,
 
     def get_success_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.object.slug}
-        return reverse('cosinnus:event:event-detail', kwargs=kwargs)
+        return reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
 
     def formset_valid(self, formset):
         for form in formset:
             cd = form.cleaned_data
             suggestion = int(cd.get('suggestion'))
-            selection = int(cd.get('vote', 0))
-            if selection:
-                Vote.objects.get_or_create(suggestion_id=suggestion,
+            choice = int(cd.get('choice', 0))
+            if suggestion:
+                vote, _created = Vote.objects.get_or_create(suggestion_id=suggestion,
                                            voter=self.request.user)
-            else:
-                Vote.objects.filter(suggestion_id=suggestion,
-                                    voter=self.request.user).delete()
+                vote.choice = choice
+                vote.save()
+                
         return super(DoodleVoteView, self).formset_valid(formset)
 
 doodle_vote_view = DoodleVoteView.as_view()
