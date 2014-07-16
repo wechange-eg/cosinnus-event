@@ -418,7 +418,6 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         return obj
     
     def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
         # we wouldn't accept GETs here normally, but since we can't currently post this
         # from a nested form (thanks frontend!), we also do just that
         return self.post(request, *args, **kwargs)
