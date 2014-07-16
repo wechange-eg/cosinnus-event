@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from collections import defaultdict
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
@@ -281,10 +281,19 @@ entry_detail_view = EntryDetailView.as_view()
 class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         FormSetView):
 
+    message_success = _('Your votes were saved successfully.')
+    message_error = _('Your votes could not be saved.')
+
     extra = 0
     form_class = VoteForm
     model = Event
     template_name = 'cosinnus_event/doodle_vote.html'
+    
+    def post(self, request, *args, **kwargs):
+        if self.get_object().state != Event.STATE_VOTING_OPEN:
+            messages.error(request, _('This is event is already scheduled. You cannot vote for it any more.'))
+            return HttpResponseRedirect(request.path)
+        return super(DoodleVoteView, self).post(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(DoodleVoteView, self).get_context_data(**kwargs)
@@ -377,8 +386,17 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
                                            voter=self.request.user)
                 vote.choice = choice
                 vote.save()
-                
-        return super(DoodleVoteView, self).formset_valid(formset)
+        
+        ret = super(DoodleVoteView, self).formset_valid(formset)
+        messages.success(self.request, self.message_success )
+        return ret
+    
+    def formset_invalid(self, formset):
+        ret = super(DoodleVoteView, self).formset_invalid(formset)
+        if self.object:
+            messages.error(self.request, self.message_error)
+        return ret
+
 
 doodle_vote_view = DoodleVoteView.as_view()
 

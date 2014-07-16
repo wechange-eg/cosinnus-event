@@ -29,7 +29,11 @@
 	        {% include "cosinnus_event/single_event.html" with event=event hide_control_buttons="True" %}
 	
 	        <div class="doodle-vote-table">
-	            {% if suggestions_grouped %}
+	            {% if event.state == 1 %}
+	                <p>{% trans "This event has already been scheduled. Voting is closed." %}</p>
+	            {% elif event.state == 3 %}
+	                <p>{% trans "This event has been canceled. Voting is closed." %}</p>
+	            {% elif suggestions_grouped %}
 		            <!-- width = n*54-4 -->
 		            <div>
 		                <div></div>
@@ -156,7 +160,7 @@
 	
 	    </div><!-- content-box -->
 	
-        {% if user|has_read_access:event and suggestions_grouped%}
+        {% if user|has_read_access:event and suggestions_grouped and event.state == 2 %}
           <button type="submit" class="btn btn-emphasized">
             <ul class="media-list">
               <li class="media">
