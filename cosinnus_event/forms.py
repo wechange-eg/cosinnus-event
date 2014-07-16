@@ -57,3 +57,10 @@ class VoteForm(forms.Form):
         if pk:
             return force_text(Suggestion.objects.get(pk=pk))
         return ''
+    
+    
+class EventNoFieldForm(forms.ModelForm):
+
+    class Meta:
+        model = Event
+        fields = ()

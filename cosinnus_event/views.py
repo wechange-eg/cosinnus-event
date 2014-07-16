@@ -9,7 +9,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.utils.timezone import now
 
@@ -24,8 +24,11 @@ from cosinnus.views.mixins.user import UserFormKwargsMixin
 from cosinnus.views.attached_object import AttachableViewMixin
 
 from cosinnus_event.conf import settings
-from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm
+from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
+    EventNoFieldForm
 from cosinnus_event.models import Event, Suggestion, Vote
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -399,6 +402,52 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
 
 
 doodle_vote_view = DoodleVoteView.as_view()
+
+
+class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
+    """ Completes a doodle event for a selected suggestion, setting the event to Scheduled. """
+    form_class = EventNoFieldForm
+    form_view = 'assign'
+    model = Event
+    
+    message_success = _('Todo "%(title)s" was assigned successfully.')
+    message_error = _('Todo "%(title)s" could not be assigned.')
+
+    def get_object(self, queryset=None):
+        obj = super(DoodleCompleteView, self).get_object(queryset)
+        return obj
+    
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # we wouldn't accept GETs here normally, but since we can't currently post this
+        # from a nested form (thanks frontend!), we also do just that
+        return self.post(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        event = self.object
+        
+        if self.object.state != Event.STATE_VOTING_OPEN:
+            messages.error(request, _('This is event is already scheduled. You cannot vote for it any more.'))
+            return HttpResponseRedirect(self.object.get_absolute_url())
+        if 'suggestion_id' not in kwargs:
+            messages.error(request, _('Event cannot be completed: No date was supplied.'))
+            return HttpResponseRedirect(self.object.get_absolute_url())
+        
+        suggestion = get_object_or_404(Suggestion, pk=kwargs.get('suggestion_id'))
+        
+        event.from_date = suggestion.from_date
+        event.to_date = suggestion.to_date
+        event.state = Event.STATE_SCHEDULED
+        event.save()
+        
+        messages.success(request, _('The event was created successfully at the specified date.'))
+        return HttpResponseRedirect(self.object.get_absolute_url())
+    
+    
+    
+
+doodle_complete_view = DoodleCompleteView.as_view()
 
 
 class EventExportView(CSVExportView):

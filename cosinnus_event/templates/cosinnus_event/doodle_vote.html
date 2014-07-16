@@ -101,9 +101,10 @@
 			                <div></div>
 			                {% for suggestions in suggestions_grouped %}
 		                        {% for suggestion in suggestions %} 
-		                            <div class="doodle-vote-eventbutton" title="{% blocktrans %}Den Termin auf {{ suggestion }} festlegen.{% endblocktrans %}">
+		                            <div class="doodle-vote-eventbutton" title="{% blocktrans %}Den Termin auf {{ suggestion }} festlegen.{% endblocktrans %}" href="lol">
 				                        <i class="fa fa-calendar"></i>
 				                    </div>
+				                    <a href="{% url 'cosinnus:event:doodle-complete' group=group.slug slug=event.slug suggestion_id=suggestion.pk %}">Go</a>
 		                        {% endfor %}
 		                    {% endfor %}
 			            </div>
