@@ -410,9 +410,6 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
     form_view = 'assign'
     model = Event
     
-    message_success = _('Todo "%(title)s" was assigned successfully.')
-    message_error = _('Todo "%(title)s" could not be assigned.')
-
     def get_object(self, queryset=None):
         obj = super(DoodleCompleteView, self).get_object(queryset)
         return obj
