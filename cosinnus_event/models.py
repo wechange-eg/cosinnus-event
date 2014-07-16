@@ -184,15 +184,17 @@ class Suggestion(models.Model):
 
     def __str__(self):
         if self.single_day:
-            return '%(date)s - %(end)s (%(count)d)' % {
+            if self.from_date == self.to_date:
+                return '%(date)s' % {
+                    'date': localize(self.from_date, 'd. F Y H:i'),
+                }
+            return '%(date)s - %(end)s' % {
                 'date': localize(self.from_date, 'd. F Y H:i'),
                 'end': localize(self.to_date, 'H:i'),
-                'count': self.count,
             }
-        return '%(from)s - %(to)s (%(count)d)' % {
+        return '%(from)s - %(to)s' % {
             'from': localize(self.from_date, 'd. F Y H:i'),
             'to': localize(self.to_date, 'd. F Y H:i'),
-            'count': self.count,
         }
 
     def get_absolute_url(self):
@@ -205,10 +207,24 @@ class Suggestion(models.Model):
     @property
     def single_day(self):
         return localtime(self.from_date).date() == localtime(self.to_date).date()
-
+    
+    @cached_property
+    def sorted_votes(self):
+        return self.votes.order_by('voter__first_name', 'voter__last_name')
 
 @python_2_unicode_compatible
 class Vote(models.Model):
+    
+    VOTE_YES = 2
+    VOTE_MAYBE = 1
+    VOTE_NO = 0
+    
+    VOTE_CHOICES = (
+        (VOTE_YES, _('Yes')),
+        (VOTE_MAYBE, _('Maybe')),
+        (VOTE_NO, _('No')),     
+    )
+    
     suggestion = models.ForeignKey(
         Suggestion,
         verbose_name=_('Suggestion'),
@@ -222,6 +238,10 @@ class Vote(models.Model):
         on_delete=models.CASCADE,
         related_name='votes',
     )
+    
+    choice = models.PositiveSmallIntegerField(_('Vote'), blank=False, null=False,
+        default=VOTE_NO, choices=VOTE_CHOICES)
+    
 
     class Meta:
         unique_together = ('suggestion', 'voter')

@@ -20,6 +20,20 @@
 	
 {% elif return_to == "doodle" %}
 
+  <button type="button" class="btn w100 btn-emphasized" href="{% url 'cosinnus:event:index' group=group.slug %}">
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="#">
+          <i class="fa fa-reply"></i>
+        </a>
+        <a class="pull-right" href="#"></a><!-- only block width -->
+        <div class="media-body">
+          {% trans "Return to events" %}
+        </div>
+      </li>
+    </ul>
+  </button>
+
 {% else %} {# Event / Doodle list view #}
 	
     <button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list' group=group.slug %}">
@@ -42,7 +56,7 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized regular-space" href="{% url 'cosinnus:event:list_detailed' group=group.slug %}">
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% url 'cosinnus:event:list_detailed' group=group.slug %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -62,10 +76,7 @@
         </ul>
     </button>
 
-<!-- Uncomment this once we add doodles back to events -->
-<!-- Also, give the button above this the "fine-space" instead of the "regular-space" css class. -->
-<!--
-	<button type="button" class="btn w100 btn-emphasized regular-space">
+	<button type="button" class="btn w100 btn-emphasized regular-space" href="{% url 'cosinnus:event:doodle-list' group=group.slug %}">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
@@ -75,12 +86,13 @@
                         <i class="fa fa-calendar"></i>
                     {% endif %}
 	            </a>
-	            <a class="pull-right" href="#"></a>
+	            <a class="pull-right" href="#">
+                    <i class="fa fa-caret-right"></i>
+              </a>
 	            <div class="media-body">
 	                {% trans "Termin finden" %}
 	            </div>
 	        </li>
 	    </ul>
 	</button>
--->
 {% endif %}
