@@ -76,6 +76,11 @@
 		                        {% endif %}
 			                {% endfor %}
 		                </div>
+		            {% empty %}
+			            <div>
+			                <div></div>
+			                <p>{% trans "(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}</p>
+			            </div>
 		            {% endfor %}
 		
 		            <div>
@@ -101,10 +106,14 @@
 			                <div></div>
 			                {% for suggestions in suggestions_grouped %}
 		                        {% for suggestion in suggestions %} 
+		                            {% comment %} 
 		                            <div class="doodle-vote-eventbutton" title="{% blocktrans %}Den Termin auf {{ suggestion }} festlegen.{% endblocktrans %}" href="lol">
 				                        <i class="fa fa-calendar"></i>
 				                    </div>
-				                    <a href="{% url 'cosinnus:event:doodle-complete' group=group.slug slug=event.slug suggestion_id=suggestion.pk %}">Go</a>
+				                     {% endcomment %}
+				                     <div>
+				                    <a href="{% url 'cosinnus:event:doodle-complete' group=group.slug slug=event.slug suggestion_id=suggestion.pk %}">Anlegen</a>
+				                    </div>
 		                        {% endfor %}
 		                    {% endfor %}
 			            </div>

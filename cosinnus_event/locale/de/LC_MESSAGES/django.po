@@ -398,7 +398,7 @@ msgstr "Uhrzeit"
 
 #: .\templates\cosinnus_event\doodle_form.html.py:77
 msgid "Please select the available days in the calendar."
-msgstr "Bitte wähle Tage für den Vorschlag im Kalender aus."
+msgstr "Bitte wähle vorgeschlagene Tage im Kalender aus."
 
 #: .\templates\cosinnus_event\doodle_form.html.py:77
 msgid "You can select the same day more than once."
