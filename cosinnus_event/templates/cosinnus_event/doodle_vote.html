@@ -18,565 +18,206 @@
 {% endblock leftnav %}
 
 {% block content %}
-
-    <!-- a box with semi transparent background -->
-	<div class="content-box">
-	    <div class="well">
-           {% for day, suggestions in suggestions_grouped.items %}
-               <p>day: {{ day }}
-               {% for suggestion in suggestions %} 
-                   Sugg: {{ suggestion }}
-                   <br/>
-                   {% for vote in suggestion.sorted_votes.all %}
-                       {{ vote.choice }}, {{ vote.voter }}  || 
-                   {% endfor %}
-               {% endfor %}
-               <br/>
-               <br/>
-               </p>
-           {% endfor %}
-        </div>
-        
-        <div class="well">
-           {% for day, counts in vote_counts_grouped.items %}
-               <p>day: {{ day }}
-               {% for count in counts %} 
-                   Sugg: {{ count }}
-                   <br/>
-               {% endfor %}
-               <br/>
-               <br/>
-               </p>
-           {% endfor %}
-        </div>
+    
+	<form action="" method="post" class="form-horizontal">
+	{% csrf_token %}
+	{{ formset.management_form }}
+	    
+	    <!-- a box with semi transparent background -->
+		<div class="content-box">
 	
-	    <div class="well">
-	        <form action="" method="post" class="form-horizontal">
-			    {% csrf_token %}
-			    {{ formset.management_form }}
-			    
-			    {% for day, forms in formset_forms_grouped.items %}
-			        <p>day: {{ day }}
-			        {% for form in forms %}
-					    <span>{{ form.get_label }}</span>
-					    {% if form.choice.errors %}
-                            <span style="float:right">
-                                {% for error in form.choice.errors %}
-                                    {{ error }}</br>
-                                {% endfor %}
-                            </span>
-                        {% endif %}
-					    <span>
-					        Choice: {{ form.choice }}
-					        
-					        ID: {{ form.id.as_widget }}
-					        sugg_PK: {{ form.suggestion.as_widget }}
-					    </span>
-					    <br/>
-				    {% endfor %}
-				    <br/>
-				    </p>
-				{% endfor %}
-				
-				<input type="submit"></input>
-		    </form>
-	    </div>
-
-		<div class="btn btn-emphasized w100 regular-space">
-			<ul class="media-list">
-				<li class="media">
-					<a class="pull-left" href="#">
-						<i class="fa  fa-calendar"></i>
-					</a>
-					<a class="pull-right" href="#">
-						<i class="fa fa-chain"></i>
-					</a>
-					<div class="media-body">
-						{{ event.title }}
-					</div>
-				</li>
-			</ul>
-		</div>
+	        <div class="btn btn-emphasized w100 regular-space">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <a class="pull-left" href="#">
+	                        <i class="fa  fa-calendar"></i>
+	                    </a>
+	                    <a class="pull-right" href="#">
+	                        <i class="fa fa-chain"></i>
+	                    </a>
+	                    <div class="media-body">
+	                        {{ event.title }}
+	                    </div>
+	                </li>
+	            </ul>
+	        </div>
 	
 	
-		<div class="doodle-vote-table">
-			<div>
-				<div></div>
-				<div class="doodle-vote-date">
-					9.5.2014
-				</div>
-				<div class="doodle-vote-date">
-					13.5.2014
-				</div>
-				<div class="doodle-vote-date">
-					11.11.2014
-				</div>
-				<div class="doodle-vote-date">
-					24.12.2014
-				</div>
-				<div class="doodle-vote-date">
-					25.12.2014
-				</div>
-				<div class="doodle-vote-date">
-					24.12.2015
-				</div>
-			</div>
+	        <div class="doodle-vote-table">
+	            <!-- width = n*54-4 -->
+	            <div>
+	                <div></div>
+	                {% for suggestions in suggestions_grouped %}
+			            <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;">
+		                    &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_FORMAT }}
+		                </div>
+			        {% endfor %}
+	            </div>
 	
-			<div>
-				<div></div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					früh
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-			</div>
+	            <div>
+	                <div></div>
+	                {% for suggestions in suggestions_grouped %}
+	                    {% for suggestion in suggestions %} 
+		                    <div class="doodle-vote-time">
+			                    &nbsp;{{ suggestion.from_date|date:COSINNUS_DJANGO_TIME_FORMAT }}
+			                </div>
+		                {% endfor %}
+	                {% endfor %}
+	            </div>
 	
-			<div>
-				<div>
-					<img src="avatar.png" />
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-			</div>
+	            {% for user, votes in votes_user_grouped.items %}
+	                <div>
+		                <div>
+		                    {% include "cosinnus/user/user_avatar_image.html" with user=votes.0.voter %}
+		                </div>
+		                {% for vote in votes %}
+		                    {% if vote.choice == 2 %}
+		                        <div class="doodle-vote-yes" title="{% trans 'Yes' %}">
+				                    <i class="fa fa-check"></i>
+				                </div>
+		                    {% elif vote.choice == 1 %}
+	                            <div class="doodle-vote-maybe" title="{% trans 'Maybe' %}">
+				                    (<i class="fa fa-check"></i>)
+				                </div>
+	                        {% else %}
+	                            <div class="doodle-vote-no" title="{% trans 'No' %}">
+				                    <i class="fa fa-times"></i>
+				                </div>
+	                        {% endif %}
+		                {% endfor %}
+	                </div>
+	            {% endfor %}
 	
-			<div>
-				<div>
-					<img src="avatar2.png" />
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-no">
-					<i class="fa fa-times"></i>
-				</div>
-			</div>
+	            <div>
+	                <div>
+	                    <i class="fa fa-check" title="{% trans 'Yes' %}"></i><br />
+	                    (<i class="fa fa-check" title="{% trans 'Maybe' %}"></i>)<br />
+	                    <i class="fa fa-times" title="{% trans 'No' %}"></i>
+	                </div>
+	                {% for vote_counts in vote_counts_grouped %}
+	                    {% for count in vote_counts %} 
+			                <div>
+			                    {% if count.3 %}<strong>{% endif %}{{ count.2 }}{% if count.3 %}</strong>{% endif %}<br />
+			                    {{ count.1 }}<br />
+			                    {{ count.0 }}
+			                </div>
+			            {% endfor %}
+			        {% endfor %}
+	            </div>
+	            
+	            {% if user|has_write_access:event %}
+		            <h2>{% trans "Erstelle eine Veranstaltung aus einem der Termine." %}</h2>
+		            <div>
+		                <div></div>
+		                {% for suggestions in suggestions_grouped %}
+	                        {% for suggestion in suggestions %} 
+	                            <div class="doodle-vote-eventbutton">
+			                        <i class="fa fa-calendar"></i>
+			                    </div>
+	                        {% endfor %}
+	                    {% endfor %}
+		            </div>
+	            {% endif %}
 	
-			<div>
-				<div>
-					<img src="avatar.png" />
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-yes">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-yes">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-maybe">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-yes">
-					<i class="fa fa-times"></i>
-				</div>
-				<div class="doodle-vote-yes">
-				(<i class="fa fa-check"></i>)
-				</div>
-				<div class="doodle-vote-yes">
-				<i class="fa fa-check"></i>
-				</div>
-				<div class="doodle-vote-yes">
-					<i class="fa fa-times"></i>
-				</div>
-			</div>
+	            <h2>Wann hast du Zeit?</h2>
+	            
+	            <!-- width = n*54-4 -->
+	            <div>
+	                <div></div>
+	                {% for suggestions in suggestions_grouped %}
+	                    <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;">
+	                        &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_FORMAT }}
+	                    </div>
+	                {% endfor %}
+	            </div>
+	
+	            <div>
+	                <div></div>
+	                {% for suggestions in suggestions_grouped %}
+	                    {% for suggestion in suggestions %} 
+	                        <div class="doodle-vote-time">
+	                            &nbsp;{{ suggestion.from_date|date:COSINNUS_DJANGO_TIME_FORMAT }}
+	                        </div>
+	                    {% endfor %}
+	                {% endfor %}
+	            </div>
+	            
+	            
+	            <div class="doodle-vote-inputarea">
+	                <div>
+	                    {% include "cosinnus/user/user_avatar_image.html" with user=request.user %}
+	                </div>
+	                {% for forms in formset_forms_grouped %}
+	                    {% for form in forms %}
+	                        {% captureas choice_word %}{% if form.choice.value == 2 %}yes{% elif form.choice.value == 1 %}maybe{% else %}no{% endif %}{% endcaptureas %}
+	                        {{ form.suggestion.as_widget }}
+	                        <div class="doodle-vote-{{choice_word}}">
+				                <a href="#" data-doodle-option="yes">{% if form.choice.value == 2 %}<strong>{% endif %}{% trans "Yes" %}{% if form.choice.value == 2 %}</strong>{% endif %}</a>
+				                <a href="#" data-doodle-option="maybe">{% if form.choice.value == 1 %}<strong>{% endif %}{% trans "Maybe" %}{% if form.choice.value == 1 %}</strong>{% endif %}</a>
+				                <a href="#" data-doodle-option="no">{% if form.choice.value == 0 %}<strong>{% endif %}{% trans "No" %}{% if form.choice.value == 0 %}</strong>{% endif %}</a>
+				                <input type="hidden" id="id_{{ form.choice.html_name }}" name="{{ form.choice.html_name }}" value="{{ form.choice.value }}" />
+				            </div>
+                            
+	                    {% endfor %}
+	                {% endfor %}
+	            </div>
 	
 	
-			<h2>Wann hast du Zeit?</h2>
-			<div>
-				<div></div>
-				<div class="doodle-vote-date">
-					9.5.2014
-				</div>
-				<div class="doodle-vote-date">
-					13.5.2014
-				</div>
-				<div class="doodle-vote-date">
-					11.11.2014
-				</div>
-				<div class="doodle-vote-date">
-					24.12.2014
-				</div>
-				<div class="doodle-vote-date">
-					25.12.2014
-				</div>
-				<div class="doodle-vote-date">
-					24.12.2015
-				</div>
-			</div>
+	        </div><!-- table -->
 	
-			<div>
-				<div></div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					früh
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-				<div class="doodle-vote-time">
-					12:00
-				</div>
-				<div class="doodle-vote-time">
-					17:00
-				</div>
-			</div>
+	    </div><!-- content-box -->
 	
-			<div class="doodle-vote-inputarea">
-				<div>
-					<img src="avatar.png" />
-				</div>
-				<div class="doodle-vote-maybe">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-yes">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-maybe">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-				<div class="doodle-vote-no">
-					<a href="#" data-doodle-option="yes">ja</a>
-					<a href="#" data-doodle-option="maybe">evtl</a>
-					<a href="#" data-doodle-option="no">nein</a>
-				</div>
-			</div>
+        {% if user|has_read_access:event %}
+          <button type="submit" class="btn btn-emphasized">
+            <ul class="media-list">
+              <li class="media">
+                <a class="pull-left" href="#">
+                  <i class="fa fa-floppy-o"></i>
+                </a>
+                <div class="media-body">
+                  {% trans "Save" %}
+                </div>
+              </li>
+            </ul>
+          </button>
+        {% endif %}
+    
+    </form>
+		
+	{% if user|has_write_access:event %}
+	  {% captureas modal_id %}deleteModal_{{event.slug}}{% endcaptureas %}
+	  <button type="button" class="btn btn-emphasized" data-toggle="modal" data-target="#{{modal_id}}">
+	    <ul class="media-list">
+	      <li class="media">
+	        <a class="pull-left" href="#">
+	          <i class="fa fa-eraser"></i>
+	        </a>
+	        <div class="media-body">
+	          {% trans "Delete" %}
+	        </div>
+	      </li>
+	    </ul>
+	  </button>
+	  
+	  {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete unscheduled event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
+	  {% captureas title %}{% trans "Delete unscheduled event" %}{% endcaptureas %}
+	  {% captureas action %}{% url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
 	
-	
-			<h2>Erstelle eine Veranstaltung aus einem der Termine.</h2>
-			<div>
-				<div>
-					<i class="fa fa-check"></i><br />
-					(<i class="fa fa-check"></i>)<br />
-					<i class="fa fa-times"></i>
-				</div>
-				<div>
-					4<br />
-					6<br />
-					<strong>20</strong>
-				</div>
-				<div>
-					4<br />
-					6<br />
-					<strong>20</strong>
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-				<div>
-					4<br />
-					6<br />
-					20
-				</div>
-			</div>
-	
-			<div>
-				<div></div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-				<div class="doodle-vote-eventbutton">
-					<i class="fa fa-calendar"></i>
-				</div>
-			</div>
-	
-	
-		</div><!-- table -->
-
-
-	</div><!-- content-box -->
-
-{% if user|has_write_access:event %}
-  {% captureas modal_id %}deleteModal_{{event.slug}}{% endcaptureas %}
-  <button type="button" class="btn btn-emphasized" data-toggle="modal" data-target="#{{modal_id}}">
-    <ul class="media-list">
-      <li class="media">
-        <a class="pull-left" href="#">
-          <i class="fa fa-eraser"></i>
-        </a>
-        <div class="media-body">
-          {% trans "Delete" %}
-        </div>
-      </li>
-    </ul>
-  </button>
-  <button type="button" class="btn btn-emphasized" href="{% url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}">
-    <ul class="media-list">
-      <li class="media">
-        <a class="pull-left" href="#">
-          <i class="fa fa-pencil"></i>
-        </a>
-        <div class="media-body">
-          {% trans "Edit" %}
-        </div>
-      </li>
-    </ul>
-  </button>
-  <button type="button" class="btn btn-emphasized">
-    <ul class="media-list">
-      <li class="media">
-        <a class="pull-left" href="#">
-          <i class="fa fa-floppy-o"></i>
-        </a>
-        <div class="media-body">
-          {% trans "Save" %}
-        </div>
-      </li>
-    </ul>
-  </button>
-
-  {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete unscheduled event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
-  {% captureas title %}{% trans "Delete unscheduled event" %}{% endcaptureas %}
-  {% captureas action %}{% url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
-
-  {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
-{% endif %}
+	  {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
+	  
+	  
+	  <button type="button" class="btn btn-emphasized" href="{% url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}">
+	    <ul class="media-list">
+	      <li class="media">
+	        <a class="pull-left" href="#">
+	          <i class="fa fa-pencil"></i>
+	        </a>
+	        <div class="media-body">
+	          {% trans "Edit" %}
+	        </div>
+	      </li>
+	    </ul>
+	  </button>
+	{% endif %}
+		
 {% endblock content %}

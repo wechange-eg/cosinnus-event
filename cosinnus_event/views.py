@@ -289,28 +289,54 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
     def get_context_data(self, **kwargs):
         context = super(DoodleVoteView, self).get_context_data(**kwargs)
         
-        formset_forms_grouped = defaultdict(list)
-        vote_counts_grouped = defaultdict(list)
-        for day, suggestions in self.suggestions_grouped.items():
+        # we group formsets, votes and suggestions by days (as in a day there might be more than one suggestion)
+        # the absolute order inside the two lists when traversing the suggestions (iterated over days), 
+        # is guaranteed to be sorted by date and time ascending, as is the user-grouped list of votes
+        formset_forms_grouped = []
+        vote_counts_grouped = []
+        suggestions_list_grouped = []
+        votes_user_grouped = defaultdict(list) # these are grouped by user, and sorted by suggestion, not day!
+        for day, suggestions in sorted(self.suggestions_grouped.items(), key=lambda item: item[1][0].from_date):
+            formset_forms_grouped_l = []
+            vote_counts_grouped_l = []
+            suggestions_list_grouped_l = []
+            
             for suggestion in suggestions:
+                suggestions_list_grouped_l.append(suggestion)
                 # group the vote formsets in the same order we grouped the suggestions
                 for form in context['formset'].forms:
                     if suggestion.pk == form.initial.get('suggestion', -1):
-                        formset_forms_grouped[day].append(form)
+                        formset_forms_grouped_l.append(form)
                 # create a grouped total count for all the votes
                 # use sorted_votes here, it's cached
-                counts = [0, 0, 0]
+                # format: [no_votes, maybe_votes, yes_notes, is_most_overall_votes]
+                counts = [0, 0, 0, False]
                 for vote in suggestion.sorted_votes:
                     counts[vote.choice] += 1
-                vote_counts_grouped[day].append(counts)
+                    votes_user_grouped[vote.voter.username].append(vote)
+                vote_counts_grouped_l.append(counts)
+            
+            formset_forms_grouped.append(formset_forms_grouped_l)
+            vote_counts_grouped.append(vote_counts_grouped_l)
+            suggestions_list_grouped.append(suggestions_list_grouped_l)
         
+        # determine and set the winning vote count of suggestions (if there are votes)
+        try:
+            max_vote_count = max([max([vote[2] for vote in votes]) for votes in vote_counts_grouped])
+            for votes in vote_counts_grouped:
+                for vote in votes:
+                    if vote[2] == max_vote_count:
+                        vote[3] = True
+        except ValueError:
+            pass
         
         context.update({
             'object': self.object,
             'suggestions': self.suggestions,
-            'suggestions_grouped': dict(self.suggestions_grouped),
-            'formset_forms_grouped': dict(formset_forms_grouped),
-            'vote_counts_grouped': dict(vote_counts_grouped),
+            'suggestions_grouped': suggestions_list_grouped,
+            'formset_forms_grouped': formset_forms_grouped,
+            'vote_counts_grouped': vote_counts_grouped,
+            'votes_user_grouped': dict(votes_user_grouped),
             'return_to': 'doodle',
         })
         return context
