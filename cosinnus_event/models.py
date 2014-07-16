@@ -184,15 +184,17 @@ class Suggestion(models.Model):
 
     def __str__(self):
         if self.single_day:
-            return '%(date)s - %(end)s (%(count)d)' % {
+            if self.from_date == self.to_date:
+                return '%(date)s' % {
+                    'date': localize(self.from_date, 'd. F Y H:i'),
+                }
+            return '%(date)s - %(end)s' % {
                 'date': localize(self.from_date, 'd. F Y H:i'),
                 'end': localize(self.to_date, 'H:i'),
-                'count': self.count,
             }
-        return '%(from)s - %(to)s (%(count)d)' % {
+        return '%(from)s - %(to)s' % {
             'from': localize(self.from_date, 'd. F Y H:i'),
             'to': localize(self.to_date, 'd. F Y H:i'),
-            'count': self.count,
         }
 
     def get_absolute_url(self):
