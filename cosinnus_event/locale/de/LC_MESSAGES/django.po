@@ -243,11 +243,11 @@ msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht gelöscht werden."
 
 #: .\views.py:287
 msgid "Your votes were saved successfully."
-msgstr "Ihre Abstimmung \"%(title)s\" wurde erfolgreich hinzugefügt."
+msgstr "Ihre Abstimmung wurde erfolgreich gespeichert."
 
 #: .\views.py:288
 msgid "Your votes could not be saved."
-msgstr "Ihre Abstimmung \"%(title)s\" konnte nicht hinzugefügt werden."
+msgstr "Ihre Abstimmung konnte nicht gespeichert werden."
 
 #: .\views.py:297 .\views.py:430
 msgid "This is event is already scheduled. You cannot vote for it any more."
