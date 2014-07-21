@@ -32,6 +32,12 @@
                 <p>{% trans "This event has been canceled. Voting is closed." %}</p>
             {% elif suggestions_grouped %}
 	            <!-- width = n*54-4 -->
+	            {% if not votes_user_grouped %}
+                    <div>
+                        <p>{% trans "(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}</p>
+                    </div>
+	            {% endif %}
+	            
 	            <div>
 	                <div></div>
 	                {% for suggestions in suggestions_grouped %}
@@ -73,11 +79,6 @@
 	                        {% endif %}
 		                {% endfor %}
 	                </div>
-	            {% empty %}
-		            <div>
-		                <div></div>
-		                <p>{% trans "(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}</p>
-		            </div>
 	            {% endfor %}
 	
 	            <div>
