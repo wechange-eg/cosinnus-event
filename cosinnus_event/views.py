@@ -58,7 +58,7 @@ class EventListView(RequireReadMixin, FilterGroupMixin,
         context = super(EventListView, self).get_context_data(**kwargs)
         past_events = []
         future_events = []
-        doodle_count = Event.objects.filter(state=Event.STATE_VOTING_OPEN).count()
+        doodle_count = super(EventListView, self).get_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
 
         for event in context['object_list']:
             if (event.to_date and event.to_date < now()) or \
@@ -81,7 +81,7 @@ class DoodleListView(EventListView):
 
     def get_queryset(self):
         """In the doodle list we only show events with open votings"""
-        qs = super(ListView, self).get_queryset()  # not the direct parent!
+        qs = super(EventListView, self).get_queryset() # not this views, but event views parent!!!
         qs = qs.filter(state=Event.STATE_VOTING_OPEN)
         return qs
 
