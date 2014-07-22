@@ -415,9 +415,9 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         return obj
     
     def get(self, request, *args, **kwargs):
-        # we wouldn't accept GETs here normally, but since we can't currently post this
-        # from a nested form (thanks frontend!), we also do just that
-        return self.post(request, *args, **kwargs)
+        # we don't accept GETs on this, just POSTs
+        messages.error(request, _('The complete request can only be sent via POST!'))
+        return HttpResponseRedirect(self.get_object().get_absolute_url())
     
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
