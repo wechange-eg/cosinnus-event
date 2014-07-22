@@ -60,7 +60,7 @@ class EventListView(RequireReadMixin, FilterGroupMixin,
         future_events = []
         doodle_count = super(EventListView, self).get_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
 
-        for event in context['object_list']:
+        for event in super(EventListView, self).get_queryset().filter(state=Event.STATE_SCHEDULED):
             if (event.to_date and event.to_date < now()) or \
                         (not event.to_date and event.from_date and event.from_date < now()):
                 past_events.append(event)
@@ -84,13 +84,6 @@ class DoodleListView(EventListView):
         qs = super(EventListView, self).get_queryset() # not this views, but event views parent!!!
         qs = qs.filter(state=Event.STATE_VOTING_OPEN)
         return qs
-
-    def get_context_data(self, **kwargs):
-        context = super(DoodleListView, self).get_context_data(**kwargs)
-        context.update({
-            'return_to': 'doodle',
-        })
-        return context
 
 doodle_list_view = DoodleListView.as_view()
 
@@ -155,13 +148,6 @@ class DoodleFormMixin(EntryFormMixin):
     template_name = "cosinnus_event/doodle_form.html"
     message_success = _('Unscheduled event "%(title)s" was edited successfully.')
     message_error = _('Unscheduled event "%(title)s" could not be edited.')
-
-    def get_context_data(self, **kwargs):
-        context = super(DoodleFormMixin, self).get_context_data(**kwargs)
-        context.update({
-            'return_to': 'doodle',
-        })
-        return context
 
     def get_success_url(self):
         kwargs = {'group': self.group.slug}
@@ -349,7 +335,6 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
             'formset_forms_grouped': formset_forms_grouped,
             'vote_counts_grouped': vote_counts_grouped,
             'votes_user_grouped': dict(votes_user_grouped),
-            'return_to': 'doodle',
         })
         return context
 

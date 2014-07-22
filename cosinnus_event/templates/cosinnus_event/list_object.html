@@ -4,7 +4,7 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left square-date-icon" href="#">
-                  {% if return_to == 'doodle' %}
+                  {% if event.state == 2 %}
                     <i class="fa  fa-calendar"></i>
                   {% else %}
                     <div>{{ event.from_date|date:"d" }}</div>
@@ -14,7 +14,7 @@
                 <a class="pull-right fadedown-clickarea" href="#">
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                {% if return_to == 'doodle' %}
+                {% if event.state == 2 %}
                   {% captureas detail_url %}{% url 'cosinnus:event:doodle-vote' group=group.slug slug=event.slug%}{% endcaptureas %}
                 {% else %}
                   {% captureas detail_url %}{{ event.get_absolute_url }}{% endcaptureas %}
@@ -107,7 +107,7 @@
                 </li>
             </ul>
         </button>
-      {% if return_to == 'doodle' %}
+      {% if event.state == 2 %}
         {% captureas edit_url %}{% url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
       {% else %}
         {% captureas edit_url %}{% url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
@@ -128,7 +128,7 @@
 </div><!-- fadedown -->
 
 {% if user|has_write_access:event %}    
-      {% if return_to == 'doodle' %}
+      {% if event.state == 2 %}
         {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete unscheduled event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
         {% captureas title %}{% trans "Delete unscheduled event" %}{% endcaptureas %}
         {% captureas action %}{% url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}

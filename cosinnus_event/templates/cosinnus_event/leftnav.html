@@ -2,6 +2,11 @@
 
 {% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
 
+{% url 'cosinnus:event:list' group=group.slug as calendar_page %}
+{% url 'cosinnus:event:list_detailed' group=group.slug as event_list_page %}
+{% url 'cosinnus:event:doodle-list' group=group.slug as doodle_list_page %}
+
+
 {% if return_to == "events" %}
 
 	<button type="button" class="btn w100 btn-emphasized" href="{% url 'cosinnus:event:list' group=group.slug %}">
@@ -47,7 +52,9 @@
                     {% endif %}
                 </a>
                 <a class="pull-right" href="#">
-                    <i class="fa fa-caret-right"></i>
+                    {% if request.path == calendar_page %}
+	                    <i class="fa fa-caret-right"></i>
+                    {% endif %}
                 </a>
                 <div class="media-body">
                     {% trans "Kalender" %}
@@ -67,7 +74,9 @@
                     {% endif %}
                 </a>
                 <a class="pull-right" href="#">
-                    <i class="fa fa-caret-right"></i>
+                    {% if request.path == event_list_page %}
+	                    <i class="fa fa-caret-right"></i>
+                    {% endif %}
                 </a>
                 <div class="media-body">
                     {% trans "List" %}
@@ -87,8 +96,10 @@
                     {% endif %}
 	            </a>
 	            <a class="pull-right" href="#">
-                    <i class="fa fa-caret-right"></i>
-              </a>
+	               {% if request.path == doodle_list_page %}
+	                    <i class="fa fa-caret-right"></i>
+                    {% endif %}
+                </a>
 	            <div class="media-body">
 	                {% trans "Doodle" %}
 	            </div>
