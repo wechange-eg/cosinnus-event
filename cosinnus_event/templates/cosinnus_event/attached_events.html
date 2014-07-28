@@ -11,7 +11,7 @@
                         <div>{{ event.from_date|date:"M" }}</div>
                     </a>
                     <div class="media-body">
-                        <a>{{ event.title|truncatechars:25 }}</a>
+                        <strong><a>{{ event.title|truncatechars:25 }}</a></strong>
                         <div class="group-annotation">
 	                        <i class="fa fa-users"></i>
 	                        {{ event.group.name }}
