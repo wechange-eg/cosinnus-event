@@ -52,10 +52,6 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
         qs = qs.filter(state=Event.STATE_SCHEDULED)
         return qs
     
-    def get(self, request, *args, **kwargs):
-        self.sort_fields_aliases = self.model.SORT_FIELDS_ALIASES
-        return super(EventListView, self).get(request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         past_events = []
