@@ -14,7 +14,7 @@ from django.views.generic.list import ListView
 from django.utils.timezone import now
 
 from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
-    UpdateWithInlinesView, SortableListMixin)
+    UpdateWithInlinesView)
 
 from cosinnus.views.export import CSVExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
@@ -29,6 +29,8 @@ from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
 from cosinnus_event.models import Event, Suggestion, Vote
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
+from cosinnus.views.mixins.filters import CosinnusFilterMixin
+from cosinnus_event.filters import EventFilter
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -39,10 +41,10 @@ class EventIndexView(RequireReadMixin, RedirectView):
 index_view = EventIndexView.as_view()
 
 
-class EventListView(RequireReadMixin, FilterGroupMixin,
-                    SortableListMixin, ListView):
+class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, ListView):
 
     model = Event
+    filterset_class = EventFilter
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """

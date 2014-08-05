@@ -22,6 +22,8 @@
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
 	
+    {% include 'cosinnus/common/filter_controls.html' %}        
+	
   {% if request.user and request.user.is_authenticated %} 
   <form method="GET" action="{% url 'cosinnus:event:doodle-add' group=group.slug %}">
     <div type="button" class="btn btn-default w100 large-space">
