@@ -15,6 +15,11 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# The Cosinnus App Name
+msgctxt "the_app"
+msgid "event"
+msgstr "Veranstaltungen"
+
 #: .\cosinnus_app.py:12 .\models.py:100
 #: .\templates\__old__cosinnus_event\event_list.html.py:5
 #: .\templates\__old__cosinnus_event\event_list.html.py:10
@@ -593,10 +598,6 @@ msgstr "(Keine Beschreibung erstellt)"
 msgid "There are no upcoming events"
 msgstr "Keine aktuellen Veranstaltungen."
 
-# The Cosinnus App Name
-#~ msgctxt "the_app"
-#~ msgid "event"
-#~ msgstr "Veranstaltungen"
 
 #~ msgid "Automatically selected the only given date suggestion as event date."
 #~ msgstr ""
