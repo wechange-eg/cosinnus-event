@@ -23,6 +23,9 @@
                     <i class="fa fa-chain"></i>
                 </a>
                 <div class="media-body">
+                    {% with creator=event.creator %}
+                        <span class="annotation">von <a href="{{ creator.cosinnus_profile.get_absolute_url }}" >{{ creator|full_name }}</a></span>
+                    {% endwith %}
                     <a href="{{ detail_url }}">
                         {{ event.title }}
                     </a>
