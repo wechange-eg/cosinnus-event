@@ -27,14 +27,14 @@
 
         <div class="doodle-vote-table">
             {% if event.state == 1 %}
-                <p>{% trans "This event has already been scheduled. Voting is closed." %}</p>
+                {% include 'cosinnus/common/empty_button.html' with message="This event has already been scheduled. Voting is closed." %}
             {% elif event.state == 3 %}
-                <p>{% trans "This event has been canceled. Voting is closed." %}</p>
+                {% include 'cosinnus/common/empty_button.html' with message="This event has been canceled. Voting is closed." %}
             {% elif suggestions_grouped %}
 	            <!-- width = n*54-4 -->
 	            {% if not votes_user_grouped %}
                     <div>
-                        <p>{% trans "(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}</p>
+                        {% include 'cosinnus/common/empty_button.html' with message="(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}
                     </div>
 	            {% endif %}
 	            
@@ -168,7 +168,7 @@
 	            
             {% else %}
                 {% comment %} No suggestions were added {% endcomment %}
-                <p>{% trans "Für diese Terminumfrage wurden noch keine Terminvorschläge erstellt!" %}</p>
+                {% include 'cosinnus/common/empty_button.html' with message="Für diese Terminumfrage wurden noch keine Terminvorschläge erstellt!" %}
             {% endif %}
         </div><!-- table -->
 
