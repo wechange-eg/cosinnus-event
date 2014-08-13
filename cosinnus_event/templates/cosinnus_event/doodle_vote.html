@@ -23,7 +23,7 @@
     <!-- a box with semi transparent background -->
 	<div class="content-box">
        
-        {% include "cosinnus_event/single_event.html" with event=event hide_control_buttons="True" %}
+        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" %}
 
         <div class="doodle-vote-table">
             {% if event.state == 1 %}
