@@ -1,24 +1,28 @@
+{% load i18n cosinnus_tags %}
+
 {% with event=object %}
     <div class="app-calendar">
-        <button type="button" class="btn btn-emphasized dashboard-appwidget-contentline-extra-indented" href="{{ event.get_absolute_url }}">
-            <ul class="media-list fine-space">
+        <div class="btn btn-emphasized w100" >
+            <ul class="media-list regular-space">
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <i class="fa fa-calendar"></i>
-                    </a>
-                    <a class="pull-right square-date-icon btn-extra-emphasized" href="#">
+                    <a class="pull-left square-date-icon" href="#">
                         <div>{{ event.from_date|date:"d" }}</div>
                         <div>{{ event.from_date|date:"M" }}</div>
                     </a>
-                    <div class="media-body">
-                        <strong><a>{{ event.title|truncatechars:25 }}</a></strong>
+                    <div class="media-body no-vertical-padding ">
+                        {% with creator=event.creator %}
+                            <span class="annotation">von <a href="{{ creator.cosinnus_profile.get_absolute_url }}" >{{ creator|full_name }}</a></span>
+                        {% endwith %}
+                        <strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong>
                         <div class="group-annotation">
-	                        <i class="fa fa-users"></i>
-	                        {{ event.group.name }}
+                            <a href="{{ event.group.get_absolute_url }}">
+                                <i class="fa fa-users"></i>
+                                {{ event.group.name }}
+                            </a>
                         </div>
                     </div>
                 </li>
             </ul>
-        </button><!-- btn -->
+        </div><!-- btn -->
     </div>
 {% endwith %}
