@@ -10,9 +10,12 @@
                         <div>{{ event.from_date|date:"M" }}</div>
                     </a>
                     <div class="media-body no-vertical-padding ">
-                        {% with creator=event.creator %}
-                            <span class="annotation">von <a href="{{ creator.cosinnus_profile.get_absolute_url }}" >{{ creator|full_name }}</a></span>
-                        {% endwith %}
+                        <span class="annotation">
+	                        {% with creator=event.creator %}
+	                            von <strong><a href="{{ creator.cosinnus_profile.get_absolute_url }}">{{ creator|full_name }}</a></strong>
+	                        {% endwith %}
+	                        <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
+	                    </span>
                         <strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong>
                         <div class="group-annotation">
                             <a href="{{ event.group.get_absolute_url }}">
