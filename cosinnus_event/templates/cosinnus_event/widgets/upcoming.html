@@ -14,8 +14,10 @@
                     <div class="media-body">
                         <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
                         <div class="group-annotation">
-                            <i class="fa fa-users"></i>
-                            {{ event.group.name }}
+                            <a href="{{ event.group.get_absolute_url }}">
+	                            <i class="fa fa-users"></i>
+	                            {{ event.group.name }}
+	                        </a>
                         </div>
 
                     </div>
