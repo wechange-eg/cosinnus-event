@@ -119,6 +119,8 @@ class Event(BaseTaggableObjectModel):
 
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.slug}
+        if self.state == Event.STATE_VOTING_OPEN:
+            return reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
         return reverse('cosinnus:event:event-detail', kwargs=kwargs)
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
