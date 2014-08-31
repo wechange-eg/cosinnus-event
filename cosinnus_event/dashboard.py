@@ -13,6 +13,11 @@ from cosinnus_event.models import Event, upcoming_event_filter
 class UpcomingEventsForm(DashboardWidgetForm):
     amount = forms.IntegerField(label="Amount", initial=5, min_value=0,
         help_text="0 means unlimited", required=False)
+    template_name = 'cosinnus_event/widgets/event_widget_form.html'
+    
+    def __init__(self, *args, **kwargs):
+        kwargs.pop('group', None)
+        super(UpcomingEventsForm, self).__init__(*args, **kwargs)
 
 
 class UpcomingEvents(DashboardWidget):
@@ -23,7 +28,9 @@ class UpcomingEvents(DashboardWidget):
     title = _('Upcoming Events')
     user_model_attr = None  # No filtering on user page
     widget_name = 'upcoming'
-
+    widget_template_name = 'cosinnus_event/widgets/event_widget.html'
+    template_name = 'cosinnus_event/widgets/upcoming.html'
+    
     def get_data(self, offset=0):
         """ Returns a tuple (data, rows_returned, has_more) of the rendered data and how many items were returned.
             if has_more == False, the receiving widget will assume no further data can be loaded.
@@ -39,7 +46,7 @@ class UpcomingEvents(DashboardWidget):
             'no_data': _('No upcoming events'),
             'group': self.config.group,
         }
-        return (render_to_string('cosinnus_event/widgets/upcoming.html', data), len(qs), len(qs) >= count)
+        return (render_to_string(self.template_name, data), len(qs), len(qs) >= count)
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
