@@ -1,4 +1,11 @@
 {% load i18n %}
+
+
+<div class="content-box">
+    <div class="small-calendar w100 regular-space"></div>
+</div><!-- content-box -->
+
+
 {% if events %}
     {% for event in events %}
         <div type="button" class="btn btn-emphasized dashboard-appwidget-contentline fine-space">
@@ -42,3 +49,25 @@
         </ul>
     </div><!-- btn -->
 {% endif %}
+
+
+<script type="text/javascript">
+    var cosinnus_calendarEvents = [
+        {% for event in events %}
+            {% if event.from_date %}
+            {
+                title: '{{ event.title }}',
+                start: moment("{{ event.from_date|date:"c"}}"),
+                {% if event.to_date %}
+                end: moment("{{ event.to_date|date:"c"}}"),
+                {% endif %}
+                url: '{% url "cosinnus:event:event-detail" group=group.slug slug=event.slug %}'
+            },
+            {% endif %}
+        
+        {% endfor %}
+    
+    ];
+
+    $.cosinnus.fullcalendar();
+</script>
