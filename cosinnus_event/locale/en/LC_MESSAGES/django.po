@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-31 18:11+0200\n"
+"POT-Creation-Date: 2014-09-01 12:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,7 @@ msgstr ""
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
 #: .\templates\cosinnus_event\event_list_detailed.html.py:5
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:20
 msgid "Events"
 msgstr ""
 
@@ -31,11 +32,11 @@ msgctxt "the_app"
 msgid "event"
 msgstr ""
 
-#: .\dashboard.py:23
+#: .\dashboard.py:28
 msgid "Upcoming Events"
 msgstr ""
 
-#: .\dashboard.py:39
+#: .\dashboard.py:46
 msgid "No upcoming events"
 msgstr ""
 
@@ -578,6 +579,32 @@ msgstr ""
 msgid "(No description set)"
 msgstr ""
 
-#: .\templates\cosinnus_event\widgets\upcoming.html.py:39
+#: .\templates\cosinnus_event\widgets\event_widget.html.py:12
+msgid "Mehr"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:5
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:13
+msgid "Widget title"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:29
+msgid "Upcoming events"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:37
+msgid "Widget Icon (FA)"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:45
+msgid "Font-awesome Widget Icon"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:52
+#: .\templates\cosinnus_event\widgets\event_widget_form.html.py:60
+msgid "Link label"
+msgstr ""
+
+#: .\templates\cosinnus_event\widgets\upcoming.html.py:46
 msgid "There are no upcoming events"
 msgstr ""
