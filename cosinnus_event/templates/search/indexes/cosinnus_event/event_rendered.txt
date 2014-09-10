@@ -1,18 +1,1 @@
-<div class="app-calendar">
-  <div class="btn btn-emphasized w100 regular-space">
-    <ul class="media-list">
-      <li class="media">
-        <a class="pull-left" href="{{ object.get_absolute_url }}">
-          <i class="fa fa-calendar"></i>
-        </a>
-        <div class="media-body">
-          <span class="annotation">{{ object.group.name }}</span>
-          <a href="{{ object.get_absolute_url }}">
-            <strong><span class="moment-data-date" data-date="{{ object.from_date|date:"c" }}"></span>:</strong>
-            {{ object.title }}
-          </a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
+{% include 'cosinnus_event/single_event.html' with object=event %}
