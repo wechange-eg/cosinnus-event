@@ -36,17 +36,19 @@ class UpcomingEvents(DashboardWidget):
             if has_more == False, the receiving widget will assume no further data can be loaded.
          """
         count = int(self.config['amount'])
-        qs = self.get_queryset().select_related('group').all()
+        all_upcoming_events = self.get_queryset().select_related('group').all()
+        events = all_upcoming_events
+        
         if count != 0:
-            qs = qs[offset:offset+count]
-            
+            events = events.all()[offset:offset+count]
         
         data = {
-            'events': qs,
+            'events': events,
+            'all_upcoming_events': all_upcoming_events,
             'no_data': _('No upcoming events'),
             'group': self.config.group,
         }
-        return (render_to_string(self.template_name, data), len(qs), len(qs) >= count)
+        return (render_to_string(self.template_name, data), len(events), len(events) >= count)
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
