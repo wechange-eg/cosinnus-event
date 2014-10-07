@@ -4,8 +4,7 @@ from __future__ import unicode_literals
 from collections import defaultdict
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
@@ -27,7 +26,6 @@ from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
     EventNoFieldForm
 from cosinnus_event.models import Event, Suggestion, Vote
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
@@ -126,7 +124,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
             urlname = 'cosinnus:event:event-detail'
         else:
             urlname = 'cosinnus:event:list'
-        return reverse(urlname, kwargs=kwargs)
+        return group_aware_reverse(urlname, kwargs=kwargs)
 
     def forms_valid(self, form, inlines):
         ret = super(EntryFormMixin, self).forms_valid(form, inlines)
@@ -156,7 +154,7 @@ class DoodleFormMixin(EntryFormMixin):
             urlname = 'cosinnus:event:doodle-vote'
         else:
             urlname = 'cosinnus:event:doodle-list'
-        return reverse(urlname, kwargs=kwargs)
+        return group_aware_reverse(urlname, kwargs=kwargs)
 
 
 
