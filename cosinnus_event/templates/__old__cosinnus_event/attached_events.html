@@ -1,6 +1,0 @@
-{% for event in events %}
-<a class="app-calendar-attachment" href="{% url 'cosinnus:event:entry-detail' group=group.slug slug=event.slug %}">
-    <i class="fa fa-calendar"></i> 
-    {{ event.title|truncatechars:25 }}
-</a>&nbsp;
-{% endfor %}
