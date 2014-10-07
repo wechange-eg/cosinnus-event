@@ -20,6 +20,7 @@ from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
 from django.utils.functional import cached_property
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
+from cosinnus.utils.urls import group_aware_reverse
 
 
 def localize(value, format):
@@ -120,8 +121,8 @@ class Event(BaseTaggableObjectModel):
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN:
-            return reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
-        return reverse('cosinnus:event:event-detail', kwargs=kwargs)
+            return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
+        return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:

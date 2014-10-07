@@ -31,12 +31,13 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
+from cosinnus.utils.urls import group_aware_reverse
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
 
     def get_redirect_url(self, **kwargs):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 index_view = EventIndexView.as_view()
 
@@ -234,7 +235,7 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
 
 entry_delete_view = EntryDeleteView.as_view()
 
@@ -244,7 +245,7 @@ class DoodleDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Unscheduled event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return reverse('cosinnus:event:doodle-list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:doodle-list', kwargs={'group': self.group.slug})
 
 doodle_delete_view = DoodleDeleteView.as_view()
 
@@ -360,7 +361,7 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
 
     def get_success_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.object.slug}
-        return reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
+        return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
 
     def formset_valid(self, formset):
         for form in formset:
