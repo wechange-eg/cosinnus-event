@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-01 18:17+0200\n"
+"POT-Creation-Date: 2014-10-13 13:29+0200\n"
 "PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -15,9 +15,7 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\cosinnus_app.py:13 .\models.py:100
-#: .\templates\__old__cosinnus_event\event_list.html.py:5
-#: .\templates\__old__cosinnus_event\event_list.html.py:10
+#: .\cosinnus_app.py:13 .\models.py:101
 #: .\templates\cosinnus_event\base.html.py:6
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
@@ -37,7 +35,7 @@ msgstr "Veranstaltungen"
 msgid "Upcoming Events"
 msgstr "Aktuelle Termine"
 
-#: .\dashboard.py:46
+#: .\dashboard.py:48
 msgid "No upcoming events"
 msgstr "Keine aktuellen Veranstaltungen"
 
@@ -53,101 +51,87 @@ msgstr "Bald stattfindend"
 msgid "Newest Created"
 msgstr "Zuletzt erstellt"
 
-#: .\filters.py:22 .\templates\__old__cosinnus_event\event_list.html.py:54
-#: .\templates\__old__cosinnus_event\event_list.html.py:89
+#: .\filters.py:22
 msgid "Title"
 msgstr "Titel"
 
-#: .\models.py:48
+#: .\models.py:49
 msgid "Scheduled"
 msgstr "Geplant"
 
-#: .\models.py:49
+#: .\models.py:50
 msgid "Voting open"
 msgstr "Umfrage"
 
-#: .\models.py:50
+#: .\models.py:51
 msgid "Canceled"
 msgstr "Abgebrochen"
 
-#: .\models.py:54 .\models.py:166
-#: .\templates\__old__cosinnus_event\event_detail.html.py:26
-#: .\templates\__old__cosinnus_event\event_list.html.py:55
-#: .\templates\__old__cosinnus_event\event_list.html.py:90
+#: .\models.py:55 .\models.py:166
 msgid "Start"
 msgstr "Start"
 
-#: .\models.py:57 .\models.py:169
-#: .\templates\__old__cosinnus_event\event_detail.html.py:29
-#: .\templates\__old__cosinnus_event\event_list.html.py:56
-#: .\templates\__old__cosinnus_event\event_list.html.py:91
+#: .\models.py:58 .\models.py:169
 msgid "End"
 msgstr "Ende"
 
-#: .\models.py:60 .\templates\__old__cosinnus_event\event_detail.html.py:33
-#: .\templates\__old__cosinnus_event\event_list.html.py:58
-#: .\templates\__old__cosinnus_event\event_list.html.py:93
+#: .\models.py:61
 msgid "State"
 msgstr "Status"
 
-#: .\models.py:66 .\templates\__old__cosinnus_event\event_detail.html.py:36
+#: .\models.py:67
 msgid "Note"
 msgstr "Beschreibung"
 
-#: .\models.py:70
+#: .\models.py:71
 msgid "Event date"
 msgstr "Veranstaltungsdatum"
 
-#: .\models.py:77 .\templates\__old__cosinnus_event\event_detail.html.py:46
+#: .\models.py:78
 msgid "Location"
 msgstr "Ort"
 
-#: .\models.py:79 .\templates\__old__cosinnus_event\event_detail.html.py:53
+#: .\models.py:80
 msgid "Street"
 msgstr "Straße"
 
-#: .\models.py:81 .\templates\__old__cosinnus_event\event_detail.html.py:56
+#: .\models.py:82
 msgid "ZIP code"
 msgstr "PLZ"
 
-#: .\models.py:83 .\templates\__old__cosinnus_event\event_detail.html.py:59
-#: .\templates\__old__cosinnus_event\event_list.html.py:57
-#: .\templates\__old__cosinnus_event\event_list.html.py:92
+#: .\models.py:84
 msgid "City"
 msgstr "Stadt"
 
-#: .\models.py:85
+#: .\models.py:86
 msgid "Is public (on website)"
 msgstr "Öffentlich anzeigen"
 
-#: .\models.py:88 .\templates\__old__cosinnus_event\event_detail.html.py:40
-#: .\templates\__old__cosinnus_event\event_list.html.py:53
-#: .\templates\__old__cosinnus_event\event_list.html.py:88
+#: .\models.py:89
 msgid "Image"
 msgstr "Bild"
 
-#: .\models.py:93
+#: .\models.py:94
 msgid "URL"
 msgstr "URL"
 
-#: .\models.py:99 .\models.py:173
-#: .\templates\__old__cosinnus_event\base.html.py:6
+#: .\models.py:100 .\models.py:173
 #: .\templates\cosinnus_event\event_detail.html.py:5
 #: .\templates\cosinnus_event\event_detail.html.py:10
 msgid "Event"
 msgstr "Veranstaltung"
 
-#: .\models.py:105
+#: .\models.py:106
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
 
-#: .\models.py:111
+#: .\models.py:112
 #, python-format
 msgid "%(event)s (%(from)s - %(to)s)"
 msgstr "%(event)s (%(from)s - %(to)s)"
 
-#: .\models.py:117
+#: .\models.py:118
 #, python-format
 msgid "%(event)s (pending)"
 msgstr "%(event)s (Termin in der Schwebe)"
@@ -161,8 +145,7 @@ msgstr "Stimmen"
 msgid "Suggestion"
 msgstr "Terminvorschlag"
 
-#: .\models.py:185 .\templates\__old__cosinnus_event\event_detail.html.py:66
-#: .\templates\__old__cosinnus_event\event_form.html.py:55
+#: .\models.py:185
 msgid "Suggestions"
 msgstr "Terminvorschläge"
 
@@ -197,138 +180,104 @@ msgctxt "the subject"
 msgid "Vote"
 msgstr "Stimme"
 
-#: .\views.py:104
+#: .\views.py:103
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
 msgstr "Veranstaltung \"%(title)s\" wurde erfolgreich bearbeitet."
 
-#: .\views.py:105
+#: .\views.py:104
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht bearbeitet werden."
 
-#: .\views.py:147
+#: .\views.py:146
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
 msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich bearbeitet."
 
-#: .\views.py:148
+#: .\views.py:147
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
 msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht bearbeitet werden."
 
-#: .\views.py:163
+#: .\views.py:162
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
 msgstr "Veranstaltung \"%(title)s\" wurde erfolgreich hinzugefügt."
 
-#: .\views.py:164
+#: .\views.py:163
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht hinzugefügt werden."
 
-#: .\views.py:178
+#: .\views.py:177
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
 msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich hinzugefügt."
 
-#: .\views.py:179
+#: .\views.py:178
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht hinzugefügt werden."
 
-#: .\views.py:191 .\views.py:220
+#: .\views.py:190 .\views.py:219
 msgid "You should define at least one date suggestion."
 msgstr "Es sollte mindestens ein Terminvorschlag eingegeben werden."
 
-#: .\views.py:233
+#: .\views.py:232
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr "Veranstaltung \"%(title)s\" wurde erfolgreich gelöscht."
 
-#: .\views.py:234
+#: .\views.py:233
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht gelöscht werden."
 
-#: .\views.py:243
+#: .\views.py:242
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich gelöscht."
 
-#: .\views.py:244
+#: .\views.py:243
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht gelöscht werden."
 
-#: .\views.py:271
+#: .\views.py:270
 msgid "Your votes were saved successfully."
 msgstr "Ihre Abstimmung wurde erfolgreich gespeichert."
 
-#: .\views.py:272
+#: .\views.py:271
 msgid "Your votes could not be saved."
 msgstr "Ihre Abstimmung konnte nicht gespeichert werden."
 
-#: .\views.py:281 .\views.py:410
+#: .\views.py:280 .\views.py:409
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr ""
 "Die Terminfindung für diese Aufgabe ist bereits abgeschlossen. Du kannst "
 "deine Sitmme nicht mehr abgeben."
 
-#: .\views.py:402
+#: .\views.py:401
 msgid "The complete request can only be sent via POST!"
 msgstr ""
 
-#: .\views.py:413
+#: .\views.py:412
 msgid "Event cannot be completed: No date was supplied."
 msgstr ""
 "Die Terminfindung konnte nicht abgeschlossen werden: Es wurde kein Zieldatum "
 "übermittelt."
 
-#: .\views.py:423
+#: .\views.py:422
 msgid "The event was created successfully at the specified date."
 msgstr ""
 "Die Veranstaltung wurde erfolgreich an dem angegebenen Termin erstellt."
 
-#: .\templates\__old__cosinnus_event\event_confirm_delete.html.py:6
-#: .\templates\__old__cosinnus_event\event_confirm_delete.html.py:10
-#: .\templates\__old__cosinnus_event\event_confirm_delete.html.py:22
-#: .\templates\__old__cosinnus_event\event_detail.html.py:94
-#: .\templates\__old__cosinnus_event\event_list_object.html.py:32
-#: .\templates\cosinnus_event\doodle_vote.html.py:203
-msgid "Delete"
-msgstr "Löschen"
+#: .\templates\cosinnus_event\doodle_form.html.py:6
+#: .\templates\cosinnus_event\doodle_form.html.py:17
+msgid "Add unscheduled event"
+msgstr "Terminvorschlag hinzufügen"
 
-#: .\templates\__old__cosinnus_event\event_confirm_delete.html.py:18
-msgid "Are you sure to remove this event with all its suggestions and votes?"
-msgstr ""
-"Sind Sie sicher, dass Sie diese Veranstaltung mit den dazugehörigen "
-"Vorschlägen und Abstimmungen löschen möchten?"
-
-#: .\templates\__old__cosinnus_event\event_confirm_delete.html.py:25
-#: .\templates\__old__cosinnus_event\event_form.html.py:94
-#: .\templates\__old__cosinnus_event\vote_form.html.py:44
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: .\templates\__old__cosinnus_event\event_detail.html.py:31
-msgid "Created by"
-msgstr "Erstellt durch"
-
-#: .\templates\__old__cosinnus_event\event_detail.html.py:81
-msgid "No votes for this suggestion."
-msgstr "Es gibt keine Stimmen für diesen Vorschlag."
-
-#: .\templates\__old__cosinnus_event\event_detail.html.py:91
-#: .\templates\__old__cosinnus_event\event_list.html.py:60
-#: .\templates\__old__cosinnus_event\event_list.html.py:95
-msgid "Actions"
-msgstr "Aktionen"
-
-#: .\templates\__old__cosinnus_event\event_detail.html.py:93
-#: .\templates\__old__cosinnus_event\event_form.html.py:10
-#: .\templates\__old__cosinnus_event\event_form.html.py:28
-#: .\templates\__old__cosinnus_event\event_list_object.html.py:31
 #: .\templates\cosinnus_event\doodle_form.html.py:8
 #: .\templates\cosinnus_event\doodle_form.html.py:19
 #: .\templates\cosinnus_event\doodle_vote.html.py:223
@@ -337,79 +286,6 @@ msgstr "Aktionen"
 #: .\templates\cosinnus_event\event_form.html.py:142
 msgid "Edit"
 msgstr "Bearbeiten"
-
-#: .\templates\__old__cosinnus_event\event_detail.html.py:96
-#: .\templates\__old__cosinnus_event\event_list_object.html.py:34
-#: .\templates\__old__cosinnus_event\vote_form.html.py:5
-#: .\templates\__old__cosinnus_event\vote_form.html.py:10
-#: .\templates\__old__cosinnus_event\vote_form.html.py:43
-msgctxt "the verb"
-msgid "Vote"
-msgstr "Abstimmen"
-
-#: .\templates\__old__cosinnus_event\event_form.html.py:8
-#: .\templates\__old__cosinnus_event\event_form.html.py:26
-#: .\templates\cosinnus_event\event_form.html.py:6
-#: .\templates\cosinnus_event\event_form.html.py:17
-msgid "Add event"
-msgstr "Veranstaltung hinzufügen"
-
-#: .\templates\__old__cosinnus_event\event_form.html.py:90
-#: .\templates\__old__cosinnus_event\event_list.html.py:26
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: .\templates\__old__cosinnus_event\event_form.html.py:92
-msgctxt "sinn"
-msgid "Save"
-msgstr "Speichern"
-
-#: .\templates\__old__cosinnus_event\event_form.html.py:118
-msgid "Add suggestion"
-msgstr "Terminvorschlag hinzufügen"
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:21
-msgid "No tags available."
-msgstr "Keine Schlagwörter vorhanden."
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:29
-msgctxt "the verb"
-msgid "Export"
-msgstr "Exportieren"
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:36
-msgid "There are no events."
-msgstr "Es gibt keine Veranstaltungen."
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:44
-msgid "Future events"
-msgstr "Aktuelle Veranstaltungen"
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:59
-#: .\templates\__old__cosinnus_event\event_list.html.py:94
-msgid "Tags"
-msgstr "Schlagwörter"
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:68
-msgid "There are no future events."
-msgstr "Es gibt keine aktuelle Veranstaltungen."
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:79
-msgid "Past events"
-msgstr "Vergangene Veranstaltungen"
-
-#: .\templates\__old__cosinnus_event\event_list.html.py:102
-msgid "There are no past events."
-msgstr "Es gibt keine vergangene Veranstaltungen."
-
-#: .\templates\__old__cosinnus_event\event_list_object.html.py:27
-msgid "Show"
-msgstr "Anzeigen"
-
-#: .\templates\cosinnus_event\doodle_form.html.py:6
-#: .\templates\cosinnus_event\doodle_form.html.py:17
-msgid "Add unscheduled event"
-msgstr "Terminvorschlag hinzufügen"
 
 #: .\templates\cosinnus_event\doodle_form.html.py:46
 #: .\templates\cosinnus_event\event_form.html.py:44
@@ -485,6 +361,10 @@ msgstr ""
 msgid "Den Termin auf %(suggestion)s festlegen."
 msgstr ""
 
+#: .\templates\cosinnus_event\doodle_vote.html.py:203
+msgid "Delete"
+msgstr "Löschen"
+
 #: .\templates\cosinnus_event\doodle_vote.html.py:209
 #: .\templates\cosinnus_event\list_object.html.py:135
 #, python-format
@@ -495,6 +375,11 @@ msgstr "Möchtest du wirklich die Terminfindung „%(title)s“ löschen?"
 #: .\templates\cosinnus_event\list_object.html.py:136
 msgid "Delete unscheduled event"
 msgstr "Terminfindung löschen"
+
+#: .\templates\cosinnus_event\event_form.html.py:6
+#: .\templates\cosinnus_event\event_form.html.py:17
+msgid "Add event"
+msgstr "Veranstaltung hinzufügen"
 
 #: .\templates\cosinnus_event\event_form.html.py:55
 msgid "Von"
@@ -591,7 +476,7 @@ msgstr "(Abgesagt!)"
 msgid "(No description set)"
 msgstr "(Keine Beschreibung erstellt)"
 
-#: .\templates\cosinnus_event\widgets\event_widget.html.py:22
+#: .\templates\cosinnus_event\widgets\event_widget.html.py:31
 msgid "Mehr"
 msgstr ""
 
@@ -599,9 +484,69 @@ msgstr ""
 msgid "Upcoming events"
 msgstr "Aktuelle Termine"
 
-#: .\templates\cosinnus_event\widgets\upcoming.html.py:46
+#: .\templates\cosinnus_event\widgets\upcoming.html.py:40
 msgid "There are no upcoming events"
 msgstr "Keine aktuellen Veranstaltungen."
+
+#~ msgid ""
+#~ "Are you sure to remove this event with all its suggestions and votes?"
+#~ msgstr ""
+#~ "Sind Sie sicher, dass Sie diese Veranstaltung mit den dazugehörigen "
+#~ "Vorschlägen und Abstimmungen löschen möchten?"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "Created by"
+#~ msgstr "Erstellt durch"
+
+#~ msgid "No votes for this suggestion."
+#~ msgstr "Es gibt keine Stimmen für diesen Vorschlag."
+
+#~ msgid "Actions"
+#~ msgstr "Aktionen"
+
+#~ msgctxt "the verb"
+#~ msgid "Vote"
+#~ msgstr "Abstimmen"
+
+#~ msgid "Add"
+#~ msgstr "Hinzufügen"
+
+#~ msgctxt "sinn"
+#~ msgid "Save"
+#~ msgstr "Speichern"
+
+#~ msgid "Add suggestion"
+#~ msgstr "Terminvorschlag hinzufügen"
+
+#~ msgid "No tags available."
+#~ msgstr "Keine Schlagwörter vorhanden."
+
+#~ msgctxt "the verb"
+#~ msgid "Export"
+#~ msgstr "Exportieren"
+
+#~ msgid "There are no events."
+#~ msgstr "Es gibt keine Veranstaltungen."
+
+#~ msgid "Future events"
+#~ msgstr "Aktuelle Veranstaltungen"
+
+#~ msgid "Tags"
+#~ msgstr "Schlagwörter"
+
+#~ msgid "There are no future events."
+#~ msgstr "Es gibt keine aktuelle Veranstaltungen."
+
+#~ msgid "Past events"
+#~ msgstr "Vergangene Veranstaltungen"
+
+#~ msgid "There are no past events."
+#~ msgstr "Es gibt keine vergangene Veranstaltungen."
+
+#~ msgid "Show"
+#~ msgstr "Anzeigen"
 
 #~ msgid "Widget title"
 #~ msgstr "Widget-Titel"
