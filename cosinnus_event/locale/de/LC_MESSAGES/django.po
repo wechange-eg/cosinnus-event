@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-13 13:29+0200\n"
+"POT-Creation-Date: 2014-10-13 17:15+0200\n"
 "PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -425,8 +425,9 @@ msgid "Planned Events"
 msgstr "Geplante Veranstaltungen"
 
 #: .\templates\cosinnus_event\event_list_standalone.html.py:23
-msgid "There are no news posts yet"
-msgstr "Es gibt keine anstehenden Veranstaltungen."
+#: .\templates\cosinnus_event\widgets\upcoming.html.py:40
+msgid "There are no upcoming events"
+msgstr "Keine aktuellen Veranstaltungen."
 
 #: .\templates\cosinnus_event\leftnav.html.py:20
 msgid "Zurück zu Termine"
@@ -484,9 +485,8 @@ msgstr ""
 msgid "Upcoming events"
 msgstr "Aktuelle Termine"
 
-#: .\templates\cosinnus_event\widgets\upcoming.html.py:40
-msgid "There are no upcoming events"
-msgstr "Keine aktuellen Veranstaltungen."
+#~ msgid "There are no upcoming events posts yet"
+#~ msgstr "Es gibt keine anstehenden Veranstaltungen."
 
 #~ msgid ""
 #~ "Are you sure to remove this event with all its suggestions and votes?"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-13 13:29+0200\n"
+"POT-Creation-Date: 2014-10-13 17:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -420,7 +420,8 @@ msgid "Planned Events"
 msgstr ""
 
 #: .\templates\cosinnus_event\event_list_standalone.html.py:23
-msgid "There are no news posts yet"
+#: .\templates\cosinnus_event\widgets\upcoming.html.py:40
+msgid "There are no upcoming events"
 msgstr ""
 
 #: .\templates\cosinnus_event\leftnav.html.py:20
@@ -477,8 +478,4 @@ msgstr ""
 
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
-msgstr ""
-
-#: .\templates\cosinnus_event\widgets\upcoming.html.py:40
-msgid "There are no upcoming events"
 msgstr ""

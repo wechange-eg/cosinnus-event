@@ -20,8 +20,8 @@
             {% for event in object_list %}
                 {% include 'cosinnus_event/single_event.html' with object=event %}
             {% empty %}
-                <!-- {% trans "There are no news posts yet" %} -->
-                {% include 'cosinnus/common/empty_button.html' with message="There are no news posts yet" %}
+                <!-- {% trans "There are no upcoming events" %} -->
+                {% include 'cosinnus/common/empty_button.html' with message="There are no upcoming events" %}
             {% endfor %}
          </div>
     </div><!-- right column -->
