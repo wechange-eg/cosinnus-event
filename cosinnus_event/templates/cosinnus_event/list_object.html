@@ -15,7 +15,7 @@
                     <i class="fa fa-chevron-down"></i>
                 </a>
                 {% if event.state == 2 %}
-                  {% captureas detail_url %}{% url 'cosinnus:event:doodle-vote' group=group.slug slug=event.slug%}{% endcaptureas %}
+                  {% captureas detail_url %}{% group_url 'cosinnus:event:doodle-vote' group=group.slug slug=event.slug%}{% endcaptureas %}
                 {% else %}
                   {% captureas detail_url %}{{ event.get_absolute_url }}{% endcaptureas %}
                 {% endif %}
@@ -134,11 +134,11 @@
       {% if event.state == 2 %}
         {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete unscheduled event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
         {% captureas title %}{% trans "Delete unscheduled event" %}{% endcaptureas %}
-        {% captureas action %}{% url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
+        {% captureas action %}{% group_url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
       {% else %}
         {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
         {% captureas title %}{% trans "Delete event" %}{% endcaptureas %}
-        {% captureas action %}{% url 'cosinnus:event:event-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
+        {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
       {% endif %}
 
     {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}

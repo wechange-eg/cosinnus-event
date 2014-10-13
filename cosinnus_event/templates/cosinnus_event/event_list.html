@@ -44,7 +44,7 @@
         </script>
         
         {% if request.user and request.user.is_authenticated %} 
-        <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
+        <form method="GET" action="{% group_url 'cosinnus:event:event-add' group=group.slug %}">
 	        <div type="button" class="btn btn-default w100 large-space">
 	            <ul class="media-list">
 	                <li class="media">
@@ -111,7 +111,7 @@
 	                        </ul>
 	                    </button>
 	                    
-	                    <form method="GET" action="{% url 'cosinnus:event:event-add' group=group.slug %}">
+	                    <form method="GET" action="{% group_url 'cosinnus:event:event-add' group=group.slug %}">
 	                    <input type="hidden" name="start" id="calendarConfirmStartDate" />
 	                    <input type="hidden" name="end" id="calendarConfirmEndDate" />
 	                    <button type="submit" class="btn btn-emphasized" id="calendarConfirmEventButton">

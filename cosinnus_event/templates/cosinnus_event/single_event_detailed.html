@@ -69,7 +69,7 @@
 {% if user|has_write_access:event and not hide_control_buttons %}    
     {% captureas label %}{% blocktrans with title=object.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
     {% captureas title %}{% trans "Event löschen" %}{% endcaptureas %}
-    {% captureas action %}{% url 'cosinnus:event:event-delete' group=group.slug slug=object.slug%}{% endcaptureas %}
+    {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group.slug slug=object.slug%}{% endcaptureas %}
     {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
 {% endif %}
 
