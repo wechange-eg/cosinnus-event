@@ -347,10 +347,12 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         self.max_num = self.suggestions.count()
         self.initial = []
         for suggestion in self.suggestions:
-            try:
-                vote = suggestion.votes.filter(voter=self.request.user).get()
-            except Vote.DoesNotExist:
-                vote = None
+            vote = None
+            if self.request.user.is_authenticated():
+                try:
+                    vote = suggestion.votes.filter(voter=self.request.user).get()
+                except Vote.DoesNotExist:
+                    pass
             self.initial.append({
                 'suggestion': suggestion.pk,
                 'choice': vote.choice if vote else Vote.VOTE_NO,
