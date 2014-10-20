@@ -33,7 +33,8 @@ from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
-from cosinnus.core.decorators.views import require_read_access
+from cosinnus.core.decorators.views import require_read_access,\
+    require_user_token_access
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -438,7 +439,7 @@ class EventFeed(ICalFeed):
     product_id = '-//example.com//Example//EN'
     timezone = 'UTC'
     
-    @require_read_access()
+    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
@@ -448,7 +449,7 @@ class EventFeed(ICalFeed):
     
     def items(self, request):
         qs = Event.objects.filter(group=self.group, state=Event.STATE_SCHEDULED).order_by('-from_date')
-        qs = filter_tagged_object_queryset_for_user(qs, self.request.user)
+        qs = filter_tagged_object_queryset_for_user(qs, self.user)
         return qs
     
     def item_title(self, item):
