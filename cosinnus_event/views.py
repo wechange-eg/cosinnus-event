@@ -15,6 +15,8 @@ from django.utils.timezone import now
 from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
     UpdateWithInlinesView)
 
+from django_ical.views import ICalFeed
+
 from cosinnus.views.export import CSVExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
     GroupFormKwargsMixin, FilterGroupMixin)
@@ -30,6 +32,8 @@ from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
+from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
+from cosinnus.core.decorators.views import require_read_access
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -424,10 +428,52 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         messages.success(request, _('The event was created successfully at the specified date.'))
         return HttpResponseRedirect(self.object.get_absolute_url())
     
+doodle_complete_view = DoodleCompleteView.as_view()
+
+
+class EventFeed(ICalFeed):
+    """
+    A simple event calender
+    """
+    product_id = '-//example.com//Example//EN'
+    timezone = 'UTC'
     
+    @require_read_access()
+    def __call__(self, request, *args, **kwargs):
+        return super(EventFeed, self).__call__(request, *args, **kwargs)
+    
+    def get_feed(self, obj, request):
+        self.request = request
+        return super(EventFeed, self).get_feed(obj, request)
+    
+    def items(self, request):
+        qs = Event.objects.filter(group=self.group, state=Event.STATE_SCHEDULED).order_by('-from_date')
+        qs = filter_tagged_object_queryset_for_user(qs, self.request.user)
+        return qs
+    
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.note
+
+    def item_start_datetime(self, item):
+        return item.from_date
+    
+    def item_end_datetime(self, item):
+        return item.to_date
+    
+    def item_link(self, item):
+        return item.get_absolute_url()
+    
+    def item_geolocation(self, item):
+        mt = item.media_tag
+        if mt and mt.location_lat and mt.location_lon:
+            return (mt.location_lat, mt.location_lon)
+        return None
     
 
-doodle_complete_view = DoodleCompleteView.as_view()
+event_ical_feed = EventFeed()
 
 
 class EventExportView(CSVExportView):

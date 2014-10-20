@@ -4,21 +4,21 @@ from __future__ import unicode_literals
 from os.path import join
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils import dateformat
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
+from django.utils.functional import cached_property
 from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
-from django.db.models import Q
 
 from osm_field.fields import OSMField
-from cosinnus.models import BaseTaggableObjectModel
 
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
-from django.utils.functional import cached_property
+from cosinnus.models import BaseTaggableObjectModel
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.utils.urls import group_aware_reverse
 
