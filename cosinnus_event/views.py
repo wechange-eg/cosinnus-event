@@ -35,6 +35,7 @@ from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_read_access,\
     require_user_token_access
+from django.contrib.sites.models import Site
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -436,11 +437,15 @@ class EventFeed(ICalFeed):
     """
     A simple event calender
     """
-    product_id = '-//example.com//Example//EN'
+    product_id = '-//%s//Event//Feed' % Site.objects.get_current().domain
     timezone = 'UTC'
+    title = _('%s - Events')
+    description = _('Upcoming events in %s.')
     
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
+        self.title = self.title % self.group.name
+        self.description = self.description % self.group.name
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
     def get_feed(self, obj, request):

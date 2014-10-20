@@ -34,7 +34,7 @@
 					            <span>{% trans "Copy this iCal-link into your calendar application to import current events from this group:" %}</span>
 					        </div>
 		                    <div class="media-body">
-		                        <input class="form-control" onclick="this.focus();this.select()" readonly="readonly" value="{{ request.META.HTTP_HOST }}{% group_url 'cosinnus:event:feed' group=group.slug %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}">
+		                        <input class="form-control" onclick="this.focus();this.select()" readonly="readonly" value="{{ COSINNUS_BASE_URL|slice:":-1" }}{% group_url 'cosinnus:event:feed' group=group.slug %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}">
 		                    </div>
 		                </li>
 		            </ul>
