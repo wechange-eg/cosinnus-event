@@ -448,8 +448,8 @@ class EventFeed(ICalFeed):
         return super(EventFeed, self).get_feed(obj, request)
     
     def items(self, request):
-        qs = Event.objects.filter(group=self.group, state=Event.STATE_SCHEDULED).order_by('-from_date')
-        qs = filter_tagged_object_queryset_for_user(qs, self.user)
+        qs = Event.get_current(self.group, self.user)
+        qs.filter(state=Event.STATE_SCHEDULED).order_by('-from_date')
         return qs
     
     def item_title(self, item):
