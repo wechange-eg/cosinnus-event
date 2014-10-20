@@ -466,6 +466,12 @@ class EventFeed(ICalFeed):
     def item_link(self, item):
         return item.get_absolute_url()
     
+    def item_geolocation(self, item):
+        mt = item.media_tag
+        if mt and mt.location_lat and mt.location_lon:
+            return (mt.location_lat, mt.location_lon)
+        return None
+    
 
 event_ical_feed = EventFeed()
 
