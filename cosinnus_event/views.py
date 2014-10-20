@@ -435,7 +435,8 @@ doodle_complete_view = DoodleCompleteView.as_view()
 
 class EventFeed(ICalFeed):
     """
-    A simple event calender
+    A simple event calender feed. Uses a permanent user token for authentication
+    (the token is only used for views displaying the user's event-feeds).
     """
     product_id = '-//%s//Event//Feed' % Site.objects.get_current().domain
     timezone = 'UTC'
