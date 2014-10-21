@@ -71,7 +71,7 @@
                 </a>
                 <div class="media-body">
                     <p>
-                        {{ event.note|urlizetrunc:25|linebreaks }}
+                        {{ event.note|urlizetrunc:25|url_target_blank|linebreaks }}
                     </p>
                 </div>
             </li>
