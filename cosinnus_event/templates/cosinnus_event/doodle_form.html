@@ -40,7 +40,7 @@
 		                <a class="pull-left btn-emphasized" href="#">
 		                    <i class="fa fa-plus"></i>
 		                </a>
-		                <div class="media-body">
+		                <div class="media-body media-body-form-control">
 		                    
 		                    {{ form.forms.obj.title.errors }}
 	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
@@ -52,34 +52,34 @@
 	                        
 				                <input type="hidden" id="id_from_date_1" name="from_date_1" />
 				                <input type="hidden" id="id_to_date_1" name="to_date_1" />
-												<ol class="input-area">
-															<li id="calendar-doodle-days-selector">
-																<div class="small-calendar"></div>
-																<div id="calendar-doodle-days-selector-list">
-																	<table>
-																		<thead>
-																			<tr>
-																				<th></th>
-																				<th></th>
-																				<th>{% trans "Time" %}</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<tr style="display:none;">
-																				<td>
-																					<i class="fa fa-trash-o"></i>
-																				</td>
-																				<td></td>
-																				<td><input /></td>
-																			</tr>
-																		</tbody>
-																	</table>
-																	<p>{% trans "Please select the available days in the calendar." %}</p>
-																	<p>{% trans "You can select the same day more than once." %}</p>
-																	<p>{% trans "Time: e.g. 10 or 10:30." %}</p>
-																</div>
-															</li>
-												</ol><!-- input-area -->
+									<ol class="input-area">
+										<li id="calendar-doodle-days-selector">
+											<div class="small-calendar"></div>
+											<div id="calendar-doodle-days-selector-list">
+												<table>
+													<thead>
+														<tr>
+															<th></th>
+															<th></th>
+															<th>{% trans "Time" %}</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr style="display:none;">
+															<td>
+																<i class="fa fa-trash-o"></i>
+															</td>
+															<td></td>
+															<td><input /></td>
+														</tr>
+													</tbody>
+												</table>
+												<p>{% trans "Please select the available days in the calendar." %}</p>
+												<p>{% trans "You can select the same day more than once." %}</p>
+												<p>{% trans "Time: e.g. 10 or 10:30." %}</p>
+											</div>
+										</li>
+									</ol><!-- input-area -->
 
 	                        {% include 'cosinnus/media_tags.html' %}
 	                        
