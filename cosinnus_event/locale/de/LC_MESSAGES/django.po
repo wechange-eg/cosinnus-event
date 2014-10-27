@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-27 14:10+0100\n"
+"POT-Creation-Date: 2014-10-27 16:12+0100\n"
 "PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -353,7 +353,7 @@ msgid "Schedule an event"
 msgstr "Termin finden"
 
 #: .\templates\cosinnus_event\doodle_list.html.py:62
-msgid "There are no events to be scheduled."
+msgid "There are no open event suggestions."
 msgstr "Es gibt keine aktuellen Terminvorschläge."
 
 #: .\templates\cosinnus_event\doodle_vote.html.py:5
@@ -561,6 +561,9 @@ msgstr "Mehr"
 msgid "Upcoming events"
 msgstr "Aktuelle Termine"
 
+#~ msgid "There are no events to be scheduled."
+#~ msgstr "Es gibt keine aktuellen Terminvorschläge."
+
 #~ msgid "Event löschen"
 #~ msgstr "Veranstaltung löschen"
 
@@ -611,9 +614,6 @@ msgstr "Aktuelle Termine"
 
 #~ msgid "Past events"
 #~ msgstr "Vergangene Veranstaltungen"
-
-#~ msgid "There are no past events."
-#~ msgstr "Es gibt keine vergangene Veranstaltungen."
 
 #~ msgid "Show"
 #~ msgstr "Anzeigen"

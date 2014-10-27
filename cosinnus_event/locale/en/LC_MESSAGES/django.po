@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-27 14:10+0100\n"
+"POT-Creation-Date: 2014-10-27 16:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,7 +348,7 @@ msgid "Schedule an event"
 msgstr ""
 
 #: .\templates\cosinnus_event\doodle_list.html.py:62
-msgid "There are no events to be scheduled."
+msgid "There are no open event suggestions."
 msgstr ""
 
 #: .\templates\cosinnus_event\doodle_vote.html.py:5

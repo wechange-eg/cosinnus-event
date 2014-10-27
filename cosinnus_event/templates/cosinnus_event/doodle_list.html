@@ -59,8 +59,8 @@
   {% for event in object_list %}
       {% include "cosinnus_event/list_object.html" %}
   {% empty %}
-      <!-- {% trans "There are no events to be scheduled." %} -->
-      {% include 'cosinnus/common/empty_button.html' with message="There are no events to be scheduled." %}
+      <!-- {% trans "There are no open event suggestions." %} -->
+      {% include 'cosinnus/common/empty_button.html' with message="There are no open event suggestions." %}
   {% endfor %}
 
 	</div><!-- content-box -->
