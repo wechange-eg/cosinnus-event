@@ -41,7 +41,7 @@
                             {{ form.forms.media_tag.non_field_errors }}
 		                    
 		                    {{ form.forms.obj.title.errors }}
-	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
+	                        {% captureas placeholder %}{% trans "Enter a title for the new event." %}{% endcaptureas %}
                             {% if request.GET.title %}
                                 {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
                             {% else %}
@@ -52,14 +52,14 @@
                             {{ form.forms.obj.to_date.errors }}
 		                    <ol class="input-area">
 		                                <li class="calendar-date-time-chooser">
-		                                    {% trans "Von" %} <i class="fa fa-calendar"></i>
+		                                    {% trans "From" %} <i class="fa fa-calendar"></i>
 		                                    <input
-		                                        placeholder="Datum"
+		                                        placeholder="{% trans "Date" %}"
 		                                        readonly ="readonly"
 		                                        class="calendar-date-time-chooser-date" />
-				                            {% captureas placeholder %}{% trans "Anfangstermin." %}{% endcaptureas %}
+				                            {% captureas placeholder %}{% trans "Start date." %}{% endcaptureas %}
 				                            <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
-				                                placeholder="Anfangstermin." type="hidden" 
+				                                placeholder="{{ placeholder }}" type="hidden" 
 				                                {% if form_view == "add" and request.GET.start %}
                                                 value="{{ request.GET.start }}" 
                                                 {% elif form_view == "edit" %}
@@ -69,20 +69,20 @@
                                                 {% endif %}
                                             >
                                             <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
-                                                placeholder="Zeit." type="text" 
+                                                placeholder="{% trans "Time" %}" type="text" 
                                                 value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
                                             >                                           
 		                                    <div class="small-calendar"></div>
 		                                </li>
 		                                <li class="calendar-date-time-chooser">
-		                                    {% trans "Bis" %} <i class="fa fa-calendar"></i>
+		                                    {% trans "Until" %} <i class="fa fa-calendar"></i>
 		                                    <input
-		                                        placeholder="Datum"
+		                                        placeholder="{% trans "Date" %}"
 		                                        readonly ="readonly"
 		                                        class="calendar-date-time-chooser-date" />
-                                            {% captureas placeholder %}{% trans "Endtermin." %}{% endcaptureas %}
+                                            {% captureas placeholder_until %}{% trans "End date." %}{% endcaptureas %}
                                             <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
-                                                placeholder="Anfangstermin." type="hidden" 
+                                                placeholder="{{ placeholder_until }}" type="hidden" 
                                                 {% if form_view == "add" and request.GET.end %}
                                                 value="{{ request.GET.end }}" 
                                                 {% elif form_view == "edit" %}
@@ -92,7 +92,7 @@
                                                 {% endif %}
                                             >
                                             <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
-                                                placeholder="Zeit." type="text" 
+                                                placeholder="{% trans "Time" %}" type="text" 
                                                 value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
                                             >    
 		                                    <div class="small-calendar"></div>
@@ -106,7 +106,7 @@
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.note.errors }}
-		                            {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
+		                            {% captureas placeholder %}{% trans "Enter a description for the event (optional)." %}{% endcaptureas %}
 		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>
@@ -114,7 +114,7 @@
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.url.errors }}
-		                            {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
+		                            {% captureas placeholder %}{% trans "External Link for the event (optional)." %}{% endcaptureas %}
 		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>

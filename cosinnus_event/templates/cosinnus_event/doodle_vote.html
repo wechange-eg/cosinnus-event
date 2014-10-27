@@ -27,14 +27,17 @@
 
         <div class="doodle-vote-table">
             {% if event.state == 1 %}
+                <!--{% trans "This event has already been scheduled. Voting is closed." %}-->
                 {% include 'cosinnus/common/empty_button.html' with message="This event has already been scheduled. Voting is closed." %}
             {% elif event.state == 3 %}
+                <!--{% trans "This event has been canceled. Voting is closed." %}-->
                 {% include 'cosinnus/common/empty_button.html' with message="This event has been canceled. Voting is closed." %}
             {% elif suggestions_grouped %}
 	            <!-- width = n*54-4 -->
 	            {% if not votes_user_grouped %}
                     <div>
-                        {% include 'cosinnus/common/empty_button.html' with message="(Es hat noch niemand für diese Terminfindung abgestimmt.)" %}
+                        <!--{% trans "Nobody has voted for this doodle yet." %}-->
+                        {% include 'cosinnus/common/empty_button.html' with message="Nobody has voted for this doodle yet." %}
                     </div>
 	            {% endif %}
 	            
@@ -99,7 +102,7 @@
 	            </div>
 	            
 	            {% if user|has_write_access:event %}
-		            <h2>{% trans "Erstelle eine Veranstaltung aus einem der Termine." %}</h2>
+		            <h2>{% trans "Create an event from one of the suggestions" %}</h2>
 			            <div>
 			                <div></div>
 			                {% for suggestions in suggestions_grouped %}
@@ -108,7 +111,7 @@
 							            <form action="{% group_url 'cosinnus:event:doodle-complete' group=group.slug slug=event.slug suggestion_id=suggestion.pk %}" method="post" class="form-horizontal">
 				                        {% csrf_token %}
 				                        {{ formset.management_form }}
-						                    <button type="submit" class="doodle-vote-eventbutton" title="{% blocktrans %}Den Termin auf {{ suggestion }} festlegen.{% endblocktrans %}">
+						                    <button type="submit" class="doodle-vote-eventbutton" title="{% blocktrans %}Set the date to {{ suggestion }}.{% endblocktrans %}">
 	                                            <i class="fa fa-calendar"></i>
 	                                        </button>
 			                            </form>
@@ -119,7 +122,7 @@
 	            {% endif %}
 	            
 	            {% if user.is_authenticated %}
-		            <h2>{% trans "Wann hast du Zeit?" %}</h2>
+		            <h2>{% trans "When do you have time?" %}</h2>
 		            
 		            <!-- width = n*54-4 -->
 		            <div>
@@ -170,7 +173,8 @@
 	            
             {% else %}
                 {% comment %} No suggestions were added {% endcomment %}
-                {% include 'cosinnus/common/empty_button.html' with message="Für diese Terminumfrage wurden noch keine Terminvorschläge erstellt!" %}
+                <!-- {% trans "There are no date suggestions for this doodle yet!" %} -->
+                {% include 'cosinnus/common/empty_button.html' with message="There are no date suggestions for this doodle yet!" %}
             {% endif %}
         </div><!-- table -->
 

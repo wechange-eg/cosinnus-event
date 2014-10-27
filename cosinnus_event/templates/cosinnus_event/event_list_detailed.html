@@ -29,7 +29,8 @@
 	    {% for event in future_events %}
         {% include 'cosinnus_event/list_object.html' %}
 	   {% empty %}
-	       {% include 'cosinnus/common/empty_button.html' with message="Es sind keine aktuellen oder zukünftigen Veranstaltungen geplant." %}
+	       <!-- {% trans "There are no current or future events." %} -->
+	       {% include 'cosinnus/common/empty_button.html' with message="There are no current or future events." %}
 	   {% endfor %}
 	   
 	</div><!-- content-box -->

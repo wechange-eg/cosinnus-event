@@ -34,7 +34,7 @@
           </a>
           <div class="media-body media-body-form-control">
             <input class="form-control next-button-is-for-sending"
-              placeholder="{% trans "Enter a title for the new event to be schedules." %}"
+              placeholder="{% trans "Enter a title for the new event to be scheduled." %}"
               name="title"
               value="" />
           </div>
@@ -59,6 +59,7 @@
   {% for event in object_list %}
       {% include "cosinnus_event/list_object.html" %}
   {% empty %}
+      <!-- {% trans "There are no events to be scheduled." %} -->
       {% include 'cosinnus/common/empty_button.html' with message="There are no events to be scheduled." %}
   {% endfor %}
 

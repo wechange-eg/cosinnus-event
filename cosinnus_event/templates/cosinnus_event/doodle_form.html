@@ -43,7 +43,7 @@
 		                <div class="media-body media-body-form-control">
 		                    
 		                    {{ form.forms.obj.title.errors }}
-	                        {% captureas placeholder %}{% trans "Gib einen Titel für die Veranstaltung an." %}{% endcaptureas %}
+	                        {% captureas placeholder %}{% trans "Enter a title for the new event to be scheduled." %}{% endcaptureas %}
                             {% if request.GET.title %}
                                 {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
                             {% else %}
@@ -86,7 +86,7 @@
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.note.errors }}
-		                            {% captureas placeholder %}{% trans "Gib eine Beschreibung für die Veranstaltung ein (optional)." %}{% endcaptureas %}
+		                            {% captureas placeholder %}{% trans "Enter a description for the event (optional)." %}{% endcaptureas %}
 		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>
@@ -94,7 +94,7 @@
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.url.errors }}
-		                            {% captureas placeholder %}{% trans "Externer Link zur Veranstaltung (optional)." %}{% endcaptureas %}
+		                            {% captureas placeholder %}{% trans "External Link for the event (optional)." %}{% endcaptureas %}
 		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>
