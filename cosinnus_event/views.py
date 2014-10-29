@@ -445,7 +445,7 @@ class EventFeed(ICalFeed):
     
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
-        self.title = '%s - %s' %  (self.title, self.group.name)
+        self.title = '%s - %s' %  (self.group.name, self.title)
         self.description = '%s %s' % (self.description, self.group.name)
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
