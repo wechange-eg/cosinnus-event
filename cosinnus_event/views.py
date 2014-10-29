@@ -440,13 +440,13 @@ class EventFeed(ICalFeed):
     """
     product_id = '-//%s//Event//Feed' % Site.objects.get_current().domain
     timezone = 'UTC'
-    title = _('%s - Events')
-    description = _('Upcoming events in %s.')
+    title = _('Events')
+    description = _('Upcoming events in')
     
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
-        self.title = self.title % self.group.name
-        self.description = self.description % self.group.name
+        self.title = '%s - %s' %  (self.title, self.group.name)
+        self.description = '%s %s' % (self.description, self.group.name)
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
     def get_feed(self, obj, request):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-27 16:12+0100\n"
+"POT-Creation-Date: 2014-10-29 11:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\cosinnus_app.py:13 .\models.py:101
+#: .\cosinnus_app.py:13 .\models.py:101 .\views.py:443
 #: .\templates\cosinnus_event\base.html.py:6
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
@@ -268,14 +268,8 @@ msgstr ""
 msgid "The event was created successfully at the specified date."
 msgstr ""
 
-#: .\views.py:443
-#, python-format
-msgid "%s - Events"
-msgstr ""
-
 #: .\views.py:444
-#, python-format
-msgid "Upcoming events in %s."
+msgid "Upcoming events in"
 msgstr ""
 
 #: .\templates\cosinnus_event\doodle_form.html.py:6
@@ -549,3 +543,6 @@ msgstr ""
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
 msgstr ""
+
+#~ msgid "%s - Events"
+#~ msgstr "%s - Events"

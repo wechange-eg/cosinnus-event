@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-27 16:12+0100\n"
+"POT-Creation-Date: 2014-10-29 11:46+0100\n"
 "PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\cosinnus_app.py:13 .\models.py:101
+#: .\cosinnus_app.py:13 .\models.py:101 .\views.py:443
 #: .\templates\cosinnus_event\base.html.py:6
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
@@ -273,15 +273,9 @@ msgid "The event was created successfully at the specified date."
 msgstr ""
 "Die Veranstaltung wurde erfolgreich an dem angegebenen Termin erstellt."
 
-#: .\views.py:443
-#, python-format
-msgid "%s - Events"
-msgstr "%s - Veranstaltungen"
-
 #: .\views.py:444
-#, python-format
-msgid "Upcoming events in %s."
-msgstr "Aktuelle Veranstaltungen in %s"
+msgid "Upcoming events in"
+msgstr "Aktuelle Termine in"
 
 #: .\templates\cosinnus_event\doodle_form.html.py:6
 #: .\templates\cosinnus_event\doodle_form.html.py:17
@@ -560,6 +554,12 @@ msgstr "Mehr"
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
 msgstr "Aktuelle Termine"
+
+#~ msgid "%s - Events"
+#~ msgstr "%s - Veranstaltungen"
+
+#~ msgid "Upcoming events in %s."
+#~ msgstr "Aktuelle Veranstaltungen in %s"
 
 #~ msgid "There are no events to be scheduled."
 #~ msgstr "Es gibt keine aktuellen Terminvorschläge."
