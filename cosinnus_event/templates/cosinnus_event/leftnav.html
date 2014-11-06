@@ -1,7 +1,5 @@
 {% load i18n static cosinnus_tags widget_tweaks %}
 
-{% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
-
 {% group_url 'cosinnus:event:list' group=group.slug as calendar_page %}
 {% group_url 'cosinnus:event:list_detailed' group=group.slug as event_list_page %}
 {% group_url 'cosinnus:event:doodle-list' group=group.slug as doodle_list_page %}

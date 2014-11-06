@@ -24,8 +24,6 @@
 	    
         {% include 'cosinnus/common/filter_controls.html' %}        
 	    
-        {% captureas cosinnus_app_list_url %}cosinnus:{{ COSINNUS_CURRENT_APP }}:list{% endcaptureas %}
-            
 	    {% for event in future_events %}
         {% include 'cosinnus_event/list_object.html' %}
 	   {% empty %}
