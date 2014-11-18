@@ -21,6 +21,8 @@ from cosinnus_event.managers import EventManager
 from cosinnus.models import BaseTaggableObjectModel
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.utils.urls import group_aware_reverse
+from cosinnus_event import cosinnus_notifications
+from django.contrib.auth import get_user_model
 
 
 def localize(value, format):
@@ -63,6 +65,7 @@ class Event(BaseTaggableObjectModel):
         default=STATE_VOTING_OPEN,
         editable=False,
     )
+    __state = None # pre-save purpose
 
     note = models.TextField(_('Note'), blank=True, null=True)
 
@@ -99,6 +102,10 @@ class Event(BaseTaggableObjectModel):
         ordering = ['from_date', 'to_date']
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
+        
+    def __init__(self, *args, **kwargs):
+        super(Event, self).__init__(*args, **kwargs)
+        self.__state = self.state
 
     def __str__(self):
         if self.state == Event.STATE_SCHEDULED:
@@ -117,6 +124,22 @@ class Event(BaseTaggableObjectModel):
         else:
             readable = _('%(event)s (pending)') % {'event': self.title}
         return readable
+    
+    def save(self, *args, **kwargs):
+        created = bool(self.pk) == False
+        super(Event, self).save(*args, **kwargs)
+
+        if created:
+            # event/doodle was created
+            if self.state == Event.STATE_SCHEDULED:
+                cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+            else:
+                cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+        if not created and self.__state == Event.STATE_VOTING_OPEN and self.state == Event.STATE_SCHEDULED:
+            # event went from being a doodle to being a real event, so fire event created
+            cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+        
+        self.__state = self.state
 
     def get_absolute_url(self):
         kwargs = {'group': self.group.slug, 'slug': self.slug}
