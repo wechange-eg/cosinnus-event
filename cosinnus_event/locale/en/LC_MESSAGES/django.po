@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 11:46+0100\n"
+"POT-Creation-Date: 2014-11-18 16:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\cosinnus_app.py:13 .\models.py:101 .\views.py:443
+#: .\cosinnus_app.py:13 .\models.py:104 .\views.py:443
 #: .\templates\cosinnus_event\base.html.py:6
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
@@ -29,6 +29,14 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_standalone.html.py:11
 msgctxt "the_app"
 msgid "event"
+msgstr ""
+
+#: .\cosinnus_notifications.py:40
+msgid "A user created a new event"
+msgstr ""
+
+#: .\cosinnus_notifications.py:47
+msgid "A user created a new doodle"
 msgstr ""
 
 #: .\dashboard.py:28
@@ -55,127 +63,127 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: .\models.py:49
+#: .\models.py:51
 msgid "Scheduled"
 msgstr ""
 
-#: .\models.py:50
+#: .\models.py:52
 msgid "Voting open"
 msgstr ""
 
-#: .\models.py:51
+#: .\models.py:53
 msgid "Canceled"
 msgstr ""
 
-#: .\models.py:55 .\models.py:166
+#: .\models.py:57 .\models.py:189
 msgid "Start"
 msgstr ""
 
-#: .\models.py:58 .\models.py:169
+#: .\models.py:60 .\models.py:192
 msgid "End"
 msgstr ""
 
-#: .\models.py:61
+#: .\models.py:63
 msgid "State"
 msgstr ""
 
-#: .\models.py:67
+#: .\models.py:70
 msgid "Note"
 msgstr ""
 
-#: .\models.py:71
+#: .\models.py:74
 msgid "Event date"
 msgstr ""
 
-#: .\models.py:78
+#: .\models.py:81
 msgid "Location"
 msgstr ""
 
-#: .\models.py:80
+#: .\models.py:83
 msgid "Street"
 msgstr ""
 
-#: .\models.py:82
+#: .\models.py:85
 msgid "ZIP code"
 msgstr ""
 
-#: .\models.py:84
+#: .\models.py:87
 msgid "City"
 msgstr ""
 
-#: .\models.py:86
+#: .\models.py:89
 msgid "Is public (on website)"
 msgstr ""
 
-#: .\models.py:89
+#: .\models.py:92
 msgid "Image"
 msgstr ""
 
-#: .\models.py:94
+#: .\models.py:97
 msgid "URL"
 msgstr ""
 
-#: .\models.py:100 .\models.py:173
+#: .\models.py:103 .\models.py:196
 #: .\templates\cosinnus_event\event_detail.html.py:5
 #: .\templates\cosinnus_event\event_detail.html.py:10
 msgid "Event"
 msgstr ""
 
-#: .\models.py:106
+#: .\models.py:113
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr ""
 
-#: .\models.py:112
+#: .\models.py:119
 #, python-format
 msgid "%(event)s (%(from)s - %(to)s)"
 msgstr ""
 
-#: .\models.py:118
+#: .\models.py:125
 #, python-format
 msgid "%(event)s (pending)"
 msgstr ""
 
-#: .\models.py:179 .\models.py:251
+#: .\models.py:202 .\models.py:274
 msgctxt "the subject"
 msgid "Votes"
 msgstr ""
 
-#: .\models.py:184 .\models.py:232
+#: .\models.py:207 .\models.py:255
 msgid "Suggestion"
 msgstr ""
 
-#: .\models.py:185
+#: .\models.py:208
 msgid "Suggestions"
 msgstr ""
 
-#: .\models.py:225 .\templates\cosinnus_event\doodle_vote.html.py:71
+#: .\models.py:248 .\templates\cosinnus_event\doodle_vote.html.py:71
 #: .\templates\cosinnus_event\doodle_vote.html.py:89
 #: .\templates\cosinnus_event\doodle_vote.html.py:162
 msgid "Yes"
 msgstr ""
 
-#: .\models.py:226 .\templates\cosinnus_event\doodle_vote.html.py:75
+#: .\models.py:249 .\templates\cosinnus_event\doodle_vote.html.py:75
 #: .\templates\cosinnus_event\doodle_vote.html.py:90
 #: .\templates\cosinnus_event\doodle_vote.html.py:163
 msgid "Maybe"
 msgstr ""
 
-#: .\models.py:227 .\templates\cosinnus_event\doodle_vote.html.py:79
+#: .\models.py:250 .\templates\cosinnus_event\doodle_vote.html.py:79
 #: .\templates\cosinnus_event\doodle_vote.html.py:91
 #: .\templates\cosinnus_event\doodle_vote.html.py:164
 msgid "No"
 msgstr ""
 
-#: .\models.py:239
+#: .\models.py:262
 msgid "Voter"
 msgstr ""
 
-#: .\models.py:244 .\templates\cosinnus_event\doodle_vote.html.py:192
+#: .\models.py:267 .\templates\cosinnus_event\doodle_vote.html.py:192
 msgid "Vote"
 msgstr ""
 
-#: .\models.py:250
+#: .\models.py:273
 msgctxt "the subject"
 msgid "Vote"
 msgstr ""
@@ -284,7 +292,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_form.html.py:19
 #: .\templates\cosinnus_event\event_form.html.py:142
 #: .\templates\cosinnus_event\list_object.html.py:125
-#: .\templates\cosinnus_event\single_event_detailed.html.py:61
+#: .\templates\cosinnus_event\single_event_detailed.html.py:59
 msgid "Edit"
 msgstr ""
 
@@ -386,7 +394,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\doodle_vote.html.py:209
 #: .\templates\cosinnus_event\list_object.html.py:108
-#: .\templates\cosinnus_event\single_event_detailed.html.py:49
+#: .\templates\cosinnus_event\single_event_detailed.html.py:47
 msgid "Delete"
 msgstr ""
 
@@ -485,7 +493,7 @@ msgstr ""
 msgid "Planned Events"
 msgstr ""
 
-#: .\templates\cosinnus_event\event_list_detailed.html.py:32
+#: .\templates\cosinnus_event\event_list_detailed.html.py:30
 msgid "There are no current or future events."
 msgstr ""
 
@@ -494,28 +502,28 @@ msgstr ""
 msgid "There are no upcoming events"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:20
+#: .\templates\cosinnus_event\leftnav.html.py:18
 msgid "Back to Events"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:36
+#: .\templates\cosinnus_event\leftnav.html.py:34
 msgid "Return to Doodle"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:60
+#: .\templates\cosinnus_event\leftnav.html.py:58
 msgid "Calendar"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:82
+#: .\templates\cosinnus_event\leftnav.html.py:80
 msgid "List"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:104
+#: .\templates\cosinnus_event\leftnav.html.py:102
 msgid "Doodle"
 msgstr ""
 
 #: .\templates\cosinnus_event\list_object.html.py:139
-#: .\templates\cosinnus_event\single_event_detailed.html.py:70
+#: .\templates\cosinnus_event\single_event_detailed.html.py:68
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
 msgstr ""
@@ -524,16 +532,62 @@ msgstr ""
 msgid "Delete event"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html.py:71
+#: .\templates\cosinnus_event\single_event_detailed.html.py:69
 msgid "Delete Event"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html.py:85
+#: .\templates\cosinnus_event\single_event_detailed.html.py:83
 msgid "(Canceled!)"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html.py:120
+#: .\templates\cosinnus_event\single_event_detailed.html.py:118
 msgid "(No description set)"
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\doodle_created.txt.py:1
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\" in %(group_name)s was created by %"
+"(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\doodle_created_subject.txt.py:1
+#, python-format
+msgid "A new event: \"%(object_name)s\" was created in %(group_name)s."
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\event_created.txt.py:1
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in %"
+"(group_name)s by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\event_created_subject.txt.py:1
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(group_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\widgets\event_widget.html.py:31
