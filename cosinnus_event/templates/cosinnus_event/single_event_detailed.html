@@ -113,7 +113,7 @@
             </a>
             <div class="media-body">
                 {% if event.note and event.note|length > 0 %}
-                    {{ event.note|urlizetrunc:25|url_target_blank|linebreaks }}
+                    {{ event.note|urlizetrunc:25|url_target_blank|linebreaksbr }}
                 {% else %}
                     {% trans "(No description set)" %}
                 {% endif %}
