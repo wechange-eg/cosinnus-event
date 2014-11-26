@@ -112,11 +112,13 @@
                 <i class="fa fa-pencil"></i>
             </a>
             <div class="media-body">
+                <p>
                 {% if event.note and event.note|length > 0 %}
                     {{ event.note|urlizetrunc:25|url_target_blank|linebreaksbr }}
                 {% else %}
                     {% trans "(No description set)" %}
                 {% endif %}
+                </p>
             </div>
         </li>
     </ul>
