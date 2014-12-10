@@ -50,7 +50,7 @@
         {% for event in all_upcoming_events %}
             {% if event.from_date %}
             {
-                title: '{{ event.title }}',
+                title: $.cosinnus.decodeEntities('{{ event.title }}'),
                 start: moment("{{ event.from_date|date:"c"}}"),
                 {% if event.to_date %}
                 end: moment("{{ event.to_date|date:"c"}}"),

@@ -52,7 +52,7 @@
 		        {% for event in object_list %}
 		            {% if event.from_date %}
 	                {
-	                    title: '{{ event.title }}',
+	                    title: $.cosinnus.decodeEntities('{{ event.title }}'),
 	                    start: moment("{{ event.from_date|date:"c"}}"),
 	                    {% if event.to_date %}
 	                    end: moment("{{ event.to_date|date:"c"}}"),
