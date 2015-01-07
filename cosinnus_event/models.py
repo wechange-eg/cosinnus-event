@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from os.path import join
+import datetime
+
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Q
@@ -298,8 +300,11 @@ def post_vote_save(sender, **kwargs):
 
    
 def upcoming_event_filter(queryset):
-    """ Filters a queryset of events for events that begin in the future, or have an end date in the future """
-    return queryset.exclude(to_date__lte=now()).exclude(Q(to_date__isnull=True) & Q(from_date__lte=now()))
+    """ Filters a queryset of events for events that begin in the future, 
+    or have an end date in the future. Will always show all events that ended today as well. """
+    _now = now()
+    event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
+    return queryset.exclude(to_date__lt=event_horizon).exclude(Q(to_date__isnull=True) & Q(from_date__lt=event_horizon))
 
 
 import django

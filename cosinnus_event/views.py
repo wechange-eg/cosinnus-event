@@ -27,7 +27,7 @@ from cosinnus.views.attached_object import AttachableViewMixin
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
     EventNoFieldForm
-from cosinnus_event.models import Event, Suggestion, Vote
+from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
@@ -55,23 +55,16 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
         """ In the calendar we only show scheduled events """
         qs = super(EventListView, self).get_queryset()
         qs = qs.filter(state=Event.STATE_SCHEDULED)
+        qs = upcoming_event_filter(qs)
+        self.queryset = qs
         return qs
     
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
-        past_events = []
-        future_events = []
         doodle_count = super(EventListView, self).get_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
 
-        for event in super(EventListView, self).get_queryset().filter(state=Event.STATE_SCHEDULED):
-            if (event.to_date and event.to_date < now()) or \
-                        (not event.to_date and event.from_date and event.from_date < now()):
-                past_events.append(event)
-            else:
-                future_events.append(event)
         context.update({
-            'past_events': past_events,
-            'future_events': future_events,
+            'future_events': self.queryset,
             'doodle_count': doodle_count,
         })
         return context
