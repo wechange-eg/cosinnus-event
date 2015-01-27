@@ -27,7 +27,8 @@ from cosinnus.views.attached_object import AttachableViewMixin
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
     EventNoFieldForm
-from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter
+from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
+    past_event_filter
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
@@ -50,6 +51,7 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
 
     model = Event
     filterset_class = EventFilter
+    event_view = 'upcoming'
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
@@ -66,10 +68,32 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
         context.update({
             'future_events': self.queryset,
             'doodle_count': doodle_count,
+            'event_view': self.event_view,
         })
         return context
 
 list_view = EventListView.as_view()
+
+
+class PastEventListView(EventListView):
+
+    template_name = 'cosinnus_event/event_list_detailed_past.html'
+    event_view = 'past'
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(EventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_SCHEDULED)
+        qs = past_event_filter(qs).reverse()
+        self.queryset = qs
+        return qs
+    
+    def get_context_data(self, **kwargs):
+        context = super(PastEventListView, self).get_context_data(**kwargs)
+        context['past_events'] = context.pop('future_events')
+        return context
+    
+past_events_list_view = PastEventListView.as_view()
 
 
 class DoodleListView(EventListView):

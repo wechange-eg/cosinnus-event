@@ -33,6 +33,7 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
         name='doodle-complete'),
 
     url(r'^list/$', 'detailed_list_view', name='list_detailed'),
+    url(r'^list/past/$', 'past_events_list_view', name='list_past'),
     url(r'^add/$', 'entry_add_view',  {'form_view': 'add'},  name='event-add'),
     url(r'^(?P<slug>[^/]+)/$',
         'entry_detail_view',

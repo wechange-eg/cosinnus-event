@@ -306,6 +306,13 @@ def upcoming_event_filter(queryset):
     event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
     return queryset.exclude(to_date__lt=event_horizon).exclude(Q(to_date__isnull=True) & Q(from_date__lt=event_horizon))
 
+def past_event_filter(queryset):
+    """ Filters a queryset of events for events that began before today, 
+    or have an end date before today. """
+    _now = now()
+    event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
+    return queryset.exclude(to_date__gte=event_horizon).exclude(Q(to_date__isnull=True) & Q(from_date__gte=event_horizon))
+
 
 import django
 if django.VERSION[:2] < (1, 7):

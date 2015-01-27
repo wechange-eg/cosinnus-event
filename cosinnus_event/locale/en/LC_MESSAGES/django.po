@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-18 16:12+0100\n"
+"POT-Creation-Date: 2015-01-27 18:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\cosinnus_app.py:13 .\models.py:104 .\views.py:443
+#: .\cosinnus_app.py:13 .\models.py:106 .\views.py:460
 #: .\templates\cosinnus_event\base.html.py:6
 #: .\templates\cosinnus_event\doodle_list.html.py:5
 #: .\templates\cosinnus_event\event_list.html.py:5
 #: .\templates\cosinnus_event\event_list_detailed.html.py:5
+#: .\templates\cosinnus_event\event_list_detailed.html.py:10
+#: .\templates\cosinnus_event\event_list_detailed_past.html.py:5
+#: .\templates\cosinnus_event\event_list_detailed_past.html.py:10
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:5
 msgid "Events"
 msgstr ""
@@ -63,220 +66,220 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: .\models.py:51
+#: .\models.py:53
 msgid "Scheduled"
 msgstr ""
 
-#: .\models.py:52
+#: .\models.py:54
 msgid "Voting open"
 msgstr ""
 
-#: .\models.py:53
+#: .\models.py:55
 msgid "Canceled"
 msgstr ""
 
-#: .\models.py:57 .\models.py:189
+#: .\models.py:59 .\models.py:191
 msgid "Start"
 msgstr ""
 
-#: .\models.py:60 .\models.py:192
+#: .\models.py:62 .\models.py:194
 msgid "End"
 msgstr ""
 
-#: .\models.py:63
+#: .\models.py:65
 msgid "State"
 msgstr ""
 
-#: .\models.py:70
+#: .\models.py:72
 msgid "Note"
 msgstr ""
 
-#: .\models.py:74
+#: .\models.py:76
 msgid "Event date"
 msgstr ""
 
-#: .\models.py:81
+#: .\models.py:83
 msgid "Location"
 msgstr ""
 
-#: .\models.py:83
+#: .\models.py:85
 msgid "Street"
 msgstr ""
 
-#: .\models.py:85
+#: .\models.py:87
 msgid "ZIP code"
 msgstr ""
 
-#: .\models.py:87
+#: .\models.py:89
 msgid "City"
 msgstr ""
 
-#: .\models.py:89
+#: .\models.py:91
 msgid "Is public (on website)"
 msgstr ""
 
-#: .\models.py:92
+#: .\models.py:94
 msgid "Image"
 msgstr ""
 
-#: .\models.py:97
+#: .\models.py:99
 msgid "URL"
 msgstr ""
 
-#: .\models.py:103 .\models.py:196
+#: .\models.py:105 .\models.py:198
 #: .\templates\cosinnus_event\event_detail.html.py:5
 #: .\templates\cosinnus_event\event_detail.html.py:10
 msgid "Event"
 msgstr ""
 
-#: .\models.py:113
+#: .\models.py:115
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr ""
 
-#: .\models.py:119
+#: .\models.py:121
 #, python-format
 msgid "%(event)s (%(from)s - %(to)s)"
 msgstr ""
 
-#: .\models.py:125
+#: .\models.py:127
 #, python-format
 msgid "%(event)s (pending)"
 msgstr ""
 
-#: .\models.py:202 .\models.py:274
+#: .\models.py:204 .\models.py:276
 msgctxt "the subject"
 msgid "Votes"
 msgstr ""
 
-#: .\models.py:207 .\models.py:255
+#: .\models.py:209 .\models.py:257
 msgid "Suggestion"
 msgstr ""
 
-#: .\models.py:208
+#: .\models.py:210
 msgid "Suggestions"
 msgstr ""
 
-#: .\models.py:248 .\templates\cosinnus_event\doodle_vote.html.py:71
+#: .\models.py:250 .\templates\cosinnus_event\doodle_vote.html.py:71
 #: .\templates\cosinnus_event\doodle_vote.html.py:89
 #: .\templates\cosinnus_event\doodle_vote.html.py:162
 msgid "Yes"
 msgstr ""
 
-#: .\models.py:249 .\templates\cosinnus_event\doodle_vote.html.py:75
+#: .\models.py:251 .\templates\cosinnus_event\doodle_vote.html.py:75
 #: .\templates\cosinnus_event\doodle_vote.html.py:90
 #: .\templates\cosinnus_event\doodle_vote.html.py:163
 msgid "Maybe"
 msgstr ""
 
-#: .\models.py:250 .\templates\cosinnus_event\doodle_vote.html.py:79
+#: .\models.py:252 .\templates\cosinnus_event\doodle_vote.html.py:79
 #: .\templates\cosinnus_event\doodle_vote.html.py:91
 #: .\templates\cosinnus_event\doodle_vote.html.py:164
 msgid "No"
 msgstr ""
 
-#: .\models.py:262
+#: .\models.py:264
 msgid "Voter"
 msgstr ""
 
-#: .\models.py:267 .\templates\cosinnus_event\doodle_vote.html.py:192
+#: .\models.py:269 .\templates\cosinnus_event\doodle_vote.html.py:192
 msgid "Vote"
 msgstr ""
 
-#: .\models.py:273
+#: .\models.py:275
 msgctxt "the subject"
 msgid "Vote"
 msgstr ""
 
-#: .\views.py:109
+#: .\views.py:126
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
 msgstr ""
 
-#: .\views.py:110
+#: .\views.py:127
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
 msgstr ""
 
-#: .\views.py:152
+#: .\views.py:169
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
 msgstr ""
 
-#: .\views.py:153
+#: .\views.py:170
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
 msgstr ""
 
-#: .\views.py:168
+#: .\views.py:185
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
 msgstr ""
 
-#: .\views.py:169
+#: .\views.py:186
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
 msgstr ""
 
-#: .\views.py:183
+#: .\views.py:200
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
 msgstr ""
 
-#: .\views.py:184
+#: .\views.py:201
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr ""
 
-#: .\views.py:196 .\views.py:225
+#: .\views.py:213 .\views.py:242
 msgid "You should define at least one date suggestion."
 msgstr ""
 
-#: .\views.py:238
+#: .\views.py:255
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr ""
 
-#: .\views.py:239
+#: .\views.py:256
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr ""
 
-#: .\views.py:248
+#: .\views.py:265
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr ""
 
-#: .\views.py:249
+#: .\views.py:266
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr ""
 
-#: .\views.py:276
+#: .\views.py:293
 msgid "Your votes were saved successfully."
 msgstr ""
 
-#: .\views.py:277
+#: .\views.py:294
 msgid "Your votes could not be saved."
 msgstr ""
 
-#: .\views.py:286 .\views.py:417
+#: .\views.py:303 .\views.py:434
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr ""
 
-#: .\views.py:409
+#: .\views.py:426
 msgid "The complete request can only be sent via POST!"
 msgstr ""
 
-#: .\views.py:420
+#: .\views.py:437
 msgid "Event cannot be completed: No date was supplied."
 msgstr ""
 
-#: .\views.py:430
+#: .\views.py:447
 msgid "The event was created successfully at the specified date."
 msgstr ""
 
-#: .\views.py:444
+#: .\views.py:461
 msgid "Upcoming events in"
 msgstr ""
 
@@ -490,11 +493,23 @@ msgid "OK"
 msgstr ""
 
 #: .\templates\cosinnus_event\event_list_detailed.html.py:10
+#: .\templates\cosinnus_event\event_list_detailed_past.html.py:10
 msgid "Planned Events"
 msgstr ""
 
+#: .\templates\cosinnus_event\event_list_detailed.html.py:10
+#: .\templates\cosinnus_event\event_list_detailed_past.html.py:10
+#: .\templates\cosinnus_event\leftnav.html.py:99
+#, fuzzy
+msgid "Past Events"
+msgstr "%s - Events"
+
 #: .\templates\cosinnus_event\event_list_detailed.html.py:30
 msgid "There are no current or future events."
+msgstr ""
+
+#: .\templates\cosinnus_event\event_list_detailed_past.html.py:30
+msgid "There are no past events."
 msgstr ""
 
 #: .\templates\cosinnus_event\event_list_standalone.html.py:23
@@ -502,23 +517,23 @@ msgstr ""
 msgid "There are no upcoming events"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:18
+#: .\templates\cosinnus_event\leftnav.html.py:19
 msgid "Back to Events"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:34
+#: .\templates\cosinnus_event\leftnav.html.py:35
 msgid "Return to Doodle"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:58
+#: .\templates\cosinnus_event\leftnav.html.py:59
 msgid "Calendar"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:80
+#: .\templates\cosinnus_event\leftnav.html.py:81
 msgid "List"
 msgstr ""
 
-#: .\templates\cosinnus_event\leftnav.html.py:102
+#: .\templates\cosinnus_event\leftnav.html.py:121
 msgid "Doodle"
 msgstr ""
 
@@ -540,7 +555,7 @@ msgstr ""
 msgid "(Canceled!)"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html.py:118
+#: .\templates\cosinnus_event\single_event_detailed.html.py:119
 msgid "(No description set)"
 msgstr ""
 
@@ -564,7 +579,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\doodle_created_subject.txt.py:1
 #, python-format
-msgid "A new event: \"%(object_name)s\" was created in %(group_name)s."
+msgid "A new doodle: \"%(object_name)s\" was created in %(group_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\event_created.txt.py:1
@@ -597,6 +612,3 @@ msgstr ""
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
 msgstr ""
-
-#~ msgid "%s - Events"
-#~ msgstr "%s - Events"

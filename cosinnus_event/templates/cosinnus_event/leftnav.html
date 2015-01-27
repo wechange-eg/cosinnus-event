@@ -2,6 +2,7 @@
 
 {% group_url 'cosinnus:event:list' group=group.slug as calendar_page %}
 {% group_url 'cosinnus:event:list_detailed' group=group.slug as event_list_page %}
+{% group_url 'cosinnus:event:list_past' group=group.slug as event_list_past_page %}
 {% group_url 'cosinnus:event:doodle-list' group=group.slug as doodle_list_page %}
 
 
@@ -73,11 +74,29 @@
                 </a>
                 <a class="pull-right" href="#">
                     {% if request.path == event_list_page %}
-	                    <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-right"></i>
                     {% endif %}
                 </a>
                 <div class="media-body">
                     {% trans "List" %}
+                </div>
+            </li>
+        </ul>
+    </button>
+    
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_past' group=group.slug %}{% add_current_params %}">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <i class="fa fa-calendar"></i>
+                </a>
+                <a class="pull-right" href="#">
+                    {% if request.path == event_list_past_page %}
+                        <i class="fa fa-caret-right"></i>
+                    {% endif %}
+                </a>
+                <div class="media-body">
+                    {% trans "Past Events" %}
                 </div>
             </li>
         </ul>

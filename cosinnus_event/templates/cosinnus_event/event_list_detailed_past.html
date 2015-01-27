@@ -24,11 +24,11 @@
 	    
         {% include 'cosinnus/common/filter_controls.html' %}        
 	    
-	    {% for event in future_events %}
+	    {% for event in past_events %}
         {% include 'cosinnus_event/list_object.html' %}
 	    {% empty %}
-	        <!-- {% trans "There are no current or future events." %} -->
-	        {% include 'cosinnus/common/empty_button.html' with message="There are no current or future events." %}
+	        <!-- {% trans "There are no past events." %} -->
+	        {% include 'cosinnus/common/empty_button.html' with message="There are no past events." %}
 	    {% endfor %}
 	   
 	</div><!-- content-box -->
