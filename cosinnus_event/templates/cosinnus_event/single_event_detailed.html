@@ -49,7 +49,7 @@
                 </li>
             </ul>
         </button>
-        <button type="button" class="btn btn-emphasized" href="{% url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}">
+        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}">
             <ul class="media-list">
                 <li class="media">
                     <a class="pull-left" href="#">

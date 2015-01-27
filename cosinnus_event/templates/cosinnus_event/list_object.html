@@ -111,9 +111,9 @@
             </ul>
         </button>
       {% if event.state == 2 %}
-        {% captureas edit_url %}{% url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
+        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
       {% else %}
-        {% captureas edit_url %}{% url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
+        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}{% endcaptureas %}
       {% endif %}
         <button type="button" class="btn btn-emphasized" href="{{ edit_url }}">
             <ul class="media-list">
