@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-27 18:50+0100\n"
+"POT-Creation-Date: 2015-02-17 12:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,11 +78,11 @@ msgstr ""
 msgid "Canceled"
 msgstr ""
 
-#: .\models.py:59 .\models.py:191
+#: .\models.py:59 .\models.py:204
 msgid "Start"
 msgstr ""
 
-#: .\models.py:62 .\models.py:194
+#: .\models.py:62 .\models.py:207
 msgid "End"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: .\models.py:105 .\models.py:198
+#: .\models.py:105 .\models.py:211
 #: .\templates\cosinnus_event\event_detail.html.py:5
 #: .\templates\cosinnus_event\event_detail.html.py:10
 msgid "Event"
@@ -147,46 +147,46 @@ msgstr ""
 msgid "%(event)s (pending)"
 msgstr ""
 
-#: .\models.py:204 .\models.py:276
+#: .\models.py:217 .\models.py:289
 msgctxt "the subject"
 msgid "Votes"
 msgstr ""
 
-#: .\models.py:209 .\models.py:257
+#: .\models.py:222 .\models.py:270
 msgid "Suggestion"
 msgstr ""
 
-#: .\models.py:210
+#: .\models.py:223
 msgid "Suggestions"
 msgstr ""
 
-#: .\models.py:250 .\templates\cosinnus_event\doodle_vote.html.py:71
+#: .\models.py:263 .\templates\cosinnus_event\doodle_vote.html.py:71
 #: .\templates\cosinnus_event\doodle_vote.html.py:89
 #: .\templates\cosinnus_event\doodle_vote.html.py:162
 msgid "Yes"
 msgstr ""
 
-#: .\models.py:251 .\templates\cosinnus_event\doodle_vote.html.py:75
+#: .\models.py:264 .\templates\cosinnus_event\doodle_vote.html.py:75
 #: .\templates\cosinnus_event\doodle_vote.html.py:90
 #: .\templates\cosinnus_event\doodle_vote.html.py:163
 msgid "Maybe"
 msgstr ""
 
-#: .\models.py:252 .\templates\cosinnus_event\doodle_vote.html.py:79
+#: .\models.py:265 .\templates\cosinnus_event\doodle_vote.html.py:79
 #: .\templates\cosinnus_event\doodle_vote.html.py:91
 #: .\templates\cosinnus_event\doodle_vote.html.py:164
 msgid "No"
 msgstr ""
 
-#: .\models.py:264
+#: .\models.py:277
 msgid "Voter"
 msgstr ""
 
-#: .\models.py:269 .\templates\cosinnus_event\doodle_vote.html.py:192
+#: .\models.py:282 .\templates\cosinnus_event\doodle_vote.html.py:192
 msgid "Vote"
 msgstr ""
 
-#: .\models.py:275
+#: .\models.py:288
 msgctxt "the subject"
 msgid "Vote"
 msgstr ""
@@ -555,8 +555,38 @@ msgstr ""
 msgid "(Canceled!)"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html.py:119
+#: .\templates\cosinnus_event\single_event_detailed.html.py:118
 msgid "(No description set)"
+msgstr ""
+
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:6
+msgctxt "time"
+msgid "from"
+msgstr ""
+
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:8
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:24
+msgctxt "time"
+msgid "until"
+msgstr ""
+
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:10
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:16
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:22
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:30
+msgctxt "time"
+msgid "o'clock"
+msgstr ""
+
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:12
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:27
+msgctxt "time"
+msgid "all day"
+msgstr ""
+
+#: .\templates\cosinnus_event\common\humanized_event_time.html.py:14
+msgctxt "time"
+msgid "at"
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\doodle_created.txt.py:1

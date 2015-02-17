@@ -82,9 +82,8 @@
                 {% if event.state == 3 %}
                     {% trans "(Canceled!)" %}
                 {% endif %}
-                <span class="moment-data-date" data-date="{{ event.from_date|date:"c" }}" title="{{ event.from_date }}"></span>
-                –
-                <span class="moment-data-date" data-date="{{ event.to_date|date:"c" }}" title="{{ event.to_date }}"></span>
+                
+                {% include 'cosinnus_event/common/humanized_event_time.html' with event=event %}
             </div>
         </li>
     </ul>

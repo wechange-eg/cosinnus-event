@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<span title="{{ event.from_date }} {% if event.to_date and not event.from_date == event.to_date %}- {{ event.to_date }}{% endif %}">
+	{% if event.is_same_day %}
+	    <span class="moment-data-date" data-date="{{ event.from_date|date:"Y-m-d" }}" data-date-style="short" data-date-notooltip="true"></span>
+	    {% if not event.is_same_time %}
+	        <em>{% trans "from" context "time" %}</em>
+	        {{ event.from_date|date:"H:i" }}
+	        <em>{% trans "until" context "time" %}</em>
+	        {{ event.to_date|date:"H:i" }}
+	        {% trans "o'clock" context "time" %}
+	    {% elif event.from_date|date:"H:i" == "00:00" %}
+	        <em>({% trans "all day" context "time" %})</em>
+	    {% else %}
+	        <em>{% trans "at" context "time" %}</em>
+	        {{ event.from_date|date:"H:i" }}
+	        {% trans "o'clock" context "time" %}
+	    {% endif %}
+	{% else %}
+	    <span class="moment-data-date" data-date="{{ event.from_date|date:"Y-m-d" }}" data-date-style="short" data-date-notooltip="true"></span>
+	    {% if not event.is_same_time %}
+	        {{ event.from_date|date:"H:i" }}
+	        {% trans "o'clock" context "time" %}
+	    {% endif %}
+	    <em>{% trans "until" context "time" %}</em>
+	    <span class="moment-data-date" data-date="{{ event.to_date|date:"Y-m-d" }}" data-date-style="short" data-date-notooltip="true"></span>
+	    {% if event.is_same_time and event.from_date|date:"H:i" == "00:00" %}
+	        <em>({% trans "all day" context "time" %})</em>
+	    {% else %}
+	        {{ event.to_date|date:"H:i" }}
+	        {% trans "o'clock" context "time" %}
+	    {% endif %}
+	{% endif %}
+</span>

@@ -183,7 +183,15 @@ class Event(BaseTaggableObjectModel):
         if user:
             qs = filter_tagged_object_queryset_for_user(qs, user)
         return upcoming_event_filter(qs)
-        
+    
+    @property
+    def is_same_day(self):
+        return self.from_date.date() == self.to_date.date()
+    
+    @property
+    def is_same_time(self):
+        return self.from_date.time() == self.to_date.time()
+    
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
