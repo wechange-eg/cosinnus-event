@@ -36,7 +36,7 @@ from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_read_access,\
     require_user_token_access
-from django.contrib.sites.models import Site
+from django.contrib.sites.models import Site, get_current_site
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -455,15 +455,19 @@ class EventFeed(ICalFeed):
     A simple event calender feed. Uses a permanent user token for authentication
     (the token is only used for views displaying the user's event-feeds).
     """
-    product_id = '-//%s//Event//Feed' % Site.objects.get_current().domain
+    product_id = '-//%s//Event//Feed'
     timezone = 'UTC'
     title = _('Events')
     description = _('Upcoming events in')
     
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
+        site = get_current_site(request)
+        
         self.title = '%s - %s' %  (self.group.name, self.title)
         self.description = '%s %s' % (self.description, self.group.name)
+        self.product_id = self.product_id % site.domain
+        
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
     def get_feed(self, obj, request):
