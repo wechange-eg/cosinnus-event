@@ -144,7 +144,7 @@ class Event(BaseTaggableObjectModel):
         self.__state = self.state
 
     def get_absolute_url(self):
-        kwargs = {'group': self.group.slug, 'slug': self.slug}
+        kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN:
             return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)

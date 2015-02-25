@@ -108,7 +108,7 @@
 			                {% for suggestions in suggestions_grouped %}
 		                        {% for suggestion in suggestions %} 
 			                        <div>
-							            <form action="{% group_url 'cosinnus:event:doodle-complete' group=group.slug slug=event.slug suggestion_id=suggestion.pk %}" method="post" class="form-horizontal">
+							            <form action="{% group_url 'cosinnus:event:doodle-complete' group=group slug=event.slug suggestion_id=suggestion.pk %}" method="post" class="form-horizontal">
 				                        {% csrf_token %}
 				                        {{ formset.management_form }}
 						                    <button type="submit" class="doodle-vote-eventbutton" title="{% blocktrans %}Set the date to {{ suggestion }}.{% endblocktrans %}">
@@ -213,12 +213,12 @@
 	  
 	  {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete unscheduled event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
 	  {% captureas title %}{% trans "Delete unscheduled event" %}{% endcaptureas %}
-	  {% captureas action %}{% group_url 'cosinnus:event:doodle-delete' group=group.slug slug=event.slug%}{% endcaptureas %}
+	  {% captureas action %}{% group_url 'cosinnus:event:doodle-delete' group=group slug=event.slug%}{% endcaptureas %}
 	
 	  {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
 	  
 	  
-	  <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:doodle-edit" group=group.slug slug=event.slug %}">
+	  <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}">
 	    <ul class="media-list">
 	      <li class="media">
 	        <a class="pull-left" href="#">

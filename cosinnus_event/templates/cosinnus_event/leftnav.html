@@ -1,14 +1,14 @@
 {% load i18n static cosinnus_tags widget_tweaks %}
 
-{% group_url 'cosinnus:event:list' group=group.slug as calendar_page %}
-{% group_url 'cosinnus:event:list_detailed' group=group.slug as event_list_page %}
-{% group_url 'cosinnus:event:list_past' group=group.slug as event_list_past_page %}
-{% group_url 'cosinnus:event:doodle-list' group=group.slug as doodle_list_page %}
+{% group_url 'cosinnus:event:list' group=group as calendar_page %}
+{% group_url 'cosinnus:event:list_detailed' group=group as event_list_page %}
+{% group_url 'cosinnus:event:list_past' group=group as event_list_past_page %}
+{% group_url 'cosinnus:event:doodle-list' group=group as doodle_list_page %}
 
 
 {% if return_to == "events" %}
 
-	<button type="button" class="btn w100 btn-emphasized" href="{% group_url 'cosinnus:event:list' group=group.slug %}{% add_current_params %}">
+	<button type="button" class="btn w100 btn-emphasized" href="{% group_url 'cosinnus:event:list' group=group %}{% add_current_params %}">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
@@ -24,7 +24,7 @@
 	
 {% elif return_to == "doodle" %}
 
-  <button type="button" class="btn w100 btn-emphasized" href="{% group_url 'cosinnus:event:doodle-list' group=group.slug %}{% add_current_params %}">
+  <button type="button" class="btn w100 btn-emphasized" href="{% group_url 'cosinnus:event:doodle-list' group=group %}{% add_current_params %}">
     <ul class="media-list">
       <li class="media">
         <a class="pull-left" href="#">
@@ -40,7 +40,7 @@
 
 {% else %} {# Event / Doodle list view #}
 	
-    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list' group=group.slug %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list' group=group %}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -62,7 +62,7 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_detailed' group=group.slug %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_detailed' group=group %}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -84,7 +84,7 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_past' group=group.slug %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -102,7 +102,7 @@
         </ul>
     </button>
 
-	<button type="button" class="btn w100 btn-emphasized regular-space" href="{% group_url 'cosinnus:event:doodle-list' group=group.slug %}{% add_current_params %}">
+	<button type="button" class="btn w100 btn-emphasized regular-space" href="{% group_url 'cosinnus:event:doodle-list' group=group %}{% add_current_params %}">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">

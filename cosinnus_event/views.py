@@ -42,7 +42,7 @@ from django.contrib.sites.models import Site, get_current_site
 class EventIndexView(RequireReadMixin, RedirectView):
 
     def get_redirect_url(self, **kwargs):
-        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
 
 index_view = EventIndexView.as_view()
 
@@ -140,7 +140,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         return context
 
     def get_success_url(self):
-        kwargs = {'group': self.group.slug}
+        kwargs = {'group': self.group}
         # no self.object if get_queryset from add/edit view returns empty
         if hasattr(self, 'object'):
             kwargs['slug'] = self.object.slug
@@ -170,7 +170,7 @@ class DoodleFormMixin(EntryFormMixin):
     message_error = _('Unscheduled event "%(title)s" could not be edited.')
 
     def get_success_url(self):
-        kwargs = {'group': self.group.slug}
+        kwargs = {'group': self.group}
         # no self.object if get_queryset from add/edit view returns empty
         if hasattr(self, 'object'):
             kwargs['slug'] = self.object.slug
@@ -256,7 +256,7 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
 
 entry_delete_view = EntryDeleteView.as_view()
 
@@ -266,7 +266,7 @@ class DoodleDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Unscheduled event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return group_aware_reverse('cosinnus:event:doodle-list', kwargs={'group': self.group.slug})
+        return group_aware_reverse('cosinnus:event:doodle-list', kwargs={'group': self.group})
 
 doodle_delete_view = DoodleDeleteView.as_view()
 
@@ -383,7 +383,7 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         return self.initial
 
     def get_success_url(self):
-        kwargs = {'group': self.group.slug, 'slug': self.object.slug}
+        kwargs = {'group': self.group, 'slug': self.object.slug}
         return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
 
     def formset_valid(self, formset):

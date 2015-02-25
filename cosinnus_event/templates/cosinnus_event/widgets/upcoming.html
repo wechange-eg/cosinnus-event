@@ -52,7 +52,7 @@
                 {% if event.to_date %}
                 end: moment("{{ event.to_date|date:"c"}}"),
                 {% endif %}
-                url: '{% group_url "cosinnus:event:event-detail" group=event.group.slug portal_id=event.group.portal.id slug=event.slug %}'
+                url: '{% group_url "cosinnus:event:event-detail" group=event.group slug=event.slug %}'
             },
             {% endif %}
         

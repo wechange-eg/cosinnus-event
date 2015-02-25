@@ -49,7 +49,7 @@
                 </li>
             </ul>
         </button>
-        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group.slug slug=event.slug %}">
+        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}">
             <ul class="media-list">
                 <li class="media">
                     <a class="pull-left" href="#">
@@ -67,7 +67,7 @@
 {% if user|has_write_access:event and not hide_control_buttons %}    
     {% captureas label %}{% blocktrans with title=object.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
     {% captureas title %}{% trans "Delete Event" %}{% endcaptureas %}
-    {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group.slug slug=object.slug%}{% endcaptureas %}
+    {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group slug=object.slug%}{% endcaptureas %}
     {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
 {% endif %}
 

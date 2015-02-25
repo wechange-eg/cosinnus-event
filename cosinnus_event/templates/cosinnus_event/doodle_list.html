@@ -25,7 +25,7 @@
     {% include 'cosinnus/common/filter_controls.html' %}        
 	
   {% if request.user and request.user.is_authenticated %} 
-  <form method="GET" action="{% group_url 'cosinnus:event:doodle-add' group=group.slug %}">
+  <form method="GET" action="{% group_url 'cosinnus:event:doodle-add' group=group %}">
     <div type="button" class="btn btn-default w100 large-space">
       <ul class="media-list">
         <li class="media">
