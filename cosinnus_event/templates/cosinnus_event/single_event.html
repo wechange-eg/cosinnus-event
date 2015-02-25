@@ -22,10 +22,7 @@
                         </span>
                         <strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong>
                         <div class="group-annotation">
-                            <a href="{{ event.group.get_absolute_url }}">
-                                <i class="fa fa-users"></i>
-                                {{ event.group.name }}
-                            </a>
+                            {% include 'cosinnus/group/group_label.html' with group=event.group %}
                         </div>
                     </div>
                 </li>

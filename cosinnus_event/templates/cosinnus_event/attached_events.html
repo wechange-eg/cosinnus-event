@@ -1,26 +1,23 @@
 {% for event in events %}
     <div class="app-calendar">
-        <button type="button" class="btn btn-emphasized dashboard-appwidget-contentline-extra-indented" href="{{ event.get_absolute_url }}">
+        <div class="btn btn-emphasized w100 extra-indented" href="{{ event.get_absolute_url }}">
             <ul class="media-list fine-space">
                 <li class="media">
                     <a class="pull-left" href="#">
                         <i class="fa fa-calendar"></i>
                     </a>
-                    <a class="pull-right square-date-icon btn-extra-emphasized" href="#">
+                    <a class="pull-right square-date-icon btn-extra-emphasized">
                         <div>{{ event.from_date|date:"d" }}</div>
                         <div>{{ event.from_date|date:"M" }}</div>
                     </a>
-                    <div class="media-body">
-                        <strong><a>{{ event.title|truncatechars:25 }}</a></strong>
+                    <div class="media-body no-vertical-padding ">
+                        <strong><a href="{{ event.get_absolute_url }}" target="_blank">{{ event.title|truncatechars:25 }}</a></strong>
                         <div class="group-annotation">
-	                        <i class="fa fa-users"></i>
-	                        {{ event.group.name }}
+                            {% include 'cosinnus/group/group_label.html' with group=event.group %}
                         </div>
                     </div>
                 </li>
             </ul>
-        </button><!-- btn -->
+        </div><!-- btn -->
     </div>
-
-
 {% endfor %}
