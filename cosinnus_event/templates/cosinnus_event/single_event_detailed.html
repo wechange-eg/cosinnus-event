@@ -33,7 +33,7 @@
         </ul>
     </div>
     
-    {% include 'cosinnus/media_tags_readonly.html' with object=event %}
+    {% include 'cosinnus/media_tags_readonly.html' with object=event hide_attached=True %}
     
     {% if user|has_write_access:event and not hide_control_buttons %}
         {% captureas modal_id %}deleteModal_{{object.slug}}{% endcaptureas %}
@@ -104,7 +104,7 @@
     </ul>
 </div>
 {% endif %}
-<div class="btn btn-white w100 {% if not event.url %}large-space{% endif %}">
+<div class="btn btn-white w100 {% if not event.url %}{% if not event.attached_objects.exists %}large-space{% endif %}{% endif %}">
     <ul class="media-list">
         <li class="media">
             <a class="pull-left" href="#">
@@ -123,7 +123,7 @@
     </ul>
 </div>
 {% if event.url %}
-<div class="btn btn-white w100 large-space">
+<div class="btn btn-white w100 {% if not event.attached_objects.exists %}large-space{% endif %}">
     <ul class="media-list">
         <li class="media">
             <a class="pull-left" href="#">
@@ -135,4 +135,8 @@
         </li>
     </ul>
 </div>
+{% endif %}
+
+{% if event.attached_objects.exists %}
+    {% cosinnus_render_attached_objects event %}
 {% endif %}
