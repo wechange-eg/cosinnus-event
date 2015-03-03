@@ -455,7 +455,9 @@ class EventFeed(ICalFeed):
     A simple event calender feed. Uses a permanent user token for authentication
     (the token is only used for views displaying the user's event-feeds).
     """
-    product_id = '-//%s//Event//Feed'
+    PROTO_PRODUCT_ID = '-//%s//Event//Feed'
+    
+    product_id = None
     timezone = 'UTC'
     title = _('Events')
     description = _('Upcoming events in')
@@ -466,7 +468,8 @@ class EventFeed(ICalFeed):
         
         self.title = '%s - %s' %  (self.group.name, self.title)
         self.description = '%s %s' % (self.description, self.group.name)
-        self.product_id = self.product_id % site.domain
+        if not self.product_id:
+            self.product_id = EventFeed.PROTO_PRODUCT_ID % site.domain
         
         return super(EventFeed, self).__call__(request, *args, **kwargs)
     
