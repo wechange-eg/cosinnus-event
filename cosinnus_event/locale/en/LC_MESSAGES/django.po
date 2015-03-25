@@ -32,7 +32,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_standalone.html.py:11
 msgctxt "the_app"
 msgid "event"
-msgstr ""
+msgstr "Events"
 
 #: .\cosinnus_notifications.py:40
 msgid "A user created a new event"
