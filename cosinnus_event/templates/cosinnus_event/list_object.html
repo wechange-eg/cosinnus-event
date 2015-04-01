@@ -95,7 +95,7 @@
 
 
     {% include 'cosinnus/media_tags_readonly.html' with object=event %}
-
+    
     {% if user|has_write_access:event %}
         {% captureas modal_id %}deleteModal_{{event.slug}}{% endcaptureas %}
         <button type="button" class="btn btn-emphasized" data-toggle="modal" data-target="#{{modal_id}}">
@@ -128,6 +128,9 @@
             </ul>
         </button> 
     {% endif %}
+    
+    {% include 'cosinnus/feedback/report_button_btn.html' with object=event %}
+    
 </div><!-- fadedown -->
 
 {% if user|has_write_access:event %}    

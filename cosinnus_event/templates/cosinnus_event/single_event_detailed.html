@@ -62,6 +62,9 @@
             </ul>
         </button> 
     {% endif %}
+    
+    {% include 'cosinnus/feedback/report_button_btn.html' with object=event %}
+    
 </div><!-- fadedown -->
 
 {% if user|has_write_access:event and not hide_control_buttons %}    
