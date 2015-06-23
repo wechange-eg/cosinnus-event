@@ -1,4 +1,6 @@
+{% load cosinnus_tags %}
 {{ object.title }}
+{% if object.creator %}{{ object.creator|full_name }}{% endif %}
 {{ object.note }}
 {{ object.location }}
 {{ object.street }}
