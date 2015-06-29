@@ -16,7 +16,7 @@ from django.utils.functional import cached_property
 from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 
-from osm_field.fields import OSMField
+from osm_field.fields import OSMField, LatitudeField, LongitudeField
 
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
@@ -81,7 +81,9 @@ class Event(BaseTaggableObjectModel):
         related_name='selected_name',
     )
 
-    location = OSMField(_('Location'), blank=True, null=True, geo_blank=True, geo_null=True)
+    location = OSMField(_('Location'), blank=True, null=True)
+    location_lat = LatitudeField(_('Latitude'), blank=True, null=True)
+    location_lon = LongitudeField(_('Longitude'), blank=True, null=True)
 
     street = models.CharField(_('Street'), blank=True, max_length=50, null=True)
 
