@@ -44,7 +44,7 @@ msgstr "Ein(e) Mitarbeiter_in hat eine neue Terminumfrage erstellt"
 
 #: .\dashboard.py:28
 msgid "Upcoming Events"
-msgstr "Aktuelle Termine"
+msgstr "Aktuelle Veranstaltungen"
 
 #: .\dashboard.py:48
 msgid "No upcoming events"
@@ -286,7 +286,7 @@ msgstr ""
 
 #: .\views.py:461
 msgid "Upcoming events in"
-msgstr "Aktuelle Termine in"
+msgstr "Aktuelle Veranstaltungen in"
 
 #: .\templates\cosinnus_event\doodle_form.html.py:6
 #: .\templates\cosinnus_event\doodle_form.html.py:17
@@ -679,7 +679,7 @@ msgstr "Mehr"
 
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
-msgstr "Aktuelle Termine"
+msgstr "Aktuelle Veranstaltungen"
 
 #~ msgid "%s - Events"
 #~ msgstr "%s - Veranstaltungen"
