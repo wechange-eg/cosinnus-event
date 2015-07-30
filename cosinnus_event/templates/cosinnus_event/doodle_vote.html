@@ -44,8 +44,8 @@
 	            <div>
 	                <div></div>
 	                {% for suggestions in suggestions_grouped %}
-			            <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;">
-		                    &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_FORMAT }}
+			            <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;" title="{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATETIME_FORMAT }}">
+		                    &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_CLEAR_FORMAT }}
 		                </div>
 			        {% endfor %}
 	            </div>
@@ -128,8 +128,8 @@
 		            <div>
 		                <div></div>
 		                {% for suggestions in suggestions_grouped %}
-		                    <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;">
-		                        &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_FORMAT }}
+		                    <div class="doodle-vote-date" style="min-width: {{suggestions|length|multiply:54|subtract:4}}px;" title="{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATETIME_FORMAT }}">
+		                        &nbsp;{{ suggestions.0.from_date|date:"D" }}<br/>&nbsp;{{ suggestions.0.from_date|date:COSINNUS_DJANGO_DATE_SHORT_CLEAR_FORMAT }}
 		                    </div>
 		                {% endfor %}
 		            </div>
