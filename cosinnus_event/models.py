@@ -25,7 +25,7 @@ from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
-from cosinnus.utils.files import get_cosinnus_media_file_folder
+from cosinnus.utils.files import _get_avatar_filename
 
 
 def localize(value, format):
@@ -34,6 +34,8 @@ def localize(value, format):
     else:
         return dateformat.format(localtime(value), format)
 
+def get_event_image_filename(instance, filename):
+    return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
 class Event(BaseTaggableObjectModel):
@@ -95,7 +97,7 @@ class Event(BaseTaggableObjectModel):
 
     image = models.ImageField(
         _('Image'),
-        upload_to=join(get_cosinnus_media_file_folder(), 'events', 'images'),
+        upload_to=get_event_image_filename,
         blank=True,
         null=True)
 
