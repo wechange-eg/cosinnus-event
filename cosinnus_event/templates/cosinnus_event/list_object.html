@@ -24,7 +24,7 @@
                 </a>
                 <div class="media-body">
                     {% with creator=event.creator %}
-                        <span class="annotation">von <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
+                        <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
                         {{ event.title }}

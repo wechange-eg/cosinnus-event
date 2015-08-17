@@ -25,7 +25,7 @@
         {% include 'cosinnus/common/filter_controls.html' %}        
 	    
 	    {% for event in past_events %}
-        {% include 'cosinnus_event/list_object.html' %}
+        	{% include 'cosinnus_event/list_object.html' %}
 	    {% empty %}
 	        <!-- {% trans "There are no past events." %} -->
 	        {% include 'cosinnus/common/empty_button.html' with message="There are no past events." %}
