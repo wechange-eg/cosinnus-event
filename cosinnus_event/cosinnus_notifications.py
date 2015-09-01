@@ -12,6 +12,8 @@ from django.utils.translation import ugettext_lazy as _
 """ Signal definitions """
 event_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
 doodle_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
+event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 
 
 """ Notification definitions.
@@ -48,6 +50,20 @@ notifications = {
         'mail_template': 'cosinnus_event/notifications/doodle_created.txt',
         'subject_template': 'cosinnus_event/notifications/doodle_created_subject.txt',
         'signals': [doodle_created],
+        'default': True,
+    },  
+    'event_comment_posted': {
+        'label': _('A user commented on one of your events'), 
+        'mail_template': 'cosinnus_event/notifications/event_comment_posted.html',
+        'subject_template': 'cosinnus_event/notifications/event_comment_posted_subject.txt',
+        'signals': [event_comment_posted],
+        'default': True,
+    },    
+    'tagged_event_comment_posted': {
+        'label': _('A user commented on a event you were tagged in'), 
+        'mail_template': 'cosinnus_event/notifications/tagged_event_comment_posted.html',
+        'subject_template': 'cosinnus_event/notifications/tagged_event_comment_posted_subject.txt',
+        'signals': [tagged_event_comment_posted],
         'default': True,
     },  
                     

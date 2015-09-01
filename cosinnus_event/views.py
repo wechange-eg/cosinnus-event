@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic.list import ListView
 from django.utils.timezone import now
 
@@ -26,9 +26,9 @@ from cosinnus.views.attached_object import AttachableViewMixin
 
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
-    EventNoFieldForm
+    EventNoFieldForm, CommentForm
 from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
-    past_event_filter
+    past_event_filter, Comment
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
@@ -526,3 +526,107 @@ class EventExportView(CSVExportView):
     file_prefix = 'cosinnus_event'
 
 export_view = EventExportView.as_view()
+
+
+
+class CommentCreateView(RequireWriteMixin, FilterGroupMixin, CreateView):
+
+    form_class = CommentForm
+    group_field = 'event__group'
+    model = Comment
+    template_name = 'cosinnus_event/event_detail.html'
+    
+    message_success = _('Your comment was added successfully.')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        form.instance.event = self.event
+        messages.success(self.request, self.message_success)
+        return super(CommentCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentCreateView, self).get_context_data(**kwargs)
+        # always overwrite object here, because we actually display the event as object, 
+        # and not the comment in whose view we are in when form_invalid comes back
+        context.update({
+            'event': self.event,
+            'object': self.event, 
+        })
+        return context
+
+    def get(self, request, *args, **kwargs):
+        self.event = get_object_or_404(Event, group=self.group, slug=self.kwargs.get('event_slug'))
+        return super(CommentCreateView, self).get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        self.event = get_object_or_404(Event, group=self.group, slug=self.kwargs.get('event_slug'))
+        self.referer = request.META.get('HTTP_REFERER', self.event.group.get_absolute_url())
+        return super(CommentCreateView, self).post(request, *args, **kwargs)
+    
+    def get_success_url(self):
+        # self.referer is set in post() method
+        return self.referer
+
+comment_create = CommentCreateView.as_view()
+
+
+class CommentDeleteView(RequireWriteMixin, FilterGroupMixin, DeleteView):
+
+    group_field = 'event__group'
+    model = Comment
+    template_name_suffix = '_delete'
+    
+    message_success = _('Your comment was deleted successfully.')
+    
+    def get_context_data(self, **kwargs):
+        context = super(CommentDeleteView, self).get_context_data(**kwargs)
+        context.update({'event': self.object.event})
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        self.comment = get_object_or_404(Comment, pk=self.kwargs.get('pk'))
+        self.referer = request.META.get('HTTP_REFERER', self.comment.event.group.get_absolute_url())
+        return super(CommentDeleteView, self).post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        # self.referer is set in post() method
+        messages.success(self.request, self.message_success)
+        return self.referer
+
+comment_delete = CommentDeleteView.as_view()
+
+
+class CommentDetailView(SingleObjectMixin, RedirectView):
+
+    model = Comment
+
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        return HttpResponseRedirect(obj.get_absolute_url())
+
+comment_detail = CommentDetailView.as_view()
+
+
+class CommentUpdateView(RequireWriteMixin, FilterGroupMixin, UpdateView):
+
+    form_class = CommentForm
+    group_field = 'event__group'
+    model = Comment
+    template_name_suffix = '_update'
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentUpdateView, self).get_context_data(**kwargs)
+        context.update({'event': self.object.event})
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        self.comment = get_object_or_404(Comment, pk=self.kwargs.get('pk'))
+        self.referer = request.META.get('HTTP_REFERER', self.comment.event.group.get_absolute_url())
+        return super(CommentUpdateView, self).post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        # self.referer is set in post() method
+        return self.referer
+
+comment_update = CommentUpdateView.as_view()
+

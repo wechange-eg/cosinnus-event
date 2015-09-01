@@ -299,6 +299,51 @@ class Vote(models.Model):
         return self.suggestion.event.get_absolute_url()
 
 
+
+@python_2_unicode_compatible
+class Comment(models.Model):
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Creator'), on_delete=models.PROTECT, related_name='event_comments')
+    created_on = models.DateTimeField(_('Created'), default=now, editable=False)
+    last_modified = models.DateTimeField(_('Last modified'), default=now, auto_now_add=True, editable=False)
+    event = models.ForeignKey(Event, related_name='comments')
+    text = models.TextField(_('Text'))
+
+    class Meta:
+        ordering = ['created_on']
+        verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
+
+    def __str__(self):
+        return 'Comment on “%(event)s” by %(creator)s' % {
+            'event': self.event.title,
+            'creator': self.creator.get_full_name(),
+        }
+
+    def get_absolute_url(self):
+        if self.pk:
+            return '%s#comment-%d' % (self.event.get_absolute_url(), self.pk)
+        return self.event.get_absolute_url()
+    
+    def save(self, *args, **kwargs):
+        created = bool(self.pk) == False
+        super(Comment, self).save(*args, **kwargs)
+        if created:
+            # comment was created, message event creator
+            if not self.event.creator == self.creator:
+                cosinnus_notifications.event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[self.event.creator])
+            # message all taggees (except creator and assignee because they already received one)
+            if self.event.media_tag and self.event.media_tag.persons:
+                tagged_users_without_self = self.event.media_tag.persons.exclude(id=self.creator.id)
+                if len(tagged_users_without_self) > 0:
+                    cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self))
+    
+    @property
+    def group(self):
+        """ Needed by the notifications system """
+        return self.event.group
+
+
+
 @receiver(post_delete, sender=Vote)
 def post_vote_delete(sender, **kwargs):
     try:

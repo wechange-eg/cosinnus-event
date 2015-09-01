@@ -12,7 +12,7 @@ from cosinnus.forms.tagged import get_form
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker, SplitHiddenDateWidget
 
-from cosinnus_event.models import Event, Suggestion, Vote
+from cosinnus_event.models import Event, Suggestion, Vote, Comment
 from cosinnus.forms.attached_object import FormAttachable
 
 
@@ -64,3 +64,11 @@ class EventNoFieldForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ()
+        
+        
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('text',)
+
