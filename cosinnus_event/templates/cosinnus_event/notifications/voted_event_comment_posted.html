@@ -1,0 +1,21 @@
+{% load i18n cosinnus_tags %}{% autoescape off %}{% blocktrans with comment_text=object.text event_title=object.event.title %}Hi, {{ receiver_name }}!
+
+{{ sender_name }} has posted a comment on a doodle you voted in in group {{ group_name }}:
+
+"{{ comment_text }}"
+
+
+on the doodle:
+
+"{{ event_title }}"
+
+
+Follow this link to see the comment: 
+{{ object_url }}
+
+
+(Follow this link to edit your notification preferences: {{ notification_settings_url }} )
+
+Your {{ site_name }} team.
+
+{% endblocktrans %}{% endautoescape %}

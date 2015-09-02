@@ -197,6 +197,11 @@ class Event(BaseTaggableObjectModel):
     def is_same_time(self):
         return self.from_date.time() == self.to_date.time()
     
+    def get_voters_pks(self):
+        """ Gets the pks of all Users that have voted for this event.
+            Returns an empty list if nobody has voted or the event isn't a doodle. """
+        return self.suggestions.all().values_list('votes__voter__id', flat=True).distinct()
+
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
@@ -331,7 +336,11 @@ class Comment(models.Model):
             # comment was created, message event creator
             if not self.event.creator == self.creator:
                 cosinnus_notifications.event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[self.event.creator])
-            # message all taggees (except creator and assignee because they already received one)
+            # message votees (except comment creator and event creator) if voting is still open
+            votees_except_creator = [pk for pk in self.event.get_voters_pks() if not pk in [self.creator_id, self.event.creator_id]]
+            if votees_except_creator and self.event.state == Event.STATE_VOTING_OPEN:
+                cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
+            # message all taggees (except comment creator)
             if self.event.media_tag and self.event.media_tag.persons:
                 tagged_users_without_self = self.event.media_tag.persons.exclude(id=self.creator.id)
                 if len(tagged_users_without_self) > 0:
