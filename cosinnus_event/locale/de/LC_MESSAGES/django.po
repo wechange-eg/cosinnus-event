@@ -48,7 +48,7 @@ msgstr "Ein(e) Mitarbeiter_in hat eine deiner Veranstaltungen kommentiert"
 
 #: .\cosinnus_notifications.py:64
 msgid "A user commented on a event you were tagged in"
-msgstr "Ein(e) Mitarbeiter_in hat eine Veranstaltungen kommentiert in der du getaggt bist"
+msgstr "Ein(e) Mitarbeiter_in hat eine Veranstaltung kommentiert in der du getaggt bist"
 
 #: .\cosinnus_notifications.py:71
 msgid "A user commented on an event you voted in"
