@@ -36,23 +36,23 @@ msgstr "Veranstaltungen"
 
 #: .\cosinnus_notifications.py:43
 msgid "A user created a new event"
-msgstr "Ein(e) Mitarbeiter_in hat eine neue Veranstaltung eingetragen"
+msgstr "Ein Mitglied hat eine neue Veranstaltung eingetragen"
 
 #: .\cosinnus_notifications.py:50
 msgid "A user created a new doodle"
-msgstr "Ein(e) Mitarbeiter_in hat eine neue Terminumfrage erstellt"
+msgstr "Ein Mitglied hat eine neue Terminumfrage erstellt"
 
 #: .\cosinnus_notifications.py:57
 msgid "A user commented on one of your events"
-msgstr "Ein(e) Mitarbeiter_in hat eine deiner Veranstaltungen kommentiert"
+msgstr "Ein Mitglied hat eine deiner Veranstaltungen kommentiert"
 
 #: .\cosinnus_notifications.py:64
 msgid "A user commented on a event you were tagged in"
-msgstr "Ein(e) Mitarbeiter_in hat eine Veranstaltung kommentiert in der du getaggt bist"
+msgstr "Ein Mitglied hat eine Veranstaltung kommentiert in der du getaggt bist"
 
 #: .\cosinnus_notifications.py:71
 msgid "A user commented on an event you voted in"
-msgstr "Ein(e) Mitarbeiter_in hat einen Terminvorschlag kommentiert in dem du abgestimmt hast"
+msgstr "Ein Mitglied hat einen Terminvorschlag kommentiert in dem du abgestimmt hast"
 
 #: .\dashboard.py:28
 msgid "Upcoming Events"
