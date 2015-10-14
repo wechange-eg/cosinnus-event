@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-02 17:44+0200\n"
+"POT-Creation-Date: 2015-10-03 13:39+0200\n"
 "PO-Revision-Date: 2013-12-17 16:22+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -52,7 +52,8 @@ msgstr "Ein Mitglied hat eine Veranstaltung kommentiert in der du getaggt bist"
 
 #: .\cosinnus_notifications.py:71
 msgid "A user commented on an event you voted in"
-msgstr "Ein Mitglied hat einen Terminvorschlag kommentiert in dem du abgestimmt hast"
+msgstr ""
+"Ein Mitglied hat einen Terminvorschlag kommentiert in dem du abgestimmt hast"
 
 #: .\dashboard.py:28
 msgid "Upcoming Events"
@@ -730,8 +731,8 @@ msgid ""
 msgstr ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s hat einen Kommentar auf eine deiner Veranstaltungen in der Gruppe %"
-"(group_name)s geschrieben:\n"
+"%(sender_name)s hat einen Kommentar auf eine deiner Veranstaltungen in der "
+"Gruppe %(group_name)s geschrieben:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -754,7 +755,9 @@ msgstr ""
 #: .\templates\cosinnus_event\notifications\event_comment_posted_subject.txt.py:1
 #, python-format
 msgid "%(sender_name)s commented on one of your events in %(group_name)s."
-msgstr "%(sender_name)s hat eine deiner Veranstaltungen kommentiert in %(group_name)s."
+msgstr ""
+"%(sender_name)s hat eine deiner Veranstaltungen kommentiert in %(group_name)"
+"s."
 
 #: .\templates\cosinnus_event\notifications\event_created.txt.py:1
 #, python-format
@@ -821,8 +824,8 @@ msgid ""
 msgstr ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s hat einen Kommentar zu einer Veranstaltung, in der du markiert "
-"bist, in der Gruppe %(group_name)s geschrieben:\n"
+"%(sender_name)s hat einen Kommentar zu einer Veranstaltung, in der du "
+"markiert bist, in der Gruppe %(group_name)s geschrieben:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -845,7 +848,9 @@ msgstr ""
 #: .\templates\cosinnus_event\notifications\tagged_event_comment_posted_subject.txt.py:1
 #, python-format
 msgid "%(sender_name)s commented on a event you were tagged in %(group_name)s."
-msgstr "%(sender_name)s hat eine Veranstaltung kommentiert in der du getaggt bist in %(group_name)s."
+msgstr ""
+"%(sender_name)s hat eine Veranstaltung kommentiert in der du getaggt bist in "
+"%(group_name)s."
 
 #: .\templates\cosinnus_event\notifications\voted_event_comment_posted.html.py:1
 #, python-format
@@ -875,8 +880,8 @@ msgid ""
 msgstr ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s hat einen Kommentar zu einem Terminvorschlag, zu dem du abgestimmt "
-"hast, in der Gruppe %(group_name)s geschrieben:\n"
+"%(sender_name)s hat einen Kommentar zu einem Terminvorschlag, zu dem du "
+"abgestimmt hast, in der Gruppe %(group_name)s geschrieben:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -899,7 +904,9 @@ msgstr ""
 #: .\templates\cosinnus_event\notifications\voted_event_comment_posted_subject.txt.py:1
 #, python-format
 msgid "%(sender_name)s commented on a doodle you voted in in %(group_name)s."
-msgstr "%(sender_name)s hat einen Terminvorschlag kommentiert zu dem du abgestimmt hast in %(group_name)s."
+msgstr ""
+"%(sender_name)s hat einen Terminvorschlag kommentiert zu dem du abgestimmt "
+"hast in %(group_name)s."
 
 #: .\templates\cosinnus_event\widgets\event_widget.html.py:31
 msgid "More"
