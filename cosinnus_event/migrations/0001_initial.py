@@ -1,156 +1,93 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import migrations, models
+import osm_field.fields
+import django.utils.timezone
+from django.conf import settings
+import cosinnus_event.models
+import osm_field.validators
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Event'
-        db.create_table(u'cosinnus_event_event', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('media_tag', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cosinnus.TagObject'], unique=True, null=True, on_delete=models.PROTECT, blank=True)),
-            ('group', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'cosinnus_event_event_set', on_delete=models.PROTECT, to=orm['auth.Group'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=55)),
-            ('from_date', self.gf('django.db.models.fields.DateTimeField')(default=None, null=True, blank=True)),
-            ('to_date', self.gf('django.db.models.fields.DateTimeField')(default=None, null=True, blank=True)),
-            ('created_by', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'events', on_delete=models.PROTECT, to=orm['auth.User'])),
-            ('state', self.gf('django.db.models.fields.PositiveIntegerField')(default=2)),
-            ('note', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('suggestion', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name=u'selected_name', null=True, on_delete=models.SET_NULL, to=orm['cosinnus_event.Suggestion'])),
-            ('location', self.gf('geoposition.fields.GeopositionField')(default='0,0', max_length=42, null=True, blank=True)),
-            ('street', self.gf('django.db.models.fields.CharField')(max_length=50, null=True, blank=True)),
-            ('zipcode', self.gf('django.db.models.fields.PositiveIntegerField')(null=True, blank=True)),
-            ('city', self.gf('django.db.models.fields.CharField')(max_length=50, null=True, blank=True)),
-            ('public', self.gf('django.db.models.fields.BooleanField')()),
-            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
-        ))
-        db.send_create_signal(u'cosinnus_event', ['Event'])
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('cosinnus', '0001_initial'),
+    ]
 
-        # Adding model 'Suggestion'
-        db.create_table(u'cosinnus_event_suggestion', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('from_date', self.gf('django.db.models.fields.DateTimeField')(default=None)),
-            ('to_date', self.gf('django.db.models.fields.DateTimeField')(default=None)),
-            ('event', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'suggestions', to=orm['cosinnus_event.Event'])),
-            ('count', self.gf('django.db.models.fields.PositiveIntegerField')(default=0)),
-        ))
-        db.send_create_signal(u'cosinnus_event', ['Suggestion'])
-
-        # Adding unique constraint on 'Suggestion', fields ['event', 'from_date', 'to_date']
-        db.create_unique(u'cosinnus_event_suggestion', ['event_id', 'from_date', 'to_date'])
-
-        # Adding model 'Vote'
-        db.create_table(u'cosinnus_event_vote', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('suggestion', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'votes', to=orm['cosinnus_event.Suggestion'])),
-            ('voter', self.gf('django.db.models.fields.related.ForeignKey')(related_name=u'votes', to=orm['auth.User'])),
-        ))
-        db.send_create_signal(u'cosinnus_event', ['Vote'])
-
-        # Adding unique constraint on 'Vote', fields ['suggestion', 'voter']
-        db.create_unique(u'cosinnus_event_vote', ['suggestion_id', 'voter_id'])
-
-
-    def backwards(self, orm):
-        # Removing unique constraint on 'Vote', fields ['suggestion', 'voter']
-        db.delete_unique(u'cosinnus_event_vote', ['suggestion_id', 'voter_id'])
-
-        # Removing unique constraint on 'Suggestion', fields ['event', 'from_date', 'to_date']
-        db.delete_unique(u'cosinnus_event_suggestion', ['event_id', 'from_date', 'to_date'])
-
-        # Deleting model 'Event'
-        db.delete_table(u'cosinnus_event_event')
-
-        # Deleting model 'Suggestion'
-        db.delete_table(u'cosinnus_event_suggestion')
-
-        # Deleting model 'Vote'
-        db.delete_table(u'cosinnus_event_vote')
-
-
-    models = {
-        u'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        u'auth.permission': {
-            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        u'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        u'cosinnus.tagobject': {
-            'Meta': {'object_name': 'TagObject'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'place': ('django.db.models.fields.CharField', [], {'max_length': '255'})
-        },
-        u'cosinnus_event.event': {
-            'Meta': {'ordering': "[u'from_date', u'to_date']", 'object_name': 'Event'},
-            'city': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'created_by': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'events'", 'on_delete': 'models.PROTECT', 'to': u"orm['auth.User']"}),
-            'from_date': ('django.db.models.fields.DateTimeField', [], {'default': 'None', 'null': 'True', 'blank': 'True'}),
-            'group': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'cosinnus_event_event_set'", 'on_delete': 'models.PROTECT', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'location': ('geoposition.fields.GeopositionField', [], {'default': "'0,0'", 'max_length': '42', 'null': 'True', 'blank': 'True'}),
-            'media_tag': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['cosinnus.TagObject']", 'unique': 'True', 'null': 'True', 'on_delete': 'models.PROTECT', 'blank': 'True'}),
-            'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'public': ('django.db.models.fields.BooleanField', [], {}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '55'}),
-            'state': ('django.db.models.fields.PositiveIntegerField', [], {'default': '2'}),
-            'street': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'suggestion': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "u'selected_name'", 'null': 'True', 'on_delete': 'models.SET_NULL', 'to': u"orm['cosinnus_event.Suggestion']"}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'to_date': ('django.db.models.fields.DateTimeField', [], {'default': 'None', 'null': 'True', 'blank': 'True'}),
-            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'zipcode': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'})
-        },
-        u'cosinnus_event.suggestion': {
-            'Meta': {'ordering': "[u'event', u'-count']", 'unique_together': "((u'event', u'from_date', u'to_date'),)", 'object_name': 'Suggestion'},
-            'count': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'}),
-            'event': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'suggestions'", 'to': u"orm['cosinnus_event.Event']"}),
-            'from_date': ('django.db.models.fields.DateTimeField', [], {'default': 'None'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'to_date': ('django.db.models.fields.DateTimeField', [], {'default': 'None'})
-        },
-        u'cosinnus_event.vote': {
-            'Meta': {'unique_together': "((u'suggestion', u'voter'),)", 'object_name': 'Vote'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'suggestion': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'votes'", 'to': u"orm['cosinnus_event.Suggestion']"}),
-            'voter': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'votes'", 'to': u"orm['auth.User']"})
-        }
-    }
-
-    complete_apps = ['cosinnus_event']
+    operations = [
+        migrations.CreateModel(
+            name='Comment',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created_on', models.DateTimeField(default=django.utils.timezone.now, verbose_name='Created', editable=False)),
+                ('last_modified', models.DateTimeField(auto_now=True, verbose_name='Last modified')),
+                ('text', models.TextField(verbose_name='Text')),
+            ],
+            options={
+                'ordering': ['created_on'],
+                'verbose_name': 'Comment',
+                'verbose_name_plural': 'Comments',
+            },
+        ),
+        migrations.CreateModel(
+            name='Event',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=255, verbose_name='Title')),
+                ('slug', models.SlugField(max_length=55, blank=True)),
+                ('created', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
+                ('from_date', models.DateTimeField(default=None, null=True, verbose_name='Start', blank=True)),
+                ('to_date', models.DateTimeField(default=None, null=True, verbose_name='End', blank=True)),
+                ('state', models.PositiveIntegerField(default=2, verbose_name='State', editable=False, choices=[(1, 'Scheduled'), (2, 'Voting open'), (3, 'Canceled')])),
+                ('note', models.TextField(null=True, verbose_name='Note', blank=True)),
+                ('location', osm_field.fields.OSMField(lat_field='location_lat', null=True, verbose_name='Location', lon_field='location_lon', blank=True)),
+                ('location_lat', osm_field.fields.LatitudeField(blank=True, null=True, verbose_name='Latitude', validators=[osm_field.validators.validate_latitude])),
+                ('location_lon', osm_field.fields.LongitudeField(blank=True, null=True, verbose_name='Longitude', validators=[osm_field.validators.validate_longitude])),
+                ('street', models.CharField(max_length=50, null=True, verbose_name='Street', blank=True)),
+                ('zipcode', models.PositiveIntegerField(null=True, verbose_name='ZIP code', blank=True)),
+                ('city', models.CharField(max_length=50, null=True, verbose_name='City', blank=True)),
+                ('public', models.BooleanField(default=False, verbose_name='Is public (on website)')),
+                ('image', models.ImageField(upload_to=cosinnus_event.models.get_event_image_filename, null=True, verbose_name='Image', blank=True)),
+                ('url', models.URLField(null=True, verbose_name='URL', blank=True)),
+                ('attached_objects', models.ManyToManyField(to='cosinnus.AttachedObject', null=True, blank=True)),
+                ('creator', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Creator', to=settings.AUTH_USER_MODEL, null=True)),
+                ('group', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Group', to='cosinnus.CosinnusGroup')),
+            ],
+            options={
+                'ordering': ['from_date', 'to_date'],
+                'abstract': False,
+                'verbose_name': 'Event',
+                'verbose_name_plural': 'Events',
+            },
+        ),
+        migrations.CreateModel(
+            name='Suggestion',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('from_date', models.DateTimeField(default=None, verbose_name='Start')),
+                ('to_date', models.DateTimeField(default=None, verbose_name='End')),
+                ('count', models.PositiveIntegerField(default=0, verbose_name='Votes', editable=False)),
+                ('event', models.ForeignKey(related_name='suggestions', verbose_name='Event', to='cosinnus_event.Event')),
+            ],
+            options={
+                'ordering': ['event', '-count'],
+                'verbose_name': 'Suggestion',
+                'verbose_name_plural': 'Suggestions',
+            },
+        ),
+        migrations.CreateModel(
+            name='Vote',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('choice', models.PositiveSmallIntegerField(default=0, verbose_name='Vote', choices=[(2, 'Yes'), (1, 'Maybe'), (0, 'No')])),
+                ('suggestion', models.ForeignKey(related_name='votes', verbose_name='Suggestion', to='cosinnus_event.Suggestion')),
+                ('voter', models.ForeignKey(related_name='votes', verbose_name='Voter', to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'Vote',
+                'verbose_name_plural': 'Votes',
+            },
+        ),
+    ]
