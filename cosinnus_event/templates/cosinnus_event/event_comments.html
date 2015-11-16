@@ -84,7 +84,7 @@
                     <div type="button" class="{{ button_classes }}">
                         <ul class="media-list">
                             <li class="media">
-                                <a class="pull-left" href="{% url 'cosinnus:profile-detail' %}">
+                                <a class="pull-left" href="{% url 'cosinnus:profile-detail' username=user.username %}">
                                     {% include 'cosinnus/user/user_avatar_image.html' with user=user %}
                                 </a>
                                 <div class="media-body media-body-form-control">
