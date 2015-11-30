@@ -59,11 +59,11 @@ msgstr "Член прокоментував/-ла пропозицію дати,
 
 #: .\dashboard.py:28
 msgid "Upcoming Events"
-msgstr "Прийдешні заходи"
+msgstr "Майбутні заходи"
 
 #: .\dashboard.py:48
 msgid "No upcoming events"
-msgstr "Немає прийдешніх заходів"
+msgstr "Немає майбутніх заходів"
 
 #: .\filters.py:14
 msgid "Created By"
@@ -604,7 +604,7 @@ msgstr "Опитування щодо дати"
 #: .\templates\cosinnus_event\list_object.html.py:27
 #: .\templates\cosinnus_event\single_event_detailed.html.py:29
 msgid "by"
-msgstr ""
+msgstr "Автор"
 
 #: .\templates\cosinnus_event\list_object.html.py:142
 #: .\templates\cosinnus_event\single_event_detailed.html.py:74
@@ -645,7 +645,7 @@ msgstr "до"
 #: .\templates\cosinnus_event\common\humanized_event_time.html.py:31
 msgctxt "time"
 msgid "o'clock"
-msgstr ""
+msgstr " "
 
 #: .\templates\cosinnus_event\common\humanized_event_time.html.py:13
 #: .\templates\cosinnus_event\common\humanized_event_time.html.py:28
@@ -901,4 +901,4 @@ msgstr "Більше"
 
 #: .\templates\cosinnus_event\widgets\event_widget_form.html.py:14
 msgid "Upcoming events"
-msgstr "Прийдешні заходи"
+msgstr "Майбутні заходи"
