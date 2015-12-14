@@ -16,7 +16,7 @@
                     <div class="media-body no-vertical-padding ">
                         <span class="annotation">
                             {% with creator=event.creator %}
-                                von <strong><a href="{{ creator|profile_url }}">{{ creator|full_name }}</a></strong>
+                                {# {% trans "by" %} #} <strong><a href="{{ creator|profile_url }}">{{ creator|full_name }}</a></strong>
                             {% endwith %}
                             <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
                         </span>
