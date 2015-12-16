@@ -486,7 +486,11 @@ class EventFeed(ICalFeed):
         return item.title
 
     def item_description(self, item):
-        return item.note
+        description = item.note
+        # add website URL to description if set on event
+        if item.url:
+            description = description + '\n\n' + item.url if description else item.url 
+        return description
 
     def item_start_datetime(self, item):
         return item.from_date
