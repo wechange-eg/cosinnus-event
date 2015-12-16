@@ -493,9 +493,11 @@ class EventFeed(ICalFeed):
         return description
 
     def item_start_datetime(self, item):
+        # we're returning a DateTime here. if we wanted to mark a full-day event, we would return a Date
         return item.from_date
     
     def item_end_datetime(self, item):
+        # we're returning a DateTime here. if we wanted to mark a full-day event, we would return a Date
         return item.to_date
     
     def item_link(self, item):
