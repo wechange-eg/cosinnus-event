@@ -23,10 +23,6 @@
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
 	    {% if user.is_authenticated %}
-		    <div class="pull-right">
-		        <a href="#" data-toggle="modal" data-target="#feedModal">{% trans "Export event feed" %}</a>
-		    </div>
-		    <div class="clearfix"></div>
 		    {% captureas content %}
 		        <div type="button" class="btn btn-default w100 regular-space">
 		            <ul class="media-list">
@@ -97,6 +93,21 @@
                 </ul>
             </button>
         </form>
+        {% endif %}
+	    {% if user.is_authenticated %}
+        <button href="#" data-toggle="modal" data-target="#feedModal" class="btn btn-emphasized">
+            <ul class="media-list">
+                <li class="media">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-calendar"></i>
+                    </a>
+                    <div class="media-body">
+                        {% trans "Export event feed" %}
+                    </div>
+                </li>
+            </ul>
+        </button>
+	    <div class="clearfix"></div>
         {% endif %}
 	
 	</div><!-- content-box -->
