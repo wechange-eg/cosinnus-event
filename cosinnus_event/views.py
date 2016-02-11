@@ -479,7 +479,7 @@ class EventFeed(ICalFeed):
     
     def items(self, request):
         qs = Event.get_current(self.group, self.user)
-        qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
+        qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
         return qs
     
     def item_title(self, item):
