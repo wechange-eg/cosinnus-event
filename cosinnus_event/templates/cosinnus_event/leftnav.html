@@ -44,8 +44,8 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
-                    {% if future_events %}
-                        {{ future_events|length }}
+                    {% if future_events_count %}
+                        {{ future_events_count }}
                     {% else %}
                         <i class="fa fa-calendar"></i>
                     {% endif %}
@@ -66,8 +66,8 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
-                    {% if future_events %}
-                        {{ future_events|length }}
+                    {% if future_events_count %}
+                        {{ future_events_count }}
                     {% else %}
                         <i class="fa fa-calendar"></i>
                     {% endif %}
