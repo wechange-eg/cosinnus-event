@@ -49,9 +49,10 @@
                             {% else %}
                                 {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
 	                        {% endif %}
-	                        
-				                <input type="hidden" id="id_from_date_1" name="from_date_1" />
-				                <input type="hidden" id="id_to_date_1" name="to_date_1" />
+                           
+                           <div {% if has_active_votes %}style="display: none;"{% endif %}> {# Voting panel wrapper #}
+                               <input type="hidden" id="id_from_date_1" name="from_date_1" />
+                               <input type="hidden" id="id_to_date_1" name="to_date_1" />
 									<ol class="input-area">
 										<li id="calendar-doodle-days-selector">
 											<div class="small-calendar"></div>
@@ -80,7 +81,17 @@
 											</div>
 										</li>
 									</ol><!-- input-area -->
-
+							</div>
+                            
+                            {% if has_active_votes %}
+                                <ol class="input-area">
+                                    <li class="w100">
+                                        
+                                        <p><i class="fa fa-warning"></i> {% trans "Note: You cannot edit the dates for this doodle because someone has already cast their vote!" %}</p>
+                                    </li>
+                                </ol>
+                            {% endif %}
+                            
 	                        {% include 'cosinnus/media_tags.html' %}
 	                        
 	                        <ol class="input-area">

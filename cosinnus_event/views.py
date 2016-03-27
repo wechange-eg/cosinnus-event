@@ -228,9 +228,13 @@ entry_edit_view = EntryEditView.as_view()
 
 class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
 
-    #def forms_invalid(self, form, inlines):
-    #    import ipdb; ipdb.set_trace()
-
+    def get_context_data(self, *args, **kwargs):
+        context = super(DoodleEditView, self).get_context_data(*args, **kwargs)
+        context.update({
+            'has_active_votes': self.object.suggestions.filter(votes__isnull=False).count() > 0,
+        })
+        return context
+    
     def forms_valid(self, form, inlines):
         # Save the suggestions first so we can directly
         # access the amount of suggestions afterwards
