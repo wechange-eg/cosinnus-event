@@ -18,6 +18,8 @@ from cosinnus.forms.attached_object import FormAttachable
 
 class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
                  FormAttachable):
+    
+    url = forms.URLField(widget=forms.TextInput, required=False)
 
     class Meta:
         model = Event
