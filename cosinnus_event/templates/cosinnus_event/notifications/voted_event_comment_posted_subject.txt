@@ -1,1 +1,1 @@
-{% load i18n cosinnus_tags %}{% blocktrans %}{{ sender_name }} commented on a doodle you voted in in {{ group_name }}.{% endblocktrans %}
+{% load i18n cosinnus_tags %}{% blocktrans %}{{ sender_name }} commented on a doodle you voted in in {{ team_name }}.{% endblocktrans %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 11:52+0200\n"
+"POT-Creation-Date: 2016-03-30 14:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -553,7 +553,7 @@ msgstr ""
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"a new event \"%(object_name)s\" in %(group_name)s was created by %"
+"a new event \"%(object_name)s\" in %(team_name)s was created by %"
 "(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
@@ -568,7 +568,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\doodle_created_subject.txt:1
 #, python-format
-msgid "A new doodle: \"%(object_name)s\" was created in %(group_name)s."
+msgid "A new doodle: \"%(object_name)s\" was created in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\event_comment_posted.html:1
@@ -577,7 +577,7 @@ msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s has posted a comment on an event you created in group %"
-"(group_name)s:\n"
+"(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -600,7 +600,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\event_comment_posted_subject.txt:1
 #, python-format
-msgid "%(sender_name)s commented on one of your events in %(group_name)s."
+msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\event_created.txt:1
@@ -609,7 +609,7 @@ msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
 "a new event \"%(object_name)s\", on %(event_date)s, was announced in %"
-"(group_name)s by %(sender_name)s. \n"
+"(team_name)s by %(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
 "\n"
@@ -623,7 +623,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\event_created_subject.txt:1
 #, python-format
-msgid "A new event: \"%(object_name)s\" was announced in %(group_name)s."
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\tagged_event_comment_posted.html:1
@@ -632,7 +632,7 @@ msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s has posted a comment on an event you were tagged in, in "
-"group %(group_name)s:\n"
+"group %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -655,7 +655,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\tagged_event_comment_posted_subject.txt:1
 #, python-format
-msgid "%(sender_name)s commented on a event you were tagged in %(group_name)s."
+msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\voted_event_comment_posted.html:1
@@ -664,7 +664,7 @@ msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s has posted a comment on a doodle you voted in in group %"
-"(group_name)s:\n"
+"(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -687,7 +687,7 @@ msgstr ""
 
 #: .\templates\cosinnus_event\notifications\voted_event_comment_posted_subject.txt:1
 #, python-format
-msgid "%(sender_name)s commented on a doodle you voted in in %(group_name)s."
+msgid "%(sender_name)s commented on a doodle you voted in in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\single_event_detailed.html:75
