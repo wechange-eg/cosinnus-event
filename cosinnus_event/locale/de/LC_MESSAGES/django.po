@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 18:22+0200\n"
+"POT-Creation-Date: 2016-03-30 11:52+0200\n"
 "PO-Revision-Date: 2016-03-27 18:23+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_detailed.html:10
 #: .\templates\cosinnus_event\event_list_detailed_past.html:5
 #: .\templates\cosinnus_event\event_list_detailed_past.html:10
-#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:473
+#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:470
 msgid "Events"
 msgstr "Veranstaltungen"
 
@@ -330,7 +330,7 @@ msgstr "Ort (optional)."
 #: .\templates\cosinnus_event\doodle_form.html:131
 #: .\templates\cosinnus_event\doodle_list.html:52
 #: .\templates\cosinnus_event\event_form.html:140
-#: .\templates\cosinnus_event\event_list.html:90
+#: .\templates\cosinnus_event\event_list.html:91
 msgid "Create"
 msgstr "Erstellen"
 
@@ -455,46 +455,46 @@ msgstr ""
 "Dieser iCal-Link kann für Terminkalender genutzt werden um aktuelle "
 "Veranstaltungen zu importieren und anzuzeigen:"
 
-#: .\templates\cosinnus_event\event_list.html:40
+#: .\templates\cosinnus_event\event_list.html:41
 msgid "iCal Feed"
 msgstr "iCal Feed"
 
-#: .\templates\cosinnus_event\event_list.html:74
+#: .\templates\cosinnus_event\event_list.html:75
 msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr ""
 "Gib den Titel für eine neue Veranstaltung ein oder klicke auf einen Tag im "
 "Kalender."
 
-#: .\templates\cosinnus_event\event_list.html:104
+#: .\templates\cosinnus_event\event_list.html:105
 msgid "Export event feed"
 msgstr "Feed für Veranstaltungen"
 
-#: .\templates\cosinnus_event\event_list.html:125
+#: .\templates\cosinnus_event\event_list.html:126
 msgid "Create Event"
 msgstr "Veranstaltung anlegen"
 
-#: .\templates\cosinnus_event\event_list.html:129
 #: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "Would you like to create an event"
 msgstr "Möchtest du eine Veranstaltung anlegen"
 
-#: .\templates\cosinnus_event\event_list.html:129
+#: .\templates\cosinnus_event\event_list.html:130
 msgid "on"
 msgstr "am"
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "from"
 msgstr "von"
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "until"
 msgstr "bis"
 
-#: .\templates\cosinnus_event\event_list.html:141
+#: .\templates\cosinnus_event\event_list.html:142
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: .\templates\cosinnus_event\event_list.html:157
+#: .\templates\cosinnus_event\event_list.html:158
 msgid "OK"
 msgstr ""
 
@@ -562,29 +562,29 @@ msgstr "Veranstaltung Löschen"
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"a new event \"%(object_name)s\" in %(group_name)s was created by "
-"%(sender_name)s. \n"
+"a new event \"%(object_name)s\" in %(group_name)s was created by %"
+"(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"eine neue Terminumfrage \"%(object_name)s\" wurde in %(group_name)s von "
-"%(sender_name)s erstellt. \n"
+"eine neue Terminumfrage \"%(object_name)s\" wurde in %(group_name)s von %"
+"(sender_name)s erstellt. \n"
 "\n"
 "Du kannst sie finden indem du folgenden Link aufrufst: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: "
-"%(notification_settings_url)s )\n"
+"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Dein %(site_name)s Team."
 
@@ -599,8 +599,8 @@ msgstr ""
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on an event you created in group "
-"%(group_name)s:\n"
+"%(sender_name)s has posted a comment on an event you created in group %"
+"(group_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -614,8 +614,8 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -637,8 +637,8 @@ msgstr ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: "
-"%(notification_settings_url)s )\n"
+"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Dein %(site_name)s team.\n"
 "\n"
@@ -647,37 +647,37 @@ msgstr ""
 #, python-format
 msgid "%(sender_name)s commented on one of your events in %(group_name)s."
 msgstr ""
-"%(sender_name)s hat eine deiner Veranstaltungen kommentiert in "
-"%(group_name)s."
+"%(sender_name)s hat eine deiner Veranstaltungen kommentiert in %(group_name)"
+"s."
 
 #: .\templates\cosinnus_event\notifications\event_created.txt:1
 #, python-format
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"a new event \"%(object_name)s\", on %(event_date)s, was announced in "
-"%(group_name)s by %(sender_name)s. \n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in %"
+"(group_name)s by %(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"eine neue Veranstaltung \"%(object_name)s\", am %(event_date)s, wurde in "
-"%(group_name)s von %(sender_name)s eingetragen. \n"
+"eine neue Veranstaltung \"%(object_name)s\", am %(event_date)s, wurde in %"
+"(group_name)s von %(sender_name)s eingetragen. \n"
 "\n"
 "Du kannst sie finden indem du folgenden Link aufrufst: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: "
-"%(notification_settings_url)s )\n"
+"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Dein %(site_name)s Team."
 
@@ -707,8 +707,8 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -730,8 +730,8 @@ msgstr ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: "
-"%(notification_settings_url)s )\n"
+"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Dein %(site_name)s team.\n"
 "\n"
@@ -748,8 +748,8 @@ msgstr ""
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on a doodle you voted in in group "
-"%(group_name)s:\n"
+"%(sender_name)s has posted a comment on a doodle you voted in in group %"
+"(group_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -763,8 +763,8 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -786,8 +786,8 @@ msgstr ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: "
-"%(notification_settings_url)s )\n"
+"(Folge diesem Link um deine Benachrichtigungseinstellungen zu ändern: %"
+"(notification_settings_url)s )\n"
 "\n"
 "Dein %(site_name)s team.\n"
 "\n"
@@ -859,68 +859,68 @@ msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich hinzugefügt."
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht hinzugefügt werden."
 
-#: .\views.py:217 .\views.py:253
+#: .\views.py:217 .\views.py:250
 msgid "You should define at least one date suggestion."
 msgstr "Es sollte mindestens ein Terminvorschlag eingegeben werden."
 
-#: .\views.py:266
+#: .\views.py:263
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr "Veranstaltung \"%(title)s\" wurde erfolgreich gelöscht."
 
-#: .\views.py:267
+#: .\views.py:264
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht gelöscht werden."
 
-#: .\views.py:276
+#: .\views.py:273
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich gelöscht."
 
-#: .\views.py:277
+#: .\views.py:274
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht gelöscht werden."
 
-#: .\views.py:304
+#: .\views.py:301
 msgid "Your votes were saved successfully."
 msgstr "Ihre Abstimmung wurde erfolgreich gespeichert."
 
-#: .\views.py:305
+#: .\views.py:302
 msgid "Your votes could not be saved."
 msgstr "Ihre Abstimmung konnte nicht gespeichert werden."
 
-#: .\views.py:314 .\views.py:445
+#: .\views.py:311 .\views.py:442
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr ""
 "Die Terminfindung für diese Aufgabe ist bereits abgeschlossen. Du kannst "
 "deine Sitmme nicht mehr abgeben."
 
-#: .\views.py:437
+#: .\views.py:434
 msgid "The complete request can only be sent via POST!"
 msgstr ""
 
-#: .\views.py:448
+#: .\views.py:445
 msgid "Event cannot be completed: No date was supplied."
 msgstr ""
 "Die Terminfindung konnte nicht abgeschlossen werden: Es wurde kein Zieldatum "
 "übermittelt."
 
-#: .\views.py:458
+#: .\views.py:455
 msgid "The event was created successfully at the specified date."
 msgstr ""
 "Die Veranstaltung wurde erfolgreich an dem angegebenen Termin erstellt."
 
-#: .\views.py:474
+#: .\views.py:471
 msgid "Upcoming events in"
 msgstr "Aktuelle Veranstaltungen in"
 
-#: .\views.py:556
+#: .\views.py:553
 msgid "Your comment was added successfully."
 msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 
-#: .\views.py:596
+#: .\views.py:593
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 

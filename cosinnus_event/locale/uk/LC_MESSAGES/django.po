@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 18:22+0200\n"
+"POT-Creation-Date: 2016-03-30 11:52+0200\n"
 "PO-Revision-Date: 2015-11-11 10:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_detailed.html:10
 #: .\templates\cosinnus_event\event_list_detailed_past.html:5
 #: .\templates\cosinnus_event\event_list_detailed_past.html:10
-#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:473
+#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:470
 msgid "Events"
 msgstr "Заходи"
 
@@ -329,7 +329,7 @@ msgstr "Місце (додатково)."
 #: .\templates\cosinnus_event\doodle_form.html:131
 #: .\templates\cosinnus_event\doodle_list.html:52
 #: .\templates\cosinnus_event\event_form.html:140
-#: .\templates\cosinnus_event\event_list.html:90
+#: .\templates\cosinnus_event\event_list.html:91
 msgid "Create"
 msgstr "Створити"
 
@@ -451,44 +451,44 @@ msgid ""
 msgstr ""
 "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
 
-#: .\templates\cosinnus_event\event_list.html:40
+#: .\templates\cosinnus_event\event_list.html:41
 msgid "iCal Feed"
 msgstr "Файл вихідних даних iCal"
 
-#: .\templates\cosinnus_event\event_list.html:74
+#: .\templates\cosinnus_event\event_list.html:75
 msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr "Введіть назву нового заходу або виберіть день у календарі."
 
-#: .\templates\cosinnus_event\event_list.html:104
+#: .\templates\cosinnus_event\event_list.html:105
 msgid "Export event feed"
 msgstr "Експортувати вихідний файл заходів"
 
-#: .\templates\cosinnus_event\event_list.html:125
+#: .\templates\cosinnus_event\event_list.html:126
 msgid "Create Event"
 msgstr "Створити захід"
 
-#: .\templates\cosinnus_event\event_list.html:129
 #: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "Would you like to create an event"
 msgstr "Бажаєте створити захід"
 
-#: .\templates\cosinnus_event\event_list.html:129
+#: .\templates\cosinnus_event\event_list.html:130
 msgid "on"
 msgstr ""
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "from"
 msgstr "з"
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "until"
 msgstr "до"
 
-#: .\templates\cosinnus_event\event_list.html:141
+#: .\templates\cosinnus_event\event_list.html:142
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: .\templates\cosinnus_event\event_list.html:157
+#: .\templates\cosinnus_event\event_list.html:158
 msgid "OK"
 msgstr "Так"
 
@@ -848,62 +848,62 @@ msgstr "Пропозицію дати «%(title)s» успішно додано.
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr "Неможливо додати пропозицію дати «%(title)s»."
 
-#: .\views.py:217 .\views.py:253
+#: .\views.py:217 .\views.py:250
 msgid "You should define at least one date suggestion."
 msgstr "Необхідно запропонувати принаймні одну дату."
 
-#: .\views.py:266
+#: .\views.py:263
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr "Захід «%(title)s» успішно видалено."
 
-#: .\views.py:267
+#: .\views.py:264
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr "Не можливо видалити захід «%(title)s»."
 
-#: .\views.py:276
+#: .\views.py:273
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr "Пропозицію дати «%(title)s» успішно видалено."
 
-#: .\views.py:277
+#: .\views.py:274
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr "Не можливо видалити пропозицію дати «%(title)s»."
 
-#: .\views.py:304
+#: .\views.py:301
 msgid "Your votes were saved successfully."
 msgstr "Ваше голосування успішно збережено."
 
-#: .\views.py:305
+#: .\views.py:302
 msgid "Your votes could not be saved."
 msgstr "Неможливо зберегти ваше голосування."
 
-#: .\views.py:314 .\views.py:445
+#: .\views.py:311 .\views.py:442
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr "Опитування щодо дати уже завершено. Ви більше не можете проголосувати."
 
-#: .\views.py:437
+#: .\views.py:434
 msgid "The complete request can only be sent via POST!"
 msgstr "Повний запит можна надіслати лише ПОШТОЮ!"
 
-#: .\views.py:448
+#: .\views.py:445
 msgid "Event cannot be completed: No date was supplied."
 msgstr "Неможливо завершити опитування щодо дати:"
 
-#: .\views.py:458
+#: .\views.py:455
 msgid "The event was created successfully at the specified date."
 msgstr "Захід успішно створено із вказаною датою."
 
-#: .\views.py:474
+#: .\views.py:471
 msgid "Upcoming events in"
 msgstr "Прийдешні заходи через"
 
-#: .\views.py:556
+#: .\views.py:553
 msgid "Your comment was added successfully."
 msgstr "Ваш коментар успішно додано."
 
-#: .\views.py:596
+#: .\views.py:593
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."

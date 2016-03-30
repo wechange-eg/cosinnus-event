@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-27 18:22+0200\n"
+"POT-Creation-Date: 2016-03-30 11:52+0200\n"
 "PO-Revision-Date: 2015-11-14 17:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_detailed.html:10
 #: .\templates\cosinnus_event\event_list_detailed_past.html:5
 #: .\templates\cosinnus_event\event_list_detailed_past.html:10
-#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:473
+#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:470
 msgid "Events"
 msgstr "Cобытия"
 
@@ -334,7 +334,7 @@ msgstr "Место (необязательно)"
 #: .\templates\cosinnus_event\doodle_form.html:131
 #: .\templates\cosinnus_event\doodle_list.html:52
 #: .\templates\cosinnus_event\event_form.html:140
-#: .\templates\cosinnus_event\event_list.html:90
+#: .\templates\cosinnus_event\event_list.html:91
 msgid "Create"
 msgstr "Создать"
 
@@ -458,44 +458,44 @@ msgstr ""
 "Скопируйте эту ссылку iCal в ваш календарь, чтобы импортировать текущие "
 "события:"
 
-#: .\templates\cosinnus_event\event_list.html:40
+#: .\templates\cosinnus_event\event_list.html:41
 msgid "iCal Feed"
 msgstr "Лента новостей iCal"
 
-#: .\templates\cosinnus_event\event_list.html:74
+#: .\templates\cosinnus_event\event_list.html:75
 msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr "Введите название нового события или выберите день в календаре"
 
-#: .\templates\cosinnus_event\event_list.html:104
+#: .\templates\cosinnus_event\event_list.html:105
 msgid "Export event feed"
 msgstr "Экспортировать ленту новостей события"
 
-#: .\templates\cosinnus_event\event_list.html:125
+#: .\templates\cosinnus_event\event_list.html:126
 msgid "Create Event"
 msgstr "Создать событие"
 
-#: .\templates\cosinnus_event\event_list.html:129
 #: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "Would you like to create an event"
 msgstr "Вы хотите создать событие"
 
-#: .\templates\cosinnus_event\event_list.html:129
+#: .\templates\cosinnus_event\event_list.html:130
 msgid "on"
 msgstr "в"
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "from"
 msgstr "с"
 
-#: .\templates\cosinnus_event\event_list.html:130
+#: .\templates\cosinnus_event\event_list.html:131
 msgid "until"
 msgstr "по"
 
-#: .\templates\cosinnus_event\event_list.html:141
+#: .\templates\cosinnus_event\event_list.html:142
 msgid "Cancel"
 msgstr "Отменить"
 
-#: .\templates\cosinnus_event\event_list.html:157
+#: .\templates\cosinnus_event\event_list.html:158
 msgid "OK"
 msgstr "ОК"
 
@@ -860,62 +860,62 @@ msgstr "Предложение по дате \"%(title)s\" добавлено"
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr "Невозможно добавить предложение по дате \"%(title)s\""
 
-#: .\views.py:217 .\views.py:253
+#: .\views.py:217 .\views.py:250
 msgid "You should define at least one date suggestion."
 msgstr "Вы должны предложить как минимум одну дату"
 
-#: .\views.py:266
+#: .\views.py:263
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr "Cобытие \"%(title)s\" удалено."
 
-#: .\views.py:267
+#: .\views.py:264
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr "Невозможно удалить событие \"%(title)s\""
 
-#: .\views.py:276
+#: .\views.py:273
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr "Предложение по дате \"%(title)s\" удалено"
 
-#: .\views.py:277
+#: .\views.py:274
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr "Невозможно удалить предложение по дате \"%(title)s\""
 
-#: .\views.py:304
+#: .\views.py:301
 msgid "Your votes were saved successfully."
 msgstr "Ваше голосование сохранено"
 
-#: .\views.py:305
+#: .\views.py:302
 msgid "Your votes could not be saved."
 msgstr "Невозможно сохранить результаты вашего голосования"
 
-#: .\views.py:314 .\views.py:445
+#: .\views.py:311 .\views.py:442
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr "Дата этого события уже назначена. Вы больше не можете голосовать"
 
-#: .\views.py:437
+#: .\views.py:434
 msgid "The complete request can only be sent via POST!"
 msgstr "Полный запрос может быть отправлен только по почте!"
 
-#: .\views.py:448
+#: .\views.py:445
 msgid "Event cannot be completed: No date was supplied."
 msgstr "Невозможно внести событие. Отсутствует дата"
 
-#: .\views.py:458
+#: .\views.py:455
 msgid "The event was created successfully at the specified date."
 msgstr "Событие создано и привязано к указанной дате"
 
-#: .\views.py:474
+#: .\views.py:471
 msgid "Upcoming events in"
 msgstr "Ближайшие события в"
 
-#: .\views.py:556
+#: .\views.py:553
 msgid "Your comment was added successfully."
 msgstr "Ваш комментарий добавлен"
 
-#: .\views.py:596
+#: .\views.py:593
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален"
