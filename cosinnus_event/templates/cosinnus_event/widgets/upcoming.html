@@ -2,7 +2,7 @@
 
 {% if events %}
     {% for event in events %}
-        <div type="button" class="btn btn-emphasized dashboard-appwidget-contentline fine-space">
+        <div type="button" href="{{ event.get_absolute_url }}" class="btn btn-emphasized dashboard-appwidget-contentline fine-space">
             <ul class="media-list">
                 <li class="media">
 		            <a class="pull-left square-date-icon" href="#">
