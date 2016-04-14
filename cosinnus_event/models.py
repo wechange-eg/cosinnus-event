@@ -68,7 +68,6 @@ class Event(BaseTaggableObjectModel):
         _('State'),
         choices=STATE_CHOICES,
         default=STATE_VOTING_OPEN,
-        editable=False,
     )
     __state = None # pre-save purpose
 
