@@ -104,7 +104,7 @@
                 <i class="fa fa-map-marker"></i>
             </a>
             <div class="media-body">
-			      {{ event.media_tag_object.location }}
+			      <a href="{{ event.media_tag_object.location_url }}" target="_blank">{{ event.media_tag_object.location }}</a>
             </div>
         </li>
     </ul>
