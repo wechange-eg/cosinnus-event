@@ -190,7 +190,7 @@ class Event(BaseTaggableObjectModel):
     
     @property
     def is_same_day(self):
-        return self.from_date.date() == self.to_date.date()
+        return localtime(self.from_date).date() == localtime(self.to_date).date()
     
     @property
     def is_same_time(self):

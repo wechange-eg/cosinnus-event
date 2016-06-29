@@ -29,6 +29,13 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
             'from_date': SplitHiddenDateWidget,       
             'to_date': SplitHiddenDateWidget,
         }
+    
+    def clean_to_date(self):
+        date = self.cleaned_data['to_date']
+        # if no end time was set, always set 23:59 for "end of day"
+        if not self.data.get('to_date_1', None):
+            date = date.replace(hour=23, minute=59)
+        return date
 
     def __init__(self, *args, **kwargs):
         super(_EventForm, self).__init__(*args, **kwargs)
