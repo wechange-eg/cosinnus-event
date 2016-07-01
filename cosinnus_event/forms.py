@@ -33,7 +33,7 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
     def clean_to_date(self):
         date = self.cleaned_data['to_date']
         # if no end time was set, always set 23:59 for "end of day"
-        if not self.data.get('to_date_1', None):
+        if date and not self.data.get('to_date_1', None):
             date = date.replace(hour=23, minute=59)
         return date
 
