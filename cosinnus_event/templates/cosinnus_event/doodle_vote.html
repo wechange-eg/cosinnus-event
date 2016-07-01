@@ -36,7 +36,7 @@
 		            <!-- width = n*54-4 -->
 		            {% if not votes_user_grouped %}
 	                    <div>
-	                        <!--{% trans "Nobody has voted for this doodle yet." %}-->
+	                        <!--{% trans "Nobody has voted for this event poll yet." %}-->
 	                        {% include 'cosinnus/common/empty_button.html' with message="Nobody has voted for this doodle yet." %}
 	                    </div>
 		            {% endif %}
@@ -173,7 +173,7 @@
 		            
 	            {% else %}
 	                {% comment %} No suggestions were added {% endcomment %}
-	                <!-- {% trans "There are no date suggestions for this doodle yet!" %} -->
+	                <!-- {% trans "There are no date suggestions for this event poll yet!" %} -->
 	                {% include 'cosinnus/common/empty_button.html' with message="There are no date suggestions for this doodle yet!" %}
 	            {% endif %}
 	        </div><!-- table -->

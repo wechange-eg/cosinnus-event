@@ -47,7 +47,7 @@ notifications = {
         'default': True,
     },  
     'doodle_created': {
-        'label': _('A user created a new doodle'), 
+        'label': _('A user created a new event poll'), 
         'mail_template': 'cosinnus_event/notifications/doodle_created.txt',
         'subject_template': 'cosinnus_event/notifications/doodle_created_subject.txt',
         'signals': [doodle_created],

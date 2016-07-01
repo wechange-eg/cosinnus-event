@@ -60,7 +60,7 @@
   {% for event in object_list %}
       {% include "cosinnus_event/list_object.html" %}
   {% empty %}
-      <!-- {% trans "There are no open event suggestions." %} -->
+      <!-- {% trans "There are no open event polls." %} -->
       {% include 'cosinnus/common/empty_button.html' with message="There are no open event suggestions." %}
   {% endfor %}
 
