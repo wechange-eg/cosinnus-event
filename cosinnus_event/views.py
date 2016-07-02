@@ -286,10 +286,6 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EntryDetailView, self).get_context_data(**kwargs)
-        height = getattr(settings, 'GEOPOSITION_MAP_WIDGET_HEIGHT', 200)
-        context.update({
-            'map_widget_height': height,
-        })
         return context
 
 entry_detail_view = EntryDetailView.as_view()
