@@ -38,7 +38,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'from_date', 'to_date', 'creator', 'group',
                     'state')
     list_filter = ('state', 'creator', 'group',)
-    search_fields = ('title', 'note')
+    search_fields = ('title', 'note', 'user__first_name', 'user__last_name', 'user__email', 'group__name')
 
 
 admin.site.register(Event, EventAdmin)
