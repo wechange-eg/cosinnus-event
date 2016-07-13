@@ -56,17 +56,20 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
+        qs = self.get_future_queryset()
+        return qs
+    
+    def get_future_queryset(self):
         qs = super(EventListView, self).get_queryset()
         qs = qs.filter(state=Event.STATE_SCHEDULED)
         if not self.show_past_events:
             qs = upcoming_event_filter(qs)
-        self.queryset = qs
         return qs
     
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         doodle_count = super(EventListView, self).get_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
-        future_events_count = self.queryset.count() if not self.show_past_events else upcoming_event_filter(self.queryset).count()
+        future_events_count = self.get_future_queryset().count() if not self.show_past_events else upcoming_event_filter(self.get_future_queryset()).count()
         
         context.update({
             'future_events': self.queryset,
