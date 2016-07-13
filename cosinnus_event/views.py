@@ -37,6 +37,7 @@ from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_read_access,\
     require_user_token_access
 from django.contrib.sites.models import Site, get_current_site
+from cosinnus.utils.functions import unique_aware_slugify
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -465,11 +466,34 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
             return HttpResponseRedirect(self.object.get_absolute_url())
         
         suggestion = get_object_or_404(Suggestion, pk=kwargs.get('suggestion_id'))
+        old_doodle_pk = event.pk
         
+        # give this a new temporary slug so the original one is free again
+        event.slug += '-archive'
+        unique_aware_slugify(event, 'title', 'slug', group=self.group, force_redo=True)
+        event.save(update_fields=['slug'])
+        
+        # 'clone' media_tag
+        new_media_tag = event.media_tag
+        new_media_tag.pk = None 
+        new_media_tag.save()
+        
+        event.pk = None # set pk to None to have this become a new event
+        event.slug = None # set slug to None so we can re-unique slugify 
+        event.media_tag = new_media_tag
         event.from_date = suggestion.from_date
         event.to_date = suggestion.to_date
         event.state = Event.STATE_SCHEDULED
-        event.save()
+        event.save(created_from_doodle=True)
+        
+        # re-retrieve old doodle, set it to archived 
+        doodle = self.model.objects.get(pk=old_doodle_pk)
+        doodle.state = Event.STATE_ARCHIVED_DOODLE
+        doodle.save(update_fields=['state'])
+        
+        # link old doodle to new event. can't do this until now because we wouldn't have had the old pointer correctly
+        event.original_doodle = doodle
+        event.save(update_fields=['original_doodle'])
         
         messages.success(request, _('The event was created successfully at the specified date.'))
         return HttpResponseRedirect(self.object.get_absolute_url())

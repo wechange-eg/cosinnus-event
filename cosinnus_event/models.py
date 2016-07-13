@@ -141,17 +141,17 @@ class Event(BaseTaggableObjectModel):
             
         return readable
     
-    def save(self, *args, **kwargs):
+    def save(self, created_from_doodle=False, *args, **kwargs):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created:
+        if created and not created_from_doodle:
             # event/doodle was created
             if self.state == Event.STATE_SCHEDULED:
                 cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
             else:
                 cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-        if not created and self.__state == Event.STATE_VOTING_OPEN and self.state == Event.STATE_SCHEDULED:
+        if not created and created_from_doodle:
             # event went from being a doodle to being a real event, so fire event created
             cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
         

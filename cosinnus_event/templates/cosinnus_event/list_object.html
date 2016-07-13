@@ -36,15 +36,19 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
-                    <i class="fa fa-clock-o"></i>
+                	{% if event.state == 4 and event.scheduled_event %}
+                		<i class="fa fa-calendar"></i>
+                	{% else %}
+                    	<i class="fa fa-clock-o"></i>
+                    {% endif %}
                 </a>
                 <div class="media-body">
                 	{% if event.state == 1 %}
 	                    <span class="moment-data-date" data-date="{{ event.from_date|date:"c" }}" title="{{ event.from_date }}"></span>
 	                    –
 	                    <span class="moment-data-date" data-date="{{ event.to_date|date:"c" }}" title="{{ event.to_date }}"></span>
-                    {% elif event.state == 4 and event.original_doodle %}
-                    	{% trans "Created Event" %}: <a href="{{ event.original_doodle.get_absolute_url }}" target="_blank">{{ event.original_doodle.title }} <i class="fa fa-external-link"></i></a>
+                    {% elif event.state == 4 and event.scheduled_event %}
+                    	{% trans "Created Event" %}: <a href="{{ event.scheduled_event.get_absolute_url }}" target="_blank">{{ event.scheduled_event.title }} <i class="fa fa-external-link"></i></a>
                     {% else %}
                     	–
                     {% endif %}
