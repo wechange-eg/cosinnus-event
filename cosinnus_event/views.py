@@ -115,6 +115,26 @@ class DoodleListView(EventListView):
 doodle_list_view = DoodleListView.as_view()
 
 
+class ArchivedDoodlesListView(EventListView):
+
+    template_name = 'cosinnus_event/doodle_list_detailed_archived.html'
+    event_view = 'archived'
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(EventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE)
+        self.queryset = qs
+        return qs
+    
+    def get_context_data(self, **kwargs):
+        context = super(ArchivedDoodlesListView, self).get_context_data(**kwargs)
+        context['archived_doodles'] = context.pop('future_events')
+        return context
+    
+archived_doodles_list_view = ArchivedDoodlesListView.as_view()
+
+
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
     
