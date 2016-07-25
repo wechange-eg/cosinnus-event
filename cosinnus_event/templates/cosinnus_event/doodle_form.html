@@ -38,7 +38,11 @@
 		        <ul class="media-list">
 		            <li class="media">
 		                <a class="pull-left btn-emphasized" href="#">
-		                    <i class="fa fa-plus"></i>
+		                    {% if form_view == "add" %}
+							   <i class="fa fa-plus"></i>
+							{% elif form_view == "edit" %}
+							   <i class="fa fa-pencil"></i>
+							{% endif %}
 		                </a>
 		                <div class="media-body media-body-form-control">
 		                    

@@ -118,23 +118,26 @@
                 </li>
             </ul>
         </button>
-      {% if event.state == 2 %}
-        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}{% endcaptureas %}
-      {% else %}
-        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}{% endcaptureas %}
-      {% endif %}
-        <button type="button" class="btn btn-emphasized" href="{{ edit_url }}">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="pull-left" href="#">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <div class="media-body">
-                        {% trans "Edit" %}
-                    </div>
-                </li>
-            </ul>
-        </button> 
+      
+      {% if event.state != 4 %} {# archived doodles cannot be edited #}
+	      {% if event.state == 2 %}
+	        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}{% endcaptureas %}
+	      {% else %}
+	        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}{% endcaptureas %}
+	      {% endif %}
+	        <button type="button" class="btn btn-emphasized" href="{{ edit_url }}">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <a class="pull-left" href="#">
+	                        <i class="fa fa-pencil"></i>
+	                    </a>
+	                    <div class="media-body">
+	                        {% trans "Edit" %}
+	                    </div>
+	                </li>
+	            </ul>
+	        </button> 
+	  {% endif %}
     {% endif %}
     
     {% include 'cosinnus/feedback/report_button_btn.html' with object=event %}
