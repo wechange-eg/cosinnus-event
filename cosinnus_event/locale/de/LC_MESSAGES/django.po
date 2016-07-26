@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-26 11:56+0200\n"
-"PO-Revision-Date: 2016-07-26 12:36+0200\n"
+"PO-Revision-Date: 2016-07-26 15:27+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -399,7 +399,7 @@ msgstr "Abstimmen für %(title)s"
 #: .\templates\cosinnus_event\doodle_vote.html:19
 #, python-format
 msgid "Archived: %(title)s"
-msgstr ""
+msgstr "Abgeschlossen: %(title)s"
 
 #: .\templates\cosinnus_event\doodle_vote.html:42
 msgid "This event has already been scheduled. Voting is closed."
