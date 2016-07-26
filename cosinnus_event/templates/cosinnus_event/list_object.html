@@ -5,7 +5,9 @@
             <li class="media">
                 <a class="pull-left square-date-icon" href="#">
                   {% if event.state == 2 %}
-                    <i class="fa  fa-calendar"></i>
+                    <i class="fa fa-calendar"></i>
+                  {% elif event.state == 4 %}
+                    <i class="fa fa-calendar-check-o"></i>
                   {% else %}
                     <div>{{ event.from_date|date:"d" }}</div>
                     <div>{{ event.from_date|date:"M" }}</div>
@@ -14,11 +16,7 @@
                 <a class="pull-right fadedown-clickarea" href="#">
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                {% if event.state == 2 %}
-                  {% captureas detail_url %}{% group_url 'cosinnus:event:doodle-vote' group=group slug=event.slug%}{% endcaptureas %}
-                {% else %}
-                  {% captureas detail_url %}{{ event.get_absolute_url }}{% endcaptureas %}
-                {% endif %}
+                {% captureas detail_url %}{{ event.get_absolute_url }}{% endcaptureas %}
                 <a class="pull-right" href="{{ detail_url }}">
                     <i class="fa fa-chain"></i>
                 </a>
@@ -38,12 +36,22 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
-                    <i class="fa fa-clock-o"></i>
+                	{% if event.state == 4 and event.scheduled_event %}
+                		<i class="fa fa-calendar"></i>
+                	{% else %}
+                    	<i class="fa fa-clock-o"></i>
+                    {% endif %}
                 </a>
                 <div class="media-body">
-                    <span class="moment-data-date" data-date="{{ event.from_date|date:"c" }}" title="{{ event.from_date }}"></span>
-                    –
-                    <span class="moment-data-date" data-date="{{ event.to_date|date:"c" }}" title="{{ event.to_date }}"></span>
+                	{% if event.state == 1 %}
+	                    <span class="moment-data-date" data-date="{{ event.from_date|date:"c" }}" title="{{ event.from_date }}"></span>
+	                    –
+	                    <span class="moment-data-date" data-date="{{ event.to_date|date:"c" }}" title="{{ event.to_date }}"></span>
+                    {% elif event.state == 4 and event.scheduled_event %}
+                    	{% trans "Created Event" %}: <a href="{{ event.scheduled_event.get_absolute_url }}" target="_blank">{{ event.scheduled_event.title }} <i class="fa fa-external-link"></i></a>
+                    {% else %}
+                    	–
+                    {% endif %}
                 </div>
             </li>
         </ul>
@@ -110,23 +118,26 @@
                 </li>
             </ul>
         </button>
-      {% if event.state == 2 %}
-        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}{% endcaptureas %}
-      {% else %}
-        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}{% endcaptureas %}
-      {% endif %}
-        <button type="button" class="btn btn-emphasized" href="{{ edit_url }}">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="pull-left" href="#">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <div class="media-body">
-                        {% trans "Edit" %}
-                    </div>
-                </li>
-            </ul>
-        </button> 
+      
+      {% if event.state != 4 %} {# archived doodles cannot be edited #}
+	      {% if event.state == 2 %}
+	        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}{% endcaptureas %}
+	      {% else %}
+	        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}{% endcaptureas %}
+	      {% endif %}
+	        <button type="button" class="btn btn-emphasized" href="{{ edit_url }}">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <a class="pull-left" href="#">
+	                        <i class="fa fa-pencil"></i>
+	                    </a>
+	                    <div class="media-body">
+	                        {% trans "Edit" %}
+	                    </div>
+	                </li>
+	            </ul>
+	        </button> 
+	  {% endif %}
     {% endif %}
     
     {% include 'cosinnus/feedback/report_button_btn.html' with object=event %}

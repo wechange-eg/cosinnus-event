@@ -35,8 +35,9 @@ from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_read_access,\
-    require_user_token_access
+    require_user_token_access, dispatch_group_access
 from django.contrib.sites.models import Site, get_current_site
+from cosinnus.utils.functions import unique_aware_slugify
 
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -56,20 +57,34 @@ class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, Lis
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
-        qs = super(EventListView, self).get_queryset()
+        qs = self.get_future_queryset()
+        self.queryset = qs
+        return qs
+    
+    def get_base_queryset(self):
+        if hasattr(self, 'base_queryset'):
+            return self.base_queryset
+        self.queryset = None # reset self.queryset to get a base queryset, not an overloaded one
+        self.base_queryset = super(EventListView, self).get_queryset()
+        return self.base_queryset
+        
+    def get_future_queryset(self):
+        qs = self.get_base_queryset()
         qs = qs.filter(state=Event.STATE_SCHEDULED)
         if not self.show_past_events:
             qs = upcoming_event_filter(qs)
-        self.queryset = qs
         return qs
     
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
-        doodle_count = super(EventListView, self).get_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
-        future_events_count = self.queryset.count() if not self.show_past_events else upcoming_event_filter(self.queryset).count()
+        doodle_count = self.get_base_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
+        if not self.show_past_events:
+            future_events_count = self.get_future_queryset().count() 
+        else:
+            future_events_count = upcoming_event_filter(self.get_future_queryset()).count()
         
         context.update({
-            'future_events': self.queryset,
+            'future_events': self.get_queryset(),
             'future_events_count': future_events_count,
             'doodle_count': doodle_count,
             'event_view': self.event_view,
@@ -86,7 +101,7 @@ class PastEventListView(EventListView):
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
-        qs = super(EventListView, self).get_queryset()
+        qs = self.get_base_queryset()
         qs = qs.filter(state=Event.STATE_SCHEDULED)
         qs = past_event_filter(qs).reverse()
         self.queryset = qs
@@ -105,17 +120,40 @@ class DoodleListView(EventListView):
 
     def get_queryset(self):
         """In the doodle list we only show events with open votings"""
-        qs = super(EventListView, self).get_queryset() # not this views, but event views parent!!!
+        qs = self.get_base_queryset()
         qs = qs.filter(state=Event.STATE_VOTING_OPEN)
+        self.queryset = qs
         return qs
 
 doodle_list_view = DoodleListView.as_view()
 
 
+class ArchivedDoodlesListView(EventListView):
+
+    template_name = 'cosinnus_event/doodle_list_detailed_archived.html'
+    event_view = 'archived'
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = self.get_base_queryset()
+        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE)
+        self.queryset = qs
+        return qs
+    
+    def get_context_data(self, **kwargs):
+        context = super(ArchivedDoodlesListView, self).get_context_data(**kwargs)
+        context['archived_doodles'] = context.pop('future_events')
+        return context
+    
+archived_doodles_list_view = ArchivedDoodlesListView.as_view()
+
+
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
+    show_past_events = False
     
 detailed_list_view = DetailedEventListView.as_view()
+
 
 class SuggestionInlineView(InlineFormSet):
     extra = 1
@@ -129,9 +167,21 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
     model = Event
     message_success = _('Event "%(title)s" was edited successfully.')
     message_error = _('Event "%(title)s" could not be edited.')
+    success_url_list = 'cosinnus:event:list'
 
+    @dispatch_group_access()
     def dispatch(self, request, *args, **kwargs):
         self.form_view = kwargs.get('form_view', None)
+        if self.form_view != 'add':
+            obj = self.get_object()
+            if obj.state == Event.STATE_ARCHIVED_DOODLE and not self.form_view == 'delete':
+                messages.warning(request, _('The page you requested is not available for this event at this time.'))
+                return HttpResponseRedirect(obj.get_absolute_url())
+            if self.form_view == 'delete':
+                if obj.state == Event.STATE_VOTING_OPEN:
+                    self.success_url_list = 'cosinnus:event:doodle-list'
+                elif obj.state == Event.STATE_ARCHIVED_DOODLE:
+                    self.success_url_list = 'cosinnus:event:doodle-list-archived'
         return super(EntryFormMixin, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -150,7 +200,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
             kwargs['slug'] = self.object.slug
             urlname = 'cosinnus:event:event-detail'
         else:
-            urlname = 'cosinnus:event:list'
+            urlname = self.success_url_list
         return group_aware_reverse(urlname, kwargs=kwargs)
 
     def forms_valid(self, form, inlines):
@@ -264,7 +314,8 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
+        urlname = getattr(self, 'success_url_list', 'cosinnus:event:list')
+        return group_aware_reverse(urlname, kwargs={'group': self.group})
 
 entry_delete_view = EntryDeleteView.as_view()
 
@@ -274,7 +325,8 @@ class DoodleDeleteView(EntryFormMixin, DeleteView):
     message_error = _('Unscheduled event "%(title)s" could not be deleted.')
 
     def get_success_url(self):
-        return group_aware_reverse('cosinnus:event:doodle-list', kwargs={'group': self.group})
+        urlname = getattr(self, 'success_url_list', 'cosinnus:event:doodle-list')
+        return group_aware_reverse(urlname, kwargs={'group': self.group})
 
 doodle_delete_view = DoodleDeleteView.as_view()
 
@@ -301,6 +353,14 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
     form_class = VoteForm
     model = Event
     template_name = 'cosinnus_event/doodle_vote.html'
+    form_view = None # (set in urls.py), 'vote' or 'archived' or 'assign'
+    
+    def get(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.state not in (Event.STATE_VOTING_OPEN, Event.STATE_ARCHIVED_DOODLE):
+            messages.warning(request, _('The page you requested is not available for this event at this time.'))
+            return HttpResponseRedirect(obj.get_absolute_url())
+        return super(DoodleVoteView, self).get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
         if self.get_object().state != Event.STATE_VOTING_OPEN:
@@ -414,11 +474,19 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
 
 doodle_vote_view = DoodleVoteView.as_view()
 
+"""
+class ArchivedDoodleView(DoodleVoteView):
+
+    template_name = 'cosinnus_event/doodle_vote.html'
+    form_view = None # (set in urls.py), 'vote' or 'archived' or 'assign'
+
+archived_doodle_view = ArchivedDoodleView.as_view()
+"""
 
 class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
     """ Completes a doodle event for a selected suggestion, setting the event to Scheduled. """
     form_class = EventNoFieldForm
-    form_view = 'assign'
+    form_view = 'assign' 
     model = Event
     
     def get_object(self, queryset=None):
@@ -442,11 +510,34 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
             return HttpResponseRedirect(self.object.get_absolute_url())
         
         suggestion = get_object_or_404(Suggestion, pk=kwargs.get('suggestion_id'))
+        old_doodle_pk = event.pk
         
+        # give this a new temporary slug so the original one is free again
+        event.slug += '-archive'
+        unique_aware_slugify(event, 'title', 'slug', group=self.group, force_redo=True)
+        event.save(update_fields=['slug'])
+        
+        # 'clone' media_tag
+        new_media_tag = event.media_tag
+        new_media_tag.pk = None 
+        new_media_tag.save()
+        
+        event.pk = None # set pk to None to have this become a new event
+        event.slug = None # set slug to None so we can re-unique slugify 
+        event.media_tag = new_media_tag
         event.from_date = suggestion.from_date
         event.to_date = suggestion.to_date
         event.state = Event.STATE_SCHEDULED
-        event.save()
+        event.save(created_from_doodle=True)
+        
+        # re-retrieve old doodle, set it to archived 
+        doodle = self.model.objects.get(pk=old_doodle_pk)
+        doodle.state = Event.STATE_ARCHIVED_DOODLE
+        doodle.save(update_fields=['state'])
+        
+        # link old doodle to new event. can't do this until now because we wouldn't have had the old pointer correctly
+        event.original_doodle = doodle
+        event.save(update_fields=['original_doodle'])
         
         messages.success(request, _('The event was created successfully at the specified date.'))
         return HttpResponseRedirect(self.object.get_absolute_url())

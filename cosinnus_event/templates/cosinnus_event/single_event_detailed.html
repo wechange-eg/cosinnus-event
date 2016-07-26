@@ -11,11 +11,15 @@
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left square-date-icon" href="#">
-                    {% if event.state == 2%}
-                        <i class="fa  fa-calendar"></i>
-                    {% else %}
+                    {% if event.from_date %}
 	                    <div>{{ event.from_date|date:"d" }}</div>
 	                    <div>{{ event.from_date|date:"M" }}</div>
+                    {% else %}
+                    	{% if event.state == 4 %}
+                    		<i class="fa fa-calendar-check-o"></i>
+                    	{% else %}
+                        	<i class="fa fa-calendar"></i>
+                        {% endif %}
 	                {% endif %}
                 </a>
                 <a class="pull-right fadedown-clickarea" href="#">
@@ -52,18 +56,20 @@
                 </li>
             </ul>
         </button>
-        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="pull-left" href="#">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <div class="media-body">
-                        {% trans "Edit" %}
-                    </div>
-                </li>
-            </ul>
-        </button> 
+        {% if event.state != 4 %}
+	        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <a class="pull-left" href="#">
+	                        <i class="fa fa-pencil"></i>
+	                    </a>
+	                    <div class="media-body">
+	                        {% trans "Edit" %}
+	                    </div>
+	                </li>
+	            </ul>
+	        </button> 
+	    {% endif %}
     {% endif %}
     
     {% include 'cosinnus/feedback/report_button_btn.html' with object=event %}
@@ -89,7 +95,22 @@
                     {% trans "(Canceled!)" %}
                 {% endif %}
                 
-                {% include 'cosinnus_event/common/humanized_event_time.html' with event=event %}
+                {% if event.from_date %}
+                	{% include 'cosinnus_event/common/humanized_event_time.html' with event=event %}
+                {% else %}
+                	{% if event.state == 4 %}
+                		<p>
+                			<em>
+	                			{% trans "This is an archived event poll." %}
+	                			<br/>
+	                			{% trans "The event that was created after the poll can be viewed here:" %}
+	                		</em> 
+	                		<b><a href="{{ event.scheduled_event.get_absolute_url }}">{{ event.scheduled_event.title }}</a></b>
+	                	</p>
+                	{% else %}
+                    	-
+                    {% endif %}
+                {% endif %}
             </div>
         </li>
     </ul>

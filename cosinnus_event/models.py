@@ -51,11 +51,13 @@ class Event(BaseTaggableObjectModel):
     STATE_SCHEDULED = 1
     STATE_VOTING_OPEN = 2
     STATE_CANCELED = 3
+    STATE_ARCHIVED_DOODLE = 4
 
     STATE_CHOICES = (
         (STATE_SCHEDULED, _('Scheduled')),
         (STATE_VOTING_OPEN, _('Voting open')),
         (STATE_CANCELED, _('Canceled')),
+        (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
     )
 
     from_date = models.DateTimeField(
@@ -101,6 +103,9 @@ class Event(BaseTaggableObjectModel):
         null=True)
 
     url = models.URLField(_('URL'), blank=True, null=True)
+    
+    original_doodle = models.OneToOneField("self", verbose_name=_('Original Event Poll'),
+        related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
 
     objects = EventManager()
 
@@ -127,21 +132,26 @@ class Event(BaseTaggableObjectModel):
                     'from': localize(self.from_date, 'd. F Y h:i'),
                     'to': localize(self.to_date, 'd. F Y h:i'),
                 }
-        else:
+        elif self.state == Event.STATE_CANCELED:
+            readable = _('%(event)s (canceled)') % {'event': self.title}
+        elif self.state == Event.STATE_VOTING_OPEN:
             readable = _('%(event)s (pending)') % {'event': self.title}
+        else:
+            readable = _('%(event)s (archived)') % {'event': self.title}
+            
         return readable
     
-    def save(self, *args, **kwargs):
+    def save(self, created_from_doodle=False, *args, **kwargs):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created:
+        if created and not created_from_doodle:
             # event/doodle was created
             if self.state == Event.STATE_SCHEDULED:
                 cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
             else:
                 cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-        if not created and self.__state == Event.STATE_VOTING_OPEN and self.state == Event.STATE_SCHEDULED:
+        if created and created_from_doodle:
             # event went from being a doodle to being a real event, so fire event created
             cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
         
@@ -151,6 +161,8 @@ class Event(BaseTaggableObjectModel):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN:
             return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
+        elif self.state == Event.STATE_ARCHIVED_DOODLE:
+            return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):

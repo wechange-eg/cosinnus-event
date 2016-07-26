@@ -16,7 +16,11 @@ class EventManager(models.Manager):
 
     def upcoming(self, count):
         return self.public().filter(to_date__gte=now()).order_by("from_date").all()[:count]
-
+    
+    def archived(self):
+        qs = getattr(self, 'get_queryset', self.get_query_set)()
+        return qs.filter(state=self.model.STATE_ARCHIVED_DOODLE)
+    
     def tags(self):
         event_type = ContentType.objects.get(app_label="cosinnus_event", model="event")
 

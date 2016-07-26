@@ -4,6 +4,7 @@
 {% group_url 'cosinnus:event:list_detailed' group=group as event_list_page %}
 {% group_url 'cosinnus:event:list_past' group=group as event_list_past_page %}
 {% group_url 'cosinnus:event:doodle-list' group=group as doodle_list_page %}
+{% group_url 'cosinnus:event:doodle-list-archived' group=group as doodle_list_archived_page %}
 
 
 {% if return_to == "events" %}
@@ -24,7 +25,7 @@
 	
 {% elif return_to == "doodle" %}
 
-  <button type="button" class="btn w100 btn-emphasized" href="{% group_url 'cosinnus:event:doodle-list' group=group %}{% add_current_params %}">
+  <button type="button" class="btn w100 btn-emphasized" href="{{ doodle_list_page }}{% add_current_params %}">
     <ul class="media-list">
       <li class="media">
         <a class="pull-left" href="#">
@@ -33,6 +34,22 @@
         <a class="pull-right" href="#"></a><!-- only block width -->
         <div class="media-body">
           {% trans "Return to Event Polls" %}
+        </div>
+      </li>
+    </ul>
+  </button>
+  
+{% elif return_to == "archived_doodle" %}
+
+  <button type="button" class="btn w100 btn-emphasized" href="{{ doodle_list_archived_page }}{% add_current_params %}">
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="#">
+          <i class="fa fa-reply"></i>
+        </a>
+        <a class="pull-right" href="#"></a><!-- only block width -->
+        <div class="media-body">
+          {% trans "Return to Archived Event Polls" %}
         </div>
       </li>
     </ul>
@@ -84,7 +101,7 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized regular-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -102,7 +119,7 @@
         </ul>
     </button>
 
-	<button type="button" class="btn w100 btn-emphasized regular-space" href="{% group_url 'cosinnus:event:doodle-list' group=group %}{% add_current_params %}">
+	<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
 	    <ul class="media-list">
 	        <li class="media">
 	            <a class="pull-left" href="#">
@@ -119,6 +136,24 @@
                 </a>
 	            <div class="media-body">
 	                {% trans "Event Polls" %}
+	            </div>
+	        </li>
+	    </ul>
+	</button>
+	
+	<button type="button" class="btn w100 btn-emphasized regular-space" href="{{ doodle_list_archived_page }}{% add_current_params %}">
+	    <ul class="media-list">
+	        <li class="media">
+	            <a class="pull-left" href="#">
+                    <i class="fa fa-calendar-check-o"></i>
+	            </a>
+	            <a class="pull-right" href="#">
+	               {% if request.path == doodle_list_archived_page %}
+	                    <i class="fa fa-caret-right"></i>
+                    {% endif %}
+                </a>
+	            <div class="media-body">
+	                {% trans "Archived Event Polls" %}
 	            </div>
 	        </li>
 	    </ul>
