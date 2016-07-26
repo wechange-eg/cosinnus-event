@@ -99,12 +99,14 @@
                 	{% include 'cosinnus_event/common/humanized_event_time.html' with event=event %}
                 {% else %}
                 	{% if event.state == 4 %}
-                		<em>
-                			{% trans "This is an archived event poll." %}
-                			<br/>
-                			{% trans "The event that was created after the poll can be viewed here:" %}
-                		</em> 
-                		<b><a href="{{ event.scheduled_event.get_absolute_url }}">{{ event.scheduled_event.title }}</a></b>
+                		<p>
+                			<em>
+	                			{% trans "This is an archived event poll." %}
+	                			<br/>
+	                			{% trans "The event that was created after the poll can be viewed here:" %}
+	                		</em> 
+	                		<b><a href="{{ event.scheduled_event.get_absolute_url }}">{{ event.scheduled_event.title }}</a></b>
+	                	</p>
                 	{% else %}
                     	-
                     {% endif %}
