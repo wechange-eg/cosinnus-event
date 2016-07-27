@@ -5,3 +5,31 @@
 .cosinnus-event td .geoposition-search {
     display: none;
 }
+
+.event-attendance {
+    width: 250px;
+}
+
+.event-attendance.attendance-busy button {
+    opacity: 0.6;
+}
+
+.event-attendance .event-attendance-choice-going,
+.event-attendance .event-attendance-choice-maybe,
+.event-attendance .event-attendance-choice-not-going,
+.event-attendance .event-attendance-choice-no-choice {
+    display: none;
+}
+
+.event-attendance.event-attendance-going .event-attendance-choice-going {
+    display: inherit;
+}
+.event-attendance.event-attendance-maybe .event-attendance-choice-maybe {
+    display: inherit;
+}
+.event-attendance.event-attendance-not-going .event-attendance-choice-not-going {
+    display: inherit;
+}
+.event-attendance.event-attendance-no-choice .event-attendance-choice-no-choice {
+    display: inherit;
+}
