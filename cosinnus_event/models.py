@@ -14,7 +14,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
 from django.utils.functional import cached_property
 from django.utils.timezone import localtime, now
-from django.utils.translation import ugettext_lazy as _, pgettext_lazy
+from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext_lazy as p_
 
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
 
@@ -314,7 +314,41 @@ class Vote(models.Model):
     def get_absolute_url(self):
         return self.suggestion.event.get_absolute_url()
 
-
+@python_2_unicode_compatible
+class EventAttendance(models.Model):
+    """ Model for attendance choices of a User for an Event.
+        The choices do not include a "no choice selected" state on purpose,
+        as a user not having made a choice is modeled by a missing instance
+        of ``EventAttendance`` for that user and event.
+     """
+    
+    ATTENDANCE_NOT_GOING = 0
+    ATTENDANCE_MAYBE_GOING = 1
+    ATTENDANCE_GOING = 2
+    
+    ATTENDANCE_STATES = (
+        (ATTENDANCE_NOT_GOING, p_('cosinnus_event_attendance', 'not going')),
+        (ATTENDANCE_MAYBE_GOING, p_('cosinnus membership status', 'maybe going')),
+        (ATTENDANCE_GOING, p_('cosinnus membership status', 'going')),
+    )
+    
+    event = models.ForeignKey(Event, related_name='attendances', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+        related_name='cosinnus_event_attendances', on_delete=models.CASCADE)
+    state = models.PositiveSmallIntegerField(choices=ATTENDANCE_STATES,
+        db_index=True, default=ATTENDANCE_NOT_GOING)
+    date = models.DateTimeField(auto_now_add=True, editable=False)
+    
+    class Meta:
+        unique_together = ('event', 'user', )
+        
+    def __str__(self):
+        return "Event Attendance <user: %(user)s, event: %(event)s, status: %(status)d>" % {
+            'user': self.user.email,
+            'event': self.event.slug,
+            'status': self.status,
+        }
+    
 
 @python_2_unicode_compatible
 class Comment(models.Model):
