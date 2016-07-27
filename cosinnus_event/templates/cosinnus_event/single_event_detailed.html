@@ -239,10 +239,10 @@
 	        <li class="app-todos appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-maybe">
 	            <a>
 	                <i class="fa fa-question"></i>
-	                {% trans "Maybe" %}
+	                {% trans "Maybe going" %}
 	            </a>
 	        </li>
-	        <li class="app-etherpad appnavi-listelement fine-space regular-space event-attendance-button" data-event-attendance-toggle="event-attendance-not-going">
+	        <li class="app-etherpad appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-not-going">
 	            <a>
 	                <i class="fa fa-close"></i>
 	                {% trans "Not going" %}
@@ -256,6 +256,17 @@
 	        </li>
 	    </ul>
 	</div><!-- btn-group -->
+	<div class="attendance-status-frame">
+		<span class="attendance-status attendance-status-working" style="display: none;">
+			<i class="fa fa-2x fa-spin fa-cog"></i>
+		</span>
+		<span class="attendance-status attendance-status-success" style="display: none;">
+			<i class="fa fa-2x fa-check"></i>
+		</span>
+		<span class="attendance-status attendance-status-error" style="display: none;">
+			<i class="fa fa-2x fa-close"></i>
+		</span>
+	</div>
 	
 	<script type="text/javascript">
 		$(function(){
@@ -264,13 +275,20 @@
 				var state_class = $this.attr('data-event-attendance-toggle');
 				var attendance_frame = $('.event-attendance');
 				if (!attendance_frame.hasClass(state_class) && !attendance_frame.hasClass('attendance-busy')) {
+					var original_classes = attendance_frame.attr('class');
 					var state_visual_class = '';
-					console.log(state_class)
-					if (state_class == 'event-attendance-no-choice' || state_class == 'event-attendance-going') {
+					var state_request_param = null;
+					if (state_class == 'event-attendance-no-choice') {
+						state_request_param = -1;
+						state_visual_class = 'app-calendar';
+					} else if (state_class == 'event-attendance-going') {
+						state_request_param = 2;
 						state_visual_class = 'app-calendar';
 					} else if (state_class == 'event-attendance-maybe') {
+						state_request_param = 1;
 						state_visual_class = 'app-todos';
 					} else if (state_class == 'event-attendance-not-going') {
+						state_request_param = 0;
 						state_visual_class = 'app-etherpad';
 					}
 					attendance_frame
@@ -286,20 +304,32 @@
 						.addClass('attendance-busy');
 					
 					// disabling button needs a delay or mouse-down won't close the menu
+					$('.attendance-status.attendance-status-success').stop().hide().css('opacity', 0);
+                    $('.attendance-status.attendance-status-error').stop().hide().css('opacity', 0);
+					$('.attendance-status.attendance-status-working').show();
 					setTimeout(function() {
 						attendance_frame.find('button[data-toggle="dropdown"]')
 							.attr('data-toggle', '_dropdown');
 				    }, 100);
 						
 					// todo: trigger ajax POST
+					$.post( "assign_attendance/", { target_state: state_request_param }, "json")
+	                .done(function( data ) {
+	                    $('.attendance-status.attendance-status-success').show().css('opacity', 1).delay(1000).fadeOut(2000);
+	                })
+	                .fail(function() {
+	                    $('.attendance-status.attendance-status-error').show().css('opacity', 1).delay(1000).fadeOut(2000);
+	                    attendance_frame.attr('class', original_classes).removeClass('open');
+	                })
+	                .always(function() {
+	                	$('.attendance-status.attendance-status-working').hide();
+	                	setTimeout(function() {
+							attendance_frame.removeClass('attendance-busy');
+							attendance_frame.find('button[data-toggle="_dropdown"]')
+									.attr('data-toggle', 'dropdown');
+						}, 110);
+	                });
 					
-					
-					// always:
-					setTimeout(function() {
-						attendance_frame.removeClass('attendance-busy');
-						attendance_frame.find('button[data-toggle="_dropdown"]')
-								.attr('data-toggle', 'dropdown');
-					}, 110);
 				};
 				
 			});

@@ -9,6 +9,9 @@
 .event-attendance {
     width: 250px;
 }
+.event-attendance-button {
+    cursor: pointer;
+}
 
 .event-attendance.attendance-busy button {
     opacity: 0.6;
@@ -32,4 +35,20 @@
 }
 .event-attendance.event-attendance-no-choice .event-attendance-choice-no-choice {
     display: inherit;
+}
+
+.attendance-status-frame {
+    display: inline-block;
+}
+.attendance-status {
+    display: inline;
+}
+.attendance-status-working {
+    color: #333;
+}
+.attendance-status-success {
+    color: #779b48;
+}
+.attendance-status-error {
+    color: #e55c55;
 }

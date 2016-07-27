@@ -754,10 +754,8 @@ def assign_attendance_view(request, group, slug):
     try:
         target_state = int(target_state)
     except:
-        print ">>> bad target state:", target_state
         pass
     if target_state != -1 and target_state not in dict(EventAttendance.ATTENDANCE_STATES).keys():
-        print ">> target state out of range!", target_state
         target_state = None
     
     if target_state is None:
@@ -784,27 +782,20 @@ def assign_attendance_view(request, group, slug):
              extra={'user': user, 'request': request, 'path': request.path, 'group_slug': group, 'event_slug': slug})
         return JsonResponse({'error': 'denied'})
     
-    print ">> got event", event, "group", group, "user", user, "state", target_state
-    
     result_state = None
-    
     try:
         attendance = get_object_or_None(EventAttendance, event=event, user=user)
         if (attendance is None and target_state == -1) or (attendance is not None and target_state == attendance.state):
             # no action required
-            print ">> no action required"
             result_state = target_state
         elif attendance is not None and target_state == -1:
-            print ">> deleted attend"
             attendance.delete()
             result_state = -1
         elif attendance is not None:
-            print ">> attendance save to state"
             attendance.state = target_state
             attendance.save(update_fields=['state', 'date'])
             result_state = attendance.state
         else:
-            print ">> create attendance"
             attendance = EventAttendance.objects.create(event=event, user=user, state=target_state)
             result_state = attendance.state
             
