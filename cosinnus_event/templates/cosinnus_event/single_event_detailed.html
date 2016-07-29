@@ -205,119 +205,125 @@
 	                	</div>
 	                </div>
 	            {% endif %}
+	            
+				{#  #########  Event attendance button  ########## #}	            
+	            
+	            {% if event.state == 1 and user|has_read_access:event %}
+					<div class="btn-group large-space event-attendance 
+					{% if user_attendance and user_attendance.state == 0 %}event-attendance-not-going app-etherpad
+					{% elif user_attendance and user_attendance.state == 1 %}event-attendance-maybe app-todos
+					{% elif user_attendance and user_attendance.state == 2 %}event-attendance-going app-calendar
+					{% else %}event-attendance-no-choice app-calendar{% endif %}">
+						{# This hacky invisible button fixes all kinds of CSS incongruencies because the first button has different style rules #}
+						<button style="display: none;" class="btn btn-emphasized w100 dropdown-toggle"></button>
+					    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
+					        <ul class="media-list">
+					            <li class="media">
+					                <a class="pull-left" href="#">
+					                    <i class="fa fa-check"></i>
+					                </a>
+					                <a class="pull-right" href="#">
+					                    <i class="fa fa-caret-down"></i>
+					                </a>
+					                <div class="media-body">
+					                    {% trans "Going" %}
+					                </div>
+					            </li>
+					        </ul>
+					    </button>
+					    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-maybe" data-toggle="dropdown">
+					        <ul class="media-list">
+					            <li class="media">
+					                <a class="pull-left" href="#">
+					                    <i class="fa fa-question"></i>
+					                </a>
+					                <a class="pull-right" href="#">
+					                    <i class="fa fa-caret-down"></i>
+					                </a>
+					                <div class="media-body">
+					                    {% trans "Maybe going" %}
+					                </div>
+					            </li>
+					        </ul>
+					    </button>
+					    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-not-going" data-toggle="dropdown">
+					        <ul class="media-list">
+					            <li class="media">
+					                <a class="pull-left" href="#">
+					                    <i class="fa fa-close"></i>
+					                </a>
+					                <a class="pull-right" href="#">
+					                    <i class="fa fa-caret-down"></i>
+					                </a>
+					                <div class="media-body">
+					                    {% trans "Can't go" %}
+					                </div>
+					            </li>
+					        </ul>
+					    </button>
+					    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-no-choice" data-toggle="dropdown">
+					        <ul class="media-list">
+					            <li class="media">
+					                <a class="pull-left" href="#">
+					                    <i class="fa fa-book"></i>
+					                </a>
+					                <a class="pull-right" href="#">
+					                    <i class="fa fa-caret-down"></i>
+					                </a>
+					                <div class="media-body">
+					                    {% trans "Are you going?" %}
+					                </div>
+					            </li>
+					        </ul>
+					    </button>
+					    
+					    <ul class="dropdown-menu appnavi-dropdown-menu w100" role="menu">
+					        <li class="app-calendar appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-going">
+					            <a>
+					                <i class="fa fa-check"></i>
+					                {% trans "Going" %}
+					            </a>
+					        </li>
+					        <li class="app-todos appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-maybe">
+					            <a>
+					                <i class="fa fa-question"></i>
+					                {% trans "Maybe going" %}
+					            </a>
+					        </li>
+					        <li class="app-etherpad appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-not-going">
+					            <a>
+					                <i class="fa fa-close"></i>
+					                {% trans "Can't go" %}
+					            </a>
+					        </li>
+					        <li class="app-main appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-no-choice">
+					            <a>
+					                <i class="fa fa-trash-o"></i>
+					                {% trans "No Choice" %}
+					            </a>
+					        </li>
+					    </ul>
+					</div><!-- btn-group -->
+					<div class="attendance-status-frame">
+						<span class="attendance-status attendance-status-working" style="display: none;">
+							<i class="fa fa-2x fa-spin fa-cog"></i>
+						</span>
+						<span class="attendance-status attendance-status-success" style="display: none;">
+							<i class="fa fa-2x fa-check"></i>
+						</span>
+						<span class="attendance-status attendance-status-error" style="display: none;">
+							<i class="fa fa-2x fa-close"></i>
+						</span>
+					</div>
+				{% endif %}
+					            
+	            
             </div>
         </li>
     </ul>
 </div>
 
 
-{% if event.state == 1 and user|has_read_access:event %}
-	<div class="btn-group large-space event-attendance 
-	{% if user_attendance and user_attendance.state == 0 %}event-attendance-not-going app-etherpad
-	{% elif user_attendance and user_attendance.state == 1 %}event-attendance-maybe app-todos
-	{% elif user_attendance and user_attendance.state == 2 %}event-attendance-going app-calendar
-	{% else %}event-attendance-no-choice app-calendar{% endif %}">
-		{# This hacky invisible button fixes all kinds of CSS incongruencies because the first button has different style rules #}
-		<button style="display: none;" class="btn btn-emphasized w100 dropdown-toggle"></button>
-	    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-check"></i>
-	                </a>
-	                <a class="pull-right" href="#">
-	                    <i class="fa fa-caret-down"></i>
-	                </a>
-	                <div class="media-body">
-	                    {% trans "Going" %}
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-maybe" data-toggle="dropdown">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-question"></i>
-	                </a>
-	                <a class="pull-right" href="#">
-	                    <i class="fa fa-caret-down"></i>
-	                </a>
-	                <div class="media-body">
-	                    {% trans "Maybe going" %}
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-not-going" data-toggle="dropdown">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-close"></i>
-	                </a>
-	                <a class="pull-right" href="#">
-	                    <i class="fa fa-caret-down"></i>
-	                </a>
-	                <div class="media-body">
-	                    {% trans "Can't go" %}
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-no-choice" data-toggle="dropdown">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-book"></i>
-	                </a>
-	                <a class="pull-right" href="#">
-	                    <i class="fa fa-caret-down"></i>
-	                </a>
-	                <div class="media-body">
-	                    {% trans "Are you going?" %}
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	    
-	    <ul class="dropdown-menu appnavi-dropdown-menu w100" role="menu">
-	        <li class="app-calendar appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-going">
-	            <a>
-	                <i class="fa fa-check"></i>
-	                {% trans "Going" %}
-	            </a>
-	        </li>
-	        <li class="app-todos appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-maybe">
-	            <a>
-	                <i class="fa fa-question"></i>
-	                {% trans "Maybe going" %}
-	            </a>
-	        </li>
-	        <li class="app-etherpad appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-not-going">
-	            <a>
-	                <i class="fa fa-close"></i>
-	                {% trans "Can't go" %}
-	            </a>
-	        </li>
-	        <li class="app-main appnavi-listelement fine-space event-attendance-button" data-event-attendance-toggle="event-attendance-no-choice">
-	            <a>
-	                <i class="fa fa-trash-o"></i>
-	                {% trans "No Choice" %}
-	            </a>
-	        </li>
-	    </ul>
-	</div><!-- btn-group -->
-	<div class="attendance-status-frame">
-		<span class="attendance-status attendance-status-working" style="display: none;">
-			<i class="fa fa-2x fa-spin fa-cog"></i>
-		</span>
-		<span class="attendance-status attendance-status-success" style="display: none;">
-			<i class="fa fa-2x fa-check"></i>
-		</span>
-		<span class="attendance-status attendance-status-error" style="display: none;">
-			<i class="fa fa-2x fa-close"></i>
-		</span>
-	</div>
 	
 	<script type="text/javascript">
 		$(function(){
@@ -386,7 +392,6 @@
 			});
 		});
 	</script>
-{% endif %}
 
 
 {% if event.attached_objects.exists %}
