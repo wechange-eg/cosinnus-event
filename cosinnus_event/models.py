@@ -154,6 +154,10 @@ class Event(BaseTaggableObjectModel):
         if created and created_from_doodle:
             # event went from being a doodle to being a real event, so fire event created
             cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+            
+        # create a "going" attendance for the event's creator
+        if created and self.state == Event.STATE_SCHEDULED:
+            EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
         self.__state = self.state
 
