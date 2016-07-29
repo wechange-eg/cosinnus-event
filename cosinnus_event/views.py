@@ -344,6 +344,21 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EntryDetailView, self).get_context_data(**kwargs)
+        event = context['object']
+        user = self.request.user
+        
+        user_attendance = None if not user.is_authenticated() else get_object_or_None(EventAttendance, user=user, event=event)
+        all_attendants = EventAttendance.objects.filter(event=event)
+        attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
+        attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
+        attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
+        
+        context.update({
+            'user_attendance': user_attendance,
+            'attendants_going': attendants_going,
+            'attendants_maybe': attendants_maybe,
+            'attendants_not_going': attendants_not_going,
+        })
         return context
 
 entry_detail_view = EntryDetailView.as_view()

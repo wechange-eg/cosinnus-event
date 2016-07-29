@@ -52,3 +52,16 @@
 .attendance-status-error {
     color: #e55c55;
 }
+
+.attendance-avatar-list {
+    display: inline-block;
+    white-space: normal;
+}
+.attendance-avatar {
+    display: inline-block;
+    width: 20px;
+    margin-right: 2px;
+}
+.attendance-avatar.faded {
+    opacity: 0.5;
+}
