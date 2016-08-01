@@ -8,6 +8,7 @@
 
 .event-attendance {
     width: 250px;
+    margin-left: 40px;
 }
 .event-attendance-button {
     cursor: pointer;
@@ -22,6 +23,12 @@
 .event-attendance .event-attendance-choice-not-going,
 .event-attendance .event-attendance-choice-no-choice {
     display: none;
+}
+.event-attendance button.btn {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .event-attendance.event-attendance-going .event-attendance-choice-going {
@@ -60,7 +67,7 @@
 .attendance-avatar {
     display: inline-block;
     width: 20px;
-    margin-right: 2px;
+    margin: 0 2px 5px 0;
 }
 .attendance-avatar.faded {
     opacity: 0.5;

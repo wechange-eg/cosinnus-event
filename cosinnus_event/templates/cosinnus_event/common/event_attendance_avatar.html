@@ -4,9 +4,9 @@
 	<div class="attendance-avatar {% if maybe_going %}faded{% endif %}">
 		<a href="{{ user.cosinnus_profile.get_absolute_url }}">
 			{% if avatar %}
-			    <img src="{% thumbnail avatar 40x40 crop=1 upscale=1 %}" title="{{ user|full_name }}" class="image"></img>
+			    <img src="{% thumbnail avatar 40x40 crop=1 upscale=1 %}" title="{{ user|full_name }}{% if extra_title %} - {{ extra_title }}{% endif %}" class="image"></img>
 			{% else %}
-			    <img src="{% static 'images/jane-doe.png' %}" title="{{ user|full_name }}" class="image"></img>
+			    <img src="{% static 'images/jane-doe.png' %}" title="{{ user|full_name }}{% if extra_title %} - {{ extra_title }}{% endif %}" class="image"></img>
 			{% endif %}
 		</a>
 	</div>
