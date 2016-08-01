@@ -177,9 +177,9 @@
                 <i class="fa fa-group"></i>
             </a>
             <div class="media-body">
-            	{% captureas i18n_going %}{% trans "Going" %}{% endcaptureas %}
-            	{% captureas i18n_maybe_going %}{% trans "Maybe going" %}{% endcaptureas %}
-            	{% captureas i18n_not_going %}{% trans "Can't go" %}{% endcaptureas %}
+            	{% captureas i18n_going %}{% trans "Going" context "someone else is going" %}{% endcaptureas %}
+            	{% captureas i18n_maybe_going %}{% trans "Maybe going" context "someone else is maybe going" %}{% endcaptureas %}
+            	{% captureas i18n_not_going %}{% trans "Can't go" context "someone else can't go" %}{% endcaptureas %}
             	
                 <div class="attendance-avatar-list">
                 	{% if attendants_going %}

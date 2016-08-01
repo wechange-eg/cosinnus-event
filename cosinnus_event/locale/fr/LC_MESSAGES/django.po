@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-26 11:56+0200\n"
+"POT-Creation-Date: 2016-08-01 15:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_list_detailed.html:10
 #: .\templates\cosinnus_event\event_list_detailed_past.html:5
 #: .\templates\cosinnus_event\event_list_detailed_past.html:10
-#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:557
+#: .\templates\cosinnus_event\widgets\event_widget_form.html:5 .\views.py:578
 msgid "Events"
 msgstr ""
 
@@ -36,24 +36,28 @@ msgctxt "the_app"
 msgid "event"
 msgstr ""
 
-#: .\cosinnus_notifications.py:43
+#: .\cosinnus_notifications.py:44
 msgid "A user created a new event"
 msgstr ""
 
-#: .\cosinnus_notifications.py:50
+#: .\cosinnus_notifications.py:51
 msgid "A user created a new event poll"
 msgstr ""
 
-#: .\cosinnus_notifications.py:57
+#: .\cosinnus_notifications.py:58
 msgid "A user commented on one of your events"
 msgstr ""
 
-#: .\cosinnus_notifications.py:64
+#: .\cosinnus_notifications.py:65
 msgid "A user commented on a event you were tagged in"
 msgstr ""
 
-#: .\cosinnus_notifications.py:71
+#: .\cosinnus_notifications.py:72
 msgid "A user commented on an event you voted in"
+msgstr ""
+
+#: .\cosinnus_notifications.py:79
+msgid "A user commented on an event you are attending"
 msgstr ""
 
 #: .\dashboard.py:28
@@ -96,11 +100,11 @@ msgstr ""
 msgid "Archived Event Poll"
 msgstr ""
 
-#: .\models.py:64 .\models.py:220
+#: .\models.py:64 .\models.py:224
 msgid "Start"
 msgstr ""
 
-#: .\models.py:67 .\models.py:223
+#: .\models.py:67 .\models.py:227
 msgid "End"
 msgstr ""
 
@@ -156,7 +160,7 @@ msgstr ""
 msgid "Original Event Poll"
 msgstr ""
 
-#: .\models.py:114 .\models.py:227
+#: .\models.py:114 .\models.py:231
 #: .\templates\cosinnus_event\event_detail.html:5
 #: .\templates\cosinnus_event\event_detail.html:10
 msgid "Event"
@@ -187,71 +191,71 @@ msgstr ""
 msgid "%(event)s (archived)"
 msgstr ""
 
-#: .\models.py:233 .\models.py:305
+#: .\models.py:237 .\models.py:309
 msgctxt "the subject"
 msgid "Votes"
 msgstr ""
 
-#: .\models.py:238 .\models.py:286
+#: .\models.py:242 .\models.py:290
 msgid "Suggestion"
 msgstr ""
 
-#: .\models.py:239
+#: .\models.py:243
 msgid "Suggestions"
 msgstr ""
 
-#: .\models.py:279 .\templates\cosinnus_event\doodle_vote.html:83
+#: .\models.py:283 .\templates\cosinnus_event\doodle_vote.html:83
 #: .\templates\cosinnus_event\doodle_vote.html:101
 #: .\templates\cosinnus_event\doodle_vote.html:174
 msgid "Yes"
 msgstr ""
 
-#: .\models.py:280 .\templates\cosinnus_event\doodle_vote.html:87
+#: .\models.py:284 .\templates\cosinnus_event\doodle_vote.html:87
 #: .\templates\cosinnus_event\doodle_vote.html:102
 #: .\templates\cosinnus_event\doodle_vote.html:175
 msgid "Maybe"
 msgstr ""
 
-#: .\models.py:281 .\templates\cosinnus_event\doodle_vote.html:91
+#: .\models.py:285 .\templates\cosinnus_event\doodle_vote.html:91
 #: .\templates\cosinnus_event\doodle_vote.html:103
 #: .\templates\cosinnus_event\doodle_vote.html:176
 msgid "No"
 msgstr ""
 
-#: .\models.py:293
+#: .\models.py:297
 msgid "Voter"
 msgstr ""
 
-#: .\models.py:298 .\templates\cosinnus_event\doodle_vote.html:204
+#: .\models.py:302 .\templates\cosinnus_event\doodle_vote.html:204
 msgid "Vote"
 msgstr ""
 
-#: .\models.py:304
+#: .\models.py:308
 msgctxt "the subject"
 msgid "Vote"
 msgstr ""
 
-#: .\models.py:321
+#: .\models.py:359
 msgid "Creator"
 msgstr ""
 
-#: .\models.py:322
+#: .\models.py:360
 msgid "Created"
 msgstr ""
 
-#: .\models.py:323
+#: .\models.py:361
 msgid "Last modified"
 msgstr ""
 
-#: .\models.py:325
+#: .\models.py:363
 msgid "Text"
 msgstr ""
 
-#: .\models.py:329
+#: .\models.py:367
 msgid "Comment"
 msgstr ""
 
-#: .\models.py:330 .\templates\cosinnus_event\event_comments.html:34
+#: .\models.py:368 .\templates\cosinnus_event\event_comments.html:34
 msgid "Comments"
 msgstr ""
 
@@ -296,7 +300,7 @@ msgstr ""
 #: .\templates\cosinnus_event\event_form.html:8
 #: .\templates\cosinnus_event\event_form.html:19
 #: .\templates\cosinnus_event\list_object.html:135
-#: .\templates\cosinnus_event\single_event_detailed.html:67
+#: .\templates\cosinnus_event\single_event_detailed.html:73
 msgid "Edit"
 msgstr ""
 
@@ -430,7 +434,7 @@ msgstr ""
 #: .\templates\cosinnus_event\doodle_vote.html:221
 #: .\templates\cosinnus_event\event_comments.html:71
 #: .\templates\cosinnus_event\list_object.html:116
-#: .\templates\cosinnus_event\single_event_detailed.html:54
+#: .\templates\cosinnus_event\single_event_detailed.html:60
 msgid "Delete"
 msgstr ""
 
@@ -571,7 +575,7 @@ msgid "Event Polls"
 msgstr ""
 
 #: .\templates\cosinnus_event\list_object.html:25
-#: .\templates\cosinnus_event\single_event_detailed.html:33
+#: .\templates\cosinnus_event\single_event_detailed.html:39
 msgid "by"
 msgstr ""
 
@@ -580,13 +584,46 @@ msgid "Created Event"
 msgstr ""
 
 #: .\templates\cosinnus_event\list_object.html:153
-#: .\templates\cosinnus_event\single_event_detailed.html:80
+#: .\templates\cosinnus_event\single_event_detailed.html:86
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
 msgstr ""
 
 #: .\templates\cosinnus_event\list_object.html:154
 msgid "Delete event"
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\attending_event_comment_posted.html:1
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you are attending in %"
+"(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %"
+"(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+
+#: .\templates\cosinnus_event\notifications\attending_event_comment_posted_subject.txt:1
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event you are attending in %(team_name)s."
 msgstr ""
 
 #: .\templates\cosinnus_event\notifications\doodle_created.txt:1
@@ -732,24 +769,65 @@ msgid ""
 "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:81
+#: .\templates\cosinnus_event\single_event_detailed.html:87
 msgid "Delete Event"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:95
+#: .\templates\cosinnus_event\single_event_detailed.html:101
 msgid "(Canceled!)"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:103
+#: .\templates\cosinnus_event\single_event_detailed.html:110
 msgid "This is an archived event poll."
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:105
+#: .\templates\cosinnus_event\single_event_detailed.html:112
 msgid "The event that was created after the poll can be viewed here:"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:143
+#: .\templates\cosinnus_event\single_event_detailed.html:151
 msgid "(No description set)"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:180
+msgctxt "someone else is going"
+msgid "Going"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:181
+msgctxt "someone else is maybe going"
+msgid "Maybe going"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:182
+msgctxt "someone else can't go"
+msgid "Can't go"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:199
+#: .\templates\cosinnus_event\single_event_detailed.html:248
+#: .\templates\cosinnus_event\single_event_detailed.html:303
+msgid "Going"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:201
+#: .\templates\cosinnus_event\single_event_detailed.html:263
+#: .\templates\cosinnus_event\single_event_detailed.html:309
+msgid "Maybe going"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:209
+#: .\templates\cosinnus_event\single_event_detailed.html:278
+#: .\templates\cosinnus_event\single_event_detailed.html:315
+msgid "Can't go"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:293
+msgid "Are you going?"
+msgstr ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:321
+msgid "No Choice"
 msgstr ""
 
 #: .\templates\cosinnus_event\widgets\event_widget.html:31
@@ -760,106 +838,106 @@ msgstr ""
 msgid "Upcoming events"
 msgstr ""
 
-#: .\views.py:168
+#: .\views.py:174
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
 msgstr ""
 
-#: .\views.py:169
+#: .\views.py:175
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
 msgstr ""
 
-#: .\views.py:178 .\views.py:361
+#: .\views.py:184 .\views.py:382
 msgid "The page you requested is not available for this event at this time."
 msgstr ""
 
-#: .\views.py:223
+#: .\views.py:229
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
 msgstr ""
 
-#: .\views.py:224
+#: .\views.py:230
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
 msgstr ""
 
-#: .\views.py:239
+#: .\views.py:245
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
 msgstr ""
 
-#: .\views.py:240
+#: .\views.py:246
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
 msgstr ""
 
-#: .\views.py:254
+#: .\views.py:260
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
 msgstr ""
 
-#: .\views.py:255
+#: .\views.py:261
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
 msgstr ""
 
-#: .\views.py:267 .\views.py:300
+#: .\views.py:273 .\views.py:306
 msgid "You should define at least one date suggestion."
 msgstr ""
 
-#: .\views.py:313
+#: .\views.py:319
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
 msgstr ""
 
-#: .\views.py:314
+#: .\views.py:320
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
 msgstr ""
 
-#: .\views.py:324
+#: .\views.py:330
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
 msgstr ""
 
-#: .\views.py:325
+#: .\views.py:331
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr ""
 
-#: .\views.py:349
+#: .\views.py:370
 msgid "Your votes were saved successfully."
 msgstr ""
 
-#: .\views.py:350
+#: .\views.py:371
 msgid "Your votes could not be saved."
 msgstr ""
 
-#: .\views.py:367 .\views.py:506
+#: .\views.py:388 .\views.py:527
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr ""
 
-#: .\views.py:498
+#: .\views.py:519
 msgid "The complete request can only be sent via POST!"
 msgstr ""
 
-#: .\views.py:509
+#: .\views.py:530
 msgid "Event cannot be completed: No date was supplied."
 msgstr ""
 
-#: .\views.py:542
+#: .\views.py:563
 msgid "The event was created successfully at the specified date."
 msgstr ""
 
-#: .\views.py:558
+#: .\views.py:579
 msgid "Upcoming events in"
 msgstr ""
 
-#: .\views.py:640
+#: .\views.py:661
 msgid "Your comment was added successfully."
 msgstr ""
 
-#: .\views.py:680
+#: .\views.py:701
 msgid "Your comment was deleted successfully."
 msgstr ""
