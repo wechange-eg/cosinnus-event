@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-01 15:21+0200\n"
+"POT-Creation-Date: 2016-08-01 15:40+0200\n"
 "PO-Revision-Date: 2015-11-14 17:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -987,31 +987,54 @@ msgctxt "someone else can't go"
 msgid "Can't go"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:199
-#: .\templates\cosinnus_event\single_event_detailed.html:248
-#: .\templates\cosinnus_event\single_event_detailed.html:303
+#: .\templates\cosinnus_event\single_event_detailed.html:200
+msgctxt "one or many people are going"
+msgid "Going"
+msgid_plural "Going"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:204
+#, fuzzy
+#| msgid "Maybe"
+msgctxt "one or many people are maybe going"
+msgid "Maybe going"
+msgid_plural "Maybe going"
+msgstr[0] "Может быть"
+msgstr[1] "Может быть"
+msgstr[2] "Может быть"
+
+#: .\templates\cosinnus_event\single_event_detailed.html:214
+msgctxt "one or many people are not going"
+msgid "Can't go"
+msgid_plural "Can't go"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: .\templates\cosinnus_event\single_event_detailed.html:253
+#: .\templates\cosinnus_event\single_event_detailed.html:308
 msgid "Going"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:201
-#: .\templates\cosinnus_event\single_event_detailed.html:263
-#: .\templates\cosinnus_event\single_event_detailed.html:309
+#: .\templates\cosinnus_event\single_event_detailed.html:268
+#: .\templates\cosinnus_event\single_event_detailed.html:314
 #, fuzzy
 #| msgid "Maybe"
 msgid "Maybe going"
 msgstr "Может быть"
 
-#: .\templates\cosinnus_event\single_event_detailed.html:209
-#: .\templates\cosinnus_event\single_event_detailed.html:278
-#: .\templates\cosinnus_event\single_event_detailed.html:315
+#: .\templates\cosinnus_event\single_event_detailed.html:283
+#: .\templates\cosinnus_event\single_event_detailed.html:320
 msgid "Can't go"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:293
+#: .\templates\cosinnus_event\single_event_detailed.html:298
 msgid "Are you going?"
 msgstr ""
 
-#: .\templates\cosinnus_event\single_event_detailed.html:321
+#: .\templates\cosinnus_event\single_event_detailed.html:326
 msgid "No Choice"
 msgstr ""
 

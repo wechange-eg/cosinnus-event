@@ -196,9 +196,13 @@
              			<br/>	
              		{% endif %}
              		<div>
-	                	<b>{{ attendants_going|length }}</b> {% trans "Going" %} 
+	                	<b>{{ attendants_going|length }}</b> 
+	                	{% blocktrans context "one or many people are going" count counter=attendants_going|length %}Going{% plural %}Going{% endblocktrans %}
 	                	{% if attendants_maybe %}
-	                		(<b>{{ attendants_maybe|length }}</b> {% trans "Maybe going" %}) 
+	                		(
+	                		<b>{{ attendants_maybe|length }}</b> 
+                			{% blocktrans context "one or many people are maybe going" count counter=attendants_maybe|length %}Maybe going{% plural %}Maybe going{% endblocktrans %}
+                			)
 	                	{% endif %}
                 	</div>
                 </div>
@@ -206,8 +210,11 @@
 	                <div class="fadedown">
 	                	<div class="btn" style="float:none; width: auto; margin: 0 0 6px 0;" >
 			                <a class="fadedown-clickarea" href="#">
-			                	<em><b>{{ attendants_not_going|length }}</b> {% trans "Can't go" %}</em>
-			                    <i class="fa fa-chevron-down"></i>
+			                	<em>
+				                	<b>{{ attendants_not_going|length }}</b> 
+				                	{% blocktrans context "one or many people are not going" count counter=attendants_not_going|length %}Can't go{% plural %}Can't go{% endblocktrans %}
+				                    <i class="fa fa-chevron-down"></i>
+			                    </em>
 			                </a>
 	                	</div>
 	                	<div>
