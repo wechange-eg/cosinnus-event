@@ -75,6 +75,9 @@ notifications = {
         'signals': [voted_event_comment_posted],
         'default': True,
     },   
+}
+"""
+TODO: feature complete, but locked for https://git.sinnwerkstatt.com/wechange/plattform-n/issues/146
     'attending_event_comment_posted': {
         'label': _('A user commented on an event you are attending'), 
         'mail_template': 'cosinnus_event/notifications/attending_event_comment_posted.html',
@@ -83,3 +86,4 @@ notifications = {
         'default': True,
     },   
 }
+"""
