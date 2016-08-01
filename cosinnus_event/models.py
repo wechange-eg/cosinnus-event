@@ -394,10 +394,6 @@ class Comment(models.Model):
                 if votees_except_creator:
                     cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
                     already_messaged_user_pks += votees_except_creator
-            
-            """
-            TODO: feature complete, but locked for https://git.sinnwerkstatt.com/wechange/plattform-n/issues/146
-            
             # message all attending persons (GOING and MAYBE_GOING)
             if self.event.state == Event.STATE_SCHEDULED:
                 attendees_except_creator = [attendance.user.pk for attendance in self.event.attendances.all() \
@@ -406,8 +402,7 @@ class Comment(models.Model):
                 if attendees_except_creator:
                     cosinnus_notifications.attending_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=attendees_except_creator))
                     already_messaged_user_pks += attendees_except_creator
-            """
-            
+                
             # message all taggees (except comment creator)
             if self.event.media_tag and self.event.media_tag.persons:
                 tagged_users_without_self = self.event.media_tag.persons.exclude(id__in=already_messaged_user_pks+[self.creator.id])
