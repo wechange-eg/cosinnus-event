@@ -142,7 +142,7 @@ class ArchivedDoodlesListView(EventListView):
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
         qs = self.get_base_queryset()
-        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE)
+        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE).order_by('-created')
         self.queryset = qs
         return qs
     
@@ -536,7 +536,8 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         # give this a new temporary slug so the original one is free again
         event.slug += '-archive'
         unique_aware_slugify(event, 'title', 'slug', group=self.group, force_redo=True)
-        event.save(update_fields=['slug'])
+        event.created = now()
+        event.save(update_fields=['slug', 'created'])
         
         # 'clone' media_tag
         new_media_tag = event.media_tag
