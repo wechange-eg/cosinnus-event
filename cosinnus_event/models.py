@@ -199,7 +199,7 @@ class Event(BaseTaggableObjectModel):
     @classmethod
     def get_current(self, group, user):
         """ Returns a queryset of the current upcoming events """
-        qs = Event.objects.filter(group=group)
+        qs = Event.objects.filter(group=group).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
         if user:
             qs = filter_tagged_object_queryset_for_user(qs, user)
         return upcoming_event_filter(qs)
