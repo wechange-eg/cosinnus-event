@@ -5,3 +5,70 @@
 .cosinnus-event td .geoposition-search {
     display: none;
 }
+
+.event-attendance {
+    width: 250px;
+    margin-left: 40px;
+}
+.event-attendance-button {
+    cursor: pointer;
+}
+
+.event-attendance.attendance-busy button {
+    opacity: 0.6;
+}
+
+.event-attendance .event-attendance-choice-going,
+.event-attendance .event-attendance-choice-maybe,
+.event-attendance .event-attendance-choice-not-going,
+.event-attendance .event-attendance-choice-no-choice {
+    display: none;
+}
+.event-attendance button.btn {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.event-attendance.event-attendance-going .event-attendance-choice-going {
+    display: inherit;
+}
+.event-attendance.event-attendance-maybe .event-attendance-choice-maybe {
+    display: inherit;
+}
+.event-attendance.event-attendance-not-going .event-attendance-choice-not-going {
+    display: inherit;
+}
+.event-attendance.event-attendance-no-choice .event-attendance-choice-no-choice {
+    display: inherit;
+}
+
+.attendance-status-frame {
+    display: inline-block;
+}
+.attendance-status {
+    display: inline;
+}
+.attendance-status-working {
+    color: #333;
+}
+.attendance-status-success {
+    color: #779b48;
+}
+.attendance-status-error {
+    color: #e55c55;
+}
+
+.attendance-avatar-list {
+    display: inline-block;
+    white-space: normal;
+}
+.attendance-avatar {
+    display: inline-block;
+    width: 20px;
+    margin: 0 2px 5px 0;
+}
+.attendance-avatar.faded {
+    opacity: 0.5;
+}

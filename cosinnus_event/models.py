@@ -14,7 +14,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
 from django.utils.functional import cached_property
 from django.utils.timezone import localtime, now
-from django.utils.translation import ugettext_lazy as _, pgettext_lazy
+from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext_lazy as p_
 
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
 
@@ -154,6 +154,10 @@ class Event(BaseTaggableObjectModel):
         if created and created_from_doodle:
             # event went from being a doodle to being a real event, so fire event created
             cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+            
+        # create a "going" attendance for the event's creator
+        if created and self.state == Event.STATE_SCHEDULED:
+            EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
         self.__state = self.state
 
@@ -314,7 +318,41 @@ class Vote(models.Model):
     def get_absolute_url(self):
         return self.suggestion.event.get_absolute_url()
 
-
+@python_2_unicode_compatible
+class EventAttendance(models.Model):
+    """ Model for attendance choices of a User for an Event.
+        The choices do not include a "no choice selected" state on purpose,
+        as a user not having made a choice is modeled by a missing instance
+        of ``EventAttendance`` for that user and event.
+     """
+    
+    ATTENDANCE_NOT_GOING = 0
+    ATTENDANCE_MAYBE_GOING = 1
+    ATTENDANCE_GOING = 2
+    
+    ATTENDANCE_STATES = (
+        (ATTENDANCE_NOT_GOING, p_('cosinnus_event_attendance', 'not going')),
+        (ATTENDANCE_MAYBE_GOING, p_('cosinnus membership status', 'maybe going')),
+        (ATTENDANCE_GOING, p_('cosinnus membership status', 'going')),
+    )
+    
+    event = models.ForeignKey(Event, related_name='attendances', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+        related_name='cosinnus_event_attendances', on_delete=models.CASCADE)
+    state = models.PositiveSmallIntegerField(choices=ATTENDANCE_STATES,
+        db_index=True, default=ATTENDANCE_NOT_GOING)
+    date = models.DateTimeField(auto_now_add=True, editable=False)
+    
+    class Meta:
+        unique_together = ('event', 'user', )
+        
+    def __str__(self):
+        return "Event Attendance <user: %(user)s, event: %(event)s, status: %(status)d>" % {
+            'user': self.user.email,
+            'event': self.event.slug,
+            'status': self.status,
+        }
+    
 
 @python_2_unicode_compatible
 class Comment(models.Model):
@@ -343,20 +381,33 @@ class Comment(models.Model):
     def save(self, *args, **kwargs):
         created = bool(self.pk) == False
         super(Comment, self).save(*args, **kwargs)
+        
+        already_messaged_user_pks = []
         if created:
             # comment was created, message event creator
             if not self.event.creator == self.creator:
                 cosinnus_notifications.event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[self.event.creator])
+                already_messaged_user_pks += [self.event.creator_id]
             # message votees (except comment creator and event creator) if voting is still open
-            votees_except_creator = [pk for pk in self.event.get_voters_pks() if not pk in [self.creator_id, self.event.creator_id]]
-            if votees_except_creator and self.event.state == Event.STATE_VOTING_OPEN:
-                cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
+            if self.event.state == Event.STATE_VOTING_OPEN:
+                votees_except_creator = [pk for pk in self.event.get_voters_pks() if not pk in [self.creator_id, self.event.creator_id]]
+                if votees_except_creator:
+                    cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
+                    already_messaged_user_pks += votees_except_creator
+            # message all attending persons (GOING and MAYBE_GOING)
+            if self.event.state == Event.STATE_SCHEDULED:
+                attendees_except_creator = [attendance.user.pk for attendance in self.event.attendances.all() \
+                            if (attendance.state in [EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING])\
+                                and not attendance.user.pk in [self.creator_id, self.event.creator_id]]
+                if attendees_except_creator:
+                    cosinnus_notifications.attending_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=attendees_except_creator))
+                    already_messaged_user_pks += attendees_except_creator
+                
             # message all taggees (except comment creator)
             if self.event.media_tag and self.event.media_tag.persons:
-                tagged_users_without_self = self.event.media_tag.persons.exclude(id=self.creator.id)
+                tagged_users_without_self = self.event.media_tag.persons.exclude(id__in=already_messaged_user_pks+[self.creator.id])
                 if len(tagged_users_without_self) > 0:
                     cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self))
-    
     @property
     def group(self):
         """ Needed by the notifications system """

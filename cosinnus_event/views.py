@@ -28,17 +28,23 @@ from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
     EventNoFieldForm, CommentForm
 from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
-    past_event_filter, Comment
+    past_event_filter, Comment, EventAttendance
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
-from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
+from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
+    check_object_read_access
 from cosinnus.core.decorators.views import require_read_access,\
-    require_user_token_access, dispatch_group_access
+    require_user_token_access, dispatch_group_access, get_group_for_request
 from django.contrib.sites.models import Site, get_current_site
 from cosinnus.utils.functions import unique_aware_slugify
+from django.views.decorators.csrf import csrf_protect
+from django.http.response import HttpResponseBadRequest, JsonResponse
 
+import logging
+from annoying.functions import get_object_or_None
+logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
 
@@ -136,7 +142,7 @@ class ArchivedDoodlesListView(EventListView):
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
         qs = self.get_base_queryset()
-        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE)
+        qs = qs.filter(state=Event.STATE_ARCHIVED_DOODLE).order_by('-created')
         self.queryset = qs
         return qs
     
@@ -338,6 +344,21 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(EntryDetailView, self).get_context_data(**kwargs)
+        event = context['object']
+        user = self.request.user
+        
+        user_attendance = None if not user.is_authenticated() else get_object_or_None(EventAttendance, user=user, event=event)
+        all_attendants = EventAttendance.objects.filter(event=event)
+        attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
+        attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
+        attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
+        
+        context.update({
+            'user_attendance': user_attendance,
+            'attendants_going': attendants_going,
+            'attendants_maybe': attendants_maybe,
+            'attendants_not_going': attendants_not_going,
+        })
         return context
 
 entry_detail_view = EntryDetailView.as_view()
@@ -515,7 +536,8 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         # give this a new temporary slug so the original one is free again
         event.slug += '-archive'
         unique_aware_slugify(event, 'title', 'slug', group=self.group, force_redo=True)
-        event.save(update_fields=['slug'])
+        event.created = now()
+        event.save(update_fields=['slug', 'created'])
         
         # 'clone' media_tag
         new_media_tag = event.media_tag
@@ -731,3 +753,73 @@ class CommentUpdateView(RequireWriteMixin, FilterGroupMixin, UpdateView):
 
 comment_update = CommentUpdateView.as_view()
 
+
+@csrf_protect
+def assign_attendance_view(request, group, slug):
+    """ Assign attendance for an event. 
+        POST param: ``target_state``: Numerical for EventAttendance::ATTENDANCE_STATES.
+            Pass '-1' to remove the attending object, i.e. the 'no choice selected' state.  """
+    
+    if not request.is_ajax():
+        return HttpResponseBadRequest("This can only be called via Ajax.")
+    user = request.user
+    if not user.is_authenticated():
+        return HttpResponseBadRequest("This can only be called for logged in users.")
+    
+    target_state = request.POST.get('target_state', None)
+    try:
+        target_state = int(target_state)
+    except:
+        pass
+    if target_state != -1 and target_state not in dict(EventAttendance.ATTENDANCE_STATES).keys():
+        target_state = None
+    
+    if target_state is None:
+        return HttpResponseBadRequest("Missing or malformed POST parameter: 'target_state'")
+    
+    group = get_group_for_request(group, request)
+    if not group:
+        logger.error('No group found when trying to assign attendance to an event!', extra={'group_slug': group, 
+            'request': request, 'path': request.path})
+        return JsonResponse({'error': 'groupnotfound'})
+    
+    event = get_object_or_None(Event, slug=slug, group=group)
+    if not event:
+        logger.error('No event found when trying to assign attendance to an event!', extra={'event_slug': slug, 
+            'request': request, 'path': request.path})
+        return JsonResponse({'error': 'eventnotfound'})
+    
+    event = get_object_or_None(Event, slug=slug, group=group)
+    if not event.state == Event.STATE_SCHEDULED:
+        return JsonResponse({'error': 'eventnotactive'})
+    
+    if not check_object_read_access(event, user):
+        logger.warn('Permission error while assigning attendance for an event!', 
+             extra={'user': user, 'request': request, 'path': request.path, 'group_slug': group, 'event_slug': slug})
+        return JsonResponse({'error': 'denied'})
+    
+    result_state = None
+    try:
+        attendance = get_object_or_None(EventAttendance, event=event, user=user)
+        if (attendance is None and target_state == -1) or (attendance is not None and target_state == attendance.state):
+            # no action required
+            result_state = target_state
+        elif attendance is not None and target_state == -1:
+            attendance.delete()
+            result_state = -1
+        elif attendance is not None:
+            attendance.state = target_state
+            attendance.save(update_fields=['state', 'date'])
+            result_state = attendance.state
+        else:
+            attendance = EventAttendance.objects.create(event=event, user=user, state=target_state)
+            result_state = attendance.state
+            
+    except Exception, e:
+        logger.error('Exception while assigning attendance for an event!', 
+             extra={'user': user, 'request': request, 'path': request.path, 'group_slug': group, 'event_slug': slug, 'exception': str(e)})
+    
+    if result_state is not None:
+        return JsonResponse({'status': 'ok', 'result_state': result_state})
+    
+    return JsonResponse({'error': 'statecouldnotbechanged', 'result_state': -1 if attendance is None else attendance.state})
