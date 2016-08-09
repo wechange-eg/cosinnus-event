@@ -15,6 +15,7 @@ doodle_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
 event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 voted_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+attending_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 
 
 """ Notification definitions.
@@ -73,5 +74,12 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/voted_event_comment_posted_subject.txt',
         'signals': [voted_event_comment_posted],
         'default': True,
-    },  
+    },   
+    'attending_event_comment_posted': {
+        'label': _('A user commented on an event you are attending'), 
+        'mail_template': 'cosinnus_event/notifications/attending_event_comment_posted.html',
+        'subject_template': 'cosinnus_event/notifications/attending_event_comment_posted_subject.txt',
+        'signals': [attending_event_comment_posted],
+        'default': True,
+    },   
 }

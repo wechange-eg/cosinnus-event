@@ -26,6 +26,7 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^(?P<slug>[^/]+)/$', 'entry_detail_view', {'form_view': 'edit'},  name='event-detail'),
     url(r'^(?P<slug>[^/]+)/edit/$', 'entry_edit_view', {'form_view': 'edit'}, name='event-edit'),
     url(r'^(?P<slug>[^/]+)/delete/$', 'entry_delete_view', {'form_view': 'delete'}, name='event-delete'),
+    url(r'^(?P<slug>[^/]+)/assign_attendance/$', 'assign_attendance_view', name='event-assign-attendance'),
     
     url(r'^(?P<event_slug>[^/]+)/comment/$', 'comment_create', name='comment'),
     url(r'^comment/(?P<pk>\d+)/$', 'comment_detail', name='comment-detail'),
