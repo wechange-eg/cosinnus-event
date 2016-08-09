@@ -1,13 +1,9 @@
 {% load static thumbnail cosinnus_tags %}
 
-{% with user=attendance.user avatar=attendance.user.cosinnus_profile.avatar %}
+{% with user=attendance.user %}
 	<div class="attendance-avatar {% if maybe_going %}faded{% endif %}">
 		<a href="{{ user.cosinnus_profile.get_absolute_url }}">
-			{% if avatar %}
-			    <img src="{% thumbnail avatar 40x40 crop=1 upscale=1 %}" title="{{ user|full_name }}{% if extra_title %} - {{ extra_title }}{% endif %}" class="image"></img>
-			{% else %}
-			    <img src="{% static 'images/jane-doe.png' %}" title="{{ user|full_name }}{% if extra_title %} - {{ extra_title }}{% endif %}" class="image"></img>
-			{% endif %}
+			{% include 'cosinnus/user/user_avatar_image.html' with user=user extra_title=i18n_not_going extra_classes="image" %}
 		</a>
 	</div>
 {% endwith %}
