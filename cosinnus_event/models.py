@@ -21,7 +21,8 @@ from osm_field.fields import OSMField, LatitudeField, LongitudeField
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventManager
 from cosinnus.models import BaseTaggableObjectModel
-from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
+from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
+    check_object_read_access
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
@@ -412,8 +413,10 @@ class Comment(models.Model):
     def group(self):
         """ Needed by the notifications system """
         return self.event.group
-
-
+    
+    def grant_extra_read_permissions(self, user):
+        """ Comments inherit their visibility from their commented on parent """
+        return check_object_read_access(self.event, user)
 
 @receiver(post_delete, sender=Vote)
 def post_vote_delete(sender, **kwargs):
