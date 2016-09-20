@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+﻿# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -44,7 +44,9 @@ msgstr "Пользователь создал новое событие"
 
 #: .\cosinnus_notifications.py:51
 msgid "A user created a new event poll"
-msgstr "Пользователь создал новый опрос по датам"
+msgstr "Пользователь создал новое предложение даты"
+
+
 
 #: .\cosinnus_notifications.py:58
 msgid "A user commented on one of your events"
@@ -109,7 +111,7 @@ msgstr "Отменено"
 #, fuzzy
 #| msgid "Event Polls"
 msgid "Archived Event Poll"
-msgstr "Опрос дат"
+msgstr "Завершенное предложение даты"
 
 #: .\models.py:64 .\models.py:224
 msgid "Start"
@@ -172,7 +174,7 @@ msgstr "URL"
 #, fuzzy
 #| msgid "Event Polls"
 msgid "Original Event Poll"
-msgstr "Опрос дат"
+msgstr "Исходное предложение даты"
 
 #: .\models.py:114 .\models.py:231
 #: .\templates\cosinnus_event\event_detail.html:5
@@ -334,7 +336,7 @@ msgstr "Время"
 
 #: .\templates\cosinnus_event\doodle_form.html:82
 msgid "Please select the available days in the calendar."
-msgstr "Пожалуйста, предложите подходящие дни с помощью календаря"
+msgstr "Пожалуйста, предложите подходящие дни при помощью календаря"
 
 #: .\templates\cosinnus_event\doodle_form.html:83
 msgid "You can select the same day more than once."
@@ -403,7 +405,7 @@ msgstr "Прошлые события"
 #, fuzzy
 #| msgid "Event Polls"
 msgid "Archived Event Polls"
-msgstr "Опрос дат"
+msgstr "Завершенные "Предложения даты""
 
 #: .\templates\cosinnus_event\doodle_list_detailed_archived.html:30
 #, fuzzy
@@ -421,7 +423,7 @@ msgstr "Голосовать за %(title)s"
 #: .\templates\cosinnus_event\doodle_vote.html:19
 #, python-format
 msgid "Archived: %(title)s"
-msgstr ""
+msgstr "Завершено: %(title)s"
 
 #: .\templates\cosinnus_event\doodle_vote.html:42
 msgid "This event has already been scheduled. Voting is closed."
@@ -464,12 +466,12 @@ msgstr "Удалить"
 #: .\templates\cosinnus_event\list_object.html:149
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
-msgstr "Вы действительно хотите удалить опрос дат „%(title)s“?"
+msgstr "Вы действительно хотите удалить это событие „%(title)s“?"
 
 #: .\templates\cosinnus_event\doodle_vote.html:228
 #: .\templates\cosinnus_event\list_object.html:150
 msgid "Delete unscheduled event"
-msgstr "Удалить опрос дат"
+msgstr "Удалить событие"
 
 #: .\templates\cosinnus_event\event_comments.html:95
 msgid "Write comment..."
@@ -580,13 +582,13 @@ msgstr "Назад к событиям"
 
 #: .\templates\cosinnus_event\leftnav.html:36
 msgid "Return to Event Polls"
-msgstr "Вернуться к опросу дат"
+msgstr "Вернуться к предложению даты"
 
 #: .\templates\cosinnus_event\leftnav.html:52
 #, fuzzy
 #| msgid "Return to Event Polls"
 msgid "Return to Archived Event Polls"
-msgstr "Вернуться к опросу дат"
+msgstr "Вернуться к завершенным предложениям по дате"
 
 #: .\templates\cosinnus_event\leftnav.html:76
 msgid "Calendar"
@@ -598,7 +600,7 @@ msgstr "Список"
 
 #: .\templates\cosinnus_event\leftnav.html:138
 msgid "Event Polls"
-msgstr "Опрос дат"
+msgstr "Предложение даты"
 
 #: .\templates\cosinnus_event\list_object.html:25
 #: .\templates\cosinnus_event\single_event_detailed.html:39
@@ -958,13 +960,13 @@ msgstr "(Отменено!)"
 #, fuzzy
 #| msgid "There are no open event polls."
 msgid "This is an archived event poll."
-msgstr "Открытых предложений по событиям нет"
+msgstr "Это завершенное предложение даты"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:112
 #, fuzzy
 #| msgid "The event was created successfully at the specified date."
 msgid "The event that was created after the poll can be viewed here:"
-msgstr "Событие создано и привязано к указанной дате"
+msgstr "Событие, созданное к указанной дате, вы можете посмотреть здесь:"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:151
 msgid "(No description set)"
@@ -973,27 +975,27 @@ msgstr "(Описание отсутствует)"
 #: .\templates\cosinnus_event\single_event_detailed.html:180
 msgctxt "someone else is going"
 msgid "Going"
-msgstr ""
+msgstr "Будет участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:181
 #, fuzzy
 #| msgid "Maybe"
 msgctxt "someone else is maybe going"
 msgid "Maybe going"
-msgstr "Может быть"
+msgstr "Возможно будет участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:182
 msgctxt "someone else can't go"
 msgid "Can't go"
-msgstr ""
+msgstr "Не может участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:200
 msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Буду участвовать"
+msgstr[1] "Будет участвовать"
+msgstr[2] "Будут участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:204
 #, fuzzy
@@ -1001,42 +1003,42 @@ msgstr[2] ""
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
-msgstr[0] "Может быть"
-msgstr[1] "Может быть"
-msgstr[2] "Может быть"
+msgstr[0] "Возможно буду участвовать"
+msgstr[1] "Возможно будет участвовать"
+msgstr[2] "Возможно будут участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:214
 msgctxt "one or many people are not going"
 msgid "Can't go"
 msgid_plural "Can't go"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Не могу участвовать"
+msgstr[1] "Не может участвовать"
+msgstr[2] "Не могут участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:253
 #: .\templates\cosinnus_event\single_event_detailed.html:308
 msgid "Going"
-msgstr ""
+msgstr "Буду участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:268
 #: .\templates\cosinnus_event\single_event_detailed.html:314
 #, fuzzy
 #| msgid "Maybe"
 msgid "Maybe going"
-msgstr "Может быть"
+msgstr "Возможно буду участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:283
 #: .\templates\cosinnus_event\single_event_detailed.html:320
 msgid "Can't go"
-msgstr ""
+msgstr "Не может участвовать"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:298
 msgid "Are you going?"
-msgstr ""
+msgstr "Вы примете участие?"
 
 #: .\templates\cosinnus_event\single_event_detailed.html:326
 msgid "No Choice"
-msgstr ""
+msgstr "Нет выбора"
 
 #: .\templates\cosinnus_event\widgets\event_widget.html:31
 msgid "More"
@@ -1058,7 +1060,7 @@ msgstr "Невозможно отредактировать событие \"%(t
 
 #: .\views.py:184 .\views.py:382
 msgid "The page you requested is not available for this event at this time."
-msgstr ""
+msgstr "Запрашиваемая вами страница в данный момент времени не доступна"
 
 #: .\views.py:229
 #, python-format
