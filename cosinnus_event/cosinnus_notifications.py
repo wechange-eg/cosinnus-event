@@ -46,6 +46,18 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/event_created_subject.txt',
         'signals': [event_created],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event by %(sender_name)s'),
+        'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
     },  
     'doodle_created': {
         'label': _('A user created a new event poll'), 
@@ -53,6 +65,17 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/doodle_created_subject.txt',
         'signals': [doodle_created],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event poll by %(sender_name)s'),
+        'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'description',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
     },  
     'event_comment_posted': {
         'label': _('A user commented on one of your events'), 
@@ -60,6 +83,19 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/event_comment_posted_subject.txt',
         'signals': [event_comment_posted],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on your event'),
+        'subject_text': _('%(sender_name)s commented on one of your events'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
     },    
     'tagged_event_comment_posted': {
         'label': _('A user commented on a event you were tagged in'), 
@@ -67,6 +103,19 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/tagged_event_comment_posted_subject.txt',
         'signals': [tagged_event_comment_posted],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on an event you were tagged in'),
+        'subject_text': _('%(sender_name)s commented on an event you were tagged in in %(team_name)s'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
     },  
     'voted_event_comment_posted': {
         'label': _('A user commented on an event you voted in'), 
@@ -74,6 +123,19 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/voted_event_comment_posted_subject.txt',
         'signals': [voted_event_comment_posted],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on an event you voted in'),
+        'subject_text': _('%(sender_name)s commented on an event you voted in in %(team_name)s'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
     },   
     'attending_event_comment_posted': {
         'label': _('A user commented on an event you are attending'), 
@@ -81,5 +143,18 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/attending_event_comment_posted_subject.txt',
         'signals': [attending_event_comment_posted],
         'default': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on an event you are attending'),
+        'subject_text': _('%(sender_name)s commented on an event you are attending in %(team_name)s'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
     },   
 }
