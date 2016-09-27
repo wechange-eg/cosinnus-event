@@ -50,6 +50,7 @@ notifications = {
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('New event by %(sender_name)s'),
+        'notification_text': _('%(sender_name)s created a new event'),
         'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -69,6 +70,7 @@ notifications = {
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('New event poll by %(sender_name)s'),
+        'notification_text': _('%(sender_name)s created a new event poll'),
         'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 13:27+0200\n"
-"PO-Revision-Date: 2016-09-20 14:51+0200\n"
+"POT-Creation-Date: 2016-09-27 17:56+0200\n"
+"PO-Revision-Date: 2016-09-27 18:02+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,10 @@ msgid "New event by %(sender_name)s"
 msgstr "Neue Veranstaltung von %(sender_name)s"
 
 #, python-format
+msgid "%(sender_name)s created a new event"
+msgstr "%(sender_name)s hat eine neue Veranstaltung eingetragen"
+
+#, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr "Neue Veranstaltung: \"%(object_name)s\" wurde in %(team_name)s eingetragen."
 
@@ -41,6 +45,10 @@ msgstr "Ein Mitglied hat eine neue Terminumfrage erstellt"
 #, python-format
 msgid "New event poll by %(sender_name)s"
 msgstr "Neue Terminumfrage von %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s created a new event poll"
+msgstr "%(sender_name)s hat eine neue Terminumfrage erstellt"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."

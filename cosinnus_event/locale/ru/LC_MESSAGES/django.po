@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-20 13:27+0200\n"
+"POT-Creation-Date: 2016-09-27 17:56+0200\n"
 "PO-Revision-Date: 2016-09-20 13:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,6 +31,11 @@ msgstr "Пользователь создал новое событие"
 msgid "New event by %(sender_name)s"
 msgstr ""
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s created a new event"
+msgstr "Пользователь %(sender_name)s прокомментировал одно из ваших событий в %(team_name)s."
+
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s"
@@ -41,6 +46,11 @@ msgstr "Пользователь создал новое предложение 
 #, python-format
 msgid "New event poll by %(sender_name)s"
 msgstr ""
+
+#, fuzzy, python-format
+#| msgid "A user created a new event poll"
+msgid "%(sender_name)s created a new event poll"
+msgstr "Пользователь создал новое предложение даты"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
