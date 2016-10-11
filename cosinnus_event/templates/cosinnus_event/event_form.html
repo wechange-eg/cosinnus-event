@@ -97,12 +97,9 @@
                                             >    
 		                                    <div class="small-calendar"></div>
 		                                </li>
-		                                
-		                                
 		                    </ol>
-		
-	                        {% include 'cosinnus/media_tags.html' with show_files=True %}
-	                        
+		                    
+		                    
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.note.errors }}
@@ -110,6 +107,19 @@
 		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>
+		                    
+		                    
+							<ol class="input-area">
+                                <li class="w100">
+		                            <label>
+								    	{% trans "Add Photos or Files" %}
+								    </label>
+								    <p class="small">
+                                    	{% trans "The first uploaded image will be displayed as a wallpaper" %}
+                                    </p>
+                                </li>
+                            </ol>
+	                        {% include 'cosinnus/media_tags.html' with show_files=True %}
 	                        
 	                        <ol class="input-area">
                                 <li class="w100">

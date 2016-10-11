@@ -1,4 +1,4 @@
-{% load i18n static cosinnus_tags widget_tweaks sekizai_tags %}
+{% load i18n static cosinnus_tags widget_tweaks sekizai_tags thumbnail %}
 
 {# this template expects an {{ event }} object to be passed to it. Also accepts hide_control_buttons to hide edit/delete buttons #}
 {% addtoblock "js" %}
@@ -11,7 +11,7 @@
 <div class="fadedown">
     <div class="btn btn-emphasized w100 {% if event.attached_image %}button-with-title-image{% endif %}">
         {% if event.attached_image %}
-	        <img src="{{ event.attached_image.static_image_url }}" />
+	        <img src="{% thumbnail event.attached_image.file SETTINGS.COSINNUS_GROUP_WALLPAPER_MAXIMUM_SIZE_SCALE crop='smart' upscale='smart' %}" />
 	        <div></div> <!-- Gradient overlay -->
         {% endif %}
         <ul class="media-list">
