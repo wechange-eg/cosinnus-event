@@ -27,6 +27,7 @@ from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
 from cosinnus.utils.files import _get_avatar_filename
+from cosinnus.models.group import CosinnusPortal
 
 
 def localize(value, format):
@@ -203,6 +204,12 @@ class Event(BaseTaggableObjectModel):
         qs = Event.objects.filter(group=group).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
         if user:
             qs = filter_tagged_object_queryset_for_user(qs, user)
+        return upcoming_event_filter(qs)
+    
+    @classmethod
+    def get_current_for_portal(self):
+        """ Returns a queryset of the current upcoming events in this portal """
+        qs = Event.objects.filter(group__portal=CosinnusPortal.get_current()).filter(state__in=[Event.STATE_SCHEDULED])
         return upcoming_event_filter(qs)
     
     @property
