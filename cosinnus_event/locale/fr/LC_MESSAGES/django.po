@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-27 17:56+0200\n"
+"POT-Creation-Date: 2016-11-02 11:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -389,6 +389,12 @@ msgid "Until"
 msgstr ""
 
 msgid "End date."
+msgstr ""
+
+msgid "Add Photos or Files"
+msgstr ""
+
+msgid "The first uploaded image will be displayed as a wallpaper"
 msgstr ""
 
 msgid "Kalender"
