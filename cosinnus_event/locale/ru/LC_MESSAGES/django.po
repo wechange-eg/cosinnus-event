@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-02 11:31+0100\n"
-"PO-Revision-Date: 2016-11-02 11:15+0100\n"
+"PO-Revision-Date: 2016-11-15 16:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,90 +29,78 @@ msgstr "Пользователь создал новое событие"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr ""
+msgstr "Новое событие у %(sender_name)s"
 
-#, fuzzy, python-format
-#| msgid "A user created a new event"
+#, python-format
 msgid "%(sender_name)s created a new event"
-msgstr "Пользователь создал новое событие"
+msgstr "%(sender_name)s создал(а) новое событие"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s"
 
 msgid "A user created a new event poll"
-msgstr "Пользователь создал новое предложение даты события"
+msgstr "Пользователь предложил новую дату события"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
-msgstr ""
+msgstr "Новое предложение даты мероприятия у %(sender_name)s"
 
-#, fuzzy, python-format
-#| msgid "A user created a new event poll"
+#, python-format
 msgid "%(sender_name)s created a new event poll"
-msgstr "Пользователь создал новое предложение даты события"
+msgstr "%(sender_name)s предложил(а) новую дату события"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
-msgstr "Новый опрос дат: \"%(object_name)s\" создан в %(team_name)s"
+msgstr "Новое предложение даты события: \"%(object_name)s\" создано в %(team_name)s"
 
 msgid "A user commented on one of your events"
 msgstr "Пользователь прокомментировал одно из Ваших событий"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on your event"
-msgstr "Пользователь %(sender_name)s прокомментировал одно из Ваших событий в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) Ваше событие"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on one of your events"
-msgstr "Пользователь %(sender_name)s прокомментировал одно из Ваших событий в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) одно из Ваших событий"
 
 #, python-format
 msgid "%(sender_name)s"
-msgstr ""
+msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
-msgstr "Пользователь прокомментировал событие, в котором Вы отмечены"
+msgstr "Пользователь прокомментировал событие, в котором Вы были отмечены"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором вы были отмечены, в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы были отмечены"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором вы были отмечены, в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы были отмечены, в %(team_name)s."
 
 msgid "A user commented on an event you voted in"
-msgstr "Пользователь прокомментировал событие, в голосовании по которому Вы участвовали"
+msgstr "Пользователь прокомментировал событие, в голосовании по которому Вы принимали участие"
 
-#, fuzzy, python-format
-#| msgid "A user commented on an event you voted in"
+#, python-format
 msgid "%(sender_name)s commented on an event you voted in"
-msgstr "Пользователь прокомментировал событие, в голосовании по которому Вы участвовали"
+msgstr "%(sender_name)s прокомментировал(а) событие, в голосовании по которому Вы принимали участие"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr "Пользователь %(sender_name)s прокомментировал опрос, по которому вы проголосовали в %(team_name)s"
+msgstr "%(sender_name)s прокомментировал(а) опрос, по которому Вы проголосовали в %(team_name)s"
 
-#, fuzzy
-#| msgid "A user commented on an event you voted in"
 msgid "A user commented on an event you are attending"
 msgstr "Пользователь прокомментировал событие, в котором Вы участвуете"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending"
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором Вы принимаете участие в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором Вы принимаете участие в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s."
 
 msgid "Upcoming Events"
 msgstr "Текущие события"
@@ -142,10 +130,8 @@ msgstr "Голосование открыто"
 msgid "Canceled"
 msgstr "Отменено"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Archived Event Poll"
-msgstr "Завершенное предложение даты события"
+msgstr "Завершенный опрос по датам"
 
 msgid "Start"
 msgstr "Начало"
@@ -190,8 +176,6 @@ msgstr "Изображение"
 msgid "URL"
 msgstr "Ссылка"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Original Event Poll"
 msgstr "Исходное предложение даты события"
 
@@ -206,8 +190,7 @@ msgstr "%(event)s (%(date)s - %(end)s)"
 msgid "%(event)s (%(from)s - %(to)s)"
 msgstr "%(event)s (%(from)s - %(to)s)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (canceled)"
 msgstr "%(event)s (аннулировано)"
 
@@ -215,8 +198,7 @@ msgstr "%(event)s (аннулировано)"
 msgid "%(event)s (pending)"
 msgstr "%(event)s (дата в процессе обработки)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (завершено)"
 
@@ -225,10 +207,10 @@ msgid "Votes"
 msgstr "Голоса"
 
 msgid "Suggestion"
-msgstr "Предложение даты события"
+msgstr "Предложение"
 
 msgid "Suggestions"
-msgstr "Предложения даты"
+msgstr "Предложения "
 
 msgid "Yes"
 msgstr "Да"
@@ -289,19 +271,19 @@ msgid "until"
 msgstr "по"
 
 msgid "Add unscheduled event"
-msgstr "Добавить предложение по дате"
+msgstr "Добавить событие"
 
 msgid "Edit"
 msgstr "Редактировать"
 
 msgid "Enter a title for the new event to be scheduled."
-msgstr "Введите название нового запланированного события"
+msgstr "Введите название нового планируемого события"
 
 msgid "Time"
 msgstr "Время"
 
 msgid "Please select the available days in the calendar."
-msgstr "Пожалуйста, предложите подходящие дни при помощью календаря"
+msgstr "Пожалуйста, предложите подходящие дни при помощи календаря"
 
 msgid "You can select the same day more than once."
 msgstr "Вы можете выбрать один и тот же день несколько раз"
@@ -310,7 +292,7 @@ msgid "Time: e.g. 10 or 10:30."
 msgstr "Время, например, 10 или 10:30"
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr "Примечание: вы не можете изменить больше дату проведения этого события, "
+msgstr "Примечание: Вы не можете больше изменить дату проведения этого события!"
 
 msgid "Enter a description for the event (optional)."
 msgstr "Введите описание события (необязательно)"
@@ -331,7 +313,7 @@ msgid "Schedule an event"
 msgstr "Запланировать событие"
 
 msgid "There are no open event polls."
-msgstr "Открытых предложений по событиям нет"
+msgstr "Нет открытых предложений по датам"
 
 msgid "Planned Events"
 msgstr "Запланированные события"
@@ -339,15 +321,11 @@ msgstr "Запланированные события"
 msgid "Past Events"
 msgstr "Прошлые события"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Archived Event Polls"
-msgstr "Завершенные \"Предложения даты события\""
+msgstr "Завершенные \"Опросы по датам\""
 
-#, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no archived event polls."
-msgstr "Нет завершёных \"Предложений даты события\""
+msgstr "Нет завершённых \"Опросов по датам\""
 
 #, python-format
 msgid "Vote for %(title)s"
@@ -358,13 +336,13 @@ msgid "Archived: %(title)s"
 msgstr "Завершено: %(title)s"
 
 msgid "This event has already been scheduled. Voting is closed."
-msgstr "Это событие уже запланировано. Голосование закрыто"
+msgstr "Это событие уже запланировано. Голосование закрыто."
 
 msgid "This event has been canceled. Voting is closed."
-msgstr "Это событие отменено. Голосование закрыто"
+msgstr "Это событие отменено. Голосование закрыто."
 
 msgid "Nobody has voted for this event poll yet."
-msgstr "По этим датам еще никто не проголосовал"
+msgstr "По этим датам еще никто не проголосовал."
 
 msgid "Create an event from one of the suggestions"
 msgstr "Создать событие из предложенных"
@@ -375,10 +353,10 @@ msgid "Set the date to %(suggestion)s."
 msgstr "Установить дату на %(suggestion)s"
 
 msgid "When do you have time?"
-msgstr "Когда у вас есть время?"
+msgstr "Когда Вы располагаете временем?"
 
 msgid "There are no date suggestions for this event poll yet!"
-msgstr "Для этого опроса еще не внесены предложения по датам"
+msgstr "Для этого опроса по датам еще не внесены предложения!"
 
 msgid "Delete"
 msgstr "Удалить"
@@ -418,10 +396,10 @@ msgid "End date."
 msgstr "Дата завершения"
 
 msgid "Add Photos or Files"
-msgstr ""
+msgstr "Добавить фотографии или файлы"
 
 msgid "The first uploaded image will be displayed as a wallpaper"
-msgstr ""
+msgstr "Первое загруженное изображение будет отображаться в качестве фонового рисунка"
 
 msgid "Kalender"
 msgstr "Календарь"
@@ -460,7 +438,7 @@ msgid "OK"
 msgstr "ОК"
 
 msgid "There are no current or future events."
-msgstr "Текущих или будущих событий нет"
+msgstr "Текущих или предстоящих событий нет"
 
 msgid "There are no past events."
 msgstr "Прошедших событий нет"
@@ -472,12 +450,10 @@ msgid "Back to Events"
 msgstr "Назад к событиям"
 
 msgid "Return to Event Polls"
-msgstr "Вернуться к предложению даты события"
+msgstr "Вернуться к предложению даты событий"
 
-#, fuzzy
-#| msgid "Return to Event Polls"
 msgid "Return to Archived Event Polls"
-msgstr "Вернуться к завершенным предложениям по дате"
+msgstr "Вернуться к завершенным предложениям даты события"
 
 msgid "Calendar"
 msgstr "Календарь"
@@ -491,10 +467,8 @@ msgstr "Предложение даты"
 msgid "by"
 msgstr "Создатель"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Created Event"
-msgstr "Создать событие"
+msgstr "Созданные события"
 
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
@@ -504,28 +478,7 @@ msgid "Delete event"
 msgstr "Удалить cобытие"
 
 # checken, wie es auf RU aussieht
-#, fuzzy, python-format
-#| msgid ""
-#| "Hi, %(receiver_name)s!\n"
-#| "\n"
-#| "%(sender_name)s has posted a comment on an event you were tagged in, in %(team_name)s:\n"
-#| "\n"
-#| "\"%(comment_text)s\"\n"
-#| "\n"
-#| "\n"
-#| "on the event:\n"
-#| "\n"
-#| "\"%(event_title)s\"\n"
-#| "\n"
-#| "\n"
-#| "Follow this link to see the comment: \n"
-#| "%(object_url)s\n"
-#| "\n"
-#| "\n"
-#| "(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
-#| "\n"
-#| "Your %(site_name)s team.\n"
-#| "\n"
+#, python-format
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
@@ -550,7 +503,7 @@ msgid ""
 msgstr ""
 "Здравствуйте, %(receiver_name)s!\n"
 "\n"
-"Пользователь %(sender_name)s прокомментировал событие, в котором Вы были отмечены, в группе %(team_name)s:\n"
+"Пользователь %(sender_name)s прокомментировал(а) событие, в котором Вы были отмечены, в группе %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -568,10 +521,9 @@ msgstr ""
 "Ваша команда %(site_name)s\n"
 "\n"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором Вы принимаете участие в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s."
 
 #, python-format
 msgid ""
@@ -589,7 +541,7 @@ msgid ""
 msgstr ""
 "Здравствуйте, %(receiver_name)s,\n"
 "\n"
-"пользователь %(sender_name)s создал новое событие \"%(object_name)s\" в %(team_name)s. \n"
+"пользователь %(sender_name)s создал(а) новое событие \"%(object_name)s\" в %(team_name)s. \n"
 "\n"
 "Вы можете найти его по этой ссылке: %(object_url)s\n"
 "\n"
@@ -625,7 +577,7 @@ msgid ""
 msgstr ""
 "Здравствуйте, %(receiver_name)s!\n"
 "\n"
-"пользователь %(sender_name)s прокомментировал созданное Вами событие в группе %(team_name)s:\n"
+"пользователь %(sender_name)s прокомментировал(а) созданное Вами событие в группе %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -646,7 +598,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on one of your events in %(team_name)s."
-msgstr "Пользователь %(sender_name)s прокомментировал одно из Ваших событий в %(team_name)s."
+msgstr "Пользователь %(sender_name)s прокомментировал(а) одно из Ваших событий в %(team_name)s."
 
 #, python-format
 msgid ""
@@ -701,7 +653,7 @@ msgid ""
 msgstr ""
 "Здравствуйте, %(receiver_name)s!\n"
 "\n"
-"Пользователь %(sender_name)s прокомментировал событие, в котором вы были отмечены, в группе %(team_name)s:\n"
+"Пользователь %(sender_name)s прокомментировал(а) событие, в котором вы были отмечены, в группе %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -721,7 +673,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
-msgstr "Пользователь %(sender_name)s прокомментировал событие, в котором вы были отмечены, в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором вы были отмечены, в %(team_name)s."
 
 # checken, wie es auf RU aussieht
 #, python-format
@@ -749,7 +701,7 @@ msgid ""
 msgstr ""
 "Здравствуйте, %(receiver_name)s!\n"
 "\n"
-"Пользователь %(sender_name)s прокомментировал событие, по которому вы проголосовали в группе %(team_name)s:\n"
+"Пользователь %(sender_name)s прокомментировал(а) событие, по которому вы проголосовали в группе %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -769,7 +721,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
-msgstr "Пользователь %(sender_name)s прокомментировал опрос, по которому вы проголосовали в %(team_name)s"
+msgstr "%(sender_name)s прокомментировал(а) опрос, по которому вы проголосовали в %(team_name)s"
 
 msgid "Delete Event"
 msgstr "Удалить событие"
@@ -777,13 +729,9 @@ msgstr "Удалить событие"
 msgid "(Canceled!)"
 msgstr "(Отменено!)"
 
-#, fuzzy
-#| msgid "There are no open event polls."
 msgid "This is an archived event poll."
 msgstr "Это завершенное предложение даты события"
 
-#, fuzzy
-#| msgid "The event was created successfully at the specified date."
 msgid "The event that was created after the poll can be viewed here:"
 msgstr "Событие, созданное к указанной дате, вы можете посмотреть здесь:"
 
@@ -794,8 +742,6 @@ msgctxt "someone else is going"
 msgid "Going"
 msgstr "Будет участвовать"
 
-#, fuzzy
-#| msgid "Maybe"
 msgctxt "someone else is maybe going"
 msgid "Maybe going"
 msgstr "Возможно будет участвовать"
@@ -811,8 +757,6 @@ msgstr[0] "Буду участвовать"
 msgstr[1] "Будет участвовать"
 msgstr[2] "Будут участвовать"
 
-#, fuzzy
-#| msgid "Maybe"
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
@@ -830,8 +774,6 @@ msgstr[2] "Не могут участвовать"
 msgid "Going"
 msgstr "Буду участвовать"
 
-#, fuzzy
-#| msgid "Maybe"
 msgid "Maybe going"
 msgstr "Возможно буду участвовать"
 
@@ -852,7 +794,7 @@ msgstr "Предстоящие события"
 
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
-msgstr "Cобытие \"%(title)s\" отредактировано"
+msgstr "Cобытие \"%(title)s\" отредактировано."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
@@ -911,25 +853,25 @@ msgid "Your votes could not be saved."
 msgstr "Невозможно сохранить результаты вашего голосования"
 
 msgid "This is event is already scheduled. You cannot vote for it any more."
-msgstr "Дата этого события уже назначена. Вы больше не можете голосовать"
+msgstr "Дата этого события уже назначена. Вы больше не можете голосовать."
 
 msgid "The complete request can only be sent via POST!"
 msgstr "Полный запрос может быть отправлен только по почте!"
 
 msgid "Event cannot be completed: No date was supplied."
-msgstr "Невозможно внести событие. Отсутствует дата"
+msgstr "Невозможно внести событие: Отсутствует дата."
 
 msgid "The event was created successfully at the specified date."
-msgstr "Событие создано и привязано к указанной дате"
+msgstr "Событие создано и привязано к указанной дате."
 
 msgid "Upcoming events in"
 msgstr "Ближайшие события в"
 
 msgid "Your comment was added successfully."
-msgstr "Ваш комментарий добавлен"
+msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
-msgstr "Ваш комментарий удален"
+msgstr "Ваш комментарий удален."
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"
