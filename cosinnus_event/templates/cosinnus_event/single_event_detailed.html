@@ -170,69 +170,73 @@
 </div>
 {% endif %}
 
-<div class="btn btn-white w100">
-    <ul class="media-list">
-        <li class="media">
-            <a class="pull-left" href="#">
-                <i class="fa fa-group"></i>
-            </a>
-            <div class="media-body">
-            	{% captureas i18n_going %}{% trans "Going" context "someone else is going" %}{% endcaptureas %}
-            	{% captureas i18n_maybe_going %}{% trans "Maybe going" context "someone else is maybe going" %}{% endcaptureas %}
-            	{% captureas i18n_not_going %}{% trans "Can't go" context "someone else can't go" %}{% endcaptureas %}
-            	
-                <div class="attendance-avatar-list">
-                	{% if attendants_going %}
-	             		{% for attendance in attendants_going %}
-	             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance extra_title=i18n_going %}
-	             		{% endfor %}
-             		{% endif %}
-             		{% if attendants_maybe %}
-	             		{% for attendance in attendants_maybe %}
-	             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance maybe_going=True extra_title=i18n_maybe_going %}
-	             		{% endfor %}
-             		{% endif %}
-             		{% if attendants_going or attendants_maybe %}
-             			<br/>	
-             		{% endif %}
-             		<div>
-	                	<b>{{ attendants_going|length }}</b> 
-	                	{% blocktrans context "one or many people are going" count counter=attendants_going|length %}Going{% plural %}Going{% endblocktrans %}
-	                	{% if attendants_maybe %}
-	                		(
-	                		<b>{{ attendants_maybe|length }}</b> 
-                			{% blocktrans context "one or many people are maybe going" count counter=attendants_maybe|length %}Maybe going{% plural %}Maybe going{% endblocktrans %}
-                			)
-	                	{% endif %}
-                	</div>
-                </div>
-                {% if attendants_not_going %}
-	                <div class="fadedown">
-	                	<div class="btn" style="float:none; width: auto; margin: 0 0 6px 0;" >
-			                <a class="fadedown-clickarea" href="#">
-			                	<em>
-				                	<b>{{ attendants_not_going|length }}</b> 
-				                	{% blocktrans context "one or many people are not going" count counter=attendants_not_going|length %}Can't go{% plural %}Can't go{% endblocktrans %}
-				                    <i class="fa fa-chevron-down"></i>
-			                    </em>
-			                </a>
-	                	</div>
-	                	<div>
-	                		{% for attendance in attendants_not_going %}
-		             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance extra_title=i18n_not_going %}
-		             		{% endfor %}
-	                	</div>
-	                </div>
-	            {% endif %}
-	            
-            </div>
-        </li>
-    </ul>
-</div>
 
-{#  #########  Event attendance button  ########## #}	            
+{#  #########  Event attendance  ########## #}	            
 
 {% if event.state == 1 and user.is_authenticated and user|has_read_access:event %}
+
+	<div class="btn btn-white w100">
+	    <ul class="media-list">
+	        <li class="media">
+	            <a class="pull-left" href="#">
+	                <i class="fa fa-group"></i>
+	            </a>
+	            <div class="media-body">
+	            	{% captureas i18n_going %}{% trans "Going" context "someone else is going" %}{% endcaptureas %}
+	            	{% captureas i18n_maybe_going %}{% trans "Maybe going" context "someone else is maybe going" %}{% endcaptureas %}
+	            	{% captureas i18n_not_going %}{% trans "Can't go" context "someone else can't go" %}{% endcaptureas %}
+	            	
+	                <div class="attendance-avatar-list">
+	                	{% if attendants_going %}
+		             		{% for attendance in attendants_going %}
+		             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance extra_title=i18n_going %}
+		             		{% endfor %}
+	             		{% endif %}
+	             		{% if attendants_maybe %}
+		             		{% for attendance in attendants_maybe %}
+		             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance maybe_going=True extra_title=i18n_maybe_going %}
+		             		{% endfor %}
+	             		{% endif %}
+	             		{% if attendants_going or attendants_maybe %}
+	             			<br/>	
+	             		{% endif %}
+	             		<div>
+		                	<b>{{ attendants_going|length }}</b> 
+		                	{% blocktrans context "one or many people are going" count counter=attendants_going|length %}Going{% plural %}Going{% endblocktrans %}
+		                	{% if attendants_maybe %}
+		                		(
+		                		<b>{{ attendants_maybe|length }}</b> 
+	                			{% blocktrans context "one or many people are maybe going" count counter=attendants_maybe|length %}Maybe going{% plural %}Maybe going{% endblocktrans %}
+	                			)
+		                	{% endif %}
+	                	</div>
+	                </div>
+	                {% if attendants_not_going %}
+		                <div class="fadedown">
+		                	<div class="btn" style="float:none; width: auto; margin: 0 0 6px 0;" >
+				                <a class="fadedown-clickarea" href="#">
+				                	<em>
+					                	<b>{{ attendants_not_going|length }}</b> 
+					                	{% blocktrans context "one or many people are not going" count counter=attendants_not_going|length %}Can't go{% plural %}Can't go{% endblocktrans %}
+					                    <i class="fa fa-chevron-down"></i>
+				                    </em>
+				                </a>
+		                	</div>
+		                	<div>
+		                		{% for attendance in attendants_not_going %}
+			             			{% include 'cosinnus_event/common/event_attendance_avatar.html' with attendance=attendance extra_title=i18n_not_going %}
+			             		{% endfor %}
+		                	</div>
+		                </div>
+		            {% endif %}
+		            
+	            </div>
+	        </li>
+	    </ul>
+	</div>
+	
+	{#  #########  Event attendance button  ########## #}	            
+
 
 	<div class="white-content {% if not event.attached_objects.exists %}large-space{% endif %}">
 		<div class="btn-group regular-space event-attendance 
