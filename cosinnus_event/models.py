@@ -170,6 +170,18 @@ class Event(BaseTaggableObjectModel):
         elif self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
+    
+    @property
+    def sort_key(self):
+            
+        """ Using ``self.from_date`` as sort key if this event is scheduled and the date is set, 
+            otherwise super().
+            Overwritten from BaseTaggableObjectModel:
+            The main property on which this object model is sorted. """
+        if self.state == self.STATE_SCHEDULED and self.from_date:
+            return self.from_date
+        return super(Event, self).sort_key
+            
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
         if sugg is None:
@@ -224,6 +236,8 @@ class Event(BaseTaggableObjectModel):
         """ Gets the pks of all Users that have voted for this event.
             Returns an empty list if nobody has voted or the event isn't a doodle. """
         return self.suggestions.all().values_list('votes__voter__id', flat=True).distinct()
+    
+    
 
 
 @python_2_unicode_compatible
