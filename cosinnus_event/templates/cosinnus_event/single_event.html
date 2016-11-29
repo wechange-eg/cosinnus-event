@@ -13,7 +13,7 @@
                             <div>{{ event.from_date|date:"M" }}</div>
                         {% endif %}
                     </a>
-                    <div class="media-body no-vertical-padding ">
+                    <div class="media-body {% if not hide_group_name %}no-vertical-padding{% endif %} ">
                         <span class="annotation">
                             {% with creator=event.creator %}
                                 {# {% trans "by" %} #} <strong><a href="{{ creator|profile_url }}">{{ creator|full_name }}</a></strong>
@@ -21,9 +21,11 @@
                             <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
                         </span>
                         <strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong>
-                        <div class="group-annotation">
-                            {% include 'cosinnus/group/group_label.html' with group=event.group %}
-                        </div>
+                        {% if not hide_group_name %}
+			                <div class="group-annotation">
+	                            {% include 'cosinnus/group/group_label.html' with group=event.group %}
+	                        </div>
+	                    {% endif %}
                     </div>
                 </li>
             </ul>
