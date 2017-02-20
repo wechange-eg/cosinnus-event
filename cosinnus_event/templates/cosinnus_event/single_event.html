@@ -18,7 +18,10 @@
                             {% with creator=event.creator %}
                                 {# {% trans "by" %} #} <strong><a href="{{ creator|profile_url }}">{{ creator|full_name }}</a></strong>
                             {% endwith %}
-                            <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
+                            {% comment %}  
+                                creation date annotation removed for events to avoid confusion                          
+	                            <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
+                            {% endcomment %}
                         </span>
                         <strong><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></strong>
                         {% if not hide_group_name %}
