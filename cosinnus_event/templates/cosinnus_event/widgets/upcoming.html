@@ -1,31 +1,7 @@
 {% load i18n cosinnus_tags %}
 
 {% if events %}
-    {% for event in events %}
-        <div type="button" href="{{ event.get_absolute_url }}" class="btn btn-emphasized dashboard-appwidget-contentline fine-space">
-            <ul class="media-list">
-                <li class="media">
-		            <a class="pull-left square-date-icon" href="#">
-		                <div>{{ event.from_date|date:"d" }}</div>
-		                <div>{{ event.from_date|date:"M" }}</div>
-		            </a>
-                    <a class="pull-right" href="{{ event.get_absolute_url }}">
-                        <i class="fa fa-calendar"></i>
-                    </a>
-                    <div class="media-body">
-                        <a href="{{ event.get_absolute_url }}">{{ event.title }}</a>
-                        <div class="group-annotation">
-                            {% include 'cosinnus/group/group_label.html' with group=event.group %}
-                        </div>
-
-                    </div>
-                </li>
-            </ul>
-        </div><!-- btn -->
-
-    
-
-    {% endfor %}
+    {% include 'cosinnus_event/attached_events.html' with events=events no_indent=1 %}
 {% else %}
     <div type="button" class="btn btn-emphasized dashboard-appwidget-contentline">
         <ul class="media-list">
