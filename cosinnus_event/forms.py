@@ -8,16 +8,16 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus.forms.group import GroupKwargModelFormMixin
-from cosinnus.forms.tagged import get_form
+from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import DateTimeL10nPicker, SplitHiddenDateWidget
 
 from cosinnus_event.models import Event, Suggestion, Vote, Comment
-from cosinnus.forms.attached_object import FormAttachable
+from cosinnus.forms.attached_object import FormAttachableMixin
 
 
 class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
-                 FormAttachable):
+                 FormAttachableMixin, BaseTaggableObjectForm):
     
     url = forms.URLField(widget=forms.TextInput, required=False)
 
