@@ -1,6 +1,6 @@
 {% load i18n static cosinnus_tags %}
 
-{% captureas button_classes %}{% if full_view %}btn btn-default w100 {% if not no_indent %}indented{% endif %}{% else %}btn btn-default dashboard-appwidget-contentline-extra-indented{% endif %}{% endcaptureas %}
+{% captureas button_classes %}{% if full_view %}btn btn-default w100 {% if not no_indent %}indented{% endif %}{% else %}btn btn-default dashboard-appwidget-contentline-indented{% endif %}{% endcaptureas %}
 
 <div class="{% if not comments_expanded == "True" %}fadedown {% endif %}large-space"  >
     {% with comments=event.comments.all %}
