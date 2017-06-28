@@ -1,6 +1,11 @@
 {% extends "cosinnus_event/base.html" %}
 {% load i18n static cosinnus_tags widget_tweaks %}
 
+{% block extrahead %}
+    {{ block.super }}
+    {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=form.form.obj.note.id_for_label %}
+{% endblock %}
+
 {% block page_title %}
 	{% if form_view == "add" %}
 	  {% trans "Add unscheduled event" %}
@@ -96,8 +101,6 @@
                                 </ol>
                             {% endif %}
                             
-	                        {% include 'cosinnus/media_tags.html' %}
-	                        
 	                        <ol class="input-area">
                                 <li class="w100">
                                     {{ form.forms.obj.note.errors }}
@@ -113,6 +116,8 @@
 		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
                                 </li>
                             </ol>
+	                        
+	                        {% include 'cosinnus/media_tags.html' %}
 	                        
 	                        <!--
 	                        {{ form.forms.obj.location.errors }}
