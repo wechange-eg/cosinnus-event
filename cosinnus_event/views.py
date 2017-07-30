@@ -44,6 +44,8 @@ from django.http.response import HttpResponseBadRequest, JsonResponse
 
 import logging
 from annoying.functions import get_object_or_None
+from cosinnus.utils.group import get_cosinnus_group_model
+from cosinnus.models.tagged import BaseTaggableObjectReflection
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -352,12 +354,28 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
         attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
         attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
         attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
+
+        # if this is a group or the Forum, we can select this event to be reflected into other groups        
+        forum_slug = getattr(settings, 'NEWW_FORUM_GROUP_SLUG', None)
+        reflectable_groups = {}
+        may_reflect = self.request.user.is_authenticated() and \
+                    ((self.group.type == self.group.TYPE_SOCIETY) or self.group.slug == forum_slug)
+        if may_reflect:
+            # find all groups the user can reflect into (currently: all of theirs)
+            user_groups = get_cosinnus_group_model().objects.get_for_user(self.request.user)
+            user_groups = sorted(user_groups, key=lambda group: group.name.lower())
+            # find already-reflecting groups for this user
+            reflecting_group_ids = BaseTaggableObjectReflection.get_group_ids_for_object(self.object)
+            reflectable_groups = [(group, group.id in reflecting_group_ids) for group in user_groups]
         
         context.update({
             'user_attendance': user_attendance,
             'attendants_going': attendants_going,
             'attendants_maybe': attendants_maybe,
             'attendants_not_going': attendants_not_going,
+            'may_reflect': may_reflect,
+            'reflectable_groups': reflectable_groups,
+            'reflecting_group_ids': reflecting_group_ids,
         })
         return context
 

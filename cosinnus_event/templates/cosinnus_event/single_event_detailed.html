@@ -238,7 +238,7 @@
 	{#  #########  Event attendance button  ########## #}	            
 
 
-	<div class="white-content {% if not event.attached_objects.exists %}large-space{% endif %}">
+	<div class="white-content {% if not may_reflect  and not event.attached_objects.exists %}large-space{% endif %}">
 		<div class="btn-group regular-space event-attendance 
 		{% if user_attendance and user_attendance.state == 0 %}event-attendance-not-going app-etherpad
 		{% elif user_attendance and user_attendance.state == 1 %}event-attendance-maybe app-todos
@@ -349,6 +349,31 @@
 	
 {% endif %}
 
+
+{# ***********  Reflect event in projects *************** #}
+
+{# todo: put style in less! #}
+{% if may_reflect %}
+    <div class="white-content app-main-force {% if not event.attached_objects.exists %}large-space{% endif %}">
+	    <button type="button" class="btn btn-emphasized pull-left" style="width: 250px; margin-left: 40px;" data-toggle="modal" data-target="#modal-group-select">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
+	                </a>
+	                <div class="media-body">
+                        {% trans "Show in my projects..." %}
+	                    {% if reflecting_group_ids %}
+	                       ({{ reflecting_group_ids|length }})
+	                    {% endif %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+	    <div class="clearfix"></div>
+    </div>
+    {% include 'cosinnus/common/modal_box_group_select.html' with button_id='modal-group-select' post_url='cosinnus:group-detail' group=group group_select_tuples=reflectable_groups %}
+{% endif %}
 
 
 {% if event.attached_objects.exists %}
