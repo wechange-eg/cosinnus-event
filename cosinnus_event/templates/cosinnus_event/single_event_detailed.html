@@ -355,22 +355,38 @@
 {# todo: put style in less! #}
 {% if may_reflect %}
     <div class="white-content app-main-force {% if not event.attached_objects.exists %}large-space{% endif %}">
-	    <button type="button" class="btn btn-emphasized pull-left" style="width: 250px; margin-left: 40px;" data-toggle="modal" data-target="#modal-group-select">
-	        <ul class="media-list">
-	            <li class="media">
-	                <a class="pull-left" href="#">
-	                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
-	                </a>
-	                <div class="media-body">
-                        {% trans "Show in my projects..." %}
-	                    {% if reflecting_group_ids %}
-	                       ({{ reflecting_group_ids|length }})
-	                    {% endif %}
-	                </div>
-	            </li>
-	        </ul>
-	    </button>
-	    <div class="clearfix"></div>
+        {% if reflectable_groups %}
+		    <button type="button" class="btn btn-emphasized pull-left" style="width: 250px; margin-left: 40px;" data-toggle="modal" data-target="#modal-group-select">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left" href="#">
+		                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
+		                </a>
+		                <div class="media-body">
+	                        {% trans "Show in my projects..." %}
+		                    {% if reflecting_group_ids %}
+		                       ({{ reflecting_group_ids|length }})
+		                    {% endif %}
+		                </div>
+		            </li>
+		        </ul>
+		    </button>
+	        <div class="clearfix"></div>
+	    {% else %}
+	        <div style="margin-left: 40px;">
+		        <p>
+		           <em>
+			           {% if reflect_is_forum %}
+			               {% trans "You are not a member of any projects or groups this event could also be shown in." %}
+			           {% else %}
+			               {% trans "You are not a member of any subprojects of this group where this event could also be shown in." %}
+			           {% endif %}
+			           {# TODO: Remove! #}
+			           <br/>FRAGE: SOLLTEN WIR DAS ÜBERHAUPT ANZEIGEN?
+			        </em>
+			    </p>
+	        </div>
+	    {% endif %}
     </div>
     {% include 'cosinnus/common/modal_box_group_select.html' with button_id='modal-group-select' post_url='cosinnus:group-detail' group=group group_select_tuples=reflectable_groups %}
 {% endif %}

@@ -355,18 +355,24 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
         attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
         attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
 
+        """ TODO: move this to a mixin in cosinnus-core! """
+        
         # if this is a group or the Forum, we can select this event to be reflected into other groups        
-        forum_slug = getattr(settings, 'NEWW_FORUM_GROUP_SLUG', None)
+        reflect_is_forum = self.group.slug == getattr(settings, 'NEWW_FORUM_GROUP_SLUG', None)
         reflectable_groups = {}
+        reflecting_group_ids = []
         may_reflect = self.request.user.is_authenticated() and \
-                    ((self.group.type == self.group.TYPE_SOCIETY) or self.group.slug == forum_slug)
+                    ((self.group.type == self.group.TYPE_SOCIETY) or reflect_is_forum)
         if may_reflect:
-            # find all groups the user can reflect into (currently: all of theirs)
-            user_groups = get_cosinnus_group_model().objects.get_for_user(self.request.user)
-            user_groups = sorted(user_groups, key=lambda group: group.name.lower())
+            # find all groups the user can reflect into (for the forum: all of theirs, for other groups, the subprojects)
+            if reflect_is_forum:
+                target_groups = get_cosinnus_group_model().objects.get_for_user(self.request.user)
+            else:
+                target_groups = self.group.get_children() 
+            target_groups = sorted(target_groups, key=lambda group: group.name.lower())
             # find already-reflecting groups for this user
             reflecting_group_ids = BaseTaggableObjectReflection.get_group_ids_for_object(self.object)
-            reflectable_groups = [(group, group.id in reflecting_group_ids) for group in user_groups]
+            reflectable_groups = [(group, group.id in reflecting_group_ids) for group in target_groups if group != self.group]
         
         context.update({
             'user_attendance': user_attendance,
@@ -376,6 +382,7 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
             'may_reflect': may_reflect,
             'reflectable_groups': reflectable_groups,
             'reflecting_group_ids': reflecting_group_ids,
+            'reflect_is_forum': reflect_is_forum,
         })
         return context
 
