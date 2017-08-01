@@ -33,19 +33,16 @@ from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
-from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
-    check_object_read_access
-from cosinnus.core.decorators.views import require_read_access,\
-    require_user_token_access, dispatch_group_access, get_group_for_request
-from django.contrib.sites.models import Site, get_current_site
+from cosinnus.utils.permissions import check_object_read_access
+from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request
+from django.contrib.sites.models import get_current_site
 from cosinnus.utils.functions import unique_aware_slugify
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest, JsonResponse
+from annoying.functions import get_object_or_None
+from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin
 
 import logging
-from annoying.functions import get_object_or_None
-from cosinnus.utils.group import get_cosinnus_group_model
-from cosinnus.models.tagged import BaseTaggableObjectReflection
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -340,7 +337,7 @@ doodle_delete_view = DoodleDeleteView.as_view()
 
 
 
-class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
+class EntryDetailView(ReflectedObjectSelectMixin, RequireReadMixin, FilterGroupMixin, DetailView):
 
     model = Event
 
@@ -355,34 +352,11 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
         attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
         attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
 
-        """ TODO: move this to a mixin in cosinnus-core! """
-        
-        # if this is a group or the Forum, we can select this event to be reflected into other groups        
-        reflect_is_forum = self.group.slug == getattr(settings, 'NEWW_FORUM_GROUP_SLUG', None)
-        reflectable_groups = {}
-        reflecting_group_ids = []
-        may_reflect = self.request.user.is_authenticated() and \
-                    ((self.group.type == self.group.TYPE_SOCIETY) or reflect_is_forum)
-        if may_reflect:
-            # find all groups the user can reflect into (for the forum: all of theirs, for other groups, the subprojects)
-            if reflect_is_forum:
-                target_groups = get_cosinnus_group_model().objects.get_for_user(self.request.user)
-            else:
-                target_groups = self.group.get_children() 
-            target_groups = sorted(target_groups, key=lambda group: group.name.lower())
-            # find already-reflecting groups for this user
-            reflecting_group_ids = BaseTaggableObjectReflection.get_group_ids_for_object(self.object)
-            reflectable_groups = [(group, group.id in reflecting_group_ids) for group in target_groups if group != self.group]
-        
         context.update({
             'user_attendance': user_attendance,
             'attendants_going': attendants_going,
             'attendants_maybe': attendants_maybe,
             'attendants_not_going': attendants_not_going,
-            'may_reflect': may_reflect,
-            'reflectable_groups': reflectable_groups,
-            'reflecting_group_ids': reflecting_group_ids,
-            'reflect_is_forum': reflect_is_forum,
         })
         return context
 

@@ -363,7 +363,11 @@
 		                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
 		                </a>
 		                <div class="media-body">
-	                        {% trans "Show in my projects..." %}
+		                    {% if reflecting_group_ids %}
+			                    {% trans "Shown in my projects..." %}
+			                {% else %}
+		                        {% trans "Show in my projects..." %}
+		                    {% endif %}
 		                    {% if reflecting_group_ids %}
 		                       ({{ reflecting_group_ids|length }})
 		                    {% endif %}
@@ -388,7 +392,7 @@
 	        </div>
 	    {% endif %}
     </div>
-    {% include 'cosinnus/common/modal_box_group_select.html' with button_id='modal-group-select' post_url='cosinnus:group-detail' group=group group_select_tuples=reflectable_groups %}
+    {% include 'cosinnus/common/modal_box_group_select.html' with button_id='modal-group-select' post_url='cosinnus:group-assign-reflected' group=group group_select_tuples=reflectable_groups %}
 {% endif %}
 
 
