@@ -8,6 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 from cosinnus.utils.dashboard import DashboardWidget, DashboardWidgetForm
 
 from cosinnus_event.models import Event, upcoming_event_filter
+from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 
 
 class UpcomingEventsForm(DashboardWidgetForm):
@@ -20,7 +22,7 @@ class UpcomingEventsForm(DashboardWidgetForm):
         super(UpcomingEventsForm, self).__init__(*args, **kwargs)
 
 
-class UpcomingEvents(DashboardWidget):
+class UpcomingEvents(MixReflectedObjectsMixin, DashboardWidget):
 
     app_name = 'event'
     form_class = UpcomingEventsForm
@@ -52,4 +54,5 @@ class UpcomingEvents(DashboardWidget):
 
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
+        qs = filter_tagged_object_queryset_for_user(qs, self.request.user)
         return upcoming_event_filter(qs)

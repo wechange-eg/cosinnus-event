@@ -54,7 +54,7 @@
 	                    {% if event.to_date %}
 	                    end: moment("{{ event.to_date|date:"c"}}"),
 	                    {% endif %}
-	                    url: '{% group_url "cosinnus:event:event-detail" group=group slug=event.slug %}'
+	                    url: '{% group_url "cosinnus:event:event-detail" group=group slug=event.slug ensure_object=event %}'
 	                },
 	                {% endif %}
 	            

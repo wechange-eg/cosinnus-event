@@ -40,9 +40,12 @@ from cosinnus.utils.functions import unique_aware_slugify
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from annoying.functions import get_object_or_None
-from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin
+from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
+    MixReflectedObjectsMixin, ReflectedObjectRedirectNoticeMixin
 
 import logging
+from django.contrib.contenttypes.models import ContentType
+from cosinnus.models.tagged import BaseTaggableObjectReflection
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -53,7 +56,7 @@ class EventIndexView(RequireReadMixin, RedirectView):
 index_view = EventIndexView.as_view()
 
 
-class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, ListView):
+class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMixin, FilterGroupMixin, ListView):
 
     model = Event
     filterset_class = EventFilter
@@ -337,7 +340,8 @@ doodle_delete_view = DoodleDeleteView.as_view()
 
 
 
-class EntryDetailView(ReflectedObjectSelectMixin, RequireReadMixin, FilterGroupMixin, DetailView):
+class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectMixin, 
+          RequireReadMixin, FilterGroupMixin, DetailView):
 
     model = Event
 
@@ -358,6 +362,7 @@ class EntryDetailView(ReflectedObjectSelectMixin, RequireReadMixin, FilterGroupM
             'attendants_maybe': attendants_maybe,
             'attendants_not_going': attendants_not_going,
         })
+        
         return context
 
 entry_detail_view = EntryDetailView.as_view()
