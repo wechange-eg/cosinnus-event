@@ -16,7 +16,7 @@
                 <a class="pull-right fadedown-clickarea" href="#">
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                {% captureas detail_url %}{{ event.get_absolute_url }}{% endcaptureas %}
+                {% captureas detail_url %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endcaptureas %}
                 <a class="pull-right" href="{{ detail_url }}">
                     <i class="fa fa-chain"></i>
                 </a>
@@ -25,7 +25,7 @@
                         <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
-                        {{ event.title }}
+                        {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
                 </div>
             </li>
