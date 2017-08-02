@@ -238,7 +238,7 @@
 	{#  #########  Event attendance button  ########## #}	            
 
 
-	<div class="white-content {% if not may_reflect  and not event.attached_objects.exists %}large-space{% endif %}">
+	<div class="white-content">
 		<div class="btn-group regular-space event-attendance 
 		{% if user_attendance and user_attendance.state == 0 %}event-attendance-not-going app-etherpad
 		{% elif user_attendance and user_attendance.state == 1 %}event-attendance-maybe app-todos
@@ -353,29 +353,31 @@
 {# ***********  Reflect event in projects *************** #}
 
 {# todo: put style in less! #}
-{% if may_reflect %}
-    <div class="white-content app-main-force {% if not event.attached_objects.exists %}large-space{% endif %}">
-        {% if reflectable_groups %}
-		    <button type="button" class="btn btn-emphasized pull-left" style="width: 250px; margin-left: 40px;" data-toggle="modal" data-target="#modal-group-select">
-		        <ul class="media-list">
-		            <li class="media">
-		                <a class="pull-left" href="#">
-		                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
-		                </a>
-		                <div class="media-body">
-		                    {% if reflecting_group_ids %}
-			                    {% trans "Shown in my projects..." %}
-			                {% else %}
-		                        {% trans "Show in my projects..." %}
-		                    {% endif %}
-		                    {% if reflecting_group_ids %}
-		                       ({{ reflecting_group_ids|length }})
-		                    {% endif %}
-		                </div>
-		            </li>
-		        </ul>
-		    </button>
-	        <div class="clearfix"></div>
+{% if may_reflect and reflectable_groups %}
+    <div class="white-content app-main-force">
+	    <button type="button" class="btn btn-emphasized pull-left" style="width: 250px; margin-left: 40px;" data-toggle="modal" data-target="#modal-group-select">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-fw {% if reflecting_group_ids %}fa-calendar-check-o{% else %}fa-calendar-plus-o{% endif %}"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% if reflecting_group_ids %}
+		                    {% trans "Shown in my projects..." %}
+		                {% else %}
+	                        {% trans "Show in my projects..." %}
+	                    {% endif %}
+	                    {% if reflecting_group_ids %}
+	                       ({{ reflecting_group_ids|length }})
+	                    {% endif %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+        <div class="clearfix"></div>
+	    {% comment %} 
+	       Uncomment this to show a placeholder message that reflecting is not possible here
+	       Took out for now because its not interesting
 	    {% else %}
 	        <div style="margin-left: 40px;">
 		        <p>
@@ -390,7 +392,7 @@
 			        </em>
 			    </p>
 	        </div>
-	    {% endif %}
+	     {% endcomment %}
     </div>
     {% include 'cosinnus/common/modal_box_group_select.html' with button_id='modal-group-select' post_url='cosinnus:group-assign-reflected' group=group group_select_tuples=reflectable_groups %}
 {% endif %}
