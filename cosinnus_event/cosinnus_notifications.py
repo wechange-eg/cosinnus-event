@@ -75,7 +75,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
-            'object_text': 'description',
+            'object_text': 'note',
             'image_url': 'attached_image.static_image_url_thumbnail',
         },
     },  

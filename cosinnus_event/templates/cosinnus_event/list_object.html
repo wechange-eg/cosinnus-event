@@ -78,9 +78,9 @@
                     <i class="fa fa-pencil"></i>
                 </a>
                 <div class="media-body">
-                    <p>
-                        {{ event.note|urlizetrunc:25|url_target_blank|linebreaksbr }}
-                    </p>
+                    <div class="textfield">
+                        {{ event.note|textfield }}
+                    </div>
                 </div>
             </li>
         </ul>
