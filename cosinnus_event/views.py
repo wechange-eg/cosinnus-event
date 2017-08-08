@@ -33,17 +33,19 @@ from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
-from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
-    check_object_read_access
-from cosinnus.core.decorators.views import require_read_access,\
-    require_user_token_access, dispatch_group_access, get_group_for_request
-from django.contrib.sites.models import Site, get_current_site
+from cosinnus.utils.permissions import check_object_read_access
+from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request
+from django.contrib.sites.models import get_current_site
 from cosinnus.utils.functions import unique_aware_slugify
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest, JsonResponse
+from annoying.functions import get_object_or_None
+from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
+    MixReflectedObjectsMixin, ReflectedObjectRedirectNoticeMixin
 
 import logging
-from annoying.functions import get_object_or_None
+from django.contrib.contenttypes.models import ContentType
+from cosinnus.models.tagged import BaseTaggableObjectReflection
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -54,7 +56,7 @@ class EventIndexView(RequireReadMixin, RedirectView):
 index_view = EventIndexView.as_view()
 
 
-class EventListView(RequireReadMixin, FilterGroupMixin, CosinnusFilterMixin, ListView):
+class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMixin, FilterGroupMixin, ListView):
 
     model = Event
     filterset_class = EventFilter
@@ -338,7 +340,8 @@ doodle_delete_view = DoodleDeleteView.as_view()
 
 
 
-class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
+class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectMixin, 
+          RequireReadMixin, FilterGroupMixin, DetailView):
 
     model = Event
 
@@ -352,13 +355,14 @@ class EntryDetailView(RequireReadMixin, FilterGroupMixin, DetailView):
         attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
         attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
         attendants_not_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_NOT_GOING)
-        
+
         context.update({
             'user_attendance': user_attendance,
             'attendants_going': attendants_going,
             'attendants_maybe': attendants_maybe,
             'attendants_not_going': attendants_not_going,
         })
+        
         return context
 
 entry_detail_view = EntryDetailView.as_view()

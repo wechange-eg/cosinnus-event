@@ -28,6 +28,7 @@ from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
 from cosinnus.utils.files import _get_avatar_filename
 from cosinnus.models.group import CosinnusPortal
+from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 
 
 def localize(value, format):
@@ -214,6 +215,10 @@ class Event(BaseTaggableObjectModel):
     def get_current(self, group, user):
         """ Returns a queryset of the current upcoming events """
         qs = Event.objects.filter(group=group).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
+        # mix in reflected objects
+        if "%s.%s" % (self._meta.app_label, self._meta.model_name) in settings.COSINNUS_REFLECTABLE_OBJECTS:
+            mixin = MixReflectedObjectsMixin()
+            qs = mixin.mix_queryset(qs, self._meta.model, group)
         if user:
             qs = filter_tagged_object_queryset_for_user(qs, user)
         return upcoming_event_filter(qs)

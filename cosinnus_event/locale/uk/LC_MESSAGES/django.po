@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 11:31+0100\n"
+"POT-Creation-Date: 2017-08-02 16:16+0200\n"
 "PO-Revision-Date: 2015-11-11 10:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -834,6 +834,12 @@ msgid "Are you going?"
 msgstr ""
 
 msgid "No Choice"
+msgstr ""
+
+msgid "Shown in my projects..."
+msgstr ""
+
+msgid "Show in my projects..."
 msgstr ""
 
 msgid "More"

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 11:31+0100\n"
-"PO-Revision-Date: 2016-09-27 18:02+0200\n"
+"POT-Creation-Date: 2017-08-02 16:16+0200\n"
+"PO-Revision-Date: 2017-08-02 16:19+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -395,7 +395,7 @@ msgid "Add Photos or Files"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper"
-msgstr ""
+msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt"
 
 msgid "Kalender"
 msgstr "Calendar"
@@ -776,6 +776,12 @@ msgstr "Nimmst du teil?"
 
 msgid "No Choice"
 msgstr "Keine Auswahl"
+
+msgid "Shown in my projects..."
+msgstr "In Projekten angezeigt..."
+
+msgid "Show in my projects..."
+msgstr "In Projekten anzeigen..."
 
 msgid "More"
 msgstr "Mehr"
