@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-02 16:16+0200\n"
-"PO-Revision-Date: 2015-11-11 10:39+0200\n"
+"PO-Revision-Date: 2017-09-07 16:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: uk_UA\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 2.0.3\n"
 
 msgid "Events"
 msgstr "Заходи"
@@ -26,94 +26,82 @@ msgid "event"
 msgstr "Захід"
 
 msgid "A user created a new event"
-msgstr "Член створив/-ла новий захід"
+msgstr "Користувач створив нове повідомлення"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr ""
+msgstr "Нова подія від %(sender_name)s"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s created a new event"
-msgstr "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr "%(sender_name)s створив(ла) новий захід"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr "Анонсовано новий захід: «%(object_name)s» у %(team_name)s."
 
 msgid "A user created a new event poll"
-msgstr "Член створив/-ла нове опитування щодо дати"
+msgstr "Користувач створив/-ла нове опитування щодо дати"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
-msgstr ""
+msgstr "Нова пропозиція дати заходу від %(sender_name)s"
 
-#, fuzzy, python-format
-#| msgid "A user created a new event poll"
+#, python-format
 msgid "%(sender_name)s created a new event poll"
-msgstr "Член створив/-ла нове опитування щодо дати"
+msgstr "%(sender_name)s створив(ла) нове опитування щодо дати заходу"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
 msgstr "Нове опитування щодо дати: «%(object_name)s» було створено у %(team_name)s."
 
 msgid "A user commented on one of your events"
-msgstr "Член прокоментував/-ла один з ваших заходів"
+msgstr "Користувач прокоментував/-ла один з ваших заходів"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on your event"
-msgstr "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) Ваш захід"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on one of your events"
-msgstr "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) одни із Ваших заходів"
 
 #, python-format
 msgid "%(sender_name)s"
-msgstr ""
+msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
-msgstr "Член прокоментував/-ла захід, у якому ви позначені"
+msgstr "Користувач прокоментував/-ла захід, у якому ви позначені"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
-msgstr "%(sender_name)s прокоментував/-ла захід, у якому ви були позначені, у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) захід, в якому Ви були позначені"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
-msgstr "%(sender_name)s прокоментував/-ла захід, у якому ви були позначені, у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) захід, у якому ви були позначені, у %(team_name)s"
 
 msgid "A user commented on an event you voted in"
-msgstr "Член прокоментував/-ла пропозицію дати, за яку ви проголовували"
+msgstr "Користувач прокоментував захід, в голосуванні за який Ви взяли участь"
 
-#, fuzzy, python-format
-#| msgid "A user commented on an event you voted in"
+#, python-format
 msgid "%(sender_name)s commented on an event you voted in"
-msgstr "Член прокоментував/-ла пропозицію дати, за яку ви проголовували"
+msgstr "%(sender_name)s  прокоментува(ла) захід, в голосуванні за який ви взяли участь"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr "%(sender_name)s прокоментував/-ла пропозицію дати, за яку ви проголосували у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) захід , за який ви проголосували у %(team_name)s"
 
-#, fuzzy
-#| msgid "A user commented on an event you voted in"
 msgid "A user commented on an event you are attending"
-msgstr "Член прокоментував/-ла пропозицію дати, за яку ви проголовували"
+msgstr "Користувач прокоментував захід, в якому Ви берете участь"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending"
-msgstr "%(sender_name)s прокоментував/-ла захід, у якому ви були позначені, у %(team_name)s."
+msgstr "%(sender_name)s прокоментував/-ла захід, , в якому Ви берете участь"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
-msgstr "%(sender_name)s прокоментував/-ла захід, у якому ви були позначені, у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) захід, у якому ви берете участь у %(team_name)s"
 
 msgid "Upcoming Events"
 msgstr "Майбутні заходи"
@@ -142,10 +130,8 @@ msgstr "Голосування"
 msgid "Canceled"
 msgstr "Скасовані"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Archived Event Poll"
-msgstr "Опитування щодо дати"
+msgstr "Завершене опитування щодо дати"
 
 msgid "Start"
 msgstr "Початок"
@@ -189,10 +175,8 @@ msgstr "Зображення"
 msgid "URL"
 msgstr "URL-адреса"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Original Event Poll"
-msgstr "Опитування щодо дати"
+msgstr "Вихідна пропозиція дати заходу"
 
 msgid "Event"
 msgstr "Захід"
@@ -205,19 +189,17 @@ msgstr "%(event)s (%(date)s - %(end)s)"
 msgid "%(event)s (%(from)s - %(to)s)"
 msgstr "%(event)s (%(from)s - %(to)s)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (canceled)"
-msgstr "%(event)s (pending)"
+msgstr "%(event)s (скасовано)"
 
 #, python-format
 msgid "%(event)s (pending)"
-msgstr "%(event)s (pending)"
+msgstr "%(event)s (заплановано)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (archived)"
-msgstr "%(event)s (pending)"
+msgstr "%(event)s (выдправлено в архів)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -276,7 +258,7 @@ msgstr "о/об"
 
 msgctxt "time"
 msgid "o'clock"
-msgstr " "
+msgstr "час"
 
 msgctxt "time"
 msgid "from"
@@ -308,7 +290,7 @@ msgid "Time: e.g. 10 or 10:30."
 msgstr "Час: наприклад, 10 або 10:30."
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr ""
+msgstr "Примітка: Ви більше не можете змінювати дату проведення цієї події, бо хтось вже проголосував!"
 
 msgid "Enter a description for the event (optional)."
 msgstr "Введіть опис заходу (додатково)."
@@ -337,15 +319,11 @@ msgstr "Заплановані заходи"
 msgid "Past Events"
 msgstr "Минулі заходи"
 
-#, fuzzy
-#| msgid "Event Polls"
 msgid "Archived Event Polls"
-msgstr "Опитування щодо дати"
+msgstr "Завершені Опитування щодо дат"
 
-#, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no archived event polls."
-msgstr "Немає жодної актуально пропозиції дати."
+msgstr "Немає завершених опитувань щодо дат."
 
 #, python-format
 msgid "Vote for %(title)s"
@@ -353,7 +331,7 @@ msgstr "Голосувати за %(title)s"
 
 #, python-format
 msgid "Archived: %(title)s"
-msgstr ""
+msgstr "Завершено: %(title)s"
 
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Опитування щодо дати цього заходу уже завершено."
@@ -415,10 +393,10 @@ msgid "End date."
 msgstr "Дата завершення."
 
 msgid "Add Photos or Files"
-msgstr ""
+msgstr "Додати фото чи файли"
 
 msgid "The first uploaded image will be displayed as a wallpaper"
-msgstr ""
+msgstr "Перше завантажене зображення буде відображатися в якості фонового малюнка"
 
 msgid "Kalender"
 msgstr "Календар"
@@ -442,7 +420,7 @@ msgid "Would you like to create an event"
 msgstr "Бажаєте створити захід"
 
 msgid "on"
-msgstr ""
+msgstr "на"
 
 msgid "from"
 msgstr "з"
@@ -471,10 +449,8 @@ msgstr "Назад до заходів"
 msgid "Return to Event Polls"
 msgstr "Назад до опитування щодо дати"
 
-#, fuzzy
-#| msgid "Return to Event Polls"
 msgid "Return to Archived Event Polls"
-msgstr "Назад до опитування щодо дати"
+msgstr "Назад до опитування щодо дати заходу"
 
 msgid "Calendar"
 msgstr "Календар"
@@ -488,8 +464,6 @@ msgstr "Опитування щодо дати"
 msgid "by"
 msgstr "Автор"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Created Event"
 msgstr "Створити захід"
 
@@ -500,28 +474,7 @@ msgstr "Ви дійсно бажаєте видалити захід «%(title)s
 msgid "Delete event"
 msgstr "Видалити захід"
 
-#, fuzzy, python-format
-#| msgid ""
-#| "Hi, %(receiver_name)s!\n"
-#| "\n"
-#| "%(sender_name)s has posted a comment on an event you were tagged in, in %(team_name)s:\n"
-#| "\n"
-#| "\"%(comment_text)s\"\n"
-#| "\n"
-#| "\n"
-#| "on the event:\n"
-#| "\n"
-#| "\"%(event_title)s\"\n"
-#| "\n"
-#| "\n"
-#| "Follow this link to see the comment: \n"
-#| "%(object_url)s\n"
-#| "\n"
-#| "\n"
-#| "(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
-#| "\n"
-#| "Your %(site_name)s team.\n"
-#| "\n"
+#, python-format
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
@@ -546,28 +499,27 @@ msgid ""
 msgstr ""
 "Вітаємо, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s прокоментував/-ла захід, в якому ви були позначені, у спільноті %(team_name)s:\n"
+"Користувач %(sender_name)s прокоментував(ла) захід, в якому Ви були відмічені, в групі %(team_name)s:\n"
 "\n"
-"«%(comment_text)s»\n"
-"\n"
-"\n"
-"щодо заходу:\n"
-"\n"
-"«%(event_title)s»\n"
+"\"%(comment_text)s\"\n"
 "\n"
 "\n"
-"Перейдіть за цим посиланням, щоб побачити коментар:\n"
-"%(object_url)s\n"
+"до події :\n"
+"\n"
+"\"%(event_title)s\"\n"
 "\n"
 "\n"
-"(Перейдіть за цим посиланням, щоб редагувати ваші налаштування сповіщення: %(notification_settings_url)s )\n"
+"Ви можете знайти його за цим посиланням: %(object_url)s\n"
 "\n"
-"З повагою, команда %(site_name)s.\n"
+"\n"
+"(Перейдіть за цим посиланням, аби змінити налаштування сповіщень: %(notification_settings_url)s )\n"
+"\n"
+"Ваша команда %(site_name)s\n"
+"\n"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
-msgstr "%(sender_name)s прокоментував/-ла захід, у якому ви були позначені, у %(team_name)s."
+msgstr "%(sender_name)s прокоментував(ла) захід, у якому ви берете участь, у %(team_name)s."
 
 #, python-format
 msgid ""
@@ -769,78 +721,72 @@ msgstr "Видалити захід"
 msgid "(Canceled!)"
 msgstr "(Скасовані!)"
 
-#, fuzzy
-#| msgid "There are no open event polls."
 msgid "This is an archived event poll."
-msgstr "Немає жодної актуально пропозиції дати."
+msgstr "Це завершена пропозиція дати події."
 
-#, fuzzy
-#| msgid "The event was created successfully at the specified date."
 msgid "The event that was created after the poll can be viewed here:"
-msgstr "Захід успішно створено із вказаною датою."
+msgstr "Захід, що було створено після опитування, можна подивитись тут:"
 
 msgid "(No description set)"
 msgstr "(Опис не створено)"
 
 msgctxt "someone else is going"
 msgid "Going"
-msgstr ""
+msgstr "Братиме участь"
 
-#, fuzzy
-#| msgid "Maybe"
 msgctxt "someone else is maybe going"
 msgid "Maybe going"
-msgstr "Мабуть"
+msgstr "Можливо братиме участь"
 
 msgctxt "someone else can't go"
 msgid "Can't go"
-msgstr ""
+msgstr "Не може взяти участь"
 
 msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Буде брати участь"
+msgstr[1] "Будуть брати участь"
+msgstr[2] "Будуть брати участь"
 
-#, fuzzy
-#| msgid "Maybe"
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
-msgstr[0] "Мабуть"
-msgstr[1] "Мабуть"
-msgstr[2] "Мабуть"
+msgstr[0] "Можливо братиме участь"
+msgstr[1] "Можливо братимуть участь"
+msgstr[2] "Можливо братимуть участь"
 
 msgctxt "one or many people are not going"
 msgid "Can't go"
 msgid_plural "Can't go"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Не може взяти участь"
+msgstr[1] "Не можуть взяти участь"
+msgstr[2] "Не можуть взяти участь"
 
 msgid "Going"
-msgstr ""
+msgstr "Буду брати участь"
 
-#, fuzzy
-#| msgid "Maybe"
 msgid "Maybe going"
-msgstr "Мабуть"
+msgstr "Можливо братиму участь"
 
 msgid "Can't go"
-msgstr ""
+msgstr "Не може взяти участь"
 
 msgid "Are you going?"
-msgstr ""
+msgstr "Ви берете участь?"
 
 msgid "No Choice"
-msgstr ""
+msgstr "Немає вибору"
 
 msgid "Shown in my projects..."
 msgstr ""
+"Plural Показані в моїх проектах...\n"
+"Maskulinum Показаний в моїх проектах...\n"
+"Femininum Показана в моїх проектах...\n"
+"Neutrum Показано в моїх проектах..."
 
 msgid "Show in my projects..."
-msgstr ""
+msgstr "Показати в моїх проектах..."
 
 msgid "More"
 msgstr "Більше"
@@ -857,7 +803,7 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr "Неможливо редагувати захід «%(title)s»."
 
 msgid "The page you requested is not available for this event at this time."
-msgstr ""
+msgstr "Сторінка, яку Ви запитуєте, на даний момент не доступна."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
@@ -915,7 +861,7 @@ msgid "The complete request can only be sent via POST!"
 msgstr "Повний запит можна надіслати лише ПОШТОЮ!"
 
 msgid "Event cannot be completed: No date was supplied."
-msgstr "Неможливо завершити опитування щодо дати:"
+msgstr "Неможливо створити захід: не вказана дата:"
 
 msgid "The event was created successfully at the specified date."
 msgstr "Захід успішно створено із вказаною датою."
