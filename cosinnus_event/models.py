@@ -377,7 +377,7 @@ class EventAttendance(models.Model):
         return "Event Attendance <user: %(user)s, event: %(event)s, status: %(status)d>" % {
             'user': self.user.email,
             'event': self.event.slug,
-            'status': self.status,
+            'state': self.state,
         }
     
 
