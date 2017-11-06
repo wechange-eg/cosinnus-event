@@ -456,20 +456,22 @@ def post_vote_delete(sender, **kwargs):
 def post_vote_save(sender, **kwargs):
     kwargs['instance'].suggestion.update_vote_count()
 
+
+def get_past_event_filter_expression():
+    """ Returns the filter expression that defines all events that were finished before <now>. """
+    _now = now()
+    event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
+    return Q(to_date__lt=event_horizon) | (Q(to_date__isnull=True) & Q(from_date__lt=event_horizon))
    
 def upcoming_event_filter(queryset):
     """ Filters a queryset of events for events that begin in the future, 
     or have an end date in the future. Will always show all events that ended today as well. """
-    _now = now()
-    event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
-    return queryset.exclude(to_date__lt=event_horizon).exclude(Q(to_date__isnull=True) & Q(from_date__lt=event_horizon))
+    return queryset.exclude(get_past_event_filter_expression())
 
 def past_event_filter(queryset):
     """ Filters a queryset of events for events that began before today, 
     or have an end date before today. """
-    _now = now()
-    event_horizon = datetime.datetime(_now.year, _now.month, _now.day)
-    return queryset.exclude(to_date__gte=event_horizon).exclude(Q(to_date__isnull=True) & Q(from_date__gte=event_horizon))
+    return queryset.filter(get_past_event_filter_expression())
 
 
 import django
