@@ -49,7 +49,7 @@
 		        {% for event in object_list %}
 		            {% if event.from_date %}
 	                {
-	                    title: $.cosinnus.decodeEntities('{{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
+	                    title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:35 }}{% if group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
 	                    start: moment("{{ event.from_date|date:"c"}}"),
 	                    {% if event.to_date %}
 	                    end: moment("{{ event.to_date|date:"c"}}"),
