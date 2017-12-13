@@ -34,115 +34,98 @@
 
     <!-- a box with semi transparent background -->
 	<div class="content-box">
-	   <form method="POST" action="">{% csrf_token %}
-		    <div type="button" class="btn btn-default w100">
-		        <ul class="media-list">
-		            <li class="media">
-		                <a class="pull-left btn-emphasized" href="#">
-		                    <i class="fa fa-plus"></i>
-		                </a>
-		                <div class="media-body media-body-form-control">
-		                    {{ form.forms.obj.non_field_errors }}
-                            {{ form.forms.media_tag.non_field_errors }}
+	    <form method="POST" action="" class="form-horizontal">{% csrf_token %}
+            {{ form.forms.obj.non_field_errors }}
+            {{ form.forms.media_tag.non_field_errors }}
+            
+            
+            {% trans "Title" as title_legend %}
+            {% trans "Enter a title for the new event." as title_label %}
+            {% captureas title_html %}
+                    {% if request.GET.title %}
+                        {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
+                    {% else %}
+                        {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
+                    {% endif %}
+            {% endcaptureas %}
+            {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
+            
 		                    
-		                    {{ form.forms.obj.title.errors }}
-	                        {% captureas placeholder %}{% trans "Enter a title for the new event." %}{% endcaptureas %}
-                            {% if request.GET.title %}
-                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
+            {% trans "Date" as date_legend %}
+	        {% captureas date_html %}
+                {{ form.forms.obj.from_date.errors }}
+                {{ form.forms.obj.to_date.errors }}
+                <ol class="input-area">
+                    <li class="calendar-date-time-chooser">
+                        {% trans "From" %} <i class="fa fa-calendar"></i>
+                        <input
+                            placeholder="{% trans "Date" %}"
+                            readonly ="readonly"
+                            class="calendar-date-time-chooser-date" />
+                        <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
+                            placeholder="{% trans "Start date." %}" type="hidden" 
+                            {% if form_view == "add" and request.GET.start %}
+                            value="{{ request.GET.start }}" 
+                            {% elif form_view == "edit" %}
+                            value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
                             {% else %}
-                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
-	                        {% endif %}
+                            value="{% now "Y-m-d" %}" 
+                            {% endif %}
+                        >
+                        <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
+                            placeholder="{% trans "Time" %}" type="text" 
+                            value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
+                        >                                           
+                        <div class="small-calendar"></div>
+                    </li>
+                    <li class="calendar-date-time-chooser">
+                        {% trans "Until" %} <i class="fa fa-calendar"></i>
+                        <input
+                            placeholder="{% trans "Date" %}"
+                            readonly ="readonly"
+                            class="calendar-date-time-chooser-date" />
+                        <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
+                            placeholder="{% trans "End date." %}" type="hidden" 
+                            {% if form_view == "add" and request.GET.end %}
+                            value="{{ request.GET.end }}" 
+                            {% elif form_view == "edit" %}
+                            value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
+                            {% else %}
+                            value="{% now "Y-m-d" %}" 
+                            {% endif %}
+                        >
+                        <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
+                            placeholder="{% trans "Time" %}" type="text" 
+                            value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
+                        >    
+                        <div class="small-calendar"></div>
+                    </li>
+                </ol>
+            {% endcaptureas %}
+            {% include 'cosinnus/fields/default_field.html' with field_html=date_html legend=date_legend label=date_label large_field=True %} 
+            
+              
+            
+            {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
+            {% trans "Description and Infos" as description_legend %}
+            {% trans "Description" as description_placeholder %}
+            {% trans "Enter a description for the event" as description_label %}
+            {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True %}
+		                    
+		                    
+            {% trans "Example: http://mywebsite.com" as url_placeholder %}
+            {% trans "External Link for the event" as url_label %}
+            {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
+                          
+            {% trans "Add Photos or Files" as image_legend %}       
+            {% trans "The first uploaded image will be displayed as a wallpaper." as image_label %}
+            {% include 'cosinnus/fields/default_field.html' with legend=image_legend label=image_label %}
+                 
+		                    
+		    <h1>TODOOOO</h1>
+            {% include 'cosinnus/media_tags.html' with show_files=True %}
 	                        
-                            {{ form.forms.obj.from_date.errors }}
-                            {{ form.forms.obj.to_date.errors }}
-		                    <ol class="input-area">
-		                                <li class="calendar-date-time-chooser">
-		                                    {% trans "From" %} <i class="fa fa-calendar"></i>
-		                                    <input
-		                                        placeholder="{% trans "Date" %}"
-		                                        readonly ="readonly"
-		                                        class="calendar-date-time-chooser-date" />
-				                            {% captureas placeholder %}{% trans "Start date." %}{% endcaptureas %}
-				                            <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
-				                                placeholder="{{ placeholder }}" type="hidden" 
-				                                {% if form_view == "add" and request.GET.start %}
-                                                value="{{ request.GET.start }}" 
-                                                {% elif form_view == "edit" %}
-                                                value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
-                                                {% else %}
-                                                value="{% now "Y-m-d" %}" 
-                                                {% endif %}
-                                            >
-                                            <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
-                                                placeholder="{% trans "Time" %}" type="text" 
-                                                value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
-                                            >                                           
-		                                    <div class="small-calendar"></div>
-		                                </li>
-		                                <li class="calendar-date-time-chooser">
-		                                    {% trans "Until" %} <i class="fa fa-calendar"></i>
-		                                    <input
-		                                        placeholder="{% trans "Date" %}"
-		                                        readonly ="readonly"
-		                                        class="calendar-date-time-chooser-date" />
-                                            {% captureas placeholder_until %}{% trans "End date." %}{% endcaptureas %}
-                                            <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
-                                                placeholder="{{ placeholder_until }}" type="hidden" 
-                                                {% if form_view == "add" and request.GET.end %}
-                                                value="{{ request.GET.end }}" 
-                                                {% elif form_view == "edit" %}
-                                                value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
-                                                {% else %}
-                                                value="{% now "Y-m-d" %}" 
-                                                {% endif %}
-                                            >
-                                            <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
-                                                placeholder="{% trans "Time" %}" type="text" 
-                                                value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
-                                            >    
-		                                    <div class="small-calendar"></div>
-		                                </li>
-		                    </ol>
-		                    
-		                    
-	                        <ol class="input-area">
-                                <li class="w100">
-                                    {{ form.forms.obj.note.errors }}
-		                            {% captureas placeholder %}{% trans "Enter a description for the event (optional)." %}{% endcaptureas %}
-		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
-                                </li>
-                            </ol>
-		                    
-		                    
-							<ol class="input-area">
-                                <li class="w100">
-		                            <label>
-								    	{% trans "Add Photos or Files" %}
-								    </label>
-								    <p class="small">
-                                    	{% trans "The first uploaded image will be displayed as a wallpaper" %}
-                                    </p>
-                                </li>
-                            </ol>
-	                        {% include 'cosinnus/media_tags.html' with show_files=True %}
 	                        
-	                        <ol class="input-area">
-                                <li class="w100">
-                                    {{ form.forms.obj.url.errors }}
-		                            {% captureas placeholder %}{% trans "External Link for the event (optional)." %}{% endcaptureas %}
-		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
-                                </li>
-                            </ol>
-	                        
-	                        <!--
-	                        {{ form.forms.obj.location.errors }}
-	                        {% captureas placeholder %}{% trans "Location (optional)." %}{% endcaptureas %}
-	                        {% render_field form.forms.obj.location class+="form-control" placeholder=placeholder %}
-		                    -->    
-		                </div>
-		            </li>
-		        </ul>
-		    </div>
 		
 		    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
 		        <ul class="media-list">
