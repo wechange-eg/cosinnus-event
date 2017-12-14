@@ -118,15 +118,10 @@
         {% trans "External Link for the event" as url_label %}
         {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
                       
-        {% trans "Add Photos or Files" as image_legend %}       
-        {% trans "The first uploaded image will be displayed as a wallpaper." as image_label %}
-        {% include 'cosinnus/fields/default_field.html' with legend=image_legend label=image_label %}
-             
-	                    
-        {% include 'cosinnus/media_tags.html' with show_files=True %}
+	    {% captureas files_label %}{% trans "Upload a file or image or attach an existing one" %}. {% trans "The first uploaded image will be displayed as a wallpaper." %}{% endcaptureas %}
+        {% captureas loc_label %}{% trans "Location" %}. {% trans "If you set this, your event will be shown on the map! (if permitted by its visibility settings)" %}{% endcaptureas %}
+        {% include 'cosinnus/media_tags.html' with show_files=True show_location=True files_label=files_label loc_label=loc_label %}
                         
-	   
-	
 	</div><!-- content-box -->
 	
 	       
