@@ -32,123 +32,101 @@
 
 {% block content %}
 
-    <!-- a box with semi transparent background -->
-	<div class="content-box">
-	   <form method="POST" action="" id="form-event">{% csrf_token %}
-      {% for formset in inlines %}
-        {{ formset.management_form }}
-      {% endfor %}
-
-		    <div type="button" class="btn btn-default w100">
-		        <ul class="media-list">
-		            <li class="media">
-		                <a class="pull-left btn-emphasized" href="#">
-		                    {% if form_view == "add" %}
-							   <i class="fa fa-plus"></i>
-							{% elif form_view == "edit" %}
-							   <i class="fa fa-pencil"></i>
-							{% endif %}
-		                </a>
-		                <div class="media-body media-body-form-control">
+    <form method="POST" action="" id="form-event">{% csrf_token %}
+	    <div class="content-box">
+	        {% for formset in inlines %}
+	            {{ formset.management_form }}
+	        {% endfor %}
 		                    
-		                    {{ form.forms.obj.title.errors }}
-	                        {% captureas placeholder %}{% trans "Enter a title for the new event to be scheduled." %}{% endcaptureas %}
-                            {% if request.GET.title %}
-                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder value=request.GET.title %}
-                            {% else %}
-                                {% render_field form.forms.obj.title class+="form-control" placeholder=placeholder %}
-	                        {% endif %}
-                           
-                           <div {% if has_active_votes %}style="display: none;"{% endif %}> {# Voting panel wrapper #}
-                               <input type="hidden" id="id_from_date_1" name="from_date_1" />
-                               <input type="hidden" id="id_to_date_1" name="to_date_1" />
-									<ol class="input-area">
-										<li id="calendar-doodle-days-selector">
-											<div class="small-calendar"></div>
-											<div id="calendar-doodle-days-selector-list">
-												<table>
-													<thead>
-														<tr>
-															<th></th>
-															<th></th>
-															<th>{% trans "Time" %}</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr style="display:none;">
-															<td>
-																<i class="fa fa-trash-o"></i>
-															</td>
-															<td data-date-style="short"></td>
-															<td><input /></td>
-														</tr>
-													</tbody>
-												</table>
-												<p>{% trans "Please select the available days in the calendar." %}</p>
-												<p>{% trans "You can select the same day more than once." %}</p>
-												<p>{% trans "Time: e.g. 10 or 10:30." %}</p>
-											</div>
-										</li>
-									</ol><!-- input-area -->
+           
+			{% trans "Title" as title_legend %}
+			{% trans "Enter a title for the new event to be scheduled." as title_label %}
+			{% captureas title_html %}
+			        {% if request.GET.title %}
+			            {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
+			        {% else %}
+			            {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
+			        {% endif %}
+			{% endcaptureas %}
+			{% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
+
+           
+			{# Regular field with custom HTML #}
+			{% trans "Dates" as dates_legend %}
+			{% captureas dates_label %}
+                {% trans "Please select the available days in the calendar." %} {% trans "You can select the same day more than once." %} {% trans "Time: e.g. 10 or 10:30." %}
+            {% endcaptureas %}
+            {% captureas dates_html %}
+				<div {% if has_active_votes %}style="display: none;"{% endif %}> {# Voting panel wrapper #}
+					<input type="hidden" id="id_from_date_1" name="from_date_1" />
+					<input type="hidden" id="id_to_date_1" name="to_date_1" />
+					<ol class="input-area">
+						<li id="calendar-doodle-days-selector">
+							<div class="small-calendar"></div>
+							<div id="calendar-doodle-days-selector-list">
+								<table>
+									<thead>
+										<tr>
+											<th></th>
+											<th></th>
+											<th>{% trans "Time" %}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style="display:none;">
+											<td>
+												<i class="fa fa-trash-o"></i>
+											</td>
+											<td data-date-style="short"></td>
+											<td><input /></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-                            
-                            {% if has_active_votes %}
-                                <ol class="input-area">
-                                    <li class="w100">
-                                        
-                                        <p><i class="fa fa-warning"></i> {% trans "Note: You cannot edit the dates for this event poll because someone has already cast their vote!" %}</p>
-                                    </li>
-                                </ol>
-                            {% endif %}
-                            
-	                        <ol class="input-area">
-                                <li class="w100">
-                                    {{ form.forms.obj.note.errors }}
-		                            {% captureas placeholder %}{% trans "Enter a description for the event (optional)." %}{% endcaptureas %}
-		                            {% render_field form.forms.obj.note class+="form-control" placeholder=placeholder %}
-                                </li>
-                            </ol>
+						</li>
+					</ol><!-- input-area -->
+				</div>
+			{% endcaptureas %}
+			{% include 'cosinnus/fields/default_field.html' with field_html=dates_html legend=dates_legend label=dates_label large_field=True field_classes="doodle-select-dates-field" %}
+            {% if has_active_votes %}
+                <p class="white-content"><i class="fa fa-warning"></i> {% trans "Note: You cannot edit the dates for this event poll because someone has already cast their vote!" %}</p>
+            {% endif %}
+						
+            {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
+	        {% trans "Description and Infos" as description_legend %}
+	        {% trans "Description" as description_placeholder %}
+	        {% trans "Enter a description for the event" as description_label %}
+	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True %}
+	         
+                    
+		    {% trans "Example: http://mywebsite.com" as url_placeholder %}
+		    {% trans "External Link for the event" as url_label %}
+		    {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
+		                  
+            
+            {% include 'cosinnus/media_tags.html' with show_location=True %}
 	                        
-	                        <ol class="input-area">
-                                <li class="w100">
-                                    {{ form.forms.obj.url.errors }}
-		                            {% captureas placeholder %}{% trans "External Link for the event (optional)." %}{% endcaptureas %}
-		                            {% render_field form.forms.obj.url class+="form-control" placeholder=placeholder %}
-                                </li>
-                            </ol>
-	                        
-	                        {% include 'cosinnus/media_tags.html' %}
-	                        
-	                        <!--
-	                        {{ form.forms.obj.location.errors }}
-	                        {% captureas placeholder %}{% trans "Location (optional)." %}{% endcaptureas %}
-	                        {% render_field form.forms.obj.location class+="form-control" placeholder=placeholder %}
-		                    -->    
-		                </div>
-		            </li>
-		        </ul>
-		    </div>
-		
-		    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
-		        <ul class="media-list">
-		            <li class="media">
-		                <a class="pull-left" href="#">
-		                    <i class="fa fa-pencil"></i>
-		                </a>
-		                <div class="media-body">
-		                    {% if form_view == "add" %}
-				              {% trans "Create" %}
-				            {% elif form_view == "edit" %}
-				              {% trans "Save" %}
-				            {% endif %}
-		                </div>
-		            </li>
-		        </ul>
-		    </button>
-	   
-        </form>
 	
-	</div><!-- content-box -->
+	    </div><!-- content-box -->
+	    
+	    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-pencil"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% if form_view == "add" %}
+			              {% trans "Create" %}
+			            {% elif form_view == "edit" %}
+			              {% trans "Save" %}
+			            {% endif %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+	    
+    </form>
     
 {% endblock content %}
 

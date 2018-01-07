@@ -374,7 +374,7 @@ class EventAttendance(models.Model):
         unique_together = ('event', 'user', )
         
     def __str__(self):
-        return "Event Attendance <user: %(user)s, event: %(event)s, status: %(status)d>" % {
+        return "Event Attendance <user: %(user)s, event: %(event)s, state: %(state)d>" % {
             'user': self.user.email,
             'event': self.event.slug,
             'state': self.state,
