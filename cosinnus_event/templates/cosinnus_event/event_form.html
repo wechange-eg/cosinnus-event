@@ -40,8 +40,8 @@
 		<div class="content-box">
         
         
-        {% trans "Title" as title_legend %}
-        {% trans "Enter a title for the new event." as title_label %}
+        {% trans "Title" as title_label %}
+        {% trans "Enter a title for the new event." as title_legend %}
         {% captureas title_html %}
                 {% if request.GET.title %}
                     {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
@@ -52,7 +52,7 @@
         {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
         
 	                    
-        {% trans "Date" as date_legend %}
+        {% trans "Date" as date_label %}
         {% captureas date_html %}
             {{ form.forms.obj.from_date.errors }}
             {{ form.forms.obj.to_date.errors }}
@@ -103,14 +103,14 @@
                 </li>
             </ol>
         {% endcaptureas %}
-        {% include 'cosinnus/fields/default_field.html' with field_html=date_html legend=date_legend label=date_label large_field=True %} 
+        {% include 'cosinnus/fields/default_field.html' with field_html=date_html label=date_label label=date_label large_field=True %} 
         
           
         
         {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
-        {% trans "Description and Infos" as description_legend %}
+        {% trans "Description and Infos" as description_label %}
         {% trans "Description" as description_placeholder %}
-        {% trans "Enter a description for the event" as description_label %}
+        {% trans "Enter a description for the event" as description_legend %}
         {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True %}
 	          
 	                    
@@ -118,9 +118,9 @@
         {% trans "External Link for the event" as url_label %}
         {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
                       
-	    {% captureas files_label %}{% trans "Upload a file or image or attach an existing one" %}. {% trans "The first uploaded image will be displayed as a wallpaper." %}{% endcaptureas %}
-        {% captureas loc_label %}{% trans "Location" %}. {% trans "If you set this, your event will be shown on the map! (if permitted by its visibility settings)" %}{% endcaptureas %}
-        {% include 'cosinnus/media_tags.html' with show_files=True show_location=True files_label=files_label loc_label=loc_label %}
+	    {% trans "The first uploaded image will be displayed as a wallpaper." as files_legend %}
+        {% trans "If you set this, your event will be shown on the map! (if permitted by its visibility settings)" as loc_legend %}
+        {% include 'cosinnus/media_tags.html' with show_files=True show_location=True files_label=files_label loc_label=loc_label files_legend=files_legend loc_legend=loc_legend %}
                         
 	</div><!-- content-box -->
 	

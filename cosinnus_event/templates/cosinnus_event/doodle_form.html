@@ -39,8 +39,8 @@
 	        {% endfor %}
 		                    
            
-			{% trans "Title" as title_legend %}
-			{% trans "Enter a title for the new event to be scheduled." as title_label %}
+			{% trans "Title" as title_label %}
+			{% trans "Enter a title for the new event to be scheduled." as title_legend %}
 			{% captureas title_html %}
 			        {% if request.GET.title %}
 			            {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
@@ -52,8 +52,8 @@
 
            
 			{# Regular field with custom HTML #}
-			{% trans "Dates" as dates_legend %}
-			{% captureas dates_label %}
+			{% trans "Dates" as dates_label %}
+			{% captureas dates_legend %}
                 {% trans "Please select the available days in the calendar." %} {% trans "You can select the same day more than once." %} {% trans "Time: e.g. 10 or 10:30." %}
             {% endcaptureas %}
             {% captureas dates_html %}
@@ -93,9 +93,9 @@
             {% endif %}
 						
             {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
-	        {% trans "Description and Infos" as description_legend %}
+	        {% trans "Description and Infos" as description_label %}
 	        {% trans "Description" as description_placeholder %}
-	        {% trans "Enter a description for the event" as description_label %}
+	        {% trans "Enter a description for the event" as description_legend %}
 	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True %}
 	         
                     
