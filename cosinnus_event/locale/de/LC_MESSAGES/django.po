@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 16:16+0200\n"
-"PO-Revision-Date: 2017-08-02 16:19+0200\n"
+"POT-Creation-Date: 2018-01-10 16:48+0100\n"
+"PO-Revision-Date: 2018-01-10 17:40+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -151,10 +151,10 @@ msgid "Location"
 msgstr "Ort"
 
 msgid "Latitude"
-msgstr ""
+msgstr "Latitude"
 
 msgid "Longitude"
-msgstr ""
+msgstr "Longitude"
 
 msgid "Street"
 msgstr "Straße"
@@ -236,10 +236,10 @@ msgid "Created"
 msgstr "Erstellt"
 
 msgid "Last modified"
-msgstr ""
+msgstr "Zuletzt bearbeitet"
 
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 msgid "Comment"
 msgstr "Kommentar"
@@ -276,8 +276,8 @@ msgstr "Bearbeiten"
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Gib einen Titel für den Terminvorschlag an."
 
-msgid "Time"
-msgstr "Uhrzeit"
+msgid "Dates"
+msgstr "Daten"
 
 msgid "Please select the available days in the calendar."
 msgstr "Bitte wähle vorgeschlagene Tage im Kalender aus."
@@ -288,17 +288,26 @@ msgstr "Du kannst auch einen Tag mehrfach auswählen."
 msgid "Time: e.g. 10 or 10:30."
 msgstr "Uhrzeit z.B.: 10 oder 10:30."
 
+msgid "Time"
+msgstr "Uhrzeit"
+
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Hinweis: Du kannst die Daten für diesen Terminvorschlag nicht mehr bearbeiten, weil jemand bereits dafür abgestimmt hat!"
 
-msgid "Enter a description for the event (optional)."
-msgstr "Gib eine Beschreibung für die Veranstaltung ein (optional)."
+msgid "Description and Infos"
+msgstr "Beschreibung und Infos"
 
-msgid "External Link for the event (optional)."
-msgstr "Externer Link zur Veranstaltung (optional)."
+msgid "Description"
+msgstr "Beschreibung"
 
-msgid "Location (optional)."
-msgstr "Ort (optional)."
+msgid "Enter a description for the event"
+msgstr "Gib eine Beschreibung für die Veranstaltung ein"
+
+msgid "Example: http://mywebsite.com"
+msgstr "Beispiel: http://meinewebseite.de"
+
+msgid "External Link for the event"
+msgstr "Externer Link zur Veranstaltung"
 
 msgid "Create"
 msgstr "Erstellen"
@@ -376,11 +385,11 @@ msgstr "Veranstaltung hinzufügen"
 msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
 
-msgid "From"
-msgstr "Von"
-
 msgid "Date"
 msgstr "Datum"
+
+msgid "From"
+msgstr "Von"
 
 msgid "Start date."
 msgstr "Startdatum"
@@ -391,11 +400,11 @@ msgstr "Bis"
 msgid "End date."
 msgstr "Enddatum"
 
-msgid "Add Photos or Files"
-msgstr ""
-
-msgid "The first uploaded image will be displayed as a wallpaper"
+msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt"
+
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr "Wenn du dies einträgst, wird deine Veranstaltung auf der Karte angezeigt! (Wenn es die Privatsphären-Einstellungen zulassen)"
 
 msgid "Kalender"
 msgstr "Calendar"
@@ -431,7 +440,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "There are no current or future events."
 msgstr "Es sind keine aktuellen oder zukünftigen Veranstaltungen geplant."
@@ -853,7 +862,7 @@ msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr "Die Terminfindung für diese Aufgabe ist bereits abgeschlossen. Du kannst deine Sitmme nicht mehr abgeben."
 
 msgid "The complete request can only be sent via POST!"
-msgstr ""
+msgstr "The complete request can only be sent via POST!"
 
 msgid "Event cannot be completed: No date was supplied."
 msgstr "Die Terminfindung konnte nicht abgeschlossen werden: Es wurde kein Zieldatum übermittelt."
@@ -869,6 +878,9 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
+
+#~ msgid "Location (optional)."
+#~ msgstr "Ort (optional)."
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"

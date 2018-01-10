@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 16:16+0200\n"
+"POT-Creation-Date: 2018-01-10 16:48+0100\n"
 "PO-Revision-Date: 2017-09-07 16:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -277,8 +277,10 @@ msgstr "Редагувати"
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Ведіть назву для пропозиції дати."
 
-msgid "Time"
-msgstr "Час"
+#, fuzzy
+#| msgid "Date"
+msgid "Dates"
+msgstr "Дата"
 
 msgid "Please select the available days in the calendar."
 msgstr "Будь ласка, виберіть запропоновані дні у календарі."
@@ -289,17 +291,32 @@ msgstr "Ви можете вибирати один і цей же день кі
 msgid "Time: e.g. 10 or 10:30."
 msgstr "Час: наприклад, 10 або 10:30."
 
+msgid "Time"
+msgstr "Час"
+
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Примітка: Ви більше не можете змінювати дату проведення цієї події, бо хтось вже проголосував!"
 
-msgid "Enter a description for the event (optional)."
+msgid "Description and Infos"
+msgstr ""
+
+#, fuzzy
+#| msgid "(No description set)"
+msgid "Description"
+msgstr "(Опис не створено)"
+
+#, fuzzy
+#| msgid "Enter a description for the event (optional)."
+msgid "Enter a description for the event"
 msgstr "Введіть опис заходу (додатково)."
 
-msgid "External Link for the event (optional)."
-msgstr "Вкажіть зовнішнє посилання для заходу (додатково)."
+msgid "Example: http://mywebsite.com"
+msgstr ""
 
-msgid "Location (optional)."
-msgstr "Місце (додатково)."
+#, fuzzy
+#| msgid "External Link for the event (optional)."
+msgid "External Link for the event"
+msgstr "Вкажіть зовнішнє посилання для заходу (додатково)."
 
 msgid "Create"
 msgstr "Створити"
@@ -377,11 +394,11 @@ msgstr "Додати захід"
 msgid "Enter a title for the new event."
 msgstr "Введіть назву для нового заходу."
 
-msgid "From"
-msgstr "З"
-
 msgid "Date"
 msgstr "Дата"
+
+msgid "From"
+msgstr "З"
 
 msgid "Start date."
 msgstr "Дата початку."
@@ -392,11 +409,13 @@ msgstr "До"
 msgid "End date."
 msgstr "Дата завершення."
 
-msgid "Add Photos or Files"
-msgstr "Додати фото чи файли"
-
-msgid "The first uploaded image will be displayed as a wallpaper"
+#, fuzzy
+#| msgid "The first uploaded image will be displayed as a wallpaper"
+msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Перше завантажене зображення буде відображатися в якості фонового малюнка"
+
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr ""
 
 msgid "Kalender"
 msgstr "Календар"
@@ -874,6 +893,12 @@ msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#~ msgid "Location (optional)."
+#~ msgstr "Місце (додатково)."
+
+#~ msgid "Add Photos or Files"
+#~ msgstr "Додати фото чи файли"
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 16:16+0200\n"
+"POT-Creation-Date: 2018-01-10 16:48+0100\n"
 "PO-Revision-Date: 2017-08-18 11:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -279,8 +279,10 @@ msgstr "Редактировать"
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Введите название нового планируемого события"
 
-msgid "Time"
-msgstr "Время"
+#, fuzzy
+#| msgid "Date"
+msgid "Dates"
+msgstr "Дата"
 
 msgid "Please select the available days in the calendar."
 msgstr "Пожалуйста, предложите подходящие дни при помощи календаря"
@@ -291,17 +293,32 @@ msgstr "Вы можете выбрать один и тот же день нес
 msgid "Time: e.g. 10 or 10:30."
 msgstr "Время, например, 10 или 10:30"
 
+msgid "Time"
+msgstr "Время"
+
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Примечание: Вы не можете больше изменить дату проведения этого события!"
 
-msgid "Enter a description for the event (optional)."
+msgid "Description and Infos"
+msgstr ""
+
+#, fuzzy
+#| msgid "(No description set)"
+msgid "Description"
+msgstr "(Описание отсутствует)"
+
+#, fuzzy
+#| msgid "Enter a description for the event (optional)."
+msgid "Enter a description for the event"
 msgstr "Введите описание события (необязательно)"
 
-msgid "External Link for the event (optional)."
-msgstr "Внешняя ссылка на cобытие (необязательно)"
+msgid "Example: http://mywebsite.com"
+msgstr ""
 
-msgid "Location (optional)."
-msgstr "Место (необязательно)"
+#, fuzzy
+#| msgid "External Link for the event (optional)."
+msgid "External Link for the event"
+msgstr "Внешняя ссылка на cобытие (необязательно)"
 
 msgid "Create"
 msgstr "Создать"
@@ -380,11 +397,11 @@ msgstr "Добавить событие"
 msgid "Enter a title for the new event."
 msgstr "Введите название нового события"
 
-msgid "From"
-msgstr "С"
-
 msgid "Date"
 msgstr "Дата"
+
+msgid "From"
+msgstr "С"
 
 msgid "Start date."
 msgstr "Дата начала"
@@ -395,11 +412,13 @@ msgstr "До"
 msgid "End date."
 msgstr "Дата завершения"
 
-msgid "Add Photos or Files"
-msgstr "Добавить фотографии или файлы"
-
-msgid "The first uploaded image will be displayed as a wallpaper"
+#, fuzzy
+#| msgid "The first uploaded image will be displayed as a wallpaper"
+msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Первое загруженное изображение будет отображаться в качестве фонового рисунка"
+
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr ""
 
 msgid "Kalender"
 msgstr "Календарь"
@@ -882,6 +901,12 @@ msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
+
+#~ msgid "Location (optional)."
+#~ msgstr "Место (необязательно)"
+
+#~ msgid "Add Photos or Files"
+#~ msgstr "Добавить фотографии или файлы"
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"

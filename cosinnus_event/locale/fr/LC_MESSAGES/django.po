@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-02 16:16+0200\n"
+"POT-Creation-Date: 2018-01-10 16:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -276,7 +276,7 @@ msgstr ""
 msgid "Enter a title for the new event to be scheduled."
 msgstr ""
 
-msgid "Time"
+msgid "Dates"
 msgstr ""
 
 msgid "Please select the available days in the calendar."
@@ -288,16 +288,25 @@ msgstr ""
 msgid "Time: e.g. 10 or 10:30."
 msgstr ""
 
+msgid "Time"
+msgstr ""
+
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr ""
 
-msgid "Enter a description for the event (optional)."
+msgid "Description and Infos"
 msgstr ""
 
-msgid "External Link for the event (optional)."
+msgid "Description"
 msgstr ""
 
-msgid "Location (optional)."
+msgid "Enter a description for the event"
+msgstr ""
+
+msgid "Example: http://mywebsite.com"
+msgstr ""
+
+msgid "External Link for the event"
 msgstr ""
 
 msgid "Create"
@@ -376,10 +385,10 @@ msgstr ""
 msgid "Enter a title for the new event."
 msgstr ""
 
-msgid "From"
+msgid "Date"
 msgstr ""
 
-msgid "Date"
+msgid "From"
 msgstr ""
 
 msgid "Start date."
@@ -391,10 +400,10 @@ msgstr ""
 msgid "End date."
 msgstr ""
 
-msgid "Add Photos or Files"
+msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr ""
 
-msgid "The first uploaded image will be displayed as a wallpaper"
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr ""
 
 msgid "Kalender"
