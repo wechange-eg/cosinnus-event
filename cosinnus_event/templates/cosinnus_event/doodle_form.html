@@ -32,7 +32,7 @@
 
 {% block content %}
 
-    <form method="POST" action="" id="form-event">{% csrf_token %}
+    <form method="POST" action="" id="form-event" class="cosinnus-form form-horizontal">{% csrf_token %}
 	    <div class="content-box">
 	        {% for formset in inlines %}
 	            {{ formset.management_form }}
