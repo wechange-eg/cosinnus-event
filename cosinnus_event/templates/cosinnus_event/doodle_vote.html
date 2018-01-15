@@ -36,22 +36,25 @@
 		<div class="content-box">
 	       
 	        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" %}
-	
-	        <div class="doodle-vote-table">
-	            {% if event.state == 1 %}
-	                <!--{% trans "This event has already been scheduled. Voting is closed." %}-->
-	                {% include 'cosinnus/common/empty_button.html' with message="This event has already been scheduled. Voting is closed." %}
-	            {% elif event.state == 3 %}
-	                <!--{% trans "This event has been canceled. Voting is closed." %}-->
-	                {% include 'cosinnus/common/empty_button.html' with message="This event has been canceled. Voting is closed." %}
-	            {% elif suggestions_grouped %}
+	        <div class="regular-space"></div> 
+	          
+            {% if event.state == 1 %}
+                <div class="w100">
+                    <p>{% trans "This event has already been scheduled. Voting is closed." %}</p>
+                </div>
+            {% elif event.state == 3 %}
+                <div class="w100">
+                    <p>{% trans "This event has been canceled. Voting is closed." %}</p>
+                </div>
+            {% elif suggestions_grouped %}
+	            {% if not votes_user_grouped %}
+                    <div class="w100 large-space">
+                        <p>{% trans "Nobody has voted for this event poll yet." %}</p>
+                    </div>
+	            {% endif %}
+	            
+		        <div class="doodle-vote-table">
 		            <!-- width = n*54-4 -->
-		            {% if not votes_user_grouped %}
-	                    <div>
-	                        <!--{% trans "Nobody has voted for this event poll yet." %}-->
-	                        {% include 'cosinnus/common/empty_button.html' with message="Nobody has voted for this doodle yet." %}
-	                    </div>
-		            {% endif %}
 		            
 		            <div>
 		                <div></div>
@@ -115,22 +118,22 @@
 		            
 		            {% if user|has_write_access:event and event.state == 2 %}
 			            <h2>{% trans "Create an event from one of the suggestions" %}</h2>
-				            <div>
-				                <div></div>
-				                {% for suggestions in suggestions_grouped %}
-			                        {% for suggestion in suggestions %} 
-				                        <div>
-								            <form action="{% group_url 'cosinnus:event:doodle-complete' group=group slug=event.slug suggestion_id=suggestion.pk %}" method="post" class="form-horizontal">
-					                        {% csrf_token %}
-					                        {{ formset.management_form }}
-							                    <button type="submit" class="doodle-vote-eventbutton" title="{% blocktrans %}Set the date to {{ suggestion }}.{% endblocktrans %}">
-		                                            <i class="fa fa-calendar"></i>
-		                                        </button>
-				                            </form>
-	                                    </div>
-			                        {% endfor %}
-			                    {% endfor %}
-				            </div>
+			            <div>
+			                <div></div>
+			                {% for suggestions in suggestions_grouped %}
+		                        {% for suggestion in suggestions %} 
+			                        <div>
+							            <form action="{% group_url 'cosinnus:event:doodle-complete' group=group slug=event.slug suggestion_id=suggestion.pk %}" method="post" class="form-horizontal">
+				                        {% csrf_token %}
+				                        {{ formset.management_form }}
+						                    <button type="submit" class="doodle-vote-eventbutton" title="{% blocktrans %}Set the date to {{ suggestion }}.{% endblocktrans %}">
+	                                            <i class="fa fa-calendar"></i>
+	                                        </button>
+			                            </form>
+                                    </div>
+		                        {% endfor %}
+		                    {% endfor %}
+			            </div>
 		            {% endif %}
 		            
 		            {% if user.is_authenticated and event.state == 2 %}
@@ -183,12 +186,17 @@
 		                </form>
 	                {% endif %}
 		            
-	            {% else %}
-	                {% comment %} No suggestions were added {% endcomment %}
-	                <!-- {% trans "There are no date suggestions for this event poll yet!" %} -->
-	                {% include 'cosinnus/common/empty_button.html' with message="There are no date suggestions for this doodle yet!" %}
-	            {% endif %}
-	        </div><!-- table -->
+		        </div><!-- table -->
+		        
+            {% else %}
+                {% comment %} No suggestions were added {% endcomment %}
+                <div class="w100">
+                    <p>{% trans "There are no date suggestions for this event poll yet!" %}</p>
+                </div>
+            {% endif %}
+	            
+	            
+	            
 	
 	    </div><!-- content-box -->
 	
