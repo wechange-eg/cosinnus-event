@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-10 16:48+0100\n"
-"PO-Revision-Date: 2017-09-07 16:48+0200\n"
+"POT-Creation-Date: 2018-02-05 13:07+0100\n"
+"PO-Revision-Date: 2018-02-01 16:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: uk_UA\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "Заходи"
@@ -30,7 +30,7 @@ msgstr "Користувач створив нове повідомлення"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr "Нова подія від %(sender_name)s"
+msgstr "Новий захід від %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event"
@@ -274,13 +274,14 @@ msgstr "Запропонувати дату"
 msgid "Edit"
 msgstr "Редагувати"
 
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr ""
+
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Ведіть назву для пропозиції дати."
 
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
-msgstr "Дата"
+msgstr "Дати"
 
 msgid "Please select the available days in the calendar."
 msgstr "Будь ласка, виберіть запропоновані дні у календарі."
@@ -295,28 +296,22 @@ msgid "Time"
 msgstr "Час"
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr "Примітка: Ви більше не можете змінювати дату проведення цієї події, бо хтось вже проголосував!"
+msgstr "Примітка: Ви більше не можете змінювати дату проведення цього заходу, бо хтось вже проголосував!"
 
 msgid "Description and Infos"
-msgstr ""
+msgstr "Опис та інформація"
 
-#, fuzzy
-#| msgid "(No description set)"
 msgid "Description"
-msgstr "(Опис не створено)"
+msgstr "Опис"
 
-#, fuzzy
-#| msgid "Enter a description for the event (optional)."
 msgid "Enter a description for the event"
-msgstr "Введіть опис заходу (додатково)."
+msgstr "Введіть опис заходу"
 
 msgid "Example: http://mywebsite.com"
-msgstr ""
+msgstr "Приклад: http://mywebsite.com"
 
-#, fuzzy
-#| msgid "External Link for the event (optional)."
 msgid "External Link for the event"
-msgstr "Вкажіть зовнішнє посилання для заходу (додатково)."
+msgstr "Зовнішнє посилання на захід"
 
 msgid "Create"
 msgstr "Створити"
@@ -409,13 +404,11 @@ msgstr "До"
 msgid "End date."
 msgstr "Дата завершення."
 
-#, fuzzy
-#| msgid "The first uploaded image will be displayed as a wallpaper"
 msgid "The first uploaded image will be displayed as a wallpaper."
-msgstr "Перше завантажене зображення буде відображатися в якості фонового малюнка"
+msgstr "Перше завантажене зображення буде відображатися як фоновий малюнок"
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
-msgstr ""
+msgstr "Якщо ви встановите це налаштування, ваш захід буде позначено на карті! (якщо дозволено налаштуваннями видимості)"
 
 msgid "Kalender"
 msgstr "Календар"
@@ -523,7 +516,7 @@ msgstr ""
 "\"%(comment_text)s\"\n"
 "\n"
 "\n"
-"до події :\n"
+"до заходу :\n"
 "\n"
 "\"%(event_title)s\"\n"
 "\n"
@@ -741,7 +734,7 @@ msgid "(Canceled!)"
 msgstr "(Скасовані!)"
 
 msgid "This is an archived event poll."
-msgstr "Це завершена пропозиція дати події."
+msgstr "Це завершена пропозиція дати заходу."
 
 msgid "The event that was created after the poll can be viewed here:"
 msgstr "Захід, що було створено після опитування, можна подивитись тут:"
