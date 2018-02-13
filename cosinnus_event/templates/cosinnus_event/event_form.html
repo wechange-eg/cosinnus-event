@@ -127,7 +127,7 @@
                       
 	    {% trans "The first uploaded image will be displayed as a wallpaper." as files_legend %}
         {% trans "If you set this, your event will be shown on the map! (if permitted by its visibility settings)" as loc_legend %}
-        {% include 'cosinnus/media_tags.html' with show_files=True show_location=True files_label=files_label loc_label=loc_label files_legend=files_legend loc_legend=loc_legend %}
+        {% include 'cosinnus/media_tags.html' with show_files=True show_location=True show_topics=True files_label=files_label loc_label=loc_label files_legend=files_legend loc_legend=loc_legend %}
                         
 	</div><!-- content-box -->
 	
