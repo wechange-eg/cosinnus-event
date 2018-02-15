@@ -345,6 +345,13 @@
 		</div>
 	</div>
 	
+    {% if event.attached_images %}
+		<div class="white-content">
+            {% include 'cosinnus/common/attached_images_gallery.html' with object=event max_images=12 %}
+        </div>
+    {% endif %}
+    
+	
     {% include 'cosinnus/media_tags_readonly.html' with object=event hide_attached=True hide_location=True list_view="noindent"  %}
 	
 {% endif %}
