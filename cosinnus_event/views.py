@@ -46,6 +46,7 @@ from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
 import logging
 from django.contrib.contenttypes.models import ContentType
 from cosinnus.models.tagged import BaseTaggableObjectReflection
+from django.utils.encoding import force_text
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -222,6 +223,11 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         if self.object:
             messages.error(self.request,
                 self.message_error % {'title': self.object.title})
+        
+        try:
+            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines[0].errors)})
+        except:
+            logger.error('Errors in doodle formsets! Double error in inlines.', extra={'formset_errors': force_text(inlines)})
         return ret
 
 
