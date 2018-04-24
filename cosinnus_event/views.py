@@ -11,6 +11,7 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic.list import ListView
 from django.utils.timezone import now
+from django import forms
 
 from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
     UpdateWithInlinesView)
@@ -47,6 +48,7 @@ import logging
 from django.contrib.contenttypes.models import ContentType
 from cosinnus.models.tagged import BaseTaggableObjectReflection
 from django.utils.encoding import force_text
+from django.core.exceptions import ValidationError
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -224,10 +226,27 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
             messages.error(self.request,
                 self.message_error % {'title': self.object.title})
         
+        # we need to re-convert the string-date values in our suggestion fields so our hacky form template can read them
+        datefield = forms.DateTimeField()
+        for inline in inlines:
+            data = inline.data
+            data._mutable = True
+            for key, val in data.items():
+                if key.startswith('suggestions-') and key.endswith('_date'):
+                    try:
+                        data[key] = datefield.to_python(val)
+                        data[key] = datefield.to_python(val)
+                    except ValidationError:
+                        # cannot show errors on the suggestion fields themselves
+                        if key.endswith('from_date'):
+                            messages.error(self.request, _('One of the event suggestions times could not be understood!'))
+        
         try:
-            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines[0].errors)})
+            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines[0].errors), 'form_errors': force_text(form.errors),
+                    'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors})
         except:
-            logger.error('Errors in doodle formsets! Double error in inlines.', extra={'formset_errors': force_text(inlines)})
+            logger.error('Errors in doodle formsets! Double error in inlines.', extra={'formsets': force_text(inlines), 'form_errors': force_text(form.errors),
+                    'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors})
         return ret
 
 

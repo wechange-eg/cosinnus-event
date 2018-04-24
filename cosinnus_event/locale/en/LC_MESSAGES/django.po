@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 13:07+0100\n"
+"POT-Creation-Date: 2018-04-09 13:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -709,6 +709,9 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr ""
 
 msgid "The page you requested is not available for this event at this time."
+msgstr ""
+
+msgid "One of the event suggestions times could not be understood!"
 msgstr ""
 
 #, python-format

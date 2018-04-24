@@ -152,16 +152,14 @@ $(function() {
 
 {% for formset in inlines %}
   {% for form in formset %}
-  {% if form.from_date and form.from_date.value %}
+  {% if form.from_date and form.from_date.value and not form.errors %}
   hasDates = true;
   formIdx = {{ forloop.counter0 }};
   
   
   
   dateDataAttr = '{{ form.from_date.value|date:"Y-m-d" }}';
-    console.log('creating item:', dateDataAttr, 'raw date {{ form.from_date.value}}');
-  
-  time1= '{% if not form.errors %}{{ form.from_date.value|date:"H:i" }}{% endif %}';
+  time1= '{{ form.from_date.value|date:"H:i" }}';
   time2= '';
   $('#calendar-doodle-days-selector-list table tr')
     .last()

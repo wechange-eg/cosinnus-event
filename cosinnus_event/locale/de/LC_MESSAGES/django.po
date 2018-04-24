@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 13:07+0100\n"
-"PO-Revision-Date: 2018-01-10 17:40+0100\n"
+"POT-Creation-Date: 2018-04-09 13:14+0200\n"
+"PO-Revision-Date: 2018-04-09 13:21+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -811,6 +811,9 @@ msgstr "Veranstaltung \"%(title)s\" konnte nicht bearbeitet werden."
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Die Seite die du aufgerufen hast ist zu dieser Zeit nicht verfügbar."
+
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Eine der Uhrzeiten im Terminvorschlag konnte nicht interpretiert werden!"
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
