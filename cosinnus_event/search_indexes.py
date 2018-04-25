@@ -17,8 +17,8 @@ class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
     def get_model(self):
         return Event
     
-    def prepare_marker_image_url(self, obj):
-        return (obj.attached_image and obj.attached_image.static_image_url()) or static('images/event-image-placeholder.png')
+    def get_image_field_for_background(self, obj):
+        return obj.attached_image.file if obj.attached_image else None
     
     def prepare_description(self, obj):
         return obj.note
