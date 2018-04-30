@@ -5,7 +5,7 @@ from haystack import indexes
 
 from cosinnus.utils.search import BaseTaggableObjectIndex
 
-from cosinnus_event.models import Event
+from cosinnus_event.models import Event, EventAttendance
 from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
@@ -22,3 +22,7 @@ class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
     
     def prepare_description(self, obj):
         return obj.note
+    
+    def prepare_participant_count(self, obj):
+        """ Attendees for events """
+        return obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).count()
