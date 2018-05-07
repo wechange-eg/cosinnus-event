@@ -29,6 +29,8 @@ from django.contrib.auth import get_user_model
 from cosinnus.utils.files import _get_avatar_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 
 
 def localize(value, format):
@@ -204,6 +206,9 @@ class Event(BaseTaggableObjectModel):
     @property
     def single_day(self):
         return localtime(self.from_date).date() == localtime(self.to_date).date()
+    
+    def get_humanized_event_time_html(self):
+        return mark_safe(render_to_string('cosinnus_event/common/humanized_event_time.html', {'event': self})).strip()
 
     def get_period(self):
         if self.single_day:
