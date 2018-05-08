@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 13:07+0100\n"
+"POT-Creation-Date: 2018-04-09 13:14+0200\n"
 "PO-Revision-Date: 2018-02-01 16:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -816,6 +816,11 @@ msgstr "Неможливо редагувати захід «%(title)s»."
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Сторінка, яку Ви запитуєте, на даний момент не доступна."
+
+#, fuzzy
+#| msgid "Unscheduled event \"%(title)s\" could not be deleted."
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Не можливо видалити пропозицію дати «%(title)s»."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."

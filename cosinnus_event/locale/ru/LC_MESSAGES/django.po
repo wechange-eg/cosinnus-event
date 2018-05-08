@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 13:07+0100\n"
+"POT-Creation-Date: 2018-04-09 13:14+0200\n"
 "PO-Revision-Date: 2018-02-01 00:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -824,6 +824,11 @@ msgstr "Невозможно отредактировать событие \"%(t
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Запрашиваемая Вами страница в данный момент времени не доступна"
+
+#, fuzzy
+#| msgid "Unscheduled event \"%(title)s\" could not be deleted."
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Невозможно удалить предложение по дате \"%(title)s\""
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
