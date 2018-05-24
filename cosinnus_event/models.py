@@ -236,10 +236,14 @@ class Event(BaseTaggableObjectModel):
     
     @property
     def is_same_day(self):
+        if not self.from_date or not self.to_date:
+            return True
         return localtime(self.from_date).date() == localtime(self.to_date).date()
     
     @property
     def is_same_time(self):
+        if not self.from_date or not self.to_date:
+            return True
         return self.from_date.time() == self.to_date.time()
     
     def get_voters_pks(self):
