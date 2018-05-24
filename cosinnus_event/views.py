@@ -608,7 +608,8 @@ class BaseEventFeed(ICalFeed):
     timezone = 'UTC'
     title = _('Events')
     description = _('Upcoming events')
-    utc_offset = None # in hours, taken from ?utc_offset=2 optional param
+    localtime = False # if given (?localtime=1), times will be converted to local server timezone time
+    utc_offset = None # in hours, taken from ?utc_offset=<number> optional param
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
@@ -617,6 +618,9 @@ class BaseEventFeed(ICalFeed):
         offset = request.GET.get('utc_offset', None)
         if offset and is_number(offset):
             self.utc_offset = int(offset)
+        localtime = request.GET.get('localtime', None)
+        if localtime and is_number(localtime) and int(localtime) == 1:
+            self.localtime = True
         return super(BaseEventFeed, self).__call__(request, *args, **kwargs)
     
     def get_feed(self, obj, request):
@@ -642,12 +646,14 @@ class BaseEventFeed(ICalFeed):
         # we're returning a DateTime here for a timed event and for a full-day event, we would return a Date
         if item.is_all_day:
             return localtime(datetime).date()
+        if self.localtime:
+            return localtime(datetime)
         if self.utc_offset:
             if self.utc_offset >= 0:
                 return datetime + timedelta(hours=self.utc_offset)   
             else:
                 return datetime - timedelta(hours=self.utc_offset*-1)
-        return localtime(datetime)
+        return datetime
 
     def item_start_datetime(self, item):
         return self._convert_datetime(item, item.from_date)
