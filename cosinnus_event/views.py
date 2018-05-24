@@ -10,7 +10,7 @@ from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic.list import ListView
-from django.utils.timezone import now
+from django.utils.timezone import now, localtime
 from django import forms
 
 from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
@@ -34,10 +34,11 @@ from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse
-from cosinnus.utils.permissions import check_object_read_access
+from cosinnus.utils.permissions import check_object_read_access,\
+    filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request
 from django.contrib.sites.models import get_current_site
-from cosinnus.utils.functions import unique_aware_slugify
+from cosinnus.utils.functions import unique_aware_slugify, is_number
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from annoying.functions import get_object_or_None
@@ -49,6 +50,8 @@ from django.contrib.contenttypes.models import ContentType
 from cosinnus.models.tagged import BaseTaggableObjectReflection
 from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import AnonymousUser
+from datetime import timedelta
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -596,32 +599,29 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
 doodle_complete_view = DoodleCompleteView.as_view()
 
 
-class EventFeed(ICalFeed):
-    """
-    A simple event calender feed. Uses a permanent user token for authentication
-    (the token is only used for views displaying the user's event-feeds).
-    """
+class BaseEventFeed(ICalFeed):
+    """ A simple event calender feed. """
+    
     PROTO_PRODUCT_ID = '-//%s//Event//Feed'
     
     product_id = None
     timezone = 'UTC'
     title = _('Events')
-    description = _('Upcoming events in')
+    description = _('Upcoming events')
+    utc_offset = None # in hours, taken from ?utc_offset=2 optional param
     
-    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
-        
-        self.title = '%s - %s' %  (self.group.name, self.title)
-        self.description = '%s %s' % (self.description, self.group.name)
         if not self.product_id:
             self.product_id = EventFeed.PROTO_PRODUCT_ID % site.domain
-        
-        return super(EventFeed, self).__call__(request, *args, **kwargs)
+        offset = request.GET.get('utc_offset', None)
+        if offset and is_number(offset):
+            self.utc_offset = int(offset)
+        return super(BaseEventFeed, self).__call__(request, *args, **kwargs)
     
     def get_feed(self, obj, request):
         self.request = request
-        return super(EventFeed, self).get_feed(obj, request)
+        return super(BaseEventFeed, self).get_feed(obj, request)
     
     def items(self, request):
         qs = Event.get_current(self.group, self.user)
@@ -637,26 +637,69 @@ class EventFeed(ICalFeed):
         if item.url:
             description = description + '\n\n' + item.url if description else item.url 
         return description
+    
+    def _convert_datetime(self, item, datetime):
+        # we're returning a DateTime here for a timed event and for a full-day event, we would return a Date
+        if item.is_all_day:
+            return localtime(datetime).date()
+        if self.utc_offset:
+            if self.utc_offset >= 0:
+                return datetime + timedelta(hours=self.utc_offset)   
+            else:
+                return datetime - timedelta(hours=self.utc_offset*-1)
+        return localtime(datetime)
 
     def item_start_datetime(self, item):
-        # we're returning a DateTime here. if we wanted to mark a full-day event, we would return a Date
-        return item.from_date
+        return self._convert_datetime(item, item.from_date)
     
     def item_end_datetime(self, item):
-        # we're returning a DateTime here. if we wanted to mark a full-day event, we would return a Date
-        return item.to_date
+        return self._convert_datetime(item, item.to_date)
     
     def item_link(self, item):
         return item.get_absolute_url()
+    
+    def item_location(self, item):
+        mt = item.media_tag
+        if mt and mt.location_lat and mt.location_lon and mt.location:
+            return mt.location
+        return None
     
     def item_geolocation(self, item):
         mt = item.media_tag
         if mt and mt.location_lat and mt.location_lon:
             return (mt.location_lat, mt.location_lon)
         return None
-    
 
+
+class EventFeed(BaseEventFeed):
+    """ A group-based event feed. Uses a permanent user token for authentication
+        (the token is only used for views displaying the user's event-feeds). """
+    
+    title = _('Events')
+    description = _('Upcoming events')
+    
+    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
+    def __call__(self, request, *args, **kwargs):
+        site = get_current_site(request)
+        self.title = '%s - %s' %  (self.group.name, self.title)
+        self.description = '%s %s' % (self.description, self.group.name)
+        if not self.product_id:
+            self.product_id = EventFeed.PROTO_PRODUCT_ID % site.domain
+        return super(EventFeed, self).__call__(request, *args, **kwargs)
+    
 event_ical_feed = EventFeed()
+
+
+class GlobalFeed(BaseEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
+    
+    def items(self, request):
+        qs = Event.get_current_for_portal()
+        qs = filter_tagged_object_queryset_for_user(qs, AnonymousUser())
+        qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
+        return qs
+
+event_ical_feed_global = GlobalFeed()
 
 
 class EventExportView(CSVExportView):

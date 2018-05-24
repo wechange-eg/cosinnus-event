@@ -246,6 +246,12 @@ class Event(BaseTaggableObjectModel):
             return True
         return self.from_date.time() == self.to_date.time()
     
+    @property
+    def is_all_day(self):
+        if not self.from_date or not self.to_date:
+            return False
+        return (localize(self.from_date, "H:i") == '00:00') and (localize(self.to_date, "H:i") == '23:59')
+    
     def get_voters_pks(self):
         """ Gets the pks of all Users that have voted for this event.
             Returns an empty list if nobody has voted or the event isn't a doodle. """
