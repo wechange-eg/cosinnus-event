@@ -13,6 +13,7 @@ class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
     
     from_date = indexes.DateTimeField(model_attr='from_date', null=True)
     to_date = indexes.DateTimeField(model_attr='to_date', null=True)
+    event_state = indexes.IntegerField(model_attr='state', null=True)
     
     def get_model(self):
         return Event
