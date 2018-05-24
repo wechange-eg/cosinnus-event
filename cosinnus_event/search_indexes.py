@@ -14,6 +14,8 @@ class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
     from_date = indexes.DateTimeField(model_attr='from_date', null=True)
     to_date = indexes.DateTimeField(model_attr='to_date', null=True)
     event_state = indexes.IntegerField(model_attr='state', null=True)
+    humanized_event_time_html = indexes.CharField(stored=True, indexed=False)
+    participants = indexes.MultiValueField(stored=True, indexed=False)
     
     def get_model(self):
         return Event
@@ -27,3 +29,11 @@ class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
     def prepare_participant_count(self, obj):
         """ Attendees for events """
         return obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).count()
+    
+    def prepare_humanized_event_time_html(self, obj):
+        return obj.get_humanized_event_time_html()
+    
+    def prepare_participants(self, obj):
+        return list(obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).values_list('user__id', flat=True))
+    
+    
