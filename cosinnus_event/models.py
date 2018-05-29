@@ -29,6 +29,8 @@ from django.contrib.auth import get_user_model
 from cosinnus.utils.files import _get_avatar_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 
 
 def localize(value, format):
@@ -204,6 +206,9 @@ class Event(BaseTaggableObjectModel):
     @property
     def single_day(self):
         return localtime(self.from_date).date() == localtime(self.to_date).date()
+    
+    def get_humanized_event_time_html(self):
+        return mark_safe(render_to_string('cosinnus_event/common/humanized_event_time.html', {'event': self})).strip()
 
     def get_period(self):
         if self.single_day:
@@ -231,11 +236,21 @@ class Event(BaseTaggableObjectModel):
     
     @property
     def is_same_day(self):
+        if not self.from_date or not self.to_date:
+            return True
         return localtime(self.from_date).date() == localtime(self.to_date).date()
     
     @property
     def is_same_time(self):
+        if not self.from_date or not self.to_date:
+            return True
         return self.from_date.time() == self.to_date.time()
+    
+    @property
+    def is_all_day(self):
+        if not self.from_date or not self.to_date:
+            return False
+        return (localize(self.from_date, "H:i") == '00:00') and (localize(self.to_date, "H:i") == '23:59')
     
     def get_voters_pks(self):
         """ Gets the pks of all Users that have voted for this event.

@@ -35,5 +35,7 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
 )
 
 
-cosinnus_root_patterns = patterns(None)
+cosinnus_root_patterns = patterns('cosinnus_event.views', 
+    url(r'^events/feed/all/$', 'event_ical_feed_global', name='feed-global'),
+)
 urlpatterns = cosinnus_group_patterns + cosinnus_root_patterns
