@@ -52,6 +52,7 @@ from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
+from cosinnus_event.search_indexes import EventIndex
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -892,6 +893,8 @@ def assign_attendance_view(request, group, slug):
         else:
             attendance = EventAttendance.objects.create(event=event, user=user, state=target_state)
             result_state = attendance.state
+        # update search index for the event to reindex it
+        EventIndex().update_object(event)
             
     except Exception, e:
         logger.error('Exception while assigning attendance for an event!', 
