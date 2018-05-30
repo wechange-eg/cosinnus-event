@@ -3,13 +3,12 @@ from __future__ import unicode_literals
 
 from haystack import indexes
 
-from cosinnus.utils.search import BaseTaggableObjectIndex
+from cosinnus.utils.search import BaseTaggableObjectIndex, StoredDataIndexMixin
 
 from cosinnus_event.models import Event, EventAttendance
-from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
-class EventIndex(BaseTaggableObjectIndex, indexes.Indexable):
+class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexable):
     
     from_date = indexes.DateTimeField(model_attr='from_date', null=True)
     to_date = indexes.DateTimeField(model_attr='to_date', null=True)
