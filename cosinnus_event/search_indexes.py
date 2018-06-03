@@ -27,12 +27,15 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
     
     def prepare_participant_count(self, obj):
         """ Attendees for events """
-        return obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).count()
+        return len(self.prepare_participants(obj)) #obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).count()
+    
+    def prepare_participants(self, obj):
+        if not hasattr(obj, '_participants'):
+            obj._participants = list(obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).values_list('user__id', flat=True))
+        return obj._participants
     
     def prepare_humanized_event_time_html(self, obj):
         return obj.get_humanized_event_time_html()
     
-    def prepare_participants(self, obj):
-        return list(obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).values_list('user__id', flat=True))
     
     
