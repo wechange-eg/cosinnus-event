@@ -894,7 +894,7 @@ def assign_attendance_view(request, group, slug):
             attendance = EventAttendance.objects.create(event=event, user=user, state=target_state)
             result_state = attendance.state
         # update search index for the event to reindex it
-        EventIndex().update_object(event)
+        event.update_index()
             
     except Exception, e:
         logger.error('Exception while assigning attendance for an event!', 
