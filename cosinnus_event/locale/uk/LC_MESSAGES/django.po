@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 13:14+0200\n"
-"PO-Revision-Date: 2018-02-01 16:02+0100\n"
+"POT-Creation-Date: 2018-06-19 14:35+0200\n"
+"PO-Revision-Date: 2018-06-17 21:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,14 +23,14 @@ msgstr "Заходи"
 
 msgctxt "the_app"
 msgid "event"
-msgstr "Захід"
+msgstr "захід"
 
 msgid "A user created a new event"
 msgstr "Користувач створив нове повідомлення"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr "Новий захід від %(sender_name)s"
+msgstr "Нова подія від %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event"
@@ -296,7 +296,7 @@ msgid "Time"
 msgstr "Час"
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr "Примітка: Ви більше не можете змінювати дату проведення цього заходу, бо хтось вже проголосував!"
+msgstr "Примітка: Ви більше не можете змінювати дату проведення цієї події, бо хтось вже проголосував!"
 
 msgid "Description and Infos"
 msgstr "Опис та інформація"
@@ -311,7 +311,7 @@ msgid "Example: http://mywebsite.com"
 msgstr "Приклад: http://mywebsite.com"
 
 msgid "External Link for the event"
-msgstr "Зовнішнє посилання на захід"
+msgstr "Зовнішнє посилання для події"
 
 msgid "Create"
 msgstr "Створити"
@@ -332,7 +332,7 @@ msgid "Past Events"
 msgstr "Минулі заходи"
 
 msgid "Archived Event Polls"
-msgstr "Завершені Опитування щодо дат"
+msgstr "Завершені опитування щодо дат"
 
 msgid "There are no archived event polls."
 msgstr "Немає завершених опитувань щодо дат."
@@ -349,7 +349,7 @@ msgid "This event has already been scheduled. Voting is closed."
 msgstr "Опитування щодо дати цього заходу уже завершено."
 
 msgid "This event has been canceled. Voting is closed."
-msgstr "Захід скасовано."
+msgstr "Захід скасовано. Опитування закрито."
 
 msgid "Nobody has voted for this event poll yet."
 msgstr "Ніхто ще не проголосував у цьому опитуванні щодо дати."
@@ -405,10 +405,10 @@ msgid "End date."
 msgstr "Дата завершення."
 
 msgid "The first uploaded image will be displayed as a wallpaper."
-msgstr "Перше завантажене зображення буде відображатися як фоновий малюнок"
+msgstr "Перше зображення, що буде завантажене, відображатиметься як фоновий малюнок."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
-msgstr "Якщо ви встановите це налаштування, ваш захід буде позначено на карті! (якщо дозволено налаштуваннями видимості)"
+msgstr "Якщо Ви це встановите, Ваш захід буде показано на карті! (якщо дозволено налаштуваннями видимості)"
 
 msgid "Kalender"
 msgstr "Календар"
@@ -417,7 +417,7 @@ msgid "Copy this iCal-link into your calendar application to import current even
 msgstr "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
 
 msgid "iCal Feed"
-msgstr "Файл вихідних даних iCal"
+msgstr "файл вихідних даних iCal"
 
 msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr "Введіть назву нового заходу або виберіть день у календарі."
@@ -474,7 +474,7 @@ msgid "Event Polls"
 msgstr "Опитування щодо дати"
 
 msgid "by"
-msgstr "Автор"
+msgstr "автор"
 
 msgid "Created Event"
 msgstr "Створити захід"
@@ -516,7 +516,7 @@ msgstr ""
 "\"%(comment_text)s\"\n"
 "\n"
 "\n"
-"до заходу :\n"
+"до події :\n"
 "\n"
 "\"%(event_title)s\"\n"
 "\n"
@@ -734,7 +734,7 @@ msgid "(Canceled!)"
 msgstr "(Скасовані!)"
 
 msgid "This is an archived event poll."
-msgstr "Це завершена пропозиція дати заходу."
+msgstr "Це завершена пропозиція дати події."
 
 msgid "The event that was created after the poll can be viewed here:"
 msgstr "Захід, що було створено після опитування, можна подивитись тут:"
@@ -789,16 +789,6 @@ msgstr "Ви берете участь?"
 
 msgid "No Choice"
 msgstr "Немає вибору"
-
-msgid "Shown in my projects..."
-msgstr ""
-"Plural Показані в моїх проектах...\n"
-"Maskulinum Показаний в моїх проектах...\n"
-"Femininum Показана в моїх проектах...\n"
-"Neutrum Показано в моїх проектах..."
-
-msgid "Show in my projects..."
-msgstr "Показати в моїх проектах..."
 
 msgid "More"
 msgstr "Більше"
@@ -878,19 +868,29 @@ msgid "The complete request can only be sent via POST!"
 msgstr "Повний запит можна надіслати лише ПОШТОЮ!"
 
 msgid "Event cannot be completed: No date was supplied."
-msgstr "Неможливо створити захід: не вказана дата:"
+msgstr "Неможливо створити захід: не вказана дата."
 
 msgid "The event was created successfully at the specified date."
 msgstr "Захід успішно створено із вказаною датою."
-
-msgid "Upcoming events in"
-msgstr "Прийдешні заходи через"
 
 msgid "Your comment was added successfully."
 msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#~ msgid "Shown in my projects..."
+#~ msgstr ""
+#~ "Plural Показані в моїх проектах...\n"
+#~ "Maskulinum Показаний в моїх проектах...\n"
+#~ "Femininum Показана в моїх проектах...\n"
+#~ "Neutrum Показано в моїх проектах..."
+
+#~ msgid "Show in my projects..."
+#~ msgstr "Показати в моїх проектах..."
+
+#~ msgid "Upcoming events in"
+#~ msgstr "Прийдешні заходи через"
 
 #~ msgid "Location (optional)."
 #~ msgstr "Місце (додатково)."

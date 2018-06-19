@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 13:14+0200\n"
+"POT-Creation-Date: 2018-06-19 14:35+0200\n"
 "PO-Revision-Date: 2018-04-09 13:21+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -789,12 +789,6 @@ msgstr "Nimmst du teil?"
 msgid "No Choice"
 msgstr "Keine Auswahl"
 
-msgid "Shown in my projects..."
-msgstr "In Projekten angezeigt..."
-
-msgid "Show in my projects..."
-msgstr "In Projekten anzeigen..."
-
 msgid "More"
 msgstr "Mehr"
 
@@ -876,14 +870,20 @@ msgstr "Die Terminfindung konnte nicht abgeschlossen werden: Es wurde kein Zield
 msgid "The event was created successfully at the specified date."
 msgstr "Die Veranstaltung wurde erfolgreich an dem angegebenen Termin erstellt."
 
-msgid "Upcoming events in"
-msgstr "Aktuelle Veranstaltungen in"
-
 msgid "Your comment was added successfully."
 msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
+
+#~ msgid "Shown in my projects..."
+#~ msgstr "In Projekten angezeigt..."
+
+#~ msgid "Show in my projects..."
+#~ msgstr "In Projekten anzeigen..."
+
+#~ msgid "Upcoming events in"
+#~ msgstr "Aktuelle Veranstaltungen in"
 
 #~ msgid "Location (optional)."
 #~ msgstr "Ort (optional)."

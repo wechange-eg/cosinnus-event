@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-09 13:14+0200\n"
-"PO-Revision-Date: 2018-02-01 00:35+0100\n"
+"POT-Creation-Date: 2018-06-19 14:35+0200\n"
+"PO-Revision-Date: 2018-06-17 23:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: ru\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "Cобытия"
 
 msgctxt "the_app"
 msgid "event"
-msgstr "События"
+msgstr "события"
 
 msgid "A user created a new event"
 msgstr "Пользователь создал новое событие"
@@ -37,7 +37,7 @@ msgstr "%(sender_name)s создал(а) новое событие"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
-msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s"
+msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s."
 
 msgid "A user created a new event poll"
 msgstr "Пользователь предложил новую дату события"
@@ -52,7 +52,7 @@ msgstr "%(sender_name)s предложил(а) новую дату событи�
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
-msgstr "Новое предложение даты события: \"%(object_name)s\" создано в %(team_name)s"
+msgstr "Новое предложение даты события: \"%(object_name)s\" создано в %(team_name)s."
 
 msgid "A user commented on one of your events"
 msgstr "Пользователь прокомментировал одно из Ваших событий"
@@ -78,7 +78,7 @@ msgstr "%(sender_name)s прокомментировал(а) событие, в 
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы были отмечены, в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы были отмечены, в in %(team_name)s"
 
 msgid "A user commented on an event you voted in"
 msgstr "Пользователь прокомментировал событие, в голосовании по которому Вы принимали участие"
@@ -100,7 +100,7 @@ msgstr "%(sender_name)s прокомментировал(а) событие, в 
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s."
+msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s"
 
 msgid "Upcoming Events"
 msgstr "Текущие события"
@@ -210,7 +210,7 @@ msgid "Suggestion"
 msgstr "Предложение"
 
 msgid "Suggestions"
-msgstr "Предложения "
+msgstr "Предложения"
 
 msgid "Yes"
 msgstr "Да"
@@ -280,19 +280,19 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr ""
 
 msgid "Enter a title for the new event to be scheduled."
-msgstr "Введите название нового планируемого события"
+msgstr "Введите название нового планируемого события."
 
 msgid "Dates"
-msgstr "Дата"
+msgstr "Даты"
 
 msgid "Please select the available days in the calendar."
-msgstr "Пожалуйста, предложите подходящие дни при помощи календаря"
+msgstr "Пожалуйста, предложите подходящие дни при помощи календаря."
 
 msgid "You can select the same day more than once."
-msgstr "Вы можете выбрать один и тот же день несколько раз"
+msgstr "Вы можете выбрать один и тот же день несколько раз."
 
 msgid "Time: e.g. 10 or 10:30."
-msgstr "Время, например, 10 или 10:30"
+msgstr "Время, например, 10 или 10:30."
 
 msgid "Time"
 msgstr "Время"
@@ -307,13 +307,13 @@ msgid "Description"
 msgstr "Описание"
 
 msgid "Enter a description for the event"
-msgstr "Введите описание события "
+msgstr "Введите описание события"
 
 msgid "Example: http://mywebsite.com"
 msgstr "Пример: http://mywebsite.com"
 
 msgid "External Link for the event"
-msgstr "Внешняя ссылка на cобытие "
+msgstr "Внешняя ссылка на cобытие"
 
 msgid "Create"
 msgstr "Создать"
@@ -325,7 +325,7 @@ msgid "Schedule an event"
 msgstr "Запланировать событие"
 
 msgid "There are no open event polls."
-msgstr "Нет открытых предложений по датам"
+msgstr "Нет открытых предложений по датам."
 
 msgid "Planned Events"
 msgstr "Запланированные события"
@@ -334,10 +334,10 @@ msgid "Past Events"
 msgstr "Прошлые события"
 
 msgid "Archived Event Polls"
-msgstr "Завершенные \"Опросы по датам\""
+msgstr "Завершенные Опросы по датам"
 
 msgid "There are no archived event polls."
-msgstr "Нет завершённых \"Опросов по датам\""
+msgstr "Нет завершённых Опросов по датам"
 
 #, python-format
 msgid "Vote for %(title)s"
@@ -362,7 +362,7 @@ msgstr "Создать событие из предложенных"
 # ???
 #, python-format
 msgid "Set the date to %(suggestion)s."
-msgstr "Установить дату на %(suggestion)s"
+msgstr "Установить дату на %(suggestion)s."
 
 msgid "When do you have time?"
 msgstr "Когда Вы располагаете временем?"
@@ -384,13 +384,13 @@ msgid "Write comment..."
 msgstr "Оставить комментарий…"
 
 msgid "Post"
-msgstr "Отправить…"
+msgstr "Отправить"
 
 msgid "Add event"
 msgstr "Добавить событие"
 
 msgid "Enter a title for the new event."
-msgstr "Введите название нового события"
+msgstr "Введите название нового события."
 
 msgid "Date"
 msgstr "Дата"
@@ -399,19 +399,19 @@ msgid "From"
 msgstr "С"
 
 msgid "Start date."
-msgstr "Дата начала"
+msgstr "Дата начала."
 
 msgid "Until"
 msgstr "До"
 
 msgid "End date."
-msgstr "Дата завершения"
+msgstr "Дата завершения."
 
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Первое загруженное изображение будет отображаться в качестве фонового рисунка."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
-msgstr "Если Вы включите эти настройки, ваше событие будет отображено на карте! (если разрешить настройки видимости)"
+msgstr "Если Вы это установите, Ваше событие будет показано на карте! (если позволяют настройки видимости)"
 
 msgid "Kalender"
 msgstr "Календарь"
@@ -423,7 +423,7 @@ msgid "iCal Feed"
 msgstr "Лента новостей iCal"
 
 msgid "Enter the title for a new event or select a day in the Calendar."
-msgstr "Введите название нового события или выберите день в календаре"
+msgstr "Введите название нового события или выберите день в календаре."
 
 msgid "Export event feed"
 msgstr "Экспортировать ленту новостей события"
@@ -450,10 +450,10 @@ msgid "OK"
 msgstr "ОК"
 
 msgid "There are no current or future events."
-msgstr "Текущих или предстоящих событий нет"
+msgstr "Текущих или предстоящих событий нет."
 
 msgid "There are no past events."
-msgstr "Прошедших событий нет"
+msgstr "Прошедших событий нет."
 
 msgid "There are no upcoming events"
 msgstr "Предстоящих событий нет"
@@ -561,7 +561,7 @@ msgstr ""
 "\n"
 "(перейдите по этой ссылке, чтобы изменить настройки уведомлений: %(notification_settings_url)s )\n"
 "\n"
-"Ваша команда %(site_name)s"
+"Ваша команда %(site_name)s."
 
 # checken, wie es auf RU aussieht
 #, python-format
@@ -637,7 +637,7 @@ msgstr ""
 "\n"
 "(Перейдите по этой ссылке, чтобы изменить настройки уведомлений: %(notification_settings_url)s )\n"
 "\n"
-"Ваша команда %(site_name)s"
+"Ваша команда %(site_name)s."
 
 # checken, wie es auf RU aussieht
 #, python-format
@@ -733,7 +733,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
-msgstr "%(sender_name)s прокомментировал(а) опрос, по которому вы проголосовали в %(team_name)s"
+msgstr "%(sender_name)s прокомментировал(а) опрос, по которому вы проголосовали в %(team_name)s."
 
 msgid "Delete Event"
 msgstr "Удалить событие"
@@ -742,7 +742,7 @@ msgid "(Canceled!)"
 msgstr "(Отменено!)"
 
 msgid "This is an archived event poll."
-msgstr "Это завершенное предложение даты события"
+msgstr "Это завершенное предложение даты события."
 
 msgid "The event that was created after the poll can be viewed here:"
 msgstr "Событие, созданное к указанной дате, вы можете посмотреть здесь:"
@@ -798,16 +798,6 @@ msgstr "Вы примете участие?"
 msgid "No Choice"
 msgstr "Нет выбора"
 
-msgid "Shown in my projects..."
-msgstr ""
-"Plural Показаны в моих проектах...\n"
-"Maskulinum Показан в моих проектах...\n"
-"Femininum Показана в моих проектах...\n"
-"Neutrum Показано в моих проектах..."
-
-msgid "Show in my projects..."
-msgstr "Показать в моих проектах..."
-
 msgid "More"
 msgstr "Больше"
 
@@ -820,42 +810,42 @@ msgstr "Cобытие \"%(title)s\" отредактировано."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
-msgstr "Невозможно отредактировать событие \"%(title)s\""
+msgstr "Невозможно отредактировать событие \"%(title)s“."
 
 msgid "The page you requested is not available for this event at this time."
-msgstr "Запрашиваемая Вами страница в данный момент времени не доступна"
+msgstr "Запрашиваемая Вами страница в данный момент времени не доступна."
 
 #, fuzzy
 #| msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgid "One of the event suggestions times could not be understood!"
-msgstr "Невозможно удалить предложение по дате \"%(title)s\""
+msgstr "Невозможно удалить предложение по дате \"%(title)s“."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
-msgstr "Предложение даты \"%(title)s\" отредактировано"
+msgstr "Предложение даты \"%(title)s\" отредактировано."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
-msgstr "Невозможно отредактировать предложение даты \"%(title)s\""
+msgstr "Невозможно отредактировать предложение даты \"%(title)s“."
 
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
-msgstr "Cобытие \"%(title)s\" добавлено"
+msgstr "Cобытие \"%(title)s\" добавлено."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
-msgstr "Невозможно добавить событие \"%(title)s\" "
+msgstr "Невозможно добавить событие \"%(title)s“."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
-msgstr "Предложение по дате \"%(title)s\" добавлено"
+msgstr "Предложение по дате \"%(title)s\" добавлено."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
-msgstr "Невозможно добавить предложение по дате \"%(title)s\""
+msgstr "Невозможно добавить предложение по дате \"%(title)s“."
 
 msgid "You should define at least one date suggestion."
-msgstr "Вы должны предложить как минимум одну дату"
+msgstr "Вы должны предложить как минимум одну дату."
 
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
@@ -863,21 +853,21 @@ msgstr "Cобытие \"%(title)s\" удалено."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
-msgstr "Невозможно удалить событие \"%(title)s\""
+msgstr "Невозможно удалить событие \"%(title)s“."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
-msgstr "Предложение по дате \"%(title)s\" удалено"
+msgstr "Предложение по дате \"%(title)s\" удалено."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
-msgstr "Невозможно удалить предложение по дате \"%(title)s\""
+msgstr "Невозможно удалить предложение по дате \"%(title)s“."
 
 msgid "Your votes were saved successfully."
-msgstr "Ваше голосование сохранено"
+msgstr "Ваше голосование сохранено."
 
 msgid "Your votes could not be saved."
-msgstr "Невозможно сохранить результаты вашего голосования"
+msgstr "Невозможно сохранить результаты вашего голосования."
 
 msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr "Дата этого события уже назначена. Вы больше не можете голосовать."
@@ -891,14 +881,24 @@ msgstr "Невозможно внести событие: Отсутствует
 msgid "The event was created successfully at the specified date."
 msgstr "Событие создано и привязано к указанной дате."
 
-msgid "Upcoming events in"
-msgstr "Ближайшие события в"
-
 msgid "Your comment was added successfully."
 msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
+
+#~ msgid "Shown in my projects..."
+#~ msgstr ""
+#~ "Plural Показаны в моих проектах...\n"
+#~ "Maskulinum Показан в моих проектах...\n"
+#~ "Femininum Показана в моих проектах...\n"
+#~ "Neutrum Показано в моих проектах..."
+
+#~ msgid "Show in my projects..."
+#~ msgstr "Показать в моих проектах..."
+
+#~ msgid "Upcoming events in"
+#~ msgstr "Ближайшие события в"
 
 #~ msgid "Location (optional)."
 #~ msgstr "Место (необязательно)"
