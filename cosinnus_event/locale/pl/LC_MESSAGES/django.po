@@ -1,0 +1,884 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-08 15:13+0200\n"
+"PO-Revision-Date: 2018-06-23 16:52+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"X-Generator: Poedit 1.8.4\n"
+
+msgid "Events"
+msgstr "Wydarzenia"
+
+msgctxt "the_app"
+msgid "event"
+msgstr "wydarzenie"
+
+msgid "A user created a new event"
+msgstr "Użytkownik stworzył nowe wydarzenie"
+
+#, python-format
+msgid "New event by %(sender_name)s"
+msgstr "Nowe wydarzenie stworzone przez %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s created a new event"
+msgstr "%(sender_name)s stworzył nowe wydarzenie"
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgstr "Nowe wydarzenie: \"%(object_name)s\" zostało ogłoszone w %(team_name)s."
+
+msgid "A user created a new event poll"
+msgstr "Użytkownik stworzył nową ankietę wydarzenia"
+
+#, python-format
+msgid "New event poll by %(sender_name)s"
+msgstr "Nowa ankieta wydarzenia stworzona przez %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s created a new event poll"
+msgstr "%(sender_name)s stworzył nową ankietę wydarzenia"
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została stworzona w %(team_name)s."
+
+msgid "A user commented on one of your events"
+msgstr "Użytkownik skomentował jedno z Twoich wydarzeń"
+
+#, python-format
+msgid "%(sender_name)s commented on your event"
+msgstr "%(sender_name)s skomentował/a Twoje wydarzenie"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events"
+msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń"
+
+#, python-format
+msgid "%(sender_name)s"
+msgstr "%(sender_name)s"
+
+msgid "A user commented on a event you were tagged in"
+msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you were tagged in"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony w zespole %(team_name)s."
+
+msgid "A user commented on an event you voted in"
+msgstr "Użytkownik skomentował wydarzenie, w którym zagłosowałeś/aś"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+msgid "A user commented on an event you are attending"
+msgstr "Użytkownik skomentował wydarzenie, w którym uczestniczysz"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz w zespole %(team_name)s."
+
+msgid "Upcoming Events"
+msgstr "Nadchodzące wydarzenia"
+
+msgid "No upcoming events"
+msgstr "Brak nadchodzących wydarzeń"
+
+msgid "Created By"
+msgstr "Stworzone przez"
+
+msgid "Soonest Upcoming"
+msgstr "Najbliższe wydarzenia"
+
+msgid "Newest Created"
+msgstr "Najnowsze stworzone"
+
+msgid "Title"
+msgstr "Tytuł"
+
+msgid "Scheduled"
+msgstr "Zaplanowane"
+
+msgid "Voting open"
+msgstr "Głosowanie otwarte"
+
+msgid "Canceled"
+msgstr "Anulowane"
+
+msgid "Archived Event Poll"
+msgstr "Zarchiwizowana ankieta wydarzenia"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "End"
+msgstr "Koniec"
+
+msgid "State"
+msgstr "Stan"
+
+msgid "Note"
+msgstr "Uwaga"
+
+msgid "Event date"
+msgstr "Data wydarzenia"
+
+msgid "Location"
+msgstr "Lokalizacja"
+
+msgid "Latitude"
+msgstr "Szerokość geograficzna"
+
+msgid "Longitude"
+msgstr "Długość geograficzna"
+
+msgid "Street"
+msgstr "Ulica"
+
+msgid "ZIP code"
+msgstr "Kod pocztowy"
+
+msgid "City"
+msgstr "Miasto"
+
+msgid "Is public (on website)"
+msgstr "Publiczne (na stronie)"
+
+msgid "Image"
+msgstr "Obraz"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Original Event Poll"
+msgstr "Oryginalna ankieta wydarzenia"
+
+msgid "Event"
+msgstr "Wydarzenie"
+
+#, python-format
+msgid "%(event)s (%(date)s - %(end)s)"
+msgstr "%(event)s (%(date)s - %(end)s)"
+
+#, python-format
+msgid "%(event)s (%(from)s - %(to)s)"
+msgstr "%(event)s (%(from)s - %(to)s)"
+
+#, python-format
+msgid "%(event)s (canceled)"
+msgstr "%(event)s (anulowane)"
+
+#, python-format
+msgid "%(event)s (pending)"
+msgstr "%(event)s (trwające)"
+
+#, python-format
+msgid "%(event)s (archived)"
+msgstr "%(event)s (zarchiwizowane)"
+
+msgctxt "the subject"
+msgid "Votes"
+msgstr "Głosy"
+
+msgid "Suggestion"
+msgstr "Sugestia"
+
+msgid "Suggestions"
+msgstr "Sugestie"
+
+msgid "Yes"
+msgstr "Tak"
+
+msgid "Maybe"
+msgstr "Może"
+
+msgid "No"
+msgstr "Nie"
+
+msgid "Voter"
+msgstr "Głosujący"
+
+msgid "Vote"
+msgstr "Głos"
+
+msgctxt "the subject"
+msgid "Vote"
+msgstr "Głos"
+
+msgid "Creator"
+msgstr "Twórca"
+
+msgid "Created"
+msgstr "Stworzył/a"
+
+msgid "Last modified"
+msgstr "Data ost. mod."
+
+msgid "Text"
+msgstr "Treść"
+
+msgid "Comment"
+msgstr "Komentarz"
+
+msgid "Comments"
+msgstr "Komentarze"
+
+msgctxt "time"
+msgid "all day"
+msgstr "cały dzień"
+
+msgctxt "time"
+msgid "at"
+msgstr "o"
+
+msgctxt "time"
+msgid "o'clock"
+msgstr ""
+
+msgctxt "time"
+msgid "from"
+msgstr "od"
+
+msgctxt "time"
+msgid "until"
+msgstr "do"
+
+msgid "Add unscheduled event"
+msgstr "Dodaj niezaplanowane wydarzenie"
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "W jednym z wypełnionych pól jest błąd. Popraw go przed zapisaniem!"
+
+msgid "Enter a title for the new event to be scheduled."
+msgstr "Wpisz tytuł nowego wydarzenia do zaplanowania."
+
+msgid "Dates"
+msgstr "Terminy"
+
+msgid "Please select the available days in the calendar."
+msgstr "Wybierz dostępne dni w kalendarzu."
+
+msgid "You can select the same day more than once."
+msgstr "Możesz wybrać ten sam dzień więcej niż raz."
+
+msgid "Time: e.g. 10 or 10:30."
+msgstr "Czas: np. 10 lub 10:30"
+
+msgid "Time"
+msgstr "Czas"
+
+msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
+msgstr "Uwaga: nie możesz edytować dat tej ankiety w wydarzeniu, ponieważ ktoś już zagłosował!"
+
+msgid "Description and Infos"
+msgstr "Opisy i informacje"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Enter a description for the event"
+msgstr "Wpisz opis wydarzenia"
+
+msgid "Example: http://mywebsite.com"
+msgstr "Przykład: http://mywebsite.com"
+
+msgid "External Link for the event"
+msgstr "Zewnętrzny link do wydarzenia"
+
+msgid "Create"
+msgstr "Stwórz"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Schedule an event"
+msgstr "Zaplanuj wydarzenie"
+
+msgid "There are no open event polls."
+msgstr "Nie ma otwartych ankiet w wydarzeniu."
+
+msgid "Planned Events"
+msgstr "Zaplanowane wydarzenia"
+
+msgid "Past Events"
+msgstr "Przeszłe wydarzenia"
+
+msgid "Archived Event Polls"
+msgstr "Zarchiwizowane ankiety w wydarzeniu"
+
+msgid "There are no archived event polls."
+msgstr "Nie ma zarchiwizowanych ankiet w wydarzeniu."
+
+#, python-format
+msgid "Vote for %(title)s"
+msgstr "Zagłosuj na %(title)s"
+
+#, python-format
+msgid "Archived: %(title)s"
+msgstr "Zarchiwizowane: %(title)s"
+
+msgid "This event has already been scheduled. Voting is closed."
+msgstr "To wydarzenie zostało już zaplanowane. Głosowanie zakończone."
+
+msgid "This event has been canceled. Voting is closed."
+msgstr "To wydarzenie zostało anulowane. Głosowanie zakończone."
+
+msgid "Nobody has voted for this event poll yet."
+msgstr "Nikt jeszcze nie zagłosował w tej ankiecie wydarzenia."
+
+msgid "Create an event from one of the suggestions"
+msgstr "Stwórz wydarzenie z jednej z sugestii"
+
+#, python-format
+msgid "Set the date to %(suggestion)s."
+msgstr "Ustaw datę na %(suggestion)s."
+
+msgid "When do you have time?"
+msgstr "Kiedy masz czas?"
+
+msgid "There are no date suggestions for this event poll yet!"
+msgstr "Nie ma jeszcze sugestii dla tej ankiety wydarzenia!"
+
+msgid "Delete"
+msgstr "Usuń"
+
+#, python-format
+msgid "Do you really want to delete unscheduled event „%(title)s“?"
+msgstr "Czy na pewno chcesz usunąć niezaplanowane wydarzenie „%(title)s”?"
+
+msgid "Delete unscheduled event"
+msgstr "Usuń niezaplanowane wydarzenie"
+
+msgid "Write comment..."
+msgstr "Dodaj komentarz..."
+
+msgid "Post"
+msgstr "Opublikuj"
+
+msgid "Add event"
+msgstr "Dodaj wydarzenie"
+
+msgid "Enter a title for the new event."
+msgstr "Wpisz tytuł nowego wydarzenia."
+
+msgid "Date"
+msgstr "Data"
+
+msgid "From"
+msgstr "Od"
+
+msgid "Start date."
+msgstr "Data początkowa."
+
+msgid "Until"
+msgstr "Do"
+
+msgid "End date."
+msgstr "Data końcowa."
+
+msgid "The first uploaded image will be displayed as a wallpaper."
+msgstr "Pierwsze dodane zdjęcie wyświetlane będzie jako tapeta."
+
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr "Jeśli to ustawisz, Twoje wydarzenie będzie wyświetlone na mapie! (jeśli ustawienia widoczności na to zezwalają)"
+
+msgid "Kalender"
+msgstr "Kalendarz"
+
+msgid "Copy this iCal-link into your calendar application to import current events:"
+msgstr "Skopiuj ten link iCal do aplikacji kalendarza w celu zaimportowania aktywnych wydarzeń:"
+
+msgid "iCal Feed"
+msgstr "Kanał iCal"
+
+msgid "Enter the title for a new event or select a day in the Calendar."
+msgstr "Wpisz tytuł nowego wydarzenia lub wybierz dzień w Kalendarzu."
+
+msgid "Export event feed"
+msgstr "Eksportuj kanał wydarzenia"
+
+msgid "Create Event"
+msgstr "Stwórz Wydarzenie"
+
+msgid "Would you like to create an event"
+msgstr "Czy chcesz utworzyć wydarzenie"
+
+msgid "on"
+msgstr "w dniu"
+
+msgid "from"
+msgstr "od"
+
+msgid "until"
+msgstr "do"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "There are no current or future events."
+msgstr "Nie ma obecnych ani przyszłych wydarzeń."
+
+msgid "There are no past events."
+msgstr "Nie ma przeszłych wydarzeń."
+
+msgid "There are no upcoming events"
+msgstr "Nie ma nadchodzących wydarzeń."
+
+msgid "Back to Events"
+msgstr "Powrót do Wydarzeń"
+
+msgid "Return to Event Polls"
+msgstr "Powrót do ankiet w wydarzeniach"
+
+msgid "Return to Archived Event Polls"
+msgstr "Powrót do zarchiwizowanych Wydarzeń Ankiet"
+
+msgid "Calendar"
+msgstr "Kalendarz"
+
+msgid "List"
+msgstr "Lista"
+
+msgid "Event Polls"
+msgstr "Ankiety w wydarzeniach"
+
+msgid "by"
+msgstr "autor"
+
+msgid "Created Event"
+msgstr "Stworzone wydarzenie"
+
+#, python-format
+msgid "Do you really want to delete event „%(title)s“?"
+msgstr "Czy na pewno chcesz usunąć wydarzenie „%(title)s”?"
+
+msgid "Delete event"
+msgstr "Usuń wydarzenie"
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you are attending in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Cześć, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s dodał/a komentarz do wydarzenia, w którym bierzesz udział w zespole %(team_name)s:\n"
+"\n"
+"\\’’%(comment_text)s\\’’\n"
+"\n"
+"\n"
+"w wydarzeniu:\n"
+"\n"
+"\\’’%(event_title)s\\’’\n"
+"\n"
+"\n"
+"Kliknij tutaj, aby zobaczyć komentarz:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz w zespole %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\" in %(team_name)s was created by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Cześć %(receiver_name)s,\n"
+"\n"
+"nowe wydarzenie \\’’%(object_name)s\\’’ w zespole %(team_name)s zostało utworzone przez %(sender_name)s.\n"
+"\n"
+"Dostępne jest pod następującym adresem:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you created in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on your event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Cześć, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s dodał/a komentarz do wydarzenia, które utworzyłeś/aś w zespole %(team_name)s:\n"
+"\n"
+"\\’’%(comment_text)s\\’’\n"
+"\n"
+"\n"
+"w wydarzeniu:\n"
+"\n"
+"\\’’%(event_title)s\\’’\n"
+"\n"
+"\n"
+"Kliknij tutaj, aby zobaczyć komentarz:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in %(team_name)s by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Cześć %(receiver_name)s,\n"
+"\n"
+"nowe wydarzenie \\’’%(object_name)s\\’’ w dniu %(event_date)s zostało ogłoszone in \"%(team_name)s\" przez %(sender_name)s.\n"
+"\n"
+"Dostępne jest pod następującym adresem:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you were tagged in, in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Cześć, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s dodał/a komentarz do wydarzenia, w którym zostałeś/aś oznaczone/a w zespole %(team_name)s:\n"
+"\n"
+"\\’’%(comment_text)s\\’’\n"
+"\n"
+"\n"
+"w wydarzeniu:\n"
+"\n"
+"\\’’%(event_title)s\\’’\n"
+"\n"
+"\n"
+"Kliknij tutaj, aby zobaczyć komentarz:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony w zespole %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event poll you voted in in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event poll:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Cześć, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s dodał/a komentarz do ankiety w wydarzeniu, w którym zagłosowałeś w zespole %(team_name)s:\n"
+"\n"
+"\\’’%(comment_text)s\\’’\n"
+"\n"
+"\n"
+"w wydarzeniu:\n"
+"\n"
+"\\’’%(event_title)s\\’’\n"
+"\n"
+"\n"
+"Kliknij tutaj, aby zobaczyć komentarz:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
+"\n"
+"Twój Zespół %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+msgid "Delete Event"
+msgstr "Usuń wydarzenie"
+
+msgid "(Canceled!)"
+msgstr "(Anulowane!)"
+
+msgid "This is an archived event poll."
+msgstr "To jest zarchiwizowana ankieta w wydarzeniu."
+
+msgid "The event that was created after the poll can be viewed here:"
+msgstr "Wydarzenie utworzone po ankiecie można zobaczyć tu:"
+
+msgid "(No description set)"
+msgstr "(Nie ma opisu)"
+
+msgctxt "someone else is going"
+msgid "Going"
+msgstr "Wezmę udział"
+
+msgctxt "someone else is maybe going"
+msgid "Maybe going"
+msgstr "Może wezmę udział"
+
+msgctxt "someone else can't go"
+msgid "Can't go"
+msgstr "Nie mogę wziąć udziału"
+
+msgctxt "one or many people are going"
+msgid "Going"
+msgid_plural "Going"
+msgstr[0] "Wezmę udział"
+msgstr[1] "Wezmę udział"
+msgstr[2] ""
+
+msgctxt "one or many people are maybe going"
+msgid "Maybe going"
+msgid_plural "Maybe going"
+msgstr[0] "Może wezmę udział"
+msgstr[1] "Może wezmę udział"
+msgstr[2] ""
+
+msgctxt "one or many people are not going"
+msgid "Can't go"
+msgid_plural "Can't go"
+msgstr[0] "Nie mogę wziąć udziału"
+msgstr[1] "Nie mogę wziąć udziału"
+msgstr[2] ""
+
+msgid "Going"
+msgstr "Wezmę udział"
+
+msgid "Maybe going"
+msgstr "Może wezmę udział"
+
+msgid "Can't go"
+msgstr "Nie mogę wziąć udziału"
+
+msgid "Are you going?"
+msgstr "Weźmiesz udział?"
+
+msgid "No Choice"
+msgstr "Brak wyboru"
+
+msgid "More"
+msgstr "Więcej"
+
+msgid "Upcoming events"
+msgstr "Nadchodzące wydarzenia"
+
+#, python-format
+msgid "Event \"%(title)s\" was edited successfully."
+msgstr "Wydarzenie \"%(title)s\" edytowane pomyślnie."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be edited."
+msgstr "Wydarzenie \"%(title)s\" nie mogło zostać edytowane."
+
+msgid "The page you requested is not available for this event at this time."
+msgstr "Strona, którą chcesz wyświetlić, nie jest obecnie dostępna dla tego wydarzenia."
+
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Nie można zrozumieć jednej z sugerowanych dat wydarzenia!"
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was edited successfully."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" edytowane pomyślnie."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be edited."
+msgstr "Niezaplanowanie wydarzenie \"%(title)s\" nie mogło zostać edytowane."
+
+#, python-format
+msgid "Event \"%(title)s\" was added successfully."
+msgstr "Wydarzenie \"%(title)s\" dodane pomyślnie."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be added."
+msgstr "Wydarzenie \"%(title)s\" nie mogło zostać dodane."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was added successfully."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" dodane pomyślnie."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be added."
+msgstr "Niezaplanowanie wydarzenie \"%(title)s\" nie mogło zostać dodane."
+
+msgid "You should define at least one date suggestion."
+msgstr "Zdefiniuj przynajmniej jedną sugestię daty."
+
+#, python-format
+msgid "Event \"%(title)s\" was deleted successfully."
+msgstr "Wydarzenie \"%(title)s\" usunięte pomyślnie."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be deleted."
+msgstr "Wydarzenie \"%(title)s\" nie mogło zostać usunięte."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was deleted successfully."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" usunięte pomyślnie."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be deleted."
+msgstr "Niezaplanowanie wydarzenie \"%(title)s\" nie mogło zostać usunięte."
+
+msgid "Your votes were saved successfully."
+msgstr "Twoje głosy zostały zapisane pomyślnie."
+
+msgid "Your votes could not be saved."
+msgstr "Twoje głosy nie mogły zostać zapisane."
+
+msgid "This is event is already scheduled. You cannot vote for it any more."
+msgstr "To wydarzenie już jest zaplanowane. Nie możesz na nie głosować."
+
+msgid "The complete request can only be sent via POST!"
+msgstr "Kompletne żądanie może być wysłane tylko przez POCZTĘ!"
+
+msgid "Event cannot be completed: No date was supplied."
+msgstr "Wydarzenie nie może być ukończone: Nie podano daty."
+
+msgid "The event was created successfully at the specified date."
+msgstr "Wydarzenie utworzone pomyślnie z określoną datą"
+
+msgid "Upcoming events in"
+msgstr "Nadchodzące wydarzenia"
+
+msgid "Your comment was added successfully."
+msgstr "Twój komentarz został dodany pomyślnie."
+
+msgid "Your comment was deleted successfully."
+msgstr "Twój komentarz został usunięty pomyślnie."
