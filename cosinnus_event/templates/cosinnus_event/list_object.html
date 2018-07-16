@@ -3,7 +3,7 @@
     <div class="btn btn-emphasized w100">
         <ul class="media-list">
             <li class="media">
-                <a class="pull-left square-date-icon" href="#">
+                <a class="pull-left square-date-icon" href="{{ event.get_absolute_url }}">
                   {% if event.state == 2 %}
                     <i class="fa fa-calendar"></i>
                   {% elif event.state == 4 %}
