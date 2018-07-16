@@ -18,8 +18,9 @@
 {% endif %}
 
 
+
 <script type="text/javascript">
-    var cosinnus_calendarWidgetEvents = [
+    var cosinnus_calendarEvents = [
         {% for event in all_upcoming_events %}
             {% if event.from_date %}
             {
@@ -38,3 +39,4 @@
 
     $.cosinnus.fullcalendar();
 </script>
+

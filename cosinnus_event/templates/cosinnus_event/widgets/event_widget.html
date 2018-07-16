@@ -13,7 +13,10 @@
 
 {% block override_widget_content %}
     <div class="content-box">
-        <div class="small-calendar w100 regular-space"></div>
+        <div class="big-calendar calendar-dashboard w100 regular-space"></div>
+        
+		{% include 'cosinnus_event/common/confirm_event_modal.html' with group=group %}
+		        
     </div><!-- content-box -->
     
     {{ block.super }}
