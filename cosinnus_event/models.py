@@ -161,7 +161,7 @@ class Event(BaseTaggableObjectModel):
             cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
             
         # create a "going" attendance for the event's creator
-        if created and self.state == Event.STATE_SCHEDULED:
+        if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == Event.STATE_SCHEDULED:
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
         self.__state = self.state
