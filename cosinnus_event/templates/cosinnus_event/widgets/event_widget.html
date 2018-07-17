@@ -13,10 +13,12 @@
 
 {% block override_widget_content %}
     <div class="content-box">
-        <div class="big-calendar calendar-dashboard w100 regular-space"></div>
-        
-		{% include 'cosinnus_event/common/confirm_event_modal.html' with group=group %}
-		        
+        {% if group %}
+            <div class="big-calendar calendar-dashboard w100 regular-space"></div>
+		    {% include 'cosinnus_event/common/confirm_event_modal.html' with group=group %}
+		{% else %}
+            <div class="small-calendar w100 regular-space"></div>
+		{% endif %}
     </div><!-- content-box -->
     
     {{ block.super }}
@@ -24,16 +26,18 @@
             
 
 {% block widget_button %}
-    <button type="button" class="btn btn-emphasized" href="{% group_url 'cosinnus:event:list' group=group %}">
-        <ul class="media-list">
-            <li class="media">
-                <a class="pull-right btn-extra-emphasized" href="#">
-                    <i class="fa fa-calendar"></i>
-                </a>
-                <div class="media-body">
-                    {% if link_label %}{{ link_label }}{% else %}{% trans "Show all" %}...{% endif %}
-                </div>
-            </li>
-        </ul>
-    </button><!-- btn -->
+    {% if group %}
+	    <button type="button" class="btn btn-emphasized" href="{% group_url 'cosinnus:event:list' group=group %}">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-right btn-extra-emphasized" href="#">
+	                    <i class="fa fa-calendar"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% if link_label %}{{ link_label }}{% else %}{% trans "Show all" %}...{% endif %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button><!-- btn -->
+    {% endif %}
 {% endblock widget_button %}
