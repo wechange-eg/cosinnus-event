@@ -22,7 +22,16 @@
                 </a>
                 <div class="media-body">
                     {% with creator=event.creator %}
-                        <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
+                        <span class="annotation">{% trans "by" %} 
+                            <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a>
+                            {% if event.created %}
+                                &nbsp;&nbsp;
+                                <span title="{% trans "Created" %}">
+                                    <i class="fa fa-pencil"></i>
+                                    <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
+                                </span>
+                            {% endif %}
+                        </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
