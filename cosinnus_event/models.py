@@ -182,7 +182,9 @@ class Event(BaseTaggableObjectModel):
             Overwritten from BaseTaggableObjectModel:
             The main property on which this object model is sorted. """
         if self.state == self.STATE_SCHEDULED and self.from_date:
-            return self.from_date
+            # this makes it so events are ordered in the default ("soonest first") order
+            # return self.from_date # this makes it so events are ordered latest to soonest
+            return now() 
         return super(Event, self).sort_key
             
 
