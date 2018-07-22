@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 14:35+0200\n"
+"POT-Creation-Date: 2018-07-22 13:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,6 +246,27 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
+msgid "Create Event"
+msgstr ""
+
+msgid "Would you like to create an event"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "until"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
 msgctxt "time"
 msgid "all day"
 msgstr ""
@@ -422,27 +443,6 @@ msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr ""
 
 msgid "Export event feed"
-msgstr ""
-
-msgid "Create Event"
-msgstr ""
-
-msgid "Would you like to create an event"
-msgstr ""
-
-msgid "on"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "until"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "OK"
 msgstr ""
 
 msgid "There are no current or future events."
@@ -688,7 +688,7 @@ msgstr ""
 msgid "No Choice"
 msgstr ""
 
-msgid "More"
+msgid "Show all"
 msgstr ""
 
 msgid "Upcoming events"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 14:35+0200\n"
+"POT-Creation-Date: 2018-07-22 13:18+0200\n"
 "PO-Revision-Date: 2018-06-17 21:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -248,6 +248,27 @@ msgstr "Коментар"
 msgid "Comments"
 msgstr "Коментарі"
 
+msgid "Create Event"
+msgstr "Створити захід"
+
+msgid "Would you like to create an event"
+msgstr "Бажаєте створити захід"
+
+msgid "on"
+msgstr "на"
+
+msgid "from"
+msgstr "з"
+
+msgid "until"
+msgstr "до"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "OK"
+msgstr "Так"
+
 msgctxt "time"
 msgid "all day"
 msgstr "весь день"
@@ -424,27 +445,6 @@ msgstr "Введіть назву нового заходу або вибері�
 
 msgid "Export event feed"
 msgstr "Експортувати вихідний файл заходів"
-
-msgid "Create Event"
-msgstr "Створити захід"
-
-msgid "Would you like to create an event"
-msgstr "Бажаєте створити захід"
-
-msgid "on"
-msgstr "на"
-
-msgid "from"
-msgstr "з"
-
-msgid "until"
-msgstr "до"
-
-msgid "Cancel"
-msgstr "Скасувати"
-
-msgid "OK"
-msgstr "Так"
 
 msgid "There are no current or future events."
 msgstr "Немає поточних або майбутніх заходів."
@@ -790,8 +790,8 @@ msgstr "Ви берете участь?"
 msgid "No Choice"
 msgstr "Немає вибору"
 
-msgid "More"
-msgstr "Більше"
+msgid "Show all"
+msgstr ""
 
 msgid "Upcoming events"
 msgstr "Майбутні заходи"
@@ -878,6 +878,9 @@ msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#~ msgid "More"
+#~ msgstr "Більше"
 
 #~ msgid "Shown in my projects..."
 #~ msgstr ""

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 14:35+0200\n"
-"PO-Revision-Date: 2018-04-09 13:21+0200\n"
+"POT-Creation-Date: 2018-07-22 13:18+0200\n"
+"PO-Revision-Date: 2018-07-22 13:29+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -247,6 +247,27 @@ msgstr "Kommentar"
 msgid "Comments"
 msgstr "Kommentare"
 
+msgid "Create Event"
+msgstr "Veranstaltung anlegen"
+
+msgid "Would you like to create an event"
+msgstr "Möchtest du eine Veranstaltung anlegen"
+
+msgid "on"
+msgstr "am"
+
+msgid "from"
+msgstr "von"
+
+msgid "until"
+msgstr "bis"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "OK"
+msgstr "OK"
+
 msgctxt "time"
 msgid "all day"
 msgstr "ganztägig"
@@ -274,7 +295,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr ""
+msgstr "In einem der eingegebenen Felder trat ein Fehler auf. Bitte korrigiere ihn vor dem Speichern!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Gib einen Titel für den Terminvorschlag an."
@@ -423,27 +444,6 @@ msgstr "Gib den Titel für eine neue Veranstaltung ein oder klicke auf einen Tag
 
 msgid "Export event feed"
 msgstr "Feed für Veranstaltungen"
-
-msgid "Create Event"
-msgstr "Veranstaltung anlegen"
-
-msgid "Would you like to create an event"
-msgstr "Möchtest du eine Veranstaltung anlegen"
-
-msgid "on"
-msgstr "am"
-
-msgid "from"
-msgstr "von"
-
-msgid "until"
-msgstr "bis"
-
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgid "OK"
-msgstr "OK"
 
 msgid "There are no current or future events."
 msgstr "Es sind keine aktuellen oder zukünftigen Veranstaltungen geplant."
@@ -789,8 +789,8 @@ msgstr "Nimmst du teil?"
 msgid "No Choice"
 msgstr "Keine Auswahl"
 
-msgid "More"
-msgstr "Mehr"
+msgid "Show all"
+msgstr "Alle anzeigen"
 
 msgid "Upcoming events"
 msgstr "Aktuelle Veranstaltungen"
@@ -876,6 +876,9 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 
+#~ msgid "More"
+#~ msgstr "Mehr"
+
 #~ msgid "Shown in my projects..."
 #~ msgstr "In Projekten angezeigt..."
 
@@ -942,9 +945,6 @@ msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 
 #~ msgid "Tags"
 #~ msgstr "Schlagwörter"
-
-#~ msgid "Show"
-#~ msgstr "Anzeigen"
 
 #~ msgid "Widget title"
 #~ msgstr "Widget-Titel"

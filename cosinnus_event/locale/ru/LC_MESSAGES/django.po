@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 14:35+0200\n"
+"POT-Creation-Date: 2018-07-22 13:18+0200\n"
 "PO-Revision-Date: 2018-06-17 23:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -249,6 +249,27 @@ msgstr "Комментарий"
 msgid "Comments"
 msgstr "Комментарии"
 
+msgid "Create Event"
+msgstr "Создать событие"
+
+msgid "Would you like to create an event"
+msgstr "Вы хотите создать событие"
+
+msgid "on"
+msgstr "в"
+
+msgid "from"
+msgstr "с"
+
+msgid "until"
+msgstr "по"
+
+msgid "Cancel"
+msgstr "Отменить"
+
+msgid "OK"
+msgstr "ОК"
+
 msgctxt "time"
 msgid "all day"
 msgstr "весь день"
@@ -427,27 +448,6 @@ msgstr "Введите название нового события или вы�
 
 msgid "Export event feed"
 msgstr "Экспортировать ленту новостей события"
-
-msgid "Create Event"
-msgstr "Создать событие"
-
-msgid "Would you like to create an event"
-msgstr "Вы хотите создать событие"
-
-msgid "on"
-msgstr "в"
-
-msgid "from"
-msgstr "с"
-
-msgid "until"
-msgstr "по"
-
-msgid "Cancel"
-msgstr "Отменить"
-
-msgid "OK"
-msgstr "ОК"
 
 msgid "There are no current or future events."
 msgstr "Текущих или предстоящих событий нет."
@@ -798,8 +798,8 @@ msgstr "Вы примете участие?"
 msgid "No Choice"
 msgstr "Нет выбора"
 
-msgid "More"
-msgstr "Больше"
+msgid "Show all"
+msgstr ""
 
 msgid "Upcoming events"
 msgstr "Предстоящие события"
@@ -886,6 +886,9 @@ msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
+
+#~ msgid "More"
+#~ msgstr "Больше"
 
 #~ msgid "Shown in my projects..."
 #~ msgstr ""

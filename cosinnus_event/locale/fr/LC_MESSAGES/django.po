@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-18 12:40+0200\n"
+"POT-Creation-Date: 2018-07-22 13:18+0200\n"
 "PO-Revision-Date: 2018-06-28 17:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -248,6 +248,27 @@ msgstr "Commentaire"
 msgid "Comments"
 msgstr "Commentaires"
 
+msgid "Create Event"
+msgstr "Créer événement"
+
+msgid "Would you like to create an event"
+msgstr "Souhaites-tu créer un événement"
+
+msgid "on"
+msgstr "le"
+
+msgid "from"
+msgstr "de"
+
+msgid "until"
+msgstr "jusqu'à"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "OK"
+msgstr "D'accord"
+
 msgctxt "time"
 msgid "all day"
 msgstr "toute la journée"
@@ -424,27 +445,6 @@ msgstr "Saisir le titre pour un nouvel événement ou sélectionne un jour dans 
 
 msgid "Export event feed"
 msgstr "Exporter le fil de l'événement"
-
-msgid "Create Event"
-msgstr "Créer événement"
-
-msgid "Would you like to create an event"
-msgstr "Souhaites-tu créer un événement"
-
-msgid "on"
-msgstr "le"
-
-msgid "from"
-msgstr "de"
-
-msgid "until"
-msgstr "jusqu'à"
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "OK"
-msgstr "D'accord"
 
 msgid "There are no current or future events."
 msgstr "Il n'y a ni événements actuels ni événements futurs."
@@ -789,8 +789,8 @@ msgstr "Y vas-tu ?"
 msgid "No Choice"
 msgstr "Aucun choix"
 
-msgid "More"
-msgstr "Plus"
+msgid "Show all"
+msgstr ""
 
 msgid "Upcoming events"
 msgstr "Evénements à venir"
@@ -875,6 +875,9 @@ msgstr "Ton commentaire a été ajouté."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ton commentaire a été supprimé."
+
+#~ msgid "More"
+#~ msgstr "Plus"
 
 #~ msgid "Shown in my projects..."
 #~ msgstr "Affiché dans mes projets..."
