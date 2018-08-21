@@ -219,16 +219,21 @@ class Event(BaseTaggableObjectModel):
             return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
     
     @classmethod
-    def get_current(self, group, user):
+    def get_current(self, group, user, include_sub_projects=False):
         """ Returns a queryset of the current upcoming events """
-        qs = Event.objects.filter(group=group).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
-        # mix in reflected objects
-        if "%s.%s" % (self._meta.app_label, self._meta.model_name) in settings.COSINNUS_REFLECTABLE_OBJECTS:
-            mixin = MixReflectedObjectsMixin()
-            qs = mixin.mix_queryset(qs, self._meta.model, group)
-        if user:
-            qs = filter_tagged_object_queryset_for_user(qs, user)
-        return upcoming_event_filter(qs)
+        groups = [group]
+        if include_sub_projects:
+            groups = groups + list(group.get_children())
+        
+        qs = Event.objects.filter(group__in=groups).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
+        for onegroup in groups:
+            # mix in reflected objects
+            if "%s.%s" % (self._meta.app_label, self._meta.model_name) in settings.COSINNUS_REFLECTABLE_OBJECTS:
+                mixin = MixReflectedObjectsMixin()
+                qs = mixin.mix_queryset(qs, self._meta.model, onegroup)
+            if user:
+                qs = filter_tagged_object_queryset_for_user(qs, user)
+        return upcoming_event_filter(qs).distinct()
     
     @classmethod
     def get_current_for_portal(self):

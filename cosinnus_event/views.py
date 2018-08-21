@@ -628,8 +628,10 @@ class BaseEventFeed(ICalFeed):
         self.request = request
         return super(BaseEventFeed, self).get_feed(obj, request)
     
-    def items(self, request):        
-        qs = Event.get_current(self.group, self.user)
+    def items(self, request):
+        # check if we should expand the group to sub
+        include_sub_projects = self.request.GET.get('include_sub_projects', None) == '1'
+        qs = Event.get_current(self.group, self.user, include_sub_projects=include_sub_projects)
         qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
         return qs
     
