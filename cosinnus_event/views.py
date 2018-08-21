@@ -6,7 +6,7 @@ from collections import defaultdict
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic.base import RedirectView
+from django.views.generic.base import RedirectView, View
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic.list import ListView
@@ -615,7 +615,7 @@ class BaseEventFeed(ICalFeed):
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
         if not self.product_id:
-            self.product_id = EventFeed.PROTO_PRODUCT_ID % site.domain
+            self.product_id = BaseEventFeed.PROTO_PRODUCT_ID % site.domain
         offset = request.GET.get('utc_offset', None)
         if offset and is_number(offset):
             self.utc_offset = int(offset)
@@ -628,7 +628,7 @@ class BaseEventFeed(ICalFeed):
         self.request = request
         return super(BaseEventFeed, self).get_feed(obj, request)
     
-    def items(self, request):
+    def items(self, request):        
         qs = Event.get_current(self.group, self.user)
         qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
         return qs
@@ -678,7 +678,19 @@ class BaseEventFeed(ICalFeed):
         return None
 
 
-class EventFeed(BaseEventFeed):
+class BaseGroupEventFeed(BaseEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
+    
+    def __call__(self, request, *args, **kwargs):
+        site = get_current_site(request)
+        self.title = '%s - %s' %  (self.group.name, self.title)
+        self.description = '%s %s' % (self.description, self.group.name)
+        if not self.product_id:
+            self.product_id = UserTokenGroupEventFeed.PROTO_PRODUCT_ID % site.domain
+        return super(BaseGroupEventFeed, self).__call__(request, *args, **kwargs)
+    
+
+class UserTokenGroupEventFeed(BaseGroupEventFeed):
     """ A group-based event feed. Uses a permanent user token for authentication
         (the token is only used for views displaying the user's event-feeds). """
     
@@ -687,14 +699,34 @@ class EventFeed(BaseEventFeed):
     
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
-        site = get_current_site(request)
-        self.title = '%s - %s' %  (self.group.name, self.title)
-        self.description = '%s %s' % (self.description, self.group.name)
-        if not self.product_id:
-            self.product_id = EventFeed.PROTO_PRODUCT_ID % site.domain
-        return super(EventFeed, self).__call__(request, *args, **kwargs)
+        return super(UserTokenGroupEventFeed, self).__call__(request, *args, **kwargs)
     
-event_ical_feed = EventFeed()
+user_token_group_event_feed = UserTokenGroupEventFeed()
+
+
+class PublicGroupEventFeed(BaseGroupEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
+    
+    def __call__(self, request, *args, **kwargs):
+        self.group = get_group_for_request(kwargs.get('group'), request)
+        self.user = AnonymousUser()
+        return super(PublicGroupEventFeed, self).__call__(request, *args, **kwargs)
+    
+public_group_event_feed = PublicGroupEventFeed()
+
+
+class GroupEventFeed(BaseEventFeed):
+    """ This view is in place as first starting point for the Feeds, deciding whether it should
+        show a token based or a public feed for this group. """
+    
+    def __call__(self, request, *args, **kwargs):
+        if 'user' in request.GET and 'token' in request.GET:
+            return user_token_group_event_feed(request, *args, **kwargs)
+        else:
+            return public_group_event_feed(request, *args, **kwargs)
+
+event_ical_feed = GroupEventFeed()
+
 
 
 class GlobalFeed(BaseEventFeed):
