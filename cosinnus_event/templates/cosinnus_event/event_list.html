@@ -22,25 +22,33 @@
     
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
-	    {% if user.is_authenticated %}
-		    {% captureas content %}
-		        <div type="button" class="btn btn-default w100 regular-space">
-		            <ul class="media-list">
-		                <li class="media">
+	    {% captureas feed_url %}{{ COSINNUS_BASE_URL|slice:":-1" }}{% group_url 'cosinnus:event:feed' group=group %}{% if user.is_authenticated %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}{% endif %}{% endcaptureas %}
+        {% captureas feed_url_group %}{{ feed_url }}{% if user.is_authenticated %}&{% else %}?{% endif %}include_sub_projects=1{% endcaptureas %}
+        
+	    {% captureas content %}
+	        <div type="button" class="btn btn-default w100 regular-space">
+	            <ul class="media-list">
+	                <li class="media">
+	                    <div class="media-body">
+				            <span>{% trans "Copy this iCal-link into your calendar application to import current events:" %}</span>
+				        </div>
+	                    <div class="media-body media-body-form-control">
+	                        <input id="feedInputBox" class="form-control" onclick="this.focus();this.select()" readonly="readonly" 
+	                           value="{{ feed_url }}" data-feed-url="{{ feed_url }}" {% if group.type == 1 %}data-feed-url-group="{{ feed_url_group }}"{% endif %}>
+	                    </div>
+	                    {% if group.type == 1 %}
 		                    <div class="media-body">
-					            <span>{% trans "Copy this iCal-link into your calendar application to import current events:" %}</span>
-					        </div>
-		                    <div class="media-body media-body-form-control">
-		                        <input class="form-control" onclick="this.focus();this.select()" readonly="readonly" value="{{ COSINNUS_BASE_URL|slice:":-1" }}{% group_url 'cosinnus:event:feed' group=group %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}">
-		                    </div>
-		                </li>
-		            </ul>
-		        </div>
-		        <div class="clearfix large-space"></div>
-		    {% endcaptureas %}
-		    {% captureas title %}{% trans "iCal Feed" %}{% endcaptureas %}
-		    {% include "cosinnus/modal_box.html" with id="feedModal" label=content title=title title_icon="fa-calendar" %}
-	    {% endif %}
+		                        <input type="checkbox" id="check-group-feed" onclick="$('#feedInputBox').val($('#feedInputBox').data(this.checked ? 'feed-url-group' : 'feed-url'));">
+	                            <label for="check-group-feed">{% trans "Also include all events from projects within this group in feed" %}</label>
+	                        </div>
+                        {% endif %}
+	                </li>
+	            </ul>
+	        </div>
+	        <div class="clearfix large-space"></div>
+	    {% endcaptureas %}
+	    {% captureas title %}{% trans "iCal Feed" %}{% endcaptureas %}
+	    {% include "cosinnus/modal_box.html" with id="feedModal" label=content title=title title_icon="fa-calendar" %}
 	    
         <div class="big-calendar large-space"></div>
         
