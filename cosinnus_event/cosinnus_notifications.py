@@ -46,6 +46,7 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/event_created_subject.txt',
         'signals': [event_created],
         'default': True,
+        'moderatable_content': True,
         
         'is_html': True,
         'snippet_type': 'event',
@@ -66,6 +67,7 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/doodle_created_subject.txt',
         'signals': [doodle_created],
         'default': True,
+        'moderatable_content': True,
         
         'is_html': True,
         'snippet_type': 'event',
@@ -85,6 +87,7 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/event_comment_posted_subject.txt',
         'signals': [event_comment_posted],
         'default': True,
+        'moderatable_content': True,
         
         'is_html': True,
         'snippet_type': 'event',
