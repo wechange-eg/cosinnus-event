@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-22 13:18+0200\n"
+"POT-Creation-Date: 2018-09-18 22:50+0200\n"
 "PO-Revision-Date: 2018-07-22 13:29+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
@@ -435,6 +435,9 @@ msgstr "Calendar"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "Dieser iCal-Link kann für Terminkalender genutzt werden um aktuelle Veranstaltungen zu importieren und anzuzeigen:"
+
+msgid "Also include all events from projects within this group in feed"
+msgstr ""
 
 msgid "iCal Feed"
 msgstr "iCal Feed"
