@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from builtins import str
 from collections import defaultdict
 
 from django.contrib import messages
@@ -235,7 +236,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         for inline in inlines:
             data = inline.data
             data._mutable = True
-            for key, val in data.items():
+            for key, val in list(data.items()):
                 if key.startswith('suggestions-') and key.endswith('_date'):
                     try:
                         data[key] = datefield.to_python(val)
@@ -432,7 +433,7 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         vote_counts_grouped = []
         suggestions_list_grouped = []
         votes_user_grouped = defaultdict(list) # these are grouped by user, and sorted by suggestion, not day!
-        for day, suggestions in sorted(self.suggestions_grouped.items(), key=lambda item: item[1][0].from_date):
+        for day, suggestions in sorted(list(self.suggestions_grouped.items()), key=lambda item: item[1][0].from_date):
             formset_forms_grouped_l = []
             vote_counts_grouped_l = []
             suggestions_list_grouped_l = []
@@ -884,7 +885,7 @@ def assign_attendance_view(request, group, slug):
         target_state = int(target_state)
     except:
         pass
-    if target_state != -1 and target_state not in dict(EventAttendance.ATTENDANCE_STATES).keys():
+    if target_state != -1 and target_state not in list(dict(EventAttendance.ATTENDANCE_STATES).keys()):
         target_state = None
     
     if target_state is None:
@@ -930,7 +931,7 @@ def assign_attendance_view(request, group, slug):
         # update search index for the event to reindex it
         event.update_index()
             
-    except Exception, e:
+    except Exception as e:
         logger.error('Exception while assigning attendance for an event!', 
              extra={'user': user, 'request': request, 'path': request.path, 'group_slug': group, 'event_slug': slug, 'exception': str(e)})
     

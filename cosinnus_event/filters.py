@@ -3,6 +3,7 @@ Created on 05.08.2014
 
 @author: Sascha
 '''
+from builtins import object
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus.views.mixins.filters import CosinnusFilterSet
@@ -13,7 +14,7 @@ from cosinnus_event.models import Event
 class EventFilter(CosinnusFilterSet):
     creator = AllObjectsFilter(label=_('Created By'), widget=SelectCreatorWidget)
     
-    class Meta:
+    class Meta(object):
         model = Event
         fields = ['creator']
         order_by = (

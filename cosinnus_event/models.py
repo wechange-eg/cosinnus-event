@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from builtins import object
 from os.path import join
 import datetime
 
@@ -285,7 +286,7 @@ class Suggestion(models.Model):
     count = models.PositiveIntegerField(
         pgettext_lazy('the subject', 'Votes'), default=0, editable=False)
 
-    class Meta:
+    class Meta(object):
         ordering = ['event', '-count']
         unique_together = ('event', 'from_date', 'to_date')
         verbose_name = _('Suggestion')
@@ -352,7 +353,7 @@ class Vote(models.Model):
         default=VOTE_NO, choices=VOTE_CHOICES)
     
 
-    class Meta:
+    class Meta(object):
         unique_together = ('suggestion', 'voter')
         verbose_name = pgettext_lazy('the subject', 'Vote')
         verbose_name_plural = pgettext_lazy('the subject', 'Votes')
@@ -392,7 +393,7 @@ class EventAttendance(models.Model):
         db_index=True, default=ATTENDANCE_NOT_GOING)
     date = models.DateTimeField(auto_now_add=True, editable=False)
     
-    class Meta:
+    class Meta(object):
         unique_together = ('event', 'user', )
         
     def __str__(self):
@@ -411,7 +412,7 @@ class Comment(models.Model):
     event = models.ForeignKey(Event, related_name='comments')
     text = models.TextField(_('Text'))
 
-    class Meta:
+    class Meta(object):
         ordering = ['created_on']
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from builtins import object
 from django import forms
 from django.forms.widgets import HiddenInput, RadioSelect,\
     SplitHiddenDateTimeWidget
@@ -21,7 +22,7 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
     
     url = forms.URLField(widget=forms.TextInput, required=False)
 
-    class Meta:
+    class Meta(object):
         model = Event
         fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'street',
                   'zipcode', 'city', 'public', 'image', 'url')
@@ -52,7 +53,7 @@ EventForm = get_form(_EventForm)
 
 class SuggestionForm(forms.ModelForm):
 
-    class Meta:
+    class Meta(object):
         model = Suggestion
         fields = ('from_date', 'to_date',)
 
@@ -70,14 +71,14 @@ class VoteForm(forms.Form):
     
 class EventNoFieldForm(forms.ModelForm):
 
-    class Meta:
+    class Meta(object):
         model = Event
         fields = ()
         
         
 class CommentForm(forms.ModelForm):
 
-    class Meta:
+    class Meta(object):
         model = Comment
         fields = ('text',)
 

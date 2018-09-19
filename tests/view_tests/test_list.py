@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from builtins import str
 from datetime import timedelta
 from django.core.urlresolvers import reverse
 from django.utils.encoding import force_text

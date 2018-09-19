@@ -22,7 +22,7 @@ class SuggestionAdmin(admin.ModelAdmin):
         if obj is None:
             # we create a new suggestion and the user should be able to select
             # an event.
-            return filter(lambda x: x != 'event', self.readonly_fields)
+            return [x for x in self.readonly_fields if x != 'event']
         return super(SuggestionAdmin, self).get_readonly_fields(request, obj)
 
 
