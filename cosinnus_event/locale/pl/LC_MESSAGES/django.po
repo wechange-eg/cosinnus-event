@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-22 13:18+0200\n"
-"PO-Revision-Date: 2018-06-23 16:52+0200\n"
+"POT-Creation-Date: 2018-09-18 22:50+0200\n"
+"PO-Revision-Date: 2018-08-30 16:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: pl\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid "Events"
 msgstr "Wydarzenia"
@@ -26,34 +26,34 @@ msgid "event"
 msgstr "wydarzenie"
 
 msgid "A user created a new event"
-msgstr "Użytkownik stworzył nowe wydarzenie"
+msgstr "Użytkownik utworzył nowe wydarzenie"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr "Nowe wydarzenie stworzone przez %(sender_name)s"
+msgstr "Nowe wydarzenie utworzone przez %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event"
-msgstr "%(sender_name)s stworzył nowe wydarzenie"
+msgstr "%(sender_name)s utworzył nowe wydarzenie"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr "Nowe wydarzenie: \"%(object_name)s\" zostało ogłoszone w %(team_name)s."
 
 msgid "A user created a new event poll"
-msgstr "Użytkownik stworzył nową ankietę wydarzenia"
+msgstr "Użytkownik utworzył nową ankietę wydarzenia"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
-msgstr "Nowa ankieta wydarzenia stworzona przez %(sender_name)s"
+msgstr "Nowa ankieta wydarzenia utworzona przez %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
-msgstr "%(sender_name)s stworzył nową ankietę wydarzenia"
+msgstr "%(sender_name)s utworzył nową ankietę wydarzenia"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
-msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została stworzona w %(team_name)s."
+msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została utworzona w %(team_name)s."
 
 msgid "A user commented on one of your events"
 msgstr "Użytkownik skomentował jedno z Twoich wydarzeń"
@@ -71,15 +71,15 @@ msgid "%(sender_name)s"
 msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
-msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony"
+msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony/a"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
-msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony/a"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
-msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony w zespole %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony/a w zespole %(team_name)s"
 
 msgid "A user commented on an event you voted in"
 msgstr "Użytkownik skomentował wydarzenie, w którym zagłosowałeś/aś"
@@ -90,7 +90,7 @@ msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s"
 
 msgid "A user commented on an event you are attending"
 msgstr "Użytkownik skomentował wydarzenie, w którym uczestniczysz"
@@ -101,22 +101,22 @@ msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
-msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz w zespole %(team_name)s."
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz w zespole %(team_name)s"
 
 msgid "Upcoming Events"
-msgstr "Nadchodzące wydarzenia"
+msgstr "Nadchodzące Wydarzenia"
 
 msgid "No upcoming events"
 msgstr "Brak nadchodzących wydarzeń"
 
 msgid "Created By"
-msgstr "Stworzone przez"
+msgstr "Utworzone przez"
 
 msgid "Soonest Upcoming"
-msgstr "Najbliższe wydarzenia"
+msgstr "Najbliższe Wydarzenia"
 
 msgid "Newest Created"
-msgstr "Najnowsze stworzone"
+msgstr "Najnowsze Utworzone"
 
 msgid "Title"
 msgstr "Tytuł"
@@ -143,7 +143,7 @@ msgid "State"
 msgstr "Stan"
 
 msgid "Note"
-msgstr "Uwaga"
+msgstr "Uwagi"
 
 msgid "Event date"
 msgstr "Data wydarzenia"
@@ -176,7 +176,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Original Event Poll"
-msgstr "Oryginalna ankieta wydarzenia"
+msgstr "Oryginalna Ankieta Wydarzenia"
 
 msgid "Event"
 msgstr "Wydarzenie"
@@ -195,7 +195,7 @@ msgstr "%(event)s (anulowane)"
 
 #, python-format
 msgid "%(event)s (pending)"
-msgstr "%(event)s (trwające)"
+msgstr "%(event)s (oczekujące)"
 
 #, python-format
 msgid "%(event)s (archived)"
@@ -234,10 +234,10 @@ msgid "Creator"
 msgstr "Twórca"
 
 msgid "Created"
-msgstr "Stworzył/a"
+msgstr "Utworzył/a"
 
 msgid "Last modified"
-msgstr "Data ost. mod."
+msgstr "Data ostatniej modyfikacji"
 
 msgid "Text"
 msgstr "Treść"
@@ -249,7 +249,7 @@ msgid "Comments"
 msgstr "Komentarze"
 
 msgid "Create Event"
-msgstr "Stwórz Wydarzenie"
+msgstr "Utwórz Wydarzenie"
 
 msgid "Would you like to create an event"
 msgstr "Czy chcesz utworzyć wydarzenie"
@@ -277,6 +277,7 @@ msgctxt "time"
 msgid "at"
 msgstr "o"
 
+# Leave this field empty
 msgctxt "time"
 msgid "o'clock"
 msgstr ""
@@ -311,7 +312,7 @@ msgid "You can select the same day more than once."
 msgstr "Możesz wybrać ten sam dzień więcej niż raz."
 
 msgid "Time: e.g. 10 or 10:30."
-msgstr "Czas: np. 10 lub 10:30"
+msgstr "Czas: np. 10 lub 10:30."
 
 msgid "Time"
 msgstr "Czas"
@@ -320,22 +321,22 @@ msgid "Note: You cannot edit the dates for this event poll because someone has a
 msgstr "Uwaga: nie możesz edytować dat tej ankiety w wydarzeniu, ponieważ ktoś już zagłosował!"
 
 msgid "Description and Infos"
-msgstr "Opisy i informacje"
+msgstr "Opisy i Informacje"
 
 msgid "Description"
 msgstr "Opis"
 
 msgid "Enter a description for the event"
-msgstr "Wpisz opis wydarzenia"
+msgstr "Wprowadź opis wydarzenia"
 
 msgid "Example: http://mywebsite.com"
 msgstr "Przykład: http://mywebsite.com"
 
 msgid "External Link for the event"
-msgstr "Zewnętrzny link do wydarzenia"
+msgstr "Zewnętrzny Link do wydarzenia"
 
 msgid "Create"
-msgstr "Stwórz"
+msgstr "Utwórz"
 
 msgid "Save"
 msgstr "Zapisz"
@@ -376,7 +377,7 @@ msgid "Nobody has voted for this event poll yet."
 msgstr "Nikt jeszcze nie zagłosował w tej ankiecie wydarzenia."
 
 msgid "Create an event from one of the suggestions"
-msgstr "Stwórz wydarzenie z jednej z sugestii"
+msgstr "Utwórz wydarzenie z jednej z sugestii"
 
 #, python-format
 msgid "Set the date to %(suggestion)s."
@@ -437,6 +438,9 @@ msgstr "Kalendarz"
 msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "Skopiuj ten link iCal do aplikacji kalendarza w celu zaimportowania aktywnych wydarzeń:"
 
+msgid "Also include all events from projects within this group in feed"
+msgstr ""
+
 msgid "iCal Feed"
 msgstr "Kanał iCal"
 
@@ -459,10 +463,10 @@ msgid "Back to Events"
 msgstr "Powrót do Wydarzeń"
 
 msgid "Return to Event Polls"
-msgstr "Powrót do ankiet w wydarzeniach"
+msgstr "Powrót do Ankiet w Wydarzeniach"
 
 msgid "Return to Archived Event Polls"
-msgstr "Powrót do zarchiwizowanych Wydarzeń Ankiet"
+msgstr "Powrót do Zarchiwizowanych Wydarzeń Ankiet"
 
 msgid "Calendar"
 msgstr "Kalendarz"
@@ -471,13 +475,13 @@ msgid "List"
 msgstr "Lista"
 
 msgid "Event Polls"
-msgstr "Ankiety w wydarzeniach"
+msgstr "Ankiety w Wydarzeniach"
 
 msgid "by"
 msgstr "autor"
 
 msgid "Created Event"
-msgstr "Stworzone wydarzenie"
+msgstr "Utworzone Wydarzenie"
 
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
@@ -509,7 +513,7 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
-"Cześć, %(receiver_name)s!\n"
+"Cześć %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s dodał/a komentarz do wydarzenia, w którym bierzesz udział w zespole %(team_name)s:\n"
 "\n"
@@ -518,7 +522,7 @@ msgstr ""
 "\n"
 "w wydarzeniu:\n"
 "\n"
-"\\’’%(event_title)s\\’’\n"
+"\"%(event_title)s\"\n"
 "\n"
 "\n"
 "Kliknij tutaj, aby zobaczyć komentarz:\n"
@@ -550,10 +554,10 @@ msgid ""
 msgstr ""
 "Cześć %(receiver_name)s,\n"
 "\n"
-"nowe wydarzenie \\’’%(object_name)s\\’’ w zespole %(team_name)s zostało utworzone przez %(sender_name)s.\n"
+"nowe wydarzenie \"%(object_name)s\" w zespole %(team_name)s zostało utworzone przez %(sender_name)s.\n"
 "\n"
-"Dostępne jest pod następującym adresem:\n"
-"%(object_url)s\n"
+"Dostępne jest pod następującym adresem: %(object_url)s\n"
+"\n"
 "\n"
 "\n"
 "(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
@@ -583,16 +587,16 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
-"Cześć, %(receiver_name)s!\n"
+"Cześć %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s dodał/a komentarz do wydarzenia, które utworzyłeś/aś w zespole %(team_name)s:\n"
 "\n"
-"\\’’%(comment_text)s\\’’\n"
+"\"%(comment_text)s\"\n"
 "\n"
 "\n"
 "w wydarzeniu:\n"
 "\n"
-"\\’’%(event_title)s\\’’\n"
+"\"%(event_title)s\"\n"
 "\n"
 "\n"
 "Kliknij tutaj, aby zobaczyć komentarz:\n"
@@ -624,10 +628,10 @@ msgid ""
 msgstr ""
 "Cześć %(receiver_name)s,\n"
 "\n"
-"nowe wydarzenie \\’’%(object_name)s\\’’ w dniu %(event_date)s zostało ogłoszone in \"%(team_name)s\" przez %(sender_name)s.\n"
+"nowe wydarzenie \"%(object_name)s\" w dniu %(event_date)s zostało ogłoszone w zespole \"%(team_name)s\" przez %(sender_name)s.\n"
 "\n"
-"Dostępne jest pod następującym adresem:\n"
-"%(object_url)s\n"
+"Dostępne jest pod następującym adresem: %(object_url)s\n"
+"\n"
 "\n"
 "\n"
 "(Kliknij tutaj, aby edytować swoje ustawienia powiadomień: %(notification_settings_url)s )\n"
@@ -657,16 +661,16 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
-"Cześć, %(receiver_name)s!\n"
+"Cześć %(receiver_name)s!\n"
 "\n"
 "%(sender_name)s dodał/a komentarz do wydarzenia, w którym zostałeś/aś oznaczone/a w zespole %(team_name)s:\n"
 "\n"
-"\\’’%(comment_text)s\\’’\n"
+"\"%(comment_text)s\"\n"
 "\n"
 "\n"
 "w wydarzeniu:\n"
 "\n"
-"\\’’%(event_title)s\\’’\n"
+"\"%(event_title)s\"\n"
 "\n"
 "\n"
 "Kliknij tutaj, aby zobaczyć komentarz:\n"
@@ -709,15 +713,15 @@ msgstr ""
 "\n"
 "%(sender_name)s dodał/a komentarz do ankiety w wydarzeniu, w którym zagłosowałeś w zespole %(team_name)s:\n"
 "\n"
-"\\’’%(comment_text)s\\’’\n"
+"\"%(comment_text)s\"\n"
 "\n"
 "\n"
-"w wydarzeniu:\n"
+"w ankiecie w wydarzeniu:\n"
 "\n"
-"\\’’%(event_title)s\\’’\n"
+"\"%(event_title)s\"\n"
 "\n"
 "\n"
-"Kliknij tutaj, aby zobaczyć komentarz:\n"
+"Kliknij tutaj, aby zobaczyć komentarz: \n"
 "%(object_url)s\n"
 "\n"
 "\n"
@@ -731,7 +735,7 @@ msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s.
 msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
 
 msgid "Delete Event"
-msgstr "Usuń wydarzenie"
+msgstr "Usuń Wydarzenie"
 
 msgid "(Canceled!)"
 msgstr "(Anulowane!)"
@@ -743,7 +747,7 @@ msgid "The event that was created after the poll can be viewed here:"
 msgstr "Wydarzenie utworzone po ankiecie można zobaczyć tu:"
 
 msgid "(No description set)"
-msgstr "(Nie ma opisu)"
+msgstr "(Brak opisu)"
 
 msgctxt "someone else is going"
 msgid "Going"
@@ -761,22 +765,22 @@ msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
 msgstr[0] "Wezmę udział"
-msgstr[1] "Wezmę udział"
-msgstr[2] ""
+msgstr[1] "Wezmą udział"
+msgstr[2] "Weźmie udział"
 
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
 msgstr[0] "Może wezmę udział"
-msgstr[1] "Może wezmę udział"
-msgstr[2] ""
+msgstr[1] "Może wezmą udział"
+msgstr[2] "Może weźmie udział"
 
 msgctxt "one or many people are not going"
 msgid "Can't go"
 msgid_plural "Can't go"
 msgstr[0] "Nie mogę wziąć udziału"
-msgstr[1] "Nie mogę wziąć udziału"
-msgstr[2] ""
+msgstr[1] "Nie mogą wziąć udziału"
+msgstr[2] "Nie może wziąć udziału"
 
 msgid "Going"
 msgstr "Wezmę udział"
@@ -791,17 +795,17 @@ msgid "Are you going?"
 msgstr "Weźmiesz udział?"
 
 msgid "No Choice"
-msgstr "Brak wyboru"
+msgstr "Brak Wyboru"
 
 msgid "Show all"
-msgstr ""
+msgstr "Pokaż wszystko"
 
 msgid "Upcoming events"
 msgstr "Nadchodzące wydarzenia"
 
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
-msgstr "Wydarzenie \"%(title)s\" edytowane pomyślnie."
+msgstr "Wydarzenie \"%(title)s\" edytowano pomyślnie."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
@@ -815,7 +819,7 @@ msgstr "Nie można zrozumieć jednej z sugerowanych dat wydarzenia!"
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
-msgstr "Niezaplanowane wydarzenie \"%(title)s\" edytowane pomyślnie."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" edytowano pomyślnie."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
@@ -823,7 +827,7 @@ msgstr "Niezaplanowanie wydarzenie \"%(title)s\" nie mogło zostać edytowane."
 
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
-msgstr "Wydarzenie \"%(title)s\" dodane pomyślnie."
+msgstr "Wydarzenie \"%(title)s\" dodano pomyślnie."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
@@ -831,7 +835,7 @@ msgstr "Wydarzenie \"%(title)s\" nie mogło zostać dodane."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
-msgstr "Niezaplanowane wydarzenie \"%(title)s\" dodane pomyślnie."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" dodano pomyślnie."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
@@ -842,7 +846,7 @@ msgstr "Zdefiniuj przynajmniej jedną sugestię daty."
 
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
-msgstr "Wydarzenie \"%(title)s\" usunięte pomyślnie."
+msgstr "Wydarzenie \"%(title)s\" usunięto pomyślnie."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
@@ -850,7 +854,7 @@ msgstr "Wydarzenie \"%(title)s\" nie mogło zostać usunięte."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
-msgstr "Niezaplanowane wydarzenie \"%(title)s\" usunięte pomyślnie."
+msgstr "Niezaplanowane wydarzenie \"%(title)s\" usunięto pomyślnie."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
@@ -869,10 +873,10 @@ msgid "The complete request can only be sent via POST!"
 msgstr "Kompletne żądanie może być wysłane tylko przez POCZTĘ!"
 
 msgid "Event cannot be completed: No date was supplied."
-msgstr "Wydarzenie nie może być ukończone: Nie podano daty."
+msgstr "Wydarzenie nie może zostać ukończone: Nie podano daty."
 
 msgid "The event was created successfully at the specified date."
-msgstr "Wydarzenie utworzone pomyślnie z określoną datą"
+msgstr "Wydarzenie utworzono pomyślnie z określoną datą."
 
 msgid "Your comment was added successfully."
 msgstr "Twój komentarz został dodany pomyślnie."
