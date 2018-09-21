@@ -497,7 +497,15 @@ def past_event_filter(queryset):
     return queryset.filter(get_past_event_filter_expression())
 
 
-import django
-if django.VERSION[:2] < (1, 7):
-    from cosinnus_event import cosinnus_app
-    cosinnus_app.register()
+def annotate_attendants_count(qs):
+    """ Utility function to annotate the number of GOING attendants for 
+        an Event QS. """
+    return qs.annotate(
+            attendants_count=models.Count(
+                models.Case(
+                    models.When(attendances__state=EventAttendance.ATTENDANCE_GOING, then=1),
+                        default=0, output_field=models.IntegerField()
+                )
+            )
+        )
+    
