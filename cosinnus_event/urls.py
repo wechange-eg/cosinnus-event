@@ -8,7 +8,6 @@ cosinnus_group_patterns = patterns('cosinnus_event.views',
     url(r'^$', 'index_view', name='index'),
     url(r'^calendar/$', 'list_view', name='list'),
     url(r'^calendar/(?P<tag>[^/]+)/$', 'list_view', name='list-filtered'),
-    url(r'^export/$', 'export_view', name='export'),
     url(r'^feed/$', 'event_ical_feed', name='feed'),                  
 
     url(r'^doodle/list/$', 'doodle_list_view',  name='doodle-list'),

@@ -19,7 +19,6 @@ from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
 
 from django_ical.views import ICalFeed
 
-from cosinnus.views.export import CSVExportView
 from cosinnus.views.mixins.group import (RequireReadMixin, RequireWriteMixin,
     GroupFormKwargsMixin, FilterGroupMixin)
 from cosinnus.views.mixins.user import UserFormKwargsMixin
@@ -742,28 +741,6 @@ class GlobalFeed(BaseEventFeed):
         return qs
 
 event_ical_feed_global = GlobalFeed()
-
-
-class EventExportView(CSVExportView):
-    fields = [
-        'from_date',
-        'to_date',
-        'creator',
-        'state',
-        'note',
-        'location',
-        'street',
-        'zipcode',
-        'city',
-        'public',
-        'image',
-        'url',
-    ]
-    model = Event
-    file_prefix = 'cosinnus_event'
-
-export_view = EventExportView.as_view()
-
 
 
 class CommentCreateView(RequireWriteMixin, FilterGroupMixin, CreateView):
