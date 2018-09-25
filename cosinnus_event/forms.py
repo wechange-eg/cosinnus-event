@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from cosinnus.forms.group import GroupKwargModelFormMixin
 from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.user import UserKwargModelFormMixin
-from cosinnus.forms.widgets import DateTimeL10nPicker, SplitHiddenDateWidget
+from cosinnus.forms.widgets import SplitHiddenDateWidget
 
 from cosinnus_event.models import Event, Suggestion, Vote, Comment
 from cosinnus.forms.attached_object import FormAttachableMixin
@@ -21,15 +21,14 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
                  FormAttachableMixin, BaseTaggableObjectForm):
     
     url = forms.URLField(widget=forms.TextInput, required=False)
+    
+    from_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget)
+    to_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget)
 
     class Meta(object):
         model = Event
         fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'street',
                   'zipcode', 'city', 'public', 'image', 'url')
-        widgets = {
-            'from_date': SplitHiddenDateWidget,       
-            'to_date': SplitHiddenDateWidget,
-        }
     
     def clean_to_date(self):
         date = self.cleaned_data['to_date']

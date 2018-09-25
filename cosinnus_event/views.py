@@ -37,7 +37,7 @@ from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.permissions import check_object_read_access,\
     filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request
-from django.contrib.sites.models import get_current_site
+from django.contrib.sites.shortcuts import get_current_site
 from cosinnus.utils.functions import unique_aware_slugify, is_number
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest, JsonResponse
