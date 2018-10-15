@@ -56,6 +56,7 @@ from cosinnus_event.search_indexes import EventIndex
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
+    permanent = False
 
     def get_redirect_url(self, **kwargs):
         return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
@@ -812,6 +813,7 @@ comment_delete = CommentDeleteView.as_view()
 
 class CommentDetailView(SingleObjectMixin, RedirectView):
 
+    permanent = False
     model = Comment
 
     def get(self, request, *args, **kwargs):
