@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-18 22:50+0200\n"
-"PO-Revision-Date: 2018-06-17 21:22+0200\n"
+"PO-Revision-Date: 2018-09-30 18:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -296,7 +296,7 @@ msgid "Edit"
 msgstr "Редагувати"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr ""
+msgstr "Помилка в одному з полів, яке Ви заповнили. Будь ласка, виправте перед збереженням!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Ведіть назву для пропозиції дати."
@@ -438,7 +438,7 @@ msgid "Copy this iCal-link into your calendar application to import current even
 msgstr "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
 
 msgid "Also include all events from projects within this group in feed"
-msgstr ""
+msgstr "Також включати до потоку всі заходи з проектів в цій групі"
 
 msgid "iCal Feed"
 msgstr "файл вихідних даних iCal"
@@ -794,7 +794,7 @@ msgid "No Choice"
 msgstr "Немає вибору"
 
 msgid "Show all"
-msgstr ""
+msgstr "Відобразити все"
 
 msgid "Upcoming events"
 msgstr "Майбутні заходи"
@@ -810,10 +810,8 @@ msgstr "Неможливо редагувати захід «%(title)s»."
 msgid "The page you requested is not available for this event at this time."
 msgstr "Сторінка, яку Ви запитуєте, на даний момент не доступна."
 
-#, fuzzy
-#| msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgid "One of the event suggestions times could not be understood!"
-msgstr "Не можливо видалити пропозицію дати «%(title)s»."
+msgstr "Один з заропонованих для заходу часових інтервалів не може бути розпізнано!"
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
