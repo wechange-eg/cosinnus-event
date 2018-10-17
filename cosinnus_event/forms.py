@@ -22,21 +22,14 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
     
     url = forms.URLField(widget=forms.TextInput, required=False)
     
-    from_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget)
-    to_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget)
+    from_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='00:00'))
+    to_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='23:59'))
 
     class Meta(object):
         model = Event
         fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'street',
                   'zipcode', 'city', 'public', 'image', 'url')
     
-    def clean_to_date(self):
-        date = self.cleaned_data['to_date']
-        # if no end time was set, always set 23:59 for "end of day"
-        if date and not self.data.get('to_date_1', None):
-            date = date.replace(hour=23, minute=59)
-        return date
-
     def __init__(self, *args, **kwargs):
         super(_EventForm, self).__init__(*args, **kwargs)
         instance = kwargs.get('instance')

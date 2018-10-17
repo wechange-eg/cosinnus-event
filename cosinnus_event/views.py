@@ -247,7 +247,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
                             messages.error(self.request, _('One of the event suggestions times could not be understood!'))
         
         try:
-            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines[0].errors), 'form_errors': force_text(form.errors),
+            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines and inlines[0].errors or None), 'form_errors': force_text(form.errors),
                     'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors})
         except:
             logger.error('Errors in doodle formsets! Double error in inlines.', extra={'formsets': force_text(inlines), 'form_errors': force_text(form.errors),

@@ -81,7 +81,7 @@
                         {% endif %}
                     >
                     <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
-                        placeholder="{% trans "Time" %}" type="text" 
+                        placeholder="00:00" type="text" 
                         value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
                     >                                           
                     <div class="small-calendar"></div>
@@ -103,7 +103,7 @@
                         {% endif %}
                     >
                     <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
-                        placeholder="{% trans "Time" %}" type="text" 
+                        placeholder="23:59" type="text" 
                         value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
                     >    
                     <div class="small-calendar"></div>
