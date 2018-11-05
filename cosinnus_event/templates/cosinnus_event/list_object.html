@@ -1,6 +1,7 @@
 {% load i18n cosinnus_tags %}
+{% captureas detail_url %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endcaptureas %}
 <div class="fadedown {% if not forloop.last %}regular-space{% endif %}">
-    <div class="btn btn-emphasized w100">
+    <div class="btn btn-emphasized w100" href="{{ detail_url }}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left square-date-icon" href="{{ event.get_absolute_url }}">
@@ -16,13 +17,9 @@
                 <a class="pull-right fadedown-clickarea" href="#">
                     <i class="fa fa-chevron-down"></i>
                 </a>
-                {% captureas detail_url %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endcaptureas %}
-                <a class="pull-right" href="{{ detail_url }}">
-                    <i class="fa fa-chain"></i>
-                </a>
                 <div class="media-body">
                     {% with creator=event.creator %}
-                        <span class="annotation">{% trans "by" %} 
+                        <span class="annotation mobile-hidden">{% trans "by" %} 
                             <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a>
                             {% if event.created %}
                                 &nbsp;&nbsp;
@@ -99,9 +96,6 @@
     <div class="btn btn-white w100 large-space">
         <ul class="media-list">
             <li class="media">
-                <a class="pull-left" href="#">
-                    <i class="fa fa-chain"></i>
-                </a>
                 <div class="media-body">
                     <a href="{{ event.url }}">{{ event.url }}</a>
                 </div>
