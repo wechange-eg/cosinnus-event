@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='group',
-            field=models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Team', to=settings.COSINNUS_GROUP_OBJECT_MODEL),
+            field=models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Team', to=settings.COSINNUS_GROUP_OBJECT_MODEL, on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='event',

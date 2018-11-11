@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('state', models.PositiveSmallIntegerField(default=0, db_index=True, choices=[(0, 'not going'), (1, 'maybe going'), (2, 'going')])),
                 ('date', models.DateTimeField(auto_now_add=True)),
-                ('event', models.ForeignKey(related_name='attendances', to='cosinnus_event.Event')),
-                ('user', models.ForeignKey(related_name='cosinnus_event_attendances', to=settings.AUTH_USER_MODEL)),
+                ('event', models.ForeignKey(related_name='attendances', to='cosinnus_event.Event', on_delete=models.CASCADE)),
+                ('user', models.ForeignKey(related_name='cosinnus_event_attendances', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
         ),
         migrations.AlterUniqueTogether(

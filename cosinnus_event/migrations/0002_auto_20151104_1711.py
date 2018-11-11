@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='event',
-            field=models.ForeignKey(related_name='comments', to='cosinnus_event.Event'),
+            field=models.ForeignKey(related_name='comments', to='cosinnus_event.Event', on_delete=models.CASCADE),
         ),
         migrations.AlterUniqueTogether(
             name='vote',

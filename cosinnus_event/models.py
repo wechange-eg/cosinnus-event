@@ -409,7 +409,7 @@ class Comment(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Creator'), on_delete=models.PROTECT, related_name='event_comments')
     created_on = models.DateTimeField(_('Created'), default=now, editable=False)
     last_modified = models.DateTimeField(_('Last modified'), auto_now=True, editable=False)
-    event = models.ForeignKey(Event, related_name='comments')
+    event = models.ForeignKey(Event, related_name='comments', on_delete=models.CASCADE)
     text = models.TextField(_('Text'))
 
     class Meta(object):

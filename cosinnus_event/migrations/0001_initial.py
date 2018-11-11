@@ -52,8 +52,8 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(upload_to=cosinnus_event.models.get_event_image_filename, null=True, verbose_name='Image', blank=True)),
                 ('url', models.URLField(null=True, verbose_name='URL', blank=True)),
                 ('attached_objects', models.ManyToManyField(to='cosinnus.AttachedObject', null=True, blank=True)),
-                ('creator', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Creator', to=settings.AUTH_USER_MODEL, null=True)),
-                ('group', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Group', to='cosinnus.CosinnusGroup')),
+                ('creator', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Creator', to=settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)),
+                ('group', models.ForeignKey(related_name='cosinnus_event_event_set', verbose_name='Group', to='cosinnus.CosinnusGroup', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['from_date', 'to_date'],
@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
                 ('from_date', models.DateTimeField(default=None, verbose_name='Start')),
                 ('to_date', models.DateTimeField(default=None, verbose_name='End')),
                 ('count', models.PositiveIntegerField(default=0, verbose_name='Votes', editable=False)),
-                ('event', models.ForeignKey(related_name='suggestions', verbose_name='Event', to='cosinnus_event.Event')),
+                ('event', models.ForeignKey(related_name='suggestions', verbose_name='Event', to='cosinnus_event.Event', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['event', '-count'],
@@ -82,8 +82,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('choice', models.PositiveSmallIntegerField(default=0, verbose_name='Vote', choices=[(2, 'Yes'), (1, 'Maybe'), (0, 'No')])),
-                ('suggestion', models.ForeignKey(related_name='votes', verbose_name='Suggestion', to='cosinnus_event.Suggestion')),
-                ('voter', models.ForeignKey(related_name='votes', verbose_name='Voter', to=settings.AUTH_USER_MODEL)),
+                ('suggestion', models.ForeignKey(related_name='votes', verbose_name='Suggestion', to='cosinnus_event.Suggestion', on_delete=models.CASCADE)),
+                ('voter', models.ForeignKey(related_name='votes', verbose_name='Voter', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'Vote',
