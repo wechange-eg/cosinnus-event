@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 from cosinnus_event import views
 
+app_name = 'event'
+
 cosinnus_group_patterns = [
     url(r'^$', views.index_view, name='index'),
     url(r'^calendar/$', views.list_view, name='list'),
