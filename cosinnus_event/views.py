@@ -380,7 +380,7 @@ class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectM
         event = context['object']
         user = self.request.user
         
-        user_attendance = None if not user.is_authenticated() else get_object_or_None(EventAttendance, user=user, event=event)
+        user_attendance = None if not user.is_authenticated else get_object_or_None(EventAttendance, user=user, event=event)
         all_attendants = EventAttendance.objects.filter(event=event)
         attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
         attendants_maybe = all_attendants.filter(state=EventAttendance.ATTENDANCE_MAYBE_GOING)
@@ -490,7 +490,7 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
         self.initial = []
         for suggestion in self.suggestions:
             vote = None
-            if self.request.user.is_authenticated():
+            if self.request.user.is_authenticated:
                 try:
                     vote = suggestion.votes.filter(voter=self.request.user).get()
                 except Vote.DoesNotExist:
@@ -856,7 +856,7 @@ def assign_attendance_view(request, group, slug):
     if not request.is_ajax():
         return HttpResponseBadRequest("This can only be called via Ajax.")
     user = request.user
-    if not user.is_authenticated():
+    if not user.is_authenticated:
         return HttpResponseBadRequest("This can only be called for logged in users.")
     
     target_state = request.POST.get('target_state', None)
