@@ -7,7 +7,7 @@ from collections import defaultdict
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic.base import RedirectView, View
+from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.views.generic.list import ListView
@@ -46,20 +46,19 @@ from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
     MixReflectedObjectsMixin, ReflectedObjectRedirectNoticeMixin
 
 import logging
-from django.contrib.contenttypes.models import ContentType
-from cosinnus.models.tagged import BaseTaggableObjectReflection
 from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
-from cosinnus_event.search_indexes import EventIndex
 logger = logging.getLogger('cosinnus')
+
 
 class EventIndexView(RequireReadMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self, **kwargs):
         return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
+
 
 index_view = EventIndexView.as_view()
 
@@ -918,3 +917,4 @@ def assign_attendance_view(request, group, slug):
         return JsonResponse({'status': 'ok', 'result_state': result_state})
     
     return JsonResponse({'error': 'statecouldnotbechanged', 'result_state': -1 if attendance is None else attendance.state})
+

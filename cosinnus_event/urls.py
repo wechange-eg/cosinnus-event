@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf.urls import url
 from cosinnus_event import views
+from django.conf.urls import url
+
 
 app_name = 'event'
 
@@ -40,3 +41,4 @@ cosinnus_root_patterns = [
     url(r'^events/feed/all/$', views.event_ical_feed_global, name='feed-global'),
 ]
 urlpatterns = cosinnus_group_patterns + cosinnus_root_patterns
+
