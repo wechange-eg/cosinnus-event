@@ -53,6 +53,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
 from cosinnus_event.search_indexes import EventIndex
+from cosinnus.views.common import DeleteElementView
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -916,3 +917,9 @@ def assign_attendance_view(request, group, slug):
         return JsonResponse({'status': 'ok', 'result_state': result_state})
     
     return JsonResponse({'error': 'statecouldnotbechanged', 'result_state': -1 if attendance is None else attendance.state})
+
+
+class EventDeleteElementView(DeleteElementView):
+    model = Event
+
+delete_element_view = EventDeleteElementView.as_view()
