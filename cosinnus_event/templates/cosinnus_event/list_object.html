@@ -36,6 +36,7 @@
                         </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
+                        {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
                 </div>

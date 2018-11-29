@@ -12,6 +12,7 @@
 
 {% block breadcrumb %}
   {{ block.super }}
+  <li><a class="active" href="{% group_url 'cosinnus:event:doodle-list' group=group %}">{% trans "Event Polls" %}</a></li>
   <li class="active">
     {% if event.state == 2 %}
 		{% blocktrans with title=event.title %}Vote for {{ title }}{% endblocktrans %}
@@ -254,6 +255,12 @@
 		{% endif %}
 		
 	</div> <!-- buttons and content box -->
+	
+	
+    <div class="white-content">
+        {% include 'cosinnus/common/likefollow/follow_button.html' with object=event %}
+        {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' %}
+    </div>
 	
 	{% include 'cosinnus_event/event_comments.html' with event=event full_view="True" no_indent="True" comments_expanded="True" %}
 	
