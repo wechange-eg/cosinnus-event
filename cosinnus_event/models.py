@@ -32,7 +32,7 @@ from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
-from cosinnus.models.tagged import LikableObjectMixin
+from cosinnus.models.tagged import LikeableObjectMixin
 
 
 def localize(value, format):
@@ -45,7 +45,7 @@ def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
-class Event(LikableObjectMixin, BaseTaggableObjectModel):
+class Event(LikeableObjectMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),

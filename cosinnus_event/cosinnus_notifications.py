@@ -60,6 +60,8 @@ notifications = {
             'image_url': 'attached_image.static_image_url_thumbnail',
             'event_meta': 'from_date',
         },
+        'show_like_button': True,
+        'show_follow_button': True,
     },  
     'doodle_created': {
         'label': _('A user created a new event poll'), 
@@ -80,6 +82,7 @@ notifications = {
             'object_text': 'note',
             'image_url': 'attached_image.static_image_url_thumbnail',
         },
+        'show_follow_button': True,
     },  
     'event_comment_posted': {
         'label': _('A user commented on one of your events'), 
@@ -140,7 +143,9 @@ notifications = {
             'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
+            'follow_button_url': 'event.get_absolute_follow_url', # url for the follow button
         },
+        'show_follow_button': True,
     },   
     'attending_event_comment_posted': {
         'label': _('A user commented on an event you are attending'), 
