@@ -53,7 +53,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
 from cosinnus_event.search_indexes import EventIndex
-from cosinnus.views.common import DeleteElementView
+from cosinnus.views.common import DeleteElementView, apply_likefollow_object
 logger = logging.getLogger('cosinnus')
 
 class EventIndexView(RequireReadMixin, RedirectView):
@@ -283,7 +283,10 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
         # events are created as scheduled.
         # doodle events would be created as STATE_VOTING_OPEN.
         form.instance.state = Event.STATE_SCHEDULED
-        return super(EntryAddView, self).forms_valid(form, inlines)
+        ret = super(EntryAddView, self).forms_valid(form, inlines)
+        # creator follows their own event
+        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        return ret
     
 entry_add_view = EntryAddView.as_view()
 
@@ -297,7 +300,9 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
         form.instance.state = Event.STATE_VOTING_OPEN  # be explicit
 
         ret = super(DoodleAddView, self).forms_valid(form, inlines)
-
+        # creator follows their own doodle
+        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()
         if num_suggs == 0:
