@@ -16,6 +16,7 @@ event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"
 tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 voted_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 attending_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 
 
 """ Notification definitions.
@@ -158,6 +159,26 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are attending'),
         'subject_text': _('%(sender_name)s commented on an event you are attending in %(team_name)s'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
+    },
+    'following_event_comment_posted': {
+        'label': _('A user commented on an event you are following'), 
+        'signals': [following_event_comment_posted],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['attending_event_comment_posted', 'voted_event_comment_posted', 'voted_event_comment_posted', 'tagged_event_comment_posted', 'event_comment_posted'],
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on an event you are following'),
+        'subject_text': _('%(sender_name)s commented on an event you are following in %(team_name)s'),
         'sub_event_text': _('%(sender_name)s'),
         'data_attributes': {
             'object_name': 'event.title', 

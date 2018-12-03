@@ -445,6 +445,13 @@ class Comment(models.Model):
                 if votees_except_creator:
                     cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
                     already_messaged_user_pks += votees_except_creator
+                    
+            # message all followers of the event
+            followers_except_creators = [pk for pk in self.event.get_followed_user_ids() if not pk in [self.creator_id, self.event.creator_id]]
+            print('>>> FOLLOWER IDS:', self.event.get_followed_user_ids())
+            if followers_except_creator:
+                cosinnus_notifications.following_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=followers_except_creator))
+                
             # message all attending persons (GOING and MAYBE_GOING)
             if self.event.state == Event.STATE_SCHEDULED:
                 attendees_except_creator = [attendance.user.pk for attendance in self.event.attendances.all() \
