@@ -34,6 +34,7 @@ from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from cosinnus.models.tagged import LikeableObjectMixin
 from uuid import uuid1
+import time
 
 
 def localize(value, format):
@@ -267,7 +268,10 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             Returns an empty list if nobody has voted or the event isn't a doodle. """
         return self.suggestions.all().values_list('votes__voter__id', flat=True).distinct()
     
-    
+    def get_suggestions_hash(self):
+        """ Returns a hashable string containing all suggestions with their time.
+            Useful to compare equality of suggestions for two doodles. """
+        return ','.join([str(time.mktime(dt.timetuple())) for dt in self.suggestions.all().values_list('from_date', flat=True)])
 
 
 @python_2_unicode_compatible

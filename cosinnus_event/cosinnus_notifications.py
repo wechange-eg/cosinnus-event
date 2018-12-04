@@ -17,6 +17,10 @@ tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "au
 voted_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 attending_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_event_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_doodle_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_doodle_voted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+
 
 
 """ Notification definitions.
@@ -187,5 +191,60 @@ notifications = {
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
-    },   
+    },
+    'following_event_changed': {
+        'label': _('A user updated an event'), 
+        'signals': [following_event_changed],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('Event updated by %(sender_name)s'),
+        'notification_text': _('%(sender_name)s updated an event you are following'),
+        'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
+    },
+    'following_doodle_changed': {
+        'label': _('A user updated an event poll'), 
+        'signals': [following_doodle_changed],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('Event poll updated by %(sender_name)s'),
+        'notification_text': _('%(sender_name)s updated an event poll you are following'),
+        'subject_text': _('The event poll "%(object_name)s" was updated in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+    },
+    'following_doodle_voted': {
+        'label': _('A user updated an event poll'), 
+        'signals': [following_doodle_voted],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s voted in'),
+        'notification_text': _('%(sender_name)s voted in an event poll you are following'),
+        'subject_text': _('%(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+    },  
 }
