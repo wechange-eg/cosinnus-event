@@ -259,7 +259,7 @@
 	
     <div class="white-content">
         {% include 'cosinnus/common/likefollow/follow_button.html' with object=event %}
-        {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' %}
+        {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' with object=event %}
     </div>
 	
 	{% include 'cosinnus_event/event_comments.html' with event=event full_view="True" no_indent="True" comments_expanded="True" %}

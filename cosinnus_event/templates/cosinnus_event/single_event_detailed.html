@@ -345,16 +345,15 @@
         </div>
     {% endif %}
     
-	
     {% include 'cosinnus/media_tags_readonly.html' with object=event hide_attached=True hide_location=True list_view="noindent"  %}
-	
-	<div class="white-content">
-        {% include 'cosinnus/common/likefollow/like_button.html' with object=event %}
-        {% include 'cosinnus/common/likefollow/follow_button.html' with object=event %}
-        {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' %}
-	</div>
-	
+    
 {% endif %}
+
+<div class="white-content">
+    {% include 'cosinnus/common/likefollow/like_button.html' with object=event %}
+    {% include 'cosinnus/common/likefollow/follow_button.html' with object=event %}
+    {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' with object=event %}
+</div>
 
 
 {# ***********  Reflect event in projects *************** #}
