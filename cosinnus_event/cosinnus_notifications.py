@@ -179,6 +179,7 @@ notifications = {
         'signals': [followed_group_event_created],
         'multi_preference_set': 'MULTI_followed_object_notification',
         'supercedes_notifications': ['event_created'],
+        'requires_object_state_check': 'group.is_user_following',
         'hidden': True,
         
         'is_html': True,
@@ -201,6 +202,7 @@ notifications = {
         'signals': [followed_group_doodle_created],
         'multi_preference_set': 'MULTI_followed_object_notification',
         'supercedes_notifications': ['doodle_created'],
+        'requires_object_state_check': 'group.is_user_following',
         'hidden': True,
         
         'is_html': True,
@@ -221,6 +223,7 @@ notifications = {
         'signals': [following_event_comment_posted],
         'multi_preference_set': 'MULTI_followed_object_notification',
         'supercedes_notifications': ['attending_event_comment_posted', 'voted_event_comment_posted', 'voted_event_comment_posted', 'tagged_event_comment_posted', 'event_comment_posted'],
+        'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
         'is_html': True,
@@ -240,6 +243,7 @@ notifications = {
         'label': _('A user updated an event'), 
         'signals': [following_event_changed],
         'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
         'is_html': True,
@@ -259,6 +263,7 @@ notifications = {
         'label': _('A user updated an event poll'), 
         'signals': [following_doodle_changed],
         'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
         'is_html': True,
@@ -277,6 +282,7 @@ notifications = {
         'label': _('A user updated an event poll'), 
         'signals': [following_doodle_voted],
         'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
         'is_html': True,
