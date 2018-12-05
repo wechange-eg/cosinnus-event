@@ -154,15 +154,23 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created and not created_from_doodle:
-            # event/doodle was created
-            if self.state == Event.STATE_SCHEDULED:
-                cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-            else:
-                cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-        if created and created_from_doodle:
+        if created:
+            # event/doodle was created or
             # event went from being a doodle to being a real event, so fire event created
-            cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+            session_id = uuid1().int
+            audience = get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk)
+            group_followers_except_creator_ids = [pk for pk in self.group.get_followed_user_ids() if not pk in [self.creator_id]]
+            group_followers_except_creator = get_user_model().objects.filter(id__in=group_followers_except_creator_ids)
+            if self.state == Event.STATE_SCHEDULED:
+                # followers for the group
+                cosinnus_notifications.followed_group_event_created.send(sender=self, user=self.creator, obj=self, audience=group_followers_except_creator, session_id=session_id, end_session=True)
+                # regular members
+                cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=audience, session_id=session_id)
+            else:
+                # followers for the group
+                cosinnus_notifications.followed_group_doodle_created.send(sender=self, user=self.creator, obj=self, audience=group_followers_except_creator, session_id=session_id, end_session=True)
+                # regular members
+                cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=audience, session_id=session_id)
             
         # create a "going" attendance for the event's creator
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == Event.STATE_SCHEDULED:
@@ -433,6 +441,10 @@ class Comment(models.Model):
         if self.pk:
             return '%s#comment-%d' % (self.event.get_absolute_url(), self.pk)
         return self.event.get_absolute_url()
+    
+    def is_user_following(self, user):
+        """ Delegates to parent object """
+        return self.event.is_user_following(user)
     
     def save(self, *args, **kwargs):
         created = bool(self.pk) == False

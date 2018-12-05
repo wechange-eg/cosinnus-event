@@ -16,6 +16,8 @@ event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"
 tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 voted_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 attending_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+followed_group_event_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
+followed_group_doodle_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_event_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_doodle_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
@@ -172,6 +174,48 @@ notifications = {
             'sub_object_text': 'text',
         },
     },
+    'followed_group_event_created': {
+        'label': _('A user created a new event in a team you are following'), 
+        'signals': [followed_group_event_created],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['event_created'],
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event by %(sender_name)s in %(team_name)s (which you follow)'),
+        'notification_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
+        'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
+        'show_like_button': True,
+        'show_follow_button': True,
+    },
+    'followed_group_doodle_created': {
+        'label': _('A user created a new event poll in a team you are following'), 
+        'signals': [followed_group_doodle_created],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['doodle_created'],
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event poll by %(sender_name)s in %(team_name)s (which you follow)'),
+        'notification_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
+        'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+        'show_follow_button': True,
+    },  
     'following_event_comment_posted': {
         'label': _('A user commented on an event you are following'), 
         'signals': [following_event_comment_posted],
@@ -200,7 +244,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('Event updated by %(sender_name)s'),
+        'event_text': _('%(sender_name)s updated an event you are following'),
         'notification_text': _('%(sender_name)s updated an event you are following'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
