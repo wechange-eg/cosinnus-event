@@ -107,7 +107,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
@@ -127,7 +127,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
@@ -147,7 +147,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
             'follow_button_url': 'event.get_absolute_follow_url', # url for the follow button
@@ -169,7 +169,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
@@ -231,7 +231,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
