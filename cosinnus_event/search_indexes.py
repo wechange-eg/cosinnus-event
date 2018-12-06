@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from haystack import indexes
 
-from cosinnus.utils.search import BaseTaggableObjectIndex, StoredDataIndexMixin
+from cosinnus.utils.search import BaseTaggableObjectIndex, StoredDataIndexMixin,\
+    CommaSeperatedIntegerMultiValueField
 
 from cosinnus_event.models import Event, EventAttendance,\
     annotate_attendants_count
@@ -18,6 +19,7 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
     event_state = indexes.IntegerField(model_attr='state', null=True)
     humanized_event_time_html = indexes.CharField(stored=True, indexed=False)
     participants = indexes.MultiValueField(stored=True, indexed=False)
+    liked_user_ids = CommaSeperatedIntegerMultiValueField(indexed=False, stored=True)
     
     def get_model(self):
         return Event
@@ -31,6 +33,9 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
     def prepare_participant_count(self, obj):
         """ Attendees for events """
         return len(self.prepare_participants(obj)) #obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).count()
+    
+    def prepare_liked_user_ids(self, obj):
+        return obj.get_liked_user_ids()
     
     def prepare_participants(self, obj):
         if not hasattr(obj, '_participants'):

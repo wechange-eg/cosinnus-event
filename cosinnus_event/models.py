@@ -32,6 +32,9 @@ from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from cosinnus.models.tagged import LikeableObjectMixin
+from uuid import uuid1
+import time
 
 
 def localize(value, format):
@@ -44,7 +47,7 @@ def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
-class Event(BaseTaggableObjectModel):
+class Event(LikeableObjectMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
@@ -151,15 +154,23 @@ class Event(BaseTaggableObjectModel):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created and not created_from_doodle:
-            # event/doodle was created
-            if self.state == Event.STATE_SCHEDULED:
-                cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-            else:
-                cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
-        if created and created_from_doodle:
+        if created:
+            # event/doodle was created or
             # event went from being a doodle to being a real event, so fire event created
-            cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk))
+            session_id = uuid1().int
+            audience = get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk)
+            group_followers_except_creator_ids = [pk for pk in self.group.get_followed_user_ids() if not pk in [self.creator_id]]
+            group_followers_except_creator = get_user_model().objects.filter(id__in=group_followers_except_creator_ids)
+            if self.state == Event.STATE_SCHEDULED:
+                # followers for the group
+                cosinnus_notifications.followed_group_event_created.send(sender=self, user=self.creator, obj=self, audience=group_followers_except_creator, session_id=session_id)
+                # regular members
+                cosinnus_notifications.event_created.send(sender=self, user=self.creator, obj=self, audience=audience, session_id=session_id, end_session=True)
+            else:
+                # followers for the group
+                cosinnus_notifications.followed_group_doodle_created.send(sender=self, user=self.creator, obj=self, audience=group_followers_except_creator, session_id=session_id)
+                # regular members
+                cosinnus_notifications.doodle_created.send(sender=self, user=self.creator, obj=self, audience=audience, session_id=session_id, end_session=True)
             
         # create a "going" attendance for the event's creator
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == Event.STATE_SCHEDULED:
@@ -265,7 +276,10 @@ class Event(BaseTaggableObjectModel):
             Returns an empty list if nobody has voted or the event isn't a doodle. """
         return self.suggestions.all().values_list('votes__voter__id', flat=True).distinct()
     
-    
+    def get_suggestions_hash(self):
+        """ Returns a hashable string containing all suggestions with their time.
+            Useful to compare equality of suggestions for two doodles. """
+        return ','.join([str(time.mktime(dt.timetuple())) for dt in self.suggestions.all().values_list('from_date', flat=True)])
 
 
 @python_2_unicode_compatible
@@ -428,36 +442,50 @@ class Comment(models.Model):
             return '%s#comment-%d' % (self.event.get_absolute_url(), self.pk)
         return self.event.get_absolute_url()
     
+    def is_user_following(self, user):
+        """ Delegates to parent object """
+        return self.event.is_user_following(user)
+    
     def save(self, *args, **kwargs):
         created = bool(self.pk) == False
         super(Comment, self).save(*args, **kwargs)
         
         already_messaged_user_pks = []
         if created:
+            session_id = uuid1().int
             # comment was created, message event creator
             if not self.event.creator == self.creator:
-                cosinnus_notifications.event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[self.event.creator])
+                cosinnus_notifications.event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[self.event.creator], session_id=session_id)
                 already_messaged_user_pks += [self.event.creator_id]
+                
+            # message all followers of the event
+            followers_except_creator = [pk for pk in self.event.get_followed_user_ids() if not pk in [self.creator_id, self.event.creator_id]]
+            cosinnus_notifications.following_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=followers_except_creator), session_id=session_id)
+            
             # message votees (except comment creator and event creator) if voting is still open
             if self.event.state == Event.STATE_VOTING_OPEN:
                 votees_except_creator = [pk for pk in self.event.get_voters_pks() if not pk in [self.creator_id, self.event.creator_id]]
-                if votees_except_creator:
-                    cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator))
-                    already_messaged_user_pks += votees_except_creator
+                cosinnus_notifications.voted_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=votees_except_creator), session_id=session_id)
+                already_messaged_user_pks += votees_except_creator
+                    
+                
             # message all attending persons (GOING and MAYBE_GOING)
             if self.event.state == Event.STATE_SCHEDULED:
                 attendees_except_creator = [attendance.user.pk for attendance in self.event.attendances.all() \
                             if (attendance.state in [EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING])\
                                 and not attendance.user.pk in [self.creator_id, self.event.creator_id]]
-                if attendees_except_creator:
-                    cosinnus_notifications.attending_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=attendees_except_creator))
-                    already_messaged_user_pks += attendees_except_creator
+                cosinnus_notifications.attending_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=get_user_model().objects.filter(id__in=attendees_except_creator), session_id=session_id)
+                already_messaged_user_pks += attendees_except_creator
                 
             # message all taggees (except comment creator)
             if self.event.media_tag and self.event.media_tag.persons:
                 tagged_users_without_self = self.event.media_tag.persons.exclude(id__in=already_messaged_user_pks+[self.creator.id])
-                if len(tagged_users_without_self) > 0:
-                    cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self))
+                cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self), session_id=session_id)
+            
+            # end notification session
+            cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[], session_id=session_id, end_session=True)
+            
+            
     @property
     def group(self):
         """ Needed by the notifications system """
