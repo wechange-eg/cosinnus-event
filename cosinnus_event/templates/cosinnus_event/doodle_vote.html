@@ -36,7 +36,7 @@
 	    <!-- a box with semi transparent background -->
 		<div class="content-box">
 	       
-	        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" %}
+	        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" hide_follow_button=True %}
 	        <div class="regular-space"></div> 
 	          
             {% if event.state == 1 %}
@@ -258,7 +258,8 @@
 	
 	
     <div class="white-content">
-        {% include 'cosinnus/common/likefollow/follow_button.html' with object=event %}
+        {% trans "You will now receive notifications when this event poll is changed and whenever somebody casts their vote." as follow_success_message %}
+        {% include 'cosinnus/common/likefollow/follow_button.html' with object=event success_message=follow_success_message %}
         {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' with object=event %}
     </div>
 	
