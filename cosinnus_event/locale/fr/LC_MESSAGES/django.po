@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 22:50+0200\n"
+"POT-Creation-Date: 2018-12-06 17:17+0100\n"
 "PO-Revision-Date: 2018-09-26 12:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -102,6 +102,111 @@ msgstr "%(sender_name)s a commenté un événement auquel tu participes"
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
 msgstr "%(sender_name)s a commenté un événement auquel tu participes dans %(team_name)s"
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user created a new event in a team you are following"
+msgstr "Un utilisateur a créé un nouveau sondage pour un événement"
+
+#, fuzzy, python-format
+#| msgid "New event by %(sender_name)s"
+msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Nouvel évènement par %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr "%(sender_name)s a commenté un de tes événements dans %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
+msgstr "Un nouvel événement : \"%(object_name)s\" a été annoncé dans %(team_name)s."
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user created a new event poll in a team you are following"
+msgstr "Un utilisateur a créé un nouveau sondage pour un événement"
+
+#, fuzzy, python-format
+#| msgid "New event poll by %(sender_name)s"
+msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Nouveau sondage pour un événement par %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr "%(sender_name)s a créé un nouveau sondage pour un événement"
+
+#, fuzzy, python-format
+#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr "Un nouveau sondage pour un événement : \"%(object_name)s\" a été créé dans %(team_name)s."
+
+#, fuzzy
+#| msgid "A user commented on an event you are attending"
+msgid "A user commented on an event you are following"
+msgstr "Un utilisateur a commenté un événement auquel tu participes"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s commented on an event you are following"
+msgstr "%(sender_name)s a commenté un événement auquel tu participes"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr "%(sender_name)s a commenté un événement auquel tu participes dans %(team_name)s"
+
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "A user updated an event"
+msgstr "Un utilisateur a créé un nouvel événement"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s updated an event you are following"
+msgstr "%(sender_name)s a commenté un événement auquel tu participes"
+
+#, fuzzy, python-format
+#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Un nouvel événement : \"%(object_name)s\" a été annoncé dans %(team_name)s."
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user updated an event poll"
+msgstr "Un utilisateur a créé un nouveau sondage pour un événement"
+
+#, fuzzy, python-format
+#| msgid "New event poll by %(sender_name)s"
+msgid "Event poll updated by %(sender_name)s"
+msgstr "Nouveau sondage pour un événement par %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr "%(sender_name)s a commenté un événement auquel tu participes"
+
+#, fuzzy, python-format
+#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Un nouveau sondage pour un événement : \"%(object_name)s\" a été créé dans %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s"
+msgid "%(sender_name)s voted in"
+msgstr "%(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr "%(sender_name)s a commenté un événement auquel tu participes"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr "%(sender_name)s a commenté un sondage d'événement pour lequel tu as voté dans %(team_name)s"
 
 msgid "Upcoming Events"
 msgstr "Evénements à venir"
@@ -343,6 +448,9 @@ msgstr "Enregistrer"
 msgid "Schedule an event"
 msgstr "Programmer un événement"
 
+msgid "Delete"
+msgstr "Supprimer"
+
 msgid "There are no open event polls."
 msgstr "Il n'y a aucun sondage d'événement ouvert."
 
@@ -366,6 +474,9 @@ msgstr "Vote pour %(title)s"
 msgid "Archived: %(title)s"
 msgstr "Archivé : %(title)s"
 
+msgid "Event Polls"
+msgstr "Sondages d'événement"
+
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Cet événement a déjà été programmé. Le vote est clos."
 
@@ -388,15 +499,15 @@ msgstr "Quand as-tu du temps ?"
 msgid "There are no date suggestions for this event poll yet!"
 msgstr "Il n'y a pas encore de suggestions de date pour ce sondage !"
 
-msgid "Delete"
-msgstr "Supprimer"
-
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
 msgstr "Souhaites-tu vraiment supprimer l'événement non programmé „%(title)s“ ?"
 
 msgid "Delete unscheduled event"
 msgstr "Supprimer l'événement non programmé"
+
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
+msgstr ""
 
 msgid "Write comment..."
 msgstr "Ecrire un commentaire..."
@@ -472,9 +583,6 @@ msgstr "Calendrier"
 
 msgid "List"
 msgstr "Liste"
-
-msgid "Event Polls"
-msgstr "Sondages d'événement"
 
 msgid "by"
 msgstr "par"
@@ -791,6 +899,9 @@ msgstr "Y vas-tu ?"
 
 msgid "No Choice"
 msgstr "Aucun choix"
+
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
+msgstr ""
 
 msgid "Show all"
 msgstr "Afficher tout"

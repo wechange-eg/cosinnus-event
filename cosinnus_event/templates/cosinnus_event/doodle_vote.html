@@ -258,7 +258,7 @@
 	
 	
     <div class="white-content">
-        {% trans "You will now receive notifications when this event poll is changed and whenever somebody casts their vote." as follow_success_message %}
+        {% trans "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote." as follow_success_message %}
         {% include 'cosinnus/common/likefollow/follow_button.html' with object=event success_message=follow_success_message %}
         {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' with object=event %}
     </div>
