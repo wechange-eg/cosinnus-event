@@ -223,7 +223,7 @@ notifications = {
         'signals': [following_event_comment_posted],
         'multi_preference_set': 'MULTI_followed_object_notification',
         'supercedes_notifications': ['attending_event_comment_posted', 'voted_event_comment_posted', 'voted_event_comment_posted', 'tagged_event_comment_posted', 'event_comment_posted'],
-        'requires_object_state_check': 'is_user_following',
+        'requires_object_state_check': 'event.is_user_following',
         'hidden': True,
         
         'is_html': True,

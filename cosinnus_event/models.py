@@ -480,7 +480,12 @@ class Comment(models.Model):
             # message all taggees (except comment creator)
             if self.event.media_tag and self.event.media_tag.persons:
                 tagged_users_without_self = self.event.media_tag.persons.exclude(id__in=already_messaged_user_pks+[self.creator.id])
-                cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self), session_id=session_id, end_session=True)
+                cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=list(tagged_users_without_self), session_id=session_id)
+            
+            # end notification session
+            cosinnus_notifications.tagged_event_comment_posted.send(sender=self, user=self.creator, obj=self, audience=[], session_id=session_id, end_session=True)
+            
+            
     @property
     def group(self):
         """ Needed by the notifications system """
