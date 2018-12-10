@@ -184,9 +184,13 @@ class Event(BaseTaggableObjectModel):
             The main property on which this object model is sorted. """
         if self.state == self.STATE_SCHEDULED and self.from_date:
             # this makes it so events are ordered in the default ("soonest first") order
-            # return self.from_date # this makes it so events are ordered latest to soonest
             return now() 
         return super(Event, self).sort_key
+    
+    @property
+    def stream_sort_key(self):
+        """ Sort key for activity streams returns the created date instead of the event date """
+        return self.created
             
 
     def set_suggestion(self, sugg=None, update_fields=['from_date', 'to_date', 'state', 'suggestion']):
