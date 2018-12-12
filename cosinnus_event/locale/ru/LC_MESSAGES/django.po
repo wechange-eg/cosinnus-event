@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-10 12:52+0100\n"
-"PO-Revision-Date: 2018-09-26 15:07+0200\n"
+"PO-Revision-Date: 2018-12-11 18:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: ru\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "Cобытия"
@@ -102,110 +102,84 @@ msgstr "%(sender_name)s прокомментировал(а) событие, в 
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
 msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s"
 
-#, fuzzy
-#| msgid "A user created a new event poll"
 msgid "A user created a new event in a team you are following"
-msgstr "Пользователь предложил новую дату события"
+msgstr "Пользователь создал новое событие в команде, за которой Вы следите"
 
-#, fuzzy, python-format
-#| msgid "New event by %(sender_name)s"
+#, python-format
 msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Новое событие у %(sender_name)s"
+msgstr "Новое событие у %(sender_name)s в %(team_name)s (за которой Вы следите)"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
-msgstr "Пользователь %(sender_name)s прокомментировал(а) одно из Ваших событий в %(team_name)s."
+msgstr "Пользователь %(sender_name)s создал новое событие в %(team_name)s. (за которой Вы следите)"
 
-#, fuzzy, python-format
-#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+#, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
-msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s."
+msgstr "Новое событие: \"%(object_name)s\" было объявлено в %(team_name)s (за которой Вы следите)."
 
-#, fuzzy
-#| msgid "A user created a new event poll"
 msgid "A user created a new event poll in a team you are following"
-msgstr "Пользователь предложил новую дату события"
+msgstr "Пользователь создал новый опрос о событии в команде, за которой Вы следите"
 
-#, fuzzy, python-format
-#| msgid "New event poll by %(sender_name)s"
+#, python-format
 msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Новое предложение даты мероприятия у %(sender_name)s"
+msgstr "Новый опрос о мероприятия от мероприятия от %(sender_name)s в %(team_name)s (за которой вы следите)"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event poll"
+#, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
-msgstr "%(sender_name)s предложил(а) новую дату события"
+msgstr "%(sender_name)s создал новый опрос о событии в %(team_name)s (которую вы отслеживаете)"
 
-#, fuzzy, python-format
-#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+#, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
-msgstr "Новое предложение даты события: \"%(object_name)s\" создано в %(team_name)s."
+msgstr "Новый опрос о событии: \"%(object_name)s\" был создан в %(team_name)s (за которой Вы следите)."
 
-#, fuzzy
-#| msgid "A user commented on an event you are attending"
 msgid "A user commented on an event you are following"
-msgstr "Пользователь прокомментировал событие, в котором Вы участвуете"
+msgstr "Пользователь прокомментировал событие, за которым Вы следите"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event you are attending"
+#, python-format
 msgid "%(sender_name)s commented on an event you are following"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие"
+msgstr "%(sender_name)s прокомментировал(а) событие, за которой Вы следите"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+#, python-format
 msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие в %(team_name)s"
+msgstr "%(sender_name)s прокомментировал(а) событие, за которым Вы следите, в %(team_name)s"
 
-#, fuzzy
-#| msgid "A user created a new event"
 msgid "A user updated an event"
-msgstr "Пользователь создал новое событие"
+msgstr "Пользователь обновил событие"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event you are attending"
+#, python-format
 msgid "%(sender_name)s updated an event you are following"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие"
+msgstr "%(sender_name)s обновил событие, за которым Вы следите"
 
-#, fuzzy, python-format
-#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+#, python-format
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
-msgstr "Новое событие: \"%(object_name)s\" было опубликовано в %(team_name)s."
+msgstr "Событие: \"%(object_name)s\" было обновлено в %(team_name)s."
 
-#, fuzzy
-#| msgid "A user created a new event poll"
 msgid "A user updated an event poll"
-msgstr "Пользователь предложил новую дату события"
+msgstr "Пользователь обновил опрос о событии"
 
-#, fuzzy, python-format
-#| msgid "New event poll by %(sender_name)s"
+#, python-format
 msgid "Event poll updated by %(sender_name)s"
-msgstr "Новое предложение даты мероприятия у %(sender_name)s"
+msgstr "Опрос о событии был обновлен %(sender_name)s"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event you are attending"
+#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие"
+msgstr "%(sender_name)s обновил(а) опрос о событии, за которой Вы следите"
 
-#, fuzzy, python-format
-#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+#, python-format
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
-msgstr "Новое предложение даты события: \"%(object_name)s\" создано в %(team_name)s."
+msgstr "Опрос о событии \"%(object_name)s\" был обновлен в %(team_name)s."
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s"
+#, python-format
 msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s"
+msgstr "%(sender_name)s проголосовал"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event you are attending"
+#, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
-msgstr "%(sender_name)s прокомментировал(а) событие, в котором Вы принимаете участие"
+msgstr "%(sender_name)s проголосовал в опросе о событии, за которой Вы следите"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgstr "%(sender_name)s прокомментировал(а) опрос, по которому вы проголосовали в %(team_name)s."
+msgstr "%(sender_name)s проголосовал(а) в опросе о событии „%(object_name)s“ в %(team_name)s."
 
 msgid "Upcoming Events"
 msgstr "Текущие события"
@@ -510,7 +484,7 @@ msgid "Delete unscheduled event"
 msgstr "Удалить событие"
 
 msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
-msgstr ""
+msgstr "Теперь Вы будете получать уведомления о комментариях, а также ели этот опрос о событии будете изменен и если кто-то проголосует."
 
 msgid "Write comment..."
 msgstr "Оставить комментарий…"
@@ -555,7 +529,7 @@ msgid "Also include all events from projects within this group in feed"
 msgstr "Также включайте все события из проектов в этой группе в новостную ленту"
 
 msgid "iCal Feed"
-msgstr "Лента новостей iCal"
+msgstr "лента новостей iCal"
 
 msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr "Введите название нового события или выберите день в календаре."
@@ -588,7 +562,7 @@ msgid "List"
 msgstr "Список"
 
 msgid "by"
-msgstr "Создатель"
+msgstr "создатель"
 
 msgid "Created Event"
 msgstr "Созданные события"
@@ -910,7 +884,7 @@ msgid "No Choice"
 msgstr "Нет выбора"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
-msgstr ""
+msgstr "Теперь Вы будете получать уведомления о комментариях, а также ели это событие будет изменено или если изменятся детали."
 
 msgid "Show all"
 msgstr "Показать все"
