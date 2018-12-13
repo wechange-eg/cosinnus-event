@@ -1,9 +1,14 @@
 {% load i18n cosinnus_tags %}
 {% captureas detail_url %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endcaptureas %}
-<div class="fadedown {% if not forloop.last %}regular-space{% endif %}">
-    <div class="btn btn-emphasized w100" href="{{ detail_url }}">
+<div id="cosinnus_list_element_{{ event.id }}" class="fadedown {% if not forloop.last %}regular-space{% endif %}">
+    <div class="item_checkbox_element btn btn-emphasized w100" href="{{ detail_url }}">
         <ul class="media-list">
             <li class="media">
+                {% if user|has_write_access:event %}
+                    {% captureas input_name %}{{ event.id }}{% endcaptureas %}
+                    {% include 'cosinnus/common/checkbox/checkbox_overlay_box.html' with input_name=input_name %}
+                {% endif %}
+            
                 <a class="pull-left square-date-icon" href="{{ event.get_absolute_url }}">
                   {% if event.state == 2 %}
                     <i class="fa fa-calendar"></i>
@@ -31,6 +36,7 @@
                         </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
+                        {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
                 </div>

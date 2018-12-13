@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 22:50+0200\n"
+"POT-Creation-Date: 2018-12-10 12:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,6 +99,85 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgstr ""
+
+msgid "A user created a new event in a team you are following"
+msgstr ""
+
+#, python-format
+msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr ""
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
+msgstr ""
+
+msgid "A user created a new event poll in a team you are following"
+msgstr ""
+
+#, python-format
+msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr ""
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr ""
+
+msgid "A user commented on an event you are following"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr ""
+
+msgid "A user updated an event"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s updated an event you are following"
+msgstr ""
+
+#, python-format
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr ""
+
+msgid "A user updated an event poll"
+msgstr ""
+
+#, python-format
+msgid "Event poll updated by %(sender_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr ""
+
+#, python-format
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s voted in"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgstr ""
 
 msgid "Upcoming Events"
@@ -341,6 +420,9 @@ msgstr ""
 msgid "Schedule an event"
 msgstr ""
 
+msgid "Delete"
+msgstr ""
+
 msgid "There are no open event polls."
 msgstr ""
 
@@ -365,6 +447,9 @@ msgstr ""
 msgid "Archived: %(title)s"
 msgstr ""
 
+msgid "Event Polls"
+msgstr ""
+
 msgid "This event has already been scheduled. Voting is closed."
 msgstr ""
 
@@ -387,14 +472,14 @@ msgstr ""
 msgid "There are no date suggestions for this event poll yet!"
 msgstr ""
 
-msgid "Delete"
-msgstr ""
-
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
 msgstr ""
 
 msgid "Delete unscheduled event"
+msgstr ""
+
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
 msgstr ""
 
 msgid "Write comment..."
@@ -470,9 +555,6 @@ msgid "Calendar"
 msgstr ""
 
 msgid "List"
-msgstr ""
-
-msgid "Event Polls"
 msgstr ""
 
 msgid "by"
@@ -689,6 +771,9 @@ msgid "Are you going?"
 msgstr ""
 
 msgid "No Choice"
+msgstr ""
+
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr ""
 
 msgid "Show all"

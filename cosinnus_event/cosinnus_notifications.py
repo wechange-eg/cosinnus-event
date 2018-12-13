@@ -16,6 +16,13 @@ event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"
 tagged_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 voted_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 attending_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+followed_group_event_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
+followed_group_doodle_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_event_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_doodle_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
+following_doodle_voted = dispatch.Signal(providing_args=["user", "obj", "audience"])
+
 
 
 """ Notification definitions.
@@ -60,6 +67,8 @@ notifications = {
             'image_url': 'attached_image.static_image_url_thumbnail',
             'event_meta': 'from_date',
         },
+        'show_like_button': True,
+        'show_follow_button': True,
     },  
     'doodle_created': {
         'label': _('A user created a new event poll'), 
@@ -80,6 +89,7 @@ notifications = {
             'object_text': 'note',
             'image_url': 'attached_image.static_image_url_thumbnail',
         },
+        'show_follow_button': True,
     },  
     'event_comment_posted': {
         'label': _('A user commented on one of your events'), 
@@ -97,7 +107,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
@@ -117,7 +127,7 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
@@ -137,10 +147,12 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
+            'follow_button_url': 'event.get_absolute_follow_url', # url for the follow button
         },
+        'show_follow_button': True,
     },   
     'attending_event_comment_posted': {
         'label': _('A user commented on an event you are attending'), 
@@ -157,9 +169,132 @@ notifications = {
         'data_attributes': {
             'object_name': 'event.title', 
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.creator.cosinnus_profile.get_avatar_thumbnail_url', # note: receiver avatar, not creator's!
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
             'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
             'sub_object_text': 'text',
         },
-    },   
+    },
+    'followed_group_event_created': {
+        'label': _('A user created a new event in a team you are following'), 
+        'signals': [followed_group_event_created],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['event_created'],
+        'requires_object_state_check': 'group.is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event by %(sender_name)s in %(team_name)s (which you follow)'),
+        'notification_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
+        'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
+        'show_like_button': True,
+        'show_follow_button': True,
+    },
+    'followed_group_doodle_created': {
+        'label': _('A user created a new event poll in a team you are following'), 
+        'signals': [followed_group_doodle_created],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['doodle_created'],
+        'requires_object_state_check': 'group.is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('New event poll by %(sender_name)s in %(team_name)s (which you follow)'),
+        'notification_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
+        'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+        'show_follow_button': True,
+    },  
+    'following_event_comment_posted': {
+        'label': _('A user commented on an event you are following'), 
+        'signals': [following_event_comment_posted],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'supercedes_notifications': ['attending_event_comment_posted', 'voted_event_comment_posted', 'voted_event_comment_posted', 'tagged_event_comment_posted', 'event_comment_posted'],
+        'requires_object_state_check': 'event.is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s commented on an event you are following'),
+        'subject_text': _('%(sender_name)s commented on an event you are following in %(team_name)s'),
+        'sub_event_text': _('%(sender_name)s'),
+        'data_attributes': {
+            'object_name': 'event.title', 
+            'object_url': 'get_absolute_url', 
+            'image_url': 'event.attached_image.static_image_url_thumbnail', 
+            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_text': 'text',
+        },
+    },
+    'following_event_changed': {
+        'label': _('A user updated an event'), 
+        'signals': [following_event_changed],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s updated an event you are following'),
+        'notification_text': _('%(sender_name)s updated an event you are following'),
+        'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
+    },
+    'following_doodle_changed': {
+        'label': _('A user updated an event poll'), 
+        'signals': [following_doodle_changed],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('Event poll updated by %(sender_name)s'),
+        'notification_text': _('%(sender_name)s updated an event poll you are following'),
+        'subject_text': _('The event poll "%(object_name)s" was updated in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+    },
+    'following_doodle_voted': {
+        'label': _('A user updated an event poll'), 
+        'signals': [following_doodle_voted],
+        'multi_preference_set': 'MULTI_followed_object_notification',
+        'requires_object_state_check': 'is_user_following',
+        'hidden': True,
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s voted in'),
+        'notification_text': _('%(sender_name)s voted in an event poll you are following'),
+        'subject_text': _('%(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+        },
+    },  
 }

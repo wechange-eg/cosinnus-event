@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 22:50+0200\n"
-"PO-Revision-Date: 2018-07-22 13:29+0200\n"
+"POT-Creation-Date: 2018-12-10 12:52+0100\n"
+"PO-Revision-Date: 2018-12-06 17:21+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s
 msgstr "%(sender_name)s hat eine Veranstaltung kommentiert in der du getaggt bist in %(team_name)s"
 
 msgid "A user commented on an event you voted in"
-msgstr "Ein Mitglied hat einen Terminvorschlag kommentiert in dem du abgestimmt hast"
+msgstr "Ein Mitglied hat eine Terminabstimmung kommentiert in dem du abgestimmt hast"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
@@ -89,7 +89,7 @@ msgstr "%(sender_name)s hat eine Veranstaltung kommentiert in der du abgestimmt 
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr "%(sender_name)s hat einen Terminvorschlag kommentiert zu dem du abgestimmt hast in %(team_name)s."
+msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
 msgid "A user commented on an event you are attending"
 msgstr "Ein Mitglied hat eine Veranstaltung kommentiert an der du teilnimmst"
@@ -101,6 +101,111 @@ msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert"
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
 msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert in %(team_name)s"
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user created a new event in a team you are following"
+msgstr "Ein Mitglied hat eine neue Terminumfrage erstellt"
+
+#, fuzzy, python-format
+#| msgid "New event by %(sender_name)s"
+msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Neue Veranstaltung von %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr "%(sender_name)s hat eine deiner Veranstaltungen kommentiert in %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
+msgstr "Neue Veranstaltung: \"%(object_name)s\" wurde in %(team_name)s eingetragen."
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user created a new event poll in a team you are following"
+msgstr "Ein Mitglied hat eine neue Terminumfrage erstellt"
+
+#, fuzzy, python-format
+#| msgid "New event poll by %(sender_name)s"
+msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Neue Terminumfrage von %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr "%(sender_name)s hat eine neue Terminumfrage erstellt"
+
+#, fuzzy, python-format
+#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr "Neue Terminumfrage: \"%(object_name)s\" wurde in %(team_name)s erstellt."
+
+#, fuzzy
+#| msgid "A user commented on an event you are attending"
+msgid "A user commented on an event you are following"
+msgstr "Ein Mitglied hat eine Veranstaltung kommentiert an der du teilnimmst"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s commented on an event you are following"
+msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert in %(team_name)s"
+
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "A user updated an event"
+msgstr "Ein Mitglied hat eine neue Veranstaltung eingetragen"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s updated an event you are following"
+msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert"
+
+#, fuzzy, python-format
+#| msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Neue Veranstaltung: \"%(object_name)s\" wurde in %(team_name)s eingetragen."
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user updated an event poll"
+msgstr "Ein Mitglied hat eine neue Terminumfrage erstellt"
+
+#, fuzzy, python-format
+#| msgid "New event poll by %(sender_name)s"
+msgid "Event poll updated by %(sender_name)s"
+msgstr "Neue Terminumfrage von %(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert"
+
+#, fuzzy, python-format
+#| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Neue Terminumfrage: \"%(object_name)s\" wurde in %(team_name)s erstellt."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s"
+msgid "%(sender_name)s voted in"
+msgstr "%(sender_name)s"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr "%(sender_name)s hat eine Veranstaltung an der du teilnimmst kommentiert"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
 msgid "Upcoming Events"
 msgstr "Aktuelle Veranstaltungen"
@@ -130,7 +235,7 @@ msgid "Canceled"
 msgstr "Abgebrochen"
 
 msgid "Archived Event Poll"
-msgstr "Abgeschlossener Terminvorschlag"
+msgstr "Abgeschlossene Terminabstimmung"
 
 msgid "Start"
 msgstr "Start"
@@ -175,7 +280,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Original Event Poll"
-msgstr "Ursprünglicher Terminvorschlag"
+msgstr "Ursprüngliche Terminabstimmung"
 
 msgid "Event"
 msgstr "Veranstaltung"
@@ -289,7 +394,7 @@ msgid "until"
 msgstr "bis"
 
 msgid "Add unscheduled event"
-msgstr "Terminvorschlag hinzufügen"
+msgstr "Terminabstimmung hinzufügen"
 
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -298,7 +403,7 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "In einem der eingegebenen Felder trat ein Fehler auf. Bitte korrigiere ihn vor dem Speichern!"
 
 msgid "Enter a title for the new event to be scheduled."
-msgstr "Gib einen Titel für den Terminvorschlag an."
+msgstr "Gib einen Titel für die Terminabstimmung an."
 
 msgid "Dates"
 msgstr "Daten"
@@ -316,7 +421,7 @@ msgid "Time"
 msgstr "Uhrzeit"
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr "Hinweis: Du kannst die Daten für diesen Terminvorschlag nicht mehr bearbeiten, weil jemand bereits dafür abgestimmt hat!"
+msgstr "Hinweis: Du kannst die Daten für diese Terminabstimmung nicht mehr bearbeiten, weil jemand bereits dafür abgestimmt hat!"
 
 msgid "Description and Infos"
 msgstr "Beschreibung und Infos"
@@ -342,8 +447,11 @@ msgstr "Speichern"
 msgid "Schedule an event"
 msgstr "Termin finden"
 
+msgid "Delete"
+msgstr "Löschen"
+
 msgid "There are no open event polls."
-msgstr "Es gibt keine aktuellen Terminvorschläge."
+msgstr "Es gibt keine aktuellen Terminabstimmungen."
 
 msgid "Planned Events"
 msgstr "Geplante Veranstaltungen"
@@ -352,10 +460,10 @@ msgid "Past Events"
 msgstr "Vergangene Veranstaltungen"
 
 msgid "Archived Event Polls"
-msgstr "Abgeschlossene Terminvorschläge"
+msgstr "Abgeschlossene Terminabstimmungen"
 
 msgid "There are no archived event polls."
-msgstr "Es gibt keine abgeschlossenen Terminvorschläge."
+msgstr "Es gibt keine abgeschlossenen Terminabstimmungen."
 
 #, python-format
 msgid "Vote for %(title)s"
@@ -364,6 +472,9 @@ msgstr "Abstimmen für %(title)s"
 #, python-format
 msgid "Archived: %(title)s"
 msgstr "Abgeschlossen: %(title)s"
+
+msgid "Event Polls"
+msgstr "Terminabstimmungen"
 
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Die Terminfindung für diese Veranstaltung ist bereits beendet. Die Abstimmung ist geschlossen."
@@ -385,10 +496,7 @@ msgid "When do you have time?"
 msgstr "Wann hast du Zeit"
 
 msgid "There are no date suggestions for this event poll yet!"
-msgstr "Für diese Terminumfrage wurden noch keine Terminvorschläge erstellt!"
-
-msgid "Delete"
-msgstr "Löschen"
+msgstr "Für diese Terminumfrage wurden noch keine Terminabstimmungen erstellt!"
 
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
@@ -396,6 +504,9 @@ msgstr "Möchtest du wirklich die Terminfindung „%(title)s“ löschen?"
 
 msgid "Delete unscheduled event"
 msgstr "Terminfindung löschen"
+
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
+msgstr "Du wirst jetzt Benachrichtigungen für Kommentare erhalten und wenn diese Terminumfrage geändert wird oder jemand abstimmt."
 
 msgid "Write comment..."
 msgstr "Kommentar schreiben..."
@@ -437,7 +548,7 @@ msgid "Copy this iCal-link into your calendar application to import current even
 msgstr "Dieser iCal-Link kann für Terminkalender genutzt werden um aktuelle Veranstaltungen zu importieren und anzuzeigen:"
 
 msgid "Also include all events from projects within this group in feed"
-msgstr ""
+msgstr "Veranstaltungen von Projekten innerhalb dieser Gruppe in diesem Feed ebenfalls anzeigen"
 
 msgid "iCal Feed"
 msgstr "iCal Feed"
@@ -461,19 +572,16 @@ msgid "Back to Events"
 msgstr "Zurück zu Veranstaltungen"
 
 msgid "Return to Event Polls"
-msgstr "Zurück zu Terminvorschläge"
+msgstr "Zurück zu Terminabstimmungen"
 
 msgid "Return to Archived Event Polls"
-msgstr "Zurück zu Abgeschlossene Terminvorschläge"
+msgstr "Zurück zu Abgeschlossene Terminabstimmungen"
 
 msgid "Calendar"
 msgstr "Kalender"
 
 msgid "List"
 msgstr "Liste"
-
-msgid "Event Polls"
-msgstr "Terminvorschläge"
 
 msgid "by"
 msgstr "von"
@@ -709,12 +817,12 @@ msgid ""
 msgstr ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s hat einen Kommentar zu einem Terminvorschlag, zu dem du abgestimmt hast, in der Gruppe %(team_name)s geschrieben:\n"
+"%(sender_name)s hat einen Kommentar zu einer Terminabstimmung, zu dem du abgestimmt hast, in der Gruppe %(team_name)s geschrieben:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
 "\n"
-"zum Terminvorschlag:\n"
+"zur Terminabstimmung:\n"
 "\n"
 "\"%(event_title)s\"\n"
 "\n"
@@ -730,7 +838,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
-msgstr "%(sender_name)s hat einen Terminvorschlag kommentiert zu dem du abgestimmt hast in %(team_name)s."
+msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
 msgid "Delete Event"
 msgstr "Veranstaltung Löschen"
@@ -739,10 +847,10 @@ msgid "(Canceled!)"
 msgstr "(Abgesagt!)"
 
 msgid "This is an archived event poll."
-msgstr "Dies ist ein abgeschlossener Terminvorschlag."
+msgstr "Dies ist ein abgeschlossene Terminabstimmung."
 
 msgid "The event that was created after the poll can be viewed here:"
-msgstr "Die Veranstaltung die durch diesen Terminvorschlag erstellt wurde kann hier angesehen werden:"
+msgstr "Die Veranstaltung die durch diese Terminabstimmung erstellt wurde kann hier angesehen werden:"
 
 msgid "(No description set)"
 msgstr "(Keine Beschreibung erstellt)"
@@ -792,6 +900,9 @@ msgstr "Nimmst du teil?"
 msgid "No Choice"
 msgstr "Keine Auswahl"
 
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
+msgstr "Du wirst jetzt Benachrichtigungen für Kommentare erhalten und wenn diese Veranstaltung geändert wird oder sich ihr Termin ändert."
+
 msgid "Show all"
 msgstr "Alle anzeigen"
 
@@ -810,15 +921,15 @@ msgid "The page you requested is not available for this event at this time."
 msgstr "Die Seite die du aufgerufen hast ist zu dieser Zeit nicht verfügbar."
 
 msgid "One of the event suggestions times could not be understood!"
-msgstr "Eine der Uhrzeiten im Terminvorschlag konnte nicht interpretiert werden!"
+msgstr "Eine der Uhrzeiten in der Terminabstimmung konnte nicht interpretiert werden!"
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
-msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich bearbeitet."
+msgstr "Die Terminabstimmung \"%(title)s\" wurde erfolgreich bearbeitet."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
-msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht bearbeitet werden."
+msgstr "Die Terminabstimmung \"%(title)s\" konnte nicht bearbeitet werden."
 
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
@@ -830,14 +941,14 @@ msgstr "Veranstaltung \"%(title)s\" konnte nicht hinzugefügt werden."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
-msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich hinzugefügt."
+msgstr "Die Terminabstimmung \"%(title)s\" wurde erfolgreich hinzugefügt."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
-msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht hinzugefügt werden."
+msgstr "Die Terminabstimmung \"%(title)s\" konnte nicht hinzugefügt werden."
 
 msgid "You should define at least one date suggestion."
-msgstr "Es sollte mindestens ein Terminvorschlag eingegeben werden."
+msgstr "Es sollte mindestens eine Terminabstimmung eingegeben werden."
 
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
@@ -849,11 +960,11 @@ msgstr "Veranstaltung \"%(title)s\" konnte nicht gelöscht werden."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
-msgstr "Der Terminvorschlag \"%(title)s\" wurde erfolgreich gelöscht."
+msgstr "Die Terminabstimmung \"%(title)s\" wurde erfolgreich gelöscht."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
-msgstr "Der Terminvorschlag \"%(title)s\" konnte nicht gelöscht werden."
+msgstr "Die Terminabstimmung \"%(title)s\" konnte nicht gelöscht werden."
 
 msgid "Your votes were saved successfully."
 msgstr "Ihre Abstimmung wurde erfolgreich gespeichert."
@@ -905,7 +1016,7 @@ msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 #~ msgstr "Aktuelle Veranstaltungen in %s"
 
 #~ msgid "There are no events to be scheduled."
-#~ msgstr "Es gibt keine aktuellen Terminvorschläge."
+#~ msgstr "Es gibt keine aktuellen Terminabstimmungen."
 
 #~ msgid "Event löschen"
 #~ msgstr "Veranstaltung löschen"
@@ -934,7 +1045,7 @@ msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 #~ msgstr "Speichern"
 
 #~ msgid "Add suggestion"
-#~ msgstr "Terminvorschlag hinzufügen"
+#~ msgstr "Terminabstimmung hinzufügen"
 
 #~ msgid "No tags available."
 #~ msgstr "Keine Schlagwörter vorhanden."
@@ -959,7 +1070,7 @@ msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 #~ msgstr "Widget-Button-Titel"
 
 #~ msgid "Automatically selected the only given date suggestion as event date."
-#~ msgstr "Es wurde automatisch der einzig eingetragene Terminvorschlag als Veranstaltungsdatum gewählt."
+#~ msgstr "Es wurde automatisch die einzig eingetragene Terminabstimmung als Veranstaltungsdatum gewählt."
 
 #~ msgid "Event does not exist or you are not allowed to modify it."
 #~ msgstr "Entweder existiert diese Veranstaltung nicht oder Ihnen fehlen die Rechte um die Veranstaltung zu bearbeiten."

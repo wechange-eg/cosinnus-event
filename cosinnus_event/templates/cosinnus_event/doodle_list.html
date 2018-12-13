@@ -19,6 +19,14 @@
         {% include "cosinnus/not_logged_in_alert.html" %}
     {% endif %}
 
+    {% trans "Delete" as btn_label %}
+    {% captureas btn_action %}$.cosinnus.Feedback.cosinnus_delete_element($.cosinnus.getListOfCheckedItems());{% endcaptureas %}
+    {% include 'cosinnus/common/checkbox/checkbox_action_button.html' with label=btn_label icon="fa-eraser" action=btn_action %}
+
+    {% include 'cosinnus/common/checkbox/checkbox_mark_all_buttons.html' %}
+    <div class="clearfix"></div>
+    
+
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
 	
@@ -65,4 +73,10 @@
   {% endfor %}
 
 	</div><!-- content-box -->
+	
+	<script type="text/javascript">
+        var cosinnus_delete_element_object_url = "{% group_url 'cosinnus:event:delete-element' group=group %}";
+    </script>
+    {% include 'cosinnus/common/delete_element_modal.html' %}
+    
 {% endblock content %}

@@ -26,6 +26,7 @@
                         <strong>
                             {% comment %} {{ group }} is not present when this event is rendered as a search result, so we never use reflected logic {% endcomment %}
                             <a href="{{ event.get_absolute_url }}{% if group and group != event.group %}?reflected_item_redirect=1{% endif %}">
+                                {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
 	                            {{ event.title }}{% if group and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}
 	                        </a>
                         </strong>

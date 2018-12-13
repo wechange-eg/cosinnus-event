@@ -12,6 +12,7 @@
 
 {% block breadcrumb %}
   {{ block.super }}
+  <li><a class="active" href="{% group_url 'cosinnus:event:doodle-list' group=group %}">{% trans "Event Polls" %}</a></li>
   <li class="active">
     {% if event.state == 2 %}
 		{% blocktrans with title=event.title %}Vote for {{ title }}{% endblocktrans %}
@@ -35,7 +36,7 @@
 	    <!-- a box with semi transparent background -->
 		<div class="content-box">
 	       
-	        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" %}
+	        {% include "cosinnus_event/single_event_detailed.html" with event=event hide_control_buttons="True" hide_follow_button=True %}
 	        <div class="regular-space"></div> 
 	          
             {% if event.state == 1 %}
@@ -254,6 +255,13 @@
 		{% endif %}
 		
 	</div> <!-- buttons and content box -->
+	
+	
+    <div class="white-content">
+        {% trans "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote." as follow_success_message %}
+        {% include 'cosinnus/common/likefollow/follow_button.html' with object=event success_message=follow_success_message %}
+        {% include 'cosinnus/common/likefollow/confirm_likefollow_modal.html' with object=event %}
+    </div>
 	
 	{% include 'cosinnus_event/event_comments.html' with event=event full_view="True" no_indent="True" comments_expanded="True" %}
 	

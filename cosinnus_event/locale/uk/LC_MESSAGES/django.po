@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-18 22:50+0200\n"
-"PO-Revision-Date: 2018-09-30 18:46+0200\n"
+"POT-Creation-Date: 2018-12-10 12:52+0100\n"
+"PO-Revision-Date: 2018-12-12 14:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Language: uk_UA\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.8.4\n"
 
 msgid "Events"
 msgstr "Заходи"
@@ -102,6 +102,85 @@ msgstr "%(sender_name)s прокоментував/-ла захід, , в яко
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
 msgstr "%(sender_name)s прокоментував(ла) захід, у якому ви берете участь у %(team_name)s"
+
+msgid "A user created a new event in a team you are following"
+msgstr "Користувач створив/-ла нову подію в команді, за якою Ви слідкуєте"
+
+#, python-format
+msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Нова подія від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
+
+#, python-format
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr "%(sender_name)s створив/-ла нову подію у %(team_name)s (яку Ви відслідковуєте)"
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
+msgstr "Нова подія: «%(object_name)s» була оголошена у %(team_name)s (яку Ви відслідковуєте)."
+
+msgid "A user created a new event poll in a team you are following"
+msgstr "Користувач створив/-ла нове опитування щодо події в команді, яку Ви відслідковуєте"
+
+#, python-format
+msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Нове опитування щодо заходу від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
+
+#, python-format
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr "%(sender_name)s створив(ла) нове опитування щодо дати заходу в %(team_name)s (за якою Ви стежите)"
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr "Нове опитування щодо події: «%(object_name)s» було створено у %(team_name)s (яку Ви відстежуєте)"
+
+msgid "A user commented on an event you are following"
+msgstr "Користувач прокоментував захід, який Ви відстежуєте"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following"
+msgstr "%(sender_name)s прокоментував/-ла захід, який Ви відстежуєте"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr "%(sender_name)s прокоментував(ла) захід, який Ви відслідковуєте у %(team_name)s"
+
+msgid "A user updated an event"
+msgstr "Користувач оновив подію"
+
+#, python-format
+msgid "%(sender_name)s updated an event you are following"
+msgstr "%(sender_name)s оновив подію, яку Ви відслідковуєте"
+
+#, python-format
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Захід «%(object_name)s» було оновлено у %(team_name)s."
+
+msgid "A user updated an event poll"
+msgstr "Користувач оновив/-ла опитування щодо події"
+
+#, python-format
+msgid "Event poll updated by %(sender_name)s"
+msgstr "Опитування щодо події було нововлено %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr "%(sender_name)s оновив/-ла опитування щодо заходу, який Ви відстежуєте"
+
+#, python-format
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Опитування щодо події «%(object_name)s» було оновлено у %(team_name)s."
+
+#, python-format
+msgid "%(sender_name)s voted in"
+msgstr "%(sender_name)s проголосував у"
+
+#, python-format
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr "%(sender_name)s проголосував в опитуванні щодо події, за якою Ви слідкуєте"
+
+#, python-format
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
 
 msgid "Upcoming Events"
 msgstr "Майбутні заходи"
@@ -343,6 +422,9 @@ msgstr "Зберегти"
 msgid "Schedule an event"
 msgstr "Визначити дату"
 
+msgid "Delete"
+msgstr "Видалити"
+
 msgid "There are no open event polls."
 msgstr "Немає жодної актуально пропозиції дати."
 
@@ -366,6 +448,9 @@ msgstr "Голосувати за %(title)s"
 msgid "Archived: %(title)s"
 msgstr "Завершено: %(title)s"
 
+msgid "Event Polls"
+msgstr "Опитування щодо дати"
+
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Опитування щодо дати цього заходу уже завершено."
 
@@ -388,15 +473,15 @@ msgstr "Коли у вас є час?"
 msgid "There are no date suggestions for this event poll yet!"
 msgstr "У цьому опитуванні щодо дати ще немає жодної пропозиції дати!"
 
-msgid "Delete"
-msgstr "Видалити"
-
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
 msgstr "Ви дійсно бажаєте видалити це опитування щодо дати «%(title)s»?"
 
 msgid "Delete unscheduled event"
 msgstr "Видалити опитування"
+
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
+msgstr "Тепер Ви будете отримувати сповіщення у випадку коментарів або, коли опитування щодо події буде змінено чи хтось віддасть голос."
 
 msgid "Write comment..."
 msgstr "Коментувати..."
@@ -472,9 +557,6 @@ msgstr "Календар"
 
 msgid "List"
 msgstr "Список"
-
-msgid "Event Polls"
-msgstr "Опитування щодо дати"
 
 msgid "by"
 msgstr "автор"
@@ -792,6 +874,9 @@ msgstr "Ви берете участь?"
 
 msgid "No Choice"
 msgstr "Немає вибору"
+
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
+msgstr "Ви тепер будете отримувати сповіщення, якщо буде додано коментар або подія буде оновлена чи її деталі будуть змінені."
 
 msgid "Show all"
 msgstr "Відобразити все"

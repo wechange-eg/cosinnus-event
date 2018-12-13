@@ -50,6 +50,10 @@ from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
+from cosinnus.views.common import DeleteElementView, apply_likefollow_object
+from cosinnus.views.mixins.tagged import EditViewWatchChangesMixin
+from cosinnus_event import cosinnus_notifications
+from django.contrib.auth import get_user_model
 logger = logging.getLogger('cosinnus')
 
 
@@ -282,7 +286,10 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
         # events are created as scheduled.
         # doodle events would be created as STATE_VOTING_OPEN.
         form.instance.state = Event.STATE_SCHEDULED
-        return super(EntryAddView, self).forms_valid(form, inlines)
+        ret = super(EntryAddView, self).forms_valid(form, inlines)
+        # creator follows their own event
+        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        return ret
     
 entry_add_view = EntryAddView.as_view()
 
@@ -296,7 +303,9 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
         form.instance.state = Event.STATE_VOTING_OPEN  # be explicit
 
         ret = super(DoodleAddView, self).forms_valid(form, inlines)
-
+        # creator follows their own doodle
+        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()
         if num_suggs == 0:
@@ -307,14 +316,29 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
 doodle_add_view = DoodleAddView.as_view()
 
 
-class EntryEditView(EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
-    pass
-
+class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
+    
+    changed_attr_watchlist = ['title', 'note', 'from_date', 'to_date', 'media_tag.location','url',
+                              'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
+    
+    def on_save_changed_attrs(self, obj, changed_attr_dict):
+        # send out a notification to all followers for the change
+        followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
+        cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator))
+        
 entry_edit_view = EntryEditView.as_view()
 
 
-class DoodleEditView(DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
-
+class DoodleEditView(EditViewWatchChangesMixin, DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
+    
+    changed_attr_watchlist = ['title', 'note', 'get_suggestions_hash', 'media_tag.location','url',
+                          'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
+    
+    def on_save_changed_attrs(self, obj, changed_attr_dict):
+        # send out a notification to all followers for the change
+        followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
+        cosinnus_notifications.following_doodle_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator))
+    
     def get_context_data(self, *args, **kwargs):
         context = super(DoodleEditView, self).get_context_data(*args, **kwargs)
         context.update({
@@ -516,6 +540,11 @@ class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
                 vote.save()
         
         ret = super(DoodleVoteView, self).formset_valid(formset)
+        
+        # send notification to followers
+        followers_except_voter = [pk for pk in self.object.get_followed_user_ids() if not pk in [self.request.user.id]]
+        cosinnus_notifications.following_doodle_voted.send(sender=self, user=self.object.creator, obj=self.object, audience=get_user_model().objects.filter(id__in=followers_except_voter))
+        
         messages.success(self.request, self.message_success )
         return ret
     
@@ -918,3 +947,8 @@ def assign_attendance_view(request, group, slug):
     
     return JsonResponse({'error': 'statecouldnotbechanged', 'result_state': -1 if attendance is None else attendance.state})
 
+
+class EventDeleteElementView(DeleteElementView):
+    model = Event
+
+delete_element_view = EventDeleteElementView.as_view()
