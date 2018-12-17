@@ -14,24 +14,42 @@ $('#form-event').submit(function() {
 
     var name = 'suggestions-' + idx + '-from_date'
     var dateTime = moment(datum + ' ' + time).format(cosinnus_datetime_format);
-    console.log('datetime', dateTime);
+    var splitDateTime = dateTime.split(' ');
+    var valdate = splitDateTime[0];
+    var valtime = splitDateTime[1];
 
-    // the from_date input
+    // the from_date input for date
     $('<input />')
       .attr('type', 'hidden')
-      .attr('id', 'id_' + name)
-      .attr('name', name)
-      .attr('value', dateTime)
+      .attr('id', 'id_' + name + '_0')
+      .attr('name', name + '_0')
+      .attr('value', valdate)
       .appendTo(formEvent);
+    // the from_date_input for time
+    $('<input />')
+    .attr('type', 'hidden')
+    .attr('id', 'id_' + name + '_1')
+    .attr('name', name + '_1')
+    .attr('value', valtime)
+    .appendTo(formEvent);
+  
 
     // to_date unused atm; to_date == from_date
     name = name.replace('from_date', 'to_date');
+    // the from_date input for date
     $('<input />')
       .attr('type', 'hidden')
-      .attr('id', 'id_' + name)
-      .attr('name', name)
-      .attr('value', dateTime)
+      .attr('id', 'id_' + name + '_0')
+      .attr('name', name + '_0')
+      .attr('value', valdate)
       .appendTo(formEvent);
+    // the from_date_input for time
+    $('<input />')
+    .attr('type', 'hidden')
+    .attr('id', 'id_' + name + '_1')
+    .attr('name', name + '_1')
+    .attr('value', valtime)
+    .appendTo(formEvent);
 
     // increase number of forms for management form
     totalForms++;

@@ -43,11 +43,22 @@ class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
 EventForm = get_form(_EventForm)
 
 
+class _DoodleForm(_EventForm):
+    
+    from_date = forms.SplitDateTimeField(required=False)
+    to_date = forms.SplitDateTimeField(required=False)
+
+DoodleForm = get_form(_DoodleForm)
+
+
 class SuggestionForm(forms.ModelForm):
 
     class Meta(object):
         model = Suggestion
         fields = ('from_date', 'to_date',)
+    
+    from_date = forms.SplitDateTimeField(required=False, widget=SplitHiddenDateWidget(default_time='00:00'))
+    to_date = forms.SplitDateTimeField(required=False, widget=SplitHiddenDateWidget(default_time='00:00'))
 
 
 class VoteForm(forms.Form):

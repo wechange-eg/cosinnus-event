@@ -27,7 +27,7 @@ from cosinnus.views.attached_object import AttachableViewMixin
 
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
-    EventNoFieldForm, CommentForm
+    EventNoFieldForm, CommentForm, DoodleForm
 from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
     past_event_filter, Comment, EventAttendance
 from django.shortcuts import get_object_or_404
@@ -250,8 +250,12 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
                             messages.error(self.request, _('One of the event suggestions times could not be understood!'))
         
         try:
-            logger.error('Errors in doodle formsets! Errors in extra.', extra={'formset_errors': force_text(inlines and inlines[0].errors or None), 'form_errors': force_text(form.errors),
-                    'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors})
+            extra = {'formset_errors': force_text(inlines and inlines[0].errors or None), 'form_errors': force_text(form.errors),
+                    'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors}
+            logger.error('Errors in doodle formsets! Errors in extra.', extra=extra)
+            if settings.DEBUG:
+                logger.error(extra)
+            
         except:
             logger.error('Errors in doodle formsets! Double error in inlines.', extra={'formsets': force_text(inlines), 'form_errors': force_text(form.errors),
                     'obj_form_error': form.forms['obj'].errors, 'media_tag_form_error': form.forms['media_tag'].errors})
@@ -259,6 +263,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
 
 
 class DoodleFormMixin(EntryFormMixin):
+    form_class = DoodleForm
     inlines = [SuggestionInlineView]
     template_name = "cosinnus_event/doodle_form.html"
     message_success = _('Unscheduled event "%(title)s" was edited successfully.')
