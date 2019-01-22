@@ -5,8 +5,9 @@ from cosinnus_event.api.serializers import EventListSerializer, EventRetrieveSer
 from rest_framework.viewsets import ModelViewSet
 
 
-class EventSerializerViewSet(PublicTaggableObjectFilterMixin,
-                             ModelViewSet):
+class EventViewSet(PublicTaggableObjectFilterMixin,
+                   ModelViewSet):
+
     queryset = Event.objects.all()
 
     def get_queryset(self):
