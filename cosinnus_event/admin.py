@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from cosinnus_event.models import Event, Suggestion, Vote
+from cosinnus.admin import BaseTaggableAdminMixin
 
 
 class VoteInlineAdmin(admin.TabularInline):
@@ -33,12 +34,10 @@ class SuggestionInlineAdmin(admin.TabularInline):
     readonly_fields = ('count',)
 
 
-class EventAdmin(admin.ModelAdmin):
-    inlines = (SuggestionInlineAdmin,)
-    list_display = ('title', 'from_date', 'to_date', 'creator', 'group',
-                    'state')
-    list_filter = ('state', 'creator',)
-    search_fields = ('title', 'creator__first_name', 'creator__last_name', 'creator__email', 'group__name')
+class EventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
+    inlines = BaseTaggableAdminMixin.inlines + [SuggestionInlineAdmin,]
+    list_display = BaseTaggableAdminMixin.list_display + ['from_date', 'to_date', 'group', 'state']
+    list_filter = BaseTaggableAdminMixin.list_filter + ['state', ]
 
 
 admin.site.register(Event, EventAdmin)
