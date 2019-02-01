@@ -641,10 +641,17 @@ class BaseEventFeed(ICalFeed):
     
     product_id = None
     timezone = 'UTC'
-    title = _('Events')
-    description = _('Upcoming events')
+    base_title = _('Events') 
+    title = None # set to base_title on init
+    base_description = _('Upcoming events')
+    description = None # set to base_description on init
     localtime = False # if given (?localtime=1), times will be converted to local server timezone time
     utc_offset = None # in hours, taken from ?utc_offset=<number> optional param
+    
+    def __init__(self, *args, **kwargs):
+        self.title = self.base_title
+        self.description = self.base_description
+        return super(BaseEventFeed, self).__init__(*args, **kwargs)
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
@@ -719,8 +726,8 @@ class BaseGroupEventFeed(BaseEventFeed):
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
-        self.title = '%s - %s' %  (self.group.name, self.title)
-        self.description = '%s %s' % (self.description, self.group.name)
+        self.title = '%s - %s' %  (self.group.name, self.base_title)
+        self.description = '%s - %s' % (self.base_description, self.group.name)
         if not self.product_id:
             self.product_id = UserTokenGroupEventFeed.PROTO_PRODUCT_ID % site.domain
         return super(BaseGroupEventFeed, self).__call__(request, *args, **kwargs)
