@@ -80,7 +80,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr style="display:none;">
+										<tr class="doodle-selected-date-input proto" style="display:none;">
 											<td>
 												<i class="fa fa-trash-o"></i>
 											</td>
@@ -161,12 +161,12 @@ $(function() {
   dateDataAttr = '{{ form.from_date.value|date:"Y-m-d" }}';
   time1= '{{ form.from_date.value|date:"H:i" }}';
   time2= '';
-  $('#calendar-doodle-days-selector-list table tr')
-    .last()
+  $('#calendar-doodle-days-selector-list table tr.proto')
     .clone()
+    .removeClass('proto')
     .show()
     .attr('data-date', dateDataAttr)
-    .insertBefore($('#calendar-doodle-days-selector-list table tr').last())
+    .appendTo($('#calendar-doodle-days-selector-list table tbody'))
     .children(":first")
     .click(function() {
       $(this).parent().remove();
@@ -174,7 +174,7 @@ $(function() {
         .fullCalendar('render');
     })
     .next()
-    .text(dateDataAttr)
+    .attr('data-date', dateDataAttr).addClass('moment-data-date')
     .next()
     .children()
     .attr('data-form-idx', formIdx)
@@ -197,13 +197,19 @@ $(function() {
   {% endfor %}
 {% endfor %}
 
+
+  $.cosinnus.renderMomentDataDate();
+
   if (hasDates) {
-    $('#calendar-doodle-days-selector-list table thead tr').show();
+    $('#calendar-doodle-days-selector-list table thead').show();
   }
   
   $("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
+  
+  // from cosinnus_event.js
+  calendarCreateDoodle();
+  
 });
-
 
 </script>
 {% endblock %}
