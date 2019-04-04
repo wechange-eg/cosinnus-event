@@ -72,3 +72,7 @@
 .attendance-avatar.faded {
     opacity: 0.5;
 }
+
+.doodle-input-error {
+    background-color: rgba(229, 92, 85, 0.5);
+}

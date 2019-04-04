@@ -81,11 +81,11 @@
 									</thead>
 									<tbody>
 										<tr class="doodle-selected-date-input proto" style="display:none;">
-											<td>
+											<td class="doodle-delete-button">
 												<i class="fa fa-trash-o"></i>
 											</td>
-											<td data-date-style="short"></td>
-											<td><input /></td>
+											<td class="doodle-date-input" data-date-style="short"></td>
+											<td><input class="doodle-time-input" type="text" /></td>
 										</tr>
 									</tbody>
 								</table>
@@ -161,28 +161,33 @@ $(function() {
   dateDataAttr = '{{ form.from_date.value|date:"Y-m-d" }}';
   time1= '{{ form.from_date.value|date:"H:i" }}';
   time2= '';
-  $('#calendar-doodle-days-selector-list table tr.proto')
+  var $dateInput = $('#calendar-doodle-days-selector-list table tr.proto')
     .clone()
     .removeClass('proto')
     .show()
     .attr('data-date', dateDataAttr)
-    .appendTo($('#calendar-doodle-days-selector-list table tbody'))
-    .children(":first")
-    .click(function() {
-      $(this).parent().remove();
-      $("#calendar-doodle-days-selector .small-calendar")
-        .fullCalendar('render');
-    })
-    .next()
-    .attr('data-date', dateDataAttr).addClass('moment-data-date')
-    .next()
-    .children()
+    .appendTo($('#calendar-doodle-days-selector-list table tbody'));
+    
+  $dateInput.find('.doodle-delete-button').click(function() {
+	// add a DELETE input to the form so that the existing date will be deleted on submit
+    var $parent = $(this).parent();
+    var formIdx = $parent.find('.doodle-time-input').attr('data-form-idx');
+	var name = 'suggestions-' + formIdx + '-DELETE';
+	$('<input />')
+        .attr('type', 'hidden')
+        .attr('id', 'id_' + name)
+        .attr('name', name)
+        .attr('value', 'true')
+        .appendTo(formEvent);
+  	$parent.hide();
+  	$("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
+  });
+  $dateInput.find('.doodle-date-input')
+    .attr('data-date', dateDataAttr)
+    .addClass('moment-data-date');
+  $dateInput.find('.doodle-time-input')
     .attr('data-form-idx', formIdx)
     .val(time1);
-    //.parent()
-    //.next()
-    //.children()
-    //.val(time2);
     
     {% if form.id and form.id.value %}
       name = 'suggestions-' + formIdx + '-id';

@@ -10,7 +10,6 @@ $('#form-event').submit(function() {
       idx = newFormIdx;
       newFormIdx++;
     }
-    console.log(idx);
 
     var name = 'suggestions-' + idx + '-from_date'
     var dateTime = moment(datum + ' ' + time).format(cosinnus_datetime_format);
@@ -66,20 +65,9 @@ $('#form-event').submit(function() {
     //var time2 = $(this).find('input').last();
     
     // support entries like '2130' and empty entries
-    var time_val = time1.val() || '00:00';
-    time_val = time_val.replace(':', '').replace('.', '');
-    if (isNaN(time_val) || time_val.length > 4) {
-        // some item was entered incorrectly
-        hasErrors = true;
-    }
-    if (time_val.length == 1 || time_val.length == 3) {
-    	time_val = '0' + time_val;
-    }
-    if (time_val.length == 2) {
-    	time_val = time_val + '00';
-    }
-    if (time_val.length >=3 && time_val.length <=4) {
-    	time_val = time_val.slice(0,time_val.length-2) + ':' + time_val.slice(time_val.length-2);
+    var time_val = convertDoodleStringTime(time1.val());
+    if (time_val == null) {
+    	hasErrors = true;
     }
     
     dateList.push([time1.attr('data-form-idx'), datum, time_val]);
@@ -116,12 +104,42 @@ $('#form-event').submit(function() {
   return true; // now submit
 });
 
+/**
+ * Will accept and convert string times to a proper "12:30" format.
+ * Acceptable examples:
+ * 		"3" --> "03:00"
+ * 		"330" --> "03:30"
+ * 		"12" --> "12:00"
+ * 		"1245" --> "12:45"
+ * 		"12.45" --> "12:45"
+ * 		"12:45" --> "12:45"
+ */
+var convertDoodleStringTime = function(stringTime) {
+    var time_val = stringTime || '00:00';
+    time_val = time_val.replace(':', '').replace('.', '');
+    if (isNaN(time_val) || time_val.length > 4) {
+        // invalid format
+        return null;
+    }
+    if (time_val.length == 1 || time_val.length == 3) {
+    	time_val = '0' + time_val;
+    }
+    if (time_val.length == 2) {
+    	time_val = time_val + '00';
+    }
+    if (time_val.length >=3 && time_val.length <=4) {
+    	time_val = time_val.slice(0,time_val.length-2) + ':' + time_val.slice(time_val.length-2);
+    }
+    return time_val;
+}
+
 
 var calendarCreateDoodle = function() {
     if (!$('#calendar-doodle-days-selector-list').length) {
         return;
     }
     var CREATE_MULTIPLE_DOODLE_DAYS = true;
+    var formEvent = $('#form-event');
     
     function selectDays(reSort) {
     	if (reSort) {
@@ -132,10 +150,17 @@ var calendarCreateDoodle = function() {
 
         // mark the days that are picked in the calendar
         $('#calendar-doodle-days-selector-list table tr').each(function() {
-            var dateDataAttr = $(this).attr('data-date');
-            $('#calendar-doodle-days-selector .small-calendar '+
-                'td[data-date='+dateDataAttr+']:not(.fc-other-month)')
-                .addClass('selected');
+        	var dateDataAttr = $(this).attr('data-date');
+        	if (dateDataAttr) {
+        		var formIdx = $(this).find('.doodle-time-input').attr('data-form-idx');
+        		var deleteName = 'suggestions-' + formIdx + '-DELETE';
+        		// check if the current date is not already marked as to-delete
+        		if (formEvent.find('input[name="' + deleteName + '"]').attr('value') != 'true') {
+        			$('#calendar-doodle-days-selector .small-calendar '+
+        					'td[data-date='+dateDataAttr+']:not(.fc-other-month)')
+        					.addClass('selected');
+        		}
+        	}
         });
 
         // when table empty hide even the headline
@@ -167,27 +192,20 @@ var calendarCreateDoodle = function() {
         if (CREATE_MULTIPLE_DOODLE_DAYS || $('#calendar-doodle-days-selector-list table tr[data-date='+dateDataAttr+']').length===0) {
             // add to list (select) now
 
-            $('#calendar-doodle-days-selector-list table tr.proto')
+            var $dateInput = $('#calendar-doodle-days-selector-list table tr.proto')
                 .clone()
                 .removeClass('proto')
                 .show()
                 .attr('data-date',dateDataAttr)
-                .appendTo($('#calendar-doodle-days-selector-list table tbody'))
-                .children(":first")
-                .click(function() {
-                    $(this).parent().remove();
-                    $("#calendar-doodle-days-selector .small-calendar")
-                        .fullCalendar('render');
-                })
-                .next()
-                .attr('data-date', dateDataAttr).addClass('moment-data-date')
-                .next()
-                .children()
-                .val('');
-                //.parent()
-                //.next()
-                //.children()
-                //.val('')
+                .appendTo($('#calendar-doodle-days-selector-list table tbody'));
+            $dateInput.find('.doodle-delete-button').click(function() {
+                $(this).parent().remove();
+                $("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
+            });
+            $dateInput.find('.doodle-date-input')
+                .attr('data-date', dateDataAttr)
+                .addClass('moment-data-date');
+            $dateInput.find('.doodle-time-input').val('');
             
         } else {
             // remove from list now
@@ -230,6 +248,12 @@ var calendarCreateDoodle = function() {
         // remove last hidden line
         doodleData.dates.pop();
     });
-
+    
+    
+    // highlighting for invalid time formats
+    $('#calendar-doodle-days-selector-list .doodle-time-input').on("focusout", function(){
+    	var $this = $(this);
+		$this.toggleClass('doodle-input-error', convertDoodleStringTime($this.val()) == null);
+    });
 };
 
