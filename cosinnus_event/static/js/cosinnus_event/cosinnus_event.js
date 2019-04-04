@@ -251,7 +251,7 @@ var calendarCreateDoodle = function() {
     
     
     // highlighting for invalid time formats
-    $('#calendar-doodle-days-selector-list .doodle-time-input').on("focusout", function(){
+    $('#calendar-doodle-days-selector-list').on('focusout', '.doodle-time-input', function(){
     	var $this = $(this);
 		$this.toggleClass('doodle-input-error', convertDoodleStringTime($this.val()) == null);
     });

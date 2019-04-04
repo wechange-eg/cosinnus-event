@@ -17,6 +17,8 @@
 
 {% block breadcrumb %}
         {{ block.super }}
+        
+  		<li><a href="{% group_url 'cosinnus:event:doodle-list' group=group %}">{% trans "Event Polls" %}</a></li>
         <li class="active">
 	        {% if form_view == "add" %}
 			  {% trans "Add unscheduled event" %}
