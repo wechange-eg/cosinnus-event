@@ -6,9 +6,7 @@
             <ul class="media-list fine-space">
                 <li class="media">
                     <a class="pull-left square-date-icon" href="{{ event.get_absolute_url }}">
-                        {% if event.state == 2 %}
-		                    <i class="fa fa-calendar"></i>
-		                {% elif event.state == 4 %}
+                        {% if event.state == 2 or event.state == 4 %}
 		                    <i class="fa fa-calendar-check-o"></i>
 		                {% else %}
 		                    <div>{{ event.from_date|date:"d" }}</div>

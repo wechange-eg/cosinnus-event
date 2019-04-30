@@ -14,6 +14,10 @@ class EventManager(models.Manager):
         qs = getattr(self, 'get_queryset', self.get_query_set)()
         return qs.filter(public=True, state=self.model.STATE_SCHEDULED)
 
+    def all_upcoming(self):
+        from cosinnus_event.models import upcoming_event_filter
+        return upcoming_event_filter(self.get_queryset())
+
     def upcoming(self, count):
         return self.public().filter(to_date__gte=now()).order_by("from_date").all()[:count]
     

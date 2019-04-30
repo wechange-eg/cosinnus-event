@@ -21,7 +21,7 @@
 	                    <div>{{ event.from_date|date:"d" }}</div>
 	                    <div>{{ event.from_date|date:"M" }}</div>
                     {% else %}
-                    	{% if event.state == 4 %}
+                    	{% if event.state == 4 or event.state == 2 %}
                     		<i class="fa fa-calendar-check-o"></i>
                     	{% else %}
                         	<i class="fa fa-calendar"></i>
