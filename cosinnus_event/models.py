@@ -117,6 +117,8 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
 
     objects = EventManager()
+    
+    timeline_template = 'cosinnus_event/v2/timeline_item.html'
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date']
