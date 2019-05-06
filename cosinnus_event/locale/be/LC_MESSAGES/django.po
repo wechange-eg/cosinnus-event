@@ -1,0 +1,1066 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-25 12:16+0100\n"
+"PO-Revision-Date: 2019-05-06 16:54+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: be\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "Events"
+msgstr "Падзеі"
+
+msgctxt "the_app"
+msgid "event"
+msgstr "падзея"
+
+msgid "A user created a new event"
+msgstr "Карыстальнік(-ца) стварыў(-ла) новую падзею"
+
+#, python-format
+msgid "New event by %(sender_name)s"
+msgstr "Новая падзея ад %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s created a new event"
+msgstr "%(sender_name)s стварыў(-ла) новую падзею"
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgstr "Новая падзея: \"%(object_name)s\" анансавана ў %(team_name)s."
+
+msgid "A user created a new event poll"
+msgstr "Карыстальнік(-ца) стварыў(-ла) новае апытанне да падзеі"
+
+#, python-format
+msgid "New event poll by %(sender_name)s"
+msgstr "Новае апытанне да падзеі ад %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s created a new event poll"
+msgstr "%(sender_name)s стварыў(-ла) новае апытанне да падзеі"
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgstr ""
+"Новае апытанне да падзеі: \"%(object_name)s\" створана ў %(team_name)s."
+
+msgid "A user commented on one of your events"
+msgstr "Карыстальнік(-ца) пракаментаваў(-ла) адну з Вашых падзей"
+
+#, python-format
+msgid "%(sender_name)s commented on your event"
+msgstr "%(sender_name)s пракаментаваў(-ла) Вашу падзею"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events"
+msgstr "%(sender_name)s пракаментаваў(-ла) адну з Вашых падзей"
+
+#, python-format
+msgid "%(sender_name)s"
+msgstr "%(sender_name)s"
+
+msgid "A user commented on a event you were tagged in"
+msgstr "Карыстальнік(-ца) пракаментаваў(-ла) падзею, у якой Вы былі пазначаны"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you were tagged in"
+msgstr "%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы былі пазначаны"
+
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event you were tagged in in %(team_name)s"
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы былі пазначаны, у "
+"%(team_name)s"
+
+msgid "A user commented on an event you voted in"
+msgstr "Карыстальнік(-ца) пракаментаваў(-ла) падзею, у якой Вы прагаласавалі"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in"
+msgstr "%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы прагаласавалі"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы прагаласавалі, у "
+"%(team_name)s"
+
+msgid "A user commented on an event you are attending"
+msgstr ""
+"Карыстальнік(-ца) пракаментаваў(-ла) падзею, у якой Вы збіраецеся "
+"паўдзельнічаць"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending"
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы збіраецеся "
+"паўдзельнічаць"
+
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы збіраецеся "
+"паўдзельнічаць, у %(team_name)s"
+
+msgid "A user created a new event in a team you are following"
+msgstr ""
+"Карыстальнік(-ца) стварыў(-ла) новую падзею ў камандзе, за якой вы сочыце"
+
+#, python-format
+msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr "Новая падзея ад %(sender_name)s у %(team_name)s (за якой вы сочыце)"
+
+#, python-format
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr ""
+"%(sender_name)s стварыў(-ла) новую падзею ў %(team_name)s (за якой вы сочыце)"
+
+#, python-format
+msgid ""
+"A new event: \"%(object_name)s\" was announced in %(team_name)s (which you "
+"follow)."
+msgstr ""
+"Новая падзея: \"%(object_name)s\" анансаваная ў %(team_name)s (за якой вы "
+"сочыце)."
+
+msgid "A user created a new event poll in a team you are following"
+msgstr ""
+"Карыстальнік(-ца) стварыў(-ла) новае апытанне да падзеі ў камандзе, за якой "
+"вы сочыце"
+
+#, python-format
+msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+msgstr ""
+"Новае апытанне да падзеі ад %(sender_name)s у %(team_name)s (за якой вы "
+"сочыце)"
+
+# EN > poll in
+#, python-format
+msgid ""
+"%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr ""
+"%(sender_name)s стварыў(-ла) новае апытанне да падзеі ў %(team_name)s (за "
+"якой вы сочыце)"
+
+#, python-format
+msgid ""
+"A new event poll: \"%(object_name)s\" was created in %(team_name)s (which "
+"you follow)."
+msgstr ""
+"Новае апытанне да падзеі: \"%(object_name)s\" створана ў %(team_name)s (за "
+"якой вы сочыце)."
+
+msgid "A user commented on an event you are following"
+msgstr "Карыстальнік(-ца) пракаментаваў(-ла) падзею, за якой Вы сочыце"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following"
+msgstr "%(sender_name)s пракаментаваў(-ла) падзею, за якой Вы сочыце"
+
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, за якой Вы сочыце, у %(team_name)s"
+
+msgid "A user updated an event"
+msgstr "Карыстальнік(-ца) абнавіў(-ла) падзею"
+
+#, python-format
+msgid "%(sender_name)s updated an event you are following"
+msgstr "%(sender_name)s абнавіў(-ла) падзею, за якой Вы сочыце"
+
+#, python-format
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Падзея \"%(object_name)s\" абноўлена ў %(team_name)s."
+
+msgid "A user updated an event poll"
+msgstr "Карыстальнік(-ца) абнавіў(-ла) апытанне да падзеі"
+
+#, python-format
+msgid "Event poll updated by %(sender_name)s"
+msgstr "Апытанне да падзеі абноўлена карыстальнікам(-цай) %(sender_name)s"
+
+#, python-format
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr "%(sender_name)s абнавіў(-ла) апытанне да падзеі, за якім Вы сочыце"
+
+#, python-format
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "Апытанне да падзеі \"%(object_name)s\" абноўлена ў %(team_name)s."
+
+#, python-format
+msgid "%(sender_name)s voted in"
+msgstr "%(sender_name)s прагаласаваў у"
+
+#, python-format
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr ""
+"%(sender_name)s прагаласаваў(-ла) у апытанні да падзеі, за якім Вы сочыце"
+
+#, python-format
+msgid ""
+"%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr ""
+"%(sender_name)s прагаласаваў(-ла) у апытанні да падзеі \"%(object_name)s\" у "
+"%(team_name)s."
+
+msgid "Upcoming Events"
+msgstr "Надыходзячыя падзеі"
+
+msgid "No upcoming events"
+msgstr "Няма надыходзячых падзей"
+
+msgid "Created By"
+msgstr "Створаная карыстальнікам(-цай)"
+
+msgid "Soonest Upcoming"
+msgstr "Найбліжэйшыя"
+
+msgid "Newest Created"
+msgstr "Найноўшыя створаныя"
+
+msgid "Title"
+msgstr "Назва"
+
+msgid "Scheduled"
+msgstr "Дата прызначана"
+
+msgid "Voting open"
+msgstr "Галасаванне адкрытае"
+
+msgid "Canceled"
+msgstr "Адмененая"
+
+msgid "Archived Event Poll"
+msgstr "Архіўнае апытанне да падзеі"
+
+msgid "Start"
+msgstr "Пачатак"
+
+msgid "End"
+msgstr "Канец"
+
+msgid "State"
+msgstr "Стан"
+
+msgid "Note"
+msgstr "Заўвага"
+
+msgid "Event date"
+msgstr "Дата падзеі"
+
+msgid "Location"
+msgstr "Месцазнаходжанне"
+
+msgid "Latitude"
+msgstr "Шырата"
+
+msgid "Longitude"
+msgstr "Даўгата"
+
+msgid "Street"
+msgstr "Вуліца"
+
+msgid "ZIP code"
+msgstr "Паштовы індэкс"
+
+msgid "City"
+msgstr "Горад"
+
+msgid "Is public (on website)"
+msgstr "Публічная (на сайце)"
+
+msgid "Image"
+msgstr "Выява"
+
+msgid "URL"
+msgstr "Спасылка"
+
+msgid "Original Event Poll"
+msgstr "Першапачатковае апытанне да падзеі"
+
+msgid "Event"
+msgstr "Падзея"
+
+#, python-format
+msgid "%(event)s (%(date)s - %(end)s)"
+msgstr "%(event)s (%(date)s - %(end)s)"
+
+#, python-format
+msgid "%(event)s (%(from)s - %(to)s)"
+msgstr "%(event)s (%(from)s - %(to)s)"
+
+#, python-format
+msgid "%(event)s (canceled)"
+msgstr "%(event)s (адменена)"
+
+#, python-format
+msgid "%(event)s (pending)"
+msgstr "%(event)s (чакаюць рашэння)"
+
+#, python-format
+msgid "%(event)s (archived)"
+msgstr "%(event)s (адпраўлена ў архіў)"
+
+msgctxt "the subject"
+msgid "Votes"
+msgstr "Галасы"
+
+msgid "Suggestion"
+msgstr "Прапанова"
+
+msgid "Suggestions"
+msgstr "Прапановы"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid "Maybe"
+msgstr "Магчыма"
+
+msgid "No"
+msgstr "Не"
+
+msgid "Voter"
+msgstr "Удзельнік(-ца) галасавання"
+
+msgid "Vote"
+msgstr "Галасаванне"
+
+msgctxt "the subject"
+msgid "Vote"
+msgstr "Галасаваць"
+
+msgid "Creator"
+msgstr "Стваральнік(-ца)"
+
+msgid "Created"
+msgstr "Створана"
+
+msgid "Last modified"
+msgstr "Апошняя змена"
+
+msgid "Text"
+msgstr "Тэкст"
+
+msgid "Comment"
+msgstr "Каментар"
+
+msgid "Comments"
+msgstr "Каментары"
+
+msgid "Create Event"
+msgstr "Стварыць падзею"
+
+msgid "Would you like to create an event"
+msgstr "Вы жадаеце стварыць падзею"
+
+msgid "on"
+msgstr "дата"
+
+msgid "from"
+msgstr "з"
+
+msgid "until"
+msgstr "да"
+
+msgid "Cancel"
+msgstr "Скасаваць"
+
+msgid "OK"
+msgstr "ОК"
+
+msgctxt "time"
+msgid "all day"
+msgstr "увесь дзень"
+
+msgctxt "time"
+msgid "at"
+msgstr "а"
+
+msgctxt "time"
+msgid "o'clock"
+msgstr "гадзіне"
+
+msgctxt "time"
+msgid "from"
+msgstr "з"
+
+msgctxt "time"
+msgid "until"
+msgstr "да"
+
+msgid "Add unscheduled event"
+msgstr "Дадаць незапланаваную падзею"
+
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+msgid ""
+"There was an error in one of the fields you entered. Please correct it "
+"before saving!"
+msgstr ""
+"У адным з палёў, якія вы запоўнілі, ёсць памылка. Калі ласка, выпраўце яе "
+"перш чым захаваць старонку!"
+
+msgid "Enter a title for the new event to be scheduled."
+msgstr "Увядзіце назву новай падзеі, дату якой Вы хочаце прызначыць."
+
+msgid "Dates"
+msgstr "Даты"
+
+msgid "Please select the available days in the calendar."
+msgstr "Калі ласка, абярыце даступныя дні ў календары."
+
+msgid "You can select the same day more than once."
+msgstr "Вы можаце выбраць адзін і той жа дзень больш за адзін раз."
+
+msgid "Time: e.g. 10 or 10:30."
+msgstr "Час: напрыклад, 10:00 ці 10:30."
+
+msgid "Time"
+msgstr "Час"
+
+msgid ""
+"Note: You cannot edit the dates for this event poll because someone has "
+"already cast their vote!"
+msgstr ""
+"Заўвага: Вы не можаце рэдагаваць даты ў гэтым апытанні да падзеі, таму што "
+"нехта ўжо прагаласаваў!"
+
+msgid "Description and Infos"
+msgstr "Апісанне і інфармацыя"
+
+msgid "Description"
+msgstr "Апісанне"
+
+msgid "Enter a description for the event"
+msgstr "Дадайце апісанне падзеі"
+
+msgid "Example: http://mywebsite.com"
+msgstr "Прыклад: http://mywebsite.com"
+
+msgid "External Link for the event"
+msgstr "Знешняя спасылка на падзею"
+
+msgid "Create"
+msgstr "Стварыць"
+
+msgid "Save"
+msgstr "Захаваць"
+
+msgid "Schedule an event"
+msgstr "Вызначыць дату падзеі"
+
+msgid "Delete"
+msgstr "Выдаліць"
+
+msgid "There are no open event polls."
+msgstr "Адкрытых апытанняў да падзей няма."
+
+msgid "Planned Events"
+msgstr "Запланаваныя падзеі"
+
+msgid "Past Events"
+msgstr "Мінулыя падзеі"
+
+msgid "Archived Event Polls"
+msgstr "Архіўныя апытанні да падзей"
+
+msgid "There are no archived event polls."
+msgstr "Архіўных апытанняў да падзей няма."
+
+#, python-format
+msgid "Vote for %(title)s"
+msgstr "Галасуйце за %(title)s"
+
+#, python-format
+msgid "Archived: %(title)s"
+msgstr "Адпраўлена ў архіў: %(title)s"
+
+msgid "Event Polls"
+msgstr "Апытанні да падзей"
+
+msgid "This event has already been scheduled. Voting is closed."
+msgstr "Даты гэтай падзеі ўжо прызначаны. Галасаванне закрыта."
+
+msgid "This event has been canceled. Voting is closed."
+msgstr "Гэта падзея адмянілася. Галасаванне закрыта."
+
+msgid "Nobody has voted for this event poll yet."
+msgstr "Ніхто яшчэ не прагаласаваў у гэтым апытанні да падзеі."
+
+msgid "Create an event from one of the suggestions"
+msgstr "Стварыць падзею з адной з прапаноў"
+
+#, python-format
+msgid "Set the date to %(suggestion)s."
+msgstr "Прызначыць датай падзеі %(suggestion)s."
+
+msgid "When do you have time?"
+msgstr "Калі Вы маеце час?"
+
+msgid "There are no date suggestions for this event poll yet!"
+msgstr "У гэтым апытанні да падзеі яшчэ няма прапаноў па датах!"
+
+#, python-format
+msgid "Do you really want to delete unscheduled event „%(title)s“?"
+msgstr "Вы сапраўды хочаце выдаліць незапланаваную падзею \"%(title)s\"?"
+
+msgid "Delete unscheduled event"
+msgstr "Выдаліць незапланаваную падзею"
+
+msgid ""
+"You will now receive notifications for comments or when this event poll is "
+"changed and whenever somebody casts their vote."
+msgstr ""
+"Вы будзеце атрымліваць апавяшчэнні пра каментары, або калі гэта апытанне да "
+"падзеі будзе змененае ці нехта прагаласуе."
+
+msgid "Write comment..."
+msgstr "Напішыце каментар..."
+
+msgid "Post"
+msgstr "Апублікаваць"
+
+msgid "Add event"
+msgstr "Дадаць падзею"
+
+msgid "Enter a title for the new event."
+msgstr "Увядзіце назву новай падзеі."
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "From"
+msgstr "З"
+
+msgid "Start date."
+msgstr "Дата пачатку."
+
+msgid "Until"
+msgstr "Да"
+
+msgid "End date."
+msgstr "Дата заканчэння."
+
+msgid "The first uploaded image will be displayed as a wallpaper."
+msgstr "Першая зацягнутая выява будзе адлюстроўвацца ў якасці фонавай."
+
+msgid ""
+"If you set this, your event will be shown on the map! (if permitted by its "
+"visibility settings)"
+msgstr ""
+"Калі вы дададзіце гэту наладу, ваша падзея будзе паказвацца на карце! (пры "
+"ўмове, што гэта дазваляюць налады бачнасці)"
+
+msgid "Kalender"
+msgstr "Каляндар"
+
+msgid ""
+"Copy this iCal-link into your calendar application to import current events:"
+msgstr ""
+"Скапіруйце гэту iCal-спасылку ў сваё прыкладанне з календаром, каб "
+"імпартаваць бягучыя падзеі:"
+
+msgid "Also include all events from projects within this group in feed"
+msgstr "Таксама дадаць усе падзеі праектаў у межах гэтай групы ў стужку"
+
+msgid "iCal Feed"
+msgstr "Стужка iCal"
+
+msgid "Enter the title for a new event or select a day in the Calendar."
+msgstr "Увядзіце назву новай падзеі або выберыце дзень у календары."
+
+msgid "Export event feed"
+msgstr "Экспартаваць стужку падзей"
+
+msgid "There are no current or future events."
+msgstr "Бягучых або надыходзячых падзей няма."
+
+msgid "There are no past events."
+msgstr "Мінулых падзей няма."
+
+msgid "There are no upcoming events"
+msgstr "Надыходзячых падзей няма"
+
+msgid "Back to Events"
+msgstr "Вярнуцца да падзей"
+
+msgid "Return to Event Polls"
+msgstr "Вярнуцца да апытанняў да падзей"
+
+msgid "Return to Archived Event Polls"
+msgstr "Вярнуцца да архіўных апытанняў да падзей"
+
+msgid "Calendar"
+msgstr "Каляндар"
+
+msgid "List"
+msgstr "Спіс"
+
+msgid "by"
+msgstr "стваральнік(-ца)"
+
+msgid "Created Event"
+msgstr "Створаная падзея"
+
+#, python-format
+msgid "Do you really want to delete event „%(title)s“?"
+msgstr "Вы сапраўды хочаце выдаліць падзею \"%(title)s\"?"
+
+msgid "Delete event"
+msgstr "Выдаліць падзею"
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you are attending in "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Вітаем, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s дадаў(-ла) каментар да падзеі, якую вы плануеце наведаць, у "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"да падзеі:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Перайдзіце па гэтай спасылцы, каб пабачыць каментар:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s team.\n"
+"\n"
+"\n"
+
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event you are attending in %(team_name)s."
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, якую Вы плануеце наведаць, у "
+"%(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\" in %(team_name)s was created by "
+"%(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Вітаем, %(receiver_name)s,\n"
+"\n"
+"новая падзея \"%(object_name)s\" у %(team_name)s была створана "
+"карыстальнікам(-цай) %(sender_name)s.\n"
+"\n"
+"Вы можаце знайсці яе па наступнай спасылцы: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you created in "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on your event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Вітаем, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s дадаў(-ла) каментар да падзеі, якую Вы стварылі ў "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"да Вашай падзеі:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Перайдзіце па гэтай спасылцы, каб пабачыць каментар:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s team.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) адну з Вашых падзей у %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in "
+"%(team_name)s by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Вітаем, %(receiver_name)s!\n"
+"\n"
+"новая падзея \"%(object_name)s\", што адбудзецца %(event_date)s, анансавана "
+"ў %(team_name)s карыстальнікам(-цай) %(sender_name)s:\n"
+"\n"
+"Яе можна знайсці па гэтай спасылцы: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s team."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you were tagged in, in "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Вітаем, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s дадаў(-ла) каментар да падзеі, у якой Вы былі пазначаны, у "
+"%(team_name)s:\n"
+"\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"да падзеі:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Перайдзіце па гэтай спасылцы, каб пабачыць каментар:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s team.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) падзею, у якой Вы былі пазначаны, у "
+"%(team_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event poll you voted in in "
+"%(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event poll:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Вітаем, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s дадаў(-ла) каментар да апытання да падзеі, у якім Вы "
+"прагаласавалі, у %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"да апытання да падзеі:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Перайдзіце па гэтай спасылцы, каб пабачыць каментар:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Перайдзіце па гэтай спасылцы, каб змяніць свае налады апавяшчэнняў: "
+"%(notification_settings_url)s )\n"
+"\n"
+"Ваша каманда %(site_name)s team.\n"
+"\n"
+
+#, python-format
+msgid ""
+"%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgstr ""
+"%(sender_name)s пракаментаваў(-ла) апытанне да падзеі, у якім Вы "
+"прагаласавалі, у %(team_name)s."
+
+msgid "Delete Event"
+msgstr "Выдаліць падзею"
+
+msgid "(Canceled!)"
+msgstr "(Адмененая!)"
+
+msgid "This is an archived event poll."
+msgstr "Гэта архіўнае апытанне да падзеі."
+
+msgid "The event that was created after the poll can be viewed here:"
+msgstr "Падзею, што была створана пасля апытання, можна пабачыць тут:"
+
+msgid "(No description set)"
+msgstr "(Апісанне не прызначана)"
+
+msgctxt "someone else is going"
+msgid "Going"
+msgstr "Наведае"
+
+msgctxt "someone else is maybe going"
+msgid "Maybe going"
+msgstr "Магчыма наведае"
+
+msgctxt "someone else can't go"
+msgid "Can't go"
+msgstr "Не можа наведаць"
+
+msgctxt "one or many people are going"
+msgid "Going"
+msgid_plural "Going"
+msgstr[0] "Наведае"
+msgstr[1] "Наведаюць"
+msgstr[2] "Наведаюць"
+msgstr[3] ""
+
+msgctxt "one or many people are maybe going"
+msgid "Maybe going"
+msgid_plural "Maybe going"
+msgstr[0] "Магчыма наведае"
+msgstr[1] "Магчыма наведаюць"
+msgstr[2] "Магчыма наведаюць"
+msgstr[3] ""
+
+msgctxt "one or many people are not going"
+msgid "Can't go"
+msgid_plural "Can't go"
+msgstr[0] "Не можа наведаць"
+msgstr[1] "Не могуць наведаць"
+msgstr[2] "Не могуць наведаць"
+msgstr[3] ""
+
+msgid "Going"
+msgstr "Наведаю"
+
+msgid "Maybe going"
+msgstr "Магчыма наведаю"
+
+msgid "Can't go"
+msgstr "Не магу наведаць"
+
+msgid "Are you going?"
+msgstr "Вы наведаеце падзею?"
+
+msgid "No Choice"
+msgstr "Выбар не зроблены"
+
+msgid ""
+"You will now receive notifications for comments or when this event is "
+"updated or its details change."
+msgstr ""
+"Вы будзеце атрымліваць апавяшчэнні пра каментары, або калі гэта падзея будзе "
+"абнаўляцца ці зменяцца яе дэталі."
+
+msgid "Show all"
+msgstr "Паказаць усе"
+
+msgid "Upcoming events"
+msgstr "Надыходзячыя падзеі"
+
+#, python-format
+msgid "Event \"%(title)s\" was edited successfully."
+msgstr "Падзея \"%(title)s\" паспяхова адрэдагаваная."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be edited."
+msgstr "Падзею \"%(title)s\" не атрымалася адрэдагаваць."
+
+msgid "The page you requested is not available for this event at this time."
+msgstr "Запытаная Вамі старонка на дадзены момант недасяжная для гэтай падзеі."
+
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Адна з прапаноў часу для гэтай падзеі не была зразумелая!"
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was edited successfully."
+msgstr "Незапланаваная падзея \"%(title)s\" паспяхова адрэдагаваная."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be edited."
+msgstr "Незапланаваную падзею \"%(title)s\" не атрымалася адрэдагаваць."
+
+#, python-format
+msgid "Event \"%(title)s\" was added successfully."
+msgstr "Падзея \"%(title)s\" паспяхова дададзеная."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be added."
+msgstr "Падзею \"%(title)s\" не атрымалася дадаць."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was added successfully."
+msgstr "Незапланаваная падзея \"%(title)s\" паспяхова дададзеная."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be added."
+msgstr "Незапланаваную падзею \"%(title)s\" не атрымалася дадаць."
+
+msgid "You should define at least one date suggestion."
+msgstr "Трэба вызначыць хаця б адну прапанову даты."
+
+#, python-format
+msgid "Event \"%(title)s\" was deleted successfully."
+msgstr "Падзея \"%(title)s\" паспяхова выдаленая."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be deleted."
+msgstr "Падзею \"%(title)s\" не атрымалася выдаліць."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was deleted successfully."
+msgstr "Незапланаваная падзея \"%(title)s\" паспяхова выдаленая."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be deleted."
+msgstr "Незапланаваную падзею \"%(title)s\" не атрымалася выдаліць."
+
+msgid "Your votes were saved successfully."
+msgstr "Ваш выбар паспяхова захаваны."
+
+msgid "Your votes could not be saved."
+msgstr "Ваш выбар не захаваўся."
+
+msgid "This is event is already scheduled. You cannot vote for it any more."
+msgstr "Гэта падзея ўжо прызначаная. Вы больш не можаце за яе прагаласаваць."
+
+msgid "The complete request can only be sent via POST!"
+msgstr "Поўны запыт можа быць адпраўлены толькі ПОШТАЙ!"
+
+msgid "Event cannot be completed: No date was supplied."
+msgstr "Падзея не можа быць завершаная: Не было пададзена ніводнай даты."
+
+msgid "The event was created successfully at the specified date."
+msgstr "Падзея паспяхова створана ў прызначаную дату."
+
+msgid "Your comment was added successfully."
+msgstr "Ваш каментар паспяхова дададзены."
+
+msgid "Your comment was deleted successfully."
+msgstr "Ваш каментар паспяхова выдалены."
