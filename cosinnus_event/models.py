@@ -188,15 +188,9 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     
     @property
     def sort_key(self):
-            
-        """ Using ``self.from_date`` as sort key if this event is scheduled and the date is set, 
-            otherwise super().
-            Overwritten from BaseTaggableObjectModel:
-            The main property on which this object model is sorted. """
-        if self.state == self.STATE_SCHEDULED and self.from_date:
-            # this makes it so events are ordered in the default ("soonest first") order
-            return now() 
-        return super(Event, self).sort_key
+        """ Overriding this sort key so re-ordering won't happen for widgets using events 
+            (because all event querysets are already well-sorted.) """
+        return 0
     
     @property
     def stream_sort_key(self):
