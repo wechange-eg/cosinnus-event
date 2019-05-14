@@ -3,7 +3,7 @@
 
 {% block container_class %}timeline-item-event{% endblock %}
 
-{% block creation_label %}{% trans "has created an event" %}{% endblock %}
+{% block creation_label %}{% trans "created an event" %}{% endblock %}
 
 {% block icon %}{% if item.state == 2 %}fa-calendar-check-o{% else %}fa-calendar{% endif %}{% endblock %}
 
@@ -22,11 +22,5 @@
 	{% include 'cosinnus/v2/dashboard/timeline_button_like.html' with item=item %}
 	{% include 'cosinnus/v2/dashboard/timeline_button_follow.html' with item=item %}
 {% endblock %}
-
-{% comment %}  
-{% block comments %}
-	{% include 'cosinnus/v2/dashboard/timeline_item_comments.html' with item=item %}
-{% endblock %}
-{% endcomment %}
 
 

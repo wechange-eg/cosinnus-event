@@ -281,6 +281,9 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             Useful to compare equality of suggestions for two doodles. """
         return ','.join([str(time.mktime(dt.timetuple())) for dt in self.suggestions.all().values_list('from_date', flat=True)])
 
+    def get_comment_post_url(self):
+        return group_aware_reverse('cosinnus:event:comment', kwargs={'group': self.group, 'event_slug': self.slug})
+    
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
