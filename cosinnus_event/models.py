@@ -284,6 +284,11 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     def get_comment_post_url(self):
         return group_aware_reverse('cosinnus:event:comment', kwargs={'group': self.group, 'event_slug': self.slug})
     
+    def get_attendants_count(self):
+        all_attendants = EventAttendance.objects.filter(event=self)
+        attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
+        return attendants_going.count()
+    
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
