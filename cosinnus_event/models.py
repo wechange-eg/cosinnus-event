@@ -188,6 +188,18 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
     
+    def get_edit_url(self):
+        kwargs = {'group': self.group, 'slug': self.slug}
+        if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
+            return group_aware_reverse('cosinnus:event:doodle-edit', kwargs=kwargs)
+        return group_aware_reverse('cosinnus:event:event-edit', kwargs=kwargs)
+    
+    def get_delete_url(self):
+        kwargs = {'group': self.group, 'slug': self.slug}
+        if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
+            return group_aware_reverse('cosinnus:event:doodle-delete', kwargs=kwargs)
+        return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
+    
     @property
     def sort_key(self):
         """ Overriding this sort key so re-ordering won't happen for widgets using events 
@@ -449,6 +461,12 @@ class Comment(models.Model):
         if self.pk:
             return '%s#comment-%d' % (self.event.get_absolute_url(), self.pk)
         return self.event.get_absolute_url()
+    
+    def get_edit_url(self):
+        return group_aware_reverse('cosinnus:event:comment-update', kwargs={'group': self.event.group, 'pk': self.pk})
+
+    def get_delete_url(self):
+        return group_aware_reverse('cosinnus:event:comment-delete', kwargs={'group': self.event.group, 'pk': self.pk})
     
     def is_user_following(self, user):
         """ Delegates to parent object """
