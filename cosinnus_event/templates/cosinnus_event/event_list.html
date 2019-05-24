@@ -32,14 +32,14 @@
 	                    <div class="media-body">
 				            <span>{% trans "Copy this iCal-link into your calendar application to import current events:" %}</span>
 				        </div>
-	                    <div class="media-body media-body-form-control">
+	                    <div class="media-body media-body-form-control large-space">
 	                        <input id="feedInputBox" class="form-control" onclick="this.focus();this.select()" readonly="readonly" 
 	                           value="{{ feed_url }}" data-feed-url="{{ feed_url }}" {% if group.type == 1 %}data-feed-url-group="{{ feed_url_group }}"{% endif %}>
 	                    </div>
 	                    {% if group.type == 1 %}
-		                    <div class="media-body">
+		                    <div class="">
 		                        <input type="checkbox" id="check-group-feed" onclick="$('#feedInputBox').val($('#feedInputBox').data(this.checked ? 'feed-url-group' : 'feed-url'));">
-	                            <label for="check-group-feed">{% trans "Also include all events from projects within this group in feed" %}</label>
+	                            <label style="white-space: normal; vertical-align: middle;" for="check-group-feed">{% trans "Also include all events from projects within this group in feed" %}</label>
 	                        </div>
                         {% endif %}
 	                </li>
