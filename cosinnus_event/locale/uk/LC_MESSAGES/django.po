@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-10 12:52+0100\n"
+"POT-Creation-Date: 2019-05-27 16:44+0200\n"
 "PO-Revision-Date: 2018-12-12 14:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Language: uk_UA\n"
 "X-Generator: Poedit 1.8.4\n"
 
 msgid "Events"
@@ -374,6 +374,9 @@ msgstr "Запропонувати дату"
 msgid "Edit"
 msgstr "Редагувати"
 
+msgid "Event Polls"
+msgstr "Опитування щодо дати"
+
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "Помилка в одному з полів, яке Ви заповнили. Будь ласка, виправте перед збереженням!"
 
@@ -419,9 +422,6 @@ msgstr "Створити"
 msgid "Save"
 msgstr "Зберегти"
 
-msgid "Schedule an event"
-msgstr "Визначити дату"
-
 msgid "Delete"
 msgstr "Видалити"
 
@@ -447,9 +447,6 @@ msgstr "Голосувати за %(title)s"
 #, python-format
 msgid "Archived: %(title)s"
 msgstr "Завершено: %(title)s"
-
-msgid "Event Polls"
-msgstr "Опитування щодо дати"
 
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Опитування щодо дати цього заходу уже завершено."
@@ -878,6 +875,12 @@ msgstr "Немає вибору"
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Ви тепер будете отримувати сповіщення, якщо буде додано коментар або подія буде оновлена чи її деталі будуть змінені."
 
+#, fuzzy
+#| msgid "A user created a new event"
+msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+msgid "created an event"
+msgstr "Користувач створив нове повідомлення"
+
 msgid "Show all"
 msgstr "Відобразити все"
 
@@ -964,6 +967,9 @@ msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#~ msgid "Schedule an event"
+#~ msgstr "Визначити дату"
 
 #~ msgid "More"
 #~ msgstr "Більше"

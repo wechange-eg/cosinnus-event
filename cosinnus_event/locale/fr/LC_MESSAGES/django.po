@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-10 12:52+0100\n"
+"POT-Creation-Date: 2019-05-27 16:44+0200\n"
 "PO-Revision-Date: 2018-09-26 12:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr\n"
 "X-Generator: Poedit 2.1.1\n"
 
 msgid "Events"
@@ -400,6 +400,9 @@ msgstr "Ajouter événement non programmé"
 msgid "Edit"
 msgstr "Modifier"
 
+msgid "Event Polls"
+msgstr "Sondages d'événement"
+
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "Il y a une erreur dans l'un des champs que tu as saisis. Corrige-la avant d'enregistrer !"
 
@@ -445,9 +448,6 @@ msgstr "Créer"
 msgid "Save"
 msgstr "Enregistrer"
 
-msgid "Schedule an event"
-msgstr "Programmer un événement"
-
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -473,9 +473,6 @@ msgstr "Vote pour %(title)s"
 #, python-format
 msgid "Archived: %(title)s"
 msgstr "Archivé : %(title)s"
-
-msgid "Event Polls"
-msgstr "Sondages d'événement"
 
 msgid "This event has already been scheduled. Voting is closed."
 msgstr "Cet événement a déjà été programmé. Le vote est clos."
@@ -903,6 +900,12 @@ msgstr "Aucun choix"
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr ""
 
+#, fuzzy
+#| msgid "A user created a new event"
+msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+msgid "created an event"
+msgstr "Un utilisateur a créé un nouvel événement"
+
 msgid "Show all"
 msgstr "Afficher tout"
 
@@ -989,6 +992,9 @@ msgstr "Ton commentaire a été ajouté."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ton commentaire a été supprimé."
+
+#~ msgid "Schedule an event"
+#~ msgstr "Programmer un événement"
 
 #~ msgid "More"
 #~ msgstr "Plus"
