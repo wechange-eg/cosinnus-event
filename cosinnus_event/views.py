@@ -51,7 +51,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
 from cosinnus.views.common import DeleteElementView, apply_likefollow_object
-from cosinnus.views.mixins.tagged import EditViewWatchChangesMixin
+from cosinnus.views.mixins.tagged import EditViewWatchChangesMixin,\
+    RecordLastVisitedMixin
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
 logger = logging.getLogger('cosinnus')
@@ -399,7 +400,7 @@ doodle_delete_view = DoodleDeleteView.as_view()
 
 
 class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectMixin, 
-          RequireReadMixin, FilterGroupMixin, DetailView):
+          RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin, DetailView):
 
     model = Event
 
@@ -426,7 +427,7 @@ class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectM
 entry_detail_view = EntryDetailView.as_view()
 
 
-class DoodleVoteView(RequireReadMixin, FilterGroupMixin, SingleObjectMixin,
+class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin, SingleObjectMixin,
         FormSetView):
 
     message_success = _('Your votes were saved successfully.')
