@@ -13,6 +13,11 @@
 {% block subtitle %}
 	{% include 'cosinnus_event/common/humanized_event_time.html' with event=item %}
 	{{ block.super }}	
+	{% with location=item.media_tag.location %}
+		{% if location %}
+			<a href="{{ item.media_tag.location_url }}" target="_blank">{{ location }}</a>
+		{% endif %}
+	{% endwith %}
 {% endblock %}
 
 {% block body %}
@@ -26,7 +31,7 @@
 		{% if attendants_count > 0 %}
 			<a href="{{ item.get_absolute_url }}" class="action-button action-button-non-interactive" 
 					title="{{ attendants_count }} {% blocktrans context "one or many people are going" count counter=attendants_count %}Going{% plural %}Going{% endblocktrans %}">
-				<i class="fa fa-fw fa-calendar-check-o"></i>
+				<i class="fas fa-fw fa-user"></i>
 				{{ attendants_count }}
 			</a>
 		{% endif %}
