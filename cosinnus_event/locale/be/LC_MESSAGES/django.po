@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-09 12:59+0200\n"
-"PO-Revision-Date: 2019-05-06 16:54+0100\n"
+"POT-Creation-Date: 2019-06-09 13:20+0200\n"
+"PO-Revision-Date: 2019-06-09 13:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: be\n"
@@ -304,11 +304,11 @@ msgid "Voter"
 msgstr "Удзельнік(-ца) галасавання"
 
 msgid "Vote"
-msgstr "Галасаванне"
+msgstr "Галасаваць"
 
 msgctxt "the subject"
 msgid "Vote"
-msgstr "Галасаваць"
+msgstr "Галасаванне"
 
 msgid "Creator"
 msgstr "Стваральнік(-ца)"
@@ -443,7 +443,7 @@ msgstr "Архіўных апытанняў да падзей няма."
 
 #, python-format
 msgid "Vote for %(title)s"
-msgstr "Галасуйце за %(title)s"
+msgstr "Галасаванне за %(title)s"
 
 #, python-format
 msgid "Archived: %(title)s"
@@ -557,7 +557,7 @@ msgid "List"
 msgstr "Спіс"
 
 msgid "by"
-msgstr "стваральнік(-ца)"
+msgstr "Cтваральнік(-ца):"
 
 msgid "Created Event"
 msgstr "Створаная падзея"
