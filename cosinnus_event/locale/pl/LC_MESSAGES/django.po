@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-27 16:44+0200\n"
+"POT-Creation-Date: 2019-06-09 12:59+0200\n"
 "PO-Revision-Date: 2018-08-30 16:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -904,6 +904,11 @@ msgstr "Brak Wyboru"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr ""
+
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "You created an event"
+msgstr "Użytkownik utworzył nowe wydarzenie"
 
 #, fuzzy
 #| msgid "A user created a new event"
