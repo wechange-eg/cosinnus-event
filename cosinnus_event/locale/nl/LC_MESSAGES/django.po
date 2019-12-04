@@ -3,570 +3,570 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 17:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2019-09-05 13:50+0200\n"
+"PO-Revision-Date: 2019-09-19 22:18+0200\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.2.3\n"
 
 msgid "Events"
-msgstr ""
+msgstr "Evenementen"
 
 msgctxt "the_app"
 msgid "event"
-msgstr ""
+msgstr "event"
 
 msgid "A user created a new event"
-msgstr ""
+msgstr "Een gebruiker heeft een nieuw evenement aangemaakt"
 
 #, python-format
 msgid "New event by %(sender_name)s"
-msgstr ""
+msgstr "Nieuw evenement door %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event"
-msgstr ""
+msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
-msgstr ""
+msgstr "Een nieuw evenement “%(object_name)s” is aangekondigd in %(team_name)s."
 
 msgid "A user created a new event poll"
-msgstr ""
+msgstr "Een gebruiker heeft een nieuwe poll aangemaakt voor een gebeurtenis"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
-msgstr ""
+msgstr "Nieuwe poll door %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
-msgstr ""
+msgstr "%(sender_name)s heeft een nieuwe poll aangemaakt voor een gebeurtenis"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
-msgstr ""
+msgstr "Een nieuwe poll voor een evenement: “%(object_name)s” is aangemaakt in %(team_name)s."
 
 msgid "A user commented on one of your events"
-msgstr ""
+msgstr "Een gebruiker heeft op een van uw evenementen gereageerd"
 
 #, python-format
 msgid "%(sender_name)s commented on your event"
-msgstr ""
+msgstr "%(sender_name)s heeft op uw evenement gereageerd"
 
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
-msgstr ""
+msgstr "%(sender_name)s heeft op een van uw evenementen gereageerd"
 
 #, python-format
 msgid "%(sender_name)s"
-msgstr ""
+msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
-msgstr ""
+msgstr "Een gebruiker heeft gereageerd op een evenement waar u in bent getagt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
-msgstr ""
+msgstr "%(sender_name)s heeft op een evenement gereageerd waarin u bent getagt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
-msgstr ""
+msgstr "%(sender_name)s heeft op een evenement gereageerd waarin u bent getagt in %(team_name)s"
 
 msgid "A user commented on an event you voted in"
-msgstr ""
+msgstr "Een gebruiker heeft gereageerd op een evenement waarop u heeft gestemd"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waarop u heeft gestemd"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waarop u heeft gestemd in %(team_name)s"
 
 msgid "A user commented on an event you are attending"
-msgstr ""
+msgstr "Een gebruiker heeft gereageerd op een evenement waaraan u deelneemt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waaraan u deelneemt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waaraan u deelneemt in %(team_name)s"
 
 msgid "A user created a new event in a team you are following"
-msgstr ""
+msgstr "Een gebruiker heeft een nieuw evenement aangemaakt in een team die u volgt"
 
 #, python-format
 msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr ""
+msgstr "Nieuw evenement door %(sender_name)s in %(team_name)s (die u volgt)"
 
 #, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
-msgstr ""
+msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt in %(team_name)s (die u volgt)"
 
 #, python-format
 msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
-msgstr ""
+msgstr "Een nieuw evenement: “%(object_name)s” is aangekondigd in %(team_name)s (die u volgt)."
 
 msgid "A user created a new event poll in a team you are following"
-msgstr ""
+msgstr "Een gebruiker heeft een nieuwe poll aangemaakt in een team die u volgt"
 
 #, python-format
 msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr ""
+msgstr "Nieuwe poll voor evenement door %(sender_name)s in %(team_name)s (die u volgt)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
-msgstr ""
+msgstr "%(sender_name)s heeft een nieuwe poll aangemaakt voor evenement in %(team_name)s (die u volgt)"
 
 #, python-format
 msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
-msgstr ""
+msgstr "Een nieuwe poll voor evenement: “%(object_name)s” is aangemaakt in %(team_name)s (die u volgt)."
 
 msgid "A user commented on an event you are following"
-msgstr ""
+msgstr "Een gebruiker heeft gereageerd op een evenement die u volgt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are following"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement die u volgt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement die u volgt %(team_name)s"
 
 msgid "A user updated an event"
-msgstr ""
+msgstr "Een gebruiker heeft een evenement bijgewerkt"
 
 #, python-format
 msgid "%(sender_name)s updated an event you are following"
-msgstr ""
+msgstr "%(sender_name)s heeft een evenement die u volgt bijgewerkt"
 
 #, python-format
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
-msgstr ""
+msgstr "Het evenement “%(object_name)s” is bijgewerkt in %(team_name)s."
 
 msgid "A user updated an event poll"
-msgstr ""
+msgstr "Een gebruiker heeft een poll van een evenement bijgewerkt"
 
 #, python-format
 msgid "Event poll updated by %(sender_name)s"
-msgstr ""
+msgstr "Evenement poll bijgewerkt door %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s updated an event poll you are following"
-msgstr ""
+msgstr "%(sender_name)s heeft een poll bijgewerkt voor een evenement die u volgt"
 
 #, python-format
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
-msgstr ""
+msgstr "De poll “%(object_name)s” is bijgewerkt in het evenement in %(team_name)s."
 
 #, python-format
 msgid "%(sender_name)s voted in"
-msgstr ""
+msgstr "%(sender_name)s heeft gestemd in"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
-msgstr ""
+msgstr "%(sender_name)s heeft gestemd in een poll die u volgt"
 
 #, python-format
 msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgstr ""
+msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
 
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Aankomende Evenementen"
 
 msgid "No upcoming events"
-msgstr ""
+msgstr "Geen aankomende evenementen"
 
 msgid "Created By"
-msgstr ""
+msgstr "Aangemaakt door"
 
 msgid "Soonest Upcoming"
-msgstr ""
+msgstr "Binnenkort"
 
 msgid "Newest Created"
-msgstr ""
+msgstr "Nieuwste aangemaakt"
 
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 msgid "Scheduled"
-msgstr ""
+msgstr "Gepland"
 
 msgid "Voting open"
-msgstr ""
+msgstr "Stemmen mogelijk"
 
 msgid "Canceled"
-msgstr ""
+msgstr "Geannuleerd"
 
 msgid "Archived Event Poll"
-msgstr ""
+msgstr "Gearchiveerd Event Poll"
 
 msgid "Start"
-msgstr ""
+msgstr "Begin"
 
 msgid "End"
-msgstr ""
+msgstr "Eind"
 
 msgid "State"
-msgstr ""
+msgstr "Staat"
 
 msgid "Note"
-msgstr ""
+msgstr "Notitie"
 
 msgid "Event date"
-msgstr ""
+msgstr "Evenement datum"
 
 msgid "Location"
-msgstr ""
+msgstr "Locatie"
 
 msgid "Latitude"
-msgstr ""
+msgstr "Breedtegraad"
 
 msgid "Longitude"
-msgstr ""
+msgstr "Hoogtegraad"
 
 msgid "Street"
-msgstr ""
+msgstr "Straat"
 
 msgid "ZIP code"
-msgstr ""
+msgstr "Postcode"
 
 msgid "City"
-msgstr ""
+msgstr "Stad"
 
 msgid "Is public (on website)"
-msgstr ""
+msgstr "Openbaar (op website)"
 
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "Original Event Poll"
-msgstr ""
+msgstr "Origineel Evenement Poll"
 
 msgid "Event"
-msgstr ""
+msgstr "Evenement"
 
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
-msgstr ""
+msgstr "%(event)s (%(date)s - %(end)s)"
 
 #, python-format
 msgid "%(event)s (%(from)s - %(to)s)"
-msgstr ""
+msgstr "%(event)s (%(from)s - %(to)s)"
 
 #, python-format
 msgid "%(event)s (canceled)"
-msgstr ""
+msgstr "%(event)s (geannuleerd)"
 
 #, python-format
 msgid "%(event)s (pending)"
-msgstr ""
+msgstr "%(event)s (in afwachting)"
 
 #, python-format
 msgid "%(event)s (archived)"
-msgstr ""
+msgstr "%(event)s (gearchiveerd)"
 
 msgctxt "the subject"
 msgid "Votes"
-msgstr ""
+msgstr "Stemmen"
 
 msgid "Suggestion"
-msgstr ""
+msgstr "Suggestie"
 
 msgid "Suggestions"
-msgstr ""
+msgstr "Suggesties"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid "Maybe"
-msgstr ""
+msgstr "Misschien"
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "Voter"
-msgstr ""
+msgstr "Stemmer"
 
 msgid "Vote"
-msgstr ""
+msgstr "Stem"
 
 msgctxt "the subject"
 msgid "Vote"
-msgstr ""
+msgstr "Stem"
 
 msgid "Creator"
-msgstr ""
+msgstr "Aanmaker"
 
 msgid "Created"
-msgstr ""
+msgstr "Aangemaakt"
 
 msgid "Last modified"
-msgstr ""
+msgstr "Laatst aangepast"
 
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 msgid "Comment"
-msgstr ""
+msgstr "Opmerking"
 
 msgid "Comments"
-msgstr ""
+msgstr "Opmerkingen"
 
 msgid "Create Event"
-msgstr ""
+msgstr "Maak evenement aan"
 
 msgid "Would you like to create an event"
-msgstr ""
+msgstr "Wilt u een evenement aanmaken?"
 
 msgid "on"
-msgstr ""
+msgstr "aan"
 
 msgid "from"
-msgstr ""
+msgstr "van"
 
 msgid "until"
-msgstr ""
+msgstr "tot"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleer"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "time"
 msgid "all day"
-msgstr ""
+msgstr "de hele dag"
 
 msgctxt "time"
 msgid "at"
-msgstr ""
+msgstr "om"
 
 msgctxt "time"
 msgid "o'clock"
-msgstr ""
+msgstr "uur"
 
 msgctxt "time"
 msgid "from"
-msgstr ""
+msgstr "vanaf"
 
 msgctxt "time"
 msgid "until"
-msgstr ""
+msgstr "tot"
 
 msgid "Add unscheduled event"
-msgstr ""
+msgstr "Ongepland evenement toevoegen"
 
 msgid "Edit"
-msgstr ""
+msgstr "Wijzig"
 
 msgid "Event Polls"
-msgstr ""
+msgstr "Evenement Polls"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr ""
+msgstr "Er is een fout opgetreden in een van de velden die u heeft ingevoerd. Corrigeer dit voordat u opslaat!"
 
 msgid "Enter a title for the new event to be scheduled."
-msgstr ""
+msgstr "Voer een titel in voor het nieuwe evenement dat moet worden gepland."
 
 msgid "Dates"
-msgstr ""
+msgstr "Data"
 
 msgid "Please select the available days in the calendar."
-msgstr ""
+msgstr "Selecteer de beschikbare dagen in de kalender."
 
 msgid "You can select the same day more than once."
-msgstr ""
+msgstr "U kunt dezelfde dag meerdere keren selecteren."
 
 msgid "Time: e.g. 10 or 10:30."
-msgstr ""
+msgstr "Tijd: bijv 10 of 10:30."
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
-msgstr ""
+msgstr "Opmerking: je kunt de datums voor deze evenement poll niet bewerken, omdat iemand zijn stem al heeft uitgebracht!"
 
 msgid "Description and Infos"
-msgstr ""
+msgstr "Beschrijving en info"
 
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 msgid "Enter a description for the event"
-msgstr ""
+msgstr "Voeg een beschrijving toe voor het evenement"
 
 msgid "Example: http://mywebsite.com"
-msgstr ""
+msgstr "Voorbeeld: http://mywebsite.com"
 
 msgid "External Link for the event"
-msgstr ""
+msgstr "Externe link voor het evenement"
 
 msgid "Create"
-msgstr ""
+msgstr "Maak aan"
 
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 msgid "There are no open event polls."
-msgstr ""
+msgstr "Er zijn geen open polls voor het evenement."
 
 msgid "Planned Events"
-msgstr ""
+msgstr "Geplande Evenementen"
 
 msgid "Past Events"
-msgstr ""
+msgstr "Verlopen Evenementen"
 
 msgid "Archived Event Polls"
-msgstr ""
+msgstr "Gearchiveerde Polls voor Evenementen"
 
 msgid "There are no archived event polls."
-msgstr ""
+msgstr "Er zijn geen gearchiveerde polls."
 
 #, python-format
 msgid "Vote for %(title)s"
-msgstr ""
+msgstr "Stem voor %(title)s"
 
 #, python-format
 msgid "Archived: %(title)s"
-msgstr ""
+msgstr "Archiveer: %(title)s"
 
 msgid "This event has already been scheduled. Voting is closed."
-msgstr ""
+msgstr "Dit evenement is al gepland. Stemmen is niet mogelijk."
 
 msgid "This event has been canceled. Voting is closed."
-msgstr ""
+msgstr "Dit evenement is geannuleerd. Stemmen is niet mogelijk."
 
 msgid "Nobody has voted for this event poll yet."
-msgstr ""
+msgstr "Niemand heeft nog voor deze poll gestemd."
 
 msgid "Create an event from one of the suggestions"
-msgstr ""
+msgstr "Maak een evenement aan op basis van een van de suggesties"
 
 #, python-format
 msgid "Set the date to %(suggestion)s."
-msgstr ""
+msgstr "Stel de datum in op %(suggestion)s."
 
 msgid "When do you have time?"
-msgstr ""
+msgstr "Wanneer heeft u tijd?"
 
 msgid "There are no date suggestions for this event poll yet!"
-msgstr ""
+msgstr "Er zijn nog geen datumsuggesties voor deze poll!"
 
 #, python-format
 msgid "Do you really want to delete unscheduled event „%(title)s“?"
-msgstr ""
+msgstr "Weet u zeker dat u het ongeplande event „%(title)s“ wilt verwijderen?"
 
 msgid "Delete unscheduled event"
-msgstr ""
+msgstr "Niet-geplande gebeurtenis verwijderen"
 
 msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
-msgstr ""
+msgstr "Je ontvangt nu meldingen voor reacties, wanneer deze poll wordt gewijzigd en wanneer iemand zijn stem uitbrengt."
 
 msgid "Write comment..."
-msgstr ""
+msgstr "Schrijf opmerking…"
 
 msgid "Post"
-msgstr ""
+msgstr "Plaats"
 
 msgid "Add event"
-msgstr ""
+msgstr "Voeg evenement toe"
 
 msgid "Enter a title for the new event."
-msgstr ""
+msgstr "Voer een titel in voor het nieuwe evenement."
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "From"
-msgstr ""
+msgstr "Van"
 
 msgid "Start date."
-msgstr ""
+msgstr "Begindatum."
 
 msgid "Until"
-msgstr ""
+msgstr "Tot"
 
 msgid "End date."
-msgstr ""
+msgstr "Einddatum."
 
 msgid "The first uploaded image will be displayed as a wallpaper."
-msgstr ""
+msgstr "De eerste geüploade afbeelding wordt als achtergrond weergegeven."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
-msgstr ""
+msgstr "Als u dit instelt, wordt uw evenement op de kaart weergegeven! (indien toegestaan door de zichtbaarheidsinstellingen)"
 
 msgid "Kalender"
-msgstr ""
+msgstr "Kalender"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
-msgstr ""
+msgstr "Koppeer deze iCal-link in uw kalender applicatie om huidige evenementen toe te voegen:"
 
 msgid "Also include all events from projects within this group in feed"
-msgstr ""
+msgstr "Neem ook alle evenementen van projecten binnen deze groep op in feed"
 
 msgid "iCal Feed"
-msgstr ""
+msgstr "iCal Feed"
 
 msgid "Enter the title for a new event or select a day in the Calendar."
-msgstr ""
+msgstr "Voer de titel voor een nieuw evenement in of selecteer een dag in de kalender."
 
 msgid "Export event feed"
-msgstr ""
+msgstr "Exporteer evenement feed"
 
 msgid "There are no current or future events."
-msgstr ""
+msgstr "Er zijn geen huidige of toekomstige evenementen."
 
 msgid "There are no past events."
-msgstr ""
+msgstr "Er zijn geen verlopen evenementen."
 
 msgid "There are no upcoming events"
-msgstr ""
+msgstr "Geen opkomende evenementen"
 
 msgid "Back to Events"
-msgstr ""
+msgstr "Terug naar Evenementen"
 
 msgid "Return to Event Polls"
-msgstr ""
+msgstr "Terug naar Polls Evenementen"
 
 msgid "Return to Archived Event Polls"
-msgstr ""
+msgstr "Terug naar Gearchiveerde Polls Evenementen"
 
 msgid "Calendar"
-msgstr ""
+msgstr "Kalende"
 
 msgid "List"
-msgstr ""
+msgstr "Lijst"
 
 msgid "by"
-msgstr ""
+msgstr "door"
 
 msgid "Created Event"
-msgstr ""
+msgstr "Gecreëerd Evenement"
 
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
-msgstr ""
+msgstr "Weet u zeker dat u het evenement „%(title)s“ wilt verwijderen?"
 
 msgid "Delete event"
-msgstr ""
+msgstr "Verwijder evenement"
 
 #, python-format
 msgid ""
@@ -591,10 +591,30 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
+"Hallo, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s heeft gereageerd op een evenement waaraan u deelneemt in %(team_name)s:\n"
+"\n"
+"“%(comment_text)s”\n"
+"\n"
+"\n"
+"op het evenement:\n"
+"\n"
+"“%(event_title)s”\n"
+"\n"
+"\n"
+"Volg deze link om de opmerking te zien: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen : %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s team.\n"
+"\n"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waaraan u deelneemt in %(team_name)s."
 
 #, python-format
 msgid ""
@@ -610,6 +630,17 @@ msgid ""
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
+"Hallo %(receiver_name)s,\n"
+"\n"
+"Een nieuw evenement “%(object_name)s” in %(team_name)s is aangemaakt door %(sender_name)s. \n"
+"\n"
+"U kunt het vinden door deze link te volgen: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen: %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s Team."
 
 #, python-format
 msgid ""
@@ -634,10 +665,30 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
+"Hallo, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s heeft gereageerd op een evenement die u heeft aangemaakt in %(team_name)s:\n"
+"\n"
+"“%(comment_text)s”\n"
+"\n"
+"\n"
+"In uw evenement:\n"
+"\n"
+"“%(event_title)s”\n"
+"\n"
+"\n"
+"Volg deze link om de opmerking te zien: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen: %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s team.\n"
+"\n"
 
 #, python-format
 msgid "%(sender_name)s commented on one of your events in %(team_name)s."
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
 
 #, python-format
 msgid ""
@@ -653,6 +704,17 @@ msgid ""
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
+"Hallo %(receiver_name)s,\n"
+"\n"
+"een nieuw evenement “%(object_name)s”, op %(event_date)s, os aangekondigd in %(team_name)s door %(sender_name)s. \n"
+"\n"
+"U kunt het in de volgende link vinden: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen: %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s Team."
 
 #, python-format
 msgid ""
@@ -677,10 +739,30 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
+"Hallo, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s heeft gereageerd op een evenement waarin u bent getagt, in %(team_name)s:\n"
+"\n"
+"“%(comment_text)s”\n"
+"\n"
+"\n"
+"op het evenement:\n"
+"\n"
+"“%(event_title)s”\n"
+"\n"
+"\n"
+"Volg deze link om de opmerking te bekijken: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen: %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s team.\n"
+"\n"
 
 #, python-format
 msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een evenement waarin u bent getagt %(team_name)s."
 
 #, python-format
 msgid ""
@@ -705,164 +787,184 @@ msgid ""
 "Your %(site_name)s team.\n"
 "\n"
 msgstr ""
+"Hallo, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s heeft gereageerd op een poll waarop u heeft gestemd in %(team_name)s:\n"
+"\n"
+"“%(comment_text)s”\n"
+"\n"
+"\n"
+"op de poll in het evenement::\n"
+"\n"
+"“%(event_title)s”\n"
+"\n"
+"\n"
+"Volg deze link om de opmerking te bekijken: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Volg deze link om uw notificatie voorkeuren te wijzigen: %(notification_settings_url)s )\n"
+"\n"
+"Jouw %(site_name)s team.\n"
+"\n"
 
 #, python-format
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
-msgstr ""
+msgstr "%(sender_name)s heeft gereageerd op een poll waarop u heeft gestemd in %(team_name)s."
 
 msgid "Delete Event"
-msgstr ""
+msgstr "Verwijder Evenement"
 
 msgid "(Canceled!)"
-msgstr ""
+msgstr "(Geannuleerd!)"
 
 msgid "This is an archived event poll."
-msgstr ""
+msgstr "Dit is een gearchiveerde poll van een evenement."
 
 msgid "The event that was created after the poll can be viewed here:"
-msgstr ""
+msgstr "Het event die is aangemaakt na de poll kan hier worden bekeken:"
 
 msgid "(No description set)"
-msgstr ""
+msgstr "(Geen beschrijving toegeschreven)"
 
 msgctxt "someone else is going"
 msgid "Going"
-msgstr ""
+msgstr "Gaat"
 
 msgctxt "someone else is maybe going"
 msgid "Maybe going"
-msgstr ""
+msgstr "Gaat misschien"
 
 msgctxt "someone else can't go"
 msgid "Can't go"
-msgstr ""
+msgstr "Kan niet gaan"
 
 msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gaat"
+msgstr[1] "Gaan"
 
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gaat misschien"
+msgstr[1] "Gaan misschien"
 
 msgctxt "one or many people are not going"
 msgid "Can't go"
 msgid_plural "Can't go"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kan niet gaan"
+msgstr[1] "Kunnen niet gaan"
 
 msgid "Going"
-msgstr ""
+msgstr "Gaat"
 
 msgid "Maybe going"
-msgstr ""
+msgstr "Gaat misschien"
 
 msgid "Can't go"
-msgstr ""
+msgstr "Kan niet gaan"
 
 msgid "Are you going?"
-msgstr ""
+msgstr "Gaat u?"
 
 msgid "No Choice"
-msgstr ""
+msgstr "Geen Keuze"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
-msgstr ""
+msgstr "U ontvangt nu meldingen voor reacties, wanneer dit evenement wordt bijgewerkt of de details ervan veranderen."
 
 msgid "You created an event"
-msgstr ""
+msgstr "U heeft een evenement aangemaakt"
 
 msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
 msgid "created an event"
-msgstr ""
+msgstr "heeft een evenement aangemaakt"
 
 msgid "Show all"
-msgstr ""
+msgstr "Toon alles"
 
 msgid "Upcoming events"
-msgstr ""
+msgstr "Opkomende evenementen"
 
 #, python-format
 msgid "Event \"%(title)s\" was edited successfully."
-msgstr ""
+msgstr "Evenement “%(title)s” is succesvol gewijzigd."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
-msgstr ""
+msgstr "Evenement “%(title)s” kon niet worden gewijzigd."
 
 msgid "The page you requested is not available for this event at this time."
-msgstr ""
+msgstr "De door u opgevraagde pagina is momenteel niet beschikbaar voor dit evenement."
 
 msgid "One of the event suggestions times could not be understood!"
-msgstr ""
+msgstr "Eén van de suggesties voor een evenement kon niet worden begrepen!"
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was edited successfully."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” kon niet succesvol worden gewijzigd."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be edited."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” kon niet worden gewijzigd."
 
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
-msgstr ""
+msgstr "Evenement “%(title)s” is succesvol toegevoegd."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
-msgstr ""
+msgstr "Evenement “%(title)s” kon niet worden toegevoegd."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was added successfully."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” is succesvol toegevoegd."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be added."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” kon niet worden toegevoegd."
 
 msgid "You should define at least one date suggestion."
-msgstr ""
+msgstr "U moet ten minste één suggestie voor een datum definiëren."
 
 #, python-format
 msgid "Event \"%(title)s\" was deleted successfully."
-msgstr ""
+msgstr "Evenement “%(title)s” is succesvol verwijderd."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be deleted."
-msgstr ""
+msgstr "Evenement “%(title)s” kon niet worden verwijderd."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" was deleted successfully."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” is succesvol verwijderd."
 
 #, python-format
 msgid "Unscheduled event \"%(title)s\" could not be deleted."
-msgstr ""
+msgstr "Ongepland evenement “%(title)s” kon niet worden verwijderd."
 
 msgid "Your votes were saved successfully."
-msgstr ""
+msgstr "Uw stemmen zijn succesvol opgeslagen."
 
 msgid "Your votes could not be saved."
-msgstr ""
+msgstr "Uw stemmen konden niet worden opgeslagen."
 
 msgid "This is event is already scheduled. You cannot vote for it any more."
-msgstr ""
+msgstr "Dit evenement is al ingepland. U kunt hier niet meer voor stemmen."
 
 msgid "The complete request can only be sent via POST!"
-msgstr ""
+msgstr "Het volledige verzoek kan alleen via POST worden verzonden!"
 
 msgid "Event cannot be completed: No date was supplied."
-msgstr ""
+msgstr "Evenement kan niet worden voltooid: er is geen datum opgegeven."
 
 msgid "The event was created successfully at the specified date."
-msgstr ""
+msgstr "Het evenement is met succes gemaakt op de opgegeven datum."
 
 msgid "Your comment was added successfully."
-msgstr ""
+msgstr "Uw reactie is succesvol toegevoegd."
 
 msgid "Your comment was deleted successfully."
-msgstr ""
+msgstr "Uw reactie is succesvol verwijderd."
