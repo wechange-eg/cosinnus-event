@@ -152,6 +152,13 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             
         return readable
     
+    def get_icon(self):
+        """ Returns the font-awesome icon specific to this object type """
+        if self.state == 2:
+            return 'fa-calendar-check-o'
+        else:
+            return 'fa-calendar'
+    
     def save(self, created_from_doodle=False, *args, **kwargs):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
