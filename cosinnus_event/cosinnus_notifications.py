@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import django.dispatch as dispatch
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ngettext_lazy as n_
 
 """ Cosinnus:Notifications configuration etherpad. 
     See http://git.sinnwerkstatt.com/cosinnus/cosinnus-core/wikis/cosinnus-notifications-guidelines.
@@ -20,6 +20,7 @@ followed_group_event_created = dispatch.Signal(providing_args=["user", "obj", "a
 followed_group_doodle_created = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_event_comment_posted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_event_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
+attending_event_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_doodle_changed = dispatch.Signal(providing_args=["user", "obj", "audience"])
 following_doodle_voted = dispatch.Signal(providing_args=["user", "obj", "audience"])
 
@@ -55,6 +56,10 @@ notifications = {
         'default': True,
         'moderatable_content': True,
         
+        'alert_text': _('%(sender_name)s created the event %(object_name)s'),
+        'alert_text_multi': _('%(sender_name)s created %(count)d events'),
+        'alert_multi_type': 2,
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('New event by %(sender_name)s'),
@@ -78,6 +83,10 @@ notifications = {
         'default': True,
         'moderatable_content': True,
         
+        'alert_text': _('%(sender_name)s created the event poll %(object_name)s'),
+        'alert_text_multi': _('%(sender_name)s created %(count)d event polls'),
+        'alert_multi_type': 2,
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('New event poll by %(sender_name)s'),
@@ -99,6 +108,11 @@ notifications = {
         'default': True,
         'moderatable_content': True,
         
+        'alert_text': _('%(sender_name)s commented on your event %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on your event'),
@@ -119,6 +133,12 @@ notifications = {
         'signals': [tagged_event_comment_posted],
         'default': True,
         
+        'alert_text': _('%(sender_name)s commented on the event %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You were tagged in this event'),
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you were tagged in'),
@@ -138,6 +158,12 @@ notifications = {
         'subject_template': 'cosinnus_event/notifications/voted_event_comment_posted_subject.txt',
         'signals': [voted_event_comment_posted],
         'default': True,
+        
+        'alert_text': _('%(sender_name)s commented on the event %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You voted on this event'),
         
         'is_html': True,
         'snippet_type': 'event',
@@ -161,6 +187,12 @@ notifications = {
         'signals': [attending_event_comment_posted],
         'default': True,
         
+        'alert_text': _('%(sender_name)s commented on the event %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You are attending this event'),
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are attending'),
@@ -181,6 +213,10 @@ notifications = {
         'supercedes_notifications': ['event_created'],
         'requires_object_state_check': 'group.is_user_following',
         'hidden': True,
+        
+        'alert_text': _('%(sender_name)s created the event %(object_name)s'),
+        'alert_text_multi': _('%(sender_name)s created %(count)d events'),
+        'alert_multi_type': 2,
         
         'is_html': True,
         'snippet_type': 'event',
@@ -205,6 +241,10 @@ notifications = {
         'requires_object_state_check': 'group.is_user_following',
         'hidden': True,
         
+        'alert_text': _('%(sender_name)s created the event poll %(object_name)s'),
+        'alert_text_multi': _('%(sender_name)s created %(count)d event polls'),
+        'alert_multi_type': 2,
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('New event poll by %(sender_name)s in %(team_name)s (which you follow)'),
@@ -226,6 +266,12 @@ notifications = {
         'requires_object_state_check': 'event.is_user_following',
         'hidden': True,
         
+        'alert_text': _('%(sender_name)s commented on the event %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You are following this event'),
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are following'),
@@ -246,10 +292,37 @@ notifications = {
         'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
+        'alert_text': _('%(sender_name)s updated the event %(object_name)s'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You are following this event'),
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event you are following'),
         'notification_text': _('%(sender_name)s updated an event you are following'),
+        'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
+        'data_attributes': {
+            'object_name': 'title', 
+            'object_url': 'get_absolute_url', 
+            'object_text': 'note',
+            'image_url': 'attached_image.static_image_url_thumbnail',
+            'event_meta': 'from_date',
+        },
+    },
+    'attending_event_changed': {
+        'label': _('A user updated an event you are attending'), 
+        'signals': [attending_event_changed],
+        'requires_object_state_check': 'is_user_attending',
+        'default': True,
+        
+        'alert_text': _('%(sender_name)s updated the event %(object_name)s'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You are attending this event'),
+        
+        'is_html': True,
+        'snippet_type': 'event',
+        'event_text': _('%(sender_name)s updated an event you are attending'),
+        'notification_text': _('%(sender_name)s updated an event you are attending'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -266,6 +339,10 @@ notifications = {
         'requires_object_state_check': 'is_user_following',
         'hidden': True,
         
+        'alert_text': _('%(sender_name)s changed the event poll %(object_name)s'),
+        'alert_multi_type': 0,
+        'alert_reason': _('You are following this event poll'),
+        
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('Event poll updated by %(sender_name)s'),
@@ -279,11 +356,17 @@ notifications = {
         },
     },
     'following_doodle_voted': {
-        'label': _('A user updated an event poll'), 
+        'label': _('A user voted in an event poll'), 
         'signals': [following_doodle_voted],
         'multi_preference_set': 'MULTI_followed_object_notification',
         'requires_object_state_check': 'is_user_following',
         'hidden': True,
+        
+        'alert_text': _('%(sender_name)s voted in the event poll %(object_name)s'),
+        'alert_text_multi': n_('%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s',
+                               '%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s', 'count_minus_one'),
+        'alert_multi_type': 1,
+        'alert_reason': _('You are following this event poll'),
         
         'is_html': True,
         'snippet_type': 'event',

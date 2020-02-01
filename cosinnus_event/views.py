@@ -57,6 +57,7 @@ from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
 from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
     AjaxFormsCommentCreateViewMixin, AjaxFormsDeleteViewMixin
+from uuid import uuid1
 logger = logging.getLogger('cosinnus')
 
 
@@ -320,9 +321,15 @@ class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMix
                               'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
     
     def on_save_changed_attrs(self, obj, changed_attr_dict):
+        session_id = uuid1().int
+        # send out a notification to all attendees for the change
+        attendees_except_creator = [attendance.user.pk for attendance in obj.attendances.all() \
+                            if (attendance.state in [EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING])\
+                                and not attendance.user.pk == obj.creator_id]
+        cosinnus_notifications.attending_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=attendees_except_creator), session_id=session_id)
         # send out a notification to all followers for the change
         followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
-        cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator))
+        cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator), session_id=session_id, end_session=True)
         
 entry_edit_view = EntryEditView.as_view()
 
