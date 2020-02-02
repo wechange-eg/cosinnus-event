@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 19:31+0100\n"
+"POT-Creation-Date: 2020-02-02 16:09+0100\n"
 "PO-Revision-Date: 2018-08-30 16:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -28,6 +28,16 @@ msgstr "wydarzenie"
 msgid "A user created a new event"
 msgstr "Użytkownik utworzył nowe wydarzenie"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created the event %(object_name)s"
+msgstr "%(sender_name)s utworzył nową ankietę wydarzenia"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event"
+msgid "%(sender_name)s created %(count)d events"
+msgstr "%(sender_name)s utworzył nowe wydarzenie"
+
 #, python-format
 msgid "New event by %(sender_name)s"
 msgstr "Nowe wydarzenie utworzone przez %(sender_name)s"
@@ -42,6 +52,16 @@ msgstr "Nowe wydarzenie: \"%(object_name)s\" zostało ogłoszone w %(team_name)s
 
 msgid "A user created a new event poll"
 msgstr "Użytkownik utworzył nową ankietę wydarzenia"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s created the event poll %(object_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created %(count)d event polls"
+msgstr "%(sender_name)s utworzył nową ankietę wydarzenia"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
@@ -58,6 +78,19 @@ msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została utworzona w %(team
 msgid "A user commented on one of your events"
 msgstr "Użytkownik skomentował jedno z Twoich wydarzeń"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on your event %(object_name)s"
+msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+msgstr[1] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+msgstr[2] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+
 #, python-format
 msgid "%(sender_name)s commented on your event"
 msgstr "%(sender_name)s skomentował/a Twoje wydarzenie"
@@ -73,6 +106,24 @@ msgstr "%(sender_name)s"
 msgid "A user commented on a event you were tagged in"
 msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony/a"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on the event %(object_name)s"
+msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+msgstr[1] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+msgstr[2] "%(sender_name)s skomentował/a jedno z Twoich wydarzeń w zespole %(team_name)s."
+
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "You were tagged in this event"
+msgstr "Użytkownik utworzył nowe wydarzenie"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
 msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś oznaczony/a"
@@ -84,6 +135,11 @@ msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zostałeś/aś ozna
 msgid "A user commented on an event you voted in"
 msgstr "Użytkownik skomentował wydarzenie, w którym zagłosowałeś/aś"
 
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "You voted on this event"
+msgstr "Użytkownik utworzył nowe wydarzenie"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
 msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś"
@@ -94,6 +150,11 @@ msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś
 
 msgid "A user commented on an event you are attending"
 msgstr "Użytkownik skomentował wydarzenie, w którym uczestniczysz"
+
+#, fuzzy
+#| msgid "A user created a new event"
+msgid "You are attending this event"
+msgstr "Użytkownik utworzył nowe wydarzenie"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -148,6 +209,9 @@ msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została utworzona w %(team
 msgid "A user commented on an event you are following"
 msgstr "Użytkownik skomentował wydarzenie, w którym uczestniczysz"
 
+msgid "You are following this event"
+msgstr ""
+
 #, fuzzy, python-format
 #| msgid "%(sender_name)s commented on an event you are attending"
 msgid "%(sender_name)s commented on an event you are following"
@@ -164,6 +228,11 @@ msgid "A user updated an event"
 msgstr "Użytkownik utworzył nowe wydarzenie"
 
 #, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s updated the event %(object_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+#, fuzzy, python-format
 #| msgid "%(sender_name)s commented on an event you are attending"
 msgid "%(sender_name)s updated an event you are following"
 msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz"
@@ -174,9 +243,29 @@ msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Nowe wydarzenie: \"%(object_name)s\" zostało ogłoszone w %(team_name)s."
 
 #, fuzzy
+#| msgid "A user commented on an event you are attending"
+msgid "A user updated an event you are attending"
+msgstr "Użytkownik skomentował wydarzenie, w którym uczestniczysz"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event you are attending"
+msgid "%(sender_name)s updated an event you are attending"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz"
+
+#, fuzzy
 #| msgid "A user created a new event poll"
 msgid "A user updated an event poll"
 msgstr "Użytkownik utworzył nową ankietę wydarzenia"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+#, fuzzy
+#| msgid "Nobody has voted for this event poll yet."
+msgid "You are following this event poll"
+msgstr "Nikt jeszcze nie zagłosował w tej ankiecie wydarzenia."
 
 #, fuzzy, python-format
 #| msgid "New event poll by %(sender_name)s"
@@ -192,6 +281,24 @@ msgstr "%(sender_name)s skomentował/a wydarzenie, w którym uczestniczysz"
 #| msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Nowa ankieta wydarzenia: \"%(object_name)s\" została utworzona w %(team_name)s."
+
+#, fuzzy
+#| msgid "A user created a new event poll"
+msgid "A user voted in an event poll"
+msgstr "Użytkownik utworzył nową ankietę wydarzenia"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+msgstr[1] "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+msgstr[2] "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
 
 #, fuzzy, python-format
 #| msgid "%(sender_name)s"
