@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 19:31+0100\n"
+"POT-Creation-Date: 2020-02-02 16:09+0100\n"
 "PO-Revision-Date: 2019-09-19 22:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -28,6 +28,16 @@ msgstr "event"
 msgid "A user created a new event"
 msgstr "Een gebruiker heeft een nieuw evenement aangemaakt"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created the event %(object_name)s"
+msgstr "%(sender_name)s heeft een nieuwe poll aangemaakt voor een gebeurtenis"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event"
+msgid "%(sender_name)s created %(count)d events"
+msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt"
+
 #, python-format
 msgid "New event by %(sender_name)s"
 msgstr "Nieuw evenement door %(sender_name)s"
@@ -42,6 +52,16 @@ msgstr "Een nieuw evenement “%(object_name)s” is aangekondigd in %(team_name
 
 msgid "A user created a new event poll"
 msgstr "Een gebruiker heeft een nieuwe poll aangemaakt voor een gebeurtenis"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s created the event poll %(object_name)s"
+msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created %(count)d event polls"
+msgstr "%(sender_name)s heeft een nieuwe poll aangemaakt voor een gebeurtenis"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
@@ -58,6 +78,18 @@ msgstr "Een nieuwe poll voor een evenement: “%(object_name)s” is aangemaakt 
 msgid "A user commented on one of your events"
 msgstr "Een gebruiker heeft op een van uw evenementen gereageerd"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on your event %(object_name)s"
+msgstr "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+msgstr[1] "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+
 #, python-format
 msgid "%(sender_name)s commented on your event"
 msgstr "%(sender_name)s heeft op uw evenement gereageerd"
@@ -73,6 +105,23 @@ msgstr "%(sender_name)s"
 msgid "A user commented on a event you were tagged in"
 msgstr "Een gebruiker heeft gereageerd op een evenement waar u in bent getagt"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on the event %(object_name)s"
+msgstr "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+msgstr[1] "%(sender_name)s heeft gereageerd op één van uw evenementen in %(team_name)s."
+
+#, fuzzy
+#| msgid "You created an event"
+msgid "You were tagged in this event"
+msgstr "U heeft een evenement aangemaakt"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
 msgstr "%(sender_name)s heeft op een evenement gereageerd waarin u bent getagt"
@@ -84,6 +133,11 @@ msgstr "%(sender_name)s heeft op een evenement gereageerd waarin u bent getagt i
 msgid "A user commented on an event you voted in"
 msgstr "Een gebruiker heeft gereageerd op een evenement waarop u heeft gestemd"
 
+#, fuzzy
+#| msgid "You created an event"
+msgid "You voted on this event"
+msgstr "U heeft een evenement aangemaakt"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
 msgstr "%(sender_name)s heeft gereageerd op een evenement waarop u heeft gestemd"
@@ -94,6 +148,11 @@ msgstr "%(sender_name)s heeft gereageerd op een evenement waarop u heeft gestemd
 
 msgid "A user commented on an event you are attending"
 msgstr "Een gebruiker heeft gereageerd op een evenement waaraan u deelneemt"
+
+#, fuzzy
+#| msgid "You created an event"
+msgid "You are attending this event"
+msgstr "U heeft een evenement aangemaakt"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -136,6 +195,9 @@ msgstr "Een nieuwe poll voor evenement: “%(object_name)s” is aangemaakt in %
 msgid "A user commented on an event you are following"
 msgstr "Een gebruiker heeft gereageerd op een evenement die u volgt"
 
+msgid "You are following this event"
+msgstr ""
+
 #, python-format
 msgid "%(sender_name)s commented on an event you are following"
 msgstr "%(sender_name)s heeft gereageerd op een evenement die u volgt"
@@ -147,6 +209,11 @@ msgstr "%(sender_name)s heeft gereageerd op een evenement die u volgt %(team_nam
 msgid "A user updated an event"
 msgstr "Een gebruiker heeft een evenement bijgewerkt"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s updated the event %(object_name)s"
+msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
+
 #, python-format
 msgid "%(sender_name)s updated an event you are following"
 msgstr "%(sender_name)s heeft een evenement die u volgt bijgewerkt"
@@ -155,8 +222,28 @@ msgstr "%(sender_name)s heeft een evenement die u volgt bijgewerkt"
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Het evenement “%(object_name)s” is bijgewerkt in %(team_name)s."
 
+#, fuzzy
+#| msgid "A user commented on an event you are attending"
+msgid "A user updated an event you are attending"
+msgstr "Een gebruiker heeft gereageerd op een evenement waaraan u deelneemt"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s updated an event you are following"
+msgid "%(sender_name)s updated an event you are attending"
+msgstr "%(sender_name)s heeft een evenement die u volgt bijgewerkt"
+
 msgid "A user updated an event poll"
 msgstr "Een gebruiker heeft een poll van een evenement bijgewerkt"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
+
+#, fuzzy
+#| msgid "Nobody has voted for this event poll yet."
+msgid "You are following this event poll"
+msgstr "Niemand heeft nog voor deze poll gestemd."
 
 #, python-format
 msgid "Event poll updated by %(sender_name)s"
@@ -169,6 +256,23 @@ msgstr "%(sender_name)s heeft een poll bijgewerkt voor een evenement die u volgt
 #, python-format
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "De poll “%(object_name)s” is bijgewerkt in het evenement in %(team_name)s."
+
+#, fuzzy
+#| msgid "A user updated an event poll"
+msgid "A user voted in an event poll"
+msgstr "Een gebruiker heeft een poll van een evenement bijgewerkt"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
+msgstr[1] "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
 
 #, python-format
 msgid "%(sender_name)s voted in"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 19:31+0100\n"
+"POT-Creation-Date: 2020-02-02 16:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,14 @@ msgid "A user created a new event"
 msgstr ""
 
 #, python-format
+msgid "%(sender_name)s created the event %(object_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s created %(count)d events"
+msgstr ""
+
+#, python-format
 msgid "New event by %(sender_name)s"
 msgstr ""
 
@@ -40,6 +48,14 @@ msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
 msgstr ""
 
 msgid "A user created a new event poll"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s created the event poll %(object_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s created %(count)d event polls"
 msgstr ""
 
 #, python-format
@@ -58,6 +74,16 @@ msgid "A user commented on one of your events"
 msgstr ""
 
 #, python-format
+msgid "%(sender_name)s commented on your event %(object_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
 msgid "%(sender_name)s commented on your event"
 msgstr ""
 
@@ -73,6 +99,20 @@ msgid "A user commented on a event you were tagged in"
 msgstr ""
 
 #, python-format
+msgid "%(sender_name)s commented on the event %(object_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy
+msgid "You were tagged in this event"
+msgstr "%s - Events"
+
+#, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
 msgstr ""
 
@@ -82,6 +122,10 @@ msgstr ""
 
 msgid "A user commented on an event you voted in"
 msgstr ""
+
+#, fuzzy
+msgid "You voted on this event"
+msgstr "%s - Events"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
@@ -93,6 +137,10 @@ msgstr ""
 
 msgid "A user commented on an event you are attending"
 msgstr ""
+
+#, fuzzy
+msgid "You are attending this event"
+msgstr "%s - Events"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -135,6 +183,9 @@ msgstr ""
 msgid "A user commented on an event you are following"
 msgstr ""
 
+msgid "You are following this event"
+msgstr ""
+
 #, python-format
 msgid "%(sender_name)s commented on an event you are following"
 msgstr ""
@@ -147,6 +198,10 @@ msgid "A user updated an event"
 msgstr ""
 
 #, python-format
+msgid "%(sender_name)s updated the event %(object_name)s"
+msgstr ""
+
+#, python-format
 msgid "%(sender_name)s updated an event you are following"
 msgstr ""
 
@@ -154,7 +209,21 @@ msgstr ""
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr ""
 
+msgid "A user updated an event you are attending"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s updated an event you are attending"
+msgstr ""
+
 msgid "A user updated an event poll"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr ""
+
+msgid "You are following this event poll"
 msgstr ""
 
 #, python-format
@@ -168,6 +237,19 @@ msgstr ""
 #, python-format
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr ""
+
+msgid "A user voted in an event poll"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr ""
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
 
 #, python-format
 msgid "%(sender_name)s voted in"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 19:31+0100\n"
+"POT-Creation-Date: 2020-02-02 16:09+0100\n"
 "PO-Revision-Date: 2019-07-02 13:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -28,6 +28,16 @@ msgstr "захід"
 msgid "A user created a new event"
 msgstr "Користувач створив нове повідомлення"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created the event %(object_name)s"
+msgstr "%(sender_name)s створив(ла) нове опитування щодо дати заходу"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event"
+msgid "%(sender_name)s created %(count)d events"
+msgstr "%(sender_name)s створив(ла) новий захід"
+
 #, python-format
 msgid "New event by %(sender_name)s"
 msgstr "Нова подія від %(sender_name)s"
@@ -42,6 +52,16 @@ msgstr "Анонсовано новий захід: «%(object_name)s» у %(tea
 
 msgid "A user created a new event poll"
 msgstr "Користувач створив/-ла нове опитування щодо дати"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s created the event poll %(object_name)s"
+msgstr "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s created a new event poll"
+msgid "%(sender_name)s created %(count)d event polls"
+msgstr "%(sender_name)s створив(ла) нове опитування щодо дати заходу"
 
 #, python-format
 msgid "New event poll by %(sender_name)s"
@@ -58,6 +78,19 @@ msgstr "Нове опитування щодо дати: «%(object_name)s» б�
 msgid "A user commented on one of your events"
 msgstr "Користувач прокоментував/-ла один з ваших заходів"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on your event %(object_name)s"
+msgstr "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr[1] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr[2] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+
 #, python-format
 msgid "%(sender_name)s commented on your event"
 msgstr "%(sender_name)s прокоментував(ла) Ваш захід"
@@ -73,6 +106,24 @@ msgstr "%(sender_name)s"
 msgid "A user commented on a event you were tagged in"
 msgstr "Користувач прокоментував/-ла захід, у якому ви позначені"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s commented on the event %(object_name)s"
+msgstr "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr[1] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+msgstr[2] "%(sender_name)s прокоментував/-ла один з ваших заходів у %(team_name)s."
+
+#, fuzzy
+#| msgid "You created an event"
+msgid "You were tagged in this event"
+msgstr "Ти створи(ла)в захід"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
 msgstr "%(sender_name)s прокоментував(ла) захід, в якому Ви були позначені"
@@ -84,6 +135,11 @@ msgstr "%(sender_name)s прокоментував(ла) захід, у яком
 msgid "A user commented on an event you voted in"
 msgstr "Користувач прокоментував захід, в голосуванні за який Ви взяли участь"
 
+#, fuzzy
+#| msgid "You created an event"
+msgid "You voted on this event"
+msgstr "Ти створи(ла)в захід"
+
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
 msgstr "%(sender_name)s  прокоментува(ла) захід, в голосуванні за який ви взяли участь"
@@ -94,6 +150,11 @@ msgstr "%(sender_name)s прокоментував(ла) захід , за як�
 
 msgid "A user commented on an event you are attending"
 msgstr "Користувач прокоментував захід, в якому Ви берете участь"
+
+#, fuzzy
+#| msgid "You created an event"
+msgid "You are attending this event"
+msgstr "Ти створи(ла)в захід"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -136,6 +197,9 @@ msgstr "Нове опитування щодо події: «%(object_name)s» �
 msgid "A user commented on an event you are following"
 msgstr "Користувач прокоментував захід, який Ви відстежуєте"
 
+msgid "You are following this event"
+msgstr ""
+
 #, python-format
 msgid "%(sender_name)s commented on an event you are following"
 msgstr "%(sender_name)s прокоментував/-ла захід, який Ви відстежуєте"
@@ -147,6 +211,11 @@ msgstr "%(sender_name)s прокоментував(ла) захід, який В
 msgid "A user updated an event"
 msgstr "Користувач оновив подію"
 
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s updated the event %(object_name)s"
+msgstr "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+
 #, python-format
 msgid "%(sender_name)s updated an event you are following"
 msgstr "%(sender_name)s оновив подію, яку Ви відслідковуєте"
@@ -155,8 +224,28 @@ msgstr "%(sender_name)s оновив подію, яку Ви відслідко�
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Захід «%(object_name)s» було оновлено у %(team_name)s."
 
+#, fuzzy
+#| msgid "A user commented on an event you are attending"
+msgid "A user updated an event you are attending"
+msgstr "Користувач прокоментував захід, в якому Ви берете участь"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s updated an event you are following"
+msgid "%(sender_name)s updated an event you are attending"
+msgstr "%(sender_name)s оновив подію, яку Ви відслідковуєте"
+
 msgid "A user updated an event poll"
 msgstr "Користувач оновив/-ла опитування щодо події"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+
+#, fuzzy
+#| msgid "Nobody has voted for this event poll yet."
+msgid "You are following this event poll"
+msgstr "Ніхто ще не проголосував у цьому опитуванні щодо дати."
 
 #, python-format
 msgid "Event poll updated by %(sender_name)s"
@@ -169,6 +258,24 @@ msgstr "%(sender_name)s оновив/-ла опитування щодо зах�
 #, python-format
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Опитування щодо події «%(object_name)s» було оновлено у %(team_name)s."
+
+#, fuzzy
+#| msgid "A user updated an event poll"
+msgid "A user voted in an event poll"
+msgstr "Користувач оновив/-ла опитування щодо події"
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+
+#, fuzzy, python-format
+#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+msgstr[1] "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
+msgstr[2] "%(sender_name)s проголосував/-ла в опитуванні щодо події „%(object_name)s“ у %(team_name)s."
 
 #, python-format
 msgid "%(sender_name)s voted in"

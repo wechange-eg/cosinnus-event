@@ -207,6 +207,14 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             return group_aware_reverse('cosinnus:event:doodle-delete', kwargs=kwargs)
         return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
     
+    def is_user_attending(self, user):
+        """ For notifications, statecheck if a user is attending this event """
+        return self.attendances.filter(user=user, state__in=[EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING]).count() >= 1
+    
+    def special_alert_check(self, user):
+        """ Can override checking whether this user wants this alert """
+        return self.is_user_attending(user)
+    
     @property
     def sort_key(self):
         """ Overriding this sort key so re-ordering won't happen for widgets using events 
