@@ -18,6 +18,10 @@
     {% endif %}
 {% endblock leftnav %}
 
+{% block og_image %}{% if object.attached_images %}{{ COSINNUS_CURRENT_PORTAL.get_domain }}{{ object.attached_images.0.static_image_url }}{% else %}{{ block.super }}{% endif %}{% endblock og_image %}
+{% block og_title %}{% if object.title %}{{ object.title }}{% else %}{{ object.note|truncatewords:8 }}{% endif %} - {{ group.name }} - {{ block.super }}{% endblock og_title %}
+{% block og_description %}{{ object.note|truncatewords:30 }}{% endblock og_description %}
+
 {% block content %}
 
 	<!-- a box with semi transparent background -->
