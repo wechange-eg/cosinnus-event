@@ -265,13 +265,15 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             groups = groups + list(group.get_children())
         
         qs = Event.objects.filter(group__in=groups).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
-        for onegroup in groups:
-            # mix in reflected objects
-            if "%s.%s" % (self._meta.app_label, self._meta.model_name) in settings.COSINNUS_REFLECTABLE_OBJECTS:
-                mixin = MixReflectedObjectsMixin()
-                qs = mixin.mix_queryset(qs, self._meta.model, onegroup)
-            if user:
-                qs = filter_tagged_object_queryset_for_user(qs, user)
+        
+        if not include_sub_projects:
+            # mix in reflected objects, not needed if we are sub-grouping anyways
+            for onegroup in groups:
+                if "%s.%s" % (self._meta.app_label, self._meta.model_name) in settings.COSINNUS_REFLECTABLE_OBJECTS:
+                    mixin = MixReflectedObjectsMixin()
+                    qs = mixin.mix_queryset(qs, self._meta.model, onegroup)
+        if user:
+            qs = filter_tagged_object_queryset_for_user(qs, user)
         return upcoming_event_filter(qs).distinct()
     
     @classmethod
