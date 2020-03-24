@@ -645,7 +645,7 @@ class BaseEventFeed(ICalFeed):
     title = None # set to base_title on init
     base_description = _('Upcoming events')
     description = None # set to base_description on init
-    localtime = False # if given (?localtime=1), times will be converted to local server timezone time
+    localtime = True # if given (?localtime=1), times will be converted to local server timezone time
     utc_offset = None # in hours, taken from ?utc_offset=<number> optional param
     
     def __init__(self, *args, **kwargs):
@@ -661,7 +661,9 @@ class BaseEventFeed(ICalFeed):
         if offset and is_number(offset):
             self.utc_offset = int(offset)
         localtime = request.GET.get('localtime', None)
-        if localtime and is_number(localtime) and int(localtime) == 1:
+        if localtime is not None and is_number(localtime) and int(localtime) == 1:
+            self.localtime = True
+        if localtime is not None and is_number(localtime) and int(localtime) == 0:
             self.localtime = True
         return super(BaseEventFeed, self).__call__(request, *args, **kwargs)
     
