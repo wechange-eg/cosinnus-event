@@ -62,8 +62,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('New event by %(sender_name)s'),
-        'notification_text': _('%(sender_name)s created a new event'),
+        'event_text': _('%(sender_name)s created a new event'),
         'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -89,8 +88,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('New event poll by %(sender_name)s'),
-        'notification_text': _('%(sender_name)s created a new event poll'),
+        'event_text': _('%(sender_name)s created a new event poll'),
         'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -117,13 +115,15 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on your event'),
         'subject_text': _('%(sender_name)s commented on one of your events'),
-        'sub_event_text': _('%(sender_name)s'),
+        'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title', 
+            'object_text': 'text',
             'object_url': 'get_absolute_url', 
-            'image_url': 'event.attached_image.static_image_url_thumbnail', 
-            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
-            'sub_object_text': 'text',
+            'image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
+            'sub_object_name': 'event.title', 
+            'sub_object_text': 'event.note',
+            'sub_object_icon': 'event.get_icon',
         },
     },    
     'tagged_event_comment_posted': {
@@ -143,13 +143,15 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you were tagged in'),
         'subject_text': _('%(sender_name)s commented on an event you were tagged in in %(team_name)s'),
-        'sub_event_text': _('%(sender_name)s'),
+        'display_object_name': False,
         'data_attributes': {
-            'object_name': 'event.title', 
+            'object_name': 'event.title',
+            'object_text': 'text', 
             'object_url': 'get_absolute_url', 
             'image_url': 'event.attached_image.static_image_url_thumbnail', 
-            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
-            'sub_object_text': 'text',
+            'sub_object_name': 'event.title', 
+            'sub_object_text': 'event.note',
+            'sub_object_icon': 'event.get_icon',
         },
     },  
     'voted_event_comment_posted': {
@@ -169,13 +171,15 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you voted in'),
         'subject_text': _('%(sender_name)s commented on an event you voted in in %(team_name)s'),
-        'sub_event_text': _('%(sender_name)s'),
+        'display_object_name': False,
         'data_attributes': {
-            'object_name': 'event.title', 
+            'object_name': 'event.title',
+            'object_text': 'text', 
             'object_url': 'get_absolute_url', 
             'image_url': 'event.attached_image.static_image_url_thumbnail', 
-            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
-            'sub_object_text': 'text',
+            'sub_object_name': 'event.title', 
+            'sub_object_text': 'event.note',
+            'sub_object_icon': 'event.get_icon',
             'follow_button_url': 'event.get_absolute_follow_url', # url for the follow button
         },
         'show_follow_button': True,
@@ -197,13 +201,15 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are attending'),
         'subject_text': _('%(sender_name)s commented on an event you are attending in %(team_name)s'),
-        'sub_event_text': _('%(sender_name)s'),
+        'display_object_name': False,
         'data_attributes': {
-            'object_name': 'event.title', 
+            'object_name': 'event.title',
+            'object_text': 'text', 
             'object_url': 'get_absolute_url', 
             'image_url': 'event.attached_image.static_image_url_thumbnail', 
-            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
-            'sub_object_text': 'text',
+            'sub_object_name': 'event.title', 
+            'sub_object_text': 'event.note',
+            'sub_object_icon': 'event.get_icon',
         },
     },
     'followed_group_event_created': {
@@ -220,8 +226,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('New event by %(sender_name)s in %(team_name)s (which you follow)'),
-        'notification_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
+        'event_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
         'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
         'data_attributes': {
             'object_name': 'title', 
@@ -247,8 +252,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('New event poll by %(sender_name)s in %(team_name)s (which you follow)'),
-        'notification_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
+        'event_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
         'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
         'data_attributes': {
             'object_name': 'title', 
@@ -276,13 +280,15 @@ notifications = {
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are following'),
         'subject_text': _('%(sender_name)s commented on an event you are following in %(team_name)s'),
-        'sub_event_text': _('%(sender_name)s'),
+        'display_object_name': False,
         'data_attributes': {
-            'object_name': 'event.title', 
+            'object_name': 'event.title',
+            'object_text': 'text', 
             'object_url': 'get_absolute_url', 
             'image_url': 'event.attached_image.static_image_url_thumbnail', 
-            'sub_image_url': 'creator.cosinnus_profile.get_avatar_thumbnail_url', # the comment creators
-            'sub_object_text': 'text',
+            'sub_object_name': 'event.title', 
+            'sub_object_text': 'event.note',
+            'sub_object_icon': 'event.get_icon',
         },
     },
     'following_event_changed': {
@@ -299,7 +305,6 @@ notifications = {
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event you are following'),
-        'notification_text': _('%(sender_name)s updated an event you are following'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -322,7 +327,6 @@ notifications = {
         'is_html': True,
         'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event you are attending'),
-        'notification_text': _('%(sender_name)s updated an event you are attending'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -345,8 +349,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('Event poll updated by %(sender_name)s'),
-        'notification_text': _('%(sender_name)s updated an event poll you are following'),
+        'event_text': _('%(sender_name)s updated an event poll you are following'),
         'subject_text': _('The event poll "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
@@ -370,8 +373,7 @@ notifications = {
         
         'is_html': True,
         'snippet_type': 'event',
-        'event_text': _('%(sender_name)s voted in'),
-        'notification_text': _('%(sender_name)s voted in an event poll you are following'),
+        'event_text': _('%(sender_name)s voted in an event poll you are following'),
         'subject_text': _('%(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
