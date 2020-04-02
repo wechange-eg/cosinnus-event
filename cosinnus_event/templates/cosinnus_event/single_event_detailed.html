@@ -351,7 +351,7 @@
 
 {#  #########  Event video conference  ########## #}   
 
-{% if COSINNUS_CURRENT_PORTAL.video_conference_server %}
+{% if COSINNUS_CURRENT_PORTAL.video_conference_server and event.from_date %}
 
     <div class="white-content">
         <button type="button" class="btn btn-emphasized btn-autosize pull-left start-video-conference">
