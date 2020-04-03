@@ -61,7 +61,6 @@ notifications = {
         'alert_multi_type': 2,
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s created a new event'),
         'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s.'),
         'data_attributes': {
@@ -87,7 +86,6 @@ notifications = {
         'alert_multi_type': 2,
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s created a new event poll'),
         'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s.'),
         'data_attributes': {
@@ -112,7 +110,6 @@ notifications = {
         'alert_multi_type': 1,
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on your event'),
         'subject_text': _('%(sender_name)s commented on one of your events'),
         'display_object_name': False,
@@ -140,7 +137,6 @@ notifications = {
         'alert_reason': _('You were tagged in this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you were tagged in'),
         'subject_text': _('%(sender_name)s commented on an event you were tagged in in %(team_name)s'),
         'display_object_name': False,
@@ -168,7 +164,6 @@ notifications = {
         'alert_reason': _('You voted on this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you voted in'),
         'subject_text': _('%(sender_name)s commented on an event you voted in in %(team_name)s'),
         'display_object_name': False,
@@ -198,7 +193,6 @@ notifications = {
         'alert_reason': _('You are attending this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are attending'),
         'subject_text': _('%(sender_name)s commented on an event you are attending in %(team_name)s'),
         'display_object_name': False,
@@ -225,7 +219,6 @@ notifications = {
         'alert_multi_type': 2,
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
         'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
         'data_attributes': {
@@ -251,7 +244,6 @@ notifications = {
         'alert_multi_type': 2,
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
         'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
         'data_attributes': {
@@ -277,7 +269,6 @@ notifications = {
         'alert_reason': _('You are following this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s commented on an event you are following'),
         'subject_text': _('%(sender_name)s commented on an event you are following in %(team_name)s'),
         'display_object_name': False,
@@ -303,7 +294,6 @@ notifications = {
         'alert_reason': _('You are following this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event you are following'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
@@ -325,7 +315,6 @@ notifications = {
         'alert_reason': _('You are attending this event'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event you are attending'),
         'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
@@ -348,7 +337,6 @@ notifications = {
         'alert_reason': _('You are following this event poll'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s updated an event poll you are following'),
         'subject_text': _('The event poll "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
@@ -372,7 +360,6 @@ notifications = {
         'alert_reason': _('You are following this event poll'),
         
         'is_html': True,
-        'snippet_type': 'event',
         'event_text': _('%(sender_name)s voted in an event poll you are following'),
         'subject_text': _('%(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
         'data_attributes': {
