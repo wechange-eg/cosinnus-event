@@ -14,7 +14,8 @@ def register():
     from cosinnus.core.registries import (app_registry,
         attached_object_registry, url_registry, widget_registry)
 
-    app_registry.register('cosinnus_event', 'event', _('Events'), deactivatable=True)
+    active_by_default = "cosinnus_event" in settings.COSINNUS_DEFAULT_ACTIVE_GROUP_APPS
+    app_registry.register('cosinnus_event', 'event', _('Events'), deactivatable=True, active_by_default=active_by_default)
     attached_object_registry.register('cosinnus_event.Event',
                              'cosinnus_event.utils.renderer.EventRenderer')
     url_registry.register_urlconf('cosinnus_event', 'cosinnus_event.urls')
