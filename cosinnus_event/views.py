@@ -640,7 +640,7 @@ class BaseEventFeed(ICalFeed):
     PROTO_PRODUCT_ID = '-//%s//Event//Feed'
     
     product_id = None
-    timezone = 'UTC'
+    timezone = 'Europe/Berlin'
     base_title = _('Events') 
     title = None # set to base_title on init
     base_description = _('Upcoming events')
