@@ -14,7 +14,7 @@
 		                {% endif %}
                     </a>
                     <div class="media-body no-vertical-padding ">
-                        <strong><a href="{{ event.get_absolute_url }}" target="_blank">{{ event.title|truncatechars:25 }}</a></strong>
+                        <strong><a href="{{ event.get_absolute_url }}" target="_blank">{{ event.title }}</a></strong>
                         {% with creator=event.creator %}
                             <div class="group-annotation">
                                 <a href="{{ creator|profile_url }}">

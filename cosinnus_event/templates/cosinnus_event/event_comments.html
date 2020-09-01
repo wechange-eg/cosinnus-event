@@ -58,7 +58,7 @@
                             <a class="pull-left" href="{{ comment.creator|profile_url }}">
                                 {% include 'cosinnus/user/user_avatar_image.html' with user=comment.creator %}
                             </a>
-                            <div class="media-body comment-background textfield">
+                            <div class="media-body comment-background">
                                 <strong><a href="{{ comment.creator|profile_url }}">{{ comment.creator|full_name }}</a></strong>
                                 <a href="{{ comment.get_absolute_url }}"><span class="annotation moment-data-date" data-date="{{ comment.created_on|date:'c' }}" ></span></a>
                                 <div class="font11px regular-space">
@@ -69,7 +69,7 @@
                                         </form>
                                     {% endif %}
                                 </div>
-                                <p class="comment-background">{{ comment.text|textfield }}</p>
+                                <div class="comment-background textfield">{{ comment.text|textfield }}</div>
                             </div>
                         </li>
                     </ul>
