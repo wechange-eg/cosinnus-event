@@ -51,7 +51,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
-        ('from_date', 'from_date'),
+            ('from_date', 'from_date'),
         ('to_date', 'to_date'),
         ('city', 'city'),
         ('state', 'state'),
