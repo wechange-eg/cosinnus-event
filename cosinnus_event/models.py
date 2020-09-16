@@ -38,6 +38,8 @@ import time
 from django.core.validators import MaxValueValidator, MinValueValidator
 from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
+from threading import Thread
+from cosinnus.models.bbb_room import BBBRoom
 
 
 def localize(value, format):
@@ -641,10 +643,49 @@ class ConferenceEvent(Event):
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
-        self.__state = self.state
+        if created:
+            self.check_and_create_bbb_room(threaded=True)
+    
+    def can_have_bbb_room(self):
+        """ Check if this event may have a BBB room """
+        return self.type in self.BBB_ROOM_TYPES and not self.is_break
+        
+    def check_and_create_bbb_room(self, threaded=True):
+        """ Can be safely called at any time to create a BBB room for this event
+            if it doesn't have one yet """
+        # if event is of the right type and has no BBB room yet,
+        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            # start a thread and create a BBB Room
+            event = self
+            portal = CosinnusPortal.get_current()
+            
+            def create_room():
+                bbb_room = BBBRoom.create(
+                    name=event.title,
+                    meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
+                )
+                event.media_tag.bbb_room = bbb_room
+                event.media_tag.save()
+                # make all members join the bbb event
+                bbb_room.join_group_members(event.group)
+            
+            if threaded:
+                class CreateBBBRoomThread(Thread):
+                    def run(self):
+                        create_room()
+                CreateBBBRoomThread().start()
+            else:
+                create_room()
     
     def get_absolute_url(self):
         return '?todo:conference-event-absolute-url?'
+    
+    def get_bbb_room_url(self):
+        if not self.can_have_bbb_room():
+            return None
+        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            self.check_and_create_bbb_room(threaded=True)
+        return reverse('cosinnus:bbb-room', kwargs={'room_id': self.media_tag.bbb_room.id})
     
     def get_edit_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
