@@ -35,6 +35,9 @@ from django.utils.safestring import mark_safe
 from cosinnus.models.tagged import LikeableObjectMixin
 from uuid import uuid1
 import time
+from django.core.validators import MaxValueValidator, MinValueValidator
+from cosinnus.models.conference import CosinnusConferenceRoom
+from django.core.exceptions import ImproperlyConfigured
 
 
 def localize(value, format):
@@ -551,6 +554,105 @@ class Comment(models.Model):
     def grant_extra_read_permissions(self, user):
         """ Comments inherit their visibility from their commented on parent """
         return check_object_read_access(self.event, user)
+
+
+
+@python_2_unicode_compatible
+class ConferenceEvent(Event):
+    
+    TYPE_LOBBY_CHECKIN = 0
+    TYPE_STAGE_EVENT = 1
+    TYPE_WORKSHOP = 2
+    TYPE_DISCUSSION = 3
+    TYPE_COFFEE_TABLE = 4
+    
+    TYPE_CHOICES = (
+        (TYPE_LOBBY_CHECKIN, _('Lobby Check-in Event')),
+        (TYPE_STAGE_EVENT, _('Stage Stream')),
+        (TYPE_WORKSHOP, _('Workshop')),
+        (TYPE_DISCUSSION, _('Discussion')),
+        (TYPE_COFFEE_TABLE, _('Coffee Table')),
+    )
+    
+    CONFERENCE_EVENT_TYPE_BY_ROOM_TYPE = {
+        CosinnusConferenceRoom.TYPE_LOBBY: TYPE_LOBBY_CHECKIN,
+        CosinnusConferenceRoom.TYPE_STAGE: TYPE_STAGE_EVENT,
+        CosinnusConferenceRoom.TYPE_WORKSHOPS: TYPE_WORKSHOP,
+        CosinnusConferenceRoom.TYPE_DISCUSSIONS: TYPE_DISCUSSION,
+        CosinnusConferenceRoom.TYPE_COFFEE_TABLES: TYPE_COFFEE_TABLE,
+    }
+    
+    # rooms of these types will initialize a corresponding `BBBRoom` in the media_tag
+    BBB_ROOM_TYPES = (
+        TYPE_WORKSHOP,
+        TYPE_COFFEE_TABLE,
+        TYPE_DISCUSSION,
+    )
+    
+    # the room this conference event is in. 
+    # the conference event type will be set according to the room type of this room
+    room = models.ForeignKey('cosinnus.CosinnusConferenceRoom', verbose_name=_('Room'),
+        related_name='events', on_delete=models.CASCADE)
+    
+    # may not be changed after creation!
+    type = models.PositiveSmallIntegerField(_('Conference Event Type'), blank=False,
+        default=TYPE_WORKSHOP, choices=TYPE_CHOICES)
+
+    # list of presenters/moderators that should be     
+    presenters = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,
+        verbose_name=_('Presenters'), related_name='+',
+        help_text='A list of users that will be displayed as presenters and become BBB moderators in attached rooms')
+    
+    # Type: Workshop, Discussion
+    is_break = models.BooleanField(_('Is a Break'),
+        help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
+        default=False)
+    
+    # Type: Coffee-Tables
+    max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
+        blank=False, default=settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT,
+        validators=[MinValueValidator(2), MaxValueValidator(512)])
+
+    class Meta(BaseTaggableObjectModel.Meta):
+        ordering = ['from_date', 'to_date']
+        verbose_name = _('Conference Event')
+        verbose_name_plural = _('Conference Events')
+        unique_together = None
+
+        
+    def __init__(self, *args, **kwargs):
+        super(ConferenceEvent, self).__init__(*args, **kwargs)
+
+    def __str__(self):
+        readable = _('%(event)s %(type)s') % {'event': self.title, 'type': self.type}
+        return readable
+
+    def save(self, *args, **kwargs):
+        created = bool(self.pk) == False
+        if created:
+            self.type = self.CONFERENCE_EVENT_TYPE_BY_ROOM_TYPE.get(self.room.type, None)
+            if self.type is None:
+                raise ImproperlyConfigured('Conference Event type not found for room type "%s"' % self.room.type)
+        
+        # important: super(Event), not ConferenceEvent, because we don't want to inherit the notifiers
+        super(Event, self).save(*args, **kwargs)
+
+        # create a "going" attendance for the event's creator
+        if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
+            EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
+        
+        self.__state = self.state
+    
+    def get_absolute_url(self):
+        return '?todo:conference-event-absolute-url?'
+    
+    def get_edit_url(self):
+        return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
+    
+    def get_delete_url(self):
+        return group_aware_reverse('cosinnus:event:conference-event-delete', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
+    
+
 
 @receiver(post_delete, sender=Vote)
 def post_vote_delete(sender, **kwargs):

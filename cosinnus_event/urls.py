@@ -26,6 +26,11 @@ cosinnus_group_patterns = [
     url(r'^list/archived/$', views.archived_doodles_list_view, name='doodle-list-archived'),
     url(r'^list/delete_element/$', views.delete_element_view, name='delete-element'),
     url(r'^add/$', views.entry_add_view,  {'form_view': 'add'},  name='event-add'),
+    
+    url(r'^conference/(?P<room_slug>[^/]+)/add/$', views.conference_event_add_view, {'form_view': 'add'}, name='conference-event-add'),
+    url(r'^conference/(?P<room_slug>[^/]+)/edit/(?P<slug>[^/]+)/$', views.conference_event_edit_view, {'form_view': 'edit'}, name='conference-event-edit'),
+    url(r'^conference/(?P<room_slug>[^/]+)/delete/(?P<slug>[^/]+)/$', views.conference_event_delete_view, {'form_view': 'delete'}, name='conference-event-delete'),
+    
     url(r'^(?P<slug>[^/]+)/$', views.entry_detail_view, {'form_view': 'edit'},  name='event-detail'),
     url(r'^(?P<slug>[^/]+)/edit/$', views.entry_edit_view, {'form_view': 'edit'}, name='event-edit'),
     url(r'^(?P<slug>[^/]+)/delete/$', views.entry_delete_view, {'form_view': 'delete'}, name='event-delete'),
