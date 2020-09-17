@@ -11,3 +11,5 @@ class CosinnusEventAppConfig(AppConfig):
         from cosinnus_event import cosinnus_app
         cosinnus_app.register()
 
+        # connect all signal listeners
+        import cosinnus_event.hooks  # noqa
