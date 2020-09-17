@@ -685,7 +685,9 @@ class ConferenceEvent(Event):
             return None
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
             self.check_and_create_bbb_room(threaded=True)
-        return reverse('cosinnus:bbb-room', kwargs={'room_id': self.media_tag.bbb_room.id})
+            # redirect to a temporary URL that refreshes
+            return reverse('cosinnus:bbb-room-queue', kwargs={'mt_id': self.media_tag.id})
+        return self.media_tag.bbb_room.get_absolute_url()
     
     def get_edit_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
