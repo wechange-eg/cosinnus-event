@@ -67,12 +67,12 @@
 		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
 			{% endif %}
 			
-			
-            {% comment %} Visibility Field {% endcomment %}
-            {% trans "Event is a break" as break_label %}
-            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
-            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
-			
+			{% if form.forms.obj.fields.is_break %}
+	            {% comment %} Visibility Field {% endcomment %}
+	            {% trans "Event is a break" as break_label %}
+	            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
+	            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+			{% endif %}
 			
 			{% if form.forms.obj.fields.from_date %}          
 		        {% trans "Date" as date_label %}

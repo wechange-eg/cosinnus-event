@@ -1008,7 +1008,6 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
         klass = self.CONFERENCE_EVENT_FORMS_BY_ROOM_TYPE.get(self.room.type, None)
         if klass is None:
             raise ImproperlyConfigured('ConferenceEvent Form type not found for conference room type "%s"' % self.room.type)
-        print('class is: ' + str(self.room.type))
         return klass
     
     """
