@@ -62,8 +62,8 @@ from django.contrib.auth import get_user_model
 from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
     AjaxFormsCommentCreateViewMixin, AjaxFormsDeleteViewMixin
 from uuid import uuid1
-from cosinnus.views.conference import FilterConferenceRoomMixin
 from cosinnus.models.conference import CosinnusConferenceRoom
+from cosinnus_conference.views import FilterConferenceRoomMixin
 logger = logging.getLogger('cosinnus')
 
 
