@@ -142,7 +142,7 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
 ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
 
 
-class _ConferenceEventDiscussionForm(_ConferenceEventBaseForm):
+class _ConferenceEventDiscussionForm(_ConferenceEventWorkshopForm):
     pass
 
 ConferenceEventDiscussionForm = get_form(_ConferenceEventDiscussionForm)
