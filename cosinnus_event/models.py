@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from builtins import object
-from os.path import join
 import datetime
 
 from django.urls import reverse
@@ -20,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
 
 from cosinnus_event.conf import settings
-from cosinnus_event.managers import EventManager
+from cosinnus_event.managers import EventQuerySet
 from cosinnus.models import BaseTaggableObjectModel
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
     check_object_read_access
@@ -121,7 +120,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     original_doodle = models.OneToOneField("self", verbose_name=_('Original Event Poll'),
         related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
 
-    objects = EventManager()
+    objects = EventQuerySet.as_manager()
     
     timeline_template = 'cosinnus_event/v2/dashboard/timeline_item.html'
 
@@ -558,7 +557,6 @@ class Comment(models.Model):
         return check_object_read_access(self.event, user)
 
 
-
 @python_2_unicode_compatible
 class ConferenceEvent(Event):
     
@@ -621,7 +619,6 @@ class ConferenceEvent(Event):
         verbose_name_plural = _('Conference Events')
         unique_together = None
 
-        
     def __init__(self, *args, **kwargs):
         super(ConferenceEvent, self).__init__(*args, **kwargs)
 
