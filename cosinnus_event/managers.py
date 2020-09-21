@@ -29,7 +29,7 @@ class EventQuerySet(models.QuerySet):
         first_event = queryset.order_by('from_date').first()
         if first_event:
             queryset = queryset.filter(from_date__date=first_event.from_date.date())
-        return queryset
+        return self.filter(type=self.model.TYPE_COFFEE_TABLE) | queryset
     
     def archived(self):
         return self.filter(state=self.model.STATE_ARCHIVED_DOODLE)
