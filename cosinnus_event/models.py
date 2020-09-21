@@ -588,6 +588,10 @@ class ConferenceEvent(Event):
         TYPE_COFFEE_TABLE,
         TYPE_DISCUSSION,
     )
+
+    TIMELESS_TYPES = (
+        TYPE_COFFEE_TABLE,
+    )
     
     # the room this conference event is in. 
     # the conference event type will be set according to the room type of this room
