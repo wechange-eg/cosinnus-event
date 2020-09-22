@@ -696,6 +696,8 @@ class ConferenceEvent(Event):
     def get_delete_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-delete', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
     
+    def get_type_verbose(self):
+        return dict(self.TYPE_CHOICES).get(self.type, '(unknown type)')
 
 
 @receiver(post_delete, sender=Vote)
