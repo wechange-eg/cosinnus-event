@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from datetime import datetime, time
+import pytz
 
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -28,7 +30,8 @@ class EventQuerySet(models.QuerySet):
         queryset = self.filter(to_date__gte=timezone.now())
         first_event = queryset.order_by('from_date').first()
         if first_event:
-            queryset = queryset.filter(from_date__date=first_event.from_date.date())
+            queryset = queryset.filter(from_date__lte=datetime.combine(first_event.from_date.date(), time(23, 59),
+                                                                       tzinfo=pytz.utc))
         return self.filter(type__in=self.model.TIMELESS_TYPES) | queryset
     
     def archived(self):
