@@ -1,5 +1,5 @@
 {% load i18n cosinnus_tags %}
-{% captureas detail_url %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endcaptureas %}
+{% captureas detail_url %}{% if event.conferenceevent %}{{ event.get_edit_url }}{% else %}{{ event.get_absolute_url }}{% if group != event.group %}?reflected_item_redirect=1{% endif %}{% endif %}{% endcaptureas %}
 <div id="cosinnus_list_element_{{ event.id }}" class="fadedown {% if not forloop.last %}regular-space{% endif %}">
     <div class="item_checkbox_element btn btn-emphasized w100" href="{{ detail_url }}">
         <ul class="media-list">
@@ -35,6 +35,9 @@
                     {% endwith %}
                     <a href="{{ detail_url }}">
                         {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
+                        {% if event.conferenceevent %}
+                            <i>({{ event.get_type_verbose }})&nbsp;&nbsp;</i>
+                        {% endif %}                        
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
                 </div>
@@ -127,7 +130,9 @@
         </button>
       
       {% if event.state != 4 %} {# archived doodles cannot be edited #}
-	      {% if event.state == 2 %}
+          {% if event.conferenceevent %}
+             {% captureas edit_url %}{{ event.get_edit_url }}{% endcaptureas %}
+	      {% elif event.state == 2 %}
 	        {% captureas edit_url %}{% group_url "cosinnus:event:doodle-edit" group=group slug=event.slug %}{% endcaptureas %}
 	      {% else %}
 	        {% captureas edit_url %}{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}{% endcaptureas %}
@@ -159,7 +164,7 @@
       {% else %}
         {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
         {% captureas title %}{% trans "Delete event" %}{% endcaptureas %}
-        {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group slug=event.slug%}{% endcaptureas %}
+        {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group slug=event.slug%}{% if event.conferenceevent %}?next={% group_url 'cosinnus:event:conference-event-list' group=group %}{% endif %}{% endcaptureas %}
       {% endif %}
 
     {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}

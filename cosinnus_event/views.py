@@ -35,7 +35,7 @@ from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
-from cosinnus.utils.urls import group_aware_reverse
+from cosinnus.utils.urls import group_aware_reverse, redirect_next_or
 from cosinnus.utils.permissions import check_object_read_access,\
     filter_tagged_object_queryset_for_user
 from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request,\
@@ -142,6 +142,27 @@ class PastEventListView(EventListView):
         return context
     
 past_events_list_view = PastEventListView.as_view()
+
+
+class ConferenceEventListView(RequireWriteMixin, FilterGroupMixin, ListView):
+
+    model = ConferenceEvent
+    template_name = 'cosinnus_event/event_list_conference.html'
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(ConferenceEventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_SCHEDULED)
+        self.queryset = qs
+        return qs
+    
+    def get_context_data(self, **kwargs):
+        context = super(ConferenceEventListView, self).get_context_data(**kwargs)
+        context['conference_events'] = context['object_list']
+        context['object'] = self.group
+        return context
+    
+conference_event_list_view = ConferenceEventListView.as_view()
 
 
 class DoodleListView(EventListView):
@@ -387,7 +408,7 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
 
     def get_success_url(self):
         urlname = getattr(self, 'success_url_list', 'cosinnus:event:list')
-        return group_aware_reverse(urlname, kwargs={'group': self.group})
+        return redirect_next_or(self.request, group_aware_reverse(urlname, kwargs={'group': self.group}))
 
 entry_delete_view = EntryDeleteView.as_view()
 
