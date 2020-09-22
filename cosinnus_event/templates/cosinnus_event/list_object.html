@@ -31,6 +31,13 @@
                                     <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
                                 </span>
                             {% endif %}
+	                        {% if event.conferenceevent %}
+	                            &nbsp;&nbsp;
+				                <a class="pull-right" href="{{ event.get_absolute_url|safe }}" target="_blank">
+				                    <i class="fa fa-eye"></i>
+				                    {% trans "View" %}
+				                </a>
+			                {% endif %}
                         </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">

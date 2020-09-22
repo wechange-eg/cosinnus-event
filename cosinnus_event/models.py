@@ -679,7 +679,7 @@ class ConferenceEvent(Event):
                 create_room()
     
     def get_absolute_url(self):
-        return '?todo:conference-event-absolute-url?'
+        return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
     
     def get_bbb_room_url(self):
         if not self.can_have_bbb_room():
