@@ -5,7 +5,7 @@ from builtins import object
 import datetime
 
 from django.urls import reverse
-from django.db import models
+from django.db import models, transaction
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
@@ -39,6 +39,7 @@ from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
 from cosinnus.models.bbb_room import BBBRoom
+from django.utils.crypto import get_random_string
 
 
 def localize(value, format):
@@ -108,7 +109,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
     public = models.BooleanField(_('Is public (on website)'), default=False)
-
+    
     image = models.ImageField(
         _('Image'),
         upload_to=get_event_image_filename,
@@ -645,7 +646,9 @@ class ConferenceEvent(Event):
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
         if created:
-            self.check_and_create_bbb_room(threaded=True)
+            self.check_and_create_bbb_room(threaded=False)
+        else:
+            self.sync_bbb_members()
     
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
@@ -667,8 +670,8 @@ class ConferenceEvent(Event):
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
-                # make all members join the bbb event
-                bbb_room.join_group_members(event.group)
+                # sync all bb users
+                self.sync_bbb_members()
             
             if threaded:
                 class CreateBBBRoomThread(Thread):
@@ -677,6 +680,19 @@ class ConferenceEvent(Event):
                 CreateBBBRoomThread().start()
             else:
                 create_room()
+    
+    def sync_bbb_members(self):
+        """ Completely re-syncs all users for this room """
+        if self.media_tag.bbb_room:
+            bbb_room = self.media_tag.bbb_room
+            with transaction.atomic():
+                bbb_room.remove_all_users()
+                bbb_room.join_group_members(self.group)
+                # creator and presenters are moderators in addition to the group admins
+                bbb_room.join_user(self.creator, as_moderator=True)
+                for user in self.presenters.all():
+                    bbb_room.join_user(user, as_moderator=True)
+                    
     
     def get_absolute_url(self):
         return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
