@@ -39,7 +39,9 @@ from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
 from cosinnus.models.bbb_room import BBBRoom
-from django.utils.crypto import get_random_string
+import logging
+
+logger = logging.getLogger('cosinnus')
 
 
 def localize(value, format):
@@ -645,10 +647,13 @@ class ConferenceEvent(Event):
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
-        if created:
-            self.check_and_create_bbb_room(threaded=False)
-        else:
-            self.sync_bbb_members()
+        if self.can_have_bbb_room():
+            try:
+                room_needed_creation = self.check_and_create_bbb_room(threaded=False)
+                if not room_needed_creation:
+                    self.sync_bbb_members()
+            except Exception as e:
+                logger.exception(e)
     
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
@@ -656,7 +661,8 @@ class ConferenceEvent(Event):
         
     def check_and_create_bbb_room(self, threaded=True):
         """ Can be safely called at any time to create a BBB room for this event
-            if it doesn't have one yet """
+            if it doesn't have one yet.
+            @return True if a room needed to be created, False if none was created """
         # if event is of the right type and has no BBB room yet,
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
             # start a thread and create a BBB Room
@@ -680,6 +686,8 @@ class ConferenceEvent(Event):
                 CreateBBBRoomThread().start()
             else:
                 create_room()
+            return True
+        return False
     
     def sync_bbb_members(self):
         """ Completely re-syncs all users for this room """
