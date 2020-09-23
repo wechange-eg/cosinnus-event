@@ -119,7 +119,11 @@ class _ConferenceEventBaseForm(_EventForm):
         #self.room = kwargs.pop('room')
         #if 'max_participants' in self.fields:
         #    self.fields['max_participants'].validators = [MinValueValidator(2), MaxValueValidator(self.room.max_coffeetable_participants)]
-
+    
+    def after_save(self, obj):
+        # again sync the bbb members so m2m changes are taken into account properly
+        obj.sync_bbb_members()
+    
 
 class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
     

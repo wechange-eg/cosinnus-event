@@ -5,7 +5,7 @@ from builtins import object
 import datetime
 
 from django.urls import reverse
-from django.db import models
+from django.db import models, transaction
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
@@ -39,6 +39,9 @@ from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
 from cosinnus.models.bbb_room import BBBRoom
+import logging
+
+logger = logging.getLogger('cosinnus')
 
 
 def localize(value, format):
@@ -108,7 +111,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
     public = models.BooleanField(_('Is public (on website)'), default=False)
-
+    
     image = models.ImageField(
         _('Image'),
         upload_to=get_event_image_filename,
@@ -644,8 +647,13 @@ class ConferenceEvent(Event):
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
-        if created:
-            self.check_and_create_bbb_room(threaded=True)
+        if self.can_have_bbb_room():
+            try:
+                room_needed_creation = self.check_and_create_bbb_room(threaded=False)
+                if not room_needed_creation:
+                    self.sync_bbb_members()
+            except Exception as e:
+                logger.exception(e)
     
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
@@ -653,7 +661,8 @@ class ConferenceEvent(Event):
         
     def check_and_create_bbb_room(self, threaded=True):
         """ Can be safely called at any time to create a BBB room for this event
-            if it doesn't have one yet """
+            if it doesn't have one yet.
+            @return True if a room needed to be created, False if none was created """
         # if event is of the right type and has no BBB room yet,
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
             # start a thread and create a BBB Room
@@ -667,8 +676,8 @@ class ConferenceEvent(Event):
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
-                # make all members join the bbb event
-                bbb_room.join_group_members(event.group)
+                # sync all bb users
+                self.sync_bbb_members()
             
             if threaded:
                 class CreateBBBRoomThread(Thread):
@@ -677,9 +686,24 @@ class ConferenceEvent(Event):
                 CreateBBBRoomThread().start()
             else:
                 create_room()
+            return True
+        return False
+    
+    def sync_bbb_members(self):
+        """ Completely re-syncs all users for this room """
+        if self.media_tag.bbb_room:
+            bbb_room = self.media_tag.bbb_room
+            with transaction.atomic():
+                bbb_room.remove_all_users()
+                bbb_room.join_group_members(self.group)
+                # creator and presenters are moderators in addition to the group admins
+                bbb_room.join_user(self.creator, as_moderator=True)
+                for user in self.presenters.all():
+                    bbb_room.join_user(user, as_moderator=True)
+                    
     
     def get_absolute_url(self):
-        return '?todo:conference-event-absolute-url?'
+        return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
     
     def get_bbb_room_url(self):
         if not self.can_have_bbb_room():

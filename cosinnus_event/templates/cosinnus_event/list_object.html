@@ -10,7 +10,7 @@
                 {% endif %}
             
                 <a class="pull-left square-date-icon" href="{{ event.get_absolute_url }}">
-                  {% if event.state == 2 or event.state == 4 %}
+                  {% if event.state == 2 or event.state == 4 or not event.from_date %}
                     <i class="fa fa-calendar-check-o"></i>
                   {% else %}
                     <div>{{ event.from_date|date:"d" }}</div>
@@ -31,12 +31,19 @@
                                     <span class="moment-data-date" data-date="{{ event.created|date:'c' }}"></span>
                                 </span>
                             {% endif %}
+	                        {% if event.conferenceevent %}
+	                            &nbsp;&nbsp;
+				                <a class="pull-right" href="{{ event.get_absolute_url|safe }}" target="_blank">
+				                    <i class="fa fa-eye"></i>
+				                    {% trans "View" %}
+				                </a>
+			                {% endif %}
                         </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
                         {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
                         {% if event.conferenceevent %}
-                            <i>({{ event.get_type_verbose }})&nbsp;&nbsp;</i>
+                            <i>({{ event.get_type_verbose }}: {{ event.room.title }})&nbsp;&nbsp;</i>
                         {% endif %}                        
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
