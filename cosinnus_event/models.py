@@ -125,7 +125,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     timeline_template = 'cosinnus_event/v2/dashboard/timeline_item.html'
 
     class Meta(BaseTaggableObjectModel.Meta):
-        ordering = ['from_date', 'to_date']
+        ordering = ['from_date', 'to_date', 'title']
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
         
@@ -618,7 +618,7 @@ class ConferenceEvent(Event):
         validators=[MinValueValidator(2), MaxValueValidator(512)])
 
     class Meta(BaseTaggableObjectModel.Meta):
-        ordering = ['from_date', 'to_date']
+        ordering = ['from_date', 'to_date', 'title']
         verbose_name = _('Conference Event')
         verbose_name_plural = _('Conference Events')
         unique_together = None
