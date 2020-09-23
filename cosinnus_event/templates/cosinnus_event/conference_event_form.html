@@ -21,7 +21,8 @@
 	{% elif form_view == "edit" %}
 	    {% blocktrans with room_name=room.title event_title=object.title asvar page_title %}Edit {{ event_type_verbose }} "{{ event_title }}" in Room {{ room_name }}{% endblocktrans %}
 	{% endif %}
-    {{ block.super }}
+	{% include 'cosinnus/breadcrumb.html' %}
+    <li><a class="active" href="{% group_url 'cosinnus:event:conference-event-list' group=group %}">{% trans "Conference Events" %}</a></li>
     <li class="active">{{ page_title }}</li>
 {% endblock %}
 
