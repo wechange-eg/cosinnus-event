@@ -670,9 +670,13 @@ class ConferenceEvent(Event):
             portal = CosinnusPortal.get_current()
             
             def create_room():
+                max_participants = None
+                if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
+                    max_participants = self.max_participants
                 bbb_room = BBBRoom.create(
                     name=event.title,
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
+                    max_participants=max_participants,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
