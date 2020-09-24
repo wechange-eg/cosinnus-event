@@ -26,12 +26,8 @@ class EventQuerySet(models.QuerySet):
         return upcoming_event_filter(self.public())
 
     def conference_upcoming(self):
-        """Filter upcoming events on the first conference day"""
+        """Filter upcoming events"""
         queryset = self.filter(to_date__gte=timezone.now())
-        first_event = queryset.order_by('from_date').first()
-        if first_event:
-            queryset = queryset.filter(from_date__lte=datetime.combine(first_event.from_date.date(), time(23, 59),
-                                                                       tzinfo=pytz.utc))
         return self.filter(type__in=self.model.TIMELESS_TYPES) | queryset
     
     def archived(self):
