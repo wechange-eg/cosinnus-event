@@ -590,6 +590,12 @@ class ConferenceEvent(Event):
         TYPE_COFFEE_TABLE,
         TYPE_DISCUSSION,
     )
+    # which event types will lead to which type of BBBRoom to be created.
+    # see settings BBB_ROOM_TYPE_CHOICES and BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS.
+    # (settings.BBB_ROOM_TYPE_DEFAULT is default if event type is not in this map)
+    BBB_ROOM_ROOM_TYPE_MAP = {
+        TYPE_COFFEE_TABLE: 1, # 'active' preset
+    }
 
     TIMELESS_TYPES = (
         TYPE_COFFEE_TABLE,
@@ -670,18 +676,22 @@ class ConferenceEvent(Event):
             
             def create_room():
                 max_participants = None
-                if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
-                    max_participants = self.max_participants
+                if event.type == event.TYPE_COFFEE_TABLE and event.max_participants:
+                    max_participants = event.max_participants
+                # determine BBBRoom type from event type
+                room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
+                    
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
                     name=event.title,
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
                     max_participants=max_participants,
+                    room_type=room_type,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
                 # sync all bb users
-                self.sync_bbb_members()
+                event.sync_bbb_members()
             
             if threaded:
                 class CreateBBBRoomThread(Thread):
