@@ -38,7 +38,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
-from cosinnus.models.bbb_room import BBBRoom
 import logging
 
 logger = logging.getLogger('cosinnus')
@@ -673,6 +672,7 @@ class ConferenceEvent(Event):
                 max_participants = None
                 if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
                     max_participants = self.max_participants
+                from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
                     name=event.title,
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
