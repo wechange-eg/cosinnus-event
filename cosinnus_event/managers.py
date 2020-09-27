@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from datetime import datetime, time
+from datetime import timedelta
 import pytz
 
 from django.contrib.contenttypes.models import ContentType
@@ -27,7 +27,7 @@ class EventQuerySet(models.QuerySet):
 
     def conference_upcoming(self):
         """Filter upcoming events"""
-        queryset = self.filter(to_date__gte=timezone.now())
+        queryset = self.filter(to_date__gte=(timezone.now() - timedelta(minutes=30)))
         return self.filter(type__in=self.model.TIMELESS_TYPES) | queryset
     
     def archived(self):
