@@ -27,7 +27,7 @@ class EventQuerySet(models.QuerySet):
 
     def conference_upcoming(self):
         """Filter upcoming events"""
-        queryset = self.filter(to_date__gte=(timezone.now() - timedelta(minutes=30)))
+        queryset = self.filter(to_date__gte=(timezone.now() - timedelta(minutes=10)))
         return self.filter(type__in=self.model.TIMELESS_TYPES) | queryset
     
     def archived(self):
