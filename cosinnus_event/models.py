@@ -2,11 +2,10 @@
 from __future__ import unicode_literals
 
 from builtins import object
-from os.path import join
 import datetime
 
 from django.urls import reverse
-from django.db import models
+from django.db import models, transaction
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
@@ -20,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
 
 from cosinnus_event.conf import settings
-from cosinnus_event.managers import EventManager
+from cosinnus_event.managers import EventQuerySet
 from cosinnus.models import BaseTaggableObjectModel
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
     check_object_read_access
@@ -35,6 +34,13 @@ from django.utils.safestring import mark_safe
 from cosinnus.models.tagged import LikeableObjectMixin
 from uuid import uuid1
 import time
+from django.core.validators import MaxValueValidator, MinValueValidator
+from cosinnus.models.conference import CosinnusConferenceRoom
+from django.core.exceptions import ImproperlyConfigured
+from threading import Thread
+import logging
+
+logger = logging.getLogger('cosinnus')
 
 
 def localize(value, format):
@@ -51,7 +57,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
-        ('from_date', 'from_date'),
+            ('from_date', 'from_date'),
         ('to_date', 'to_date'),
         ('city', 'city'),
         ('state', 'state'),
@@ -104,7 +110,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     city = models.CharField(_('City'), blank=True, max_length=50, null=True)
 
     public = models.BooleanField(_('Is public (on website)'), default=False)
-
+    
     image = models.ImageField(
         _('Image'),
         upload_to=get_event_image_filename,
@@ -116,12 +122,12 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     original_doodle = models.OneToOneField("self", verbose_name=_('Original Event Poll'),
         related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
 
-    objects = EventManager()
+    objects = EventQuerySet.as_manager()
     
     timeline_template = 'cosinnus_event/v2/dashboard/timeline_item.html'
 
     class Meta(BaseTaggableObjectModel.Meta):
-        ordering = ['from_date', 'to_date']
+        ordering = ['from_date', 'to_date', 'title']
         verbose_name = _('Event')
         verbose_name_plural = _('Events')
         
@@ -551,6 +557,186 @@ class Comment(models.Model):
     def grant_extra_read_permissions(self, user):
         """ Comments inherit their visibility from their commented on parent """
         return check_object_read_access(self.event, user)
+
+
+@python_2_unicode_compatible
+class ConferenceEvent(Event):
+    
+    TYPE_LOBBY_CHECKIN = 0
+    TYPE_STAGE_EVENT = 1
+    TYPE_WORKSHOP = 2
+    TYPE_DISCUSSION = 3
+    TYPE_COFFEE_TABLE = 4
+    
+    TYPE_CHOICES = (
+        (TYPE_LOBBY_CHECKIN, _('Lobby Check-in Event')),
+        (TYPE_STAGE_EVENT, _('Stage Stream')),
+        (TYPE_WORKSHOP, _('Workshop')),
+        (TYPE_DISCUSSION, _('Discussion')),
+        (TYPE_COFFEE_TABLE, _('Coffee Table')),
+    )
+    
+    CONFERENCE_EVENT_TYPE_BY_ROOM_TYPE = {
+        CosinnusConferenceRoom.TYPE_LOBBY: TYPE_LOBBY_CHECKIN,
+        CosinnusConferenceRoom.TYPE_STAGE: TYPE_STAGE_EVENT,
+        CosinnusConferenceRoom.TYPE_WORKSHOPS: TYPE_WORKSHOP,
+        CosinnusConferenceRoom.TYPE_DISCUSSIONS: TYPE_DISCUSSION,
+        CosinnusConferenceRoom.TYPE_COFFEE_TABLES: TYPE_COFFEE_TABLE,
+    }
+    
+    # rooms of these types will initialize a corresponding `BBBRoom` in the media_tag
+    BBB_ROOM_TYPES = (
+        TYPE_WORKSHOP,
+        TYPE_COFFEE_TABLE,
+        TYPE_DISCUSSION,
+    )
+    # which event types will lead to which type of BBBRoom to be created.
+    # see settings BBB_ROOM_TYPE_CHOICES and BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS.
+    # (settings.BBB_ROOM_TYPE_DEFAULT is default if event type is not in this map)
+    BBB_ROOM_ROOM_TYPE_MAP = {
+        TYPE_COFFEE_TABLE: 1, # 'active' preset
+    }
+
+    TIMELESS_TYPES = (
+        TYPE_COFFEE_TABLE,
+    )
+    
+    # the room this conference event is in. 
+    # the conference event type will be set according to the room type of this room
+    room = models.ForeignKey('cosinnus.CosinnusConferenceRoom', verbose_name=_('Room'),
+        related_name='events', on_delete=models.CASCADE)
+    
+    # may not be changed after creation!
+    type = models.PositiveSmallIntegerField(_('Conference Event Type'), blank=False,
+        default=TYPE_WORKSHOP, choices=TYPE_CHOICES)
+
+    # list of presenters/moderators that should be     
+    presenters = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,
+        verbose_name=_('Presenters'), related_name='+',
+        help_text='A list of users that will be displayed as presenters and become BBB moderators in attached rooms')
+    
+    # Type: Workshop, Discussion
+    is_break = models.BooleanField(_('Is a Break'),
+        help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
+        default=False)
+    
+    # Type: Coffee-Tables
+    max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
+        blank=False, default=settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT,
+        validators=[MinValueValidator(2), MaxValueValidator(512)])
+
+    class Meta(BaseTaggableObjectModel.Meta):
+        ordering = ['from_date', 'to_date', 'title']
+        verbose_name = _('Conference Event')
+        verbose_name_plural = _('Conference Events')
+        unique_together = None
+
+    def __init__(self, *args, **kwargs):
+        super(ConferenceEvent, self).__init__(*args, **kwargs)
+
+    def __str__(self):
+        readable = _('%(event)s %(type)s') % {'event': self.title, 'type': self.type}
+        return readable
+
+    def save(self, *args, **kwargs):
+        created = bool(self.pk) == False
+        if created:
+            self.type = self.CONFERENCE_EVENT_TYPE_BY_ROOM_TYPE.get(self.room.type, None)
+            if self.type is None:
+                raise ImproperlyConfigured('Conference Event type not found for room type "%s"' % self.room.type)
+        
+        # important: super(Event), not ConferenceEvent, because we don't want to inherit the notifiers
+        super(Event, self).save(*args, **kwargs)
+
+        # create a "going" attendance for the event's creator
+        if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
+            EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
+        
+        if self.can_have_bbb_room():
+            try:
+                room_needed_creation = self.check_and_create_bbb_room(threaded=False)
+                if not room_needed_creation:
+                    self.sync_bbb_members()
+            except Exception as e:
+                logger.exception(e)
+    
+    def can_have_bbb_room(self):
+        """ Check if this event may have a BBB room """
+        return self.type in self.BBB_ROOM_TYPES and not self.is_break
+        
+    def check_and_create_bbb_room(self, threaded=True):
+        """ Can be safely called at any time to create a BBB room for this event
+            if it doesn't have one yet.
+            @return True if a room needed to be created, False if none was created """
+        # if event is of the right type and has no BBB room yet,
+        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            # start a thread and create a BBB Room
+            event = self
+            portal = CosinnusPortal.get_current()
+            
+            def create_room():
+                max_participants = None
+                if event.type == event.TYPE_COFFEE_TABLE and event.max_participants:
+                    max_participants = event.max_participants
+                # determine BBBRoom type from event type
+                room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
+                    
+                from cosinnus.models.bbb_room import BBBRoom
+                bbb_room = BBBRoom.create(
+                    name=event.title,
+                    meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
+                    max_participants=max_participants,
+                    room_type=room_type,
+                )
+                event.media_tag.bbb_room = bbb_room
+                event.media_tag.save()
+                # sync all bb users
+                event.sync_bbb_members()
+            
+            if threaded:
+                class CreateBBBRoomThread(Thread):
+                    def run(self):
+                        create_room()
+                CreateBBBRoomThread().start()
+            else:
+                create_room()
+            return True
+        return False
+    
+    def sync_bbb_members(self):
+        """ Completely re-syncs all users for this room """
+        if self.media_tag.bbb_room:
+            bbb_room = self.media_tag.bbb_room
+            with transaction.atomic():
+                bbb_room.remove_all_users()
+                bbb_room.join_group_members(self.group)
+                # creator and presenters are moderators in addition to the group admins
+                bbb_room.join_user(self.creator, as_moderator=True)
+                for user in self.presenters.all():
+                    bbb_room.join_user(user, as_moderator=True)
+                    
+    
+    def get_absolute_url(self):
+        return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
+    
+    def get_bbb_room_url(self):
+        if not self.can_have_bbb_room():
+            return None
+        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            self.check_and_create_bbb_room(threaded=True)
+            # redirect to a temporary URL that refreshes
+            return reverse('cosinnus:bbb-room-queue', kwargs={'mt_id': self.media_tag.id})
+        return self.media_tag.bbb_room.get_absolute_url()
+    
+    def get_edit_url(self):
+        return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
+    
+    def get_delete_url(self):
+        return group_aware_reverse('cosinnus:event:conference-event-delete', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
+    
+    def get_type_verbose(self):
+        return dict(self.TYPE_CHOICES).get(self.type, '(unknown type)')
+
 
 @receiver(post_delete, sender=Vote)
 def post_vote_delete(sender, **kwargs):
