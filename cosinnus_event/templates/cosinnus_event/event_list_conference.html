@@ -1,0 +1,31 @@
+{% extends "cosinnus_event/base.html" %}
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% block page_title %}
+{% trans "Events" %} {{ block.super }}
+{% endblock page_title %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li class="active">{% trans "Conference Events" %}</li>
+{% endblock %}
+
+{% block leftnav %}
+    {% include "cosinnus/group/leftnav_group.html"  with current_page="conferenceeventmanagement" %}
+{% endblock leftnav %}
+
+{% block content %}
+    
+	<!-- a box with semi transparent background -->
+	<div class="content-box large-space">
+	    
+	    {% for event in conference_events %}
+        	{% include 'cosinnus_event/list_object.html' %}
+	    {% empty %}
+	        <!-- {% trans "There are no conference events." %} -->
+	        {% include 'cosinnus/common/empty_button.html' with message="There are no conference events." %}
+	    {% endfor %}
+	   
+	</div><!-- content-box -->
+	
+{% endblock content %}

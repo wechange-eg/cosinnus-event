@@ -13,8 +13,13 @@ from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import SplitHiddenDateWidget
 
-from cosinnus_event.models import Event, Suggestion, Vote, Comment
+from cosinnus_event.models import Event, Suggestion, Vote, Comment,\
+    ConferenceEvent
 from cosinnus.forms.attached_object import FormAttachableMixin
+from cosinnus.utils.user import get_user_select2_pills
+from cosinnus.fields import UserSelect2MultipleChoiceField
+from django.urls.base import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
@@ -84,4 +89,85 @@ class CommentForm(forms.ModelForm):
     class Meta(object):
         model = Comment
         fields = ('text',)
+
+
+class _ConferenceEventBaseForm(_EventForm):
+    
+    url = None
+    from_date = None
+    to_date = None
+    
+    def __init__(self, *args, **kwargs):
+        
+        # note: super(_EventForm), not _ConferenceEventBaseForm
+        super(_EventForm, self).__init__(*args, **kwargs)
+        
+        # init select2 presenters field
+        if 'presenters' in self.fields:
+            data_url = reverse('cosinnus:select2:all-members')
+            self.fields['presenters'] = UserSelect2MultipleChoiceField(label=_("Presenters"), help_text='', required=False, data_url=data_url)
+          
+            if self.instance.pk:
+                # choices and initial must be set so pre-existing form fields can be prepopulated
+                preresults = get_user_select2_pills(self.instance.presenters.all(), text_only=True)
+                self.fields['presenters'].choices = preresults
+                self.fields['presenters'].initial = [key for key,__ in preresults]
+                self.initial['presenters'] = self.fields['presenters'].initial
+        
+        # limit the max participants field to those set in the room 
+        # Disabled until we can figure out how to keep the kwargs getting passed to the MultiModelForm first
+        #self.room = kwargs.pop('room')
+        #if 'max_participants' in self.fields:
+        #    self.fields['max_participants'].validators = [MinValueValidator(2), MaxValueValidator(self.room.max_coffeetable_participants)]
+    
+    def after_save(self, obj):
+        # again sync the bbb members so m2m changes are taken into account properly
+        obj.sync_bbb_members()
+    
+
+class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
+    
+    class Meta(object):
+        model = ConferenceEvent
+        fields = ('title', 'note', 'image', 'max_participants')
+
+ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
+
+
+class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
+    
+    from_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='00:00'))
+    to_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='23:59'))
+    
+    class Meta(object):
+        model = ConferenceEvent
+        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters')
+
+ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
+
+
+class _ConferenceEventDiscussionForm(_ConferenceEventWorkshopForm):
+    pass
+
+ConferenceEventDiscussionForm = get_form(_ConferenceEventDiscussionForm)
+
+
+class _ConferenceEventStageForm(_ConferenceEventBaseForm):
+    
+    url = forms.URLField(widget=forms.TextInput, required=False)
+    
+    from_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='00:00'))
+    to_date = forms.SplitDateTimeField(widget=SplitHiddenDateWidget(default_time='23:59'))
+    
+    class Meta(object):
+        model = ConferenceEvent
+        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters', 'url')
+
+ConferenceEventStageForm = get_form(_ConferenceEventStageForm)
+
+
+class _ConferenceEventLobbyForm(_ConferenceEventStageForm):
+    pass
+
+ConferenceEventLobbyForm = get_form(_ConferenceEventLobbyForm)
 

@@ -27,27 +27,31 @@ from cosinnus.views.attached_object import AttachableViewMixin
 
 from cosinnus_event.conf import settings
 from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
-    EventNoFieldForm, CommentForm, DoodleForm
+    EventNoFieldForm, CommentForm, DoodleForm, ConferenceEventLobbyForm,\
+    ConferenceEventStageForm, ConferenceEventWorkshopForm,\
+    ConferenceEventDiscussionForm, ConferenceEventCoffeeTableForm
 from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
-    past_event_filter, Comment, EventAttendance
+    past_event_filter, Comment, EventAttendance, ConferenceEvent
 from django.shortcuts import get_object_or_404
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
-from cosinnus.utils.urls import group_aware_reverse
+from cosinnus.utils.urls import group_aware_reverse, redirect_next_or
 from cosinnus.utils.permissions import check_object_read_access,\
     filter_tagged_object_queryset_for_user
-from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request
+from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request,\
+    redirect_to_403
 from django.contrib.sites.shortcuts import get_current_site
 from cosinnus.utils.functions import unique_aware_slugify, is_number
 from django.views.decorators.csrf import csrf_protect
-from django.http.response import HttpResponseBadRequest, JsonResponse
+from django.http.response import HttpResponseBadRequest, JsonResponse,\
+    HttpResponseNotAllowed
 from annoying.functions import get_object_or_None
 from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
     MixReflectedObjectsMixin, ReflectedObjectRedirectNoticeMixin
 
 import logging
 from django.utils.encoding import force_text
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
 from cosinnus.views.common import DeleteElementView, apply_likefollow_object
@@ -58,6 +62,8 @@ from django.contrib.auth import get_user_model
 from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
     AjaxFormsCommentCreateViewMixin, AjaxFormsDeleteViewMixin
 from uuid import uuid1
+from cosinnus.models.conference import CosinnusConferenceRoom
+from cosinnus_conference.views import FilterConferenceRoomMixin
 logger = logging.getLogger('cosinnus')
 
 
@@ -136,6 +142,27 @@ class PastEventListView(EventListView):
         return context
     
 past_events_list_view = PastEventListView.as_view()
+
+
+class ConferenceEventListView(RequireWriteMixin, FilterGroupMixin, ListView):
+
+    model = ConferenceEvent
+    template_name = 'cosinnus_event/event_list_conference.html'
+    
+    def get_queryset(self):
+        """ In the calendar we only show scheduled events """
+        qs = super(ConferenceEventListView, self).get_queryset()
+        qs = qs.filter(state=Event.STATE_SCHEDULED)
+        self.queryset = qs
+        return qs
+    
+    def get_context_data(self, **kwargs):
+        context = super(ConferenceEventListView, self).get_context_data(**kwargs)
+        context['conference_events'] = context['object_list']
+        context['object'] = self.group
+        return context
+    
+conference_event_list_view = ConferenceEventListView.as_view()
 
 
 class DoodleListView(EventListView):
@@ -381,7 +408,7 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
 
     def get_success_url(self):
         urlname = getattr(self, 'success_url_list', 'cosinnus:event:list')
-        return group_aware_reverse(urlname, kwargs={'group': self.group})
+        return redirect_next_or(self.request, group_aware_reverse(urlname, kwargs={'group': self.group}))
 
 entry_delete_view = EntryDeleteView.as_view()
 
@@ -969,3 +996,98 @@ class EventDeleteElementView(DeleteElementView):
     model = Event
 
 delete_element_view = EventDeleteElementView.as_view()
+
+
+class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConferenceRoomMixin,
+                     GroupFormKwargsMixin, UserFormKwargsMixin):
+    
+    model = ConferenceEvent
+    template_name = 'cosinnus_event/conference_event_form.html'
+    message_success = _('Event "%(title)s" was edited successfully.')
+    message_error = _('Event "%(title)s" could not be edited.')
+    
+    CONFERENCE_EVENT_FORMS_BY_ROOM_TYPE = {
+        CosinnusConferenceRoom.TYPE_LOBBY: ConferenceEventLobbyForm,
+        CosinnusConferenceRoom.TYPE_STAGE: ConferenceEventStageForm,
+        CosinnusConferenceRoom.TYPE_WORKSHOPS: ConferenceEventWorkshopForm,
+        CosinnusConferenceRoom.TYPE_DISCUSSIONS: ConferenceEventDiscussionForm,
+        CosinnusConferenceRoom.TYPE_COFFEE_TABLES: ConferenceEventCoffeeTableForm,
+    }
+
+    @dispatch_group_access()
+    def dispatch(self, request, *args, **kwargs):
+        self.form_view = kwargs.get('form_view', None)
+        
+        try:
+            ret = super(ConferenceEventFormMixin, self).dispatch(request, *args, **kwargs)
+        except ImproperlyConfigured as e:
+            logger.error(e)
+            return redirect_to_403(self.request, self)
+        return ret
+    
+    def get_form_class(self):
+        klass = self.CONFERENCE_EVENT_FORMS_BY_ROOM_TYPE.get(self.room.type, None)
+        if klass is None:
+            raise ImproperlyConfigured('ConferenceEvent Form type not found for conference room type "%s"' % self.room.type)
+        return klass
+    
+    """
+    Disabled until we can figure out how to keep the kwargs getting passed to the MultiModelForm first
+    def get_form_kwargs(self):
+        form_kwargs = super(ConferenceEventFormMixin, self).get_form_kwargs()
+        form_kwargs['room'] = self.room
+        return form_kwargs
+    """
+    
+    def get_context_data(self, **kwargs):
+        context = super(ConferenceEventFormMixin, self).get_context_data(**kwargs)
+        tags = ConferenceEvent.objects.tags()
+        context.update({
+            'tags': tags,
+            'form_view': self.form_view,
+            'room': self.room,
+            'event_type_verbose': dict(ConferenceEvent.TYPE_CHOICES)[ConferenceEvent.CONFERENCE_EVENT_TYPE_BY_ROOM_TYPE.get(self.room.type)],
+        })
+        return context
+
+    def get_success_url(self):
+        # redirect to room
+        return self.room.get_absolute_url()
+
+    def forms_valid(self, form, inlines):
+        # assign room to ConferenceEvent
+        form.instance.room = self.room
+        ret = super(ConferenceEventFormMixin, self).forms_valid(form, inlines)
+        messages.success(self.request,
+            self.message_success % {'title': self.object.title})
+        return ret
+
+
+class ConferenceEventAddView(ConferenceEventFormMixin, AttachableViewMixin, CreateWithInlinesView):
+    message_success = _('Event "%(title)s" was added successfully.')
+    message_error = _('Event "%(title)s" could not be added.')
+    
+    def forms_valid(self, form, inlines):
+        form.instance.creator = self.request.user
+        
+        # events are created as scheduled.
+        form.instance.state = Event.STATE_SCHEDULED
+        ret = super(ConferenceEventAddView, self).forms_valid(form, inlines)
+        return ret
+    
+conference_event_add_view = ConferenceEventAddView.as_view()
+
+
+class ConferenceEventEditView(ConferenceEventFormMixin, AttachableViewMixin, UpdateWithInlinesView):
+    pass
+        
+conference_event_edit_view = ConferenceEventEditView.as_view()
+
+
+class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
+    message_success = _('Event "%(title)s" was deleted successfully.')
+    message_error = _('Event "%(title)s" could not be deleted.')
+    
+conference_event_delete_view = ConferenceEventDeleteView.as_view()
+
+

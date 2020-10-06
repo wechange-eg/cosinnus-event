@@ -1,0 +1,188 @@
+{% extends "cosinnus_event/base.html" %}
+{% load i18n static cosinnus_tags widget_tweaks %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=form.form.obj.note.id_for_label %}
+{% endblock %}
+
+{% block page_title %}
+	{% if form_view == "add" %}
+	    {% blocktrans with room_name=room.title asvar page_title %}Add {{ event_type_verbose }} in Room {{ room_name }}{% endblocktrans %}
+	{% elif form_view == "edit" %}
+	    {% blocktrans with room_name=room.title event_title=object.title asvar page_title %}Edit {{ event_type_verbose }} "{{ event_title }}" in Room {{ room_name }}{% endblocktrans %}
+	{% endif %}
+	{{ page_title }}{{ block.super }}
+{% endblock page_title %}
+
+{% block breadcrumb %}
+    {% if form_view == "add" %}
+	    {% blocktrans with room_name=room.title asvar page_title %}Add {{ event_type_verbose }} in Room {{ room_name }}{% endblocktrans %}
+	{% elif form_view == "edit" %}
+	    {% blocktrans with room_name=room.title event_title=object.title asvar page_title %}Edit {{ event_type_verbose }} "{{ event_title }}" in Room {{ room_name }}{% endblocktrans %}
+	{% endif %}
+	{% include 'cosinnus/breadcrumb.html' %}
+    <li><a class="active" href="{% group_url 'cosinnus:event:conference-event-list' group=group %}">{% trans "Conference Events" %}</a></li>
+    <li class="active">{{ page_title }}</li>
+{% endblock %}
+
+{% block leftnav %}
+    {% comment %}  
+    {% include "cosinnus_event/leftnav.html" with return_to="events"%}
+    {% endcomment %}
+{% endblock leftnav %}
+
+{% block content %}
+
+    {% if form.forms.obj.errors or form.forms.media_tag.errors %}
+        <div class="alert alert-danger alert-dismissable">
+            <i class="fa fa-exclamation-triangle fa-3x"></i>
+            <p>{% trans "There was an error in one of the fields you entered. Please correct it before saving!" %}</p>
+        </div>
+    {% endif %}
+    
+    <form method="POST" action="" class="cosinnus-form form-horizontal">{% csrf_token %}
+	    {{ form.forms.obj.non_field_errors }}
+	    {{ form.forms.media_tag.non_field_errors }}
+	    
+	    <!-- a box with semi transparent background -->
+		<div class="content-box">
+		      
+		    {% if form_view == "add" %}
+			    {% blocktrans with room_name=room.title asvar page_title %}Add {{ event_type_verbose }} in Room {{ room_name }}{% endblocktrans %}
+			{% elif form_view == "edit" %}
+			    {% blocktrans with room_name=room.title event_title=object.title asvar page_title %}Edit {{ event_type_verbose }} "{{ event_title }}" in Room {{ room_name }}{% endblocktrans %}
+			{% endif %}
+			<h2>{{ page_title }}</h2>
+	        
+	        {% if form.forms.obj.fields.title %}
+		        {% trans "Title" as title_label %}
+		        {% trans "Enter a title for the conference event." as title_legend %}
+		        {% captureas title_html %}
+		            {% if request.GET.title %}
+		                {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
+		            {% else %}
+		                {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
+		            {% endif %}
+		        {% endcaptureas %}
+		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
+			{% endif %}
+			
+			{% if form.forms.obj.fields.is_break %}
+	            {% comment %} Visibility Field {% endcomment %}
+	            {% trans "Event is a break" as break_label %}
+	            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
+	            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+			{% endif %}
+			
+			{% if form.forms.obj.fields.from_date %}          
+		        {% trans "Date" as date_label %}
+		        {% captureas date_html %}
+		            {{ form.forms.obj.from_date.errors }}
+		            {{ form.forms.obj.to_date.errors }}
+		            <ol class="input-area">
+		                <li class="calendar-date-time-chooser">
+		                    {% trans "From" %} <i class="fa fa-calendar"></i>
+		                    <input
+		                        placeholder="{% trans "Date" %}"
+		                        readonly ="readonly"
+		                        class="calendar-date-time-chooser-date" />
+		                    <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
+		                        placeholder="{% trans "Start date." %}" type="hidden" 
+		                        {% if form_view == "add" and request.GET.start %}
+		                        value="{{ request.GET.start }}" 
+		                        {% elif form_view == "edit" %}
+		                        value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
+		                        {% else %}
+		                        value="{% now "Y-m-d" %}" 
+		                        {% endif %}
+		                    >
+		                    <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
+		                        placeholder="00:00" type="text" 
+		                        value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
+		                    >                                           
+		                    <div class="small-calendar"></div>
+		                </li>
+		                <li class="calendar-date-time-chooser">
+		                    {% trans "Until" %} <i class="fa fa-calendar"></i>
+		                    <input
+		                        placeholder="{% trans "Date" %}"
+		                        readonly ="readonly"
+		                        class="calendar-date-time-chooser-date" />
+		                    <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
+		                        placeholder="{% trans "End date." %}" type="hidden" 
+		                        {% if form_view == "add" and request.GET.end %}
+		                        value="{{ request.GET.end }}" 
+		                        {% elif form_view == "edit" %}
+		                        value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
+		                        {% else %}
+		                        value="{% now "Y-m-d" %}" 
+		                        {% endif %}
+		                    >
+		                    <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
+		                        placeholder="23:59" type="text" 
+		                        value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
+		                    >    
+		                    <div class="small-calendar"></div>
+		                </li>
+		            </ol>
+		        {% endcaptureas %}
+		        {% include 'cosinnus/fields/default_field.html' with field_html=date_html label=date_label label=date_label large_field=True %} 
+	        {% endif %}
+	        
+	        
+	        {% if form.forms.obj.fields.note %}
+		        {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
+		        {% trans "Description and Infos" as description_label %}
+		        {% trans "Description" as description_placeholder %}
+		        {% trans "Enter a description for the event" as description_legend %}
+		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True %}
+	        {% endif %}
+	        
+	        {% if form.forms.obj.fields.url %}
+                {% trans "Example: https://www.youtube.com/watch?v=12345" as url_placeholder %}
+                {% trans "Stream URL for the Event" as url_label %}
+                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
+            {% endif %}
+            
+            {% if form.forms.obj.fields.max_participants %}
+                {% trans "Maximum Coffee Table Participants" as max_label %}
+                {% trans "How many participants should can join one coffee table before it is full" as max_legend %}
+                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.max_participants label=max_label legend=max_legend %}
+            {% endif %}
+		    
+		    {% if form.forms.obj.fields.presenters %}
+			    {% if not persons_label %}{% trans "Presenters" as persons_label %}{% endif %}
+		        {% trans "Presenters" as persons_placeholder %}
+	            {% trans "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room" as persons_legend %}
+		        {% include 'cosinnus/fields/media_tag_field.html' with field=form.forms.obj.presenters label=persons_label icon="fa-user" placeholder=persons_placeholder legend=persons_legend %}
+	        {% endif %}
+	        
+	        {% if form.forms.obj.fields.image %}    
+			    {% trans "Upload a preview image for the Conference Event" as files_label %}
+		        {% include 'cosinnus/media_tags.html' with show_files=True files_label=files_label disable_more_button=True disable_visibility=True disable_topics=True disable_location=True disable_tags=True disable_persons=True %}
+		    {% endif %}
+	                        
+		</div><!-- content-box -->
+		
+		       
+	    <button type="submit" class="btn btn-emphasized" id="createDoodleButton">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-pencil"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% if form_view == "add" %}
+	                      {% trans "Create" %}
+	                    {% elif form_view == "edit" %}
+	                      {% trans "Save" %}
+	                    {% endif %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+	    
+	</form>
+    
+{% endblock content %}
