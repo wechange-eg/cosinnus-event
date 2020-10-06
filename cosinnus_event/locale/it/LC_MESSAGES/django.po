@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 13:06+0200\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,10 +37,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr ""
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr ""
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr ""
 
@@ -57,10 +53,6 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s created %(count)d event polls"
-msgstr ""
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
 msgstr ""
 
 #, python-format
@@ -90,10 +82,6 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
-msgstr ""
-
-#, python-format
-msgid "%(sender_name)s"
 msgstr ""
 
 msgid "A user commented on a event you were tagged in"
@@ -152,10 +140,6 @@ msgid "A user created a new event in a team you are following"
 msgstr ""
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr ""
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr ""
 
@@ -164,10 +148,6 @@ msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which yo
 msgstr ""
 
 msgid "A user created a new event poll in a team you are following"
-msgstr ""
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
 msgstr ""
 
 #, python-format
@@ -225,10 +205,6 @@ msgid "You are following this event poll"
 msgstr ""
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr ""
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr ""
 
@@ -248,10 +224,6 @@ msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(o
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] ""
 msgstr[1] ""
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr ""
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -277,6 +249,9 @@ msgid "Newest Created"
 msgstr ""
 
 msgid "Title"
+msgstr ""
+
+msgid "Presenters"
 msgstr ""
 
 msgid "Scheduled"
@@ -406,6 +381,43 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+msgid "Conference Event Type"
+msgstr ""
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Conference Event"
+msgstr ""
+
+msgid "Conference Events"
+msgstr ""
+
+#, python-format
+msgid "%(event)s %(type)s"
+msgstr ""
+
 msgid "Create Event"
 msgstr ""
 
@@ -447,6 +459,74 @@ msgctxt "time"
 msgid "until"
 msgstr ""
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr ""
+
+msgid "Enter a title for the conference event."
+msgstr ""
+
+msgid "Event is a break"
+msgstr ""
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "Start date."
+msgstr ""
+
+msgid "Until"
+msgstr ""
+
+msgid "End date."
+msgstr ""
+
+msgid "Description and Infos"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Enter a description for the event"
+msgstr ""
+
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr ""
+
+msgid "Stream URL for the Event"
+msgstr ""
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
 msgid "Add unscheduled event"
 msgstr ""
 
@@ -454,9 +534,6 @@ msgid "Edit"
 msgstr ""
 
 msgid "Event Polls"
-msgstr ""
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr ""
 
 msgid "Enter a title for the new event to be scheduled."
@@ -480,25 +557,10 @@ msgstr ""
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr ""
 
-msgid "Description and Infos"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "Enter a description for the event"
-msgstr ""
-
 msgid "Example: http://mywebsite.com"
 msgstr ""
 
 msgid "External Link for the event"
-msgstr ""
-
-msgid "Create"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Delete"
@@ -571,21 +633,6 @@ msgstr ""
 msgid "Enter a title for the new event."
 msgstr ""
 
-msgid "Date"
-msgstr ""
-
-msgid "From"
-msgstr ""
-
-msgid "Start date."
-msgstr ""
-
-msgid "Until"
-msgstr ""
-
-msgid "End date."
-msgstr ""
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr ""
 
@@ -608,6 +655,9 @@ msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr ""
 
 msgid "Export event feed"
+msgstr ""
+
+msgid "There are no conference events."
 msgstr ""
 
 msgid "There are no current or future events."
@@ -635,6 +685,9 @@ msgid "List"
 msgstr ""
 
 msgid "by"
+msgstr ""
+
+msgid "View"
 msgstr ""
 
 msgid "Created Event"

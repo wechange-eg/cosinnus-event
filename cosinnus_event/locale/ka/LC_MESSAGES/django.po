@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 12:30+0100\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: 2020-04-07 12:43+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 msgid "Events"
@@ -37,10 +37,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s -მა შექმნა %(count)d ღონისძიება"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ"
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr "%(sender_name)s -მა შექმნა ახალი ღონისძიება"
 
@@ -58,10 +54,6 @@ msgstr "%(sender_name)s -მა შექმნა ღონისძიებ�
 #, python-format
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s შექმნა %(count)d ღონისძიების გამოკითხვა"
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "ახალი ღონისძიების გამოკითხვა %(sender_name)s -ის მიერ"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -90,10 +82,6 @@ msgstr "%(sender_name)s კომენტარი გააკეთა თქ
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s კომენტარი გააკეთა ერთ-ერთ თქვენს ღონისძიებაზე"
-
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
 msgstr "მომხმარებელმა კომენტარი გააკეთა ღონისძიებაზე, სადაც თქვენ ხართ მონიშნული"
@@ -150,10 +138,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "მომხმარებელმა შექმნა ახალი ღონისძიება გუნდისთვის, რომელსაც თქვენ გაყევით"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s შექმნა ახალი ღონისძიება %(team_name)s-ში (რომელსაც თქვენ მიყვებით)"
 
@@ -163,10 +147,6 @@ msgstr "ახალი ღონისძიება: \"%(object_name)s\" გ�
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "მომხმარებელმა შექმნა ღონისძიების ახალი გამოკითხვა, იმ გუნდში, რომელსაც თქვენ გაყევით"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -223,10 +203,6 @@ msgid "You are following this event poll"
 msgstr "თქვენ გაყევით ამ ღონისძიების გამოკითხვას"
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "ღონისძიების გამოკითხვა განახლდა %(sender_name)s-ის მიერ"
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr "%(sender_name)s განაახლა ღონისძიების გამოკითხვა, რომელსაც თქვენ მიყვებით"
 
@@ -245,10 +221,6 @@ msgstr "%(sender_name)s-მა ხმა მისცა ღონისძი�
 msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] "%(sender_name)s -მა და %(count_minus_one)d სხვებმა ხმა მისცეს ღონისძიების გამოკითხვაში %(object_name)s"
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s-(ებ)მა ხმა მისცა"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -275,6 +247,9 @@ msgstr "უახლესი შექმნილი"
 
 msgid "Title"
 msgstr "სათაური"
+
+msgid "Presenters"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "დაგეგმილი"
@@ -403,6 +378,50 @@ msgstr "კომენტარი"
 msgid "Comments"
 msgstr "კომენტარები"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "ღონისძიების შექმნა"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "ღონისძიების შექმნა"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "ღონისძიების შექმნა"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (პროცესშია)"
+
 msgid "Create Event"
 msgstr "ღონისძიების შექმნა"
 
@@ -444,6 +463,82 @@ msgctxt "time"
 msgid "until"
 msgstr "- მდე"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "შეცდომა დაფიქსირდა ერთ-ერთ გრაფაში, რომელშიც ინფორმაცია შეიყვანეთ. გთხოვთ შეასწოროთ შენახვამდე!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "ღონისძიების თარიღი"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr "თარიღი"
+
+msgid "From"
+msgstr "- დან"
+
+msgid "Start date."
+msgstr "საწყისი თარიღი."
+
+msgid "Until"
+msgstr "- მდე"
+
+msgid "End date."
+msgstr "დასასრულის თარიღი."
+
+msgid "Description and Infos"
+msgstr "აღწერა და ინფორმაცია"
+
+msgid "Description"
+msgstr "აღწერა"
+
+msgid "Enter a description for the event"
+msgstr "აღწერის შეყვანა ღონისძიებისთვის"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "მაგალითი: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "გარე ბმული ღონისძიებისათვის"
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "შექმნა"
+
+msgid "Save"
+msgstr "შენახვა"
+
 msgid "Add unscheduled event"
 msgstr "გეგმის გარეშე ღონისძიების დამატება"
 
@@ -452,9 +547,6 @@ msgstr "რედაქტირება"
 
 msgid "Event Polls"
 msgstr "ღონისძიების გამოკითხვები"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "შეცდომა დაფიქსირდა ერთ-ერთ გრაფაში, რომელშიც ინფორმაცია შეიყვანეთ. გთხოვთ შეასწოროთ შენახვამდე!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის, რომ დაიგეგმოს."
@@ -477,26 +569,11 @@ msgstr "დრო"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "შენიშვნა: თქვენ არ შეგიძლიათ ამ ღონისძიების გამოკითხვის თარიღის რედაქტირება, რადგან ვიღაცამ უკვე აირჩია ხმა!"
 
-msgid "Description and Infos"
-msgstr "აღწერა და ინფორმაცია"
-
-msgid "Description"
-msgstr "აღწერა"
-
-msgid "Enter a description for the event"
-msgstr "აღწერის შეყვანა ღონისძიებისთვის"
-
 msgid "Example: http://mywebsite.com"
 msgstr "მაგალითი: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "გარე ბმული ღონისძიებისათვის"
-
-msgid "Create"
-msgstr "შექმნა"
-
-msgid "Save"
-msgstr "შენახვა"
 
 msgid "Delete"
 msgstr "წაშლა"
@@ -568,21 +645,6 @@ msgstr "ღონისძიების დამატება"
 msgid "Enter a title for the new event."
 msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის."
 
-msgid "Date"
-msgstr "თარიღი"
-
-msgid "From"
-msgstr "- დან"
-
-msgid "Start date."
-msgstr "საწყისი თარიღი."
-
-msgid "Until"
-msgstr "- მდე"
-
-msgid "End date."
-msgstr "დასასრულის თარიღი."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "პირველი ატვირთული გამოსახულება ნაჩვენები იქნება, როგორც კედლის ფონი."
 
@@ -606,6 +668,11 @@ msgstr "შეიყვანეთ სათაური ახალი ღო
 
 msgid "Export event feed"
 msgstr "ღონისძიების feed-ის ექსპორტი"
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "ღია ღონისძიების გამოკითხვები არ არის."
 
 msgid "There are no current or future events."
 msgstr "მიმდინარე ან მომავალი ღონისძიებები არ არის."
@@ -633,6 +700,9 @@ msgstr "სია"
 
 msgid "by"
 msgstr "მიერ"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "შექმნილი ღონისძიება"
@@ -1059,3 +1129,24 @@ msgstr "თქვენი კომენტარი წარმატებ�
 
 msgid "Your comment was deleted successfully."
 msgstr "თქვენი კომენტარი წარმატებით წაიშალა."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "ახალი ღონისძიების გამოკითხვა %(sender_name)s -ის მიერ"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "ღონისძიების გამოკითხვა განახლდა %(sender_name)s-ის მიერ"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s-(ებ)მა ხმა მისცა"

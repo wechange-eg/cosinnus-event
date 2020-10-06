@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 12:30+0100\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: 2020-04-01 12:38+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 msgid "Events"
@@ -37,10 +37,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s ստեղծել է %(count)d իրադարձություն"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "Նոր իրադարձություն %(sender_name)s-ի կողմից"
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr "%(sender_name)s ստեղծել է նոր իրադարձություն"
 
@@ -58,10 +54,6 @@ msgstr "%(sender_name)s-ը ստեղծել է %(object_name)s իրադարձու�
 #, python-format
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s-ը ստեղծել է %(count)d իրադարձության հարցումներ"
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "Նոր իրադարձության հարցում %(sender_name)s -ից"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -91,10 +83,6 @@ msgstr "%(sender_name)s - ը մեկնաբանել է ձեր իրադարձութ
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s-ը մեկնաբանել է ձեր իրադարձություններից մեկը"
-
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
 msgstr "Օգտատերը մեկնաբանել է իրադարձությունը, որի մեջ դուք նշված եք"
@@ -152,10 +140,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "Օգտատերը ստեղծել է նոր իրադարձություն թիմում, որին դուք հետևում եք"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Նոր իրադարձություն %(sender_name)s -ից %(team_name)s -ում (որին հետևում եք)"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s -ը ստեղծել է նոր իրադարձություն %(team_name)s -ում (որին դուք հետևում եք)"
 
@@ -165,10 +149,6 @@ msgstr "Նոր իրադարձություն ՝ \"%(object_name)s\"- ը հայտ�
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "Օգտատերը ստեղծել է նոր իրադարձությունների հարցում այն թիմում, որին դուք հետևում եք"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Նոր իրադարձությունների հարցում %(sender_name)s -ից %(team_name)s -ում (որին դուք հետևում եք)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -225,10 +205,6 @@ msgid "You are following this event poll"
 msgstr "Դուք հետևում եք այս իրադարձության հարցմանը"
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "%(sender_name)s -ը թարմացրել է իրադարձության հարցումը"
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr "%(sender_name)s -ը թարմացրել է իրադարձության հարցումը, որին դուք հետևում եք"
 
@@ -248,10 +224,6 @@ msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(o
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] "%(sender_name)s -ը և %(count_minus_one)d ուրիշը քվեարկել է %(object_name)s իրադարձության հարցմանը"
 msgstr[1] "%(sender_name)s -ը և %(count_minus_one)d ուրիշները քվեարկել են %(object_name)s իրադարձության հարցմանը"
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s -ը քվեարկել է"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -278,6 +250,9 @@ msgstr "Նորագույն ստեղծված"
 
 msgid "Title"
 msgstr "Վերնագիր"
+
+msgid "Presenters"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "Պլանավորված"
@@ -406,6 +381,50 @@ msgstr "Մեկնաբանություն"
 msgid "Comments"
 msgstr "Մեկնաբանություններ"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "Ստեղծել Իրադարձություն"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "Ստեղծել Իրադարձություն"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "Ստեղծել Իրադարձություն"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (սպասվող)"
+
 msgid "Create Event"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -447,6 +466,82 @@ msgctxt "time"
 msgid "until"
 msgstr "մինչև"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "Ձեր մուտքագրած դաշտերից մեկում առկա է սխալ: Խնդրում ենք ուղղել այն նախքան պահպանելը!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "Իրադարձության ամսաթիվը"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr "Ամսաթիվ"
+
+msgid "From"
+msgstr "Սկսած"
+
+msgid "Start date."
+msgstr "Մեկնարկի ամսաթիվ."
+
+msgid "Until"
+msgstr "Մինչև"
+
+msgid "End date."
+msgstr "Ավարտի ամսաթիվ."
+
+msgid "Description and Infos"
+msgstr "Նկարագրություն և տեղեկատվություն"
+
+msgid "Description"
+msgstr "Նկարագրություն"
+
+msgid "Enter a description for the event"
+msgstr "Մուտքագրեք իրադարձության նկարագրություն"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Օրինակ: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "Արտաքին Հղում միջոցառման համար"
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "Ստեղծել"
+
+msgid "Save"
+msgstr "Պահպանել"
+
 msgid "Add unscheduled event"
 msgstr "Ավելացնել չնախատեսված իրադարձություն"
 
@@ -455,9 +550,6 @@ msgstr "Խմբագրել"
 
 msgid "Event Polls"
 msgstr "Իրադարձութունների հարցումներ"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "Ձեր մուտքագրած դաշտերից մեկում առկա է սխալ: Խնդրում ենք ուղղել այն նախքան պահպանելը!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Մուտքագրեք վերնագիր նախատեսված նոր միջոցառման համար."
@@ -480,26 +572,11 @@ msgstr "Ժամը"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Նշում. Դուք չեք կարող խմբագրել այս իրադարձության հարցման ամսաթվերը, քանի որ ինչ-որ մեկը արդեն քվեարկել է!"
 
-msgid "Description and Infos"
-msgstr "Նկարագրություն և տեղեկատվություն"
-
-msgid "Description"
-msgstr "Նկարագրություն"
-
-msgid "Enter a description for the event"
-msgstr "Մուտքագրեք իրադարձության նկարագրություն"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Օրինակ: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Արտաքին Հղում միջոցառման համար"
-
-msgid "Create"
-msgstr "Ստեղծել"
-
-msgid "Save"
-msgstr "Պահպանել"
 
 msgid "Delete"
 msgstr "Ջնջել"
@@ -571,21 +648,6 @@ msgstr "Ավելացնել իրադարձություն"
 msgid "Enter a title for the new event."
 msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
 
-msgid "Date"
-msgstr "Ամսաթիվ"
-
-msgid "From"
-msgstr "Սկսած"
-
-msgid "Start date."
-msgstr "Մեկնարկի ամսաթիվ."
-
-msgid "Until"
-msgstr "Մինչև"
-
-msgid "End date."
-msgstr "Ավարտի ամսաթիվ."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Առաջին վերբեռնված պատկերը կցուցադրվի որպես էջի գլխավոր պաստառ."
 
@@ -609,6 +671,11 @@ msgstr "Մուտքագրեք վերնագիր նոր իրադարձության 
 
 msgid "Export event feed"
 msgstr "Արտահանել իրադարձության ցանկը"
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "Բաց միջոցառումների հարցում չկա."
 
 msgid "There are no current or future events."
 msgstr "Ընթացիկ կամ ապագա իրադարձություններ չկան."
@@ -636,6 +703,9 @@ msgstr "Ցուցակ"
 
 msgid "by"
 msgstr "կողմից"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "Ստեղծված իրադարձություն"
@@ -1065,3 +1135,24 @@ msgstr "Ձեր մեկնաբանությունը հաջողությամբ ավե�
 
 msgid "Your comment was deleted successfully."
 msgstr "Ձեր մեկնաբանությունը հաջողությամբ ջնջվել է."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Նոր իրադարձություն %(sender_name)s-ի կողմից"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Նոր իրադարձության հարցում %(sender_name)s -ից"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Նոր իրադարձություն %(sender_name)s -ից %(team_name)s -ում (որին հետևում եք)"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Նոր իրադարձությունների հարցում %(sender_name)s -ից %(team_name)s -ում (որին դուք հետևում եք)"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "%(sender_name)s -ը թարմացրել է իրադարձության հարցումը"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s -ը քվեարկել է"
