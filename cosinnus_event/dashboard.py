@@ -11,6 +11,8 @@ from cosinnus_event.models import Event, upcoming_event_filter
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user
 
+from cosinnus.conf import settings
+
 
 class UpcomingEventsForm(DashboardWidgetForm):
     amount = forms.IntegerField(label="Amount", initial=5, min_value=0,
@@ -38,15 +40,18 @@ class UpcomingEvents(MixReflectedObjectsMixin, DashboardWidget):
             if has_more == False, the receiving widget will assume no further data can be loaded.
          """
         count = int(self.config['amount'])
-        all_upcoming_events = self.get_queryset().select_related('group').all()
-        events = all_upcoming_events
+        all_events = self.get_queryset().select_related('group').all()
+        calendar_events = all_events
+        if not getattr(settings, 'COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS', False):
+            calendar_events = upcoming_event_filter(all_events)
+        events = upcoming_event_filter(all_events)
         
         if count != 0:
             events = events.all()[offset:offset+count]
         
         data = {
             'events': events,
-            'all_upcoming_events': all_upcoming_events,
+            'calendar_events': calendar_events,
             'no_data': _('No upcoming events'),
             'group': self.config.group,
         }
@@ -55,4 +60,4 @@ class UpcomingEvents(MixReflectedObjectsMixin, DashboardWidget):
     def get_queryset(self):
         qs = super(UpcomingEvents, self).get_queryset()
         qs = filter_tagged_object_queryset_for_user(qs, self.request.user)
-        return upcoming_event_filter(qs)
+        return qs

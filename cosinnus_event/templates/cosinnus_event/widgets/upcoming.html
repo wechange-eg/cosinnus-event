@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
     var cosinnus_calendarEvents = [
-        {% for event in all_upcoming_events %}
+        {% for event in calendar_events %}
             {% if event.from_date %}
             {
                 title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:25 }}{% if group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),

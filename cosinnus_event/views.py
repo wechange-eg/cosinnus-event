@@ -107,13 +107,11 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         doodle_count = self.get_base_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
-        if not self.show_past_events:
-            future_events_count = self.get_future_queryset().count() 
-        else:
-            future_events_count = upcoming_event_filter(self.get_future_queryset()).count()
+        future_events = self.get_queryset()
+        future_events_count = future_events.count() 
         
         context.update({
-            'future_events': self.get_queryset(),
+            'future_events': future_events.reverse(),
             'future_events_count': future_events_count,
             'doodle_count': doodle_count,
             'event_view': self.event_view,
@@ -127,6 +125,7 @@ class PastEventListView(EventListView):
 
     template_name = 'cosinnus_event/event_list_detailed_past.html'
     event_view = 'past'
+    show_past_events = True
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
@@ -138,7 +137,7 @@ class PastEventListView(EventListView):
     
     def get_context_data(self, **kwargs):
         context = super(PastEventListView, self).get_context_data(**kwargs)
-        context['past_events'] = context.pop('future_events')
+        context['past_events'] = self.get_queryset()
         return context
     
 past_events_list_view = PastEventListView.as_view()
@@ -200,7 +199,6 @@ archived_doodles_list_view = ArchivedDoodlesListView.as_view()
 
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
-    show_past_events = False
     
 detailed_list_view = DetailedEventListView.as_view()
 
