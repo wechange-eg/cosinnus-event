@@ -79,7 +79,7 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized fine-space" href="{% group_url 'cosinnus:event:list_detailed' group=group %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized {% if SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}regular-space{% else %}fine-space{% endif %}" href="{% group_url 'cosinnus:event:list_detailed' group=group %}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -101,23 +101,25 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized regular-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
-        <ul class="media-list">
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <i class="fa fa-calendar"></i>
-                </a>
-                <a class="pull-right" href="#">
-                    {% if request.path == event_list_past_page %}
-                        <i class="fa fa-caret-right"></i>
-                    {% endif %}
-                </a>
-                <div class="media-body">
-                    {% trans "Past Events" %}
-                </div>
-            </li>
-        </ul>
-    </button>
+    {% if not SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}
+		    <button type="button" class="btn w100 btn-emphasized large-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
+		        <ul class="media-list">
+		            <li class="media">
+		                <a class="pull-left" href="#">
+		                    <i class="fa fa-calendar"></i>
+		                </a>
+		                <a class="pull-right" href="#">
+		                    {% if request.path == event_list_past_page %}
+		                        <i class="fa fa-caret-right"></i>
+		                    {% endif %}
+		                </a>
+		                <div class="media-body">
+		                    {% trans "Past Events" %}
+		                </div>
+		            </li>
+		        </ul>
+		    </button>
+    {% endif %}
 
 	<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
 	    <ul class="media-list">
