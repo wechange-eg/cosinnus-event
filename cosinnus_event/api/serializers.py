@@ -9,12 +9,17 @@ from cosinnus_event.models import Event
 class EventListSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.URLField(source='get_absolute_url', read_only=True)
     timestamp = serializers.DateTimeField(source='last_modified')
+    image = serializers.SerializerMethodField()
 
     class Meta(object):
         model = Event
-        fields = ('id', 'title', 'from_date', 'to_date', 'note',
+        fields = ('id', 'title', 'from_date', 'to_date', 'note', 'image',
                   'location', 'location_lat', 'location_lon', 'street', 'zipcode', 'city',
-                  'timestamp')
+                  'timestamp', 'url')
+
+    def get_image(self, obj):
+        image = obj.attached_image
+        return image and image.static_image_url() or None
 
 
 class EventRetrieveSerializer(EventListSerializer):

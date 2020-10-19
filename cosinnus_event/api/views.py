@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from django.db.models import Q
 from rest_framework import viewsets
 
 from cosinnus.api.views import PublicTaggableObjectFilterMixin, CosinnusFilterQuerySetMixin
@@ -12,7 +14,9 @@ class EventViewSet(CosinnusFilterQuerySetMixin,
 
     queryset = Event.objects.all()
     FILTER_CONDITION_MAP = {
-        'upcoming': {'true': {'from_date__gte': datetime.now()}}
+        'upcoming': {
+            'true': [Q(from_date__gte=datetime.now())]
+        }
     }
     FILTER_DEFAULT_ORDER = ['from_date', ]
 
