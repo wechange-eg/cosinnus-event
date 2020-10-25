@@ -54,7 +54,7 @@ from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.contrib.auth.models import AnonymousUser
 from datetime import timedelta
-from cosinnus.views.common import DeleteElementView, apply_likefollow_object
+from cosinnus.views.common import DeleteElementView, apply_likefollowstar_object
 from cosinnus.views.mixins.tagged import EditViewWatchChangesMixin,\
     RecordLastVisitedMixin
 from cosinnus_event import cosinnus_notifications
@@ -312,7 +312,7 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
         form.instance.state = Event.STATE_SCHEDULED
         ret = super(EntryAddView, self).forms_valid(form, inlines)
         # creator follows their own event
-        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        apply_likefollowstar_object(form.instance, self.request.user, follow=True)
         return ret
     
 entry_add_view = EntryAddView.as_view()
@@ -328,7 +328,7 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
 
         ret = super(DoodleAddView, self).forms_valid(form, inlines)
         # creator follows their own doodle
-        apply_likefollow_object(form.instance, self.request.user, follow=True)
+        apply_likefollowstar_object(form.instance, self.request.user, follow=True)
         
         # Check for non or a single suggestion and set it and inform the user
         num_suggs = self.object.suggestions.count()

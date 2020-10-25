@@ -41,7 +41,7 @@
                         </span>
                     {% endwith %}
                     <a href="{{ detail_url }}">
-                        {% include 'cosinnus/common/likefollow/following_title_indicator.html' with object=event %}
+                        {% include 'cosinnus/common/likefollowstar/following_title_indicator.html' with object=event %}
                         {% if event.conferenceevent %}
                             <i>({{ event.get_type_verbose }}: {{ event.room.title }})&nbsp;&nbsp;</i>
                         {% endif %}                        
