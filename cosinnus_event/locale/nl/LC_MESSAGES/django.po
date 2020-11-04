@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 13:06+0200\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: 2019-09-19 22:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,10 +39,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "Nieuw evenement door %(sender_name)s"
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt"
 
@@ -62,10 +58,6 @@ msgstr "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een
 #| msgid "%(sender_name)s created a new event poll"
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s heeft een nieuwe poll aangemaakt voor een gebeurtenis"
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "Nieuwe poll door %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -97,10 +89,6 @@ msgstr "%(sender_name)s heeft op uw evenement gereageerd"
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s heeft op een van uw evenementen gereageerd"
-
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
 msgstr "Een gebruiker heeft gereageerd op een evenement waar u in bent getagt"
@@ -166,10 +154,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "Een gebruiker heeft een nieuw evenement aangemaakt in een team die u volgt"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Nieuw evenement door %(sender_name)s in %(team_name)s (die u volgt)"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s heeft een nieuw evenement aangemaakt in %(team_name)s (die u volgt)"
 
@@ -179,10 +163,6 @@ msgstr "Een nieuw evenement: “%(object_name)s” is aangekondigd in %(team_nam
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "Een gebruiker heeft een nieuwe poll aangemaakt in een team die u volgt"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Nieuwe poll voor evenement door %(sender_name)s in %(team_name)s (die u volgt)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -246,10 +226,6 @@ msgid "You are following this event poll"
 msgstr "Niemand heeft nog voor deze poll gestemd."
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "Evenement poll bijgewerkt door %(sender_name)s"
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr "%(sender_name)s heeft een poll bijgewerkt voor een evenement die u volgt"
 
@@ -273,10 +249,6 @@ msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(o
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
 msgstr[1] "%(sender_name)s heeft gestemd in een poll “%(object_name)s” voor een evenement in %(team_name)s."
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s heeft gestemd in"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -303,6 +275,9 @@ msgstr "Nieuwste aangemaakt"
 
 msgid "Title"
 msgstr "Titel"
+
+msgid "Presenters"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "Gepland"
@@ -431,6 +406,50 @@ msgstr "Opmerking"
 msgid "Comments"
 msgstr "Opmerkingen"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "Maak evenement aan"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "Maak evenement aan"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "Maak evenement aan"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (in afwachting)"
+
 msgid "Create Event"
 msgstr "Maak evenement aan"
 
@@ -472,6 +491,82 @@ msgctxt "time"
 msgid "until"
 msgstr "tot"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "Er is een fout opgetreden in een van de velden die u heeft ingevoerd. Corrigeer dit voordat u opslaat!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "Voer een titel in voor het nieuwe evenement."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "Evenement datum"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "From"
+msgstr "Van"
+
+msgid "Start date."
+msgstr "Begindatum."
+
+msgid "Until"
+msgstr "Tot"
+
+msgid "End date."
+msgstr "Einddatum."
+
+msgid "Description and Infos"
+msgstr "Beschrijving en info"
+
+msgid "Description"
+msgstr "Beschrijving"
+
+msgid "Enter a description for the event"
+msgstr "Voeg een beschrijving toe voor het evenement"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Voorbeeld: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "Externe link voor het evenement"
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "Maak aan"
+
+msgid "Save"
+msgstr "Opslaan"
+
 msgid "Add unscheduled event"
 msgstr "Ongepland evenement toevoegen"
 
@@ -480,9 +575,6 @@ msgstr "Wijzig"
 
 msgid "Event Polls"
 msgstr "Evenement Polls"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "Er is een fout opgetreden in een van de velden die u heeft ingevoerd. Corrigeer dit voordat u opslaat!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Voer een titel in voor het nieuwe evenement dat moet worden gepland."
@@ -505,26 +597,11 @@ msgstr "Tijd"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Opmerking: je kunt de datums voor deze evenement poll niet bewerken, omdat iemand zijn stem al heeft uitgebracht!"
 
-msgid "Description and Infos"
-msgstr "Beschrijving en info"
-
-msgid "Description"
-msgstr "Beschrijving"
-
-msgid "Enter a description for the event"
-msgstr "Voeg een beschrijving toe voor het evenement"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Voorbeeld: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Externe link voor het evenement"
-
-msgid "Create"
-msgstr "Maak aan"
-
-msgid "Save"
-msgstr "Opslaan"
 
 msgid "Delete"
 msgstr "Verwijder"
@@ -596,21 +673,6 @@ msgstr "Voeg evenement toe"
 msgid "Enter a title for the new event."
 msgstr "Voer een titel in voor het nieuwe evenement."
 
-msgid "Date"
-msgstr "Datum"
-
-msgid "From"
-msgstr "Van"
-
-msgid "Start date."
-msgstr "Begindatum."
-
-msgid "Until"
-msgstr "Tot"
-
-msgid "End date."
-msgstr "Einddatum."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "De eerste geüploade afbeelding wordt als achtergrond weergegeven."
 
@@ -634,6 +696,11 @@ msgstr "Voer de titel voor een nieuw evenement in of selecteer een dag in de kal
 
 msgid "Export event feed"
 msgstr "Exporteer evenement feed"
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "Er zijn geen open polls voor het evenement."
 
 msgid "There are no current or future events."
 msgstr "Er zijn geen huidige of toekomstige evenementen."
@@ -661,6 +728,9 @@ msgstr "Lijst"
 
 msgid "by"
 msgstr "door"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "Gecreëerd Evenement"
@@ -1092,3 +1162,24 @@ msgstr "Uw reactie is succesvol toegevoegd."
 
 msgid "Your comment was deleted successfully."
 msgstr "Uw reactie is succesvol verwijderd."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Nieuw evenement door %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nieuwe poll door %(sender_name)s"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nieuw evenement door %(sender_name)s in %(team_name)s (die u volgt)"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nieuwe poll voor evenement door %(sender_name)s in %(team_name)s (die u volgt)"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Evenement poll bijgewerkt door %(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s heeft gestemd in"

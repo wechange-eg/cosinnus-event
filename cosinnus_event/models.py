@@ -653,10 +653,10 @@ class ConferenceEvent(Event):
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
         
         if self.can_have_bbb_room():
+            # we do not create a bbb room on the server yet, that only happens
+            # once  `get_bbb_room_url()` is called
             try:
-                room_needed_creation = self.check_and_create_bbb_room(threaded=False)
-                if not room_needed_creation:
-                    self.sync_bbb_members()
+                self.sync_bbb_members()
             except Exception as e:
                 logger.exception(e)
     

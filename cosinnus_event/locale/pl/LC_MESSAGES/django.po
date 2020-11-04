@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 13:06+0200\n"
-"PO-Revision-Date: 2020-07-02 14:20+0200\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"PO-Revision-Date: 2020-10-13 13:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 msgid "Events"
 msgstr "Wydarzenia"
@@ -37,10 +37,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s utworzył/a wydarzenia %(count)d"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "Nowe wydarzenie utworzone przez %(sender_name)s"
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr "%(sender_name)s utworzył nowe wydarzenie"
 
@@ -58,10 +54,6 @@ msgstr "%(sender_name)s stworzył/a ankietę wydarzenia %(object_name)s"
 #, python-format
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s utworzył/a ankietę wydarzenia %(count)d"
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "Nowa ankieta wydarzenia utworzona przez %(sender_name)s"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -92,10 +84,6 @@ msgstr "%(sender_name)s skomentował/a Twoje wydarzenie"
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń"
-
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
 msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony/a"
@@ -154,10 +142,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "Użytkownik utworzył/a nowe wydarzenie w zespole, który śledzisz"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Nowe wydarzenie utworzone przez %(sender_name)s w zespole %(team_name)s (który śledzisz)"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s stworzył/a nowe wydarzenie w zespole %(team_name)s (który śledzisz)"
 
@@ -167,10 +151,6 @@ msgstr "Nowe wydarzenie: \"%(object_name)s\" zostało ogłoszone w %(team_name)s
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "Użytkownik utworzył nową ankietę wydarzenia w zespole, który śledzisz"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Nowa ankieta wydarzenia utworzona przez %(sender_name)s w zespole %(team_name)s (który śledzisz)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -227,10 +207,6 @@ msgid "You are following this event poll"
 msgstr "Śledzisz tę ankietę wydarzenia"
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "Ankieta wydarzenia uaktualniona przez %(sender_name)s"
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr "%(sender_name)s uaktualnił ankietę wydarzenia, które śledzisz"
 
@@ -251,10 +227,6 @@ msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event 
 msgstr[0] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
 msgstr[1] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
 msgstr[2] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s zagłosował/a w"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -281,6 +253,9 @@ msgstr "Najnowsze Utworzone"
 
 msgid "Title"
 msgstr "Tytuł"
+
+msgid "Presenters"
+msgstr "Prezenterzy"
 
 msgid "Scheduled"
 msgstr "Zaplanowane"
@@ -409,6 +384,43 @@ msgstr "Komentarz"
 msgid "Comments"
 msgstr "Komentarze"
 
+msgid "Lobby Check-in Event"
+msgstr "Lobby Check-in wydarzenia"
+
+msgid "Stage Stream"
+msgstr "Stream ze sceny"
+
+msgid "Workshop"
+msgstr "Warsztat"
+
+msgid "Discussion"
+msgstr "Dyskusja"
+
+msgid "Coffee Table"
+msgstr "Coffee Table"
+
+msgid "Room"
+msgstr "Pokój"
+
+msgid "Conference Event Type"
+msgstr "Rodzaj wydarzenia konferencyjnego"
+
+msgid "Is a Break"
+msgstr "Trwa przerwa"
+
+msgid "Maximum Event Participants"
+msgstr "Maksymalna liczba uczestników wydarzenia"
+
+msgid "Conference Event"
+msgstr "Wydarzenie konferencyjne"
+
+msgid "Conference Events"
+msgstr "Wydarzenia konferencyjne"
+
+#, python-format
+msgid "%(event)s %(type)s"
+msgstr "%(event)s %(type)s"
+
 msgid "Create Event"
 msgstr "Utwórz Wydarzenie"
 
@@ -441,7 +453,7 @@ msgstr "o"
 # Leave this field empty
 msgctxt "time"
 msgid "o'clock"
-msgstr ""
+msgstr "godzin"
 
 msgctxt "time"
 msgid "from"
@@ -451,6 +463,74 @@ msgctxt "time"
 msgid "until"
 msgstr "do"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr "Dodaj %(event_type_verbose)s w pokoju %(room_name)s"
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr "Edytuj %(event_type_verbose)s \"%(event_title)s\" w pokoju %(room_name)s"
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "W jednym z wypełnionych pól jest błąd. Popraw go przed zapisaniem!"
+
+msgid "Enter a title for the conference event."
+msgstr "Wpisz tytuł wydarzenia konferencyjnego."
+
+msgid "Event is a break"
+msgstr "Wydarzenie jest przerwą"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr "Sprawdź to, aby stworzyć puste wydarzenie przerwy, które pokazuje się w kalendarzu i na osi czasu"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "From"
+msgstr "Od"
+
+msgid "Start date."
+msgstr "Data początkowa."
+
+msgid "Until"
+msgstr "Do"
+
+msgid "End date."
+msgstr "Data końcowa."
+
+msgid "Description and Infos"
+msgstr "Opisy i Informacje"
+
+msgid "Description"
+msgstr "Opis"
+
+msgid "Enter a description for the event"
+msgstr "Wprowadź opis wydarzenia"
+
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Przykład: https://www.youtube.com/watch?v=12345"
+
+msgid "Stream URL for the Event"
+msgstr "Stream URL do wydarzenia"
+
+msgid "Maximum Coffee Table Participants"
+msgstr "Maksimum uczestników Coffee Table"
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr "Jak dużo uczestników powinno może przyłączyć się do jednego coffee table zanim będzie pełny"
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr "Prezenterzy będą pokazani kolejno w wydarzeniu i otrzymają zgody moderatora do pokoju BBB"
+
+msgid "Upload a preview image for the Conference Event"
+msgstr "Wgraj obraz zwiastujący wydarzenie konferencyjne"
+
+msgid "Create"
+msgstr "Utwórz"
+
+msgid "Save"
+msgstr "Zapisz"
+
 msgid "Add unscheduled event"
 msgstr "Dodaj niezaplanowane wydarzenie"
 
@@ -459,9 +539,6 @@ msgstr "Edytuj"
 
 msgid "Event Polls"
 msgstr "Ankiety w Wydarzeniach"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "W jednym z wypełnionych pól jest błąd. Popraw go przed zapisaniem!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Wpisz tytuł nowego wydarzenia do zaplanowania."
@@ -484,26 +561,11 @@ msgstr "Czas"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Uwaga: nie możesz edytować dat tej ankiety w wydarzeniu, ponieważ ktoś już zagłosował!"
 
-msgid "Description and Infos"
-msgstr "Opisy i Informacje"
-
-msgid "Description"
-msgstr "Opis"
-
-msgid "Enter a description for the event"
-msgstr "Wprowadź opis wydarzenia"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Przykład: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Zewnętrzny Link do wydarzenia"
-
-msgid "Create"
-msgstr "Utwórz"
-
-msgid "Save"
-msgstr "Zapisz"
 
 msgid "Delete"
 msgstr "Usuń"
@@ -575,21 +637,6 @@ msgstr "Dodaj wydarzenie"
 msgid "Enter a title for the new event."
 msgstr "Wpisz tytuł nowego wydarzenia."
 
-msgid "Date"
-msgstr "Data"
-
-msgid "From"
-msgstr "Od"
-
-msgid "Start date."
-msgstr "Data początkowa."
-
-msgid "Until"
-msgstr "Do"
-
-msgid "End date."
-msgstr "Data końcowa."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Pierwsze dodane zdjęcie wyświetlane będzie jako tapeta."
 
@@ -613,6 +660,9 @@ msgstr "Wpisz tytuł nowego wydarzenia lub wybierz dzień w Kalendarzu."
 
 msgid "Export event feed"
 msgstr "Eksportuj kanał wydarzenia"
+
+msgid "There are no conference events."
+msgstr "Nie ma żadnego wydarzenia konferencyjnego."
 
 msgid "There are no current or future events."
 msgstr "Nie ma obecnych ani przyszłych wydarzeń."
@@ -640,6 +690,9 @@ msgstr "Lista"
 
 msgid "by"
 msgstr "autor"
+
+msgid "View"
+msgstr "Podgląd"
 
 msgid "Created Event"
 msgstr "Utworzone Wydarzenie"
@@ -1072,6 +1125,27 @@ msgstr "Twój komentarz został dodany pomyślnie."
 
 msgid "Your comment was deleted successfully."
 msgstr "Twój komentarz został usunięty pomyślnie."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Nowe wydarzenie utworzone przez %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nowa ankieta wydarzenia utworzona przez %(sender_name)s"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nowe wydarzenie utworzone przez %(sender_name)s w zespole %(team_name)s (który śledzisz)"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nowa ankieta wydarzenia utworzona przez %(sender_name)s w zespole %(team_name)s (który śledzisz)"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Ankieta wydarzenia uaktualniona przez %(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s zagłosował/a w"
 
 #~ msgid "Schedule an event"
 #~ msgstr "Zaplanuj wydarzenie"

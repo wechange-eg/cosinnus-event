@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 13:06+0200\n"
-"PO-Revision-Date: 2019-11-10 22:34+0200\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2.4\n"
 
 msgid "Events"
 msgstr "Evenimente"
@@ -28,19 +28,13 @@ msgstr "eveniment"
 msgid "A user created a new event"
 msgstr "Un utilizator a creat un nou eveniment"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event poll"
+#, python-format
 msgid "%(sender_name)s created the event %(object_name)s"
-msgstr "%(sender_name)s a creat un nou sondaj de evenimente"
-
-#, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event"
-msgid "%(sender_name)s created %(count)d events"
-msgstr "%(sender_name)s a creat un nou eveniment"
+msgstr "%(sender_name)s a creat evenimentul %(object_name)s"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "Eveniment nou de %(sender_name)s"
+msgid "%(sender_name)s created %(count)d events"
+msgstr "%(sender_name)s a creat %(count)d evenimente"
 
 #, python-format
 msgid "%(sender_name)s created a new event"
@@ -53,19 +47,13 @@ msgstr "Un nou eveniment: ”%(object_name)s” a fost anunțat în %(team_name)
 msgid "A user created a new event poll"
 msgstr "Un utilizator a creat un nou sondaj de evenimente"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s created the event poll %(object_name)s"
-msgstr "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
-
-#, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event poll"
-msgid "%(sender_name)s created %(count)d event polls"
-msgstr "%(sender_name)s a creat un nou sondaj de evenimente"
+msgstr "%(sender_name)s a creat sondajul evenimentului %(object_name)s"
 
 #, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "Nou sondaj de evenimente %(sender_name)s"
+msgid "%(sender_name)s created %(count)d event polls"
+msgstr "%(sender_name)s a creat %(count)d sondaje de evenimente"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -78,18 +66,16 @@ msgstr "Un nou sondaj de evenimente: ”%(object_name)s” a fost creat în %(te
 msgid "A user commented on one of your events"
 msgstr "Un utilizator a comentat unul dintre evenimentele tale"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on your event %(object_name)s"
-msgstr "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
+msgstr "%(sender_name)s a comentat unul dintre evenimentele tale în %(object_name)s"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
-msgstr[0] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
-msgstr[1] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
-msgstr[2] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
+msgstr[0] "%(sender_name)s și %(count_minus_one)d și altele au comentat evenimentul tău %(object_name)s"
+msgstr[1] "%(sender_name)s și %(count_minus_one)d și alții au comentat evenimentul tău %(object_name)s"
+msgstr[2] "%(sender_name)s și %(count_minus_one)d și alții au comentat evenimentul tău %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s commented on your event"
@@ -99,30 +85,22 @@ msgstr "%(sender_name)s a comentat evenimentele tale"
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s a comentat unul dintre evenimentele tale"
 
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
-
 msgid "A user commented on a event you were tagged in"
 msgstr "Un utilizator a comentat un eveniment la care ați fost etichetat"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s commented on the event %(object_name)s"
-msgstr "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
+msgstr "%(sender_name)s a comentat evenimentul %(object_name)s"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
-msgstr[0] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
-msgstr[1] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
-msgstr[2] "%(sender_name)s a comentat unul dintre evenimentele tale în %(team_name)s."
+msgstr[0] "%(sender_name)s și %(count_minus_one)d altele au comentat evenimentul %(object_name)s"
+msgstr[1] "%(sender_name)s și %(count_minus_one)d alții au comentat evenimentul %(object_name)s"
+msgstr[2] "%(sender_name)s și %(count_minus_one)d alții au comentat evenimentul %(object_name)s"
 
-#, fuzzy
-#| msgid "You created an event"
 msgid "You were tagged in this event"
-msgstr "Ai creat un eveniment"
+msgstr "Ai fost etichetat în acest eveniment"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
@@ -135,10 +113,8 @@ msgstr "%(sender_name)s a comentat un eveniment la care ai fost etichetat în %(
 msgid "A user commented on an event you voted in"
 msgstr "Un utilizator a comentat un eveniment în care ați votat"
 
-#, fuzzy
-#| msgid "You created an event"
 msgid "You voted on this event"
-msgstr "Ai creat un eveniment"
+msgstr "Ai votat la acest eveniment"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
@@ -151,10 +127,8 @@ msgstr "%(sender_name)s a comentat un eveniment în care ați votat în %(team_n
 msgid "A user commented on an event you are attending"
 msgstr "Un utilizator a comentat un eveniment la care participi"
 
-#, fuzzy
-#| msgid "You created an event"
 msgid "You are attending this event"
-msgstr "Ai creat un eveniment"
+msgstr "Participi la acest eveniment"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -168,10 +142,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "Un utilizator a creat un nou eveniment într-o echipă pe care o urmărești"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Eveniment nou de %(sender_name)s în %(team_name)s (pe care le urmezi)"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s a creat un nou eveniment în %(team_name)s (pe care le urmezi)"
 
@@ -181,10 +151,6 @@ msgstr "Un nou eveniment: ”%(object_name)s” a fost anunțat în %(team_name)
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "Un utilizator a creat un nou sondaj de evenimente într-o echipă pe care o urmărești"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "Nou sondaj de evenimente %(sender_name)s în %(team_name)s (pe care le urmezi)"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -198,7 +164,7 @@ msgid "A user commented on an event you are following"
 msgstr "Un utilizator a comentat un eveniment pe care îl urmărești"
 
 msgid "You are following this event"
-msgstr ""
+msgstr "Urmărești acest eveniment"
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are following"
@@ -211,10 +177,9 @@ msgstr "%(sender_name)s a comentat un eveniment pe care îl urmărești în %(te
 msgid "A user updated an event"
 msgstr "Un utilizator a actualizat un eveniment"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+#, python-format
 msgid "%(sender_name)s updated the event %(object_name)s"
-msgstr "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
+msgstr "%(sender_name)s a actualizat evenimentul %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s updated an event you are following"
@@ -224,32 +189,22 @@ msgstr "%(sender_name)s a actualizat un eveniment pe care îl urmărești"
 msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Evenimentul ”%(object_name)s” a fost actualizat în %(team_name)s."
 
-#, fuzzy
-#| msgid "A user commented on an event you are attending"
 msgid "A user updated an event you are attending"
-msgstr "Un utilizator a comentat un eveniment la care participi"
+msgstr "Un utilizator a actualizat un eveniment la care participați"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s updated an event you are following"
+#, python-format
 msgid "%(sender_name)s updated an event you are attending"
-msgstr "%(sender_name)s a actualizat un eveniment pe care îl urmărești"
+msgstr "%(sender_name)s a actualizat un eveniment la care participați"
 
 msgid "A user updated an event poll"
 msgstr "Un utilizator a actualizat un sondaj de evenimente"
 
-#, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgid "%(sender_name)s changed the event poll %(object_name)s"
-msgstr "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
-
-#, fuzzy
-#| msgid "Nobody has voted for this event poll yet."
-msgid "You are following this event poll"
-msgstr "Nimeni nu a votat pentru acest sondaj de eveniment încă."
-
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "Sondaj de eveniment actualizat de %(sender_name)s"
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr "%(sender_name)s a schimbat sondajul evenimentului %(object_name)s"
+
+msgid "You are following this event poll"
+msgstr "Urmăriți acest sondaj de evenimente"
 
 #, python-format
 msgid "%(sender_name)s updated an event poll you are following"
@@ -259,27 +214,19 @@ msgstr "%(sender_name)s a actualizat un sondaj de eveniment pe care îl urmăre�
 msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "Sondajul de evenimente ”%(object_name)s” a fost actualizat în %(team_name)s."
 
-#, fuzzy
-#| msgid "A user updated an event poll"
 msgid "A user voted in an event poll"
-msgstr "Un utilizator a actualizat un sondaj de evenimente"
-
-#, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgid "%(sender_name)s voted in the event poll %(object_name)s"
-msgstr "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
-
-#, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
-msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
-msgstr[0] "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
-msgstr[1] "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
-msgstr[2] "%(sender_name)s votat în sondajul de eveniment ”%(object_name)s” în %(team_name)s."
+msgstr "Un utilizator a votat în sondaj de evenimente"
 
 #, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s votat în"
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr "%(sender_name)s votat în cadrul sondajul de evenimente %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s și %(count_minus_one)d altele au votat în cadrul sondajului de evenimente %(object_name)s"
+msgstr[1] "%(sender_name)s și %(count_minus_one)d alții au votat în cadrul sondajului de evenimente %(object_name)s"
+msgstr[2] "%(sender_name)s și %(count_minus_one)d alții au votat în cadrul sondajului de evenimente %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -306,6 +253,9 @@ msgstr "Cel mai nou creat"
 
 msgid "Title"
 msgstr "Titlu"
+
+msgid "Presenters"
+msgstr "Prezentatori"
 
 msgid "Scheduled"
 msgstr "Programată"
@@ -434,6 +384,43 @@ msgstr "Comentariu"
 msgid "Comments"
 msgstr "Comentarii"
 
+msgid "Lobby Check-in Event"
+msgstr "Vestibul Verifică Evenimentul"
+
+msgid "Stage Stream"
+msgstr "Flux de Scenă"
+
+msgid "Workshop"
+msgstr "Atelier"
+
+msgid "Discussion"
+msgstr "Discuție"
+
+msgid "Coffee Table"
+msgstr "Masa de Cafea"
+
+msgid "Room"
+msgstr "Cameră"
+
+msgid "Conference Event Type"
+msgstr "Tip Conferință Eveniment"
+
+msgid "Is a Break"
+msgstr "Este o Pauză"
+
+msgid "Maximum Event Participants"
+msgstr "Maximum Eveniment Participanții"
+
+msgid "Conference Event"
+msgstr "Conferință Eveniment"
+
+msgid "Conference Events"
+msgstr "Conferință Evenimente"
+
+#, python-format
+msgid "%(event)s %(type)s"
+msgstr "%(event)s %(type)s"
+
 msgid "Create Event"
 msgstr "Creează Eveniment"
 
@@ -475,6 +462,74 @@ msgctxt "time"
 msgid "until"
 msgstr "până când"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr "Adaugă %(event_type_verbose)s în Camera %(room_name)s"
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr "Editați %(event_type_verbose)s \"%(event_title)s\" în Camera %(room_name)s"
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "A fost o eroare într-unul din câmpurile pe care le-ați introdus. Vă rugăm să îl corectați înainte de a salva!"
+
+msgid "Enter a title for the conference event."
+msgstr "Introduceți un titlu pentru evenimentul conferinței."
+
+msgid "Event is a break"
+msgstr "Evenimentul este o pauză"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr "Verificați acest lucru pentru a crea un eveniment de pauză gol care apare în agendă și cronologie"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "From"
+msgstr "Din"
+
+msgid "Start date."
+msgstr "Data de început."
+
+msgid "Until"
+msgstr "Până când"
+
+msgid "End date."
+msgstr "Data de sfârșit."
+
+msgid "Description and Infos"
+msgstr "Descriere și Informații"
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Enter a description for the event"
+msgstr "Introduceți o descriere pentru eveniment"
+
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Exemplu: https://www.youtybe.com/watch?v=12345"
+
+msgid "Stream URL for the Event"
+msgstr "URL-ul fluxului pentru Eveniment"
+
+msgid "Maximum Coffee Table Participants"
+msgstr "Participanți la Masa Maximă de Cafea"
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr "Câți participanți ar trebui să se alăture la o singură masă de cafea înainte ca aceasta să fie plină"
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr "Prezentatorii vor fi arătați în ordine în cadrul evenimentului și vor primi permisiuni de Moderator pentru BBB-Camera"
+
+msgid "Upload a preview image for the Conference Event"
+msgstr "Încărcați o imagine de previzualizare pentru Evenimentul Conferinței"
+
+msgid "Create"
+msgstr "Crea"
+
+msgid "Save"
+msgstr "Salvați"
+
 msgid "Add unscheduled event"
 msgstr "Adăugați un eveniment neprogramat"
 
@@ -483,9 +538,6 @@ msgstr "Editați"
 
 msgid "Event Polls"
 msgstr "Sondaj de Evenimente"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "A fost o eroare într-unul din câmpurile pe care le-ați introdus. Vă rugăm să îl corectați înainte de a salva!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Introduceți un titlu pentru noul eveniment care va fi programat."
@@ -508,26 +560,11 @@ msgstr "Ora"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Notă: Nu puteți modifica datele pentru acest sondaj de eveniment, deoarece cineva a votat deja!"
 
-msgid "Description and Infos"
-msgstr "Descriere și Informații"
-
-msgid "Description"
-msgstr "Descriere"
-
-msgid "Enter a description for the event"
-msgstr "Introduceți o descriere pentru eveniment"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Exemplu: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Legătură externă pentru eveniment"
-
-msgid "Create"
-msgstr "Crea"
-
-msgid "Save"
-msgstr "Salvați"
 
 msgid "Delete"
 msgstr "Șterge"
@@ -599,21 +636,6 @@ msgstr "Adăugați eveniment"
 msgid "Enter a title for the new event."
 msgstr "Introduceți un titlu pentru noul eveniment."
 
-msgid "Date"
-msgstr "Data"
-
-msgid "From"
-msgstr "Din"
-
-msgid "Start date."
-msgstr "Data de început."
-
-msgid "Until"
-msgstr "Până când"
-
-msgid "End date."
-msgstr "Data de sfârșit."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Prima imagine încărcată va fi afișată ca tapet."
 
@@ -629,7 +651,6 @@ msgstr "Copiați acest iCal-link în aplicația dvs. din calendar pentru a impor
 msgid "Also include all events from projects within this group in feed"
 msgstr "Include, de asemenea, toate evenimentele din proiectele din cadrul acestui grup în furaje"
 
-#, fuzzy
 msgid "iCal Feed"
 msgstr "iCal Feed"
 
@@ -638,6 +659,9 @@ msgstr "Introduceți titlul pentru un nou eveniment sau selectați o zi în Cale
 
 msgid "Export event feed"
 msgstr "Export de furaj pentru evenimente"
+
+msgid "There are no conference events."
+msgstr "Nu există evenimente de conferință."
 
 msgid "There are no current or future events."
 msgstr "Nu există evenimente actuale sau viitoare."
@@ -665,6 +689,9 @@ msgstr "Listă"
 
 msgid "by"
 msgstr "de"
+
+msgid "View"
+msgstr "Vedere"
 
 msgid "Created Event"
 msgstr "Eveniment Creat"
@@ -951,9 +978,9 @@ msgstr "Nu pot merge"
 msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
-msgstr[0] "merge"
-msgstr[1] "merg"
-msgstr[2] "mergem"
+msgstr[0] "Merge"
+msgstr[1] "Merge"
+msgstr[2] "Merge"
 
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
@@ -985,22 +1012,22 @@ msgid "No Choice"
 msgstr "Nici o Alegere"
 
 msgid "Start/join video chat for this event"
-msgstr ""
+msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Ecran complet"
 
 msgid "Video Chat"
-msgstr ""
+msgstr "Video Chat"
 
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Lăsați pe ecran complet"
 
 msgid "Back"
-msgstr ""
+msgstr "Înapoi"
 
 msgid "Stop Video Chat"
-msgstr ""
+msgstr "Stop Video Chat"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "A cum veți primi notificări pentru comentarii sau când acest eveniment este actualizat sau detaliile sale se schimbă."
@@ -1042,7 +1069,7 @@ msgstr "Eveniment neprogramat ”%(title)s” nu a putut fi editat."
 
 #, python-format
 msgid "Event \"%(title)s\" was added successfully."
-msgstr "Evenimentul ”%(title)s” a fost adăugat cu succes. "
+msgstr "Evenimentul ”%(title)s” a fost adăugat cu succes."
 
 #, python-format
 msgid "Event \"%(title)s\" could not be added."
@@ -1098,3 +1125,24 @@ msgstr "Comentariul dvs. a fost adăugat cu succes."
 
 msgid "Your comment was deleted successfully."
 msgstr "Comentariul dvs. a fost șters cu succes."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Eveniment nou de %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nou sondaj de evenimente %(sender_name)s"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Eveniment nou de %(sender_name)s în %(team_name)s (pe care le urmezi)"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nou sondaj de evenimente %(sender_name)s în %(team_name)s (pe care le urmezi)"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Sondaj de eveniment actualizat de %(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s votat în"

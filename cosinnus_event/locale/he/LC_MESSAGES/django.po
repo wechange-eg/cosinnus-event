@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-27 09:46+0200\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: 2020-09-29 18:04+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.5.4\n"
 
 msgid "Events"
@@ -71,17 +71,10 @@ msgid "%(sender_name)s commented on your event %(object_name)s"
 msgstr "%(sender_name)s הגיבו על האירוע שלך %(object_name)s"
 
 #, python-format
-msgid ""
-"%(sender_name)s and %(count_minus_one)d other commented on your event "
-"%(object_name)s"
-msgid_plural ""
-"%(sender_name)s and %(count_minus_one)d others commented on your event "
-"%(object_name)s"
-msgstr[0] ""
-"%(sender_name)s ו-%(count_minus_one)d אחר הגיבו על האירוע שלך %(object_name)s"
-msgstr[1] ""
-"%(sender_name)s ו-%(count_minus_one)d אחרים הגיבו על האירוע שלך "
-"%(object_name)s"
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] "%(sender_name)s ו-%(count_minus_one)d אחר הגיבו על האירוע שלך %(object_name)s"
+msgstr[1] "%(sender_name)s ו-%(count_minus_one)d אחרים הגיבו על האירוע שלך %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s commented on your event"
@@ -99,16 +92,10 @@ msgid "%(sender_name)s commented on the event %(object_name)s"
 msgstr "%(sender_name)s הגיבו על האירוע %(object_name)s"
 
 #, python-format
-msgid ""
-"%(sender_name)s and %(count_minus_one)d other commented on the event "
-"%(object_name)s"
-msgid_plural ""
-"%(sender_name)s and %(count_minus_one)d others commented on the event "
-"%(object_name)s"
-msgstr[0] ""
-"%(sender_name)s ו-%(count_minus_one)d אחר הגיבו על האירוע %(object_name)s"
-msgstr[1] ""
-"%(sender_name)s ו-%(count_minus_one)d אחרים הגיבו על האירוע %(object_name)s"
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] "%(sender_name)s ו-%(count_minus_one)d אחר הגיבו על האירוע %(object_name)s"
+msgstr[1] "%(sender_name)s ו-%(count_minus_one)d אחרים הגיבו על האירוע %(object_name)s"
 
 msgid "You were tagged in this event"
 msgstr "תויגת באירוע זה"
@@ -118,8 +105,7 @@ msgid "%(sender_name)s commented on an event you were tagged in"
 msgstr "%(sender_name)s הגיבו על אירוע שתויגת בו"
 
 #, python-format
-msgid ""
-"%(sender_name)s commented on an event you were tagged in in %(team_name)s"
+msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
 msgstr "%(sender_name)s הגיבו על אירוע שתויגת בו ב-%(team_name)s"
 
 msgid "A user commented on an event you voted in"
@@ -147,8 +133,7 @@ msgid "%(sender_name)s commented on an event you are attending"
 msgstr "%(sender_name)s הגיבו על אירוע שאתם משתתפים בו"
 
 #, python-format
-msgid ""
-"%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
 msgstr "%(sender_name)s הגיבו על אירוע שאתם משתתפים בו ב-%(team_name)s"
 
 msgid "A user created a new event in a team you are following"
@@ -159,25 +144,19 @@ msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s יצר'ה אירוע חדש בקבוצה %(team_name)s שאתה עוקב"
 
 #, python-format
-msgid ""
-"A new event: \"%(object_name)s\" was announced in %(team_name)s (which you "
-"follow)."
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
 msgstr "אירוע חדש: \"%(object_name)s\" נוצר בקבוצה %(team_name)s שאתם עוקבים."
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "משתמש יצר סקר אירוע חדש בקבוצה שאתם עוקבים"
 
 #, python-format
-msgid ""
-"%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
 msgstr "%(sender_name)s יצר'ה סקר אירוע בקבוצה %(team_name)s שאתם עוקבים"
 
 #, python-format
-msgid ""
-"A new event poll: \"%(object_name)s\" was created in %(team_name)s (which "
-"you follow)."
-msgstr ""
-"סקר אירוע חדש: \"%(object_name)s\" נוצר בקבוצה %(team_name)s שאתם עוקבים."
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr "סקר אירוע חדש: \"%(object_name)s\" נוצר בקבוצה %(team_name)s שאתם עוקבים."
 
 msgid "A user commented on an event you are following"
 msgstr "משתמש הגיב על אירוע שאתם עוקבים אחריו"
@@ -190,8 +169,7 @@ msgid "%(sender_name)s commented on an event you are following"
 msgstr "%(sender_name)s הגיבו על אירוע שאתם עוקבים אחריו"
 
 #, python-format
-msgid ""
-"%(sender_name)s commented on an event you are following in %(team_name)s"
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
 msgstr "%(sender_name)s הגיבו על אירוע שאתם עוקבים אחריו ב-%(team_name)s"
 
 msgid "A user updated an event"
@@ -242,27 +220,18 @@ msgid "%(sender_name)s voted in the event poll %(object_name)s"
 msgstr "%(sender_name)s הצביעו בסקר האירוע %(object_name)s"
 
 #, python-format
-msgid ""
-"%(sender_name)s and %(count_minus_one)d other voted in the event poll "
-"%(object_name)s"
-msgid_plural ""
-"%(sender_name)s and %(count_minus_one)d others voted in the event poll "
-"%(object_name)s"
-msgstr[0] ""
-"%(sender_name)s ו-%(count_minus_one)d אחר הצביעו בסקר האירוע %(object_name)s"
-msgstr[1] ""
-"%(sender_name)s ו-%(count_minus_one)d אחרים הצביעו בסקר האירוע "
-"%(object_name)s"
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s ו-%(count_minus_one)d אחר הצביעו בסקר האירוע %(object_name)s"
+msgstr[1] "%(sender_name)s ו-%(count_minus_one)d אחרים הצביעו בסקר האירוע %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
 msgstr "%(sender_name)s הצביע בסקר אירוע שאתם עוקבים"
 
 #, python-format
-msgid ""
-"%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
-msgstr ""
-"%(sender_name)s הצביעו בסקר האירוע \"%(object_name)s\" ב-%(team_name)s."
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr "%(sender_name)s הצביעו בסקר האירוע \"%(object_name)s\" ב-%(team_name)s."
 
 msgid "Upcoming Events"
 msgstr "אירועים קרובים"
@@ -281,6 +250,9 @@ msgstr "החדש ביותר שנוצר"
 
 msgid "Title"
 msgstr "כותרת"
+
+msgid "Presenters"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "מתוזמן"
@@ -410,6 +382,50 @@ msgstr "תגובה"
 msgid "Comments"
 msgstr "תגובות"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "צור אירוע"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "צור אירוע"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "צור אירוע"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (בהמתנה)"
+
 msgid "Create Event"
 msgstr "צור אירוע"
 
@@ -451,6 +467,82 @@ msgctxt "time"
 msgid "until"
 msgstr "עד"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "אירעה שגיאה באחד השדות שהזנתם. אנא תקנו אותו לפני השמירה!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "הזינו כותרת עבור האירוע החדש."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "תאריך אירוע"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr "תאריך"
+
+msgid "From"
+msgstr "מ"
+
+msgid "Start date."
+msgstr "תאריך התחלה."
+
+msgid "Until"
+msgstr "עד"
+
+msgid "End date."
+msgstr "תאריך סיום."
+
+msgid "Description and Infos"
+msgstr "תיאור ומידע"
+
+msgid "Description"
+msgstr "תיאור"
+
+msgid "Enter a description for the event"
+msgstr "הזינו תיאור עבור האירוע"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "דוגמה: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "קישור חיצוני עבור האירוע"
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "צור"
+
+msgid "Save"
+msgstr "שמור"
+
 msgid "Add unscheduled event"
 msgstr "הוסף אירוע לא מתוזמן"
 
@@ -459,11 +551,6 @@ msgstr "ערוך"
 
 msgid "Event Polls"
 msgstr "סקרי אירועים"
-
-msgid ""
-"There was an error in one of the fields you entered. Please correct it "
-"before saving!"
-msgstr "אירעה שגיאה באחד השדות שהזנתם. אנא תקנו אותו לפני השמירה!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "הזינו כותרת עבור האירוע החדש לתזמון."
@@ -483,33 +570,14 @@ msgstr ""
 msgid "Time"
 msgstr "זמן"
 
-msgid ""
-"Note: You cannot edit the dates for this event poll because someone has "
-"already cast their vote!"
-msgstr ""
-"הערה: אין באפשרותך לערוך את התאריכים עבור סקר אירוע זה מכיוון שמישהו כבר "
-"הצביע!"
-
-msgid "Description and Infos"
-msgstr "תיאור ומידע"
-
-msgid "Description"
-msgstr "תיאור"
-
-msgid "Enter a description for the event"
-msgstr "הזינו תיאור עבור האירוע"
+msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
+msgstr "הערה: אין באפשרותך לערוך את התאריכים עבור סקר אירוע זה מכיוון שמישהו כבר הצביע!"
 
 msgid "Example: http://mywebsite.com"
 msgstr "דוגמה: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "קישור חיצוני עבור האירוע"
-
-msgid "Create"
-msgstr "צור"
-
-msgid "Save"
-msgstr "שמור"
 
 msgid "Delete"
 msgstr "מחק"
@@ -566,11 +634,8 @@ msgstr "האם אתם בטוחים שברצונכם למחוק את האירוע
 msgid "Delete unscheduled event"
 msgstr "מחק אירוע שטרם נקבע"
 
-msgid ""
-"You will now receive notifications for comments or when this event poll is "
-"changed and whenever somebody casts their vote."
-msgstr ""
-"כעת תקבלו התראות על הערות או כאשר סקר האירוע ישתנה ובכל פעם שמישהו יצביע."
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
+msgstr "כעת תקבלו התראות על הערות או כאשר סקר האירוע ישתנה ובכל פעם שמישהו יצביע."
 
 msgid "Write comment..."
 msgstr "כתוב תגובה..."
@@ -584,35 +649,16 @@ msgstr "הוסף אירוע"
 msgid "Enter a title for the new event."
 msgstr "הזינו כותרת עבור האירוע החדש."
 
-msgid "Date"
-msgstr "תאריך"
-
-msgid "From"
-msgstr "מ"
-
-msgid "Start date."
-msgstr "תאריך התחלה."
-
-msgid "Until"
-msgstr "עד"
-
-msgid "End date."
-msgstr "תאריך סיום."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "התמונה הראשונה שהועלתה תוצג כטפט."
 
-msgid ""
-"If you set this, your event will be shown on the map! (if permitted by its "
-"visibility settings)"
-msgstr ""
-"אם תגדירו זאת, האירוע שלכם יוצג על המפה! (אם יש הרשאה בהגדרות הנראות שלו)"
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr "אם תגדירו זאת, האירוע שלכם יוצג על המפה! (אם יש הרשאה בהגדרות הנראות שלו)"
 
 msgid "Kalender"
 msgstr "יומן"
 
-msgid ""
-"Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "העתק קישור iCal זה ליישום היומן שלך כדי לייבא אירועים עכשוויים:"
 
 msgid "Also include all events from projects within this group in feed"
@@ -626,6 +672,11 @@ msgstr "הזן כותרת לאירוע חדש או בחר יום ביומן."
 
 msgid "Export event feed"
 msgstr "יצא עדכון אירוע"
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "אין סקרי אירועים פתוחים."
 
 msgid "There are no current or future events."
 msgstr "אין אירועים נוכחיים או עתידיים."
@@ -654,6 +705,9 @@ msgstr "רשימה"
 msgid "by"
 msgstr "מאת"
 
+msgid "View"
+msgstr ""
+
 msgid "Created Event"
 msgstr "אירוע שנוצר"
 
@@ -668,8 +722,7 @@ msgstr "מחק אירוע"
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on an event you are attending in "
-"%(team_name)s:\n"
+"%(sender_name)s has posted a comment on an event you are attending in %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -683,8 +736,7 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -705,31 +757,27 @@ msgstr ""
 "%(object_url)s \n"
 "\n"
 "\n"
-"לחצו על הקישור על מנת לערוך את העדפות ההתראה שלכם:"
-"%(notification_settings_url)s \n"
+"לחצו על הקישור על מנת לערוך את העדפות ההתראה שלכם:%(notification_settings_url)s \n"
 "\n"
 "שלך, צוות %(site_name)s\n"
 "\n"
 "\n"
 
 #, python-format
-msgid ""
-"%(sender_name)s commented on an event you are attending in %(team_name)s."
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
 msgstr "%(sender_name)s הגיב'ה על אירוע שאתם משתתפים בו ב-%(team_name)s."
 
 #, python-format
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"a new event \"%(object_name)s\" in %(team_name)s was created by "
-"%(sender_name)s. \n"
+"a new event \"%(object_name)s\" in %(team_name)s was created by %(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
@@ -741,8 +789,7 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"(עקבו אחר קישור זה על מנת לערוך את את הגדרות ההתראה שלכם: "
-"%(notification_settings_url)s)\n"
+"(עקבו אחר קישור זה על מנת לערוך את את הגדרות ההתראה שלכם: %(notification_settings_url)s)\n"
 "\n"
 "קבוצת  %(site_name)s שלך."
 
@@ -750,8 +797,7 @@ msgstr ""
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on an event you created in "
-"%(team_name)s:\n"
+"%(sender_name)s has posted a comment on an event you created in %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -765,8 +811,7 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -788,8 +833,7 @@ msgstr ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"לחצו על קישור זה על מנת לערוך את ההעדפות שלכם: "
-"%(notification_settings_url)s\n"
+"לחצו על קישור זה על מנת לערוך את ההעדפות שלכם: %(notification_settings_url)s\n"
 "\n"
 "שלך, צוות %(site_name)s.\n"
 "\n"
@@ -803,29 +847,25 @@ msgstr "%(sender_name)s הגיב'ה על אחד מהאירועים שלך ב-%(t
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
-"a new event \"%(object_name)s\", on %(event_date)s, was announced in "
-"%(team_name)s by %(sender_name)s. \n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in %(team_name)s by %(sender_name)s. \n"
 "\n"
 "You can find it by following this link: %(object_url)s\n"
 "\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
 "היי %(receiver_name)s, \n"
 "\n"
-"האירוע החדש \"%(object_name)s\" שיתקיים בתאריך %(event_date)s, הוכרז ב-"
-"%(team_name)s על ידי %(sender_name)s. \n"
+"האירוע החדש \"%(object_name)s\" שיתקיים בתאריך %(event_date)s, הוכרז ב-%(team_name)s על ידי %(sender_name)s. \n"
 "\n"
 "אתם יכולים למצוא את האירוע בקישור הבא: %(object_url)s\\ \n"
 "\n"
 "\n"
 "\n"
-"לחצו על קישור זה על מנת לערוך את העדפות ההתראה שלכם: "
-"%(notification_settings_url)s \n"
+"לחצו על קישור זה על מנת לערוך את העדפות ההתראה שלכם: %(notification_settings_url)s \n"
 "\n"
 "שלך, צוות %(site_name)s."
 
@@ -833,8 +873,7 @@ msgstr ""
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on an event you were tagged in, in "
-"%(team_name)s:\n"
+"%(sender_name)s has posted a comment on an event you were tagged in, in %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -848,8 +887,7 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -869,8 +907,7 @@ msgstr ""
 "%(object_url)s \n"
 "\n"
 "\n"
-"לחצו על קישור זה על נת לערוך את הגדרות ההתראה שלכם: "
-"%(notification_settings_url)s \n"
+"לחצו על קישור זה על נת לערוך את הגדרות ההתראה שלכם: %(notification_settings_url)s \n"
 "\n"
 "שלך, צוות %(site_name)s \n"
 "\n"
@@ -883,8 +920,7 @@ msgstr "%(sender_name)s הגיב'ה על אירוע שתויגת בו ב-%(team_
 msgid ""
 "Hi, %(receiver_name)s!\n"
 "\n"
-"%(sender_name)s has posted a comment on an event poll you voted in in "
-"%(team_name)s:\n"
+"%(sender_name)s has posted a comment on an event poll you voted in in %(team_name)s:\n"
 "\n"
 "\"%(comment_text)s\"\n"
 "\n"
@@ -898,8 +934,7 @@ msgid ""
 "%(object_url)s\n"
 "\n"
 "\n"
-"(Follow this link to edit your notification preferences: "
-"%(notification_settings_url)s )\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
 "\n"
 "Your %(site_name)s team.\n"
 "\n"
@@ -919,14 +954,12 @@ msgstr ""
 "%(object_url)s \n"
 "\n"
 "\n"
-"עקבו אחר קישור זה על מנת לערוך את הגדרות ההתראה שלכם: "
-"%(notification_settings_url)s \n"
+"עקבו אחר קישור זה על מנת לערוך את הגדרות ההתראה שלכם: %(notification_settings_url)s \n"
 "\n"
 " שלך, צוות %(site_name)s \n"
 
 #, python-format
-msgid ""
-"%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s הגיב'ה על סקר אירוע שהצבעתם בו ב-%(team_name)s."
 
 msgid "Delete Event"
@@ -1007,17 +1040,13 @@ msgstr "חזור"
 msgid "Stop Video Chat"
 msgstr "הפסק צ'אט וידאו"
 
-msgid ""
-"You will now receive notifications for comments or when this event is "
-"updated or its details change."
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "כעת תקבלו עדכונים אודות תגובות, שינויים ועדכונים שיעלו באירוע."
 
 msgid "You created an event"
 msgstr "יצרת אירוע חדש"
 
-msgctxt ""
-"This appears next to new items in the timeline, as in '<Jane> created a new "
-"item'"
+msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
 msgid "created an event"
 msgstr "יצר'ה אירוע חדש"
 

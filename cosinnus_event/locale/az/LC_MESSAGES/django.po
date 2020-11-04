@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-23 12:30+0100\n"
+"POT-Creation-Date: 2020-10-06 16:06+0200\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 msgid "Events"
@@ -37,10 +37,6 @@ msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s %(count)d tədbirini yaratdı"
 
 #, python-format
-msgid "New event by %(sender_name)s"
-msgstr "%(sender_name)s tərəfindən Yeni tədbir"
-
-#, python-format
 msgid "%(sender_name)s created a new event"
 msgstr "%(sender_name)s yeni bir tədbir yaratdı"
 
@@ -58,10 +54,6 @@ msgstr "%(sender_name)s %(object_name)s tədbir anketi yaratdı"
 #, python-format
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s %(count)d tədbir anketləri yaratdı"
-
-#, python-format
-msgid "New event poll by %(sender_name)s"
-msgstr "%(sender_name)s tərəfindən yeni tədbir anketi"
 
 #, python-format
 msgid "%(sender_name)s created a new event poll"
@@ -91,10 +83,6 @@ msgstr "%(sender_name)s  tədbirinizə şərh yazdı"
 #, python-format
 msgid "%(sender_name)s commented on one of your events"
 msgstr "%(sender_name)s tədbirlərinizdən birinə şərh yazdı"
-
-#, python-format
-msgid "%(sender_name)s"
-msgstr "%(sender_name)s"
 
 msgid "A user commented on a event you were tagged in"
 msgstr "Bir istifadəçi etiketləndiyiniz tədbirə şərh yazdı"
@@ -152,10 +140,6 @@ msgid "A user created a new event in a team you are following"
 msgstr "Bir istifadəçi izlədiyiniz komandada yeni bir tədbir yaratdı"
 
 #, python-format
-msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir"
-
-#, python-format
 msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
 msgstr "%(sender_name)s %(team_name)s komandasında (izlədiyiniz) yeni tədbir yaratdı"
 
@@ -165,10 +149,6 @@ msgstr "Yeni tədbir: \"%(object_name)s\" %(team_name)s komandasında (izlədiyi
 
 msgid "A user created a new event poll in a team you are following"
 msgstr "Bir istifadəçi izlədiyiniz komandada yeni bir tədbir səsəqoyması yaratdı"
-
-#, python-format
-msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir sorğusu"
 
 #, python-format
 msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
@@ -225,10 +205,6 @@ msgid "You are following this event poll"
 msgstr "Siz bu tədbir səsəqoymasını izləyirsiniz"
 
 #, python-format
-msgid "Event poll updated by %(sender_name)s"
-msgstr "%(sender_name)s tərəfindən tədbir səsəqoyması yeniləndi"
-
-#, python-format
 msgid "%(sender_name)s updated an event poll you are following"
 msgstr "%(sender_name)s izlədiyiniz tədbir səsəqoymasını yenilədi"
 
@@ -248,10 +224,6 @@ msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(o
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] "%(sender_name)s və %(count_minus_one)d başqası %(object_name)s tədbirinin anketində səs verdi"
 msgstr[1] "%(sender_name)s və %(count_minus_one)d başqaları %(object_name)s tədbirinin səsəqoymasında səs verdi"
-
-#, python-format
-msgid "%(sender_name)s voted in"
-msgstr "%(sender_name)s səs verdi"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -278,6 +250,9 @@ msgstr "Ən Yeni Yaradılan"
 
 msgid "Title"
 msgstr "Titul"
+
+msgid "Presenters"
+msgstr ""
 
 msgid "Scheduled"
 msgstr "Planlaşdırılan"
@@ -406,6 +381,50 @@ msgstr "Şərh"
 msgid "Comments"
 msgstr "Şərhlər"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "Tədbir yaratmaq"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "Tədbir yaratmaq"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "Tədbir yaratmaq"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (baxılır)"
+
 msgid "Create Event"
 msgstr "Tədbir yaratmaq"
 
@@ -447,6 +466,82 @@ msgctxt "time"
 msgid "until"
 msgstr "kimi"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "Girdiyiniz xanalardan birində səhv oldu. Xahiş edirəm yaddaşda saxlamazdan əvvəl redaktə edin!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "Yeni tədbir üçün başlıq daxil edin."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "Tədbir tarixi"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Date"
+msgstr "Tarix"
+
+msgid "From"
+msgstr "Dan/dən"
+
+msgid "Start date."
+msgstr "Başlanğıc tarixi."
+
+msgid "Until"
+msgstr "Qədər"
+
+msgid "End date."
+msgstr "Bitmə vaxtı."
+
+msgid "Description and Infos"
+msgstr "Təsvir və Məlumatlar"
+
+msgid "Description"
+msgstr "Təsvir"
+
+msgid "Enter a description for the event"
+msgstr "Tədbir üçün təsvir daxil edin"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Nümunə: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "Tədbir üçün xarici link"
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "Yarat"
+
+msgid "Save"
+msgstr "Yadda saxla"
+
 msgid "Add unscheduled event"
 msgstr "Planlaşdırılmamış tədbir əlavə edin"
 
@@ -455,9 +550,6 @@ msgstr "Redaktə etmək"
 
 msgid "Event Polls"
 msgstr "Tədbir Səsəqoymaları"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "Girdiyiniz xanalardan birində səhv oldu. Xahiş edirəm yaddaşda saxlamazdan əvvəl redaktə edin!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Yeni tədbir üçün bir titul daxil edin."
@@ -480,26 +572,11 @@ msgstr "Vaxt"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Qeyd: Bu tədbir anketinin tarixlərini redaktə edə bilməzsiniz, çünki kimsə artıq səs verib!"
 
-msgid "Description and Infos"
-msgstr "Təsvir və Məlumatlar"
-
-msgid "Description"
-msgstr "Təsvir"
-
-msgid "Enter a description for the event"
-msgstr "Tədbir üçün təsvir daxil edin"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Nümunə: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Tədbir üçün xarici link"
-
-msgid "Create"
-msgstr "Yarat"
-
-msgid "Save"
-msgstr "Yadda saxla"
 
 msgid "Delete"
 msgstr "Sil"
@@ -571,21 +648,6 @@ msgstr "Tədbir əlavə et"
 msgid "Enter a title for the new event."
 msgstr "Yeni tədbir üçün başlıq daxil edin."
 
-msgid "Date"
-msgstr "Tarix"
-
-msgid "From"
-msgstr "Dan/dən"
-
-msgid "Start date."
-msgstr "Başlanğıc tarixi."
-
-msgid "Until"
-msgstr "Qədər"
-
-msgid "End date."
-msgstr "Bitmə vaxtı."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "İlk yüklənən şəkil divar kağızı şəklində göstəriləcək."
 
@@ -609,6 +671,11 @@ msgstr "Yeni bir tədbir üçün başlığı daxil edin və ya Təqvimdə bir g�
 
 msgid "Export event feed"
 msgstr "Tədbir lentini eksport edin"
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "Açıq tədbir anketləri yoxdur."
 
 msgid "There are no current or future events."
 msgstr "Cari və ya gələcək tədbirlər yoxdur."
@@ -636,6 +703,9 @@ msgstr "Siyahı"
 
 msgid "by"
 msgstr "tərəfindən"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "Yaradılan Tədbir"
@@ -1065,3 +1135,24 @@ msgstr "Şərhiniz uğurla əlavə edildi."
 
 msgid "Your comment was deleted successfully."
 msgstr "Şərhiniz uğurla silindi."
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "%(sender_name)s tərəfindən Yeni tədbir"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "%(sender_name)s tərəfindən yeni tədbir anketi"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir sorğusu"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "%(sender_name)s tərəfindən tədbir səsəqoyması yeniləndi"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s səs verdi"
