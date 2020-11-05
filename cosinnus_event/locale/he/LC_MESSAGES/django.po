@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2020-09-29 18:04+0100\n"
+"PO-Revision-Date: 2020-11-05 12:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "אירועים"
@@ -252,7 +252,7 @@ msgid "Title"
 msgstr "כותרת"
 
 msgid "Presenters"
-msgstr ""
+msgstr "מציגים"
 
 msgid "Scheduled"
 msgstr "מתוזמן"
@@ -383,22 +383,22 @@ msgid "Comments"
 msgstr "תגובות"
 
 msgid "Lobby Check-in Event"
-msgstr ""
+msgstr "אירוע כניסה ללובי"
 
 msgid "Stage Stream"
-msgstr ""
+msgstr "צפייה ישירה בבמה"
 
 msgid "Workshop"
-msgstr ""
+msgstr "סדנה"
 
 msgid "Discussion"
-msgstr ""
+msgstr "שיחה"
 
 msgid "Coffee Table"
-msgstr ""
+msgstr "שולחן קפה"
 
 msgid "Room"
-msgstr ""
+msgstr "חדר"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -406,10 +406,10 @@ msgid "Conference Event Type"
 msgstr "צור אירוע"
 
 msgid "Is a Break"
-msgstr ""
+msgstr "היא הפסקה"
 
 msgid "Maximum Event Participants"
-msgstr ""
+msgstr "מספר מקסימלי של משתתפים באירוע"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -469,11 +469,11 @@ msgstr "עד"
 
 #, python-format
 msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr ""
+msgstr "הוסף/י %(event_type_verbose)s בחדר %(room_name)s"
 
 #, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr ""
+msgstr "ערוך/י %(event_type_verbose)s \"%(event_title)s\" בחדר %(room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "אירעה שגיאה באחד השדות שהזנתם. אנא תקנו אותו לפני השמירה!"
@@ -489,7 +489,7 @@ msgid "Event is a break"
 msgstr "תאריך אירוע"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr ""
+msgstr "סמן/י תיבה זו על מנת ליצור אירוע הפסקה ריק אשר יוצג בימן ובציר הזמן"
 
 msgid "Date"
 msgstr "תאריך"
@@ -526,16 +526,16 @@ msgid "Stream URL for the Event"
 msgstr "קישור חיצוני עבור האירוע"
 
 msgid "Maximum Coffee Table Participants"
-msgstr ""
+msgstr "מספר משתתפים מקסימלי עבור שולחן קפה"
 
 msgid "How many participants should can join one coffee table before it is full"
-msgstr ""
+msgstr "כמה משתתפים יכולים להצטרף אל שולחן קפה לפני שהוא יהיה מלא"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr ""
+msgstr "המציגים יוצגו על פי הסדר באירוע והם יקבלו היתר מנהל פורום עבור חדר ה-BBB"
 
 msgid "Upload a preview image for the Conference Event"
-msgstr ""
+msgstr "העלה/י תמונה מקדימה עבור אירוע הוועידה"
 
 msgid "Create"
 msgstr "צור"
@@ -565,7 +565,7 @@ msgid "You can select the same day more than once."
 msgstr "באפשרותכם לבחור באותו יום יותר מפעם אחת."
 
 msgid "Time: e.g. 10 or 10:30."
-msgstr ""
+msgstr "שעה: לדוגמה 10 או 10:30"
 
 msgid "Time"
 msgstr "זמן"
@@ -706,7 +706,7 @@ msgid "by"
 msgstr "מאת"
 
 msgid "View"
-msgstr ""
+msgstr "ראה/י"
 
 msgid "Created Event"
 msgstr "אירוע שנוצר"

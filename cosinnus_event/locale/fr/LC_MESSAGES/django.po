@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2018-09-26 12:49+0200\n"
+"PO-Revision-Date: 2020-11-05 11:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "Evénements"
@@ -186,7 +186,7 @@ msgid "A user commented on an event you are following"
 msgstr "Un utilisateur a commenté un événement auquel tu participes"
 
 msgid "You are following this event"
-msgstr ""
+msgstr "Vous suivez cet événement"
 
 #, fuzzy, python-format
 #| msgid "%(sender_name)s commented on an event you are attending"
@@ -299,7 +299,7 @@ msgid "Title"
 msgstr "Titre"
 
 msgid "Presenters"
-msgstr ""
+msgstr "Présentateurs"
 
 msgid "Scheduled"
 msgstr "Prévu"
@@ -429,22 +429,22 @@ msgid "Comments"
 msgstr "Commentaires"
 
 msgid "Lobby Check-in Event"
-msgstr ""
+msgstr "Événement d'enregistrement du lobby"
 
 msgid "Stage Stream"
-msgstr ""
+msgstr "Flux de scène"
 
 msgid "Workshop"
-msgstr ""
+msgstr "Atelier"
 
 msgid "Discussion"
-msgstr ""
+msgstr "Discussion"
 
 msgid "Coffee Table"
-msgstr ""
+msgstr "Table basse"
 
 msgid "Room"
-msgstr ""
+msgstr "Salle"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -452,10 +452,10 @@ msgid "Conference Event Type"
 msgstr "Créer événement"
 
 msgid "Is a Break"
-msgstr ""
+msgstr "Est une pause"
 
 msgid "Maximum Event Participants"
-msgstr ""
+msgstr "Nombre maximum de participants à l'événement"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -515,11 +515,11 @@ msgstr "à"
 
 #, python-format
 msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr ""
+msgstr "Ajouter %(event_type_verbose)s dans Room %(room_name)s"
 
 #, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr ""
+msgstr "Editez %(event_type_verbose)s \"%(event_title)s\" dans Room %(room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "Il y a une erreur dans l'un des champs que tu as saisis. Corrige-la avant d'enregistrer !"
@@ -535,7 +535,7 @@ msgid "Event is a break"
 msgstr "Date de l'événement"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr ""
+msgstr "Cochez cette case pour créer un événement de pause vide qui apparaît dans l'agenda et le calendrier"
 
 msgid "Date"
 msgstr "Date"
@@ -572,16 +572,16 @@ msgid "Stream URL for the Event"
 msgstr "Lien externe pour l'événement"
 
 msgid "Maximum Coffee Table Participants"
-msgstr ""
+msgstr "Nombre maximum de participants à la table basse"
 
 msgid "How many participants should can join one coffee table before it is full"
-msgstr ""
+msgstr "Combien de participants peuvent rejoindre une table à café avant qu'elle ne soit pleine"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr ""
+msgstr "Les présentateurs seront présentés dans l'ordre lors de l'événement et recevront les autorisations de modérateur pour la BBB-Room"
 
 msgid "Upload a preview image for the Conference Event"
-msgstr ""
+msgstr "Téléchargez une image d'aperçu de la conférence"
 
 msgid "Create"
 msgstr "Créer"
@@ -681,7 +681,7 @@ msgid "Delete unscheduled event"
 msgstr "Supprimer l'événement non programmé"
 
 msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
-msgstr ""
+msgstr "Vous recevrez désormais des notifications pour les commentaires ou lorsque ce sondage sur les événements sera modifié et chaque fois que quelqu'un votera."
 
 msgid "Write comment..."
 msgstr "Ecrire un commentaire..."
@@ -752,7 +752,7 @@ msgid "by"
 msgstr "par"
 
 msgid "View"
-msgstr ""
+msgstr "Voir"
 
 msgid "Created Event"
 msgstr "Evénement créé"
@@ -1073,22 +1073,22 @@ msgid "Start/join video chat for this event"
 msgstr "Un utilisateur a créé un nouvel événement"
 
 msgid "Fullscreen"
-msgstr ""
+msgstr "Plein écran"
 
 msgid "Video Chat"
-msgstr ""
+msgstr "Vidéo Chat"
 
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Quitter le plein écran"
 
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 msgid "Stop Video Chat"
-msgstr ""
+msgstr "Arrêter le vidéo-chat"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
-msgstr ""
+msgstr "Vous recevrez désormais des notifications pour commentaires ou lorsque cet événement est mis à jour ou que ses détails changent."
 
 #, fuzzy
 #| msgid "A user created a new event"

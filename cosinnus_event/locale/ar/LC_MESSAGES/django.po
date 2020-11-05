@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2020-09-29 17:59+0100\n"
+"PO-Revision-Date: 2020-11-05 11:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
 msgstr "مناسبات"
@@ -264,7 +264,7 @@ msgid "Title"
 msgstr "عنوان"
 
 msgid "Presenters"
-msgstr ""
+msgstr "المقدمون"
 
 msgid "Scheduled"
 msgstr "مجدول"
@@ -393,23 +393,24 @@ msgstr "تعليق"
 msgid "Comments"
 msgstr "تعليقات"
 
+#, fuzzy
 msgid "Lobby Check-in Event"
-msgstr ""
+msgstr "حدث تسجيل الوصول في الردهة"
 
 msgid "Stage Stream"
-msgstr ""
+msgstr "منصة العرض"
 
 msgid "Workshop"
-msgstr ""
+msgstr "ورشة عمل"
 
 msgid "Discussion"
-msgstr ""
+msgstr "نقاش"
 
 msgid "Coffee Table"
-msgstr ""
+msgstr "طاولة قهوة"
 
 msgid "Room"
-msgstr ""
+msgstr "غرفة"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -417,20 +418,16 @@ msgid "Conference Event Type"
 msgstr "انشاء مناسبة"
 
 msgid "Is a Break"
-msgstr ""
+msgstr "استراحة"
 
 msgid "Maximum Event Participants"
-msgstr ""
+msgstr "أقصى عدد من المشاركين في الفعالية/الحدث"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
-msgstr "انشاء مناسبة"
+msgstr "حدث/فعالية المؤتمر"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
-msgstr "انشاء مناسبة"
+msgstr "أحداث/فعاليات المؤتمر"
 
 #, fuzzy, python-format
 #| msgid "%(event)s (pending)"
@@ -480,11 +477,11 @@ msgstr "لـ"
 
 #, python-format
 msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr ""
+msgstr "أضف %(event_type_verbose)s في الغرفة %(room_name)s"
 
 #, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr ""
+msgstr "تعديل %(event_type_verbose)s \"%(event_title)s\" في الغرفة %(room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
@@ -494,13 +491,11 @@ msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى
 msgid "Enter a title for the conference event."
 msgstr "ادخل عنوانا لمناسبة جديدة."
 
-#, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
-msgstr "تاريخ مناسبة"
+msgstr "حدث هو استراحة"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr ""
+msgstr "حدد هذا لإنشاء حدث فاصل فارغ يظهر في جدول الأعمال والمخطط الزمني"
 
 msgid "Date"
 msgstr "تاريخ"
@@ -526,10 +521,8 @@ msgstr "وصف"
 msgid "Enter a description for the event"
 msgstr "ادخل وصفا لهذه المناسبة"
 
-#, fuzzy
-#| msgid "Example: http://mywebsite.com"
 msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "مثال: http://mywebsite.com"
+msgstr "مثال: https://www.youtube.com/watch?v=12345"
 
 #, fuzzy
 #| msgid "External Link for the event"
@@ -537,16 +530,16 @@ msgid "Stream URL for the Event"
 msgstr "رابط خارجي للمناسبة"
 
 msgid "Maximum Coffee Table Participants"
-msgstr ""
+msgstr "الحد الأقصى من المشاركين في طاولة القهوة"
 
 msgid "How many participants should can join one coffee table before it is full"
-msgstr ""
+msgstr "كم عدد المشاركين الذين يمكنهم الانضمام إلى طاولة القهوة قبل أن تمتلئ"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr ""
+msgstr "سيتم عرض مقدمي العروض بالترتيب في الحدث/المناسبة وسيحصلون على أذونات المنسق لغرفة BBB"
 
 msgid "Upload a preview image for the Conference Event"
-msgstr ""
+msgstr "قم بتحميل صورة معاينة لحدث/لمناسبة المؤتمر"
 
 msgid "Create"
 msgstr "انشاء"
@@ -717,7 +710,7 @@ msgid "by"
 msgstr "من قبل"
 
 msgid "View"
-msgstr ""
+msgstr "معاينة"
 
 msgid "Created Event"
 msgstr "تم انشاء مناسبة"
@@ -878,6 +871,18 @@ msgid ""
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
+"مرحبًا %(receiver_name)s,\n"
+"\n"
+"تم الإعلان عن حدث جديد\"%(object_name)s\", ، في %(event_date)s, في %(team_name)s بواسطة%(sender_name)s. \n"
+"\n"
+"يمكنك العثور عليه باتباع هذا الرابط:%(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(اتبع هذا الرابط لتعديل اشعاراتك المفضلة:%(notification_settings_url)s )\n"
+"\n"
+"\n"
+"فريق%(site_name)s الخاص بك."
 
 #, python-format
 msgid ""
