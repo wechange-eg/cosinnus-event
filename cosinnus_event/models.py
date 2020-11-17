@@ -614,7 +614,7 @@ class ConferenceEvent(Event):
     presenters = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,
         verbose_name=_('Presenters'), related_name='+',
         help_text='A list of users that will be displayed as presenters and become BBB moderators in attached rooms')
-    
+
     # Type: Workshop, Discussion
     is_break = models.BooleanField(_('Is a Break'),
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
@@ -624,6 +624,10 @@ class ConferenceEvent(Event):
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
         blank=False, default=settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT,
         validators=[MinValueValidator(2), MaxValueValidator(512)])
+
+    raw_html = models.TextField(_('Embed code (HTML)'),
+        help_text='Raw HTML embed code to use instead of URL',
+        default='')
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
