@@ -38,14 +38,14 @@ admin.site.register(Suggestion, SuggestionAdmin)
 
 class EventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
     inlines = BaseTaggableAdminMixin.inlines + [SuggestionInlineAdmin,]
-    list_display = BaseTaggableAdminMixin.list_display + ['from_date', 'to_date', 'group', 'state']
+    list_display = BaseTaggableAdminMixin.list_display + ['id', 'from_date', 'to_date', 'group', 'state']
     list_filter = BaseTaggableAdminMixin.list_filter + ['state', ]
 
 admin.site.register(Event, EventAdmin)
 
 
 class ConferenceEventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
-    list_display = BaseTaggableAdminMixin.list_display + ['type', 'room', 'from_date', 'to_date', 'group', 'state']
+    list_display = BaseTaggableAdminMixin.list_display + ['id', 'type', 'room', 'from_date', 'to_date', 'group', 'state']
     list_filter = BaseTaggableAdminMixin.list_filter + ['type', ]
 
 admin.site.register(ConferenceEvent, ConferenceEventAdmin)
