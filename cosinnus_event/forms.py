@@ -129,7 +129,7 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = ('title', 'note', 'image', 'max_participants')
+        fields = ('title', 'note', 'image', 'max_participants', 'presentation_file')
 
 ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
 
@@ -141,7 +141,7 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters')
+        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters', 'presentation_file')
 
 ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
 

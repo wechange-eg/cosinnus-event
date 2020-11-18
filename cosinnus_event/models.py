@@ -26,7 +26,7 @@ from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
-from cosinnus.utils.files import _get_avatar_filename
+from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from django.template.loader import render_to_string
@@ -559,6 +559,7 @@ class Comment(models.Model):
         return check_object_read_access(self.event, user)
 
 
+
 @python_2_unicode_compatible
 class ConferenceEvent(Event):
     
@@ -627,7 +628,12 @@ class ConferenceEvent(Event):
 
     raw_html = models.TextField(_('Embed code (HTML)'),
         help_text='Raw HTML embed code to use instead of URL',
+        blank=True, null=True,
         default='')
+
+    presentation_file = models.FileField(_('Presentation file'),
+        help_text='The presentation file (e.g. PDF) will be pre-uploaded to the BBB room.',
+        null=True, blank=True, upload_to=get_presentation_filename)
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
