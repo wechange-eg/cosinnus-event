@@ -690,6 +690,7 @@ class ConferenceEvent(Event):
                     max_participants = event.max_participants
                 # determine BBBRoom type from event type
                 room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
+                presentation_url = event.presentation_file.url if event.presentation_file else None
                     
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
@@ -697,6 +698,7 @@ class ConferenceEvent(Event):
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
                     max_participants=max_participants,
                     room_type=room_type,
+                    presentation_url=presentation_url,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
