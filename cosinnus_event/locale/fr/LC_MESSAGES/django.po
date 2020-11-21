@@ -1188,6 +1188,15 @@ msgstr "Ton commentaire a été ajouté."
 msgid "Your comment was deleted successfully."
 msgstr "Ton commentaire a été supprimé."
 
+msgid "Custom embed code (HTML)"
+msgstr "Code d'intégration (HTML)"
+
+msgid "Presentation file"
+msgstr "Dossier de présentation"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "Le fichier de présentation (par exemple PDF) sera préchargé dans la salle BBB."
+
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nouvel évènement par %(sender_name)s"
 

@@ -1136,3 +1136,12 @@ msgstr "תגובתך נוספה בהצלחה."
 
 msgid "Your comment was deleted successfully."
 msgstr "תגובתך נמחקה בהצלחה."
+
+msgid "Custom embed code (HTML)"
+msgstr "קוד הטמעה"
+
+msgid "Presentation file"
+msgstr "קובץ מצגת"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "קובץ המצגת (למשל PDF) יעלה מראש לחדר BBB."

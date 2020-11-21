@@ -1025,3 +1025,9 @@ msgstr ""
 
 msgid "Your comment was deleted successfully."
 msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""

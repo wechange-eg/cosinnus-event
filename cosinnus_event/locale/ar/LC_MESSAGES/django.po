@@ -1172,3 +1172,12 @@ msgstr "تم إضافة تعليقك بنجاح."
 
 msgid "Your comment was deleted successfully."
 msgstr "تم حذف تعليقك بنجاح."
+
+msgid "Custom embed code (HTML)"
+msgstr "كود التضمين"
+
+msgid "Presentation file"
+msgstr "ملف العرض التقديمي"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "سيتم تحميل ملف العرض التقديمي (مثل PDF) مسبقًا إلى غرفة BBB."
