@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2020-11-05 11:59+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-08-27 09:46+0200\n"
+"PO-Revision-Date: 2020-11-26 08:59+0100\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 
 msgid "Events"
@@ -73,12 +73,12 @@ msgstr "%(sender_name)s تم انشاء المناسبة %(object_name)s"
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
-msgstr[0] "%(sender_name)s,و %(count_minus_one)d علق اخر على المناسبة الخاص بك %(object_name)s"
-msgstr[1] "%(sender_name)s,و %(count_minus_one)d علق اخر على المناسبة الخاص بك %(object_name)s"
-msgstr[2] "%(sender_name)s و %(count_minus_one)dعلق اخرون على المناسبة الخاص بك %(object_name)s"
-msgstr[3] "%(sender_name)s و %(count_minus_one)dعلق اخرون على المناسبة الخاص بك %(object_name)s"
-msgstr[4] "%(sender_name)s و %(count_minus_one)dعلق اخرون على المناسبة الخاص بك %(object_name)s"
-msgstr[5] "%(sender_name)s و %(count_minus_one)dعلق اخرون على المناسبة الخاص بك %(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #, python-format
 msgid "%(sender_name)s commented on your event"
@@ -98,12 +98,12 @@ msgstr "%(sender_name)s تم التعليق على المناسبة %(object_nam
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
-msgstr[0] "%(sender_name)s و%(count_minus_one)d لقد علق أخر على المناسبة%(object_name)s"
-msgstr[1] "%(sender_name)s و%(count_minus_one)d آخرون علقوا على المناسبة%(object_name)s"
-msgstr[2] "%(sender_name)s و%(count_minus_one)d آخرون علقوا على المناسبة%(object_name)s"
-msgstr[3] "%(sender_name)s و%(count_minus_one)d آخرون علقوا على المناسبة%(object_name)s"
-msgstr[4] "%(sender_name)s و%(count_minus_one)d آخرون علقوا على المناسبة%(object_name)s"
-msgstr[5] "%(sender_name)s و%(count_minus_one)d آخرون علقوا على المناسبة%(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 msgid "You were tagged in this event"
 msgstr "تم الإشارة إليك في هذه المناسبة"
@@ -230,12 +230,12 @@ msgstr "%(sender_name)s تم التصويت في مناسبة الاستطلاع
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
-msgstr[0] "%(sender_name)s و%(count_minus_one)d آخر صوت على الاستطلاع %(object_name)s"
-msgstr[1] "%(sender_name)s و%(count_minus_one)d آخرون صوتوا على الاستطلاع%(object_name)s"
-msgstr[2] "%(sender_name)s و%(count_minus_one)d آخرون صوتوا على الاستطلاع%(object_name)s"
-msgstr[3] "%(sender_name)s و%(count_minus_one)d آخرون صوتوا على الاستطلاع%(object_name)s"
-msgstr[4] "%(sender_name)s و%(count_minus_one)d آخرون صوتوا على الاستطلاع%(object_name)s"
-msgstr[5] "%(sender_name)s و%(count_minus_one)d آخرون صوتوا على الاستطلاع%(object_name)s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -263,15 +263,13 @@ msgstr "حديث الانشاء"
 msgid "Title"
 msgstr "عنوان"
 
-msgid "Presenters"
-msgstr "المقدمون"
-
 msgid "Scheduled"
 msgstr "مجدول"
 
 msgid "Voting open"
 msgstr "التصويت مفتوح"
 
+#, fuzzy
 msgid "Canceled"
 msgstr "تم الغاء"
 
@@ -320,6 +318,7 @@ msgstr "صورة"
 msgid "URL"
 msgstr "رابط"
 
+#, fuzzy
 msgid "Original Event Poll"
 msgstr "مناسبة استطلاع اصلية"
 
@@ -393,47 +392,6 @@ msgstr "تعليق"
 msgid "Comments"
 msgstr "تعليقات"
 
-#, fuzzy
-msgid "Lobby Check-in Event"
-msgstr "حدث تسجيل الوصول في الردهة"
-
-msgid "Stage Stream"
-msgstr "منصة العرض"
-
-msgid "Workshop"
-msgstr "ورشة عمل"
-
-msgid "Discussion"
-msgstr "نقاش"
-
-msgid "Coffee Table"
-msgstr "طاولة قهوة"
-
-msgid "Room"
-msgstr "غرفة"
-
-#, fuzzy
-#| msgid "Create Event"
-msgid "Conference Event Type"
-msgstr "انشاء مناسبة"
-
-msgid "Is a Break"
-msgstr "استراحة"
-
-msgid "Maximum Event Participants"
-msgstr "أقصى عدد من المشاركين في الفعالية/الحدث"
-
-msgid "Conference Event"
-msgstr "حدث/فعالية المؤتمر"
-
-msgid "Conference Events"
-msgstr "أحداث/فعاليات المؤتمر"
-
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
-msgid "%(event)s %(type)s"
-msgstr "%(event)s (معلقة)"
-
 msgid "Create Event"
 msgstr "انشاء مناسبة"
 
@@ -475,78 +433,6 @@ msgctxt "time"
 msgid "until"
 msgstr "لـ"
 
-#, python-format
-msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr "أضف %(event_type_verbose)s في الغرفة %(room_name)s"
-
-#, python-format
-msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr "تعديل %(event_type_verbose)s \"%(event_title)s\" في الغرفة %(room_name)s"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
-
-#, fuzzy
-#| msgid "Enter a title for the new event."
-msgid "Enter a title for the conference event."
-msgstr "ادخل عنوانا لمناسبة جديدة."
-
-msgid "Event is a break"
-msgstr "حدث هو استراحة"
-
-msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr "حدد هذا لإنشاء حدث فاصل فارغ يظهر في جدول الأعمال والمخطط الزمني"
-
-msgid "Date"
-msgstr "تاريخ"
-
-msgid "From"
-msgstr "من"
-
-msgid "Start date."
-msgstr "تاريخ البدء."
-
-msgid "Until"
-msgstr "ل"
-
-msgid "End date."
-msgstr "تاريخ الانتهاء."
-
-msgid "Description and Infos"
-msgstr "وصف و معلومات"
-
-msgid "Description"
-msgstr "وصف"
-
-msgid "Enter a description for the event"
-msgstr "ادخل وصفا لهذه المناسبة"
-
-msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "مثال: https://www.youtube.com/watch?v=12345"
-
-#, fuzzy
-#| msgid "External Link for the event"
-msgid "Stream URL for the Event"
-msgstr "رابط خارجي للمناسبة"
-
-msgid "Maximum Coffee Table Participants"
-msgstr "الحد الأقصى من المشاركين في طاولة القهوة"
-
-msgid "How many participants should can join one coffee table before it is full"
-msgstr "كم عدد المشاركين الذين يمكنهم الانضمام إلى طاولة القهوة قبل أن تمتلئ"
-
-msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr "سيتم عرض مقدمي العروض بالترتيب في الحدث/المناسبة وسيحصلون على أذونات المنسق لغرفة BBB"
-
-msgid "Upload a preview image for the Conference Event"
-msgstr "قم بتحميل صورة معاينة لحدث/لمناسبة المؤتمر"
-
-msgid "Create"
-msgstr "انشاء"
-
-msgid "Save"
-msgstr "حفظ"
-
 msgid "Add unscheduled event"
 msgstr "أضف مناسبة غير مجدولة"
 
@@ -555,6 +441,9 @@ msgstr "تعديل"
 
 msgid "Event Polls"
 msgstr "مناسبة الاستطلاعات"
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "أدخل عنوانًا للمناسبة الجديدة المراد جدولتها."
@@ -577,11 +466,26 @@ msgstr "وقت"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "ملاحظة: لا يمكنك تعديل تواريخ مناسبة الاستطلاع هذه لأن شخصًا ما قد أدلى بصوته بالفعل!"
 
+msgid "Description and Infos"
+msgstr "وصف و معلومات"
+
+msgid "Description"
+msgstr "وصف"
+
+msgid "Enter a description for the event"
+msgstr "ادخل وصفا لهذه المناسبة"
+
 msgid "Example: http://mywebsite.com"
 msgstr "مثال: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "رابط خارجي للمناسبة"
+
+msgid "Create"
+msgstr "انشاء"
+
+msgid "Save"
+msgstr "حفظ"
 
 msgid "Delete"
 msgstr "حذف"
@@ -592,6 +496,7 @@ msgstr "لا توجد مناسبة استطلاعات مفتوحة."
 msgid "Planned Events"
 msgstr "المناسبات المخطط لها"
 
+#, fuzzy
 msgid "Past Events"
 msgstr "المناسبات السابقة"
 
@@ -653,6 +558,21 @@ msgstr "إضافة مناسبة"
 msgid "Enter a title for the new event."
 msgstr "ادخل عنوانا لمناسبة جديدة."
 
+msgid "Date"
+msgstr "تاريخ"
+
+msgid "From"
+msgstr "من"
+
+msgid "Start date."
+msgstr "تاريخ البدء."
+
+msgid "Until"
+msgstr "ل"
+
+msgid "End date."
+msgstr "تاريخ الانتهاء."
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "سيتم عرض أول صورة تم تحميلها كخلفية."
 
@@ -668,6 +588,7 @@ msgstr "انسخ رابط iCal هذا في تطبيق التقويم الخاص 
 msgid "Also include all events from projects within this group in feed"
 msgstr "قم أيضًا بتضمين جميع المناسبات من المشاريع داخل هذه المجموعة في الخلاصة"
 
+#, fuzzy
 msgid "iCal Feed"
 msgstr "خلاصة iCal"
 
@@ -676,11 +597,6 @@ msgstr "أدخل عنوان مناسبة جديد أو حدد يومًا في ا
 
 msgid "Export event feed"
 msgstr "تقديم مناسبة موجزة"
-
-#, fuzzy
-#| msgid "There are no open event polls."
-msgid "There are no conference events."
-msgstr "لا توجد مناسبة استطلاعات مفتوحة."
 
 msgid "There are no current or future events."
 msgstr "لا توجد مناسبات حالية أو مستقبلية."
@@ -708,9 +624,6 @@ msgstr "قائمة"
 
 msgid "by"
 msgstr "من قبل"
-
-msgid "View"
-msgstr "معاينة"
 
 msgid "Created Event"
 msgstr "تم انشاء مناسبة"
@@ -871,18 +784,6 @@ msgid ""
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
-"مرحبًا %(receiver_name)s,\n"
-"\n"
-"تم الإعلان عن حدث جديد\"%(object_name)s\", ، في %(event_date)s, في %(team_name)s بواسطة%(sender_name)s. \n"
-"\n"
-"يمكنك العثور عليه باتباع هذا الرابط:%(object_url)s\n"
-"\n"
-"\n"
-"\n"
-"(اتبع هذا الرابط لتعديل اشعاراتك المفضلة:%(notification_settings_url)s )\n"
-"\n"
-"\n"
-"فريق%(site_name)s الخاص بك."
 
 #, python-format
 msgid ""

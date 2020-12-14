@@ -1,0 +1,1049 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-27 09:46+0200\n"
+"PO-Revision-Date: 2020-09-24 04:27+0200\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Events"
+msgstr "Události"
+
+msgctxt "the_app"
+msgid "event"
+msgstr "událost"
+
+msgid "A user created a new event"
+msgstr "Uživatel vytvořil novou událost"
+
+#, python-format
+msgid "%(sender_name)s created the event %(object_name)s"
+msgstr "%(sender_name)s vytvořil/a událost %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s created %(count)d events"
+msgstr "%(sender_name)s vytvořil/a %(count)d událostí"
+
+#, python-format
+msgid "%(sender_name)s created a new event"
+msgstr "%(sender_name)s vytvořil/a novou událost"
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s."
+msgstr "V %(team_name)s byl vytvořen nová událost: \"%(object_name)s\"."
+
+msgid "A user created a new event poll"
+msgstr "Uživatel vytvořil nové hlasování o události"
+
+#, python-format
+msgid "%(sender_name)s created the event poll %(object_name)s"
+msgstr "%(sender_name)s vytvořil/a hlasování o události %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s created %(count)d event polls"
+msgstr "%(sender_name)s vytvořil/a %(count)d hlasování o události"
+
+#, python-format
+msgid "%(sender_name)s created a new event poll"
+msgstr "%(sender_name)s vytvořil/a nové hlasování o události"
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s."
+msgstr "V %(team_name)s bylo vytvořeno nové hlasování o události: \"%(object_name)s\"."
+
+msgid "A user commented on one of your events"
+msgstr "Uživatel okomentoval jednu z vašich událostí"
+
+#, python-format
+msgid "%(sender_name)s commented on your event %(object_name)s"
+msgstr "%(sender_name)s okomentoval/a vaši událost %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
+msgstr[0] "%(sender_name)s a %(count_minus_one)d další okomentoval vaši událost %(object_name)s"
+msgstr[1] "%(sender_name)s a %(count_minus_one)d další okomentovali vaši událost %(object_name)s"
+msgstr[2] "%(sender_name)s a %(count_minus_one)d další okomentovali vaši událost %(object_name)s"
+msgstr[3] "%(sender_name)s a %(count_minus_one)d dalších okomentovalo vaši událost %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s commented on your event"
+msgstr "%(sender_name)s okomentoval/a vaši událost"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events"
+msgstr "%(sender_name)s okomentoval/a jednu z vašich událostí"
+
+msgid "A user commented on a event you were tagged in"
+msgstr "Uživatel okomentoval událost, na které jste byli označeni"
+
+#, python-format
+msgid "%(sender_name)s commented on the event %(object_name)s"
+msgstr "%(sender_name)s okomentoval/a událost %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
+msgstr[0] "%(sender_name)s a %(count_minus_one)d další okomentoval událost %(object_name)s"
+msgstr[1] "%(sender_name)s a %(count_minus_one)d další okomentovali událost %(object_name)s"
+msgstr[2] "%(sender_name)s a %(count_minus_one)d další okomentovali událost %(object_name)s"
+msgstr[3] "%(sender_name)s a %(count_minus_one)d dalších okomentovalo událost %(object_name)s"
+
+msgid "You were tagged in this event"
+msgstr "Byli jste označeni v této události"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you were tagged in"
+msgstr "%(sender_name)s okomentoval/a událost, na které jste byli označeni"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you were tagged in in %(team_name)s"
+msgstr "%(sender_name)s okomentoval/a událost, na které jste byli označeni v %(team_name)s"
+
+msgid "A user commented on an event you voted in"
+msgstr "Uživatel okomentoval událost, ve které jste hlasovali"
+
+msgid "You voted on this event"
+msgstr "Hlasovali jste o této události"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in"
+msgstr "%(sender_name)s okomentoval/a událost, o které jste hlasovali"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
+msgstr "%(sender_name)s okomentoval/a událost, o které jste hlasovali v %(team_name)s"
+
+msgid "A user commented on an event you are attending"
+msgstr "Uživatel okomentoval událost, které se zúčastníte"
+
+msgid "You are attending this event"
+msgstr "Zúčastníte se této události"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending"
+msgstr "%(sender_name)s okomentoval/a událost, které se zúčastníte"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s"
+msgstr "%(sender_name)s okomentoval/a událost, které se zúčastníte v %(team_name)s"
+
+msgid "A user created a new event in a team you are following"
+msgstr "Uživatel vytvořil novou událost v týmu, který sledujete"
+
+#, python-format
+msgid "%(sender_name)s created a new event in %(team_name)s (which you follow)"
+msgstr "%(sender_name)s vytvořil/a novou událost v týmu %(team_name)s (který sledujete)"
+
+#, python-format
+msgid "A new event: \"%(object_name)s\" was announced in %(team_name)s (which you follow)."
+msgstr "Nová událost: \"%(object_name)s\" byla vytvořena v týmu %(team_name)s (který sledujete)."
+
+msgid "A user created a new event poll in a team you are following"
+msgstr "Uživatel vytvořil nové hlasování o události v týmu, který sledujete"
+
+#, python-format
+msgid "%(sender_name)s created a new event pollin %(team_name)s (which you follow)"
+msgstr "%(sender_name)s vytvořil/a nové hlasování o události v týmu %(team_name)s (který sledujete)"
+
+#, python-format
+msgid "A new event poll: \"%(object_name)s\" was created in %(team_name)s (which you follow)."
+msgstr "Nové hlasování o události: \"%(object_name)s\" bylo vytvořeno v týmu %(team_name)s (který sledujete)."
+
+msgid "A user commented on an event you are following"
+msgstr "Uživatel okomentoval událost, kterou sledujete"
+
+msgid "You are following this event"
+msgstr "Sledujete tuto událost"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following"
+msgstr "%(sender_name)s okomentoval/a událost, kterou sledujete"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are following in %(team_name)s"
+msgstr "%(sender_name)s okomentoval/a událost, kterou sledujete v %(team_name)s"
+
+msgid "A user updated an event"
+msgstr "Uživatel aktualizoval událost"
+
+#, python-format
+msgid "%(sender_name)s updated the event %(object_name)s"
+msgstr "%(sender_name)s aktualizoval/a událost %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s updated an event you are following"
+msgstr "%(sender_name)s aktualizoval/a událost, kterou sledujete"
+
+#, python-format
+msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "V %(team_name)s byla aktualizována událost: \"%(object_name)s\"."
+
+msgid "A user updated an event you are attending"
+msgstr "Uživatel aktualizoval událost, které se zúčastníte"
+
+#, python-format
+msgid "%(sender_name)s updated an event you are attending"
+msgstr "%(sender_name)s aktualizoval/a událost, které se zúčastníte"
+
+msgid "A user updated an event poll"
+msgstr "Uživatel aktualizoval hlasování o události"
+
+#, python-format
+msgid "%(sender_name)s changed the event poll %(object_name)s"
+msgstr "%(sender_name)s změnil/a hlasování o události %(object_name)s"
+
+msgid "You are following this event poll"
+msgstr "Sledujete toto hlasování o události"
+
+#, python-format
+msgid "%(sender_name)s updated an event poll you are following"
+msgstr "%(sender_name)s aktualizoval/a hlasování o události, kterou sledujete"
+
+#, python-format
+msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
+msgstr "V %(team_name)s bylo aktualizováno hlasování o události: \"%(object_name)s\"."
+
+msgid "A user voted in an event poll"
+msgstr "Uživatel hlasoval v hlasování o události"
+
+#, python-format
+msgid "%(sender_name)s voted in the event poll %(object_name)s"
+msgstr "%(sender_name)s hlasoval/a v hlasování o události %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
+msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
+msgstr[0] "%(sender_name)s a %(count_minus_one)d další hlasoval v hlasování o události %(object_name)s"
+msgstr[1] "%(sender_name)s a %(count_minus_one)d další hlasovali v hlasování o události %(object_name)s"
+msgstr[2] "%(sender_name)s a %(count_minus_one)d další hlasovali v hlasování o události %(object_name)s"
+msgstr[3] "%(sender_name)s a %(count_minus_one)d dalších hlasovalo v hlasování o události %(object_name)s"
+
+#, python-format
+msgid "%(sender_name)s voted in an event poll you are following"
+msgstr "%(sender_name)s hlasoval/a v hlasování o události, kterou sledujete"
+
+#, python-format
+msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
+msgstr "%(sender_name)s hlasoval/a v hlasování o události \"%(object_name)s\" v %(team_name)s."
+
+msgid "Upcoming Events"
+msgstr "Nadcházející události"
+
+msgid "No upcoming events"
+msgstr "Žádné nadcházející události"
+
+msgid "Created By"
+msgstr "Vytvořil/a"
+
+msgid "Soonest Upcoming"
+msgstr "Již brzy nadcházející"
+
+msgid "Newest Created"
+msgstr "Nejnovější vytvořené"
+
+msgid "Title"
+msgstr "Název"
+
+msgid "Scheduled"
+msgstr "Plánováno"
+
+msgid "Voting open"
+msgstr "Hlasování je otevřené"
+
+msgid "Canceled"
+msgstr "Zrušeno"
+
+msgid "Archived Event Poll"
+msgstr "Archivované hlasování o události"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "End"
+msgstr "Konec"
+
+msgid "State"
+msgstr "Stav"
+
+msgid "Note"
+msgstr "Poznámka"
+
+msgid "Event date"
+msgstr "Datum události"
+
+msgid "Location"
+msgstr "Umístění"
+
+msgid "Latitude"
+msgstr "Zeměpisná šířka"
+
+msgid "Longitude"
+msgstr "Zeměpisná délka"
+
+msgid "Street"
+msgstr "Ulice"
+
+msgid "ZIP code"
+msgstr "PSČ"
+
+msgid "City"
+msgstr "Obec"
+
+msgid "Is public (on website)"
+msgstr "Je veřejné (na webu)"
+
+msgid "Image"
+msgstr "Obrázek"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Original Event Poll"
+msgstr "Původní hlasování o události"
+
+msgid "Event"
+msgstr "Událost"
+
+#, python-format
+msgid "%(event)s (%(date)s - %(end)s)"
+msgstr "%(event)s (%(date)s - %(end)s)"
+
+#, python-format
+msgid "%(event)s (%(from)s - %(to)s)"
+msgstr "%(event)s (%(from)s - %(to)s)"
+
+#, python-format
+msgid "%(event)s (canceled)"
+msgstr "%(event)s (zrušeno)"
+
+#, python-format
+msgid "%(event)s (pending)"
+msgstr "%(event)s (nevyřízené)"
+
+#, python-format
+msgid "%(event)s (archived)"
+msgstr "%(event)s (archivované)"
+
+msgctxt "the subject"
+msgid "Votes"
+msgstr "Hlasy"
+
+msgid "Suggestion"
+msgstr "Návrh"
+
+msgid "Suggestions"
+msgstr "Návrhy"
+
+msgid "Yes"
+msgstr "Ano"
+
+msgid "Maybe"
+msgstr "Možná"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Voter"
+msgstr "Hlasující"
+
+msgid "Vote"
+msgstr "Hlasovat"
+
+msgctxt "the subject"
+msgid "Vote"
+msgstr "Hlas"
+
+msgid "Creator"
+msgstr "Tvůrce"
+
+msgid "Created"
+msgstr "Vytvořeno"
+
+msgid "Last modified"
+msgstr "Naposledy upraveno"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Comment"
+msgstr "Komentář"
+
+msgid "Comments"
+msgstr "Komentáře"
+
+msgid "Create Event"
+msgstr "Vytvořit událost"
+
+msgid "Would you like to create an event"
+msgstr "Chtěli byste vytvořit událost"
+
+msgid "on"
+msgstr "dne"
+
+msgid "from"
+msgstr "od"
+
+msgid "until"
+msgstr "do"
+
+msgid "Cancel"
+msgstr "Zrušit"
+
+msgid "OK"
+msgstr "OK"
+
+msgctxt "time"
+msgid "all day"
+msgstr "celý den"
+
+msgctxt "time"
+msgid "at"
+msgstr "v"
+
+msgctxt "time"
+msgid "o'clock"
+msgstr "hodin"
+
+msgctxt "time"
+msgid "from"
+msgstr "od"
+
+msgctxt "time"
+msgid "until"
+msgstr "do"
+
+msgid "Add unscheduled event"
+msgstr "Přidat neplánovanou událost"
+
+msgid "Edit"
+msgstr "Upravit"
+
+msgid "Event Polls"
+msgstr "Hlasování o událostech"
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "V jednom z polí, která jste zadali, došlo k chybě. Před uložením to prosím opravte!"
+
+msgid "Enter a title for the new event to be scheduled."
+msgstr "Zadejte název nové události, kterou chcete naplánovat."
+
+msgid "Dates"
+msgstr "Data"
+
+msgid "Please select the available days in the calendar."
+msgstr "Vyberte dostupné dny v kalendáři."
+
+msgid "You can select the same day more than once."
+msgstr "Stejný den můžete vybrat vícekrát."
+
+msgid "Time: e.g. 10 or 10:30."
+msgstr "Čas: např. 10 nebo 10:30."
+
+msgid "Time"
+msgstr "Čas"
+
+msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
+msgstr "Poznámka: Nelze upravit data tohoto hlasování o události, protože někdo již hlasoval!"
+
+msgid "Description and Infos"
+msgstr "Popis a informace"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Enter a description for the event"
+msgstr "Zadejte popis události"
+
+msgid "Example: http://mywebsite.com"
+msgstr "Příklad: http://mywebsite.com"
+
+msgid "External Link for the event"
+msgstr "Externí odkaz pro událost"
+
+msgid "Create"
+msgstr "Vytvořit"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Delete"
+msgstr "Smazat"
+
+msgid "There are no open event polls."
+msgstr "Nejsou žádná otevřená hlasování o událostech."
+
+msgid "Planned Events"
+msgstr "Plánované události"
+
+msgid "Past Events"
+msgstr "Minulé události"
+
+msgid "Archived Event Polls"
+msgstr "Archivovaná hlasování o událostech"
+
+msgid "There are no archived event polls."
+msgstr "Nejsou žádná archivovaná hlasování o událostech."
+
+#, python-format
+msgid "Vote for %(title)s"
+msgstr "Hlasovat o %(title)s"
+
+#, python-format
+msgid "Archived: %(title)s"
+msgstr "Archivováno: %(title)s"
+
+msgid "This event has already been scheduled. Voting is closed."
+msgstr "Tato událost již byla naplánována. Hlasování je uzavřeno."
+
+msgid "This event has been canceled. Voting is closed."
+msgstr "Tato událost byla zrušena. Hlasování je uzavřeno."
+
+msgid "Nobody has voted for this event poll yet."
+msgstr "Pro toto hlasování o události zatím nikdo nehlasoval."
+
+msgid "Create an event from one of the suggestions"
+msgstr "Vytvořte událost z jednoho z návrhů"
+
+#, python-format
+msgid "Set the date to %(suggestion)s."
+msgstr "Nastavte datum na %(suggestion)s."
+
+msgid "When do you have time?"
+msgstr "Kdy máte čas?"
+
+msgid "There are no date suggestions for this event poll yet!"
+msgstr "Pro toto hlasování o události zatím nejsou k dispozici žádné návrhy data!"
+
+#, python-format
+msgid "Do you really want to delete unscheduled event „%(title)s“?"
+msgstr "Opravdu chcete smazat neplánovanou událost “%(title)s“?"
+
+msgid "Delete unscheduled event"
+msgstr "Smazat neplánovanou událost"
+
+msgid "You will now receive notifications for comments or when this event poll is changed and whenever somebody casts their vote."
+msgstr "Nyní budete dostávat oznámení o komentářích nebo o změně tohoto hlasování o události a pokaždé, když někdo hlasuje."
+
+msgid "Write comment..."
+msgstr "Napsat komentář..."
+
+msgid "Post"
+msgstr "Publikovat příspěvek"
+
+msgid "Add event"
+msgstr "Přidat událost"
+
+msgid "Enter a title for the new event."
+msgstr "Zadejte název nové události."
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "From"
+msgstr "Od"
+
+msgid "Start date."
+msgstr "Počáteční datum."
+
+msgid "Until"
+msgstr "Do"
+
+msgid "End date."
+msgstr "Konečné datum."
+
+msgid "The first uploaded image will be displayed as a wallpaper."
+msgstr "První nahraný obrázek se zobrazí jako tapeta."
+
+msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
+msgstr "Pokud toto nastavíte, vaše událost se zobrazí na mapě! (pokud to umožňuje nastavení viditelnosti)"
+
+msgid "Kalender"
+msgstr "Kalendář"
+
+msgid "Copy this iCal-link into your calendar application to import current events:"
+msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
+
+msgid "Also include all events from projects within this group in feed"
+msgstr "Ve feedu zahrňte také všechny události z projektů v této skupině"
+
+msgid "iCal Feed"
+msgstr "iCal Feed"
+
+msgid "Enter the title for a new event or select a day in the Calendar."
+msgstr "Zadejte název nové události nebo vyberte den v kalendáři."
+
+msgid "Export event feed"
+msgstr "Exportovat feed událostí"
+
+msgid "There are no current or future events."
+msgstr "Nejsou žádné aktuální ani budoucí události."
+
+msgid "There are no past events."
+msgstr "Nejsou žádné minulé události."
+
+msgid "There are no upcoming events"
+msgstr "Nejsou žádné nadcházející události"
+
+msgid "Back to Events"
+msgstr "Zpět na události"
+
+msgid "Return to Event Polls"
+msgstr "Zpět na hlasování o událostech"
+
+msgid "Return to Archived Event Polls"
+msgstr "Zpět na archivovaná hlasování o událostech"
+
+msgid "Calendar"
+msgstr "Kalendář"
+
+msgid "List"
+msgstr "Seznam"
+
+msgid "by"
+msgstr "podle"
+
+msgid "Created Event"
+msgstr "Vytvořená událost"
+
+#, python-format
+msgid "Do you really want to delete event „%(title)s“?"
+msgstr "Opravdu chcete smazat událost \"%(title)s\"?"
+
+msgid "Delete event"
+msgstr "Smazat událost"
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you are attending in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Ahoj, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s zveřejnil/a komentář k události, které se zúčastníte v %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"na akci:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Kliknutím na tento odkaz zobrazíte komentář:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s.\n"
+
+#, python-format
+msgid "%(sender_name)s commented on an event you are attending in %(team_name)s."
+msgstr "%(sender_name)s okomentoval/a událost, které se zúčastníte v %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\" in %(team_name)s was created by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Ahoj %(receiver_name)s,\n"
+"\n"
+"nová událost \"%(object_name)s\" v %(team_name)s byla vytvořena uživatelem %(sender_name)s.\n"
+"\n"
+"Najdete ji kliknutím na tento odkaz: %(object_url) s\n"
+"\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you created in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on your event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Ahoj, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s zveřejnil komentář k události, kterou jste vytvořili v %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"na vaší akci:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Kliknutím na tento odkaz zobrazíte komentář:\n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s.\n"
+
+#, python-format
+msgid "%(sender_name)s commented on one of your events in %(team_name)s."
+msgstr "%(sender_name)s okomentoval/a jednu z vašich událostí v %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi %(receiver_name)s,\n"
+"\n"
+"a new event \"%(object_name)s\", on %(event_date)s, was announced in %(team_name)s by %(sender_name)s. \n"
+"\n"
+"You can find it by following this link: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s Team."
+msgstr ""
+"Ahoj %(receiver_name)s,\n"
+"\n"
+"nová událost \"%(object_name)s\", dne %(event_date)s, byla ohlášena v %(team_name)s uživatelem %(sender_name)s.\n"
+"\n"
+"Najdete jej kliknutím na tento odkaz: %(object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event you were tagged in, in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Ahoj, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s zveřejnil/a komentář k události, na které jste byli označeni, v %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"na akci:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Kliknutím na tento odkaz zobrazíte komentář: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on a event you were tagged in %(team_name)s."
+msgstr "%(sender_name)s okomentoval/a událost, na které jste byli označeni, v %(team_name)s."
+
+#, python-format
+msgid ""
+"Hi, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s has posted a comment on an event poll you voted in in %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"on the event poll:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Follow this link to see the comment: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Follow this link to edit your notification preferences: %(notification_settings_url)s )\n"
+"\n"
+"Your %(site_name)s team.\n"
+"\n"
+msgstr ""
+"Ahoj, %(receiver_name)s!\n"
+"\n"
+"%(sender_name)s zveřejnil/a komentář k hlasování o události, ve kterém jste hlasovali v %(team_name)s:\n"
+"\n"
+"\"%(comment_text)s\"\n"
+"\n"
+"\n"
+"v hlasování o události:\n"
+"\n"
+"\"%(event_title)s\"\n"
+"\n"
+"\n"
+"Kliknutím na tento odkaz zobrazíte komentář: \n"
+"%(object_url)s\n"
+"\n"
+"\n"
+"(Chcete-li upravit předvolby oznámení, použijte tento odkaz: %(notification_settings_url)s )\n"
+"\n"
+"Váš tým %(site_name)s.\n"
+"\n"
+
+#, python-format
+msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
+msgstr "%(sender_name)s okomentoval/a hlasování o události, ve kterém jste hlasovali v %(team_name)s."
+
+msgid "Delete Event"
+msgstr "Smazat událost"
+
+msgid "(Canceled!)"
+msgstr "(Zrušeno!)"
+
+msgid "This is an archived event poll."
+msgstr "Toto je archivované hlasování o události."
+
+msgid "The event that was created after the poll can be viewed here:"
+msgstr "Událost, která byla vytvořena po hlasování, si můžete prohlédnout zde:"
+
+msgid "(No description set)"
+msgstr "(Není nastaven žádný popis)"
+
+msgctxt "someone else is going"
+msgid "Going"
+msgstr "Zúčastní se"
+
+msgctxt "someone else is maybe going"
+msgid "Maybe going"
+msgstr "Možná se zúčastní"
+
+msgctxt "someone else can't go"
+msgid "Can't go"
+msgstr "Nemůže se zúčastnit"
+
+msgctxt "one or many people are going"
+msgid "Going"
+msgid_plural "Going"
+msgstr[0] "Zúčastní se"
+msgstr[1] "Zúčastní se"
+msgstr[2] "Zúčastní se"
+msgstr[3] "Zúčastní se"
+
+msgctxt "one or many people are maybe going"
+msgid "Maybe going"
+msgid_plural "Maybe going"
+msgstr[0] "Možná se zúčastní"
+msgstr[1] "Možná se zúčastní"
+msgstr[2] "Možná se zúčastní"
+msgstr[3] "Možná se zúčastní"
+
+msgctxt "one or many people are not going"
+msgid "Can't go"
+msgid_plural "Can't go"
+msgstr[0] "Nemůže se zúčastnit"
+msgstr[1] "Nemohou se zúčastnit"
+msgstr[2] "Nemohou se zúčastnit"
+msgstr[3] "Nemohou se zúčastnit"
+
+msgid "Going"
+msgstr "Zúčastní se"
+
+msgid "Maybe going"
+msgstr "Možná se zúčastní"
+
+msgid "Can't go"
+msgstr "Nemůže se zúčastnit"
+
+msgid "Are you going?"
+msgstr "Zúčastníte se?"
+
+msgid "No Choice"
+msgstr "Žádná volba"
+
+msgid "Start/join video chat for this event"
+msgstr "Zahájit/připojit se k videochatu pro tuto událost"
+
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+msgid "Video Chat"
+msgstr "Videochat"
+
+msgid "Leave Fullscreen"
+msgstr "Opustit celou obrazovku"
+
+msgid "Back"
+msgstr "Zpět"
+
+msgid "Stop Video Chat"
+msgstr "Zastavit videochat"
+
+msgid "You will now receive notifications for comments or when this event is updated or its details change."
+msgstr "Nyní budete dostávat oznámení o komentářích nebo o aktualizaci této události nebo změně jejích podrobností."
+
+msgid "You created an event"
+msgstr "Vytvořili jste událost"
+
+msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+msgid "created an event"
+msgstr "vytvořil/a událost"
+
+msgid "Show all"
+msgstr "Zobrazit vše"
+
+msgid "Upcoming events"
+msgstr "Nadcházející události"
+
+#, python-format
+msgid "Event \"%(title)s\" was edited successfully."
+msgstr "Událost \"%(title)s\" byla úspěšně upravena."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be edited."
+msgstr "Událost \"%(title)s\" nelze upravit."
+
+msgid "The page you requested is not available for this event at this time."
+msgstr "Požadovaná stránka není pro tuto událost v tuto chvíli k dispozici."
+
+msgid "One of the event suggestions times could not be understood!"
+msgstr "Jednomu z časů návrhů akce nebylo možné porozumět!"
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was edited successfully."
+msgstr "Neplánovaná událost \"%(title)s\" byla úspěšně upravena."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be edited."
+msgstr "Neplánovanou událost \"%(title)s\" nelze upravit."
+
+#, python-format
+msgid "Event \"%(title)s\" was added successfully."
+msgstr "Událost \"%(title)s\" byla úspěšně přidána."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be added."
+msgstr "Událost \"%(title)s\" nelze přidat."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was added successfully."
+msgstr "Neplánovaná událost \"%(title)s\" byla úspěšně přidána."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be added."
+msgstr "Neplánovanou událost \"%(title)s\" nelze přidat."
+
+msgid "You should define at least one date suggestion."
+msgstr "Měli byste definovat alespoň jeden návrh data."
+
+#, python-format
+msgid "Event \"%(title)s\" was deleted successfully."
+msgstr "Událost \"%(title)s\" byla úspěšně smazána."
+
+#, python-format
+msgid "Event \"%(title)s\" could not be deleted."
+msgstr "Událost \"%(title)s\" nelze smazat."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" was deleted successfully."
+msgstr "Neplánovaná událost \"%(title)s\" byla úspěšně smazána."
+
+#, python-format
+msgid "Unscheduled event \"%(title)s\" could not be deleted."
+msgstr "Neplánovanou událost \"%(title)s\" nelze smazat."
+
+msgid "Your votes were saved successfully."
+msgstr "Vaše hlasy byly úspěšně uloženy."
+
+msgid "Your votes could not be saved."
+msgstr "Vaše hlasy se nepodařilo uložit."
+
+msgid "This is event is already scheduled. You cannot vote for it any more."
+msgstr "Tato událost je již naplánována. Už o ní nemůžete hlasovat."
+
+msgid "The complete request can only be sent via POST!"
+msgstr "Kompletní požadavek lze zaslat pouze PŘÍSPĚVEK!"
+
+msgid "Event cannot be completed: No date was supplied."
+msgstr "Událost nelze dokončit: Nebylo zadáno žádné datum."
+
+msgid "The event was created successfully at the specified date."
+msgstr "Událost byla úspěšně vytvořena k uvedenému datu."
+
+msgid "Your comment was added successfully."
+msgstr "Váš komentář byl úspěšně přidán."
+
+msgid "Your comment was deleted successfully."
+msgstr "Váš komentář byl úspěšně smazán."
