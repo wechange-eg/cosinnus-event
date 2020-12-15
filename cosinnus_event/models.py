@@ -26,7 +26,7 @@ from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
-from cosinnus.utils.files import _get_avatar_filename
+from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from django.template.loader import render_to_string
@@ -559,6 +559,7 @@ class Comment(models.Model):
         return check_object_read_access(self.event, user)
 
 
+
 @python_2_unicode_compatible
 class ConferenceEvent(Event):
     
@@ -614,7 +615,7 @@ class ConferenceEvent(Event):
     presenters = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,
         verbose_name=_('Presenters'), related_name='+',
         help_text='A list of users that will be displayed as presenters and become BBB moderators in attached rooms')
-    
+
     # Type: Workshop, Discussion
     is_break = models.BooleanField(_('Is a Break'),
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
@@ -624,6 +625,15 @@ class ConferenceEvent(Event):
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
         blank=False, default=settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT,
         validators=[MinValueValidator(2), MaxValueValidator(512)])
+
+    raw_html = models.TextField(_('Embed code (HTML)'),
+        help_text='Raw HTML embed code to use instead of URL',
+        blank=True, null=True,
+        default='')
+
+    presentation_file = models.FileField(_('Presentation file'),
+        help_text='The presentation file (e.g. PDF) will be pre-uploaded to the BBB room.',
+        null=True, blank=True, upload_to=get_presentation_filename)
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
@@ -680,6 +690,7 @@ class ConferenceEvent(Event):
                     max_participants = event.max_participants
                 # determine BBBRoom type from event type
                 room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
+                presentation_url = event.presentation_file.url if event.presentation_file else None
                     
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
@@ -687,6 +698,7 @@ class ConferenceEvent(Event):
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
                     max_participants=max_participants,
                     room_type=room_type,
+                    presentation_url=presentation_url,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()

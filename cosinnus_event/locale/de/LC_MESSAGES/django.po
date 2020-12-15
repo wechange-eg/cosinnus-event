@@ -1118,6 +1118,15 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 
+msgid "Custom embed code (HTML)"
+msgstr "Einbettungscode (HTML)"
+
+msgid "Presentation file"
+msgstr "Präsentation"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "Die Präsentation (z.B. PDF) wird vorab in den BBB-Raum hochgeladen."
+
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Neue Veranstaltung von %(sender_name)s"
 

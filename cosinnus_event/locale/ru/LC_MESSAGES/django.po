@@ -1130,6 +1130,15 @@ msgstr "Ваш комментарий добавлен."
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
 
+msgid "Custom embed code (HTML)"
+msgstr "Встроить код"
+
+msgid "Presentation file"
+msgstr "Файл презентации"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "Файл презентации (например, PDF) будет предварительно загружен в комнату BBB."
+
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Новое событие у %(sender_name)s"
 

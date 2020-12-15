@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 from cosinnus_event.models import Event, Suggestion, Vote, ConferenceEvent
 from cosinnus.admin import BaseTaggableAdminMixin
@@ -44,9 +45,22 @@ class EventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
 admin.site.register(Event, EventAdmin)
 
 
+def restart_bbb_rooms(modeladmin, request, queryset):
+    for event in queryset.all():
+        try:
+            bbb_room = event.media_tag.bbb_room
+            bbb_room.restart()
+        except:
+            pass
+
+
+restart_bbb_rooms.short_description = _('Restart BBB rooms')
+
+
 class ConferenceEventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
     list_display = BaseTaggableAdminMixin.list_display + ['id', 'type', 'room', 'from_date', 'to_date', 'group', 'state']
     list_filter = BaseTaggableAdminMixin.list_filter + ['type', ]
+    actions = (restart_bbb_rooms, )
+
 
 admin.site.register(ConferenceEvent, ConferenceEventAdmin)
-

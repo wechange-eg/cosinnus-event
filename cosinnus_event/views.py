@@ -6,6 +6,7 @@ from collections import defaultdict
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 from django.views.generic.detail import DetailView, SingleObjectMixin
@@ -74,9 +75,6 @@ class EventIndexView(RequireReadMixin, RedirectView):
         return group_aware_reverse('cosinnus:event:list', kwargs={'group': self.group})
 
 
-index_view = EventIndexView.as_view()
-
-
 class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMixin, FilterGroupMixin, ListView):
 
     model = Event
@@ -118,8 +116,6 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
         })
         return context
 
-list_view = EventListView.as_view()
-
 
 class PastEventListView(EventListView):
 
@@ -139,8 +135,6 @@ class PastEventListView(EventListView):
         context = super(PastEventListView, self).get_context_data(**kwargs)
         context['past_events'] = self.get_queryset()
         return context
-    
-past_events_list_view = PastEventListView.as_view()
 
 
 class ConferenceEventListView(RequireWriteMixin, FilterGroupMixin, ListView):
@@ -160,8 +154,6 @@ class ConferenceEventListView(RequireWriteMixin, FilterGroupMixin, ListView):
         context['conference_events'] = context['object_list']
         context['object'] = self.group
         return context
-    
-conference_event_list_view = ConferenceEventListView.as_view()
 
 
 class DoodleListView(EventListView):
@@ -173,8 +165,6 @@ class DoodleListView(EventListView):
         qs = qs.filter(state=Event.STATE_VOTING_OPEN)
         self.queryset = qs
         return qs
-
-doodle_list_view = DoodleListView.as_view()
 
 
 class ArchivedDoodlesListView(EventListView):
@@ -193,14 +183,10 @@ class ArchivedDoodlesListView(EventListView):
         context = super(ArchivedDoodlesListView, self).get_context_data(**kwargs)
         context['archived_doodles'] = context.pop('future_events')
         return context
-    
-archived_doodles_list_view = ArchivedDoodlesListView.as_view()
 
 
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
-    
-detailed_list_view = DetailedEventListView.as_view()
 
 
 class SuggestionInlineView(InlineFormSet):
@@ -314,8 +300,6 @@ class EntryAddView(EntryFormMixin, AttachableViewMixin, CreateWithInlinesView):
         # creator follows their own event
         apply_likefollowstar_object(form.instance, self.request.user, follow=True)
         return ret
-    
-entry_add_view = EntryAddView.as_view()
 
 
 class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView):
@@ -337,8 +321,6 @@ class DoodleAddView(DoodleFormMixin, AttachableViewMixin, CreateWithInlinesView)
                 _('You should define at least one date suggestion.'))
         return ret
 
-doodle_add_view = DoodleAddView.as_view()
-
 
 class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMixin, UpdateWithInlinesView):
     
@@ -355,8 +337,6 @@ class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMix
         # send out a notification to all followers for the change
         followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
         cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator), session_id=session_id, end_session=True)
-        
-entry_edit_view = EntryEditView.as_view()
 
 
 class DoodleEditView(EditViewWatchChangesMixin, DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
@@ -396,9 +376,6 @@ class DoodleEditView(EditViewWatchChangesMixin, DoodleFormMixin, AttachableViewM
 
         return super(DoodleEditView, self).forms_valid(form, inlines)
 
-doodle_edit_view = DoodleEditView.as_view()
-
-
 
 class EntryDeleteView(EntryFormMixin, DeleteView):
     message_success = _('Event "%(title)s" was deleted successfully.')
@@ -408,8 +385,6 @@ class EntryDeleteView(EntryFormMixin, DeleteView):
         urlname = getattr(self, 'success_url_list', 'cosinnus:event:list')
         return redirect_next_or(self.request, group_aware_reverse(urlname, kwargs={'group': self.group}))
 
-entry_delete_view = EntryDeleteView.as_view()
-
 
 class DoodleDeleteView(EntryFormMixin, DeleteView):
     message_success = _('Unscheduled event "%(title)s" was deleted successfully.')
@@ -418,9 +393,6 @@ class DoodleDeleteView(EntryFormMixin, DeleteView):
     def get_success_url(self):
         urlname = getattr(self, 'success_url_list', 'cosinnus:event:doodle-list')
         return group_aware_reverse(urlname, kwargs={'group': self.group})
-
-doodle_delete_view = DoodleDeleteView.as_view()
-
 
 
 class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectMixin, 
@@ -447,8 +419,6 @@ class EntryDetailView(ReflectedObjectRedirectNoticeMixin, ReflectedObjectSelectM
         })
         
         return context
-
-entry_detail_view = EntryDetailView.as_view()
 
 
 class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin, SingleObjectMixin,
@@ -585,8 +555,6 @@ class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin,
         return ret
 
 
-doodle_vote_view = DoodleVoteView.as_view()
-
 """
 class ArchivedDoodleView(DoodleVoteView):
 
@@ -655,8 +623,6 @@ class DoodleCompleteView(RequireWriteMixin, FilterGroupMixin, UpdateView):
         
         messages.success(request, _('The event was created successfully at the specified date.'))
         return HttpResponseRedirect(self.object.get_absolute_url())
-    
-doodle_complete_view = DoodleCompleteView.as_view()
 
 
 class BaseEventFeed(ICalFeed):
@@ -672,7 +638,8 @@ class BaseEventFeed(ICalFeed):
     description = None # set to base_description on init
     localtime = True # if given (?localtime=1), times will be converted to local server timezone time
     utc_offset = None # in hours, taken from ?utc_offset=<number> optional param
-    
+    filename = f"{_('Events')}.ics"
+
     def __init__(self, *args, **kwargs):
         self.title = self.base_title
         self.description = self.base_description
@@ -690,7 +657,9 @@ class BaseEventFeed(ICalFeed):
             self.localtime = True
         if localtime is not None and is_number(localtime) and int(localtime) == 0:
             self.localtime = True
-        return super(BaseEventFeed, self).__call__(request, *args, **kwargs)
+        response = super(BaseEventFeed, self).__call__(request, *args, **kwargs)
+        response["Content-Disposition"] = 'attachment; filename="%s"' % self.get_filename(response)
+        return response
     
     def get_feed(self, obj, request):
         self.request = request
@@ -747,6 +716,9 @@ class BaseEventFeed(ICalFeed):
             return (mt.location_lat, mt.location_lon)
         return None
 
+    def get_filename(self, response):
+        return self.filename
+
 
 class BaseGroupEventFeed(BaseEventFeed):
     """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
@@ -770,8 +742,6 @@ class UserTokenGroupEventFeed(BaseGroupEventFeed):
     @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
     def __call__(self, request, *args, **kwargs):
         return super(UserTokenGroupEventFeed, self).__call__(request, *args, **kwargs)
-    
-user_token_group_event_feed = UserTokenGroupEventFeed()
 
 
 class PublicGroupEventFeed(BaseGroupEventFeed):
@@ -781,8 +751,6 @@ class PublicGroupEventFeed(BaseGroupEventFeed):
         self.group = get_group_for_request(kwargs.get('group'), request)
         self.user = AnonymousUser()
         return super(PublicGroupEventFeed, self).__call__(request, *args, **kwargs)
-    
-public_group_event_feed = PublicGroupEventFeed()
 
 
 class GroupEventFeed(BaseEventFeed):
@@ -795,20 +763,47 @@ class GroupEventFeed(BaseEventFeed):
         else:
             return public_group_event_feed(request, *args, **kwargs)
 
-event_ical_feed = GroupEventFeed()
-
-
 
 class GlobalFeed(BaseEventFeed):
     """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
-    
+
     def items(self, request):
         qs = Event.get_current_for_portal()
         qs = filter_tagged_object_queryset_for_user(qs, AnonymousUser())
-        qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by('-from_date')
+        qs = qs.filter(state=Event.STATE_SCHEDULED, from_date__isnull=False, to_date__isnull=False).order_by(
+            '-from_date')
         return qs
 
-event_ical_feed_global = GlobalFeed()
+
+class SingleEventFeed(BaseEventFeed):
+    """ An iCal Feed that contains the event specified """
+    model = Event
+
+    def __call__(self, request, *args, **kwargs):
+        self.group = get_group_for_request(kwargs.get('group'), request)
+        self.user = request.user
+        self.slug = kwargs.get('slug')
+        return super(SingleEventFeed, self).__call__(request, *args, **kwargs)
+
+    def items(self, request):
+        qs = self.model.objects.filter(group=self.group, state=Event.STATE_SCHEDULED)
+        qs = filter_tagged_object_queryset_for_user(qs, self.user)
+        return qs.filter(slug=self.slug)
+
+    def get_filename(self, response):
+        event = self.items(self.request).first()
+        return event and f"{slugify(event.title)}.ics" or self.filename
+
+
+class SingleConferenceEventFeed(SingleEventFeed):
+    """ An iCal Feed that contains the conference event specified """
+    model = ConferenceEvent
+
+    def item_location(self, item):
+        return item.room.title
+
+    def item_geolocation(self, item):
+        return None
 
 
 class CommentCreateView(RequireWriteMixin, FilterGroupMixin, AjaxFormsCommentCreateViewMixin,
@@ -852,8 +847,6 @@ class CommentCreateView(RequireWriteMixin, FilterGroupMixin, AjaxFormsCommentCre
         # self.referer is set in post() method
         return self.referer
 
-comment_create = CommentCreateView.as_view()
-
 
 class CommentDeleteView(RequireWriteMixin, FilterGroupMixin, AjaxFormsDeleteViewMixin, DeleteView):
 
@@ -878,8 +871,6 @@ class CommentDeleteView(RequireWriteMixin, FilterGroupMixin, AjaxFormsDeleteView
         messages.success(self.request, self.message_success)
         return self.referer
 
-comment_delete = CommentDeleteView.as_view()
-
 
 class CommentDetailView(SingleObjectMixin, RedirectView):
 
@@ -889,8 +880,6 @@ class CommentDetailView(SingleObjectMixin, RedirectView):
     def get(self, request, *args, **kwargs):
         obj = self.get_object()
         return HttpResponseRedirect(obj.get_absolute_url())
-
-comment_detail = CommentDetailView.as_view()
 
 
 class CommentUpdateView(RequireWriteMixin, FilterGroupMixin, UpdateView):
@@ -913,8 +902,6 @@ class CommentUpdateView(RequireWriteMixin, FilterGroupMixin, UpdateView):
     def get_success_url(self):
         # self.referer is set in post() method
         return self.referer
-
-comment_update = CommentUpdateView.as_view()
 
 
 @csrf_protect
@@ -993,8 +980,6 @@ def assign_attendance_view(request, group, slug):
 class EventDeleteElementView(DeleteElementView):
     model = Event
 
-delete_element_view = EventDeleteElementView.as_view()
-
 
 class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConferenceRoomMixin,
                      GroupFormKwargsMixin, UserFormKwargsMixin):
@@ -1072,20 +1057,44 @@ class ConferenceEventAddView(ConferenceEventFormMixin, AttachableViewMixin, Crea
         form.instance.state = Event.STATE_SCHEDULED
         ret = super(ConferenceEventAddView, self).forms_valid(form, inlines)
         return ret
-    
-conference_event_add_view = ConferenceEventAddView.as_view()
 
 
 class ConferenceEventEditView(ConferenceEventFormMixin, AttachableViewMixin, UpdateWithInlinesView):
     pass
-        
-conference_event_edit_view = ConferenceEventEditView.as_view()
 
 
 class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
     message_success = _('Event "%(title)s" was deleted successfully.')
     message_error = _('Event "%(title)s" could not be deleted.')
-    
+
+
+index_view = EventIndexView.as_view()
+list_view = EventListView.as_view()
+past_events_list_view = PastEventListView.as_view()
+conference_event_list_view = ConferenceEventListView.as_view()
+doodle_list_view = DoodleListView.as_view()
+archived_doodles_list_view = ArchivedDoodlesListView.as_view()
+detailed_list_view = DetailedEventListView.as_view()
+entry_add_view = EntryAddView.as_view()
+doodle_add_view = DoodleAddView.as_view()
+entry_edit_view = EntryEditView.as_view()
+doodle_edit_view = DoodleEditView.as_view()
+entry_delete_view = EntryDeleteView.as_view()
+doodle_delete_view = DoodleDeleteView.as_view()
+entry_detail_view = EntryDetailView.as_view()
+doodle_vote_view = DoodleVoteView.as_view()
+doodle_complete_view = DoodleCompleteView.as_view()
+user_token_group_event_feed = UserTokenGroupEventFeed()
+public_group_event_feed = PublicGroupEventFeed()
+event_ical_feed = GroupEventFeed()
+event_ical_feed_global = GlobalFeed()
+event_ical_feed_single = SingleEventFeed()
+conference_event_ical_feed_single = SingleConferenceEventFeed()
+comment_create = CommentCreateView.as_view()
+comment_delete = CommentDeleteView.as_view()
+comment_detail = CommentDetailView.as_view()
+comment_update = CommentUpdateView.as_view()
+delete_element_view = EventDeleteElementView.as_view()
+conference_event_add_view = ConferenceEventAddView.as_view()
+conference_event_edit_view = ConferenceEventEditView.as_view()
 conference_event_delete_view = ConferenceEventDeleteView.as_view()
-
-
