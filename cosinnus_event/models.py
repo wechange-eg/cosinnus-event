@@ -29,6 +29,7 @@ from django.contrib.auth import get_user_model
 from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from cosinnus.utils.validators import validate_file_infection
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from cosinnus.models.tagged import LikeableObjectMixin
@@ -38,6 +39,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
+
 import logging
 
 logger = logging.getLogger('cosinnus')
@@ -633,7 +635,8 @@ class ConferenceEvent(Event):
 
     presentation_file = models.FileField(_('Presentation file'),
         help_text='The presentation file (e.g. PDF) will be pre-uploaded to the BBB room.',
-        null=True, blank=True, upload_to=get_presentation_filename)
+        null=True, blank=True, upload_to=get_presentation_filename,
+        validators=[validate_file_infection])
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
