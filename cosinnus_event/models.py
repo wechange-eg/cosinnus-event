@@ -680,6 +680,11 @@ class ConferenceEvent(Event):
             @return True if a room needed to be created, False if none was created """
         # if event is of the right type and has no BBB room yet,
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            # be absolutely sure that no room has been created right now
+            self.media_tag.refresh_from_db()
+            if self.media_tag.bbb_room:
+                return False
+            
             # start a thread and create a BBB Room
             event = self
             portal = CosinnusPortal.get_current()
@@ -739,6 +744,16 @@ class ConferenceEvent(Event):
             # redirect to a temporary URL that refreshes
             return reverse('cosinnus:bbb-room-queue', kwargs={'mt_id': self.media_tag.id})
         return self.media_tag.bbb_room.get_absolute_url()
+    
+    def get_bbb_room_queue_api_url(self):
+        if not self.can_have_bbb_room():
+            return None
+        if not settings.COSINNUS_TRIGGER_BBB_ROOM_CREATION_IN_QUEUE:
+            # create a room here if mode is on hesitant-creation
+            if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+                self.check_and_create_bbb_room(threaded=True)
+            # redirect to a temporary URL that refreshes
+        return reverse('cosinnus:bbb-room-queue-api', kwargs={'mt_id': self.media_tag.id})
     
     def get_edit_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
