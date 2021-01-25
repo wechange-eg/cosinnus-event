@@ -1034,7 +1034,9 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
         return context
 
     def get_success_url(self):
-        # redirect to room
+        # redirect to room, except in compact mode where we redirect to the conference event list
+        if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
+            return group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}) 
         return self.room.get_absolute_url()
 
     def forms_valid(self, form, inlines):

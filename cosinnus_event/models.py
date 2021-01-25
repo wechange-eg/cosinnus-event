@@ -737,6 +737,8 @@ class ConferenceEvent(Event):
                     
     
     def get_absolute_url(self):
+        if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
+            return super(ConferenceEvent, self).get_absolute_url()
         return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
     
     def get_bbb_room_url(self):

@@ -68,11 +68,13 @@
 		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
 			{% endif %}
 			
-			{% if form.forms.obj.fields.is_break %}
-	            {% comment %} Visibility Field {% endcomment %}
-	            {% trans "Event is a break" as break_label %}
-	            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
-	            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+			{% if not SETTINGS.COSINNUS_CONFERENCES_USE_COMPACT_MODE %}
+				{% if form.forms.obj.fields.is_break %}
+		            {% comment %} Visibility Field {% endcomment %}
+		            {% trans "Event is a break" as break_label %}
+		            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
+		            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+				{% endif %}
 			{% endif %}
 			
 			{% if form.forms.obj.fields.from_date %}          
@@ -156,17 +158,19 @@
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.max_participants label=max_label legend=max_legend %}
             {% endif %}
 		    
-		    {% if form.forms.obj.fields.presenters %}
-			    {% if not persons_label %}{% trans "Presenters" as persons_label %}{% endif %}
-		        {% trans "Presenters" as persons_placeholder %}
-	            {% trans "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room" as persons_legend %}
-		        {% include 'cosinnus/fields/media_tag_field.html' with field=form.forms.obj.presenters label=persons_label icon="fa-user" placeholder=persons_placeholder legend=persons_legend %}
-	        {% endif %}
-
-	        {% if form.forms.obj.fields.presentation_file %}
-                {% trans "Presentation file" as presentation_file_label %}
-	            {% trans "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room." as presentation_file_legend %}
-                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.presentation_file label=presentation_file_label legend=presentation_file_legend large_field=True field_classes="file-field" %}
+		    {% if not SETTINGS.COSINNUS_CONFERENCES_USE_COMPACT_MODE %}
+			    {% if form.forms.obj.fields.presenters %}
+				    {% if not persons_label %}{% trans "Presenters" as persons_label %}{% endif %}
+			        {% trans "Presenters" as persons_placeholder %}
+		            {% trans "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room" as persons_legend %}
+			        {% include 'cosinnus/fields/media_tag_field.html' with field=form.forms.obj.presenters label=persons_label icon="fa-user" placeholder=persons_placeholder legend=persons_legend %}
+		        {% endif %}
+	
+		        {% if form.forms.obj.fields.presentation_file %}
+	                {% trans "Presentation file" as presentation_file_label %}
+		            {% trans "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room." as presentation_file_legend %}
+	                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.presentation_file label=presentation_file_label legend=presentation_file_legend large_field=True field_classes="file-field" %}
+	            {% endif %}
             {% endif %}
 	        
 	        {% if form.forms.obj.fields.image %}    

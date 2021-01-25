@@ -16,6 +16,23 @@
 
 {% block content %}
     
+    {% comment %} If there is exactly one Conference Room, show a button to add an event for that room {% endcomment %}
+    {% if group.group_is_conference and group.rooms.all.count == 1  %}
+	    <button type="button" href="{{ group.rooms.all.0.get_room_create_url }}" class="btn btn-emphasized btn-autosize">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-plus"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% trans "Create Conference Event" %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+	    <div class="clearfix"></div>
+    {% endif %}
+    
 	<!-- a box with semi transparent background -->
 	<div class="content-box large-space">
 	    

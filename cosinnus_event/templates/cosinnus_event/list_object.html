@@ -43,7 +43,10 @@
                     <a href="{{ detail_url }}">
                         {% include 'cosinnus/common/likefollowstar/following_title_indicator.html' with object=event %}
                         {% if event.conferenceevent %}
-                            <i>({{ event.get_type_verbose }}: {{ event.room.title }})&nbsp;&nbsp;</i>
+                            {% if not SETTINGS.COSINNUS_CONFERENCES_USE_COMPACT_MODE %}
+                                <i>({{ event.get_type_verbose }}: {{ event.room.title }})&nbsp;&nbsp;</i>
+                            {% endif %}
+                            <i>{{ event.from_date|date:"H:i" }} - {{ event.to_date|date:"H:i" }}&nbsp;&nbsp;&nbsp;</i>
                         {% endif %}                        
                         {{ event.title }}{% if group != event.group %} (&#8599; {{ event.group.name }}){% endif %}
                     </a>
