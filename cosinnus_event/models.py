@@ -69,12 +69,17 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     STATE_VOTING_OPEN = 2
     STATE_CANCELED = 3
     STATE_ARCHIVED_DOODLE = 4
+    # used as special state for a hidden conference event
+    # that mimics the conference and can be used in normal Event querysets as proxy for the conference
+    # the logic for this is in `cosinnus_event.hooks`
+    STATE_HIDDEN_GROUP_PROXY = 5 
 
     STATE_CHOICES = (
         (STATE_SCHEDULED, _('Scheduled')),
         (STATE_VOTING_OPEN, _('Voting open')),
         (STATE_CANCELED, _('Canceled')),
         (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
+        (STATE_HIDDEN_GROUP_PROXY, _('Hidden/Special')),
     )
 
     from_date = models.DateTimeField(
@@ -155,8 +160,12 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             readable = _('%(event)s (canceled)') % {'event': self.title}
         elif self.state == Event.STATE_VOTING_OPEN:
             readable = _('%(event)s (pending)') % {'event': self.title}
-        else:
+        elif self.state == Event.STATE_ARCHIVED_DOODLE:
             readable = _('%(event)s (archived)') % {'event': self.title}
+        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+            readable = _('%(event)s (hidden special)') % {'event': self.title}
+        else:
+            readable = _('%(event)s (state unknown)') % {'event': self.title}
             
         return readable
     
@@ -175,7 +184,9 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             # event/doodle was created or
             # event went from being a doodle to being a real event, so fire event created
             session_id = uuid1().int
-            audience = get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk)
+            audience = get_user_model().objects.filter(id__in=self.group.members)
+            if self.creator:
+                audience = audience.exclude(id=self.creator.pk)
             group_followers_except_creator_ids = [pk for pk in self.group.get_followed_user_ids() if not pk in [self.creator_id]]
             group_followers_except_creator = get_user_model().objects.filter(id__in=group_followers_except_creator_ids)
             if self.state == Event.STATE_SCHEDULED:
@@ -201,18 +212,27 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
         elif self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
+        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+            # hidden proxy events redirect to the group
+            return self.group.get_absolute_url()
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
     
     def get_edit_url(self):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-edit', kwargs=kwargs)
+        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+            # hidden proxy events redirect to the group
+            return self.group.get_edit_url()
         return group_aware_reverse('cosinnus:event:event-edit', kwargs=kwargs)
     
     def get_delete_url(self):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-delete', kwargs=kwargs)
+        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+            # hidden proxy events redirect to the group
+            return self.group.get_delete_url()
         return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
     
     def is_user_attending(self, user):
@@ -272,7 +292,11 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         if include_sub_projects:
             groups = groups + list(group.get_children())
         
-        qs = Event.objects.filter(group__in=groups).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
+        qs = Event.objects.filter(group__in=groups).filter(state__in=[
+                    Event.STATE_SCHEDULED, 
+                    Event.STATE_VOTING_OPEN,
+                    Event.STATE_HIDDEN_GROUP_PROXY,
+                ])
         
         if not include_sub_projects:
             # mix in reflected objects, not needed if we are sub-grouping anyways
