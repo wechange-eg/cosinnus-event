@@ -69,17 +69,12 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     STATE_VOTING_OPEN = 2
     STATE_CANCELED = 3
     STATE_ARCHIVED_DOODLE = 4
-    # used as special state for a hidden conference event
-    # that mimics the conference and can be used in normal Event querysets as proxy for the conference
-    # the logic for this is in `cosinnus_event.hooks`
-    STATE_HIDDEN_GROUP_PROXY = 5 
 
     STATE_CHOICES = (
         (STATE_SCHEDULED, _('Scheduled')),
         (STATE_VOTING_OPEN, _('Voting open')),
         (STATE_CANCELED, _('Canceled')),
         (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
-        (STATE_HIDDEN_GROUP_PROXY, _('Hidden/Special')),
     )
 
     from_date = models.DateTimeField(
@@ -94,6 +89,13 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         default=STATE_VOTING_OPEN,
     )
     __state = None # pre-save purpose
+    
+    # used as special flag for a hidden conference event
+    # that mimics the conference and can be used in normal Event querysets as proxy for the conference
+    # the logic for this is in `cosinnus_event.hooks`
+    is_hidden_group_proxy = models.BooleanField(_('Is hidden proxy'),
+        help_text='If set, this event is hidden in its own group, acting as a proxy for the group with from_date and to_date synced, to be able to be shown in other groups.',
+        default=False)
 
     note = models.TextField(_('Note'), blank=True, null=True)
 
@@ -128,7 +130,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     
     original_doodle = models.OneToOneField("self", verbose_name=_('Original Event Poll'),
         related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
-
+    
     objects = EventQuerySet.as_manager()
     
     timeline_template = 'cosinnus_event/v2/dashboard/timeline_item.html'
@@ -143,7 +145,9 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         self.__state = self.state
 
     def __str__(self):
-        if self.state == Event.STATE_SCHEDULED:
+        if self.is_hidden_group_proxy:
+            readable = _('%(event)s (hidden proxy)') % {'event': self.title}
+        elif self.state == Event.STATE_SCHEDULED:
             if self.single_day:
                 readable = _('%(event)s (%(date)s - %(end)s)') % {
                     'event': self.title,
@@ -162,8 +166,6 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             readable = _('%(event)s (pending)') % {'event': self.title}
         elif self.state == Event.STATE_ARCHIVED_DOODLE:
             readable = _('%(event)s (archived)') % {'event': self.title}
-        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
-            readable = _('%(event)s (hidden special)') % {'event': self.title}
         else:
             readable = _('%(event)s (state unknown)') % {'event': self.title}
             
@@ -212,7 +214,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
         elif self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
-        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+        elif self.is_hidden_group_proxy:
             # hidden proxy events redirect to the group
             return self.group.get_absolute_url()
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
@@ -221,7 +223,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-edit', kwargs=kwargs)
-        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+        elif self.is_hidden_group_proxy:
             # hidden proxy events redirect to the group
             return self.group.get_edit_url()
         return group_aware_reverse('cosinnus:event:event-edit', kwargs=kwargs)
@@ -230,7 +232,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-delete', kwargs=kwargs)
-        elif self.state == Event.STATE_HIDDEN_GROUP_PROXY:
+        elif self.is_hidden_group_proxy:
             # hidden proxy events redirect to the group
             return self.group.get_delete_url()
         return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
@@ -295,7 +297,6 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         qs = Event.objects.filter(group__in=groups).filter(state__in=[
                     Event.STATE_SCHEDULED, 
                     Event.STATE_VOTING_OPEN,
-                    Event.STATE_HIDDEN_GROUP_PROXY,
                 ])
         
         if not include_sub_projects:
