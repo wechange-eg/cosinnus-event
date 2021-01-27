@@ -988,6 +988,7 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
     template_name = 'cosinnus_event/conference_event_form.html'
     message_success = _('Event "%(title)s" was edited successfully.')
     message_error = _('Event "%(title)s" could not be edited.')
+    form_view = None
     
     CONFERENCE_EVENT_FORMS_BY_ROOM_TYPE = {
         CosinnusConferenceRoom.TYPE_LOBBY: ConferenceEventLobbyForm,
@@ -999,8 +1000,6 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
 
     @dispatch_group_access()
     def dispatch(self, request, *args, **kwargs):
-        self.form_view = kwargs.get('form_view', None)
-        
         try:
             ret = super(ConferenceEventFormMixin, self).dispatch(request, *args, **kwargs)
         except ImproperlyConfigured as e:
@@ -1025,6 +1024,7 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
     def get_context_data(self, **kwargs):
         context = super(ConferenceEventFormMixin, self).get_context_data(**kwargs)
         tags = ConferenceEvent.objects.tags()
+        print(f'>> frview {self.form_view}')
         context.update({
             'tags': tags,
             'form_view': self.form_view,
@@ -1051,6 +1051,7 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
 class ConferenceEventAddView(ConferenceEventFormMixin, AttachableViewMixin, CreateWithInlinesView):
     message_success = _('Event "%(title)s" was added successfully.')
     message_error = _('Event "%(title)s" could not be added.')
+    form_view = 'add'
     
     def forms_valid(self, form, inlines):
         form.instance.creator = self.request.user
@@ -1062,7 +1063,7 @@ class ConferenceEventAddView(ConferenceEventFormMixin, AttachableViewMixin, Crea
 
 
 class ConferenceEventEditView(ConferenceEventFormMixin, AttachableViewMixin, UpdateWithInlinesView):
-    pass
+    form_view = 'edit'
 
 
 class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
