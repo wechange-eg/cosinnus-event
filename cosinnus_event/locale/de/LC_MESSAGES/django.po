@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2020-11-05 11:59+0100\n"
+"PO-Revision-Date: 2021-01-27 09:45+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -464,7 +464,7 @@ msgstr "Füge %(event_type_verbose)s in Raum %(room_name)s hinzu"
 
 #, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr "Füge %(event_type_verbose)s \"%(event_title)s\" in Raum %(room_name)s hinzu"
+msgstr "Bearbeite %(event_type_verbose)s \"%(event_title)s\" in Raum %(room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "In einem der eingegebenen Felder trat ein Fehler auf. Bitte korrigiere ihn vor dem Speichern!"

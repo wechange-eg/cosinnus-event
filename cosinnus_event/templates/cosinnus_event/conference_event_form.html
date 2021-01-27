@@ -79,7 +79,7 @@
 			
 			{% comment %} Date picker for from_date - to_date {% endcomment %}
 			{% if form.forms.obj.fields.from_date and form.forms.obj.fields.to_date %} 
-			    {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.fields.from_date to_date_field=form.forms.obj.fields.to_date %}
+			    {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.from_date to_date_field=form.forms.obj.to_date %}
 	        {% endif %}
 	        
 	        {% if form.forms.obj.fields.note %}

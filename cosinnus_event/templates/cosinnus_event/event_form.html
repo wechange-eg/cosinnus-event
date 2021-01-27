@@ -59,7 +59,7 @@
         {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
         
         {% comment %} Date picker for from_date - to_date {% endcomment %}	     
-        {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.fields.from_date to_date_field=form.forms.obj.fields.to_date %}
+        {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.from_date to_date_field=form.forms.obj.to_date %}
         
         {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
         {% trans "Description and Infos" as description_label %}
