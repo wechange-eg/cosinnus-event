@@ -10,7 +10,7 @@ from django.db.models.signals import post_save
 from annoying.functions import get_object_or_None
 from cosinnus.models.group_extra import CosinnusConference
 from django.contrib.contenttypes.models import ContentType
-from cosinnus.models.tagged import BaseTaggableObjectReflection
+from cosinnus.models.tagged import BaseTaggableObjectReflection, BaseTagObject
 import logging
 
 logger = logging.getLogger('cosinnus')
@@ -79,6 +79,11 @@ def sync_hidden_conference_proxy_event(sender, group, user, **kwargs):
                 for attr in sync_attributes:
                     setattr(proxy_event, attr[1], getattr(group, attr[0]))
                 proxy_event.save()
+            
+            # set proxy event to visible everywhere (since groups are visible anywhere as well)
+            if not proxy_event.media_tag.visibility == BaseTagObject.VISIBILITY_ALL:
+                proxy_event.media_tag.visibility = BaseTagObject.VISIBILITY_ALL
+                proxy_event.media_tag.save()
             
             # for each related_group in the conference, reflect the proxy event into that group
             # and delete stale reflections

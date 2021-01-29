@@ -328,15 +328,16 @@ class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMix
                               'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
     
     def on_save_changed_attrs(self, obj, changed_attr_dict):
-        session_id = uuid1().int
-        # send out a notification to all attendees for the change
-        attendees_except_creator = [attendance.user.pk for attendance in obj.attendances.all() \
-                            if (attendance.state in [EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING])\
-                                and not attendance.user.pk == obj.creator_id]
-        cosinnus_notifications.attending_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=attendees_except_creator), session_id=session_id)
-        # send out a notification to all followers for the change
-        followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
-        cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator), session_id=session_id, end_session=True)
+        if not obj.is_hidden_group_proxy:
+            session_id = uuid1().int
+            # send out a notification to all attendees for the change
+            attendees_except_creator = [attendance.user.pk for attendance in obj.attendances.all() \
+                                if (attendance.state in [EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING])\
+                                    and not attendance.user.pk == obj.creator_id]
+            cosinnus_notifications.attending_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=attendees_except_creator), session_id=session_id)
+            # send out a notification to all followers for the change
+            followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
+            cosinnus_notifications.following_event_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator), session_id=session_id, end_session=True)
 
 
 class DoodleEditView(EditViewWatchChangesMixin, DoodleFormMixin, AttachableViewMixin, UpdateWithInlinesView):
@@ -345,9 +346,10 @@ class DoodleEditView(EditViewWatchChangesMixin, DoodleFormMixin, AttachableViewM
                           'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
     
     def on_save_changed_attrs(self, obj, changed_attr_dict):
-        # send out a notification to all followers for the change
-        followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
-        cosinnus_notifications.following_doodle_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator))
+        if not obj.is_hidden_group_proxy:
+            # send out a notification to all followers for the change
+            followers_except_creator = [pk for pk in obj.get_followed_user_ids() if not pk in [obj.creator_id]]
+            cosinnus_notifications.following_doodle_changed.send(sender=self, user=obj.creator, obj=obj, audience=get_user_model().objects.filter(id__in=followers_except_creator))
     
     def get_context_data(self, *args, **kwargs):
         context = super(DoodleEditView, self).get_context_data(*args, **kwargs)
@@ -541,9 +543,10 @@ class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin,
         
         ret = super(DoodleVoteView, self).formset_valid(formset)
         
-        # send notification to followers
-        followers_except_voter = [pk for pk in self.object.get_followed_user_ids() if not pk in [self.request.user.id]]
-        cosinnus_notifications.following_doodle_voted.send(sender=self, user=self.object.creator, obj=self.object, audience=get_user_model().objects.filter(id__in=followers_except_voter))
+        if not self.object.is_hidden_group_proxy:
+            # send notification to followers
+            followers_except_voter = [pk for pk in self.object.get_followed_user_ids() if not pk in [self.request.user.id]]
+            cosinnus_notifications.following_doodle_voted.send(sender=self, user=self.object.creator, obj=self.object, audience=get_user_model().objects.filter(id__in=followers_except_voter))
         
         messages.success(self.request, self.message_success )
         return ret

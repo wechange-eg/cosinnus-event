@@ -182,7 +182,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created:
+        if created and not self.is_hidden_group_proxy:
             # event/doodle was created or
             # event went from being a doodle to being a real event, so fire event created
             session_id = uuid1().int
