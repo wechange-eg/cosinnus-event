@@ -120,44 +120,46 @@
 		        </ul>
 		    </button>
     {% endif %}
-
-	<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
-	    <ul class="media-list">
-	        <li class="media">
-	            <a class="pull-left" href="#">
-	                {% if doodle_count %}
-                        {{ doodle_count }}
-                    {% else %}
-                        <i class="fa fa-calendar"></i>
-                    {% endif %}
-	            </a>
-	            <a class="pull-right" href="#">
-	               {% if request.path == doodle_list_page %}
-	                    <i class="fa fa-caret-right"></i>
-                    {% endif %}
-                </a>
-	            <div class="media-body">
-	                {% trans "Event Polls" %}
-	            </div>
-	        </li>
-	    </ul>
-	</button>
-	
-	<button type="button" class="btn w100 btn-emphasized regular-space" href="{{ doodle_list_archived_page }}{% add_current_params %}">
-	    <ul class="media-list">
-	        <li class="media">
-	            <a class="pull-left" href="#">
-                    <i class="fa fa-calendar-check-o"></i>
-	            </a>
-	            <a class="pull-right" href="#">
-	               {% if request.path == doodle_list_archived_page %}
-	                    <i class="fa fa-caret-right"></i>
-                    {% endif %}
-                </a>
-	            <div class="media-body">
-	                {% trans "Archived Event Polls" %}
-	            </div>
-	        </li>
-	    </ul>
-	</button>
+    
+    {% if not group.group_is_conference %}
+		<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
+		    <ul class="media-list">
+		        <li class="media">
+		            <a class="pull-left" href="#">
+		                {% if doodle_count %}
+	                        {{ doodle_count }}
+	                    {% else %}
+	                        <i class="fa fa-calendar"></i>
+	                    {% endif %}
+		            </a>
+		            <a class="pull-right" href="#">
+		               {% if request.path == doodle_list_page %}
+		                    <i class="fa fa-caret-right"></i>
+	                    {% endif %}
+	                </a>
+		            <div class="media-body">
+		                {% trans "Event Polls" %}
+		            </div>
+		        </li>
+		    </ul>
+		</button>
+		
+		<button type="button" class="btn w100 btn-emphasized regular-space" href="{{ doodle_list_archived_page }}{% add_current_params %}">
+		    <ul class="media-list">
+		        <li class="media">
+		            <a class="pull-left" href="#">
+	                    <i class="fa fa-calendar-check-o"></i>
+		            </a>
+		            <a class="pull-right" href="#">
+		               {% if request.path == doodle_list_archived_page %}
+		                    <i class="fa fa-caret-right"></i>
+	                    {% endif %}
+	                </a>
+		            <div class="media-body">
+		                {% trans "Archived Event Polls" %}
+		            </div>
+		        </li>
+		    </ul>
+		</button>
+	{% endif %}
 {% endif %}

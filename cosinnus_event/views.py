@@ -33,7 +33,7 @@ from cosinnus_event.forms import EventForm, SuggestionForm, VoteForm,\
     ConferenceEventDiscussionForm, ConferenceEventCoffeeTableForm
 from cosinnus_event.models import Event, Suggestion, Vote, upcoming_event_filter,\
     past_event_filter, Comment, EventAttendance, ConferenceEvent
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from cosinnus.views.mixins.filters import CosinnusFilterMixin
 from cosinnus_event.filters import EventFilter
 from cosinnus.utils.urls import group_aware_reverse, redirect_next_or
@@ -205,6 +205,10 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
 
     @dispatch_group_access()
     def dispatch(self, request, *args, **kwargs):
+        if self.group.group_is_conference:
+            messages.warning(request, _('Please use the conference management area to add new workshops!'))
+            return redirect(group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}))
+        
         self.form_view = kwargs.get('form_view', None)
         if self.form_view != 'add':
             obj = self.get_object()

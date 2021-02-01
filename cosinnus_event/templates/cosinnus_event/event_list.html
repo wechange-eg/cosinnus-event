@@ -72,7 +72,7 @@
         </script>
         
         {% if request.user and request.user.is_authenticated %} 
-	        {% if user|can_create_objects_in:group %}
+	        {% if user|can_create_objects_in:group and not group.group_is_conference %}
 		        <form method="GET" action="{% group_url 'cosinnus:event:event-add' group=group %}">
 			        <div type="button" class="btn btn-default w100 large-space">
 			            <ul class="media-list">

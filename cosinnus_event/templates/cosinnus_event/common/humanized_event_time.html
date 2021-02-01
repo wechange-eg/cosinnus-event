@@ -30,7 +30,7 @@
 	    {% endif %}
 	    {% if not from_date_only %}
 		    <em>{% trans "until" context "time" %}</em>
-		    <span class="moment-data-date" data-date="{{ event.to_date|date:"Y-m-d" }}" data-date-style="short" data-date-notooltip="true"></span>
+	        <span class="moment-data-date" data-date="{{ event.to_date|date:"Y-m-d" }}" data-date-style="short" data-date-notooltip="true"></span>
 		    {% if event.is_same_time and event.from_date|date:"H:i" == "00:00" or event.from_date|date:"H:i" == "00:00" and event.to_date|date:"H:i" == "23:59" %}
 		        <em>({% trans "all day" context "time" %})</em>
 		    {% else %}
