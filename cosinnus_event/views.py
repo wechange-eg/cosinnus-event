@@ -105,12 +105,16 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         doodle_count = self.get_base_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
-        future_events = self.get_queryset()
-        future_events_count = future_events.count() 
+        future_events = self.get_queryset().reverse()
+        future_events_count = future_events.count()
+        proxy_events = future_events.filter(is_hidden_group_proxy=True)
+        proxy_event_count = proxy_events.count()
         
         context.update({
-            'future_events': future_events.reverse(),
+            'future_events': future_events,
             'future_events_count': future_events_count,
+            'proxy_events': proxy_events,
+            'proxy_event_count': proxy_event_count,
             'doodle_count': doodle_count,
             'event_view': self.event_view,
         })
@@ -187,6 +191,12 @@ class ArchivedDoodlesListView(EventListView):
 
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
+
+
+class ConferencesListView(EventListView):
+    """ Displays all conferences reflected into this group as events """
+    template_name = 'cosinnus_event/event_list_detailed_conferences.html'
+    event_view = 'conferences'
 
 
 class SuggestionInlineView(InlineFormSet):
@@ -1085,6 +1095,7 @@ conference_event_list_view = ConferenceEventListView.as_view()
 doodle_list_view = DoodleListView.as_view()
 archived_doodles_list_view = ArchivedDoodlesListView.as_view()
 detailed_list_view = DetailedEventListView.as_view()
+conference_list_view = ConferencesListView.as_view()
 entry_add_view = EntryAddView.as_view()
 doodle_add_view = DoodleAddView.as_view()
 entry_edit_view = EntryEditView.as_view()

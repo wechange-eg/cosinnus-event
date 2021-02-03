@@ -25,6 +25,7 @@ cosinnus_group_patterns = [
     url(r'^list/$', views.detailed_list_view, name='list_detailed'),
     url(r'^list/past/$', views.past_events_list_view, name='list_past'),
     url(r'^list/archived/$', views.archived_doodles_list_view, name='doodle-list-archived'),
+    url(r'^list/conferences/$', views.conference_list_view, name='list_conferences'),
     url(r'^list/conference-events/$', views.conference_event_list_view, name='conference-event-list'),
     url(r'^list/delete_element/$', views.delete_element_view, name='delete-element'),
     url(r'^add/$', views.entry_add_view,  {'form_view': 'add'},  name='event-add'),
