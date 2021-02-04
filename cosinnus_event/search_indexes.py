@@ -82,4 +82,8 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
         qs = qs.exclude(is_hidden_group_proxy=True)
         return qs
     
+    def should_update(self, instance, **kwargs):
+        should = super(EventIndex, self).should_update(instance, **kwargs)
+        return should and not instance.is_hidden_group_proxy 
+    
     
