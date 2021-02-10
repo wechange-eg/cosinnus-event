@@ -249,7 +249,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
             urlname = 'cosinnus:event:event-detail'
         else:
             urlname = self.success_url_list
-        return group_aware_reverse(urlname, kwargs=kwargs)
+        return redirect_next_or(self.request, group_aware_reverse(urlname, kwargs=kwargs))
 
     def forms_valid(self, form, inlines):
         ret = super(EntryFormMixin, self).forms_valid(form, inlines)
@@ -1041,7 +1041,6 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
     def get_context_data(self, **kwargs):
         context = super(ConferenceEventFormMixin, self).get_context_data(**kwargs)
         tags = ConferenceEvent.objects.tags()
-        print(f'>> frview {self.form_view}')
         context.update({
             'tags': tags,
             'form_view': self.form_view,
@@ -1053,8 +1052,10 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
     def get_success_url(self):
         # redirect to room, except in compact mode where we redirect to the conference event list
         if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
-            return group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}) 
-        return self.room.get_absolute_url()
+            url = group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}) 
+        else:
+            url = self.room.get_absolute_url()
+        return redirect_next_or(self.request, url)
 
     def forms_valid(self, form, inlines):
         # assign room to ConferenceEvent

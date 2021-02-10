@@ -174,7 +174,7 @@
       {% else %}
         {% captureas label %}{% blocktrans with title=event.title %}Do you really want to delete event „{{ title }}“?{% endblocktrans %}{% endcaptureas %}
         {% captureas title %}{% trans "Delete event" %}{% endcaptureas %}
-        {% captureas action %}{% group_url 'cosinnus:event:event-delete' group=group slug=event.slug%}{% if event.conferenceevent %}?next={% group_url 'cosinnus:event:conference-event-list' group=group %}{% endif %}{% endcaptureas %}
+        {% captureas action %}{{ event.get_delete_url }}{% if event.conferenceevent %}?next={% group_url 'cosinnus:event:conference-event-list' group=group %}{% endif %}{% endcaptureas %}
       {% endif %}
 
     {% include "cosinnus/modal_box.html" with id=modal_id label=label title=title form_action=action %}
