@@ -111,7 +111,7 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
         future_events_count = future_events.count() 
         
         context.update({
-            'future_events': future_events.reverse(),
+            'future_events': future_events,
             'future_events_count': future_events_count,
             'doodle_count': doodle_count,
             'event_view': self.event_view,
