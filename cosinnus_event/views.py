@@ -105,7 +105,7 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
     def get_context_data(self, **kwargs):
         context = super(EventListView, self).get_context_data(**kwargs)
         doodle_count = self.get_base_queryset().filter(state=Event.STATE_VOTING_OPEN).count()
-        future_events = self.get_queryset().reverse()
+        future_events = self.get_queryset()
         future_events_count = future_events.count()
         proxy_events = future_events.filter(is_hidden_group_proxy=True)
         proxy_event_count = proxy_events.count()
