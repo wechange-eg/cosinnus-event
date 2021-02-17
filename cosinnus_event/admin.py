@@ -5,7 +5,8 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus_event.models import Event, Suggestion, Vote, ConferenceEvent
-from cosinnus.admin import BaseTaggableAdminMixin
+from cosinnus.admin import BaseTaggableAdminMixin,\
+    CosinnusConferenceSettingsInline
 
 
 class VoteInlineAdmin(admin.TabularInline):
@@ -61,6 +62,7 @@ class ConferenceEventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
     list_display = BaseTaggableAdminMixin.list_display + ['id', 'type', 'room', 'from_date', 'to_date', 'group', 'state']
     list_filter = BaseTaggableAdminMixin.list_filter + ['type', ]
     actions = (restart_bbb_rooms, )
+    inlines = [CosinnusConferenceSettingsInline]
 
 
 admin.site.register(ConferenceEvent, ConferenceEventAdmin)

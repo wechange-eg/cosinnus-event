@@ -41,6 +41,7 @@ from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
 
 import logging
+from django.contrib.contenttypes.fields import GenericRelation
 
 logger = logging.getLogger('cosinnus')
 
@@ -662,6 +663,8 @@ class ConferenceEvent(Event):
         help_text='The presentation file (e.g. PDF) will be pre-uploaded to the BBB room.',
         null=True, blank=True, upload_to=get_presentation_filename,
         validators=[validate_file_infection])
+    
+    conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
@@ -732,6 +735,7 @@ class ConferenceEvent(Event):
                     max_participants=max_participants,
                     room_type=room_type,
                     presentation_url=presentation_url,
+                    source_object=self,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
