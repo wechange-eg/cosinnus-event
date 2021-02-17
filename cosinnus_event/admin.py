@@ -5,8 +5,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from cosinnus_event.models import Event, Suggestion, Vote, ConferenceEvent
-from cosinnus.admin import BaseTaggableAdminMixin,\
-    CosinnusConferenceSettingsInline
+from cosinnus.admin import BaseTaggableAdmin, CosinnusConferenceSettingsInline
 
 
 class VoteInlineAdmin(admin.TabularInline):
@@ -38,10 +37,10 @@ class SuggestionInlineAdmin(admin.TabularInline):
 admin.site.register(Suggestion, SuggestionAdmin)
 
 
-class EventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
-    inlines = BaseTaggableAdminMixin.inlines + [SuggestionInlineAdmin,]
-    list_display = BaseTaggableAdminMixin.list_display + ['id', 'from_date', 'to_date', 'group', 'state', 'is_hidden_group_proxy']
-    list_filter = BaseTaggableAdminMixin.list_filter + ['state', 'is_hidden_group_proxy']
+class EventAdmin(BaseTaggableAdmin):
+    inlines = BaseTaggableAdmin.inlines + [SuggestionInlineAdmin,]
+    list_display = BaseTaggableAdmin.list_display + ['id', 'from_date', 'to_date', 'group', 'state', 'is_hidden_group_proxy']
+    list_filter = BaseTaggableAdmin.list_filter + ['state', 'is_hidden_group_proxy']
 
 admin.site.register(Event, EventAdmin)
 
@@ -58,9 +57,9 @@ def restart_bbb_rooms(modeladmin, request, queryset):
 restart_bbb_rooms.short_description = _('Restart BBB rooms')
 
 
-class ConferenceEventAdmin(BaseTaggableAdminMixin, admin.ModelAdmin):
-    list_display = BaseTaggableAdminMixin.list_display + ['id', 'type', 'room', 'from_date', 'to_date', 'group', 'state']
-    list_filter = BaseTaggableAdminMixin.list_filter + ['type', ]
+class ConferenceEventAdmin(BaseTaggableAdmin):
+    list_display = BaseTaggableAdmin.list_display + ['id', 'type', 'room', 'from_date', 'to_date', 'group', 'state']
+    list_filter = BaseTaggableAdmin.list_filter + ['type', ]
     actions = (restart_bbb_rooms, )
     inlines = [CosinnusConferenceSettingsInline]
 
