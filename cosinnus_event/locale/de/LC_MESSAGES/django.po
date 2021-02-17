@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-06 16:06+0200\n"
-"PO-Revision-Date: 2021-01-27 09:45+0100\n"
+"PO-Revision-Date: 2021-02-17 14:23+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -399,7 +399,7 @@ msgid "Room"
 msgstr "Raum"
 
 msgid "Conference Event Type"
-msgstr "Konferenz-Veranstaltungstyp"
+msgstr "Tagungsveranstaltungstyp"
 
 msgid "Is a Break"
 msgstr "Ist Pause"
@@ -408,10 +408,10 @@ msgid "Maximum Event Participants"
 msgstr "Max. Teilnehmerzahl"
 
 msgid "Conference Event"
-msgstr "Konferenz-Veranstaltung"
+msgstr "Tagungsveranstaltung"
 
 msgid "Conference Events"
-msgstr "Konferenz-Veranstaltungen"
+msgstr "Tagungsveranstaltungen"
 
 #, python-format
 msgid "%(event)s %(type)s"
@@ -470,7 +470,7 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "In einem der eingegebenen Felder trat ein Fehler auf. Bitte korrigiere ihn vor dem Speichern!"
 
 msgid "Enter a title for the conference event."
-msgstr "Gib einen Titel für die Konferenzveranstaltung ein."
+msgstr "Gib einen Titel für die Tagungsveranstaltung ein."
 
 msgid "Event is a break"
 msgstr "Veranstaltung ist eine Pause"
@@ -515,10 +515,10 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr "Wie viele Teilnehmende dürfen am Tisch Platz nehmen, ehe der Tisch voll ist"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr "Die Präsentierenden werden in der Veranstaltungsübersicht angezeigt und erhalten Moderationsrechte in Videokonferenzen "
+msgstr "Die Präsentierenden werden in der Veranstaltungsübersicht angezeigt und erhalten Moderationsrechte in VideoTagungen "
 
 msgid "Upload a preview image for the Conference Event"
-msgstr "Lade ein Vorschaubild für die Konferenzveranstaltung hoch"
+msgstr "Lade ein Vorschaubild für die Tagungsveranstaltung hoch"
 
 msgid "Create"
 msgstr "Erstellen"
@@ -657,7 +657,7 @@ msgid "Export event feed"
 msgstr "Feed für Veranstaltungen"
 
 msgid "There are no conference events."
-msgstr "Es gibt derzeit keine Konferenz-Veranstaltungen."
+msgstr "Es gibt derzeit keine Tagungsveranstaltungen."
 
 msgid "There are no current or future events."
 msgstr "Es sind keine aktuellen oder zukünftigen Veranstaltungen geplant."
