@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-23 18:24+0100\n"
-"PO-Revision-Date: 2021-02-17 14:23+0100\n"
+"PO-Revision-Date: 2021-02-23 18:47+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 msgid "Restart BBB rooms"
-msgstr ""
+msgstr "BBB Räume neu starten"
 
 msgid "Events"
 msgstr "Veranstaltungen"
@@ -278,7 +278,7 @@ msgid "State"
 msgstr "Status"
 
 msgid "Is hidden proxy"
-msgstr ""
+msgstr "Ist versteckter Proxy"
 
 msgid "Note"
 msgstr "Beschreibung"
@@ -319,10 +319,9 @@ msgstr "Ursprüngliche Terminabstimmung"
 msgid "Event"
 msgstr "Veranstaltung"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (archived)"
+#, python-format
 msgid "%(event)s (hidden proxy)"
-msgstr "%(event)s (Abgeschlossen)"
+msgstr "%(event)s (verstecker Proxy)"
 
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
@@ -344,10 +343,9 @@ msgstr "%(event)s (Termin in der Schwebe)"
 msgid "%(event)s (archived)"
 msgstr "%(event)s (Abgeschlossen)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (state unknown)"
-msgstr "%(event)s (Termin in der Schwebe)"
+msgstr "%(event)s (Status unbekannt)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -423,8 +421,6 @@ msgstr "Ist Pause"
 msgid "Maximum Event Participants"
 msgstr "Max. Teilnehmerzahl"
 
-#, fuzzy
-#| msgid "Custom embed code (HTML)"
 msgid "Embed code (HTML)"
 msgstr "Einbettungscode (HTML)"
 
@@ -671,18 +667,14 @@ msgstr "Gib den Titel für eine neue Veranstaltung ein oder klicke auf einen Tag
 msgid "Export event feed"
 msgstr "Feed für Veranstaltungen"
 
-#, fuzzy
-#| msgid "Conference Event"
 msgid "Create Conference Event"
-msgstr "Tagungsveranstaltung"
+msgstr "Tagungsveranstaltung erstellen"
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
-msgstr ""
+msgstr "Tagungsveranstaltungen können direkt aus den Räumen selbst in der Tagungsoberfläche oder zentral hier angelegt werden"
 
-#, fuzzy
-#| msgid "Conference Event"
 msgid "Conference Room Management"
-msgstr "Tagungsveranstaltung"
+msgstr "Tagungsraum-Management"
 
 msgid "There are no conference events."
 msgstr "Es gibt derzeit keine Tagungsveranstaltungen."
@@ -1071,7 +1063,7 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr "Veranstaltung \"%(title)s\" konnte nicht bearbeitet werden."
 
 msgid "Please use the conference management area to add new workshops!"
-msgstr ""
+msgstr "Bitte nutze den Bereich der Tagungsverwaltung, um neue Workshops hinzuzufügen!"
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Die Seite die du aufgerufen hast ist zu dieser Zeit nicht verfügbar."
