@@ -12,6 +12,7 @@ from cosinnus.models.group_extra import CosinnusConference
 from django.contrib.contenttypes.models import ContentType
 from cosinnus.models.tagged import BaseTaggableObjectReflection, BaseTagObject
 import logging
+from cosinnus.utils.functions import unique_aware_slugify
 
 logger = logging.getLogger('cosinnus')
 
@@ -78,6 +79,10 @@ def sync_hidden_conference_proxy_event(sender, group, user, **kwargs):
             if any(getattr(proxy_event, attr[1]) != getattr(group, attr[0]) for attr in sync_attributes):
                 for attr in sync_attributes:
                     setattr(proxy_event, attr[1], getattr(group, attr[0]))
+                # set proxy event's slug to something unreachable so it never clashes with a real event
+                if not proxy_event.slug:
+                    unique_aware_slugify(proxy_event, 'title', 'slug', group=proxy_event.group)
+                    proxy_event.slug = '__proxy__-' + proxy_event.slug
                 proxy_event.save()
             
             # set proxy event to visible everywhere (since groups are visible anywhere as well)
