@@ -35,7 +35,18 @@
     
 	<!-- a box with semi transparent background -->
 	<div class="content-box large-space">
+	    <h2>{% trans "Conference Events" %}</h2>
 	    
+	    {% if group.group_is_conference and group.rooms.all.count != 1  %}
+	        <div class='form-info textfield transparent'>
+		        {% trans "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here" %}:
+		        <a href="{% group_url 'cosinnus:conference:room-management' group=group %}">
+		            {% trans "Conference Room Management" %}
+		        </a>
+            </div>
+            <div class="ultra-space"></div>
+	    {% endif %}
+	
 	    {% for event in conference_events %}
         	{% include 'cosinnus_event/list_object.html' %}
 	    {% empty %}
