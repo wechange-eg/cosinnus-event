@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-10-13 16:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.1\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Заходи"
@@ -278,6 +281,9 @@ msgstr "Кінець"
 msgid "State"
 msgstr "Стан"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Примітка"
 
@@ -317,6 +323,11 @@ msgstr "Вихідна пропозиція дати заходу"
 msgid "Event"
 msgstr "Захід"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (выдправлено в архів)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -336,6 +347,11 @@ msgstr "%(event)s (заплановано)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (выдправлено в архів)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (заплановано)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -411,6 +427,12 @@ msgstr "Це перерва"
 msgid "Maximum Event Participants"
 msgstr "Максимум учасників події"
 
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Захід конференції"
 
@@ -482,21 +504,6 @@ msgstr "Цей захід є перервою"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Поставте цей прапорець, щоб створити порожню подію для перерви, яка відображається у адженді та часоряді"
 
-msgid "Date"
-msgstr "Дата"
-
-msgid "From"
-msgstr "З"
-
-msgid "Start date."
-msgstr "Дата початку."
-
-msgid "Until"
-msgstr "До"
-
-msgid "End date."
-msgstr "Дата завершення."
-
 msgid "Description and Infos"
 msgstr "Опис та інформація"
 
@@ -512,6 +519,9 @@ msgstr "Приклад: https://www.youtube.com/watch?v=12345"
 msgid "Stream URL for the Event"
 msgstr "URL для трансляцій заходу"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr "Максимум учасників за Coffee Table"
 
@@ -520,6 +530,9 @@ msgstr "Скільки учасників може приєднатися до �
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Презентатори будуть показані по порядку на заході й отримають права Модератора для Кімнати ВВВ"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Завантажте зображення попереднього перегляду для події конференції"
@@ -642,7 +655,7 @@ msgstr "Перше зображення, що буде завантажене, �
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Якщо Ви це встановите, Ваш захід буде показано на карті! (якщо дозволено налаштуваннями видимості)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Календар"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -659,6 +672,19 @@ msgstr "Введіть назву нового заходу або вибері�
 
 msgid "Export event feed"
 msgstr "Експортувати вихідний файл заходів"
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Create Conference Event"
+msgstr "Захід конференції"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Conference Room Management"
+msgstr "Захід конференції"
 
 msgid "There are no conference events."
 msgstr "Конференційних заходів немає."
@@ -680,9 +706,6 @@ msgstr "Назад до опитування щодо дати"
 
 msgid "Return to Archived Event Polls"
 msgstr "Назад до опитування щодо дати заходу"
-
-msgid "Calendar"
-msgstr "Календар"
 
 msgid "List"
 msgstr "Список"
@@ -1049,6 +1072,9 @@ msgstr "Захід «%(title)s» успішно відредаговано."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Неможливо редагувати захід «%(title)s»."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Сторінка, яку Ви запитуєте, на даний момент не доступна."
 
@@ -1121,6 +1147,24 @@ msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "From"
+#~ msgstr "З"
+
+#~ msgid "Start date."
+#~ msgstr "Дата початку."
+
+#~ msgid "Until"
+#~ msgstr "До"
+
+#~ msgid "End date."
+#~ msgstr "Дата завершення."
+
+#~ msgid "Kalender"
+#~ msgstr "Календар"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Нова подія від %(sender_name)s"

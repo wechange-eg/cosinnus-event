@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-11-05 11:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.6\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Evénements"
@@ -322,6 +325,9 @@ msgstr "Fin"
 msgid "State"
 msgstr "Etat"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Note"
 
@@ -361,6 +367,11 @@ msgstr "Sondage original de l'événement "
 msgid "Event"
 msgstr "Evénement"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (archivé)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -380,6 +391,11 @@ msgstr "%(event)s (en attente)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (archivé)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (en attente)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -456,6 +472,14 @@ msgstr "Est une pause"
 
 msgid "Maximum Event Participants"
 msgstr "Nombre maximum de participants à l'événement"
+
+#, fuzzy
+#| msgid "Custom embed code (HTML)"
+msgid "Embed code (HTML)"
+msgstr "Code d'intégration (HTML)"
+
+msgid "Presentation file"
+msgstr "Dossier de présentation"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -537,21 +561,6 @@ msgstr "Date de l'événement"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Cochez cette case pour créer un événement de pause vide qui apparaît dans l'agenda et le calendrier"
 
-msgid "Date"
-msgstr "Date"
-
-msgid "From"
-msgstr "De"
-
-msgid "Start date."
-msgstr "Date de début."
-
-msgid "Until"
-msgstr "A"
-
-msgid "End date."
-msgstr "Date de fin."
-
 msgid "Description and Infos"
 msgstr "Description et informations"
 
@@ -571,6 +580,9 @@ msgstr "Exemple : http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "Lien externe pour l'événement"
 
+msgid "Custom embed code (HTML)"
+msgstr "Code d'intégration (HTML)"
+
 msgid "Maximum Coffee Table Participants"
 msgstr "Nombre maximum de participants à la table basse"
 
@@ -579,6 +591,9 @@ msgstr "Combien de participants peuvent rejoindre une table à café avant qu'el
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Les présentateurs seront présentés dans l'ordre lors de l'événement et recevront les autorisations de modérateur pour la BBB-Room"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "Le fichier de présentation (par exemple PDF) sera préchargé dans la salle BBB."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Téléchargez une image d'aperçu de la conférence"
@@ -701,7 +716,7 @@ msgstr "La première image téléchargée sera affichée en fond d'écran."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Si tu sélectionnes ceci, ton événement sera affiché sur la carte ! (si permis par les paramètres de visibilité)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Calendrier"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -718,6 +733,19 @@ msgstr "Saisir le titre pour un nouvel événement ou sélectionne un jour dans 
 
 msgid "Export event feed"
 msgstr "Exporter le fil de l'événement"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Créer événement"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "Créer événement"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -741,9 +769,6 @@ msgstr "Retour aux sondages d'événement"
 
 msgid "Return to Archived Event Polls"
 msgstr "Retour aux sondages d'événement archivés"
-
-msgid "Calendar"
-msgstr "Calendrier"
 
 msgid "List"
 msgstr "Liste"
@@ -1115,6 +1140,9 @@ msgstr "L'événement \"%(title)s\" a été modifié."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "L'événement \"%(title)s\" n'a pas pu être modifié."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "La page que tu as demandé n'est pas disponible pour cet événement à cet horaire."
 
@@ -1188,14 +1216,23 @@ msgstr "Ton commentaire a été ajouté."
 msgid "Your comment was deleted successfully."
 msgstr "Ton commentaire a été supprimé."
 
-msgid "Custom embed code (HTML)"
-msgstr "Code d'intégration (HTML)"
+#~ msgid "Date"
+#~ msgstr "Date"
 
-msgid "Presentation file"
-msgstr "Dossier de présentation"
+#~ msgid "From"
+#~ msgstr "De"
 
-msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
-msgstr "Le fichier de présentation (par exemple PDF) sera préchargé dans la salle BBB."
+#~ msgid "Start date."
+#~ msgstr "Date de début."
+
+#~ msgid "Until"
+#~ msgstr "A"
+
+#~ msgid "End date."
+#~ msgstr "Date de fin."
+
+#~ msgid "Kalender"
+#~ msgstr "Calendrier"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nouvel évènement par %(sender_name)s"

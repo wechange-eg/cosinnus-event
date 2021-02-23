@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-04-07 12:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.3\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "ღონისძიებები"
@@ -272,6 +275,9 @@ msgstr "დასასრული"
 msgid "State"
 msgstr "გაფრთხილების მდგომარეობა"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "შენიშვნა"
 
@@ -311,6 +317,11 @@ msgstr "პირვანდელი ღონისძიების გა�
 msgid "Event"
 msgstr "ღონისძიება"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (დაარქივებულია)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -330,6 +341,11 @@ msgstr "%(event)s (პროცესშია)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (დაარქივებულია)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (პროცესშია)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -405,6 +421,12 @@ msgid "Is a Break"
 msgstr ""
 
 msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
@@ -487,21 +509,6 @@ msgstr "ღონისძიების თარიღი"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr "თარიღი"
-
-msgid "From"
-msgstr "- დან"
-
-msgid "Start date."
-msgstr "საწყისი თარიღი."
-
-msgid "Until"
-msgstr "- მდე"
-
-msgid "End date."
-msgstr "დასასრულის თარიღი."
-
 msgid "Description and Infos"
 msgstr "აღწერა და ინფორმაცია"
 
@@ -521,6 +528,9 @@ msgstr "მაგალითი: http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "გარე ბმული ღონისძიებისათვის"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -528,6 +538,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -651,7 +664,7 @@ msgstr "პირველი ატვირთული გამოსახ�
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "თუ თქვენ ეს დააყენეთ, ღონისძიება ნაჩვენები იქნება რუკაზე! ( ხილვადობის პარამეტრების შესაბამისად)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "კალენდარი"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -668,6 +681,19 @@ msgstr "შეიყვანეთ სათაური ახალი ღო
 
 msgid "Export event feed"
 msgstr "ღონისძიების feed-ის ექსპორტი"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "ღონისძიების შექმნა"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "ღონისძიების შექმნა"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -691,9 +717,6 @@ msgstr "ღონისძიებების გამოკითხვა�
 
 msgid "Return to Archived Event Polls"
 msgstr "დაარქივებულ ღონისძიების გამოკითხვებზე დაბრუნება"
-
-msgid "Calendar"
-msgstr "კალენდარი"
 
 msgid "List"
 msgstr "სია"
@@ -1057,6 +1080,9 @@ msgstr "ღონისძიება\"%(title)s\" წარმატები�
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "ღონისძიების \"%(title)s\" დარედაქტირება ვერ მოხერხდა."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "თქვენ მიერ მოთხოვნილი გვერდი არ არის ამ დროისთვის არ არის ამ ღონისძიებისთვის დაშვებული."
 
@@ -1129,6 +1155,24 @@ msgstr "თქვენი კომენტარი წარმატებ�
 
 msgid "Your comment was deleted successfully."
 msgstr "თქვენი კომენტარი წარმატებით წაიშალა."
+
+#~ msgid "Date"
+#~ msgstr "თარიღი"
+
+#~ msgid "From"
+#~ msgstr "- დან"
+
+#~ msgid "Start date."
+#~ msgstr "საწყისი თარიღი."
+
+#~ msgid "Until"
+#~ msgstr "- მდე"
+
+#~ msgid "End date."
+#~ msgstr "დასასრულის თარიღი."
+
+#~ msgid "Kalender"
+#~ msgstr "კალენდარი"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ"

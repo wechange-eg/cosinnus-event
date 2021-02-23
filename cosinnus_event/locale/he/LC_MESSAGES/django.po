@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-11-05 12:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.6\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "אירועים"
@@ -276,6 +279,9 @@ msgstr "סיום"
 msgid "State"
 msgstr "מצב"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "הערה"
 
@@ -315,6 +321,11 @@ msgstr "סקר האירוע המקורי"
 msgid "Event"
 msgstr "אירוע"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (בארכיון)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -334,6 +345,11 @@ msgstr "%(event)s (בהמתנה)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (בארכיון)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (בהמתנה)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -410,6 +426,14 @@ msgstr "היא הפסקה"
 
 msgid "Maximum Event Participants"
 msgstr "מספר מקסימלי של משתתפים באירוע"
+
+#, fuzzy
+#| msgid "Custom embed code (HTML)"
+msgid "Embed code (HTML)"
+msgstr "קוד הטמעה"
+
+msgid "Presentation file"
+msgstr "קובץ מצגת"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -491,21 +515,6 @@ msgstr "תאריך אירוע"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "סמן/י תיבה זו על מנת ליצור אירוע הפסקה ריק אשר יוצג בימן ובציר הזמן"
 
-msgid "Date"
-msgstr "תאריך"
-
-msgid "From"
-msgstr "מ"
-
-msgid "Start date."
-msgstr "תאריך התחלה."
-
-msgid "Until"
-msgstr "עד"
-
-msgid "End date."
-msgstr "תאריך סיום."
-
 msgid "Description and Infos"
 msgstr "תיאור ומידע"
 
@@ -525,6 +534,9 @@ msgstr "דוגמה: http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "קישור חיצוני עבור האירוע"
 
+msgid "Custom embed code (HTML)"
+msgstr "קוד הטמעה"
+
 msgid "Maximum Coffee Table Participants"
 msgstr "מספר משתתפים מקסימלי עבור שולחן קפה"
 
@@ -533,6 +545,9 @@ msgstr "כמה משתתפים יכולים להצטרף אל שולחן קפה �
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "המציגים יוצגו על פי הסדר באירוע והם יקבלו היתר מנהל פורום עבור חדר ה-BBB"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "קובץ המצגת (למשל PDF) יעלה מראש לחדר BBB."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "העלה/י תמונה מקדימה עבור אירוע הוועידה"
@@ -655,8 +670,8 @@ msgstr "התמונה הראשונה שהועלתה תוצג כטפט."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "אם תגדירו זאת, האירוע שלכם יוצג על המפה! (אם יש הרשאה בהגדרות הנראות שלו)"
 
-msgid "Kalender"
-msgstr "יומן"
+msgid "Calendar"
+msgstr "לוח שנה"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "העתק קישור iCal זה ליישום היומן שלך כדי לייבא אירועים עכשוויים:"
@@ -672,6 +687,19 @@ msgstr "הזן כותרת לאירוע חדש או בחר יום ביומן."
 
 msgid "Export event feed"
 msgstr "יצא עדכון אירוע"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "צור אירוע"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "צור אירוע"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -695,9 +723,6 @@ msgstr "חזור לסקרי אירועים"
 
 msgid "Return to Archived Event Polls"
 msgstr "חזור לסקרי אירועים שבארכיון"
-
-msgid "Calendar"
-msgstr "לוח שנה"
 
 msgid "List"
 msgstr "רשימה"
@@ -1064,6 +1089,9 @@ msgstr "האירוע \"%(title)s\" נערך בהצלחה."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "לא הייתה אפשרות לערוך את האירוע \"%(title)s\"."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "הדף שביקשת אינו זמין עבור אירוע זה כעת."
 
@@ -1137,11 +1165,20 @@ msgstr "תגובתך נוספה בהצלחה."
 msgid "Your comment was deleted successfully."
 msgstr "תגובתך נמחקה בהצלחה."
 
-msgid "Custom embed code (HTML)"
-msgstr "קוד הטמעה"
+#~ msgid "Date"
+#~ msgstr "תאריך"
 
-msgid "Presentation file"
-msgstr "קובץ מצגת"
+#~ msgid "From"
+#~ msgstr "מ"
 
-msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
-msgstr "קובץ המצגת (למשל PDF) יעלה מראש לחדר BBB."
+#~ msgid "Start date."
+#~ msgstr "תאריך התחלה."
+
+#~ msgid "Until"
+#~ msgstr "עד"
+
+#~ msgid "End date."
+#~ msgstr "תאריך סיום."
+
+#~ msgid "Kalender"
+#~ msgstr "יומן"

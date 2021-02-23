@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-04-14 12:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.3\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Шаралар"
@@ -297,6 +300,9 @@ msgstr "Финиш"
 msgid "State"
 msgstr "Жай-күйі"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Жазба"
 
@@ -336,6 +342,11 @@ msgstr "Шараның бастапқы сауалнамасы"
 msgid "Event"
 msgstr "Оқиға"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (мұрағатталған)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -355,6 +366,11 @@ msgstr "%(event)s (күтілуде)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (мұрағатталған)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (күтілуде)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -430,6 +446,12 @@ msgid "Is a Break"
 msgstr ""
 
 msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
@@ -512,21 +534,6 @@ msgstr "Шара күні"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr "Күні"
-
-msgid "From"
-msgstr "Кімнен"
-
-msgid "Start date."
-msgstr "Басталу күні."
-
-msgid "Until"
-msgstr "Дейін"
-
-msgid "End date."
-msgstr "Мерзімнің аяқталуы."
-
 msgid "Description and Infos"
 msgstr "Сипаттама және ақпарат"
 
@@ -546,6 +553,9 @@ msgstr "Мысал: http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "Шараға сыртқы сілтеме"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -553,6 +563,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -676,7 +689,7 @@ msgstr "Алғашқы жүктелген сурет тұсқағаз ретін
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Егер сіз осы параметрді орнатсаңыз, шараңыз картада көрсетіледі! (егер көріну параметрлері рұқсат етсе)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Күнтізбе"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -693,6 +706,19 @@ msgstr "Жаңа шараның атын енгізіңіз немесе күн�
 
 msgid "Export event feed"
 msgstr "Оқиға туралы ақпаратты жіберу"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Шара құру"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "Шара құру"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -716,9 +742,6 @@ msgstr "Сауалнамаларға оралу"
 
 msgid "Return to Archived Event Polls"
 msgstr "Мұрағатталған шара сауалнамаларына оралу"
-
-msgid "Calendar"
-msgstr "Күнтізбе"
 
 msgid "List"
 msgstr "Тізім"
@@ -1090,6 +1113,9 @@ msgstr "„%(title)s“ шарасы сәтті өңделді."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "„%(title)s“ шарасын өңдеу мүмкін емес."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Сіз сұраған бет бұл шара үшін қазір қол жетімді емес."
 
@@ -1162,6 +1188,24 @@ msgstr "Сіздің пікіріңіз сәтті қосылды."
 
 msgid "Your comment was deleted successfully."
 msgstr "Пікіріңіз сәтті жойылды."
+
+#~ msgid "Date"
+#~ msgstr "Күні"
+
+#~ msgid "From"
+#~ msgstr "Кімнен"
+
+#~ msgid "Start date."
+#~ msgstr "Басталу күні."
+
+#~ msgid "Until"
+#~ msgstr "Дейін"
+
+#~ msgid "End date."
+#~ msgstr "Мерзімнің аяқталуы."
+
+#~ msgid "Kalender"
+#~ msgstr "Күнтізбе"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "%(sender_name)s тен жаңа шара"

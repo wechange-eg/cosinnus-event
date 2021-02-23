@@ -7,16 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-27 09:46+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-11-26 08:59+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "مناسبات"
@@ -263,6 +266,9 @@ msgstr "حديث الانشاء"
 msgid "Title"
 msgstr "عنوان"
 
+msgid "Presenters"
+msgstr ""
+
 msgid "Scheduled"
 msgstr "مجدول"
 
@@ -284,6 +290,9 @@ msgstr "نهاية"
 
 msgid "State"
 msgstr "حالة"
+
+msgid "Is hidden proxy"
+msgstr ""
 
 msgid "Note"
 msgstr "ملاحظة"
@@ -325,6 +334,11 @@ msgstr "مناسبة استطلاع اصلية"
 msgid "Event"
 msgstr "مناسبة"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (تمت أرشفة)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -344,6 +358,11 @@ msgstr "%(event)s (معلقة)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (تمت أرشفة)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (معلقة)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -392,6 +411,56 @@ msgstr "تعليق"
 msgid "Comments"
 msgstr "تعليقات"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "انشاء مناسبة"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "انشاء مناسبة"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "انشاء مناسبة"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (معلقة)"
+
 msgid "Create Event"
 msgstr "انشاء مناسبة"
 
@@ -433,6 +502,73 @@ msgctxt "time"
 msgid "until"
 msgstr "لـ"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "ادخل عنوانا لمناسبة جديدة."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "تاريخ مناسبة"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Description and Infos"
+msgstr "وصف و معلومات"
+
+msgid "Description"
+msgstr "وصف"
+
+msgid "Enter a description for the event"
+msgstr "ادخل وصفا لهذه المناسبة"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "مثال: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "رابط خارجي للمناسبة"
+
+msgid "Custom embed code (HTML)"
+msgstr ""
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "انشاء"
+
+msgid "Save"
+msgstr "حفظ"
+
 msgid "Add unscheduled event"
 msgstr "أضف مناسبة غير مجدولة"
 
@@ -441,9 +577,6 @@ msgstr "تعديل"
 
 msgid "Event Polls"
 msgstr "مناسبة الاستطلاعات"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "أدخل عنوانًا للمناسبة الجديدة المراد جدولتها."
@@ -466,26 +599,11 @@ msgstr "وقت"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "ملاحظة: لا يمكنك تعديل تواريخ مناسبة الاستطلاع هذه لأن شخصًا ما قد أدلى بصوته بالفعل!"
 
-msgid "Description and Infos"
-msgstr "وصف و معلومات"
-
-msgid "Description"
-msgstr "وصف"
-
-msgid "Enter a description for the event"
-msgstr "ادخل وصفا لهذه المناسبة"
-
 msgid "Example: http://mywebsite.com"
 msgstr "مثال: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "رابط خارجي للمناسبة"
-
-msgid "Create"
-msgstr "انشاء"
-
-msgid "Save"
-msgstr "حفظ"
 
 msgid "Delete"
 msgstr "حذف"
@@ -558,29 +676,14 @@ msgstr "إضافة مناسبة"
 msgid "Enter a title for the new event."
 msgstr "ادخل عنوانا لمناسبة جديدة."
 
-msgid "Date"
-msgstr "تاريخ"
-
-msgid "From"
-msgstr "من"
-
-msgid "Start date."
-msgstr "تاريخ البدء."
-
-msgid "Until"
-msgstr "ل"
-
-msgid "End date."
-msgstr "تاريخ الانتهاء."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "سيتم عرض أول صورة تم تحميلها كخلفية."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "إذا قمت بتعيين هذا ، سيتم عرض المناسبة الخاصة بك على الخريطة! (إذا سمحت بذلك إعدادات الرؤية الخاصة به)"
 
-msgid "Kalender"
-msgstr "تقويم"
+msgid "Calendar"
+msgstr "التقويم"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "انسخ رابط iCal هذا في تطبيق التقويم الخاص بك لادخال المناسبات الحالية:"
@@ -597,6 +700,22 @@ msgstr "أدخل عنوان مناسبة جديد أو حدد يومًا في ا
 
 msgid "Export event feed"
 msgstr "تقديم مناسبة موجزة"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "انشاء مناسبة"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+msgid "Conference Room Management"
+msgstr ""
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "لا توجد مناسبة استطلاعات مفتوحة."
 
 msgid "There are no current or future events."
 msgstr "لا توجد مناسبات حالية أو مستقبلية."
@@ -616,14 +735,14 @@ msgstr "العودة إلى مناسبة استطلاع"
 msgid "Return to Archived Event Polls"
 msgstr "العودة إلى مناسبة استطلاع مؤرشفة"
 
-msgid "Calendar"
-msgstr "التقويم"
-
 msgid "List"
 msgstr "قائمة"
 
 msgid "by"
 msgstr "من قبل"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "تم انشاء مناسبة"
@@ -1001,6 +1120,9 @@ msgstr "Event \"%(title)s\" تم التعديل بنجاح."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "مناسبة \"%(title)s\"تعذر تعديلها."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "الصفحة التي طلبتها غير متاحة لهذه الماسبة في الوقت الحالي."
 
@@ -1073,3 +1195,21 @@ msgstr "تم إضافة تعليقك بنجاح."
 
 msgid "Your comment was deleted successfully."
 msgstr "تم حذف تعليقك بنجاح."
+
+#~ msgid "Date"
+#~ msgstr "تاريخ"
+
+#~ msgid "From"
+#~ msgstr "من"
+
+#~ msgid "Start date."
+#~ msgstr "تاريخ البدء."
+
+#~ msgid "Until"
+#~ msgstr "ل"
+
+#~ msgid "End date."
+#~ msgstr "تاريخ الانتهاء."
+
+#~ msgid "Kalender"
+#~ msgstr "تقويم"
