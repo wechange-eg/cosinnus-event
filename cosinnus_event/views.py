@@ -92,7 +92,15 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
         if hasattr(self, 'base_queryset'):
             return self.base_queryset
         self.queryset = None # reset self.queryset to get a base queryset, not an overloaded one
-        self.base_queryset = super(EventListView, self).get_queryset()
+        qs = super(EventListView, self).get_queryset()
+        
+        if settings.COSINNUS_EVENT_EVENTS_GROUP_SHOWS_ALL_PUBLIC_EVENTS and \
+                self.group.slug and self.group.slug == getattr(settings, 'NEWW_EVENTS_GROUP_SLUG', None):
+            # mix in public qs
+            public_qs = Event.objects.public().filter(group__portal=self.group.portal)
+            qs = (qs | public_qs).distinct()
+        self.base_queryset = qs
+        
         return self.base_queryset
         
     def get_future_queryset(self):
