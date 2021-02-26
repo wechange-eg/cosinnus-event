@@ -13,3 +13,8 @@ class CosinnusEventConf(AppConf):
     # can be very DB intensive for groups with many events
     CALENDAR_ALSO_SHOWS_PAST_EVENTS = False
     
+    # if True, and a group slug is set for NEWW_EVENTS_GROUP_SLUG, 
+    # that group will also show all other group/project's public events in its calendar
+    EVENTS_GROUP_SHOWS_ALL_PUBLIC_EVENTS = False
+    
+    
