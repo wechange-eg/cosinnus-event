@@ -62,6 +62,7 @@ class ConferenceEventAdmin(BaseTaggableAdmin):
     list_filter = BaseTaggableAdmin.list_filter + ['type', ]
     actions = (restart_bbb_rooms, )
     inlines = [CosinnusConferenceSettingsInline]
+    inline_reverse = []
 
 
 admin.site.register(ConferenceEvent, ConferenceEventAdmin)
