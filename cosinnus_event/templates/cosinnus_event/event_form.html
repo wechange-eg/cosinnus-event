@@ -46,17 +46,18 @@
 	    <!-- a box with semi transparent background -->
 		<div class="content-box">
         
-        
-        {% trans "Title" as title_label %}
-        {% trans "Enter a title for the new event." as title_legend %}
-        {% captureas title_html %}
-                {% if request.GET.title %}
-                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
-                {% else %}
-                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
-                {% endif %}
-        {% endcaptureas %}
-        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
+        {% block event_form_name_field %}
+	        {% trans "Title" as title_label %}
+	        {% trans "Enter a title for the new event." as title_legend %}
+	        {% captureas title_html %}
+	                {% if request.GET.title %}
+	                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label value=request.GET.title %}
+	                {% else %}
+	                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
+	                {% endif %}
+	        {% endcaptureas %}
+	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
+        {% endblock event_form_name_field %}
         
         {% comment %} Date picker for from_date - to_date {% endcomment %}	     
         {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.from_date to_date_field=form.forms.obj.to_date %}
