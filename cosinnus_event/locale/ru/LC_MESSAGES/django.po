@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-10-11 14:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,6 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.1\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Cобытия"
@@ -278,6 +281,9 @@ msgstr "Конец"
 msgid "State"
 msgstr "Статус"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 # ???
 msgid "Note"
 msgstr "Описание"
@@ -318,6 +324,11 @@ msgstr "Исходное предложение даты события"
 msgid "Event"
 msgstr "Cобытие"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (завершено)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -337,6 +348,11 @@ msgstr "%(event)s (дата в процессе обработки)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (завершено)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (дата в процессе обработки)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -412,6 +428,14 @@ msgstr "Пауза"
 msgid "Maximum Event Participants"
 msgstr "Максимальное число участников"
 
+#, fuzzy
+#| msgid "Custom embed code (HTML)"
+msgid "Embed code (HTML)"
+msgstr "Встроить код"
+
+msgid "Presentation file"
+msgstr "Файл презентации"
+
 msgid "Conference Event"
 msgstr "Событие конференции"
 
@@ -484,21 +508,6 @@ msgstr "Событие - это пауза"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Отметьте, чтобы создать пустое событие перерыва, которое появится в повестке дня и плане"
 
-msgid "Date"
-msgstr "Дата"
-
-msgid "From"
-msgstr "С"
-
-msgid "Start date."
-msgstr "Дата начала."
-
-msgid "Until"
-msgstr "До"
-
-msgid "End date."
-msgstr "Дата завершения."
-
 msgid "Description and Infos"
 msgstr "Описание и информация"
 
@@ -514,6 +523,9 @@ msgstr "Пример: https://www.youtube.com/watch?v=12345"
 msgid "Stream URL for the Event"
 msgstr "Стрим URL для события"
 
+msgid "Custom embed code (HTML)"
+msgstr "Встроить код"
+
 msgid "Maximum Coffee Table Participants"
 msgstr "Максимум участников кофейного столика"
 
@@ -522,6 +534,9 @@ msgstr "Сколько участников могут присоединить�
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Ведущие будут показаны по порядку и получат разрешение модератора на BBB-комнату"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr "Файл презентации (например, PDF) будет предварительно загружен в комнату BBB."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Загрузить картинку предпросмотра для события конференции"
@@ -645,7 +660,7 @@ msgstr "Первое загруженное изображение будет о
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Если Вы это установите, Ваше событие будет показано на карте! (если позволяют настройки видимости)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Календарь"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -662,6 +677,19 @@ msgstr "Введите название нового события или вы�
 
 msgid "Export event feed"
 msgstr "Экспортировать ленту новостей события"
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Create Conference Event"
+msgstr "Событие конференции"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Conference Room Management"
+msgstr "Событие конференции"
 
 msgid "There are no conference events."
 msgstr "Нет событий конференции."
@@ -683,9 +711,6 @@ msgstr "Вернуться к предложению даты событий"
 
 msgid "Return to Archived Event Polls"
 msgstr "Вернуться к завершенным предложениям даты события"
-
-msgid "Calendar"
-msgstr "Календарь"
 
 msgid "List"
 msgstr "Список"
@@ -1057,6 +1082,9 @@ msgstr "Cобытие \"%(title)s\" отредактировано."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Невозможно отредактировать событие \"%(title)s“."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Запрашиваемая Вами страница в данный момент времени не доступна."
 
@@ -1129,6 +1157,24 @@ msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "From"
+#~ msgstr "С"
+
+#~ msgid "Start date."
+#~ msgstr "Дата начала."
+
+#~ msgid "Until"
+#~ msgstr "До"
+
+#~ msgid "End date."
+#~ msgstr "Дата завершения."
+
+#~ msgid "Kalender"
+#~ msgstr "Календарь"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Новое событие у %(sender_name)s"

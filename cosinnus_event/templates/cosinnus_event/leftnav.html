@@ -3,6 +3,7 @@
 {% group_url 'cosinnus:event:list' group=group as calendar_page %}
 {% group_url 'cosinnus:event:list_detailed' group=group as event_list_page %}
 {% group_url 'cosinnus:event:list_past' group=group as event_list_past_page %}
+{% group_url 'cosinnus:event:list_conferences' group=group as event_list_conferences_page %}
 {% group_url 'cosinnus:event:doodle-list' group=group as doodle_list_page %}
 {% group_url 'cosinnus:event:doodle-list-archived' group=group as doodle_list_archived_page %}
 
@@ -79,7 +80,9 @@
         </ul>
     </button>
     
-    <button type="button" class="btn w100 btn-emphasized {% if SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}regular-space{% else %}fine-space{% endif %}" href="{% group_url 'cosinnus:event:list_detailed' group=group %}{% add_current_params %}">
+    <button type="button" class="btn w100 btn-emphasized 
+            {% if not proxy_event_count and SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}regular-space{% else %}fine-space{% endif %}"
+            href="{{ event_list_page }}{% add_current_params %}">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left" href="#">
@@ -101,6 +104,32 @@
         </ul>
     </button>
     
+    {% if proxy_event_count > 0 %}
+         <button type="button" class="btn w100 btn-emphasized 
+                {% if SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}regular-space{% else %}fine-space{% endif %}" 
+                href="{{ event_list_conferences_page }}{% add_current_params %}">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    {% if proxy_event_count %}
+	                        {{ proxy_event_count }}
+	                    {% else %}
+	                        <i class="fa fa-calendar"></i>
+	                    {% endif %}
+	                </a>
+	                <a class="pull-right" href="#">
+	                    {% if request.path == event_list_conferences_page %}
+	                        <i class="fa fa-caret-right"></i>
+	                    {% endif %}
+	                </a>
+	                <div class="media-body">
+                        {{ COSINNUS_CONFERENCE_TRANS.VERBOSE_NAME_PLURAL }}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+    {% endif %}
+    
     {% if not SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}
 		    <button type="button" class="btn w100 btn-emphasized large-space" href="{% group_url 'cosinnus:event:list_past' group=group %}{% add_current_params %}">
 		        <ul class="media-list">
@@ -120,44 +149,46 @@
 		        </ul>
 		    </button>
     {% endif %}
-
-	<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
-	    <ul class="media-list">
-	        <li class="media">
-	            <a class="pull-left" href="#">
-	                {% if doodle_count %}
-                        {{ doodle_count }}
-                    {% else %}
-                        <i class="fa fa-calendar"></i>
-                    {% endif %}
-	            </a>
-	            <a class="pull-right" href="#">
-	               {% if request.path == doodle_list_page %}
-	                    <i class="fa fa-caret-right"></i>
-                    {% endif %}
-                </a>
-	            <div class="media-body">
-	                {% trans "Event Polls" %}
-	            </div>
-	        </li>
-	    </ul>
-	</button>
-	
-	<button type="button" class="btn w100 btn-emphasized regular-space" href="{{ doodle_list_archived_page }}{% add_current_params %}">
-	    <ul class="media-list">
-	        <li class="media">
-	            <a class="pull-left" href="#">
-                    <i class="fa fa-calendar-check-o"></i>
-	            </a>
-	            <a class="pull-right" href="#">
-	               {% if request.path == doodle_list_archived_page %}
-	                    <i class="fa fa-caret-right"></i>
-                    {% endif %}
-                </a>
-	            <div class="media-body">
-	                {% trans "Archived Event Polls" %}
-	            </div>
-	        </li>
-	    </ul>
-	</button>
+    
+    {% if not group.group_is_conference %}
+		<button type="button" class="btn w100 btn-emphasized fine-space" href="{{ doodle_list_page }}{% add_current_params %}">
+		    <ul class="media-list">
+		        <li class="media">
+		            <a class="pull-left" href="#">
+		                {% if doodle_count %}
+	                        {{ doodle_count }}
+	                    {% else %}
+	                        <i class="fa fa-calendar"></i>
+	                    {% endif %}
+		            </a>
+		            <a class="pull-right" href="#">
+		               {% if request.path == doodle_list_page %}
+		                    <i class="fa fa-caret-right"></i>
+	                    {% endif %}
+	                </a>
+		            <div class="media-body">
+		                {% trans "Event Polls" %}
+		            </div>
+		        </li>
+		    </ul>
+		</button>
+		
+		<button type="button" class="btn w100 btn-emphasized regular-space" href="{{ doodle_list_archived_page }}{% add_current_params %}">
+		    <ul class="media-list">
+		        <li class="media">
+		            <a class="pull-left" href="#">
+	                    <i class="fa fa-calendar-check-o"></i>
+		            </a>
+		            <a class="pull-right" href="#">
+		               {% if request.path == doodle_list_archived_page %}
+		                    <i class="fa fa-caret-right"></i>
+	                    {% endif %}
+	                </a>
+		            <div class="media-body">
+		                {% trans "Archived Event Polls" %}
+		            </div>
+		        </li>
+		    </ul>
+		</button>
+	{% endif %}
 {% endif %}

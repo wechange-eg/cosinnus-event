@@ -7,16 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-27 09:46+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-09-24 04:27+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.4.1\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Události"
@@ -257,6 +260,9 @@ msgstr "Nejnovější vytvořené"
 msgid "Title"
 msgstr "Název"
 
+msgid "Presenters"
+msgstr ""
+
 msgid "Scheduled"
 msgstr "Plánováno"
 
@@ -277,6 +283,9 @@ msgstr "Konec"
 
 msgid "State"
 msgstr "Stav"
+
+msgid "Is hidden proxy"
+msgstr ""
 
 msgid "Note"
 msgstr "Poznámka"
@@ -317,6 +326,11 @@ msgstr "Původní hlasování o události"
 msgid "Event"
 msgstr "Událost"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (archivované)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -336,6 +350,11 @@ msgstr "%(event)s (nevyřízené)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (archivované)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (nevyřízené)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -384,6 +403,56 @@ msgstr "Komentář"
 msgid "Comments"
 msgstr "Komentáře"
 
+msgid "Lobby Check-in Event"
+msgstr ""
+
+msgid "Stage Stream"
+msgstr ""
+
+msgid "Workshop"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Coffee Table"
+msgstr ""
+
+msgid "Room"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event Type"
+msgstr "Vytvořit událost"
+
+msgid "Is a Break"
+msgstr ""
+
+msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Event"
+msgstr "Vytvořit událost"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Events"
+msgstr "Vytvořit událost"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s %(type)s"
+msgstr "%(event)s (nevyřízené)"
+
 msgid "Create Event"
 msgstr "Vytvořit událost"
 
@@ -425,6 +494,73 @@ msgctxt "time"
 msgid "until"
 msgstr "do"
 
+#, python-format
+msgid "Add %(event_type_verbose)s in Room %(room_name)s"
+msgstr ""
+
+#, python-format
+msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
+msgstr ""
+
+msgid "There was an error in one of the fields you entered. Please correct it before saving!"
+msgstr "V jednom z polí, která jste zadali, došlo k chybě. Před uložením to prosím opravte!"
+
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Enter a title for the conference event."
+msgstr "Zadejte název nové události."
+
+#, fuzzy
+#| msgid "Event date"
+msgid "Event is a break"
+msgstr "Datum události"
+
+msgid "Check this to create an empty break event that shows up in the agenda and timeline"
+msgstr ""
+
+msgid "Description and Infos"
+msgstr "Popis a informace"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Enter a description for the event"
+msgstr "Zadejte popis události"
+
+#, fuzzy
+#| msgid "Example: http://mywebsite.com"
+msgid "Example: https://www.youtube.com/watch?v=12345"
+msgstr "Příklad: http://mywebsite.com"
+
+#, fuzzy
+#| msgid "External Link for the event"
+msgid "Stream URL for the Event"
+msgstr "Externí odkaz pro událost"
+
+msgid "Custom embed code (HTML)"
+msgstr ""
+
+msgid "Maximum Coffee Table Participants"
+msgstr ""
+
+msgid "How many participants should can join one coffee table before it is full"
+msgstr ""
+
+msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""
+
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Create"
+msgstr "Vytvořit"
+
+msgid "Save"
+msgstr "Uložit"
+
 msgid "Add unscheduled event"
 msgstr "Přidat neplánovanou událost"
 
@@ -433,9 +569,6 @@ msgstr "Upravit"
 
 msgid "Event Polls"
 msgstr "Hlasování o událostech"
-
-msgid "There was an error in one of the fields you entered. Please correct it before saving!"
-msgstr "V jednom z polí, která jste zadali, došlo k chybě. Před uložením to prosím opravte!"
 
 msgid "Enter a title for the new event to be scheduled."
 msgstr "Zadejte název nové události, kterou chcete naplánovat."
@@ -458,26 +591,11 @@ msgstr "Čas"
 msgid "Note: You cannot edit the dates for this event poll because someone has already cast their vote!"
 msgstr "Poznámka: Nelze upravit data tohoto hlasování o události, protože někdo již hlasoval!"
 
-msgid "Description and Infos"
-msgstr "Popis a informace"
-
-msgid "Description"
-msgstr "Popis"
-
-msgid "Enter a description for the event"
-msgstr "Zadejte popis události"
-
 msgid "Example: http://mywebsite.com"
 msgstr "Příklad: http://mywebsite.com"
 
 msgid "External Link for the event"
 msgstr "Externí odkaz pro událost"
-
-msgid "Create"
-msgstr "Vytvořit"
-
-msgid "Save"
-msgstr "Uložit"
 
 msgid "Delete"
 msgstr "Smazat"
@@ -549,28 +667,13 @@ msgstr "Přidat událost"
 msgid "Enter a title for the new event."
 msgstr "Zadejte název nové události."
 
-msgid "Date"
-msgstr "Datum"
-
-msgid "From"
-msgstr "Od"
-
-msgid "Start date."
-msgstr "Počáteční datum."
-
-msgid "Until"
-msgstr "Do"
-
-msgid "End date."
-msgstr "Konečné datum."
-
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "První nahraný obrázek se zobrazí jako tapeta."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Pokud toto nastavíte, vaše událost se zobrazí na mapě! (pokud to umožňuje nastavení viditelnosti)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Kalendář"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -587,6 +690,22 @@ msgstr "Zadejte název nové události nebo vyberte den v kalendáři."
 
 msgid "Export event feed"
 msgstr "Exportovat feed událostí"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Vytvořit událost"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+msgid "Conference Room Management"
+msgstr ""
+
+#, fuzzy
+#| msgid "There are no open event polls."
+msgid "There are no conference events."
+msgstr "Nejsou žádná otevřená hlasování o událostech."
 
 msgid "There are no current or future events."
 msgstr "Nejsou žádné aktuální ani budoucí události."
@@ -606,14 +725,14 @@ msgstr "Zpět na hlasování o událostech"
 msgid "Return to Archived Event Polls"
 msgstr "Zpět na archivovaná hlasování o událostech"
 
-msgid "Calendar"
-msgstr "Kalendář"
-
 msgid "List"
 msgstr "Seznam"
 
 msgid "by"
 msgstr "podle"
+
+msgid "View"
+msgstr ""
 
 msgid "Created Event"
 msgstr "Vytvořená událost"
@@ -975,6 +1094,9 @@ msgstr "Událost \"%(title)s\" byla úspěšně upravena."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Událost \"%(title)s\" nelze upravit."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Požadovaná stránka není pro tuto událost v tuto chvíli k dispozici."
 
@@ -1047,3 +1169,21 @@ msgstr "Váš komentář byl úspěšně přidán."
 
 msgid "Your comment was deleted successfully."
 msgstr "Váš komentář byl úspěšně smazán."
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "Start date."
+#~ msgstr "Počáteční datum."
+
+#~ msgid "Until"
+#~ msgstr "Do"
+
+#~ msgid "End date."
+#~ msgstr "Konečné datum."
+
+#~ msgid "Kalender"
+#~ msgstr "Kalendář"

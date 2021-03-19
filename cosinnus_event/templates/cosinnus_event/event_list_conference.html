@@ -16,9 +16,37 @@
 
 {% block content %}
     
+    {% comment %} If there is exactly one Conference Room, show a button to add an event for that room {% endcomment %}
+    {% if group.group_is_conference and group.rooms.all.count == 1  %}
+	    <button type="button" href="{{ group.rooms.all.0.get_room_create_url }}" class="btn btn-emphasized btn-autosize">
+	        <ul class="media-list">
+	            <li class="media">
+	                <a class="pull-left" href="#">
+	                    <i class="fa fa-plus"></i>
+	                </a>
+	                <div class="media-body">
+	                    {% trans "Create Conference Event" %}
+	                </div>
+	            </li>
+	        </ul>
+	    </button>
+	    <div class="clearfix"></div>
+    {% endif %}
+    
 	<!-- a box with semi transparent background -->
 	<div class="content-box large-space">
+	    <h2>{% trans "Conference Events" %}</h2>
 	    
+	    {% if group.group_is_conference and group.rooms.all.count != 1  %}
+	        <div class='form-info textfield transparent'>
+		        {% trans "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here" %}:
+		        <a href="{% group_url 'cosinnus:conference:room-management' group=group %}">
+		            {% trans "Conference Room Management" %}
+		        </a>
+            </div>
+            <div class="ultra-space"></div>
+	    {% endif %}
+	
 	    {% for event in conference_events %}
         	{% include 'cosinnus_event/list_object.html' %}
 	    {% empty %}

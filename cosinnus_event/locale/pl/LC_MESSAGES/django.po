@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-10-13 13:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.1\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Wydarzenia"
@@ -278,6 +281,9 @@ msgstr "Koniec"
 msgid "State"
 msgstr "Stan"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Uwagi"
 
@@ -317,6 +323,11 @@ msgstr "Oryginalna Ankieta Wydarzenia"
 msgid "Event"
 msgstr "Wydarzenie"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (zarchiwizowane)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -336,6 +347,11 @@ msgstr "%(event)s (oczekujące)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (zarchiwizowane)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (oczekujące)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -411,6 +427,12 @@ msgstr "Trwa przerwa"
 msgid "Maximum Event Participants"
 msgstr "Maksymalna liczba uczestników wydarzenia"
 
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Wydarzenie konferencyjne"
 
@@ -483,21 +505,6 @@ msgstr "Wydarzenie jest przerwą"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Sprawdź to, aby stworzyć puste wydarzenie przerwy, które pokazuje się w kalendarzu i na osi czasu"
 
-msgid "Date"
-msgstr "Data"
-
-msgid "From"
-msgstr "Od"
-
-msgid "Start date."
-msgstr "Data początkowa."
-
-msgid "Until"
-msgstr "Do"
-
-msgid "End date."
-msgstr "Data końcowa."
-
 msgid "Description and Infos"
 msgstr "Opisy i Informacje"
 
@@ -513,6 +520,9 @@ msgstr "Przykład: https://www.youtube.com/watch?v=12345"
 msgid "Stream URL for the Event"
 msgstr "Stream URL do wydarzenia"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr "Maksimum uczestników Coffee Table"
 
@@ -521,6 +531,9 @@ msgstr "Jak dużo uczestników powinno może przyłączyć się do jednego coffe
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Prezenterzy będą pokazani kolejno w wydarzeniu i otrzymają zgody moderatora do pokoju BBB"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Wgraj obraz zwiastujący wydarzenie konferencyjne"
@@ -643,7 +656,7 @@ msgstr "Pierwsze dodane zdjęcie wyświetlane będzie jako tapeta."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Jeśli to ustawisz, Twoje wydarzenie będzie wyświetlone na mapie! (jeśli ustawienia widoczności na to zezwalają)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Kalendarz"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -660,6 +673,19 @@ msgstr "Wpisz tytuł nowego wydarzenia lub wybierz dzień w Kalendarzu."
 
 msgid "Export event feed"
 msgstr "Eksportuj kanał wydarzenia"
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Create Conference Event"
+msgstr "Wydarzenie konferencyjne"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Conference Room Management"
+msgstr "Wydarzenie konferencyjne"
 
 msgid "There are no conference events."
 msgstr "Nie ma żadnego wydarzenia konferencyjnego."
@@ -681,9 +707,6 @@ msgstr "Powrót do Ankiet w Wydarzeniach"
 
 msgid "Return to Archived Event Polls"
 msgstr "Powrót do Zarchiwizowanych Wydarzeń Ankiet"
-
-msgid "Calendar"
-msgstr "Kalendarz"
 
 msgid "List"
 msgstr "Lista"
@@ -1053,6 +1076,9 @@ msgstr "Wydarzenie \"%(title)s\" edytowano pomyślnie."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Wydarzenie \"%(title)s\" nie mogło zostać edytowane."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Strona, którą chcesz wyświetlić, nie jest obecnie dostępna dla tego wydarzenia."
 
@@ -1125,6 +1151,24 @@ msgstr "Twój komentarz został dodany pomyślnie."
 
 msgid "Your comment was deleted successfully."
 msgstr "Twój komentarz został usunięty pomyślnie."
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "Start date."
+#~ msgstr "Data początkowa."
+
+#~ msgid "Until"
+#~ msgstr "Do"
+
+#~ msgid "End date."
+#~ msgstr "Data końcowa."
+
+#~ msgid "Kalender"
+#~ msgstr "Kalendarz"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nowe wydarzenie utworzone przez %(sender_name)s"

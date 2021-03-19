@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr ""
@@ -275,6 +278,9 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr ""
 
@@ -315,6 +321,10 @@ msgid "Event"
 msgstr ""
 
 #, python-format
+msgid "%(event)s (hidden proxy)"
+msgstr ""
+
+#, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr ""
 
@@ -332,6 +342,10 @@ msgstr ""
 
 #, python-format
 msgid "%(event)s (archived)"
+msgstr ""
+
+#, python-format
+msgid "%(event)s (state unknown)"
 msgstr ""
 
 msgctxt "the subject"
@@ -408,6 +422,12 @@ msgstr ""
 msgid "Maximum Event Participants"
 msgstr ""
 
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
 msgid "Conference Event"
 msgstr ""
 
@@ -479,21 +499,6 @@ msgstr ""
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr ""
-
-msgid "From"
-msgstr ""
-
-msgid "Start date."
-msgstr ""
-
-msgid "Until"
-msgstr ""
-
-msgid "End date."
-msgstr ""
-
 msgid "Description and Infos"
 msgstr ""
 
@@ -509,6 +514,9 @@ msgstr ""
 msgid "Stream URL for the Event"
 msgstr ""
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -516,6 +524,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -639,7 +650,7 @@ msgstr ""
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr ""
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr ""
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -655,6 +666,15 @@ msgid "Enter the title for a new event or select a day in the Calendar."
 msgstr ""
 
 msgid "Export event feed"
+msgstr ""
+
+msgid "Create Conference Event"
+msgstr ""
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+msgid "Conference Room Management"
 msgstr ""
 
 msgid "There are no conference events."
@@ -676,9 +696,6 @@ msgid "Return to Event Polls"
 msgstr ""
 
 msgid "Return to Archived Event Polls"
-msgstr ""
-
-msgid "Calendar"
 msgstr ""
 
 msgid "List"
@@ -942,6 +959,9 @@ msgstr ""
 
 #, python-format
 msgid "Event \"%(title)s\" could not be edited."
+msgstr ""
+
+msgid "Please use the conference management area to add new workshops!"
 msgstr ""
 
 msgid "The page you requested is not available for this event at this time."

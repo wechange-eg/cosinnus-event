@@ -41,7 +41,7 @@
         </div>
     {% endif %}
     
-    <form method="POST" action="" class="cosinnus-form form-horizontal">{% csrf_token %}
+    <form method="POST" action="" class="cosinnus-form form-horizontal" enctype="multipart/form-data">{% csrf_token %}
 	    {{ form.forms.obj.non_field_errors }}
 	    {{ form.forms.media_tag.non_field_errors }}
 	    
@@ -68,68 +68,19 @@
 		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True %}
 			{% endif %}
 			
-			{% if form.forms.obj.fields.is_break %}
-	            {% comment %} Visibility Field {% endcomment %}
-	            {% trans "Event is a break" as break_label %}
-	            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
-	            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+			{% if not SETTINGS.COSINNUS_CONFERENCES_USE_COMPACT_MODE %}
+				{% if form.forms.obj.fields.is_break %}
+		            {% comment %} Visibility Field {% endcomment %}
+		            {% trans "Event is a break" as break_label %}
+		            {% trans "Check this to create an empty break event that shows up in the agenda and timeline" as break_legend %}
+		            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
+				{% endif %}
 			{% endif %}
 			
-			{% if form.forms.obj.fields.from_date %}          
-		        {% trans "Date" as date_label %}
-		        {% captureas date_html %}
-		            {{ form.forms.obj.from_date.errors }}
-		            {{ form.forms.obj.to_date.errors }}
-		            <ol class="input-area">
-		                <li class="calendar-date-time-chooser">
-		                    {% trans "From" %} <i class="fa fa-calendar"></i>
-		                    <input
-		                        placeholder="{% trans "Date" %}"
-		                        readonly ="readonly"
-		                        class="calendar-date-time-chooser-date" />
-		                    <input class="calendar-date-time-chooser-hiddendate" id="id_from_date_0" name="from_date_0" 
-		                        placeholder="{% trans "Start date." %}" type="hidden" 
-		                        {% if form_view == "add" and request.GET.start %}
-		                        value="{{ request.GET.start }}" 
-		                        {% elif form_view == "edit" %}
-		                        value="{{ form.forms.obj.from_date.value|date:"Y-m-d" }}" 
-		                        {% else %}
-		                        value="{% now "Y-m-d" %}" 
-		                        {% endif %}
-		                    >
-		                    <input class="calendar-date-time-chooser-time" id="id_from_date_1" name="from_date_1" 
-		                        placeholder="00:00" type="text" 
-		                        value="{{ form.forms.obj.from_date.value|date:"H:i" }}" 
-		                    >                                           
-		                    <div class="small-calendar"></div>
-		                </li>
-		                <li class="calendar-date-time-chooser">
-		                    {% trans "Until" %} <i class="fa fa-calendar"></i>
-		                    <input
-		                        placeholder="{% trans "Date" %}"
-		                        readonly ="readonly"
-		                        class="calendar-date-time-chooser-date" />
-		                    <input class="calendar-date-time-chooser-hiddendate" id="id_to_date_0" name="to_date_0" 
-		                        placeholder="{% trans "End date." %}" type="hidden" 
-		                        {% if form_view == "add" and request.GET.end %}
-		                        value="{{ request.GET.end }}" 
-		                        {% elif form_view == "edit" %}
-		                        value="{{ form.forms.obj.to_date.value|date:"Y-m-d" }}" 
-		                        {% else %}
-		                        value="{% now "Y-m-d" %}" 
-		                        {% endif %}
-		                    >
-		                    <input class="calendar-date-time-chooser-time" id="id_to_date_1" name="to_date_1" 
-		                        placeholder="23:59" type="text" 
-		                        value="{{ form.forms.obj.to_date.value|date:"H:i" }}" 
-		                    >    
-		                    <div class="small-calendar"></div>
-		                </li>
-		            </ol>
-		        {% endcaptureas %}
-		        {% include 'cosinnus/fields/default_field.html' with field_html=date_html label=date_label label=date_label large_field=True %} 
+			{% comment %} Date picker for from_date - to_date {% endcomment %}
+			{% if form.forms.obj.fields.from_date and form.forms.obj.fields.to_date %} 
+			    {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.from_date to_date_field=form.forms.obj.to_date %}
 	        {% endif %}
-	        
 	        
 	        {% if form.forms.obj.fields.note %}
 		        {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
@@ -144,25 +95,37 @@
                 {% trans "Stream URL for the Event" as url_label %}
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
             {% endif %}
-            
+
+	        {% if form.forms.obj.fields.raw_html %}
+                {% trans "Custom embed code (HTML)" as raw_html_label %}
+                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.raw_html label=raw_html_label large_field=True %}
+            {% endif %}
+
             {% if form.forms.obj.fields.max_participants %}
                 {% trans "Maximum Coffee Table Participants" as max_label %}
                 {% trans "How many participants should can join one coffee table before it is full" as max_legend %}
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.max_participants label=max_label legend=max_legend %}
             {% endif %}
 		    
-		    {% if form.forms.obj.fields.presenters %}
-			    {% if not persons_label %}{% trans "Presenters" as persons_label %}{% endif %}
-		        {% trans "Presenters" as persons_placeholder %}
-	            {% trans "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room" as persons_legend %}
-		        {% include 'cosinnus/fields/media_tag_field.html' with field=form.forms.obj.presenters label=persons_label icon="fa-user" placeholder=persons_placeholder legend=persons_legend %}
-	        {% endif %}
+		    {% if not SETTINGS.COSINNUS_CONFERENCES_USE_COMPACT_MODE %}
+			    {% if form.forms.obj.fields.presenters %}
+				    {% if not persons_label %}{% trans "Presenters" as persons_label %}{% endif %}
+			        {% trans "Presenters" as persons_placeholder %}
+		            {% trans "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room" as persons_legend %}
+			        {% include 'cosinnus/fields/media_tag_field.html' with field=form.forms.obj.presenters label=persons_label icon="fa-user" placeholder=persons_placeholder legend=persons_legend %}
+		        {% endif %}
+	
+		        {% if form.forms.obj.fields.presentation_file %}
+	                {% trans "Presentation file" as presentation_file_label %}
+		            {% trans "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room." as presentation_file_legend %}
+	                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.presentation_file label=presentation_file_label legend=presentation_file_legend large_field=True field_classes="file-field" %}
+	            {% endif %}
+            {% endif %}
 	        
 	        {% if form.forms.obj.fields.image %}    
 			    {% trans "Upload a preview image for the Conference Event" as files_label %}
 		        {% include 'cosinnus/media_tags.html' with show_files=True files_label=files_label disable_more_button=True disable_visibility=True disable_topics=True disable_location=True disable_tags=True disable_persons=True %}
 		    {% endif %}
-	                        
 		</div><!-- content-box -->
 		
 		       

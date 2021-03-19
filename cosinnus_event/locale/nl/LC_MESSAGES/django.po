@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2019-09-19 22:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.3\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Evenementen"
@@ -300,6 +303,9 @@ msgstr "Eind"
 msgid "State"
 msgstr "Staat"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Notitie"
 
@@ -339,6 +345,11 @@ msgstr "Origineel Evenement Poll"
 msgid "Event"
 msgstr "Evenement"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (gearchiveerd)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -358,6 +369,11 @@ msgstr "%(event)s (in afwachting)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (gearchiveerd)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (in afwachting)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -433,6 +449,12 @@ msgid "Is a Break"
 msgstr ""
 
 msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
@@ -515,21 +537,6 @@ msgstr "Evenement datum"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr "Datum"
-
-msgid "From"
-msgstr "Van"
-
-msgid "Start date."
-msgstr "Begindatum."
-
-msgid "Until"
-msgstr "Tot"
-
-msgid "End date."
-msgstr "Einddatum."
-
 msgid "Description and Infos"
 msgstr "Beschrijving en info"
 
@@ -549,6 +556,9 @@ msgstr "Voorbeeld: http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "Externe link voor het evenement"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -556,6 +566,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -679,8 +692,8 @@ msgstr "De eerste geüploade afbeelding wordt als achtergrond weergegeven."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Als u dit instelt, wordt uw evenement op de kaart weergegeven! (indien toegestaan door de zichtbaarheidsinstellingen)"
 
-msgid "Kalender"
-msgstr "Kalender"
+msgid "Calendar"
+msgstr "Kalende"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
 msgstr "Koppeer deze iCal-link in uw kalender applicatie om huidige evenementen toe te voegen:"
@@ -696,6 +709,19 @@ msgstr "Voer de titel voor een nieuw evenement in of selecteer een dag in de kal
 
 msgid "Export event feed"
 msgstr "Exporteer evenement feed"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Maak evenement aan"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "Maak evenement aan"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -719,9 +745,6 @@ msgstr "Terug naar Polls Evenementen"
 
 msgid "Return to Archived Event Polls"
 msgstr "Terug naar Gearchiveerde Polls Evenementen"
-
-msgid "Calendar"
-msgstr "Kalende"
 
 msgid "List"
 msgstr "Lijst"
@@ -1090,6 +1113,9 @@ msgstr "Evenement “%(title)s” is succesvol gewijzigd."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Evenement “%(title)s” kon niet worden gewijzigd."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "De door u opgevraagde pagina is momenteel niet beschikbaar voor dit evenement."
 
@@ -1162,6 +1188,24 @@ msgstr "Uw reactie is succesvol toegevoegd."
 
 msgid "Your comment was deleted successfully."
 msgstr "Uw reactie is succesvol verwijderd."
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "From"
+#~ msgstr "Van"
+
+#~ msgid "Start date."
+#~ msgstr "Begindatum."
+
+#~ msgid "Until"
+#~ msgstr "Tot"
+
+#~ msgid "End date."
+#~ msgstr "Einddatum."
+
+#~ msgid "Kalender"
+#~ msgstr "Kalender"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nieuw evenement door %(sender_name)s"

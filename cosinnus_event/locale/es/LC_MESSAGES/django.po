@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-04-22 12:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Eventos"
@@ -300,6 +303,9 @@ msgstr "Final"
 msgid "State"
 msgstr ""
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Nota"
 
@@ -339,6 +345,11 @@ msgstr "Sondeo de evento original"
 msgid "Event"
 msgstr "Evento"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (archived)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -358,6 +369,11 @@ msgstr "%(event)s (pending)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (archived)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (pending)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -433,6 +449,12 @@ msgid "Is a Break"
 msgstr ""
 
 msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
@@ -515,21 +537,6 @@ msgstr "Fecha del evento"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr "Fecha"
-
-msgid "From"
-msgstr "Desde"
-
-msgid "Start date."
-msgstr "Fecha de inicio."
-
-msgid "Until"
-msgstr "Hasta"
-
-msgid "End date."
-msgstr "Fecha final."
-
 msgid "Description and Infos"
 msgstr "Descripción e informaciones"
 
@@ -549,6 +556,9 @@ msgstr "Ejemplo: : http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "Enlace externo  para el evento"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -556,6 +566,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -679,7 +692,7 @@ msgstr "La primera imagen subida será el fondo de pantalla."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "¡Si fijas esto, tu evento será visible en el mapa! (si las opciones de visibilidad lo permiten)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Calendario"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -696,6 +709,19 @@ msgstr "Inserta el título para un nuevo evento o elige un día en el calendario
 
 msgid "Export event feed"
 msgstr "Exporta feed de eventos"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Crear un evento"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "Crear un evento"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -719,9 +745,6 @@ msgstr "Volver a sondeos de evento"
 
 msgid "Return to Archived Event Polls"
 msgstr "Volver a sondeos de evento archivados"
-
-msgid "Calendar"
-msgstr "Calendario"
 
 msgid "List"
 msgstr "Lista"
@@ -1080,6 +1103,9 @@ msgstr "El evento \"%(title)s\" ha sido editado exitosamente."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "El evento \"%(title)s\" no ha podido ser editado."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "La pagina que has solicitado no es accesible de momento."
 
@@ -1152,6 +1178,24 @@ msgstr "Tu comentario ha sido añadido exitosamente."
 
 msgid "Your comment was deleted successfully."
 msgstr "Tu comentario ha sido eliminado exitosamente."
+
+#~ msgid "Date"
+#~ msgstr "Fecha"
+
+#~ msgid "From"
+#~ msgstr "Desde"
+
+#~ msgid "Start date."
+#~ msgstr "Fecha de inicio."
+
+#~ msgid "Until"
+#~ msgstr "Hasta"
+
+#~ msgid "End date."
+#~ msgstr "Fecha final."
+
+#~ msgid "Kalender"
+#~ msgstr "Calendario"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nuevo evento de %(sender_name)s"

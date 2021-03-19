@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 "X-Generator: Poedit 2.2.4\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Evenimente"
@@ -278,6 +281,9 @@ msgstr "Sfârșit"
 msgid "State"
 msgstr "Stare"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Notă"
 
@@ -317,6 +323,11 @@ msgstr "Sondaj de Eveniment Original"
 msgid "Event"
 msgstr "Eveniment"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (arhivată)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -336,6 +347,11 @@ msgstr "%(event)s (în așteptare)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (arhivată)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (în așteptare)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -411,6 +427,12 @@ msgstr "Este o Pauză"
 msgid "Maximum Event Participants"
 msgstr "Maximum Eveniment Participanții"
 
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Conferință Eveniment"
 
@@ -482,21 +504,6 @@ msgstr "Evenimentul este o pauză"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Verificați acest lucru pentru a crea un eveniment de pauză gol care apare în agendă și cronologie"
 
-msgid "Date"
-msgstr "Data"
-
-msgid "From"
-msgstr "Din"
-
-msgid "Start date."
-msgstr "Data de început."
-
-msgid "Until"
-msgstr "Până când"
-
-msgid "End date."
-msgstr "Data de sfârșit."
-
 msgid "Description and Infos"
 msgstr "Descriere și Informații"
 
@@ -512,6 +519,9 @@ msgstr "Exemplu: https://www.youtybe.com/watch?v=12345"
 msgid "Stream URL for the Event"
 msgstr "URL-ul fluxului pentru Eveniment"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr "Participanți la Masa Maximă de Cafea"
 
@@ -520,6 +530,9 @@ msgstr "Câți participanți ar trebui să se alăture la o singură masă de ca
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Prezentatorii vor fi arătați în ordine în cadrul evenimentului și vor primi permisiuni de Moderator pentru BBB-Camera"
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Încărcați o imagine de previzualizare pentru Evenimentul Conferinței"
@@ -642,7 +655,7 @@ msgstr "Prima imagine încărcată va fi afișată ca tapet."
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Dacă setați acest lucru, evenimentul dvs. va fi afișat pe hartă! (dacă este permis de setările sale de vizibilitate)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Calendar"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -659,6 +672,19 @@ msgstr "Introduceți titlul pentru un nou eveniment sau selectați o zi în Cale
 
 msgid "Export event feed"
 msgstr "Export de furaj pentru evenimente"
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Create Conference Event"
+msgstr "Conferință Eveniment"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event"
+msgid "Conference Room Management"
+msgstr "Conferință Eveniment"
 
 msgid "There are no conference events."
 msgstr "Nu există evenimente de conferință."
@@ -680,9 +706,6 @@ msgstr "Reveniți la Sondajele de Evenimente"
 
 msgid "Return to Archived Event Polls"
 msgstr "Revin la Sondajele de Evenimente Arhivate"
-
-msgid "Calendar"
-msgstr "Calendar"
 
 msgid "List"
 msgstr "Listă"
@@ -1053,6 +1076,9 @@ msgstr "Evenimentul ”%(title)s” a fost editat cu succes."
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Evenimentul ”%(title)s” nu a putut fi editat."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Pagina solicitată nu este disponibilă pentru acest eveniment."
 
@@ -1125,6 +1151,24 @@ msgstr "Comentariul dvs. a fost adăugat cu succes."
 
 msgid "Your comment was deleted successfully."
 msgstr "Comentariul dvs. a fost șters cu succes."
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "From"
+#~ msgstr "Din"
+
+#~ msgid "Start date."
+#~ msgstr "Data de început."
+
+#~ msgid "Until"
+#~ msgstr "Până când"
+
+#~ msgid "End date."
+#~ msgstr "Data de sfârșit."
+
+#~ msgid "Kalender"
+#~ msgstr "Calendar"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Eveniment nou de %(sender_name)s"

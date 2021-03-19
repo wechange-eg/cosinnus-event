@@ -76,4 +76,14 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
             
         return (rank_from_participants / 2.0) + (rank_from_date / 2.0)
     
+    def index_queryset(self, using=None):
+        qs = super(EventIndex, self).index_queryset(using=using)
+        # exclude hidden proxy from search index
+        qs = qs.exclude(is_hidden_group_proxy=True)
+        return qs
+    
+    def should_update(self, instance, **kwargs):
+        should = super(EventIndex, self).should_update(instance, **kwargs)
+        return should and not instance.is_hidden_group_proxy 
+    
     

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-06 16:06+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2019-05-08 00:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -17,6 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.2.1\n"
+
+msgid "Restart BBB rooms"
+msgstr ""
 
 msgid "Events"
 msgstr "Падзеі"
@@ -307,6 +310,9 @@ msgstr "Канец"
 msgid "State"
 msgstr "Стан"
 
+msgid "Is hidden proxy"
+msgstr ""
+
 msgid "Note"
 msgstr "Заўвага"
 
@@ -346,6 +352,11 @@ msgstr "Першапачатковае апытанне да падзеі"
 msgid "Event"
 msgstr "Падзея"
 
+#, fuzzy, python-format
+#| msgid "%(event)s (archived)"
+msgid "%(event)s (hidden proxy)"
+msgstr "%(event)s (адпраўлена ў архіў)"
+
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
 msgstr "%(event)s (%(date)s - %(end)s)"
@@ -365,6 +376,11 @@ msgstr "%(event)s (чакаюць рашэння)"
 #, python-format
 msgid "%(event)s (archived)"
 msgstr "%(event)s (адпраўлена ў архіў)"
+
+#, fuzzy, python-format
+#| msgid "%(event)s (pending)"
+msgid "%(event)s (state unknown)"
+msgstr "%(event)s (чакаюць рашэння)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -440,6 +456,12 @@ msgid "Is a Break"
 msgstr ""
 
 msgid "Maximum Event Participants"
+msgstr ""
+
+msgid "Embed code (HTML)"
+msgstr ""
+
+msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
@@ -522,21 +544,6 @@ msgstr "Дата падзеі"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Date"
-msgstr "Дата"
-
-msgid "From"
-msgstr "З"
-
-msgid "Start date."
-msgstr "Дата пачатку."
-
-msgid "Until"
-msgstr "Да"
-
-msgid "End date."
-msgstr "Дата заканчэння."
-
 msgid "Description and Infos"
 msgstr "Апісанне і інфармацыя"
 
@@ -556,6 +563,9 @@ msgstr "Прыклад: http://mywebsite.com"
 msgid "Stream URL for the Event"
 msgstr "Знешняя спасылка на падзею"
 
+msgid "Custom embed code (HTML)"
+msgstr ""
+
 msgid "Maximum Coffee Table Participants"
 msgstr ""
 
@@ -563,6 +573,9 @@ msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
+msgstr ""
+
+msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -686,7 +699,7 @@ msgstr "Першая зацягнутая выява будзе адлюстро
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Калі вы дададзіце гэту наладу, ваша падзея будзе паказвацца на карце! (пры ўмове, што гэта дазваляюць налады бачнасці)"
 
-msgid "Kalender"
+msgid "Calendar"
 msgstr "Каляндар"
 
 msgid "Copy this iCal-link into your calendar application to import current events:"
@@ -703,6 +716,19 @@ msgstr "Увядзіце назву новай падзеі або выберы�
 
 msgid "Export event feed"
 msgstr "Экспартаваць стужку падзей"
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Create Conference Event"
+msgstr "Стварыць падзею"
+
+msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "Conference Room Management"
+msgstr "Стварыць падзею"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -726,9 +752,6 @@ msgstr "Вярнуцца да апытанняў да падзей"
 
 msgid "Return to Archived Event Polls"
 msgstr "Вярнуцца да архіўных апытанняў да падзей"
-
-msgid "Calendar"
-msgstr "Каляндар"
 
 msgid "List"
 msgstr "Спіс"
@@ -1107,6 +1130,9 @@ msgstr "Падзея \"%(title)s\" паспяхова адрэдагаваная
 msgid "Event \"%(title)s\" could not be edited."
 msgstr "Падзею \"%(title)s\" не атрымалася адрэдагаваць."
 
+msgid "Please use the conference management area to add new workshops!"
+msgstr ""
+
 msgid "The page you requested is not available for this event at this time."
 msgstr "Запытаная Вамі старонка на дадзены момант недасяжная для гэтай падзеі."
 
@@ -1179,6 +1205,24 @@ msgstr "Ваш каментар паспяхова дададзены."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш каментар паспяхова выдалены."
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "From"
+#~ msgstr "З"
+
+#~ msgid "Start date."
+#~ msgstr "Дата пачатку."
+
+#~ msgid "Until"
+#~ msgstr "Да"
+
+#~ msgid "End date."
+#~ msgstr "Дата заканчэння."
+
+#~ msgid "Kalender"
+#~ msgstr "Каляндар"
 
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Новая падзея ад %(sender_name)s"

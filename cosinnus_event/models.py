@@ -26,9 +26,10 @@ from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus_event import cosinnus_notifications
 from django.contrib.auth import get_user_model
-from cosinnus.utils.files import _get_avatar_filename
+from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from cosinnus.utils.validators import validate_file_infection
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from cosinnus.models.tagged import LikeableObjectMixin
@@ -38,7 +39,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
+
 import logging
+from django.contrib.contenttypes.fields import GenericRelation
 
 logger = logging.getLogger('cosinnus')
 
@@ -87,6 +90,13 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         default=STATE_VOTING_OPEN,
     )
     __state = None # pre-save purpose
+    
+    # used as special flag for a hidden conference event
+    # that mimics the conference and can be used in normal Event querysets as proxy for the conference
+    # the logic for this is in `cosinnus_event.hooks`
+    is_hidden_group_proxy = models.BooleanField(_('Is hidden proxy'),
+        help_text='If set, this event is hidden in its own group, acting as a proxy for the group with from_date and to_date synced, to be able to be shown in other groups.',
+        default=False)
 
     note = models.TextField(_('Note'), blank=True, null=True)
 
@@ -121,7 +131,7 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     
     original_doodle = models.OneToOneField("self", verbose_name=_('Original Event Poll'),
         related_name='scheduled_event', null=True, blank=True, on_delete=models.SET_NULL)
-
+    
     objects = EventQuerySet.as_manager()
     
     timeline_template = 'cosinnus_event/v2/dashboard/timeline_item.html'
@@ -136,7 +146,9 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         self.__state = self.state
 
     def __str__(self):
-        if self.state == Event.STATE_SCHEDULED:
+        if self.is_hidden_group_proxy:
+            readable = _('%(event)s (hidden proxy)') % {'event': self.title}
+        elif self.state == Event.STATE_SCHEDULED:
             if self.single_day:
                 readable = _('%(event)s (%(date)s - %(end)s)') % {
                     'event': self.title,
@@ -153,8 +165,10 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             readable = _('%(event)s (canceled)') % {'event': self.title}
         elif self.state == Event.STATE_VOTING_OPEN:
             readable = _('%(event)s (pending)') % {'event': self.title}
-        else:
+        elif self.state == Event.STATE_ARCHIVED_DOODLE:
             readable = _('%(event)s (archived)') % {'event': self.title}
+        else:
+            readable = _('%(event)s (state unknown)') % {'event': self.title}
             
         return readable
     
@@ -169,11 +183,13 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         created = bool(self.pk) == False
         super(Event, self).save(*args, **kwargs)
 
-        if created:
+        if created and not self.is_hidden_group_proxy:
             # event/doodle was created or
             # event went from being a doodle to being a real event, so fire event created
             session_id = uuid1().int
-            audience = get_user_model().objects.filter(id__in=self.group.members).exclude(id=self.creator.pk)
+            audience = get_user_model().objects.filter(id__in=self.group.members)
+            if self.creator:
+                audience = audience.exclude(id=self.creator.pk)
             group_followers_except_creator_ids = [pk for pk in self.group.get_followed_user_ids() if not pk in [self.creator_id]]
             group_followers_except_creator = get_user_model().objects.filter(id__in=group_followers_except_creator_ids)
             if self.state == Event.STATE_SCHEDULED:
@@ -199,18 +215,27 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
             return group_aware_reverse('cosinnus:event:doodle-vote', kwargs=kwargs)
         elif self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-archived', kwargs=kwargs)
+        elif self.is_hidden_group_proxy:
+            # hidden proxy events redirect to the group
+            return self.group.get_absolute_url()
         return group_aware_reverse('cosinnus:event:event-detail', kwargs=kwargs)
     
     def get_edit_url(self):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-edit', kwargs=kwargs)
+        elif self.is_hidden_group_proxy:
+            # hidden proxy events redirect to the group
+            return self.group.get_edit_url()
         return group_aware_reverse('cosinnus:event:event-edit', kwargs=kwargs)
     
     def get_delete_url(self):
         kwargs = {'group': self.group, 'slug': self.slug}
         if self.state == Event.STATE_VOTING_OPEN or self.state == Event.STATE_ARCHIVED_DOODLE:
             return group_aware_reverse('cosinnus:event:doodle-delete', kwargs=kwargs)
+        elif self.is_hidden_group_proxy:
+            # hidden proxy events redirect to the group
+            return self.group.get_delete_url()
         return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
     
     def is_user_attending(self, user):
@@ -270,7 +295,10 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         if include_sub_projects:
             groups = groups + list(group.get_children())
         
-        qs = Event.objects.filter(group__in=groups).filter(state__in=[Event.STATE_SCHEDULED, Event.STATE_VOTING_OPEN])
+        qs = Event.objects.filter(group__in=groups).filter(state__in=[
+                    Event.STATE_SCHEDULED, 
+                    Event.STATE_VOTING_OPEN,
+                ])
         
         if not include_sub_projects:
             # mix in reflected objects, not needed if we are sub-grouping anyways
@@ -559,6 +587,7 @@ class Comment(models.Model):
         return check_object_read_access(self.event, user)
 
 
+
 @python_2_unicode_compatible
 class ConferenceEvent(Event):
     
@@ -614,7 +643,7 @@ class ConferenceEvent(Event):
     presenters = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,
         verbose_name=_('Presenters'), related_name='+',
         help_text='A list of users that will be displayed as presenters and become BBB moderators in attached rooms')
-    
+
     # Type: Workshop, Discussion
     is_break = models.BooleanField(_('Is a Break'),
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
@@ -624,6 +653,18 @@ class ConferenceEvent(Event):
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
         blank=False, default=settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT,
         validators=[MinValueValidator(2), MaxValueValidator(512)])
+
+    raw_html = models.TextField(_('Embed code (HTML)'),
+        help_text='Raw HTML embed code to use instead of URL',
+        blank=True, null=True,
+        default='')
+
+    presentation_file = models.FileField(_('Presentation file'),
+        help_text='The presentation file (e.g. PDF) will be pre-uploaded to the BBB room.',
+        null=True, blank=True, upload_to=get_presentation_filename,
+        validators=[validate_file_infection])
+    
+    conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
@@ -670,6 +711,11 @@ class ConferenceEvent(Event):
             @return True if a room needed to be created, False if none was created """
         # if event is of the right type and has no BBB room yet,
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+            # be absolutely sure that no room has been created right now
+            self.media_tag.refresh_from_db()
+            if self.media_tag.bbb_room:
+                return False
+            
             # start a thread and create a BBB Room
             event = self
             portal = CosinnusPortal.get_current()
@@ -680,6 +726,7 @@ class ConferenceEvent(Event):
                     max_participants = event.max_participants
                 # determine BBBRoom type from event type
                 room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
+                presentation_url = event.presentation_file.url if event.presentation_file else None
                     
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
@@ -687,6 +734,8 @@ class ConferenceEvent(Event):
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
                     max_participants=max_participants,
                     room_type=room_type,
+                    presentation_url=presentation_url,
+                    source_object=self,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
@@ -717,6 +766,8 @@ class ConferenceEvent(Event):
                     
     
     def get_absolute_url(self):
+        if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
+            return super(ConferenceEvent, self).get_absolute_url()
         return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
     
     def get_bbb_room_url(self):
@@ -727,6 +778,16 @@ class ConferenceEvent(Event):
             # redirect to a temporary URL that refreshes
             return reverse('cosinnus:bbb-room-queue', kwargs={'mt_id': self.media_tag.id})
         return self.media_tag.bbb_room.get_absolute_url()
+    
+    def get_bbb_room_queue_api_url(self):
+        if not self.can_have_bbb_room():
+            return None
+        if not settings.COSINNUS_TRIGGER_BBB_ROOM_CREATION_IN_QUEUE:
+            # create a room here if mode is on hesitant-creation
+            if self.can_have_bbb_room() and not self.media_tag.bbb_room:
+                self.check_and_create_bbb_room(threaded=True)
+            # redirect to a temporary URL that refreshes
+        return reverse('cosinnus:bbb-room-queue-api', kwargs={'mt_id': self.media_tag.id})
     
     def get_edit_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
