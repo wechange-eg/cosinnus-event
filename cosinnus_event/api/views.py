@@ -2,8 +2,7 @@
 from django.db.models import Q
 from rest_framework import viewsets
 
-from cosinnus.api.views.mixins import PublicTaggableObjectFilterMixin, CosinnusFilterQuerySetMixin
-from cosinnus.api.views import PublicTaggableObjectFilterMixin, CosinnusFilterQuerySetMixin,\
+from cosinnus.api.views.mixins import PublicTaggableObjectFilterMixin, CosinnusFilterQuerySetMixin, \
     CosinnusPaginateMixin
 from cosinnus_event.models import Event
 from cosinnus_event.api.serializers import EventListSerializer, EventRetrieveSerializer
