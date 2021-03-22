@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 17:55+0100\n"
-"PO-Revision-Date: 2020-09-24 04:27+0200\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
+"PO-Revision-Date: 2021-03-11 12:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 msgid "Restart BBB rooms"
-msgstr ""
+msgstr "Restartujte BBB místnosti"
 
 msgid "Events"
 msgstr "Události"
@@ -261,7 +261,7 @@ msgid "Title"
 msgstr "Název"
 
 msgid "Presenters"
-msgstr ""
+msgstr "Prezentátoři"
 
 msgid "Scheduled"
 msgstr "Plánováno"
@@ -285,7 +285,7 @@ msgid "State"
 msgstr "Stav"
 
 msgid "Is hidden proxy"
-msgstr ""
+msgstr "Je skryté proxy"
 
 msgid "Note"
 msgstr "Poznámka"
@@ -326,10 +326,9 @@ msgstr "Původní hlasování o události"
 msgid "Event"
 msgstr "Událost"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (archived)"
+#, python-format
 msgid "%(event)s (hidden proxy)"
-msgstr "%(event)s (archivované)"
+msgstr "%(event)s (skryté proxy)"
 
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
@@ -351,10 +350,9 @@ msgstr "%(event)s (nevyřízené)"
 msgid "%(event)s (archived)"
 msgstr "%(event)s (archivované)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (state unknown)"
-msgstr "%(event)s (nevyřízené)"
+msgstr "%(event)s (stav neznámý)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -404,54 +402,47 @@ msgid "Comments"
 msgstr "Komentáře"
 
 msgid "Lobby Check-in Event"
-msgstr ""
+msgstr "Check-in event ve foyeru"
 
 msgid "Stage Stream"
-msgstr ""
+msgstr "Stage stream"
 
 msgid "Workshop"
-msgstr ""
+msgstr "Workshop"
 
 msgid "Discussion"
-msgstr ""
+msgstr "Diskuse"
 
 msgid "Coffee Table"
-msgstr ""
+msgstr "Coffee Table"
 
 msgid "Room"
-msgstr ""
+msgstr "Místnost"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
-msgstr "Vytvořit událost"
+msgstr "Typ konferenčního eventu"
 
 msgid "Is a Break"
-msgstr ""
+msgstr "Je přestávka"
 
 msgid "Maximum Event Participants"
-msgstr ""
+msgstr "Maximum účastníků eventu"
 
 msgid "Embed code (HTML)"
-msgstr ""
+msgstr "Embedovaný kód (HTML)"
 
 msgid "Presentation file"
-msgstr ""
+msgstr "Prezentační soubor"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
-msgstr "Vytvořit událost"
+msgstr "Konferenční event"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
-msgstr "Vytvořit událost"
+msgstr "Konferenční eventy"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s %(type)s"
-msgstr "%(event)s (nevyřízené)"
+msgstr "%(event)s %(type)s"
 
 msgid "Create Event"
 msgstr "Vytvořit událost"
@@ -496,27 +487,23 @@ msgstr "do"
 
 #, python-format
 msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr ""
+msgstr "Přidejte %(event_type_verbose)s do místnosti %(room_name)s"
 
 #, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr ""
+msgstr "Editujte %(event_type_verbose)s \"%(event_title)s\" v místnosti %(room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "V jednom z polí, která jste zadali, došlo k chybě. Před uložením to prosím opravte!"
 
-#, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
-msgstr "Zadejte název nové události."
+msgstr "Zadejte název konferenční události."
 
-#, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
-msgstr "Datum události"
+msgstr "Event je přestávka"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr ""
+msgstr "Zkontrolujte toto, abyste vytvořili prázdný event přestávky, který se zobrazí v agendě a timelinu"
 
 msgid "Description and Infos"
 msgstr "Popis a informace"
@@ -527,33 +514,29 @@ msgstr "Popis"
 msgid "Enter a description for the event"
 msgstr "Zadejte popis události"
 
-#, fuzzy
-#| msgid "Example: http://mywebsite.com"
 msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "Příklad: http://mywebsite.com"
+msgstr "Příklad: https://www.youtube.com/watch?v=12345"
 
-#, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
-msgstr "Externí odkaz pro událost"
+msgstr "Streamujte URL pro event"
 
 msgid "Custom embed code (HTML)"
-msgstr ""
+msgstr "Customizovaný embedovaný kód (HTML)"
 
 msgid "Maximum Coffee Table Participants"
-msgstr ""
+msgstr "Maximum účastníků pro Coffee table"
 
 msgid "How many participants should can join one coffee table before it is full"
-msgstr ""
+msgstr "Kolik účastníků se má připojit ke coffee table, než je plný"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr ""
+msgstr "Prezentátoři budou zobrazeni v případě eventu a obdrží moderátorské povolení pro BBB místnost"
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
-msgstr ""
+msgstr "Prezentační soubor (kupř. PDF) bude předem nahrán do BBB místnosti."
 
 msgid "Upload a preview image for the Conference Event"
-msgstr ""
+msgstr "Nahrajte obrázek předběžného náhledu pro konferenční event"
 
 msgid "Create"
 msgstr "Vytvořit"
@@ -691,21 +674,17 @@ msgstr "Zadejte název nové události nebo vyberte den v kalendáři."
 msgid "Export event feed"
 msgstr "Exportovat feed událostí"
 
-#, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
-msgstr "Vytvořit událost"
+msgstr "Vytvořit konferenční událost"
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
-msgstr ""
+msgstr "Konferenční události mohou být vytvořeny přímo ze samotných místností konferenčního rozhraní nebo na centrálním místě zdě"
 
 msgid "Conference Room Management"
-msgstr ""
+msgstr "Řízení konferenční místnosti"
 
-#, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
-msgstr "Nejsou žádná otevřená hlasování o událostech."
+msgstr "Nejsou k dispozici žádné konferenční eventy."
 
 msgid "There are no current or future events."
 msgstr "Nejsou žádné aktuální ani budoucí události."
@@ -732,7 +711,7 @@ msgid "by"
 msgstr "podle"
 
 msgid "View"
-msgstr ""
+msgstr "Náhled"
 
 msgid "Created Event"
 msgstr "Vytvořená událost"
@@ -1095,7 +1074,7 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr "Událost \"%(title)s\" nelze upravit."
 
 msgid "Please use the conference management area to add new workshops!"
-msgstr ""
+msgstr "Použijte, prosím, řízení konference, abyste přidali nové workshopy!"
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Požadovaná stránka není pro tuto událost v tuto chvíli k dispozici."
