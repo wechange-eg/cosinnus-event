@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-23 18:24+0100\n"
-"PO-Revision-Date: 2020-11-26 08:59+0100\n"
+"POT-Creation-Date: 2021-03-12 17:55+0100\n"
+"PO-Revision-Date: 2021-03-08 11:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.1\n"
 
 msgid "Restart BBB rooms"
-msgstr ""
+msgstr "أعد تشغيل غرف BBB"
 
 msgid "Events"
 msgstr "مناسبات"
@@ -73,10 +73,14 @@ msgstr "علق مستخدم على أحد المناسبات الخاصة بك"
 msgid "%(sender_name)s commented on your event %(object_name)s"
 msgstr "%(sender_name)s تم انشاء المناسبة %(object_name)s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
 msgstr[0] ""
+"% (sender_name)s و% (count_minus_one)d آخرون علقوا على الحدث الخاص بك% (object_name)s\n"
+"\n"
+"\n"
+"% (sender_name)s و% (count_minus_one)d آخرون علقوا على الحدث الخاص بك% (object_name)s"
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
@@ -98,10 +102,13 @@ msgstr "علق أحد المستخدمين على مناسبة أشير اليك
 msgid "%(sender_name)s commented on the event %(object_name)s"
 msgstr "%(sender_name)s تم التعليق على المناسبة %(object_name)s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
 msgstr[0] ""
+"% (sender_name)s و% (count_minus_one)d آخر علق على الحدث% (object_name)s\n"
+"\n"
+"% (sender_name)s و% (count_minus_one)d آخرون علقوا على الحدث% (object_name)s"
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
@@ -230,10 +237,12 @@ msgstr "صوت مستخدم في مناسبة الاستطلاع"
 msgid "%(sender_name)s voted in the event poll %(object_name)s"
 msgstr "%(sender_name)s تم التصويت في مناسبة الاستطلاع %(object_name)s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] ""
+"% (sender_name)s و% (count_minus_one)d آخر صوت في استطلاع الحدث% (object_name)s\n"
+"% (sender_name)s و% (count_minus_one)d آخرون صوتوا في استطلاع الحدث% (object_name)s"
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
@@ -267,7 +276,7 @@ msgid "Title"
 msgstr "عنوان"
 
 msgid "Presenters"
-msgstr ""
+msgstr "المقدمون"
 
 msgid "Scheduled"
 msgstr "مجدول"
@@ -292,7 +301,7 @@ msgid "State"
 msgstr "حالة"
 
 msgid "Is hidden proxy"
-msgstr ""
+msgstr "هو وكيل مخفي"
 
 msgid "Note"
 msgstr "ملاحظة"
@@ -412,22 +421,22 @@ msgid "Comments"
 msgstr "تعليقات"
 
 msgid "Lobby Check-in Event"
-msgstr ""
+msgstr "حدث تسجيل الوصول في Lobby"
 
 msgid "Stage Stream"
-msgstr ""
+msgstr "منصة العرض"
 
 msgid "Workshop"
-msgstr ""
+msgstr "ورشة عمل"
 
 msgid "Discussion"
-msgstr ""
+msgstr "نقاش"
 
 msgid "Coffee Table"
-msgstr ""
+msgstr "طاولة قهوة"
 
 msgid "Room"
-msgstr ""
+msgstr "غرفة"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -435,16 +444,16 @@ msgid "Conference Event Type"
 msgstr "انشاء مناسبة"
 
 msgid "Is a Break"
-msgstr ""
+msgstr "استراحة"
 
 msgid "Maximum Event Participants"
-msgstr ""
+msgstr "أقصى عدد من المشاركين في الحدث"
 
 msgid "Embed code (HTML)"
-msgstr ""
+msgstr "كود التضمين (HTML)"
 
 msgid "Presentation file"
-msgstr ""
+msgstr "ملف العرض التقديمي"
 
 #, fuzzy
 #| msgid "Create Event"
@@ -502,13 +511,13 @@ msgctxt "time"
 msgid "until"
 msgstr "لـ"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Add %(event_type_verbose)s in Room %(room_name)s"
-msgstr ""
+msgstr "أضف% (event_type_verbose)s في الغرفة %(room_name)s"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Edit %(event_type_verbose)s \"%(event_title)s\" in Room %(room_name)s"
-msgstr ""
+msgstr "تعديل% (event_type_verbose)s \"% (event_title)s\" في الغرفة% (room_name)s"
 
 msgid "There was an error in one of the fields you entered. Please correct it before saving!"
 msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
@@ -524,7 +533,7 @@ msgid "Event is a break"
 msgstr "تاريخ مناسبة"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr ""
+msgstr "حدد هذا لإنشاء حدث فاصل فارغ يظهر في جدول الأعمال والمخطط الزمني"
 
 msgid "Description and Infos"
 msgstr "وصف و معلومات"
@@ -546,22 +555,22 @@ msgid "Stream URL for the Event"
 msgstr "رابط خارجي للمناسبة"
 
 msgid "Custom embed code (HTML)"
-msgstr ""
+msgstr "كود التضمين المخصص (HTML)"
 
 msgid "Maximum Coffee Table Participants"
-msgstr ""
+msgstr "الحد الأقصى من المشاركين في طاولة القهوة"
 
 msgid "How many participants should can join one coffee table before it is full"
-msgstr ""
+msgstr "كم عدد المشاركين الذين يمكنهم الانضمام إلى طاولة القهوة قبل أن تمتلئ"
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr ""
+msgstr "سيتم عرض مقدمي العروض بالترتيب في الحدث وسيحصلون على أذونات المنسق لغرفة BBB"
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
-msgstr ""
+msgstr "سيتم تحميل ملف العرض التقديمي (مثل PDF) مسبقًا إلى غرفة BBB."
 
 msgid "Upload a preview image for the Conference Event"
-msgstr ""
+msgstr "قم بتحميل صورة معاينة لحدث المؤتمر"
 
 msgid "Create"
 msgstr "انشاء"
@@ -614,7 +623,6 @@ msgstr "لا توجد مناسبة استطلاعات مفتوحة."
 msgid "Planned Events"
 msgstr "المناسبات المخطط لها"
 
-#, fuzzy
 msgid "Past Events"
 msgstr "المناسبات السابقة"
 
@@ -707,10 +715,10 @@ msgid "Create Conference Event"
 msgstr "انشاء مناسبة"
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
-msgstr ""
+msgstr "يمكن إنشاء أحداث المؤتمر مباشرة من الغرف نفسها في واجهة المؤتمر أو في مكان مركزي هنا"
 
 msgid "Conference Room Management"
-msgstr ""
+msgstr "إدارة غرفة الاجتماعات"
 
 #, fuzzy
 #| msgid "There are no open event polls."
@@ -742,7 +750,7 @@ msgid "by"
 msgstr "من قبل"
 
 msgid "View"
-msgstr ""
+msgstr "عرض"
 
 msgid "Created Event"
 msgstr "تم انشاء مناسبة"
@@ -889,7 +897,7 @@ msgstr ""
 msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgstr "%(sender_name)s علق على أحد المناسبات الخاصة بك في%(team_name)s."
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Hi %(receiver_name)s,\n"
 "\n"
@@ -903,6 +911,17 @@ msgid ""
 "\n"
 "Your %(site_name)s Team."
 msgstr ""
+"مرحبًا% (receiver_name)s ،\n"
+"\n"
+"تم الإعلان عن حدث جديد \"% (object_name)s\" ، في% (event_date)s ، في% (team_name)s بواسطة% (sender_name)s.\n"
+"\n"
+"يمكنك العثور عليه باتباع هذا الرابط:% (object_url)s\n"
+"\n"
+"\n"
+"\n"
+"(اتبع هذا الرابط لتعديل تفضيلات الإعلام:% (notifications_settings_url)s)\n"
+"\n"
+"فريق% (site_name)s الخاص بك."
 
 #, python-format
 msgid ""
@@ -1121,7 +1140,7 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr "مناسبة \"%(title)s\"تعذر تعديلها."
 
 msgid "Please use the conference management area to add new workshops!"
-msgstr ""
+msgstr "الرجاء استخدام منطقة إدارة المؤتمرات لإضافة ورش عمل جديدة!"
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "الصفحة التي طلبتها غير متاحة لهذه الماسبة في الوقت الحالي."
