@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 17:55+0100\n"
+"POT-Creation-Date: 2021-02-23 18:24+0100\n"
 "PO-Revision-Date: 2020-10-13 13:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.1\n"
 
 msgid "Restart BBB rooms"
-msgstr ""
+msgstr "Restart pokoi BBB"
 
 msgid "Events"
 msgstr "Wydarzenia"
@@ -76,9 +76,9 @@ msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń %(object_name)s"
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
-msgstr[0] "%(sender_name)s i %(count_minus_one)d skomentowali jedno z Twoich wydarzeń %(object_name)s"
-msgstr[1] "%(sender_name)s i %(count_minus_one)d skomentowali Twoje wydarzenie %(object_name)s"
-msgstr[2] "%(sender_name)s i %(count_minus_one)d skomentowali jedno z Twoich wydarzeń %(object_name)s"
+msgstr[0] "%(sender_name)s i inny/-a %(count_minus_one)d skomentował/-a jedno z Twoich wydarzeń %(object_name)s"
+msgstr[1] "%(sender_name)s i inni/-e%(count_minus_one)d skomentowali/-ły Twoje wydarzenie %(object_name)s"
+msgstr[2] "%(sender_name)s i inni/-e%(count_minus_one)d skomentowali/-ły Twoje wydarzenie %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s commented on your event"
@@ -93,14 +93,14 @@ msgstr "Użytkownik skomentował wydarzenie, w którym zostałeś/aś oznaczony/
 
 #, python-format
 msgid "%(sender_name)s commented on the event %(object_name)s"
-msgstr "%(sender_name)s skomentował/a jedno z Twoich wydarzeń %(object_name)s"
+msgstr "%(sender_name)s skomentował/a jedno z wydarzeń %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
-msgstr[0] "%(sender_name)s i %(count_minus_one)d skomentował/a jedno z Twoich wydarzeń %(object_name)s"
-msgstr[1] "%(sender_name)s i %(count_minus_one)d skomentowali jedno z Twoich wydarzeń %(object_name)s"
-msgstr[2] "%(sender_name)s i %(count_minus_one)d skomentowali jedno z Twoich wydarzeń %(object_name)s"
+msgstr[0] "%(sender_name)s i inny/-a %(count_minus_one)d skomentował/-a jedno z wydarzeń %(object_name)s"
+msgstr[1] "%(sender_name)s i inni/-e %(count_minus_one)d skomentowali/-ly jedno z wydarzeń %(object_name)s"
+msgstr[2] "%(sender_name)s i inni/-e %(count_minus_one)d skomentowali/-ly jedno z wydarzeń %(object_name)s"
 
 msgid "You were tagged in this event"
 msgstr "Zostałeś/aś oznaczony/a w tym wydarzeniu"
@@ -227,9 +227,9 @@ msgstr "%(sender_name)s zagłosował/a w ankiecie wydarzenia %(object_name)s"
 #, python-format
 msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
-msgstr[0] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
-msgstr[1] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
-msgstr[2] "%(sender_name)s i %(count_minus_one)d zagłosowali w ankiecie wydarzenia %(object_name)s"
+msgstr[0] "%(sender_name)s i inny/-a %(count_minus_one)d zagłosował/-a w ankiecie wydarzenia %(object_name)s"
+msgstr[1] "%(sender_name)s i inni/-e %(count_minus_one)d zagłosowali/-ły w ankiecie wydarzenia %(object_name)s"
+msgstr[2] "%(sender_name)s i inni/-e %(count_minus_one)d zagłosowali/-ły w ankiecie wydarzenia %(object_name)s"
 
 #, python-format
 msgid "%(sender_name)s voted in an event poll you are following"
@@ -252,7 +252,7 @@ msgid "Soonest Upcoming"
 msgstr "Najbliższe Wydarzenia"
 
 msgid "Newest Created"
-msgstr "Najnowsze Utworzone"
+msgstr "Ostatnio Utworzone"
 
 msgid "Title"
 msgstr "Tytuł"
@@ -282,10 +282,10 @@ msgid "State"
 msgstr "Stan"
 
 msgid "Is hidden proxy"
-msgstr ""
+msgstr "Jest ukrytym serwerem pośredniczącym"
 
 msgid "Note"
-msgstr "Uwagi"
+msgstr "Uwaga"
 
 msgid "Event date"
 msgstr "Data wydarzenia"
@@ -323,10 +323,10 @@ msgstr "Oryginalna Ankieta Wydarzenia"
 msgid "Event"
 msgstr "Wydarzenie"
 
-#, fuzzy, python-format
+#, python-format
 #| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
-msgstr "%(event)s (zarchiwizowane)"
+msgstr "%(event)s (ukryty serwer pośredniczący)"
 
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
@@ -348,10 +348,10 @@ msgstr "%(event)s (oczekujące)"
 msgid "%(event)s (archived)"
 msgstr "%(event)s (zarchiwizowane)"
 
-#, fuzzy, python-format
+#, python-format
 #| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
-msgstr "%(event)s (oczekujące)"
+msgstr "%(event)s (stan nieznany)"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -386,13 +386,13 @@ msgid "Creator"
 msgstr "Twórca"
 
 msgid "Created"
-msgstr "Utworzył/a"
+msgstr "Utworzył/-a"
 
 msgid "Last modified"
 msgstr "Data ostatniej modyfikacji"
 
 msgid "Text"
-msgstr "Treść"
+msgstr "Tekst"
 
 msgid "Comment"
 msgstr "Komentarz"
@@ -407,7 +407,7 @@ msgid "Stage Stream"
 msgstr "Stream ze sceny"
 
 msgid "Workshop"
-msgstr "Warsztat"
+msgstr "Warsztaty"
 
 msgid "Discussion"
 msgstr "Dyskusja"
@@ -428,10 +428,10 @@ msgid "Maximum Event Participants"
 msgstr "Maksymalna liczba uczestników wydarzenia"
 
 msgid "Embed code (HTML)"
-msgstr ""
+msgstr "Kod osadzony (HTML)"
 
 msgid "Presentation file"
-msgstr ""
+msgstr "Plik prezentacji"
 
 msgid "Conference Event"
 msgstr "Wydarzenie konferencyjne"
@@ -475,7 +475,7 @@ msgstr "o"
 # Leave this field empty
 msgctxt "time"
 msgid "o'clock"
-msgstr "godzin"
+msgstr "o godzinie"
 
 msgctxt "time"
 msgid "from"
@@ -506,7 +506,7 @@ msgid "Check this to create an empty break event that shows up in the agenda and
 msgstr "Sprawdź to, aby stworzyć puste wydarzenie przerwy, które pokazuje się w kalendarzu i na osi czasu"
 
 msgid "Description and Infos"
-msgstr "Opisy i Informacje"
+msgstr "Opis i Informacje"
 
 msgid "Description"
 msgstr "Opis"
@@ -521,7 +521,7 @@ msgid "Stream URL for the Event"
 msgstr "Stream URL do wydarzenia"
 
 msgid "Custom embed code (HTML)"
-msgstr ""
+msgstr "Zindywidualizuj kod osadzony (HTML)"
 
 msgid "Maximum Coffee Table Participants"
 msgstr "Maksimum uczestników Coffee Table"
@@ -533,7 +533,7 @@ msgid "The presenters will be shown in order in the event and will receive Moder
 msgstr "Prezenterzy będą pokazani kolejno w wydarzeniu i otrzymają zgody moderatora do pokoju BBB"
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
-msgstr ""
+msgstr "Plik prezentacji (np. PDF) zostanie wstępnie przesłany do pokoju BBB."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Wgraj obraz zwiastujący wydarzenie konferencyjne"
@@ -639,7 +639,7 @@ msgid "You will now receive notifications for comments or when this event poll i
 msgstr "Otrzymasz powiadomienia dotyczące komentarzy lub gdy ta ankieta wydarzenia zostanie zmieniona albo gdy ktoś odda na nią głos."
 
 msgid "Write comment..."
-msgstr "Dodaj komentarz..."
+msgstr "Napisz komentarz..."
 
 msgid "Post"
 msgstr "Opublikuj"
@@ -674,18 +674,16 @@ msgstr "Wpisz tytuł nowego wydarzenia lub wybierz dzień w Kalendarzu."
 msgid "Export event feed"
 msgstr "Eksportuj kanał wydarzenia"
 
-#, fuzzy
 #| msgid "Conference Event"
 msgid "Create Conference Event"
-msgstr "Wydarzenie konferencyjne"
+msgstr "Utwórz Wydarzenie Konferencyjne"
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
-msgstr ""
+msgstr "Wydarzenia konferencyjne można tworzyć bezpośrednio z samych pokoi interfejsu konferencyjnego lub w centralnym miejscu tutaj"
 
-#, fuzzy
 #| msgid "Conference Event"
 msgid "Conference Room Management"
-msgstr "Wydarzenie konferencyjne"
+msgstr "Zarządzanie Pokojem Konferencyjnym"
 
 msgid "There are no conference events."
 msgstr "Nie ma żadnego wydarzenia konferencyjnego."
@@ -712,10 +710,10 @@ msgid "List"
 msgstr "Lista"
 
 msgid "by"
-msgstr "autor"
+msgstr "przez"
 
 msgid "View"
-msgstr "Podgląd"
+msgstr "Widok"
 
 msgid "Created Event"
 msgstr "Utworzone Wydarzenie"
@@ -969,7 +967,7 @@ msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
-msgstr "%(sender_name)s skomentował/a wydarzenie, w którym zagłosowałeś/aś w zespole %(team_name)s."
+msgstr "%(sender_name)s skomentował/-a wydarzenie, w którym zagłosowałeś/-aś w zespole %(team_name)s."
 
 msgid "Delete Event"
 msgstr "Usuń Wydarzenie"
@@ -984,7 +982,7 @@ msgid "The event that was created after the poll can be viewed here:"
 msgstr "Wydarzenie utworzone po ankiecie można zobaczyć tu:"
 
 msgid "(No description set)"
-msgstr "(Brak opisu)"
+msgstr "(Brak ustawienia opisu)"
 
 msgctxt "someone else is going"
 msgid "Going"
@@ -1002,22 +1000,22 @@ msgctxt "one or many people are going"
 msgid "Going"
 msgid_plural "Going"
 msgstr[0] "Wezmę udział"
-msgstr[1] "Wezmą udział"
-msgstr[2] "Weźmie udział"
+msgstr[1] "Wezmę udział"
+msgstr[2] "Wezmę udział"
 
 msgctxt "one or many people are maybe going"
 msgid "Maybe going"
 msgid_plural "Maybe going"
 msgstr[0] "Może wezmę udział"
-msgstr[1] "Może wezmą udział"
-msgstr[2] "Może weźmie udział"
+msgstr[1] "Może wezmę udział"
+msgstr[2] "Może wezmę udział"
 
 msgctxt "one or many people are not going"
 msgid "Can't go"
 msgid_plural "Can't go"
 msgstr[0] "Nie mogę wziąć udziału"
-msgstr[1] "Nie mogą wziąć udziału"
-msgstr[2] "Nie może wziąć udziału"
+msgstr[1] "Nie mogę wziąć udziału"
+msgstr[2] "Nie mogę wziąć udziału"
 
 msgid "Going"
 msgstr "Wezmę udział"
@@ -1053,14 +1051,14 @@ msgid "Stop Video Chat"
 msgstr "Zakończ czat video"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
-msgstr "Będziesz otrzymywał powiadomienia o komentarzach lub gdy to wydarzenie zostanie zaktualizowane."
+msgstr "Będziesz otrzymywał powiadomienia o komentarzach lub gdy to wydarzenie zostanie zaktualizowane albo jego szczegóły ulegną zmianie."
 
 msgid "You created an event"
 msgstr "Stworzyłeś/aś nowe wydarzenie"
 
 msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
 msgid "created an event"
-msgstr "utworzone wydarzenie"
+msgstr "utworzono wydarzenie"
 
 msgid "Show all"
 msgstr "Pokaż wszystko"
@@ -1077,7 +1075,7 @@ msgid "Event \"%(title)s\" could not be edited."
 msgstr "Wydarzenie \"%(title)s\" nie mogło zostać edytowane."
 
 msgid "Please use the conference management area to add new workshops!"
-msgstr ""
+msgstr "Prosimy o korzystanie z obszaru zarządzania konferencją w celu dodawania nowych warsztatów!"
 
 msgid "The page you requested is not available for this event at this time."
 msgstr "Strona, którą chcesz wyświetlić, nie jest obecnie dostępna dla tego wydarzenia."
@@ -1129,7 +1127,7 @@ msgid "Unscheduled event \"%(title)s\" could not be deleted."
 msgstr "Niezaplanowanie wydarzenie \"%(title)s\" nie mogło zostać usunięte."
 
 msgid "Your votes were saved successfully."
-msgstr "Twoje głosy zostały zapisane pomyślnie."
+msgstr "Twoje głosy zostały pomyślnie zapisane."
 
 msgid "Your votes could not be saved."
 msgstr "Twoje głosy nie mogły zostać zapisane."
@@ -1138,7 +1136,7 @@ msgid "This is event is already scheduled. You cannot vote for it any more."
 msgstr "To wydarzenie już jest zaplanowane. Nie możesz na nie głosować."
 
 msgid "The complete request can only be sent via POST!"
-msgstr "Kompletne żądanie może być wysłane tylko przez POCZTĘ!"
+msgstr "Kompletne żądanie można wysłać tylko POCZTĄ!"
 
 msgid "Event cannot be completed: No date was supplied."
 msgstr "Wydarzenie nie może zostać ukończone: Nie podano daty."
