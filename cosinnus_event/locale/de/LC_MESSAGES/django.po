@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 17:55+0100\n"
-"PO-Revision-Date: 2021-03-09 17:39+0100\n"
+"POT-Creation-Date: 2021-03-26 14:22+0100\n"
+"PO-Revision-Date: 2021-03-26 14:23+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -522,14 +522,23 @@ msgstr "Max. Anzahl an Plätzen am Café-Tisch"
 msgid "How many participants should can join one coffee table before it is full"
 msgstr "Wie viele Teilnehmende dürfen am Tisch Platz nehmen, ehe der Tisch voll ist"
 
+msgid "Upload a preview image for the Conference Event"
+msgstr "Lade ein Vorschaubild für die Tagungsveranstaltung hoch"
+
+msgid "Will be shown on the event card in the conference room."
+msgstr "Wird auf der Veranstaltungskarte im Tagungsraum angezeigt."
+
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Die Präsentierenden werden in der Veranstaltungsübersicht angezeigt und erhalten Moderationsrechte in VideoTagungen "
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr "Die Präsentation (z.B. PDF) wird vorab in den BBB-Raum hochgeladen."
 
-msgid "Upload a preview image for the Conference Event"
-msgstr "Lade ein Vorschaubild für die Tagungsveranstaltung hoch"
+msgid "Note: If a slide is subsequently added to an existing event, it does not automatically appear in the event if this event was recently attended and is therefore active. This requires an active ending of the event or a 5-minute idle time without participants until the event is automatically ended. "
+msgstr "Hinweis: Wenn eine Folie nachträglich zu einer Veranstaltung hinzugefügt wird, erscheint diese nicht automatisch in der Veranstaltung, sofern diese Veranstaltung kürzlich besucht wurde und somit aktiv ist. Hierfür ist ein aktives Beenden der Veranstaltung notwendig oder ein 5 minütiges Leerlaufen ohne Teilnehmer, bis die Veranstaltung automatisch beendet wird. "
+
+msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
+msgstr "Du kannst einen bestehenden sofort Veranstaltungsraum aktiv beenden, indem du als Moderator im Raum oben rechts  im \"Drei-Punkte-Menü\" auf \"End Meeting\" klickst."
 
 msgid "Create"
 msgstr "Erstellen"
