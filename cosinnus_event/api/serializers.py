@@ -10,6 +10,7 @@ class EventListSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.URLField(source='get_absolute_url', read_only=True)
     timestamp = serializers.DateTimeField(source='last_modified')
     image = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     class Meta(object):
         model = Event
@@ -19,7 +20,11 @@ class EventListSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_image(self, obj):
         image = obj.attached_image
-        return image and image.static_image_url() or None
+        domain = obj.group.portal.get_domain()
+        return image and (domain+image.static_image_url()) or None
+    
+    def get_url(self, obj):
+        return obj.get_absolute_url()
 
 
 class EventRetrieveSerializer(EventListSerializer):
