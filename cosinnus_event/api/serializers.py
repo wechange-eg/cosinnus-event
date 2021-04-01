@@ -11,6 +11,7 @@ class EventListSerializer(serializers.HyperlinkedModelSerializer):
     image = serializers.SerializerMethodField()
     topics = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     class Meta(object):
         model = Event
@@ -22,6 +23,9 @@ class EventListSerializer(serializers.HyperlinkedModelSerializer):
         if not obj.attached_image:
             return None
         return self.context['request'].build_absolute_uri(obj.attached_image.static_image_url())
+    
+    def get_url(self, obj):
+        return obj.get_absolute_url()
 
     def get_topics(self, obj):
         return obj.media_tag.get_topics()

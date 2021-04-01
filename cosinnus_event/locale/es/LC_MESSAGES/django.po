@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 17:55+0100\n"
+"POT-Creation-Date: 2021-03-30 19:20+0200\n"
 "PO-Revision-Date: 2020-04-22 12:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -565,13 +565,22 @@ msgstr ""
 msgid "How many participants should can join one coffee table before it is full"
 msgstr ""
 
+msgid "Upload a preview image for the Conference Event"
+msgstr ""
+
+msgid "Will be shown on the event card in the conference room."
+msgstr ""
+
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr ""
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr ""
 
-msgid "Upload a preview image for the Conference Event"
+msgid "Note: If a slide is subsequently added to an existing event, it does not automatically appear in the event if this event was recently attended and is therefore active. This requires an active ending of the event or a 5-minute idle time without participants until the event is automatically ended. "
+msgstr ""
+
+msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr ""
 
 msgid "Create"
