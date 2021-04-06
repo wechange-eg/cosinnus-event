@@ -50,6 +50,7 @@ cosinnus_group_patterns = [
 
 cosinnus_root_patterns = [
     url(r'^events/feed/all/$', views.event_ical_feed_global, name='feed-global'),
+    url(r'^events/(?P<pk>\d+)/update', views.event_api_update, name='event_api_update')
 ]
 urlpatterns = cosinnus_group_patterns + cosinnus_root_patterns
 
