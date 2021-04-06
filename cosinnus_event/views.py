@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from builtins import str
 from collections import defaultdict
+import dateutil.parser
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotAllowed
@@ -1100,8 +1101,8 @@ class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
 def event_api_update(request, pk):
     if request.method == 'POST':
         event = get_object_or_404(Event, pk=pk)
-        start = request.POST.get('start')
-        end = request.POST.get('end')
+        start = dateutil.parser.parse(request.POST.get('start'))
+        end = dateutil.parser.parse(request.POST.get('end'))
         event.from_date = start
         event.to_date = end
         event.save()
