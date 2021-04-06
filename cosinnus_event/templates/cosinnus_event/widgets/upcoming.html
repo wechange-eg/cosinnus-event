@@ -1,20 +1,22 @@
 {% load i18n cosinnus_tags %}
 
-{% if events %}
-    {% include 'cosinnus_event/attached_events.html' with events=events no_indent=1 %}
-{% else %}
-    <div type="button" class="btn btn-emphasized dashboard-appwidget-contentline">
-        <ul class="media-list">
-            <li class="media">
-                <a class="pull-left" href="#">
-                    <i class="fa fa-tasks"></i>
-                </a>
-                <div class="media-body">
-                    {% trans "There are no upcoming events" %}
-                </div>
-            </li>
-        </ul>
-    </div><!-- btn -->
+{% if event_display == 'calendar' %}
+    {% if events %}
+        {% include 'cosinnus_event/attached_events.html' with events=events no_indent=1 %}
+    {% else %}
+        <div type="button" class="btn btn-emphasized dashboard-appwidget-contentline">
+            <ul class="media-list">
+                <li class="media">
+                    <a class="pull-left" href="#">
+                        <i class="fa fa-tasks"></i>
+                    </a>
+                    <div class="media-body">
+                        {% trans "There are no upcoming events" %}
+                    </div>
+                </li>
+            </ul>
+        </div><!-- btn -->
+    {% endif %}
 {% endif %}
 
 
@@ -25,9 +27,9 @@
             {% if event.from_date %}
             {
                 title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:25 }}{% if not event.is_hidden_group_proxy and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
-                start: moment("{{ event.from_date|date:"c"}}"),
+                start: "{{ event.from_date|date:"c"}}",
                 {% if event.to_date %}
-                end: moment("{{ event.to_date|date:"c"}}"),
+                end: "{{ event.to_date|date:"c"}}",
                 {% endif %}
                 {% if event.is_hidden_group_proxy %}
                 className: 'event-special',

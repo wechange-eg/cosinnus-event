@@ -49,8 +49,14 @@ class UpcomingEvents(MixReflectedObjectsMixin, DashboardWidget):
         if count != 0:
             events = events.all()[offset:offset+count]
         
+        event_display = 'calendar'
+
+        if getattr(settings, 'COSINNUS_CALENDAR_WIDGET_DISPLAY_AS_LIST', False):
+            event_display = 'list'
+        
         data = {
             'events': events,
+            'event_display': event_display,
             'calendar_events': calendar_events,
             'no_data': _('No upcoming events'),
             'group': self.config.group,

@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 
 from builtins import str
 from collections import defaultdict
+import dateutil.parser
 
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotAllowed
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
@@ -1095,6 +1096,18 @@ class ConferenceEventEditView(ConferenceEventFormMixin, AttachableViewMixin, Upd
 class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
     message_success = _('Event "%(title)s" was deleted successfully.')
     message_error = _('Event "%(title)s" could not be deleted.')
+
+
+def event_api_update(request, pk):
+    if request.method == 'POST':
+        event = get_object_or_404(Event, pk=pk)
+        start = dateutil.parser.parse(request.POST.get('start'))
+        end = dateutil.parser.parse(request.POST.get('end'))
+        event.from_date = start
+        event.to_date = end
+        event.save()
+        return JsonResponse({'status': 'success'})
+    return HttpResponseNotAllowed(['post'])
 
 
 index_view = EventIndexView.as_view()

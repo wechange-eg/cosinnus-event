@@ -57,10 +57,11 @@
 		        {% for event in object_list %}
 		            {% if event.from_date %}
 	                {
+						id: {{ event.id }},
 	                    title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:35 }}{% if not event.is_hidden_group_proxy and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
-	                    start: moment("{{ event.from_date|date:"c"}}"),
+	                    start: "{{ event.from_date|date:"c"}}",
 	                    {% if event.to_date %}
-	                    end: moment("{{ event.to_date|date:"c"}}"),
+	                    end: "{{ event.to_date|date:"c"}}",
 	                    {% endif %}
 	                    {% if event.is_hidden_group_proxy %}
 	                    className: 'event-special',
@@ -70,8 +71,8 @@
 	                {% endif %}
 	            
 	            {% endfor %}
-            
             ];
+            $.cosinnus.fullcalendar();
         </script>
         
         {% if request.user and request.user.is_authenticated %} 
