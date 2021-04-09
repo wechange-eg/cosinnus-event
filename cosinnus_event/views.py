@@ -6,6 +6,7 @@ from collections import defaultdict
 import dateutil.parser
 
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotAllowed
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -45,11 +46,11 @@ from cosinnus.core.decorators.views import require_user_token_access, dispatch_g
 from django.contrib.sites.shortcuts import get_current_site
 from cosinnus.utils.functions import unique_aware_slugify, is_number
 from django.views.decorators.csrf import csrf_protect
-from django.http.response import HttpResponseBadRequest, JsonResponse,\
-    HttpResponseNotAllowed
+from django.http.response import HttpResponseBadRequest
 from annoying.functions import get_object_or_None
 from cosinnus.views.mixins.reflected_objects import ReflectedObjectSelectMixin,\
     MixReflectedObjectsMixin, ReflectedObjectRedirectNoticeMixin
+from cosinnus.utils.permissions import check_object_write_access
 
 import logging
 from django.utils.encoding import force_text
@@ -1101,12 +1102,16 @@ class ConferenceEventDeleteView(ConferenceEventFormMixin, DeleteView):
 def event_api_update(request, pk):
     if request.method == 'POST':
         event = get_object_or_404(Event, pk=pk)
-        start = dateutil.parser.parse(request.POST.get('start'))
-        end = dateutil.parser.parse(request.POST.get('end'))
-        event.from_date = start
-        event.to_date = end
-        event.save()
-        return JsonResponse({'status': 'success'})
+        user = request.user
+        if check_object_write_access(event, user):
+            start = dateutil.parser.parse(request.POST.get('start'))
+            end = dateutil.parser.parse(request.POST.get('end'))
+            event.from_date = start
+            event.to_date = end
+            event.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            raise PermissionDenied()
     return HttpResponseNotAllowed(['post'])
 
 
