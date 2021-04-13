@@ -26,6 +26,7 @@
         {% for event in calendar_events %}
             {% if event.from_date %}
             {
+                id: {{ event.id }},
                 title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:25 }}{% if not event.is_hidden_group_proxy and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
                 start: "{{ event.from_date|date:"c"}}",
                 {% if event.to_date %}
