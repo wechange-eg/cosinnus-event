@@ -182,7 +182,8 @@ $(function() {
         .attr('value', 'true')
         .appendTo(formEvent);
   	$parent.hide();
-  	$("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
+	$.cosinnus.initializedFullcalendars[0].destroy();
+	$.cosinnus.fullcalendar();
   });
   $dateInput.find('.doodle-date-input')
     .attr('data-date', dateDataAttr)
@@ -211,7 +212,8 @@ $(function() {
     $('#calendar-doodle-days-selector-list table thead').show();
   }
   
-  $("#calendar-doodle-days-selector .small-calendar").fullCalendar('render');
+  //new FullCalendar.Calendar($("#calendar-doodle-days-selector .small-calendar")).render();
+  $.cosinnus.fullcalendar();
   
   // from cosinnus_event.js
   calendarCreateDoodle();
