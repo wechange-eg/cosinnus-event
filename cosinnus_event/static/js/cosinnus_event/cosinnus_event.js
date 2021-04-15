@@ -174,17 +174,17 @@ var calendarCreateDoodle = function() {
     // instant initialize
     selectDays(true);
 
-    $("#calendar-doodle-days-selector .small-calendar").on("fullCalendarDayClick", function(event, date, jsEvent) {
-        var dayElement = jsEvent.currentTarget;
+    $("#calendar-doodle-days-selector .small-calendar").on("fullCalendarDayClick", function(event, date) {
+        var dayElement = event.currentTarget;
         if ($(dayElement).hasClass('fc-other-month')) return;
 
-        var dateDataAttr = date.getFullYear() + "-"
-            + ((date.getMonth()+1).toString().length === 2
-                ? (date.getMonth()+1)
-                : "0" + (date.getMonth()+1)) + "-"
-            + (date.getDate().toString().length === 2
-                ? date.getDate()
-                : "0" + date.getDate());
+        var dateDataAttr = date.date.getFullYear() + "-"
+            + ((date.date.getMonth()+1).toString().length === 2
+                ? (date.date.getMonth()+1)
+                : "0" + (date.date.getMonth()+1)) + "-"
+            + (date.date.getDate().toString().length === 2
+                ? date.date.getDate()
+                : "0" + date.date.getDate());
 
         // unselect all and re-select later
         $(dayElement).parent().parent().find('td').removeClass('selected');
