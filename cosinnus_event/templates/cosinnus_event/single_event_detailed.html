@@ -3,7 +3,7 @@
 {# this template expects an {{ event }} object to be passed to it. Also accepts hide_control_buttons to hide edit/delete buttons #}
 {% addtoblock "js" %}
 	{% if event.state == 1 and user.is_authenticated and user|has_read_access:event %}
-		<script src="{% static 'js/cosinnus_event/event_attendance.js' %}?v=0.1"></script>
+		<script src="{% static 'js/cosinnus_event/event_attendance.js' %}?v={{ SETTINGS.COSINNUS_STATICFILES_VERSION }}"></script>
 	{% endif %}
 {% endaddtoblock %}
 
