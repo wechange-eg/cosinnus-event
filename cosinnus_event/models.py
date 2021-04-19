@@ -17,7 +17,7 @@ from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext_lazy as p_
 
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
-
+from django.template.defaultfilters import date as django_date_filter
 from cosinnus_event.conf import settings
 from cosinnus_event.managers import EventQuerySet
 from cosinnus.models import BaseTaggableObjectModel
@@ -281,7 +281,16 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
     
     def get_humanized_event_time_html(self):
         return mark_safe(render_to_string('cosinnus_event/common/humanized_event_time.html', {'event': self})).strip()
-
+    
+    def get_date_or_now_starting_time(self):
+        """ Returns a dict like {'is_date': True, 'date': <date>}
+            with is_date=False date as string "Now" if the event is running, 
+            else is_date=True and date as the moment-usable datetime of the from_date. """
+        _now = now()
+        if self.from_date and self.from_date < _now and self.to_date > _now:
+            return {'is_date': False, 'date': str(_("Now"))}
+        return {'is_date': True, 'date': django_date_filter(self.from_date, 'c')}
+    
     def get_period(self):
         if self.single_day:
             return localize(self.from_date, "d.m.Y")
