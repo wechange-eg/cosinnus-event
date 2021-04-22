@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-30 19:20+0200\n"
+"POT-Creation-Date: 2021-04-22 12:51+0200\n"
 "PO-Revision-Date: 2020-10-11 14:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -324,10 +324,9 @@ msgstr "Исходное предложение даты события"
 msgid "Event"
 msgstr "Cобытие"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (archived)"
+#, python-format
 msgid "%(event)s (hidden proxy)"
-msgstr "%(event)s (завершено)"
+msgstr "%(event)s (скрытый прокси)"
 
 #, python-format
 msgid "%(event)s (%(date)s - %(end)s)"
@@ -349,10 +348,14 @@ msgstr "%(event)s (дата в процессе обработки)"
 msgid "%(event)s (archived)"
 msgstr "%(event)s (завершено)"
 
-#, fuzzy, python-format
-#| msgid "%(event)s (pending)"
+#, python-format
 msgid "%(event)s (state unknown)"
-msgstr "%(event)s (дата в процессе обработки)"
+msgstr "%(event)s (неизвестный статус)"
+
+#, fuzzy
+#| msgid "No"
+msgid "Now"
+msgstr "Нет"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -428,10 +431,8 @@ msgstr "Пауза"
 msgid "Maximum Event Participants"
 msgstr "Максимальное число участников"
 
-#, fuzzy
-#| msgid "Custom embed code (HTML)"
 msgid "Embed code (HTML)"
-msgstr "Встроить код"
+msgstr "Код для вставки (HTML)"
 
 msgid "Presentation file"
 msgstr "Файл презентации"
@@ -536,7 +537,7 @@ msgid "Upload a preview image for the Conference Event"
 msgstr "Загрузить картинку предпросмотра для события конференции"
 
 msgid "Will be shown on the event card in the conference room."
-msgstr ""
+msgstr "Будет отображаться на карточке события в комнате конференции."
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
 msgstr "Ведущие будут показаны по порядку и получат разрешение модератора на BBB-комнату"
@@ -545,10 +546,10 @@ msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr "Файл презентации (например, PDF) будет предварительно загружен в комнату BBB."
 
 msgid "Note: If a slide is subsequently added to an existing event, it does not automatically appear in the event if this event was recently attended and is therefore active. This requires an active ending of the event or a 5-minute idle time without participants until the event is automatically ended. "
-msgstr ""
+msgstr "Примечание: Если слайд будет добавлен в существующее событие позже, он не появится в событии автоматически, если это событие было недавно посещено и является активным. Для этого нужно активное завершение события или 5 минут бездействия без участников, пока событие не завершится автоматически. "
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
-msgstr ""
+msgstr "Вы можете завершить событие в существующей комнате путем нажатия \"Завершить встречу\" в верхнем правом углу в \"Меню дополнительных параметров\" (три точки)."
 
 msgid "Create"
 msgstr "Создать"
@@ -687,18 +688,14 @@ msgstr "Введите название нового события или вы�
 msgid "Export event feed"
 msgstr "Экспортировать ленту новостей события"
 
-#, fuzzy
-#| msgid "Conference Event"
 msgid "Create Conference Event"
-msgstr "Событие конференции"
+msgstr "Создать событие конференции"
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
 msgstr "События конференции можно создавать в комнатах конференции или здесь на центральной панели"
 
-#, fuzzy
-#| msgid "Conference Event"
 msgid "Conference Room Management"
-msgstr "Событие конференции"
+msgstr "Управление комнатой конференции"
 
 msgid "There are no conference events."
 msgstr "Нет событий конференции."
