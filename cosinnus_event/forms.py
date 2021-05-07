@@ -2,28 +2,27 @@
 from __future__ import unicode_literals
 
 from builtins import object
+
 from django import forms
-from django.forms.widgets import HiddenInput, RadioSelect,\
-    SplitHiddenDateTimeWidget
+from django.forms.widgets import HiddenInput
+from django.urls.base import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from cosinnus.fields import UserSelect2MultipleChoiceField
+from cosinnus.forms.attached_object import FormAttachableMixin
 from cosinnus.forms.group import GroupKwargModelFormMixin
 from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import SplitHiddenDateWidget
-
-from cosinnus_event.models import Event, Suggestion, Vote, Comment,\
-    ConferenceEvent
-from cosinnus.forms.attached_object import FormAttachableMixin
 from cosinnus.utils.user import get_user_select2_pills
-from cosinnus.fields import UserSelect2MultipleChoiceField
-from django.urls.base import reverse
-from django.core.validators import MaxValueValidator, MinValueValidator
+from cosinnus.utils.validators import CleanFromToDateFieldsMixin
+from cosinnus_event.models import Event, Suggestion, Vote, Comment, \
+    ConferenceEvent
 
 
 class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
-                 FormAttachableMixin, BaseTaggableObjectForm):
+                 CleanFromToDateFieldsMixin, FormAttachableMixin, BaseTaggableObjectForm):
     
     url = forms.URLField(widget=forms.TextInput, required=False)
     
