@@ -16,6 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -25,7 +26,7 @@ msgstr ""
 
 msgctxt "the_app"
 msgid "event"
-msgstr "Events"
+msgstr ""
 
 msgid "A user created a new event"
 msgstr ""
@@ -99,9 +100,8 @@ msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the ev
 msgstr[0] ""
 msgstr[1] ""
 
-#, fuzzy
 msgid "You were tagged in this event"
-msgstr "%s - Events"
+msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event you were tagged in"
@@ -114,9 +114,8 @@ msgstr ""
 msgid "A user commented on an event you voted in"
 msgstr ""
 
-#, fuzzy
 msgid "You voted on this event"
-msgstr "%s - Events"
+msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in"
@@ -129,9 +128,8 @@ msgstr ""
 msgid "A user commented on an event you are attending"
 msgstr ""
 
-#, fuzzy
 msgid "You are attending this event"
-msgstr "%s - Events"
+msgstr ""
 
 #, python-format
 msgid "%(sender_name)s commented on an event you are attending"
@@ -433,13 +431,11 @@ msgstr ""
 msgid "Presentation file"
 msgstr ""
 
-#, fuzzy
 msgid "Conference Event"
-msgstr "%s - Events"
+msgstr ""
 
-#, fuzzy
 msgid "Conference Events"
-msgstr "%s - Events"
+msgstr ""
 
 #, python-format
 msgid "%(event)s %(type)s"
@@ -599,9 +595,8 @@ msgstr ""
 msgid "Planned Events"
 msgstr ""
 
-#, fuzzy
 msgid "Past Events"
-msgstr "%s - Events"
+msgstr ""
 
 msgid "Archived Event Polls"
 msgstr ""
@@ -685,16 +680,14 @@ msgstr ""
 msgid "Export event feed"
 msgstr ""
 
-#, fuzzy
 msgid "Create Conference Event"
-msgstr "%s - Events"
+msgstr ""
 
 msgid "Conference events can be created directly from the rooms themselves of the conference interface or in a central place here"
 msgstr ""
 
-#, fuzzy
 msgid "Conference Room Management"
-msgstr "%s - Events"
+msgstr ""
 
 msgid "There are no conference events."
 msgstr ""
@@ -726,9 +719,8 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#, fuzzy
 msgid "Created Event"
-msgstr "%s - Events"
+msgstr ""
 
 #, python-format
 msgid "Do you really want to delete event „%(title)s“?"
@@ -939,9 +931,8 @@ msgstr ""
 msgid "No Choice"
 msgstr ""
 
-#, fuzzy
 msgid "Start/join video chat for this event"
-msgstr "%s - Events"
+msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
@@ -961,14 +952,12 @@ msgstr ""
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr ""
 
-#, fuzzy
 msgid "You created an event"
-msgstr "%s - Events"
+msgstr ""
 
-#, fuzzy
 msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
 msgid "created an event"
-msgstr "%s - Events"
+msgstr ""
 
 msgid "Show all"
 msgstr ""
