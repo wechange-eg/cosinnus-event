@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -431,6 +431,9 @@ msgstr ""
 msgid "Presentation file"
 msgstr ""
 
+msgid "Show chat"
+msgstr ""
+
 msgid "Conference Event"
 msgstr ""
 
@@ -542,6 +545,12 @@ msgid "Note: If a slide is subsequently added to an existing event, it does not 
 msgstr ""
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
+msgstr ""
+
+msgid "Show room chat in the event"
+msgstr ""
+
+msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 msgid "Create"

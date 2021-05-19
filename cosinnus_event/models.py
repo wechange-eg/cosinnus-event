@@ -673,6 +673,11 @@ class ConferenceEvent(Event):
         null=True, blank=True, upload_to=get_presentation_filename,
         validators=[validate_file_infection])
     
+    # flag to enable/disable rocket chat showing in this event
+    show_chat = models.BooleanField(_('Show chat'),
+        help_text='Show rocket chat in sidebar in event',
+        default=False)
+    
     conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 
     class Meta(BaseTaggableObjectModel.Meta):

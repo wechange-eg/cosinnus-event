@@ -139,6 +139,13 @@
 	                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.presentation_file label=presentation_file_label legend=presentation_file_legend large_field=True field_classes="file-field" %}
 	            {% endif %}
             {% endif %}
+            
+            {% if SETTINGS.COSINNUS_ROCKET_ENABLED and room.type in room.ROCKETCHAT_ROOM_TYPES %}
+                {% comment %} Show chat {% endcomment %}
+                {% trans "Show room chat in the event" as show_chat_label %}
+                {% trans "Check this to show rocket chat in the sidebar." as show_chat_legend %}
+                {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.show_chat label=show_chat_label legend=show_chat_legend checkbox_label=show_chat_label %}
+            {% endif %}
 	        
 		</div><!-- content-box -->
 		

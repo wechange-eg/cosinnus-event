@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
-"PO-Revision-Date: 2021-03-26 14:23+0100\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
+"PO-Revision-Date: 2021-05-19 14:43+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -347,10 +347,8 @@ msgstr "%(event)s (Abgeschlossen)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (Status unbekannt)"
 
-#, fuzzy
-#| msgid "No"
 msgid "Now"
-msgstr "Nein"
+msgstr "Jetzt"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -431,6 +429,9 @@ msgstr "Einbettungscode (HTML)"
 
 msgid "Presentation file"
 msgstr "Präsentation"
+
+msgid "Show chat"
+msgstr "Chat anzeigen"
 
 msgid "Conference Event"
 msgstr "Tagungsveranstaltung"
@@ -544,6 +545,12 @@ msgstr "Hinweis: Wenn eine Folie nachträglich zu einer Veranstaltung hinzugefü
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Du kannst einen bestehenden sofort Veranstaltungsraum aktiv beenden, indem du als Moderator im Raum oben rechts  im \"Drei-Punkte-Menü\" auf \"End Meeting\" klickst."
+
+msgid "Show room chat in the event"
+msgstr "Raum-Chat in der Veranstaltung anzeigen"
+
+msgid "Check this to show rocket chat in the sidebar."
+msgstr "Aktiviere dieses Kontrollkästchen, um den Rocket.Chat in der Seitenleiste anzuzeigen"
 
 msgid "Create"
 msgstr "Erstellen"

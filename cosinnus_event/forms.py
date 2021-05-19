@@ -9,6 +9,7 @@ from django.urls.base import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from cosinnus.conf import settings
 from cosinnus.fields import UserSelect2MultipleChoiceField
 from cosinnus.forms.attached_object import FormAttachableMixin
 from cosinnus.forms.group import GroupKwargModelFormMixin
@@ -95,6 +96,9 @@ class _ConferenceEventBaseForm(_EventForm):
     url = None
     from_date = None
     to_date = None
+    fields = ['title',  'note',]
+    if settings.COSINNUS_ROCKET_ENABLED:
+        fields += ['show_chat',]
     
     def __init__(self, *args, **kwargs):
         
@@ -128,7 +132,7 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = ('title', 'note', 'image', 'max_participants')
+        fields = _ConferenceEventBaseForm.fields + ['image', 'max_participants']
 
 ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
 
@@ -140,7 +144,7 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters', 'presentation_file')
+        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file']
 
 ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
 
@@ -160,7 +164,7 @@ class _ConferenceEventStageForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = ('title', 'is_break', 'note', 'from_date', 'to_date', 'presenters', 'url', 'raw_html')
+        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'url', 'raw_html']
 
 ConferenceEventStageForm = get_form(_ConferenceEventStageForm)
 

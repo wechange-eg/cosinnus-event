@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: 2020-04-14 12:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -460,6 +460,11 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
+#| msgid "Show all"
+msgid "Show chat"
+msgstr "Барлығын көрсету"
+
+#, fuzzy
 #| msgid "Create Event"
 msgid "Conference Event"
 msgstr "Шара құру"
@@ -583,6 +588,14 @@ msgid "Note: If a slide is subsequently added to an existing event, it does not 
 msgstr ""
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
+msgstr ""
+
+#, fuzzy
+#| msgid "You created an event"
+msgid "Show room chat in the event"
+msgstr "Сіз шара жасадыңыз"
+
+msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 msgid "Create"

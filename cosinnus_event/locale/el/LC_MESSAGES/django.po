@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: 2021-04-26 12:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -433,6 +433,11 @@ msgstr "Ενσωματωμένος Κώδικας (HTML)"
 msgid "Presentation file"
 msgstr "Αρχείο Παρουσίασης"
 
+#, fuzzy
+#| msgid "Show all"
+msgid "Show chat"
+msgstr "Εμφάνιση όλων"
+
 msgid "Conference Event"
 msgstr "Εκδήλωση Σύσκεψης"
 
@@ -545,6 +550,14 @@ msgstr "Σημείωση: Εάν μια διαφάνεια προστίθετα�
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Μπορείτε να τερματίσετε ενεργά ένα δωμάτιο υπάρχουσας εκδήλωσης επιλέγοντας \"Τερματισμός Συνάντησης\" στην επάνω δεξιά γωνία του δωματίου στο \"Μενού Τριών Κουκίδων\"."
+
+#, fuzzy
+#| msgid "You are attending this event"
+msgid "Show room chat in the event"
+msgstr "Παρακολουθείτε αυτή την εκδήλωση"
+
+msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
 
 msgid "Create"
 msgstr "Δημιουργία"

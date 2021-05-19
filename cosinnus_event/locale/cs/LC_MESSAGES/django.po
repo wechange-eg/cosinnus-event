@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: 2021-04-01 12:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -439,6 +439,11 @@ msgstr "Embedovaný kód (HTML)"
 msgid "Presentation file"
 msgstr "Prezentační soubor"
 
+#, fuzzy
+#| msgid "Show all"
+msgid "Show chat"
+msgstr "Zobrazit vše"
+
 msgid "Conference Event"
 msgstr "Konferenční event"
 
@@ -551,6 +556,14 @@ msgstr "Poznámka: Když k události dodatečně přidáte slide, tak se v ní t
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Otevřenou konferenční místnost můžete aktivně ukončit kliknutím tři tečky v pravém horním rohu a následně na „Ukončit setkání“."
+
+#, fuzzy
+#| msgid "You are attending this event"
+msgid "Show room chat in the event"
+msgstr "Zúčastníte se této události"
+
+msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
 
 msgid "Create"
 msgstr "Vytvořit"

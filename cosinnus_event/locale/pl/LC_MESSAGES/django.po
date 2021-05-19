@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: 2021-04-01 14:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -436,6 +436,11 @@ msgstr "Kod osadzony (HTML)"
 msgid "Presentation file"
 msgstr "Plik prezentacji"
 
+#, fuzzy
+#| msgid "Show all"
+msgid "Show chat"
+msgstr "Pokaż wszystko"
+
 msgid "Conference Event"
 msgstr "Wydarzenie konferencyjne"
 
@@ -549,6 +554,14 @@ msgstr "Uwaga: Jeśli slajd zostanie później dodany do istniejącego wydarzeni
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Możesz aktywnie zakończyć istniejące pomieszczenie eventowe klikając na \"Zakończ spotkanie\" w prawym górnym rogu pokoju w \"Menu trzykropkowym\"."
+
+#, fuzzy
+#| msgid "You are attending this event"
+msgid "Show room chat in the event"
+msgstr "Bierzesz udział w tym wydarzeniu"
+
+msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
 
 msgid "Create"
 msgstr "Utwórz"

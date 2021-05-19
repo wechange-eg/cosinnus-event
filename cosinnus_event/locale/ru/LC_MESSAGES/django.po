@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 15:23+0200\n"
+"POT-Creation-Date: 2021-05-19 13:34+0200\n"
 "PO-Revision-Date: 2020-10-11 14:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -437,6 +437,11 @@ msgstr "Код для вставки (HTML)"
 msgid "Presentation file"
 msgstr "Файл презентации"
 
+#, fuzzy
+#| msgid "Show all"
+msgid "Show chat"
+msgstr "Показать все"
+
 msgid "Conference Event"
 msgstr "Событие конференции"
 
@@ -550,6 +555,14 @@ msgstr "Примечание: Если слайд будет добавлен в
 
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Вы можете завершить событие в существующей комнате путем нажатия \"Завершить встречу\" в верхнем правом углу в \"Меню дополнительных параметров\" (три точки)."
+
+#, fuzzy
+#| msgid "You are attending this event"
+msgid "Show room chat in the event"
+msgstr "Вы участвуете в этом событии"
+
+msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
 
 msgid "Create"
 msgstr "Создать"
