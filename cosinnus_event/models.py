@@ -773,6 +773,9 @@ class ConferenceEvent(Event):
             max_participants = None
             if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
                 max_participants = self.max_participants
+            # monkeypatch for BBB appearently allowing one less persons to enter a room
+            if max_participants is not None and settings.BBB_ROOM_FIX_PARTICIPANT_COUNT_PLUS_ONE:
+                max_participants += 1
             # determine BBBRoom type from event type
             room_type = self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
             presentation_url = self.presentation_file.url if self.presentation_file else None
