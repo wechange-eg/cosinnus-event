@@ -709,11 +709,15 @@ class ConferenceEvent(Event):
                 self.sync_bbb_members()
             except Exception as e:
                 logger.exception(e)
+                
+        # save changed properties of the BBBRoom
+        self.check_and_sync_bbb_room()
+        
     
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
         return self.type in self.BBB_ROOM_TYPES and not self.is_break
-        
+    
     def check_and_create_bbb_room(self, threaded=True):
         """ Can be safely called at any time to create a BBB room for this event
             if it doesn't have one yet.
@@ -760,6 +764,23 @@ class ConferenceEvent(Event):
                 create_room()
             return True
         return False
+    
+    def check_and_sync_bbb_room(self):
+        """ Will check if there is a BBBRoom attached to this event,
+            and if so, sync the settings like participants from this event with it """
+        if self.media_tag.bbb_room:
+            bbb_room = self.media_tag.bbb_room
+            max_participants = None
+            if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
+                max_participants = self.max_participants
+            # determine BBBRoom type from event type
+            room_type = self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
+            presentation_url = self.presentation_file.url if self.presentation_file else None
+            bbb_room.name = self.title
+            bbb_room.max_participants = max_participants
+            bbb_room.room_type = room_type
+            bbb_room.presentation_url = presentation_url
+            bbb_room.save()
     
     def sync_bbb_members(self):
         """ Completely re-syncs all users for this room """
