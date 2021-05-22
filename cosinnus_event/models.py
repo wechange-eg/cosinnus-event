@@ -639,6 +639,8 @@ class ConferenceEvent(Event):
         TYPE_COFFEE_TABLE,
     )
     
+    BBB_MAX_PARTICIPANT_TYPES = BBB_ROOM_TYPES
+    
     # the room this conference event is in. 
     # the conference event type will be set according to the room type of this room
     room = models.ForeignKey('cosinnus.CosinnusConferenceRoom', verbose_name=_('Room'),
@@ -740,7 +742,7 @@ class ConferenceEvent(Event):
             
             def create_room():
                 max_participants = None
-                if event.type == event.TYPE_COFFEE_TABLE and event.max_participants:
+                if event.type in event.BBB_MAX_PARTICIPANT_TYPES and event.max_participants:
                     max_participants = event.max_participants
                 # determine BBBRoom type from event type
                 room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
@@ -776,7 +778,7 @@ class ConferenceEvent(Event):
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             max_participants = None
-            if self.type == self.TYPE_COFFEE_TABLE and self.max_participants:
+            if self.type in self.BBB_MAX_PARTICIPANT_TYPES and self.max_participants:
                 max_participants = self.max_participants
             # monkeypatch for BBB appearently allowing one less persons to enter a room
             if max_participants is not None and settings.BBB_ROOM_FIX_PARTICIPANT_COUNT_PLUS_ONE:

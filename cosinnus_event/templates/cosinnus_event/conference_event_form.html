@@ -102,8 +102,11 @@
             {% endif %}
 
             {% if form.forms.obj.fields.max_participants %}
-                {% trans "Maximum Coffee Table Participants" as max_label %}
-                {% trans "How many participants should can join one coffee table before it is full" as max_legend %}
+                {% trans "Maximum Event Participants" as max_label %}
+                {% captureas max_legend %}
+                    {% trans "How many participants can join the video call before it is full." %}
+                    {% trans "Note that changing this setting will have no effect while an event is running." %}
+                {% endcaptureas %}
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.max_participants label=max_label legend=max_legend %}
             {% endif %}
             

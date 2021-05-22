@@ -144,7 +144,7 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file']
+        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file', 'max_participants']
 
 ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
 
