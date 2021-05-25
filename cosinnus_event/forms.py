@@ -14,6 +14,7 @@ from cosinnus.fields import UserSelect2MultipleChoiceField
 from cosinnus.forms.attached_object import FormAttachableMixin
 from cosinnus.forms.group import GroupKwargModelFormMixin
 from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
+from cosinnus.forms.translations import TranslatedFieldsFormMixin
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import SplitHiddenDateWidget
 from cosinnus.utils.user import get_user_select2_pills
@@ -22,7 +23,7 @@ from cosinnus_event.models import Event, Suggestion, Vote, Comment, \
     ConferenceEvent
 
 
-class _EventForm(GroupKwargModelFormMixin, UserKwargModelFormMixin,
+class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargModelFormMixin,
                  CleanFromToDateFieldsMixin, FormAttachableMixin, BaseTaggableObjectForm):
     
     url = forms.URLField(widget=forms.TextInput, required=False)

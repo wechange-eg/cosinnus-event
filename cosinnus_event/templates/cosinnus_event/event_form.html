@@ -4,6 +4,16 @@
 {% block extrahead %}
     {{ block.super }}
     {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=form.form.obj.note.id_for_label %}
+
+    {% if form.forms.obj|get_attr:'translatable_field_items' %}
+        {% for trans_field_name, trans_field in form.forms.obj|get_attr:'translatable_field_items' %}
+            {% if 'note_' in trans_field_name %}
+            {% with translatable_field=form.forms.obj|get_item:trans_field_name %}
+            {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=translatable_field.id_for_label noinclude=1 %}
+            {% endwith %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endblock %}
 
 {% block page_title %}
@@ -56,17 +66,17 @@
 	                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
 	                {% endif %}
 	        {% endcaptureas %}
-	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True translation_fields=translation_form %}
+	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
         {% endblock event_form_name_field %}
         
-        {% comment %} Date picker for from_date - to_date {% endcomment %}	     
+        {% comment %} Date picker for from_date - to_date {% endcomment %}
         {% include 'cosinnus/fields/from_to_date_field.html' with from_date_field=form.forms.obj.from_date to_date_field=form.forms.obj.to_date %}
         
-        {# SimpleMDE Description Field (gets initialized in extrahead) #}                                   
+        {# SimpleMDE Description Field (gets initialized in extrahead) #}
         {% trans "Description and Infos" as description_label %}
         {% trans "Description" as description_placeholder %}
         {% trans "Enter a description for the event" as description_legend %}
-        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_fields=translation_form %}
+        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
 	          
 	                    
         {% trans "Example: http://mywebsite.com" as url_placeholder %}

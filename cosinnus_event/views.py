@@ -67,7 +67,6 @@ from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
 from uuid import uuid1
 from cosinnus.models.conference import CosinnusConferenceRoom
 from cosinnus_conference.views import FilterConferenceRoomMixin
-from cosinnus.forms.group import TranslateableFieldsForm
 logger = logging.getLogger('cosinnus')
 
 
@@ -250,14 +249,6 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
             'tags': tags,
             'form_view': self.form_view,
         })
-        if self.object.translateable_fields:
-            translation_form = TranslateableFieldsForm(
-                object=self.object,
-                initial=self.object.prepare_data_for_form()
-            )
-            context.update({
-                'translation_form': translation_form
-            })
         return context
 
     def get_success_url(self):
@@ -274,11 +265,6 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         ret = super(EntryFormMixin, self).forms_valid(form, inlines)
         messages.success(self.request,
                          self.message_success % {'title': self.object.title})
-        if self.object.translateable_fields:
-            translation_form = TranslateableFieldsForm(object=self.object,
-                                                       data=self.request.POST)
-            if translation_form.is_valid():
-                translation_form.save()
         return ret
 
     def forms_invalid(self, form, inlines):
