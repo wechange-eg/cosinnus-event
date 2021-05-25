@@ -39,6 +39,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from cosinnus.models.conference import CosinnusConferenceRoom
 from django.core.exceptions import ImproperlyConfigured
 from threading import Thread
+from cosinnus.models.mixins.translations import TranslateableFieldsModelMixin
 
 import logging
 from django.contrib.contenttypes.fields import GenericRelation
@@ -56,7 +57,7 @@ def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
-class Event(LikeableObjectMixin, BaseTaggableObjectModel):
+class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
@@ -77,6 +78,8 @@ class Event(LikeableObjectMixin, BaseTaggableObjectModel):
         (STATE_CANCELED, _('Canceled')),
         (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
     )
+
+    translateable_fields = ['title', 'note']
 
     from_date = models.DateTimeField(
         _('Start'), default=None, blank=True, null=True, editable=True)
