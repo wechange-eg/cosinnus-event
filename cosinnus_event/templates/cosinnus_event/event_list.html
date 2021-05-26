@@ -50,7 +50,7 @@
 	    {% captureas title %}{% trans "iCal Feed" %}{% endcaptureas %}
 	    {% include "cosinnus/modal_box.html" with id="feedModal" label=content title=title title_icon="fa-calendar" %}
 	    
-        <div class="big-calendar large-space" {% if user|has_write_access:group %}data-calendar-edit-allowed="true"{% endif %}></div>
+        <div class="big-calendar large-space" {% if user|can_create_objects_in:group %}data-calendar-edit-allowed="true"{% endif %}></div>
         
         <script type="application/javascript">
 	        var cosinnus_calendarEvents = [
@@ -65,6 +65,9 @@
 	                    {% endif %}
 	                    {% if event.is_hidden_group_proxy %}
 	                    className: 'event-special',
+	                    {% endif %}
+	                    {% if not user|has_write_access:event or event.is_hidden_group_proxy %}
+	                    editable: false,
 	                    {% endif %}
 	                    url: '{{ event.get_absolute_url }}{% if not event.is_hidden_group_proxy and group != event.group %}?reflected_item_redirect=1{% endif %}'
 	                },
