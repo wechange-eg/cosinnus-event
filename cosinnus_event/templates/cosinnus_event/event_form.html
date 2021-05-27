@@ -7,7 +7,7 @@
 
     {% if form.forms.obj|get_attr:'translatable_field_items' %}
         {% for trans_field_name, trans_field in form.forms.obj|get_attr:'translatable_field_items' %}
-            {% if 'note_' in trans_field_name %}
+            {% if 'note_translation' in trans_field_name %}
             {% with translatable_field=form.forms.obj|get_item:trans_field_name %}
             {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=translatable_field.id_for_label noinclude=1 %}
             {% endwith %}
@@ -66,7 +66,7 @@
 	                    {% render_field form.forms.obj.title class+="form-control" placeholder=title_label %}
 	                {% endif %}
 	        {% endcaptureas %}
-	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
+	        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.title legend=title_legend label=title_label field_html=title_html first=True translation_form=form.forms.obj translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
         {% endblock event_form_name_field %}
         
         {% comment %} Date picker for from_date - to_date {% endcomment %}
@@ -76,7 +76,7 @@
         {% trans "Description and Infos" as description_label %}
         {% trans "Description" as description_placeholder %}
         {% trans "Enter a description for the event" as description_legend %}
-        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
+        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_form=form.forms.obj translation_fields=form.forms.obj|get_attr:'translatable_field_items' %}
 	          
 	                    
         {% trans "Example: http://mywebsite.com" as url_placeholder %}
