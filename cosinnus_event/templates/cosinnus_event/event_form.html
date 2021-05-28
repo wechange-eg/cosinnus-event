@@ -4,13 +4,14 @@
 {% block extrahead %}
     {{ block.super }}
     {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=form.form.obj.note.id_for_label %}
-
+    
+    {% comment %} Support for `TranslateableFieldsModelMixin` {% endcomment %}
     {% if form.forms.obj|get_attr:'translatable_field_items' %}
         {% for trans_field_name, trans_field in form.forms.obj|get_attr:'translatable_field_items' %}
             {% if 'note_translation' in trans_field_name %}
-            {% with translatable_field=form.forms.obj|get_item:trans_field_name %}
-            {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=translatable_field.id_for_label noinclude=1 %}
-            {% endwith %}
+	            {% with translatable_field=form.forms.obj|get_item:trans_field_name %}
+	                {% include 'cosinnus/common/simplemde_dependencies.html' with element_id=translatable_field.id_for_label noinclude=1 %}
+	            {% endwith %}
             {% endif %}
         {% endfor %}
     {% endif %}
