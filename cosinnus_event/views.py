@@ -264,7 +264,7 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
     def forms_valid(self, form, inlines):
         ret = super(EntryFormMixin, self).forms_valid(form, inlines)
         messages.success(self.request,
-            self.message_success % {'title': self.object.title})
+                         self.message_success % {'title': self.object.title})
         return ret
 
     def forms_invalid(self, form, inlines):
@@ -350,7 +350,8 @@ class EntryEditView(EditViewWatchChangesMixin, EntryFormMixin, AttachableViewMix
     
     changed_attr_watchlist = ['title', 'note', 'from_date', 'to_date', 'media_tag.location','url',
                               'media_tag.location_lon', 'media_tag.location_lat', 'get_attached_objects_hash']
-    
+
+
     def on_save_changed_attrs(self, obj, changed_attr_dict):
         if not obj.is_hidden_group_proxy:
             session_id = uuid1().int
