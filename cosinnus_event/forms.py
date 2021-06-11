@@ -100,8 +100,6 @@ class _ConferenceEventBaseForm(_EventForm):
     fields = ['title',  'note',]
     if settings.COSINNUS_ROCKET_ENABLED:
         fields += ['show_chat',]
-    if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
-        fields += ['enable_streaming', 'stream_url', 'stream_key',]
     
     def __init__(self, *args, **kwargs):
         
@@ -136,6 +134,8 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
     class Meta(object):
         model = ConferenceEvent
         fields = _ConferenceEventBaseForm.fields + ['image', 'max_participants']
+        if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
+            fields += ['enable_streaming', 'stream_url', 'stream_key',]
 
 ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
 
@@ -148,7 +148,9 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
     class Meta(object):
         model = ConferenceEvent
         fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file', 'max_participants']
-
+        if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
+            fields += ['enable_streaming', 'stream_url', 'stream_key',]
+            
 ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
 
 
