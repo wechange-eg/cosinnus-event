@@ -100,6 +100,8 @@ class _ConferenceEventBaseForm(_EventForm):
     fields = ['title',  'note',]
     if settings.COSINNUS_ROCKET_ENABLED:
         fields += ['show_chat',]
+    if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
+        fields += ['enable_streaming', 'stream_url', 'stream_key',]
     
     def __init__(self, *args, **kwargs):
         

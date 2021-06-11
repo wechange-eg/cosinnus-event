@@ -3,46 +3,47 @@ from __future__ import unicode_literals
 
 from builtins import object
 import datetime
+import logging
+from osm_field.fields import OSMField, LatitudeField, LongitudeField
+from threading import Thread
+import time
+from uuid import uuid1
 
-from django.urls import reverse
+from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.exceptions import ImproperlyConfigured
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models, transaction
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
+from django.template.defaultfilters import date as django_date_filter
+from django.template.loader import render_to_string
+from django.urls import reverse
 from django.utils import dateformat
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
 from django.utils.functional import cached_property
+from django.utils.safestring import mark_safe
 from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext_lazy as p_
 
-from osm_field.fields import OSMField, LatitudeField, LongitudeField
-from django.template.defaultfilters import date as django_date_filter
-from cosinnus_event.conf import settings
-from cosinnus_event.managers import EventQuerySet
 from cosinnus.models import BaseTaggableObjectModel
-from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user,\
+from cosinnus.models.conference import CosinnusConferenceRoom
+from cosinnus.models.group import CosinnusPortal
+from cosinnus.models.mixins.translations import TranslateableFieldsModelMixin
+from cosinnus.models.tagged import LikeableObjectMixin
+from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
+from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user, \
     check_object_read_access
 from cosinnus.utils.urls import group_aware_reverse
-from cosinnus_event import cosinnus_notifications
-from django.contrib.auth import get_user_model
-from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
-from cosinnus.models.group import CosinnusPortal
-from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
 from cosinnus.utils.validators import validate_file_infection
-from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
-from cosinnus.models.tagged import LikeableObjectMixin
-from uuid import uuid1
-import time
-from django.core.validators import MaxValueValidator, MinValueValidator
-from cosinnus.models.conference import CosinnusConferenceRoom
-from django.core.exceptions import ImproperlyConfigured
-from threading import Thread
-from cosinnus.models.mixins.translations import TranslateableFieldsModelMixin
+from cosinnus.views.mixins.reflected_objects import MixReflectedObjectsMixin
+from cosinnus_event import cosinnus_notifications
+from cosinnus_event.conf import settings
+from cosinnus_event.fields import RTMPURLField
+from cosinnus_event.managers import EventQuerySet
 
-import logging
-from django.contrib.contenttypes.fields import GenericRelation
 
 logger = logging.getLogger('cosinnus')
 
@@ -682,6 +683,18 @@ class ConferenceEvent(Event):
     show_chat = models.BooleanField(_('Show chat'),
         help_text='Show rocket chat in sidebar in event',
         default=False)
+    
+    # flag to enable/disable rocket chat showing in this event
+    enable_streaming = models.BooleanField(_('Enable Streaming'),
+        default=False)
+    
+    stream_url = RTMPURLField(_('Stream URL'), 
+        help_text=_('The URL of your streaming provider to receive the incoming stream'),
+        blank=True, null=True)
+    
+    stream_key = models.CharField(_('Stream Key'), 
+        help_text=_('The key for this specific stream session you created at your streaming provider'),
+        blank=True, max_length=250, null=True)
     
     conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 

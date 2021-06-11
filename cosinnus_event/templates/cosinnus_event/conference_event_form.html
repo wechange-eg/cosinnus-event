@@ -102,7 +102,7 @@
 	        {% endif %}
 	        
 	        {% if form.forms.obj.fields.url %}
-                {% trans "Example: https://www.youtube.com/watch?v=12345" as url_placeholder %}
+                {% captureas url_placeholder %}{% trans "Example:" %} https://www.youtube.com/watch?v=12345{% endcaptureas %}
                 {% trans "Stream URL for the Event" as url_label %}
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.url label=url_label placeholder=url_placeholder %}
             {% endif %}
@@ -159,6 +159,52 @@
                 {% trans "Show room chat in the event" as show_chat_label %}
                 {% trans "Check this to show rocket chat in the sidebar." as show_chat_legend %}
                 {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.show_chat label=show_chat_label legend=show_chat_legend checkbox_label=show_chat_label %}
+            {% endif %}
+            
+            {% if SETTINGS.COSINNUS_CONFERENCES_STREAMING_ENABLED %}
+                <div class="panel panel-default large-space">
+                    <div class="panel-heading">
+                        <h4 class="panel-title {% if not form.forms.obj.instance.enable_streaming %}collapsed{% endif %}" data-toggle="collapse" data-target="#collapseStreamingOptions">
+                            <i class="fa fa-chevron-down panel-collapsed"></i>
+                            <i class="fa fa-chevron-up panel-open"></i>
+                            {% trans "Stream this event" %}
+                        </h4>
+                    </div>
+                    <div id="collapseStreamingOptions" class="panel-collapse {% if not form.forms.obj.instance.enable_streaming %}collapse{% else %}in{% endif %}">
+                        <div class="panel-body">
+                            <div class="textfield transparent">
+                                <p>
+                                    {% trans "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)." %}
+                                </p>
+                                <p>
+                                    {% blocktrans with start_minutes=10 end_minutes=30 %}
+                                        Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.
+                                        The bot will enter and start streaming 10 minutes before the event start time and leave 30 minutes after the event end time.
+                                        You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected.
+                                    {% endblocktrans %}
+                                </p>
+                                <p>
+                                    {% trans "Please set the maximum participant limit to allow for the streaming bot's additional participant spot." %}
+                                </p>
+                            </div>
+                            
+			                {% trans "Enable Streaming this BBB meeting" as enable_streaming_label %}
+                            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.enable_streaming label=enable_streaming_label checkbox_label=enable_streaming_label %}
+			            
+			                {% trans "Stream URL" as stream_url_label %}
+			                {% trans "The URL of your streaming provider to receive the incoming stream" as stream_url_legend %}
+                            {% captureas stream_url_placeholder %}{% trans "Example:" %} rtmp://a.rtmp.youtube.com/live2{% endcaptureas %}
+			                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.stream_url label=stream_url_label legend=stream_url_legend placeholder=stream_url_placeholder %}
+                            
+                            {% trans "Stream Key" as stream_key_label %}
+                            {% trans "The key for this specific stream session you created at your streaming provider" as stream_key_legend %}
+                            {% captureas stream_key_placeholder %}{% trans "Example:" %} 4bx1-jedp-7suk-a16e-3gk5{% endcaptureas %}
+                            {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.stream_key label=stream_key_label legend=stream_key_legend placeholder=stream_key_placeholder %}
+                            
+                        </div>
+                    </div>
+                </div>
+            
             {% endif %}
 	        
 		</div><!-- content-box -->
