@@ -43,6 +43,7 @@ from cosinnus_event import cosinnus_notifications
 from cosinnus_event.conf import settings
 from cosinnus_event.fields import RTMPURLField
 from cosinnus_event.managers import EventQuerySet
+from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
 
 
 logger = logging.getLogger('cosinnus')
@@ -735,6 +736,9 @@ class ConferenceEvent(Event):
                 
         # save changed properties of the BBBRoom
         self.check_and_sync_bbb_room()
+        # trigger any streamer status changes if enabled, so streamers
+        # are started/stopped instantly on changes
+        trigger_streamer_status_changes(events=[self])
         
     
     def can_have_bbb_room(self):

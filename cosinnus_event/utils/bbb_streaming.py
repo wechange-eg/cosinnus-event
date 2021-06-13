@@ -2,6 +2,9 @@ from cosinnus_conference.bbb_streaming import create_streamer, delete_streamer,\
     start_streamer, stop_streamer
 import logging
 from cosinnus.apis.bigbluebutton import BigBlueButtonAPI
+from cosinnus.conf import settings
+from datetime import timedelta
+from django.utils.timezone import now
 
 logger = logging.getLogger('cosinnus')
 
@@ -49,7 +52,7 @@ def create_streamer_for_event(event):
     )
     if streamer_id is not None:
         event.settings[SETTINGS_STREAMER_ID] = streamer_id
-        event.save(update_fields=['settings'])
+        type(event).objects.filter(pk=event.pk).update(settings=event.settings)
 
 
 def start_streamer_for_event(event):
@@ -70,7 +73,7 @@ def start_streamer_for_event(event):
     ret = start_streamer(event.settings.get(SETTINGS_STREAMER_ID))
     if ret is True:
         event.settings[SETTINGS_STREAMER_RUNNING] = True
-        event.save(update_fields=['settings'])
+        type(event).objects.filter(pk=event.pk).update(settings=event.settings)
 
 
 def stop_streamer_for_event(event):
@@ -90,7 +93,7 @@ def stop_streamer_for_event(event):
     if ret is True:
         if SETTINGS_STREAMER_RUNNING in event.settings:
             del event.settings[SETTINGS_STREAMER_RUNNING]
-            event.save(update_fields=['settings'])
+            type(event).objects.filter(pk=event.pk).update(settings=event.settings)
 
 
 def delete_streamer_for_event(event):
@@ -107,5 +110,48 @@ def delete_streamer_for_event(event):
     # all other results produce an Exception anyways
     if SETTINGS_STREAMER_ID in event.settings:
         del event.settings[SETTINGS_STREAMER_ID]
-        event.save(update_fields=['settings'])
+        type(event).objects.filter(pk=event.pk).update(settings=event.settings)
+
+
+def trigger_streamer_status_changes(events=None):
+    """ Checks all streaming-enabled conference events whether any of their streamers should
+        be created/started/stopped/deleted depending on the current point in time and 
+        their streaming status.
+        @param events: if supplied with a list of events, only checks those events, instead of
+        all events in this portal """
+    if not settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
+        return
+    
+    if events is None:
+        from cosinnus_event.models import ConferenceEvent
+        events = ConferenceEvent.objects.filter(enable_streaming=True)
+    
+    for event in events:
+        create_time = event.from_date - timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_CREATE_STREAMER_BEFORE_MINUTES)
+        start_time = event.from_date - timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_START_STREAMER_BEFORE_MINUTES)
+        stop_delete_time = event.to_date + timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_STOP_DELETE_STREAMER_AFTER_MINUTES)
+        
+        # check if we should create a streamer
+        if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
+                create_time <= now() <= stop_delete_time:
+            create_streamer_for_event(event)
+        
+        # check if we should start the streamer, if there is one
+        if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
+                start_time <= now() <= stop_delete_time:
+            start_streamer_for_event(event)
+        
+        # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
+        # is set to false, so we can stop streams that have just had their streaming disabled but are still running
+        if event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
+                (event.enable_streaming == False or stop_delete_time <= now()):
+            stop_streamer_for_event(event)
+            
+        # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
+        # is set to false, so we can stop streams that have just had their streaming disabled but are still running
+        if event.settings.get(SETTINGS_STREAMER_ID, None) and \
+                (event.enable_streaming == False or stop_delete_time <= now()):
+            delete_streamer_for_event(event)
+            
+        
 
