@@ -80,8 +80,9 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObje
         (STATE_CANCELED, _('Canceled')),
         (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
     )
-
-    translateable_fields = ['title', 'note']
+    
+    if settings.COSINNUS_TRANSLATED_FIELDS_ENABLED:
+        translateable_fields = ['title', 'note']
 
     from_date = models.DateTimeField(
         _('Start'), default=None, blank=True, null=True, editable=True)
