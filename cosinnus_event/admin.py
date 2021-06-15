@@ -62,7 +62,7 @@ class ConferenceEventAdmin(BaseTaggableAdmin):
     list_filter = BaseTaggableAdmin.list_filter + ['type', ]
     actions = (restart_bbb_rooms, )
     inlines = [CosinnusConferenceSettingsInline]
+    raw_id_fields = BaseTaggableAdmin.raw_id_fields + ['presenters']
     inline_reverse = []
-
 
 admin.site.register(ConferenceEvent, ConferenceEventAdmin)
