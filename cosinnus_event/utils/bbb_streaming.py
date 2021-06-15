@@ -1,10 +1,14 @@
-from cosinnus_conference.bbb_streaming import create_streamer, delete_streamer,\
-    start_streamer, stop_streamer
+from datetime import timedelta
 import logging
+
+from django.utils.crypto import get_random_string
+from django.utils.timezone import now
+
 from cosinnus.apis.bigbluebutton import BigBlueButtonAPI
 from cosinnus.conf import settings
-from datetime import timedelta
-from django.utils.timezone import now
+from cosinnus_conference.bbb_streaming import create_streamer, delete_streamer, \
+    start_streamer, stop_streamer
+
 
 logger = logging.getLogger('cosinnus')
 
@@ -42,7 +46,7 @@ def create_streamer_for_event(event):
     stream_url += event.stream_key
     bbb_api_obj = BigBlueButtonAPI(source_object=event)
     
-    streamer_uuid_name = f'Streamer-{event.group.portal.slug}-{event.id}'
+    streamer_uuid_name = f'Streamer-{event.group.portal.slug}-{event.id}-{get_random_string(8)}'
     streamer_id = create_streamer(
         name=streamer_uuid_name,
         bbb_url=bbb_api_obj.api_auth_url,
