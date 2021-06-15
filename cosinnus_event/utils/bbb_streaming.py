@@ -134,24 +134,41 @@ def trigger_streamer_status_changes(events=None):
         # check if we should create a streamer
         if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
                 create_time <= now() <= stop_delete_time:
-            create_streamer_for_event(event)
+            try:
+                create_streamer_for_event(event)
+            except Exception as e:
+                logger.error('Event-Streaming: create_streamer trigger failed for event!', extra={
+                    'event_id': event.id, 'exception': e})
         
         # check if we should start the streamer, if there is one
-        if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
+        if event.enable_streaming and event.settings.get(SETTINGS_STREAMER_ID, None) and \
+                not event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
                 start_time <= now() <= stop_delete_time:
-            start_streamer_for_event(event)
+            try:
+                start_streamer_for_event(event)
+            except Exception as e:
+                logger.error('Event-Streaming: start_streamer trigger failed for event!', extra={
+                    'event_id': event.id, 'exception': e})
         
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but are still running
         if event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
-                (event.enable_streaming == False or stop_delete_time <= now()):
-            stop_streamer_for_event(event)
+                (event.enable_streaming == False or stop_delete_time <= now() or now() <= start_time):
+            try:
+                stop_streamer_for_event(event)
+            except Exception as e:
+                logger.error('Event-Streaming: stop_streamer trigger failed for event!', extra={
+                    'event_id': event.id, 'exception': e})
             
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but are still running
         if event.settings.get(SETTINGS_STREAMER_ID, None) and \
-                (event.enable_streaming == False or stop_delete_time <= now()):
-            delete_streamer_for_event(event)
+                (event.enable_streaming == False or stop_delete_time <= now() or now() <= create_time):
+            try:
+                delete_streamer_for_event(event)
+            except Exception as e:
+                logger.error('Event-Streaming: delete_streamer trigger failed for event!', extra={
+                    'event_id': event.id, 'exception': e})
             
         
 
