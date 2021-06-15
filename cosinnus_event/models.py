@@ -80,9 +80,6 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObje
         (STATE_CANCELED, _('Canceled')),
         (STATE_ARCHIVED_DOODLE, _('Archived Event Poll')),
     )
-    
-    if settings.COSINNUS_TRANSLATED_FIELDS_ENABLED:
-        translateable_fields = ['title', 'note']
 
     from_date = models.DateTimeField(
         _('Start'), default=None, blank=True, null=True, editable=True)
@@ -605,6 +602,10 @@ class Comment(models.Model):
 
 @python_2_unicode_compatible
 class ConferenceEvent(Event):
+    
+    # translatable fields are only enabled for conference events for now
+    if settings.COSINNUS_TRANSLATED_FIELDS_ENABLED:
+        translateable_fields = ['title', 'note']
     
     TYPE_LOBBY_CHECKIN = 0
     TYPE_STAGE_EVENT = 1
