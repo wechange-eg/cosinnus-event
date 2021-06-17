@@ -168,12 +168,12 @@
                                 <p>
                                     {% blocktrans with start_minutes=SETTINGS.COSINNUS_CONFERENCES_STREAMING_API_START_STREAMER_BEFORE_MINUTES end_minutes=SETTINGS.COSINNUS_CONFERENCES_STREAMING_API_STOP_DELETE_STREAMER_AFTER_MINUTES %}
                                         Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.
-                                        The bot will enter and start streaming {{ start_minutes }} minutes before the event start time and stpo streaming and leave {{ end_minutes }} minutes after the event end time.
+                                        The bot will enter and start streaming {{ start_minutes }} minutes before the event start time and stop streaming and leave {{ end_minutes }} minutes after the event end time.
                                         You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected.
                                     {% endblocktrans %}
                                 </p>
                                 <p>
-                                    {% trans "Please set the maximum participant limit to allow for the streaming bot's additional participant spot." %}
+                                    {% trans "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot." %}
                                 </p>
                             </div>
                             
