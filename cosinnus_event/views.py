@@ -1061,11 +1061,19 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
         return context
 
     def get_success_url(self):
-        # redirect to room, except in compact mode where we redirect to the conference event list
-        if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
-            url = group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}) 
+        if 'create_another' in self.request.POST:
+            to_date = self.object.to_date.strftime("%Y-%m-%d")
+            url = group_aware_reverse('cosinnus:event:conference-event-add',
+                                      kwargs={'room_slug': self.room.slug,
+                                              'group': self.group})
+            if to_date:
+                url = '{}?start={}&end={}'.format(url, to_date, to_date)
         else:
-            url = self.room.get_absolute_url()
+            # redirect to room, except in compact mode where we redirect to the conference event list
+            if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
+                url = group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group})
+            else:
+                url = self.room.get_absolute_url()
         return redirect_next_or(self.request, url)
 
     def forms_valid(self, form, inlines):
