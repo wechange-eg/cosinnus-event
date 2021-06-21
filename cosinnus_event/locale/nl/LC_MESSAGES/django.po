@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 13:34+0200\n"
+"POT-Creation-Date: 2021-06-21 19:00+0200\n"
 "PO-Revision-Date: 2021-02-18 21:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -440,6 +440,25 @@ msgstr ""
 msgid "Show chat"
 msgstr "Toon alles"
 
+#, fuzzy
+#| msgid "Stage Stream"
+msgid "Enable Streaming"
+msgstr "Podiumstream"
+
+msgid "Stream URL"
+msgstr ""
+
+msgid "The URL of your streaming provider to receive the incoming stream"
+msgstr ""
+
+#, fuzzy
+#| msgid "Street"
+msgid "Stream Key"
+msgstr "Straat"
+
+msgid "The key for this specific stream session you created at your streaming provider"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Conferentie evenement"
 
@@ -520,8 +539,8 @@ msgstr "Beschrijving"
 msgid "Enter a description for the event"
 msgstr "Voeg een beschrijving voor het evenement toe"
 
-msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "Voorbeeld: https://www.youtube.com/watch?v=12345"
+msgid "Example:"
+msgstr ""
 
 msgid "Stream URL for the Event"
 msgstr "Streaming URL voor het evenement"
@@ -529,11 +548,13 @@ msgstr "Streaming URL voor het evenement"
 msgid "Custom embed code (HTML)"
 msgstr ""
 
-msgid "Maximum Coffee Table Participants"
-msgstr "Max. aantal deelnemers koffietafel"
-
-msgid "How many participants should can join one coffee table before it is full"
+#, fuzzy
+#| msgid "How many participants should can join one coffee table before it is full"
+msgid "How many participants can join the video call before it is full."
 msgstr "Hoeveel deelnemers mogen aan één koffietafel aanschuiven voordat deze vol is"
+
+msgid "Note that changing this setting will have no effect while an event is running."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Preview afbeelding voor het conferentie evenement uploaden"
@@ -559,6 +580,30 @@ msgid "Show room chat in the event"
 msgstr "Je neemt deel aan dit evenement"
 
 msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
+
+#, fuzzy
+#| msgid "Stream URL for the Event"
+msgid "Stream this event"
+msgstr "Streaming URL voor het evenement"
+
+msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
+msgstr ""
+
+msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.\n"
+"The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
+"You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
+msgstr ""
+
+msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
+msgstr ""
+
+msgid "Enable Streaming this BBB meeting"
 msgstr ""
 
 msgid "Create"
@@ -1171,6 +1216,12 @@ msgstr "Je reactie is succesvol toegevoegd."
 
 msgid "Your comment was deleted successfully."
 msgstr "Je reactie is succesvol verwijderd."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Voorbeeld: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Max. aantal deelnemers koffietafel"
 
 #~ msgid "Date"
 #~ msgstr "Datum"

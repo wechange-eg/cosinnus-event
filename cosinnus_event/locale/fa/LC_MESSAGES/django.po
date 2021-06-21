@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 13:34+0200\n"
+"POT-Creation-Date: 2021-06-21 19:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -434,6 +434,21 @@ msgstr ""
 msgid "Show chat"
 msgstr ""
 
+msgid "Enable Streaming"
+msgstr ""
+
+msgid "Stream URL"
+msgstr ""
+
+msgid "The URL of your streaming provider to receive the incoming stream"
+msgstr ""
+
+msgid "Stream Key"
+msgstr ""
+
+msgid "The key for this specific stream session you created at your streaming provider"
+msgstr ""
+
 msgid "Conference Event"
 msgstr ""
 
@@ -514,7 +529,7 @@ msgstr ""
 msgid "Enter a description for the event"
 msgstr ""
 
-msgid "Example: https://www.youtube.com/watch?v=12345"
+msgid "Example:"
 msgstr ""
 
 msgid "Stream URL for the Event"
@@ -523,10 +538,10 @@ msgstr ""
 msgid "Custom embed code (HTML)"
 msgstr ""
 
-msgid "Maximum Coffee Table Participants"
+msgid "How many participants can join the video call before it is full."
 msgstr ""
 
-msgid "How many participants should can join one coffee table before it is full"
+msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -551,6 +566,28 @@ msgid "Show room chat in the event"
 msgstr ""
 
 msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
+
+msgid "Stream this event"
+msgstr ""
+
+msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
+msgstr ""
+
+msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.\n"
+"The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
+"You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
+msgstr ""
+
+msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
+msgstr ""
+
+msgid "Enable Streaming this BBB meeting"
 msgstr ""
 
 msgid "Create"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 13:34+0200\n"
+"POT-Creation-Date: 2021-06-21 19:00+0200\n"
 "PO-Revision-Date: 2021-04-26 12:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -438,6 +438,25 @@ msgstr "Αρχείο Παρουσίασης"
 msgid "Show chat"
 msgstr "Εμφάνιση όλων"
 
+#, fuzzy
+#| msgid "Stage Stream"
+msgid "Enable Streaming"
+msgstr "Ζωντανή Μετάδοση σε Σκηνή"
+
+msgid "Stream URL"
+msgstr ""
+
+msgid "The URL of your streaming provider to receive the incoming stream"
+msgstr ""
+
+#, fuzzy
+#| msgid "Street"
+msgid "Stream Key"
+msgstr "Οδός"
+
+msgid "The key for this specific stream session you created at your streaming provider"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Εκδήλωση Σύσκεψης"
 
@@ -518,8 +537,8 @@ msgstr "Περιγραφή"
 msgid "Enter a description for the event"
 msgstr "Εισάγετε περιγραφή για την εκδήλωση"
 
-msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "Παράδειγμα: https://www.youtube.com/watch?v=12345"
+msgid "Example:"
+msgstr ""
 
 msgid "Stream URL for the Event"
 msgstr "Ροή URL για την Εκδήλωση"
@@ -527,11 +546,13 @@ msgstr "Ροή URL για την Εκδήλωση"
 msgid "Custom embed code (HTML)"
 msgstr "Προσαρμοσμένος ενσωματωμένος κώδικας (HTML)"
 
-msgid "Maximum Coffee Table Participants"
-msgstr "Μέγιστος Αριθμός Συμμετεχόντων σε Τραπέζι Μέσης"
-
-msgid "How many participants should can join one coffee table before it is full"
+#, fuzzy
+#| msgid "How many participants should can join one coffee table before it is full"
+msgid "How many participants can join the video call before it is full."
 msgstr "Πόσοι συμμετέχοντες μπορούν να καθίσουν σε ένα τραπέζι μέσης πριν γεμίσει"
+
+msgid "Note that changing this setting will have no effect while an event is running."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Ανεβάστε μια εικόνα προεπισκόπησης για την Εκδήλωση Σύσκεψης"
@@ -557,6 +578,30 @@ msgid "Show room chat in the event"
 msgstr "Παρακολουθείτε αυτή την εκδήλωση"
 
 msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
+
+#, fuzzy
+#| msgid "Stream URL for the Event"
+msgid "Stream this event"
+msgstr "Ροή URL για την Εκδήλωση"
+
+msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
+msgstr ""
+
+msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.\n"
+"The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
+"You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
+msgstr ""
+
+msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
+msgstr ""
+
+msgid "Enable Streaming this BBB meeting"
 msgstr ""
 
 msgid "Create"
@@ -1165,3 +1210,9 @@ msgstr "Το σχόλιό σας προστέθηκε με επιτυχία."
 
 msgid "Your comment was deleted successfully."
 msgstr "Το σχόλιό σας διαγράφηκε με επιτυχία."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Παράδειγμα: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Μέγιστος Αριθμός Συμμετεχόντων σε Τραπέζι Μέσης"

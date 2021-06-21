@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 13:34+0200\n"
-"PO-Revision-Date: 2021-05-19 14:43+0200\n"
+"POT-Creation-Date: 2021-06-21 19:00+0200\n"
+"PO-Revision-Date: 2021-06-21 19:07+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -122,7 +122,7 @@ msgstr "%(sender_name)s hat eine Veranstaltung kommentiert in der du abgestimmt 
 
 #, python-format
 msgid "%(sender_name)s commented on an event you voted in in %(team_name)s"
-msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
+msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s"
 
 msgid "A user commented on an event you are attending"
 msgstr "Ein Mitglied hat eine Veranstaltung kommentiert an der du teilnimmst"
@@ -433,6 +433,21 @@ msgstr "Präsentation"
 msgid "Show chat"
 msgstr "Chat anzeigen"
 
+msgid "Enable Streaming"
+msgstr "Streamen aktivieren"
+
+msgid "Stream URL"
+msgstr "Stream-URL"
+
+msgid "The URL of your streaming provider to receive the incoming stream"
+msgstr "Die URL des Stream-Anbieters, die den eingehenden Stream empfängt"
+
+msgid "Stream Key"
+msgstr "Stream-Schlüssel"
+
+msgid "The key for this specific stream session you created at your streaming provider"
+msgstr "Der Schlüssel für diesen spezifischen Stream, der beim Stream-Anbieter erstellt wurde"
+
 msgid "Conference Event"
 msgstr "Tagungsveranstaltung"
 
@@ -502,7 +517,7 @@ msgid "Event is a break"
 msgstr "Veranstaltung ist eine Pause"
 
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
-msgstr "Wähle dies aus, um eine leere Veranstaltung in der Agenda darzustellen."
+msgstr "Wähle dies aus, um eine leere Veranstaltung in der Agenda darzustellen"
 
 msgid "Description and Infos"
 msgstr "Beschreibung und Infos"
@@ -513,8 +528,8 @@ msgstr "Beschreibung"
 msgid "Enter a description for the event"
 msgstr "Gib eine Beschreibung für die Veranstaltung ein"
 
-msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "Beispiel: https://www.youtube.com/watch?v=12345"
+msgid "Example:"
+msgstr "Beispiel:"
 
 msgid "Stream URL for the Event"
 msgstr "URL auf den Stream dieser Veranstaltung"
@@ -522,11 +537,11 @@ msgstr "URL auf den Stream dieser Veranstaltung"
 msgid "Custom embed code (HTML)"
 msgstr "Einbettungscode (HTML)"
 
-msgid "Maximum Coffee Table Participants"
-msgstr "Max. Anzahl an Plätzen am Café-Tisch"
+msgid "How many participants can join the video call before it is full."
+msgstr "Wie viele Teilnehmende der Video-Veranstaltung bevor sie voll ist."
 
-msgid "How many participants should can join one coffee table before it is full"
-msgstr "Wie viele Teilnehmende dürfen am Tisch Platz nehmen, ehe der Tisch voll ist"
+msgid "Note that changing this setting will have no effect while an event is running."
+msgstr "Bitte beachte, dass das Ändern dieser Einstellung auf laufende Veranstaltungen keine Auswirkungen hat."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Lade ein Vorschaubild für die Tagungsveranstaltung hoch"
@@ -535,7 +550,7 @@ msgid "Will be shown on the event card in the conference room."
 msgstr "Wird auf der Veranstaltungskarte im Tagungsraum angezeigt."
 
 msgid "The presenters will be shown in order in the event and will receive Moderator permissions for the BBB-Room"
-msgstr "Die Präsentierenden werden in der Veranstaltungsübersicht angezeigt und erhalten Moderationsrechte in VideoTagungen "
+msgstr "Die Präsentierenden werden in der Veranstaltungsübersicht angezeigt und erhalten Moderationsrechte in VideoTagungen"
 
 msgid "The presentation file (e.g. PDF) will be pre-uploaded to the BBB room."
 msgstr "Die Präsentation (z.B. PDF) wird vorab in den BBB-Raum hochgeladen."
@@ -551,6 +566,31 @@ msgstr "Raum-Chat in der Veranstaltung anzeigen"
 
 msgid "Check this to show rocket chat in the sidebar."
 msgstr "Aktiviere dieses Kontrollkästchen, um den Rocket.Chat in der Seitenleiste anzuzeigen"
+
+msgid "Stream this event"
+msgstr "Diese Veranstaltung streamen"
+
+msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
+msgstr "Achtung: Streaming ist nur für Premium-Tagungen verfügbar. Wenn du das Streaming nutzen möchtest, frage es bitte bei der Buchung explizit an. Andernfalls sind diese Einstellungen ohne Funktion."
+
+msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
+msgstr "Du kannst die BBB-Veranstaltung so einrichten, dass es zu einem Streaming-Anbieter (z. B. YouTube) gestreamt wird."
+
+#, python-format
+msgid ""
+"Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.\n"
+"The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
+"You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
+msgstr ""
+"Nach dem Einrichten und Aktivieren tritt ein Streaming-Bot in die Veranstaltung ein und streamt alle Video- und Audiodaten an den ausgewählten Stream-Endpunkt.\n"
+"Der Bot tritt ein und beginnt das Streaming %(start_minutes)s Minuten vor der Startzeit der Veranstaltung und beendet das Streaming und verlässt die Veranstaltung %(end_minutes)s Minuten nach ihrer Endzeit.\n"
+"Sie können die Veranstaltungs-Zeiten bei laufender Veranstaltung anpassen, um ein längeres Streaming zu ermöglichen, wenn die Veranstaltung länger als erwartet dauert."
+
+msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
+msgstr "Falls du eine maximale Teilnehmeranzahl eingestellt hast, stell bitte sicher, dass ein zusätzlicher Platz für den Streaming-Bot mit einbegriffen ist."
+
+msgid "Enable Streaming this BBB meeting"
+msgstr "Streamen dieser BBB-Veranstaltung aktivieren"
 
 msgid "Create"
 msgstr "Erstellen"
@@ -630,14 +670,14 @@ msgid "Nobody has voted for this event poll yet."
 msgstr "Es hat noch niemand für diese Terminfindung abgestimmt."
 
 msgid "Create an event from one of the suggestions"
-msgstr "Veranstaltung für einen der Termine erstellen."
+msgstr "Veranstaltung für einen der Termine erstellen"
 
 #, python-format
 msgid "Set the date to %(suggestion)s."
 msgstr "Den Termin auf %(suggestion)s festlegen."
 
 msgid "When do you have time?"
-msgstr "Wann hast du Zeit"
+msgstr "Wann hast du Zeit?"
 
 msgid "There are no date suggestions for this event poll yet!"
 msgstr "Für diese Terminumfrage wurden noch keine Terminabstimmungen erstellt!"
@@ -665,7 +705,7 @@ msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
 
 msgid "The first uploaded image will be displayed as a wallpaper."
-msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt"
+msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt."
 
 msgid "If you set this, your event will be shown on the map! (if permitted by its visibility settings)"
 msgstr "Wenn du dies einträgst, wird deine Veranstaltung auf der Karte angezeigt! (Wenn es die Privatsphären-Einstellungen zulassen)"
@@ -707,7 +747,7 @@ msgid "There are no past events."
 msgstr "Es gibt keine vergangenen Veranstaltungen."
 
 msgid "There are no upcoming events"
-msgstr "Keine aktuellen Veranstaltungen."
+msgstr "Keine aktuellen Veranstaltungen"
 
 msgid "Back to Events"
 msgstr "Zurück zu Veranstaltungen"
@@ -1158,6 +1198,12 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Beispiel: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Max. Anzahl an Plätzen am Café-Tisch"
 
 #~ msgid "Date"
 #~ msgstr "Datum"

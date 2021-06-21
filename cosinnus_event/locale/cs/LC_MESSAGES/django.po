@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 13:34+0200\n"
+"POT-Creation-Date: 2021-06-21 19:00+0200\n"
 "PO-Revision-Date: 2021-04-01 12:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -444,6 +444,25 @@ msgstr "Prezentační soubor"
 msgid "Show chat"
 msgstr "Zobrazit vše"
 
+#, fuzzy
+#| msgid "Stage Stream"
+msgid "Enable Streaming"
+msgstr "Stage stream"
+
+msgid "Stream URL"
+msgstr ""
+
+msgid "The URL of your streaming provider to receive the incoming stream"
+msgstr ""
+
+#, fuzzy
+#| msgid "Street"
+msgid "Stream Key"
+msgstr "Ulice"
+
+msgid "The key for this specific stream session you created at your streaming provider"
+msgstr ""
+
 msgid "Conference Event"
 msgstr "Konferenční event"
 
@@ -524,8 +543,8 @@ msgstr "Popis"
 msgid "Enter a description for the event"
 msgstr "Zadejte popis události"
 
-msgid "Example: https://www.youtube.com/watch?v=12345"
-msgstr "Příklad: https://www.youtube.com/watch?v=12345"
+msgid "Example:"
+msgstr ""
 
 msgid "Stream URL for the Event"
 msgstr "Streamujte URL pro event"
@@ -533,11 +552,13 @@ msgstr "Streamujte URL pro event"
 msgid "Custom embed code (HTML)"
 msgstr "Customizovaný embedovaný kód (HTML)"
 
-msgid "Maximum Coffee Table Participants"
-msgstr "Maximum účastníků pro Coffee table"
-
-msgid "How many participants should can join one coffee table before it is full"
+#, fuzzy
+#| msgid "How many participants should can join one coffee table before it is full"
+msgid "How many participants can join the video call before it is full."
 msgstr "Kolik účastníků se má připojit ke coffee table, než je plný"
+
+msgid "Note that changing this setting will have no effect while an event is running."
+msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Nahrajte obrázek předběžného náhledu pro konferenční event"
@@ -563,6 +584,30 @@ msgid "Show room chat in the event"
 msgstr "Zúčastníte se této události"
 
 msgid "Check this to show rocket chat in the sidebar."
+msgstr ""
+
+#, fuzzy
+#| msgid "Stream URL for the Event"
+msgid "Stream this event"
+msgstr "Streamujte URL pro event"
+
+msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
+msgstr ""
+
+msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Once set up and activated, a streaming-bot will enter the event and stream all video and audio to the selected stream endpoint.\n"
+"The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
+"You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
+msgstr ""
+
+msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
+msgstr ""
+
+msgid "Enable Streaming this BBB meeting"
 msgstr ""
 
 msgid "Create"
@@ -1175,6 +1220,12 @@ msgstr "Váš komentář byl úspěšně přidán."
 
 msgid "Your comment was deleted successfully."
 msgstr "Váš komentář byl úspěšně smazán."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Příklad: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Maximum účastníků pro Coffee table"
 
 #~ msgid "Date"
 #~ msgstr "Datum"
