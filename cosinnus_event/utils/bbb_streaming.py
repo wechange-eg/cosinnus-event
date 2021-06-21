@@ -123,7 +123,7 @@ def trigger_streamer_status_changes(events=None):
         their streaming status.
         @param events: if supplied with a list of events, only checks those events, instead of
         all events in this portal """
-    if not settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
+    if not settings.COSINNUS_CONFERENCES_STREAMING_ENABLED or not settings.COSINNUS_PREMIUM_CONFERENCES_ENABLED:
         return
     
     if events is None:
@@ -135,24 +135,27 @@ def trigger_streamer_status_changes(events=None):
         start_time = event.from_date - timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_START_STREAMER_BEFORE_MINUTES)
         stop_delete_time = event.to_date + timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_STOP_DELETE_STREAMER_AFTER_MINUTES)
         
-        # check if we should create a streamer
-        if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
-                create_time <= now() <= stop_delete_time:
-            try:
-                create_streamer_for_event(event)
-            except Exception as e:
-                logger.error('Event-Streaming: create_streamer trigger failed for event!', extra={
-                    'event_id': event.id, 'exception': e})
-        
-        # check if we should start the streamer, if there is one
-        if event.enable_streaming and event.settings.get(SETTINGS_STREAMER_ID, None) and \
-                not event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
-                start_time <= now() <= stop_delete_time:
-            try:
-                start_streamer_for_event(event)
-            except Exception as e:
-                logger.error('Event-Streaming: start_streamer trigger failed for event!', extra={
-                    'event_id': event.id, 'exception': e})
+        # creating and starting a streamer only works for conferences that are premium at this time
+        # (stopping and deleting works regardless for sanity)
+        if event.group.is_premium:
+            # check if we should create a streamer
+            if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
+                    create_time <= now() <= stop_delete_time:
+                try:
+                    create_streamer_for_event(event)
+                except Exception as e:
+                    logger.error('Event-Streaming: create_streamer trigger failed for event!', extra={
+                        'event_id': event.id, 'exception': e})
+            
+            # check if we should start the streamer, if there is one
+            if event.enable_streaming and event.settings.get(SETTINGS_STREAMER_ID, None) and \
+                    not event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
+                    start_time <= now() <= stop_delete_time:
+                try:
+                    start_streamer_for_event(event)
+                except Exception as e:
+                    logger.error('Event-Streaming: start_streamer trigger failed for event!', extra={
+                        'event_id': event.id, 'exception': e})
         
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but are still running
@@ -165,7 +168,7 @@ def trigger_streamer_status_changes(events=None):
                     'event_id': event.id, 'exception': e})
             
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
-        # is set to false, so we can stop streams that have just had their streaming disabled but are still running
+        # is set to false, so we can stop streams that have just had their streaming disabled but were still running
         if event.settings.get(SETTINGS_STREAMER_ID, None) and \
                 (event.enable_streaming == False or stop_delete_time <= now() or now() <= create_time):
             try:
@@ -174,5 +177,3 @@ def trigger_streamer_status_changes(events=None):
                 logger.error('Event-Streaming: delete_streamer trigger failed for event!', extra={
                     'event_id': event.id, 'exception': e})
             
-        
-
