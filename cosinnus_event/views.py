@@ -1063,23 +1063,24 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
 
     def get_success_url(self):
         if 'create_another' in self.request.POST:
-            last_date = self.object.to_date
-            one_hour_later = last_date + timedelta(hours=1)
-            start_date = last_date.strftime("%Y-%m-%d")
-            to_date = one_hour_later.strftime("%Y-%m-%d")
-            start_time = last_date.strftime("%H:%M")
-            end_time = one_hour_later.strftime("%H:%M")
             url = group_aware_reverse('cosinnus:event:conference-event-add',
                                       kwargs={'room_slug': self.room.slug,
                                               'group': self.group})
-            if start_date:
-                url = '{}?start={}&end={}&starttime={}&endtime={}'.format(
-                    url,
-                    start_date,
-                    to_date,
-                    start_time,
-                    end_time
-                )
+            if self.object.to_date:
+                last_date = self.object.to_date
+                one_hour_later = last_date + timedelta(hours=1)
+                start_date = last_date.strftime("%Y-%m-%d")
+                to_date = one_hour_later.strftime("%Y-%m-%d")
+                start_time = last_date.strftime("%H:%M")
+                end_time = one_hour_later.strftime("%H:%M")
+                if start_date:
+                    url = '{}?start={}&end={}&starttime={}&endtime={}'.format(
+                        url,
+                        start_date,
+                        to_date,
+                        start_time,
+                        end_time
+                    )
         else:
             # redirect to room, except in compact mode where we redirect to the conference event list
             if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
