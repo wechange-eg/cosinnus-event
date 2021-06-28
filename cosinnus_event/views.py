@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from builtins import str
 from collections import defaultdict
 import dateutil.parser
+from datetime import timedelta
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
@@ -1061,11 +1062,31 @@ class ConferenceEventFormMixin(RequireWriteMixin, FilterGroupMixin, FilterConfer
         return context
 
     def get_success_url(self):
-        # redirect to room, except in compact mode where we redirect to the conference event list
-        if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
-            url = group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group}) 
+        if 'create_another' in self.request.POST:
+            url = group_aware_reverse('cosinnus:event:conference-event-add',
+                                      kwargs={'room_slug': self.room.slug,
+                                              'group': self.group})
+            if self.object.to_date:
+                last_date = self.object.to_date
+                one_hour_later = last_date + timedelta(hours=1)
+                start_date = last_date.strftime("%Y-%m-%d")
+                to_date = one_hour_later.strftime("%Y-%m-%d")
+                start_time = last_date.strftime("%H:%M")
+                end_time = one_hour_later.strftime("%H:%M")
+                if start_date:
+                    url = '{}?start={}&end={}&starttime={}&endtime={}'.format(
+                        url,
+                        start_date,
+                        to_date,
+                        start_time,
+                        end_time
+                    )
         else:
-            url = self.room.get_absolute_url()
+            # redirect to room, except in compact mode where we redirect to the conference event list
+            if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
+                url = group_aware_reverse('cosinnus:event:conference-event-list', kwargs={'group': self.group})
+            else:
+                url = self.room.get_absolute_url()
         return redirect_next_or(self.request, url)
 
     def forms_valid(self, form, inlines):
