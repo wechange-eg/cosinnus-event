@@ -667,10 +667,10 @@ class ConferenceEvent(Event):
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
         default=False)
 
-    # Checkbox for public / private description of the event
-    description_is_public = models.BooleanField(_('Description is public'), 
+    # Checkbox for public / private mode of the event's description
+    is_confidential = models.BooleanField(_('Event is confidential'), 
         help_text='Provides an option to choose if the event\'s description should be shown publicly or not',
-        default=True)
+        default=False)
     
     # Type: Coffee-Tables
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),

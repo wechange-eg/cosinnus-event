@@ -77,10 +77,10 @@
 				{% endif %}
 			{% endif %}
 
-			{% if form.forms.obj.fields.description_is_public %}
-				{% trans "Show the content of the Description and Infos field on microsite publicly" as public_description_label %}
-				{% trans "Check this to enable public viewing of the event\'s description" as public_description_legend %}
-				{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.description_is_public label=public_description_label legend=public_description_legend checkbox_label=public_description_label %}
+			{% if form.forms.obj.fields.is_confidential %}
+				{% trans "Event\'s description is confidencial (Not visible on microsite)" as events_confidentiality_label %}
+				{% trans "Check this to prevent public viewing of the event\'s description" as events_confidentiality_legend %}
+				{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_confidential label=events_confidentiality_label legend=events_confidentiality_legend checkbox_label=events_confidentiality_label %}
 			{% endif %}
 			
 			{% comment %} Date picker for from_date - to_date {% endcomment %}
