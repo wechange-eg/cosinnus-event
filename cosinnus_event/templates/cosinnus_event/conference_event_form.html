@@ -76,6 +76,12 @@
 		            {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_break label=break_label legend=break_legend checkbox_label=break_label %}
 				{% endif %}
 			{% endif %}
+
+			{% if form.forms.obj.fields.is_confidential %}
+				{% trans "Event\'s description is confidencial (Not visible on microsite)" as events_confidentiality_label %}
+				{% trans "Check this to prevent public viewing of the event\'s description" as events_confidentiality_legend %}
+				{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_confidential label=events_confidentiality_label legend=events_confidentiality_legend checkbox_label=events_confidentiality_label %}
+			{% endif %}
 			
 			{% comment %} Date picker for from_date - to_date {% endcomment %}
 			{% if form.forms.obj.fields.from_date and form.forms.obj.fields.to_date %} 

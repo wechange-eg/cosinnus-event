@@ -147,7 +147,7 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file', 'max_participants']
+        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'presentation_file', 'max_participants', 'is_confidential']
         if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
             fields += ['enable_streaming', 'stream_url', 'stream_key',]
             
