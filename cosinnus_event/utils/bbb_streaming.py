@@ -131,6 +131,10 @@ def trigger_streamer_status_changes(events=None):
         events = ConferenceEvent.objects.filter(enable_streaming=True)
     
     for event in events:
+        # events like coffee tables, without a start and end date, cannot be streamed
+        if not event.from_date or not event.to_date:
+            continue
+        
         create_time = event.from_date - timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_CREATE_STREAMER_BEFORE_MINUTES)
         start_time = event.from_date - timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_START_STREAMER_BEFORE_MINUTES)
         stop_delete_time = event.to_date + timedelta(minutes=settings.COSINNUS_CONFERENCES_STREAMING_API_STOP_DELETE_STREAMER_AFTER_MINUTES)
