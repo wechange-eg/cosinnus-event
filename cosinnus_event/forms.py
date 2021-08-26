@@ -135,7 +135,7 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
         model = ConferenceEvent
         fields = _ConferenceEventBaseForm.fields + ['image', 'max_participants']
         if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
-            fields += ['enable_streaming', 'stream_url', 'stream_key',]
+            fields += ['stream_url', 'stream_key',]
 
 ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
 
