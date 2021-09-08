@@ -169,7 +169,7 @@ class _ConferenceEventStageForm(_ConferenceEventBaseForm):
     
     class Meta(object):
         model = ConferenceEvent
-        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'url', 'raw_html']
+        fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'url', 'raw_html', 'is_confidential']
 
 ConferenceEventStageForm = get_form(_ConferenceEventStageForm)
 
