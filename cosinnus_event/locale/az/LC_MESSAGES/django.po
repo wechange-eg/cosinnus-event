@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -428,6 +428,9 @@ msgstr "Tədbir yaratmaq"
 msgid "Is a Break"
 msgstr ""
 
+msgid "Event is confidential"
+msgstr ""
+
 msgid "Maximum Event Participants"
 msgstr ""
 
@@ -539,6 +542,12 @@ msgstr "Tədbir tarixi"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
+
 msgid "Description and Infos"
 msgstr "Təsvir və Məlumatlar"
 
@@ -620,6 +629,12 @@ msgstr "Yarat"
 
 msgid "Save"
 msgstr "Yadda saxla"
+
+#, fuzzy
+#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+#| msgid "created an event"
+msgid "Create and create another"
+msgstr "tədbir yarat"
 
 msgid "Add unscheduled event"
 msgstr "Planlaşdırılmamış tədbir əlavə edin"
