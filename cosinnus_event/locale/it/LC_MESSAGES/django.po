@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -422,6 +422,9 @@ msgstr ""
 msgid "Is a Break"
 msgstr ""
 
+msgid "Event is confidential"
+msgstr ""
+
 msgid "Maximum Event Participants"
 msgstr ""
 
@@ -520,6 +523,12 @@ msgstr ""
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
+
 msgid "Description and Infos"
 msgstr ""
 
@@ -594,6 +603,9 @@ msgid "Create"
 msgstr ""
 
 msgid "Save"
+msgstr ""
+
+msgid "Create and create another"
 msgstr ""
 
 msgid "Add unscheduled event"
