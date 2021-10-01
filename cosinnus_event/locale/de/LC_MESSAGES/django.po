@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
-"PO-Revision-Date: 2021-06-21 19:07+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"PO-Revision-Date: 2021-10-01 08:25+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Restart BBB rooms"
 msgstr "BBB Räume neu starten"
@@ -421,6 +421,9 @@ msgstr "Tagungsveranstaltungstyp"
 msgid "Is a Break"
 msgstr "Ist Pause"
 
+msgid "Event is confidential"
+msgstr "Veranstaltung ist privat"
+
 msgid "Maximum Event Participants"
 msgstr "Max. Teilnehmendenzahl"
 
@@ -519,6 +522,12 @@ msgstr "Veranstaltung ist eine Pause"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Wähle dies aus, um eine leere Veranstaltung in der Agenda darzustellen"
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr "Veranstaltungsbeschreibung ist vertraulich (Wird auf der Microsite nicht angezeigt)"
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr "Wähle dies aus, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
+
 msgid "Description and Infos"
 msgstr "Beschreibung und Infos"
 
@@ -565,7 +574,7 @@ msgid "Show room chat in the event"
 msgstr "Raum-Chat in der Veranstaltung anzeigen"
 
 msgid "Check this to show rocket chat in the sidebar."
-msgstr "Aktiviere dieses Kontrollkästchen, um den Rocket.Chat in der Seitenleiste anzuzeigen"
+msgstr "Aktiviere dieses Kontrollkästchen, um den Rocket.Chat in der Seitenleiste anzuzeigen."
 
 msgid "Stream this event"
 msgstr "Diese Veranstaltung streamen"
@@ -597,6 +606,9 @@ msgstr "Erstellen"
 
 msgid "Save"
 msgstr "Speichern"
+
+msgid "Create and create another"
+msgstr "Erstellen und die Erstellung fortsetzten"
 
 msgid "Add unscheduled event"
 msgstr "Terminabstimmung hinzufügen"

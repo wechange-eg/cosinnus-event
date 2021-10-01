@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
 "PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -429,6 +429,9 @@ msgstr "Tip Conferință Eveniment"
 msgid "Is a Break"
 msgstr "Este o Pauză"
 
+msgid "Event is confidential"
+msgstr ""
+
 msgid "Maximum Event Participants"
 msgstr "Maximum Eveniment Participanții"
 
@@ -533,6 +536,12 @@ msgstr "Evenimentul este o pauză"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Verificați acest lucru pentru a crea un eveniment de pauză gol care apare în agendă și cronologie"
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
+
 msgid "Description and Infos"
 msgstr "Descriere și Informații"
 
@@ -614,6 +623,12 @@ msgstr "Crea"
 
 msgid "Save"
 msgstr "Salvați"
+
+#, fuzzy
+#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+#| msgid "created an event"
+msgid "Create and create another"
+msgstr "a creat un eveniment"
 
 msgid "Add unscheduled event"
 msgstr "Adăugați un eveniment neprogramat"

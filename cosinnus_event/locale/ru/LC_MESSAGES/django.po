@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
-"PO-Revision-Date: 2020-10-11 14:27+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"PO-Revision-Date: 2021-09-30 16:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Restart BBB rooms"
 msgstr "Перезапустить комнаты BBB"
@@ -352,10 +352,8 @@ msgstr "%(event)s (завершено)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (неизвестный статус)"
 
-#, fuzzy
-#| msgid "No"
 msgid "Now"
-msgstr "Нет"
+msgstr "Сейчас"
 
 msgctxt "the subject"
 msgid "Votes"
@@ -428,6 +426,9 @@ msgstr "Тип события конференции"
 msgid "Is a Break"
 msgstr "Пауза"
 
+msgid "Event is confidential"
+msgstr "Событие конфиденциально"
+
 msgid "Maximum Event Participants"
 msgstr "Максимальное число участников"
 
@@ -437,29 +438,23 @@ msgstr "Код для вставки (HTML)"
 msgid "Presentation file"
 msgstr "Файл презентации"
 
-#, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
-msgstr "Показать все"
+msgstr "Открыть чат"
 
-#, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
-msgstr "Стрим на сцене"
+msgstr "Запустить трансляцию"
 
 msgid "Stream URL"
-msgstr ""
+msgstr "Ссылка на трансляцию"
 
 msgid "The URL of your streaming provider to receive the incoming stream"
-msgstr ""
+msgstr "Ссылка Вашего провайдера для приема входящей трансляции"
 
-#, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
-msgstr "Улица"
+msgstr "Ключ"
 
 msgid "The key for this specific stream session you created at your streaming provider"
-msgstr ""
+msgstr "Ключ для данной конкретной трансляции, полученный Вами от Вашего провайдера"
 
 msgid "Conference Event"
 msgstr "Событие конференции"
@@ -533,6 +528,12 @@ msgstr "Событие - это пауза"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Отметьте, чтобы создать пустое событие перерыва, которое появится в повестке дня и плане"
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr "Описание события приватно (Недоступно для показа на майкросайте)"
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr "Отметьте, чтобы предотвратить публичный показ описания события"
+
 msgid "Description and Infos"
 msgstr "Описание и информация"
 
@@ -543,7 +544,7 @@ msgid "Enter a description for the event"
 msgstr "Введите описание события"
 
 msgid "Example:"
-msgstr ""
+msgstr "Пример:"
 
 msgid "Stream URL for the Event"
 msgstr "Стрим URL для события"
@@ -551,13 +552,11 @@ msgstr "Стрим URL для события"
 msgid "Custom embed code (HTML)"
 msgstr "Встроить код"
 
-#, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
-msgstr "Сколько участников могут присоединиться к одному кофейному столику до его заполнения"
+msgstr "Сколько участников могут присоединиться к одному кофейному столику до его заполнения."
 
 msgid "Note that changing this setting will have no effect while an event is running."
-msgstr ""
+msgstr "Обратите внимание, что изменение этой настройки не будет иметь эффекта во время непосредственного проведения трансляции."
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Загрузить картинку предпросмотра для события конференции"
@@ -577,24 +576,20 @@ msgstr "Примечание: Если слайд будет добавлен в
 msgid "You can actively end an existing event room by clicking on \"End Meeting\" in the top right-hand corner of the room in the \"Three-Dot Menu\"."
 msgstr "Вы можете завершить событие в существующей комнате путем нажатия \"Завершить встречу\" в верхнем правом углу в \"Меню дополнительных параметров\" (три точки)."
 
-#, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
-msgstr "Вы участвуете в этом событии"
+msgstr "Открыть чат комнаты в этом событии"
 
 msgid "Check this to show rocket chat in the sidebar."
-msgstr ""
+msgstr "Отметьте, чтобы показать RocketChat в боковом меню."
 
-#, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
-msgstr "Стрим URL для события"
+msgstr "Транслировать это событие"
 
 msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
-msgstr ""
+msgstr "Обратите внимание: Трансляция доступна только для премиум-конференций. Если Вы хотите использовать трансляции, пожалуйста, скажите об этом при бронировании. В ином случае, эти настройки будут неактуальны. "
 
 msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
-msgstr ""
+msgstr "Вы можете настроить трансляцию BBB-события у Вашего провайдера / на Вашем ресурсе (например на YouTube)"
 
 #, python-format
 msgid ""
@@ -602,18 +597,24 @@ msgid ""
 "The bot will enter and start streaming %(start_minutes)s minutes before the event start time and stop streaming and leave %(end_minutes)s minutes after the event end time.\n"
 "You can adjust the meeting times on-the-fly to allow for longer streaming if the event runs longer than expected."
 msgstr ""
+"Как только стриминговый бот будет настроен и активирован, он станет участником события и будет транслировать аудио и видео на указанные узлы.\n"
+"Бот начнет трансляцию за %(start_minutes)s минут перед началом события и остановится через %(end_minutes)s минут после конца события. \n"
+"Вы можете настроить время окончания события налету, в случае, если оно продлится дольше, чем планировалось."
 
 msgid "If you are using the maximum participant limit, please allow for the streaming bot's additional participant spot."
-msgstr ""
+msgstr "Если Вы используете лимит на максимальное количество участников, не забудьте оставить место для стримингового бота."
 
 msgid "Enable Streaming this BBB meeting"
-msgstr ""
+msgstr "Включить трансляцию данного BBB-события"
 
 msgid "Create"
 msgstr "Создать"
 
 msgid "Save"
 msgstr "Сохранить"
+
+msgid "Create and create another"
+msgstr "Создать, а затем создать другое событие"
 
 msgid "Add unscheduled event"
 msgstr "Добавить событие"

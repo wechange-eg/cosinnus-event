@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 19:00+0200\n"
+"POT-Creation-Date: 2021-09-30 15:48+0200\n"
 "PO-Revision-Date: 2021-04-07 13:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -424,6 +424,9 @@ msgstr "Type d’événement de conférence"
 msgid "Is a Break"
 msgstr "Est une pause"
 
+msgid "Event is confidential"
+msgstr ""
+
 msgid "Maximum Event Participants"
 msgstr "Nombre maximum de participants à l'événement"
 
@@ -528,6 +531,12 @@ msgstr "L’événement est une pause"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Cochez cette case pour créer un événement de pause vide qui apparaît dans l'agenda et le calendrier"
 
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
+
 msgid "Description and Infos"
 msgstr "Description et informations"
 
@@ -609,6 +618,12 @@ msgstr "Créer"
 
 msgid "Save"
 msgstr "Enregistrer"
+
+#, fuzzy
+#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
+#| msgid "created an event"
+msgid "Create and create another"
+msgstr "a créé un événement"
 
 msgid "Add unscheduled event"
 msgstr "Ajouter événement non programmé"
