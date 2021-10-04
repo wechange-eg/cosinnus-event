@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import re
+
 from builtins import object
 
 from django import forms
@@ -170,6 +172,16 @@ class _ConferenceEventStageForm(_ConferenceEventBaseForm):
     class Meta(object):
         model = ConferenceEvent
         fields = _ConferenceEventBaseForm.fields + ['is_break', 'from_date', 'to_date', 'presenters', 'url', 'raw_html', 'is_confidential']
+
+    def clean_url(self):
+        data = self.cleaned_data['url']
+        if re.findall('youtu', data):
+            regex = r"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch)?(?:.*v=|v\/|\/)([\w\-_]+)\&?"
+            return re.sub(regex, r"https://www.youtube.com/embed/\1", data)
+        elif re.findall('vimeo', data):
+            return data.replace('https://vimeo.com/', 'https://player.vimeo.com/video/')
+        else: 
+            return data
 
 ConferenceEventStageForm = get_form(_ConferenceEventStageForm)
 
