@@ -16,7 +16,7 @@
         {% endif %}
         <ul class="media-list">
             <li class="media">
-                <a class="pull-left square-date-icon" href="#">
+                <span class="pull-left square-date-iconspan>
                     {% if event.from_date %}
 	                    <div>{{ event.from_date|date:"d" }}</div>
 	                    <div>{{ event.from_date|date:"M" }}</div>
@@ -27,17 +27,17 @@
                         	<i class="fa fa-calendar"></i>
                         {% endif %}
 	                {% endif %}
-                </a>
-                <a class="pull-right fadedown-clickarea" href="#">
+                </span>
+                <span class="pull-right fadedown-clickareaspan>
                     <i class="fa fa-chevron-down"></i>
-                </a>
+                </span>
                 <div class="media-body">
                 	{% with creator=event.creator %}
                         <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
                     {% endwith %}
-                    <a href="{{ event.get_absolute_url }}">
+                    <span href="{{ event.get_absolute_url }}">
                         {{ event.title }}
-                    </a>
+                    </span>
                 </div>
             </li>
         </ul>
@@ -48,9 +48,9 @@
         <button type="button" class="btn btn-emphasized" data-toggle="modal" data-target="#{{modal_id}}">
             <ul class="media-list">
                 <li class="media">
-                    <a class="pull-left" href="#">
+                    <span class="pull-left">
                         <i class="fa fa-eraser"></i>
-                    </a>
+                    </span>
                     <div class="media-body">
                         {% trans "Delete" %}
                     </div>
@@ -61,9 +61,9 @@
 	        <button type="button" class="btn btn-emphasized" href="{% group_url "cosinnus:event:event-edit" group=group slug=event.slug %}">
 	            <ul class="media-list">
 	                <li class="media">
-	                    <a class="pull-left" href="#">
+	                    <span class="pull-left">
 	                        <i class="fa fa-pencil"></i>
-	                    </a>
+	                    </span>
 	                    <div class="media-body">
 	                        {% trans "Edit" %}
 	                    </div>
@@ -89,9 +89,9 @@
 	<div class="btn btn-white w100">
 	    <ul class="media-list">
 	        <li class="media">
-	            <a class="pull-left" href="#">
+	            <span class="pull-left">
 	                <i class="fa fa-clock-o"></i>
-	            </a>
+	            </span>
 	            <div class="media-body">
 	                {% if event.state == 3 %}
 	                    {% trans "(Canceled!)" %}
@@ -124,9 +124,9 @@
 <div class="btn btn-white w100">
     <ul class="media-list">
         <li class="media">
-            <a class="pull-left" href="#">
+            <span class="pull-left">
                 <i class="fa fa-map-marker"></i>
-            </a>
+            </span>
             <div class="media-body">
 			      <a href="{{ event.media_tag_object.location_url }}" target="_blank">{{ event.media_tag_object.location }}</a>
             </div>
@@ -137,9 +137,9 @@
 <div class="btn btn-white w100">
     <ul class="media-list">
         <li class="media">
-            <a class="pull-left" href="#">
+            <span class="pull-left">
                 <i class="fa fa-pencil"></i>
-            </a>
+            </span>
             <div class="media-body">
                 <div class="textfield">
                 {% if event.note and event.note|length > 0 %}
@@ -157,7 +157,7 @@
     <ul class="media-list">
         <li class="media">
             <div class="media-body">
-                <a href="{{ event.url }}">{{ event.url }}</a>
+                <span href="{{ event.url }}">{{ event.url }}</span>
             </div>
         </li>
     </ul>
@@ -174,9 +174,9 @@
 		<div class="btn btn-white w100">
 		    <ul class="media-list">
 		        <li class="media">
-		            <a class="pull-left" href="#">
+		            <span class="pull-left">
 		                <i class="fa fa-group"></i>
-		            </a>
+		            </span>
 		            <div class="media-body">
 		            	{% captureas i18n_going %}{% trans "Going" context "someone else is going" %}{% endcaptureas %}
 		            	{% captureas i18n_maybe_going %}{% trans "Maybe going" context "someone else is maybe going" %}{% endcaptureas %}
@@ -210,13 +210,13 @@
 		                {% if attendants_not_going %}
 			                <div class="fadedown">
 			                	<div class="btn" style="float:none; width: auto; margin: 0 0 6px 0;" >
-					                <a class="fadedown-clickarea" href="#">
+					                <span class="fadedown-clickarea">
 					                	<em>
 						                	<b>{{ attendants_not_going|length }}</b> 
 						                	{% blocktrans context "one or many people are not going" count counter=attendants_not_going|length %}Can't go{% plural %}Can't go{% endblocktrans %}
 						                    <i class="fa fa-chevron-down"></i>
 					                    </em>
-					                </a>
+					                </span>
 			                	</div>
 			                	<div>
 			                		{% for attendance in attendants_not_going %}
@@ -245,12 +245,12 @@
 			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
-			                <a class="pull-left" href="#">
+			                <span class="pull-leftspan>
 			                    <i class="fa fa-fw  fa-check"></i>
-			                </a>
-			                <a class="pull-right" href="#">
+			                </span>
+			                <span class="pull-rightspan>
 			                    <i class="fa fa-caret-down"></i>
-			                </a>
+			                </span>
 			                <div class="media-body">
 			                    {% trans "Going" %}
 			                </div>
@@ -260,12 +260,12 @@
 			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-maybe" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
-			                <a class="pull-left" href="#">
+			                <span class="pull-left">
 			                    <i class="fa fa-fw  fa-question"></i>
-			                </a>
-			                <a class="pull-right" href="#">
+			                </span>
+			                <span class="pull-right">
 			                    <i class="fa fa-caret-down"></i>
-			                </a>
+			                </span>
 			                <div class="media-body">
 			                    {% trans "Maybe going" %}
 			                </div>
@@ -275,12 +275,12 @@
 			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-not-going" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
-			                <a class="pull-left" href="#">
+			                <span class="pull-left">
 			                    <i class="fa fa-fw  fa-close"></i>
-			                </a>
-			                <a class="pull-right" href="#">
+			                </span>
+			                <span class="pull-right">
 			                    <i class="fa fa-caret-down"></i>
-			                </a>
+			                </span>
 			                <div class="media-body">
 			                    {% trans "Can't go" %}
 			                </div>
@@ -290,12 +290,12 @@
 			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-no-choice" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
-			                <a class="pull-left" href="#">
+			                <span class="pull-left">
 			                    <i class="fa fa-fw fa-calendar"></i>
-			                </a>
-			                <a class="pull-right" href="#">
+			                </span>
+			                <span class="pull-right">
 			                    <i class="fa fa-caret-down"></i>
-			                </a>
+			                </span>
 			                <div class="media-body">
 			                    {% trans "Are you going?" %}
 			                </div>
@@ -365,9 +365,9 @@
         <button type="button" class="btn btn-emphasized btn-autosize pull-left start-video-conference">
             <ul class="media-list">
                 <li class="media">
-                    <a class="pull-left">
+                    <span class="pull-left">
                         <i class="fa fa-fw fa-eye"></i>
-                    </a>
+                    </span>
                     <div class="media-body">
                         {% trans "Start/join video chat for this event" %}
                     </div>
@@ -381,15 +381,15 @@
 	    <div class="btn btn-emphasized w100">
 	        <ul class="media-list">
 	            <li class="media">
-	                <a class="pull-left">
+	                <span class="pull-left">
                         <i class="fa fa-eye"></i>
-	                </a>
+	                </span>
 	                <div class="media-body">
 	                    <span class="annotation">
-	                        <a class="fullscreen-button fullscreen-toggle" href="#" title="{% trans "Fullscreen" %}">
+	                        <span class="fullscreen-button fullscreen-togglespan title="{% trans "Fullscreen" %}">
 	                            <span>{% trans "Fullscreen" %}</span>
 	                            <i class="fa fa-expand"></i>
-	                        </a>
+	                        </span>
 	                    </span>
 	                    {% trans "Video Chat" %}
 	                </div>
@@ -405,9 +405,9 @@
 	        <button type="button" class="btn btn-small w100 btn-emphasized btn-autosize fullscreen-leave-button fullscreen-toggle mobile-hidden">
 	            <ul class="media-list">
 	                <li class="media">
-	                    <a class="pull-left" href="#">
+	                    <span class="pull-left">
 	                        <i class="fa fa-compress"></i>
-	                    </a>
+	                    </span>
 	                    <div class="media-body">
 	                        {% trans "Leave Fullscreen" %}
 	                    </div>
@@ -417,9 +417,9 @@
 	        <button type="button" class="btn btn-small w100 btn-emphasized btn-autosize fullscreen-leave-button mobile-only" href="{{ object.get_absolute_url }}">
 	            <ul class="media-list">
 	                <li class="media">
-	                    <a class="pull-left" href="#">
+	                    <span class="pull-left">
 	                        <i class="fa fa-reply"></i>
-	                    </a>
+	                    </span>
 	                    <div class="media-body">
 	                        {% trans "Back" %}
 	                    </div>
@@ -430,9 +430,9 @@
 	        <button type="button" class="btn btn-emphasized btn-autosize stop-video-conference mobile-hidden">
                 <ul class="media-list">
                     <li class="media">
-                        <a class="pull-left" href="#">
+                        <span class="pull-left">
                             <i class="fa fa-eye-slash"></i>
-                        </a>
+                        </span>
                         <div class="media-body">
                             {% trans "Stop Video Chat" %}
                         </div>
