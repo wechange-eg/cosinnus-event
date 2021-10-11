@@ -19,6 +19,7 @@ from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.translations import TranslatedFieldsFormMixin
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import SplitHiddenDateWidget
+from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.user import get_user_select2_pills
 from cosinnus.utils.validators import CleanFromToDateFieldsMixin
 from cosinnus_event.models import Event, Suggestion, Vote, Comment, \
@@ -109,8 +110,10 @@ class _ConferenceEventBaseForm(_EventForm):
         super(_EventForm, self).__init__(*args, **kwargs)
         
         # init select2 presenters field
+        # only conference members will be shown as suggested to complement 
+        #to choose from all users peplace the value of data_url with reverse('cosinnus:select2:all-members')
         if 'presenters' in self.fields:
-            data_url = reverse('cosinnus:select2:all-members')
+            data_url = group_aware_reverse('cosinnus:select2:group-members', kwargs={'group': self.group})
             self.fields['presenters'] = UserSelect2MultipleChoiceField(label=_("Presenters"), help_text='', required=False, data_url=data_url)
           
             if self.instance.pk:
