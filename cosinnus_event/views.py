@@ -714,7 +714,7 @@ class BaseEventFeed(ICalFeed):
     def _convert_datetime(self, item, datetime):
         # we're returning a DateTime here for a timed event and for a full-day event, we would return a Date
         if item.is_all_day:
-            return localtime(datetime).date() + timedelta(days=1)
+            return localtime(datetime).date()
         if self.localtime:
             return localtime(datetime)
         if self.utc_offset:
@@ -728,7 +728,9 @@ class BaseEventFeed(ICalFeed):
         return self._convert_datetime(item, item.from_date)
     
     def item_end_datetime(self, item):
-        return self._convert_datetime(item, item.to_date)
+        if not item.is_all_day:
+            return self._convert_datetime(item, item.to_date)
+        return self._convert_datetime(item, item.to_date)  + timedelta(days=1)
     
     def item_link(self, item):
         return item.get_absolute_url()
