@@ -33,9 +33,9 @@
 	    <button type="button" class="btn btn-emphasized" href="{% group_url 'cosinnus:event:list' group=group %}">
 	        <ul class="media-list">
 	            <li class="media">
-	                <a class="pull-right btn-extra-emphasized" href="#">
+	                <span class="pull-right btn-extra-emphasized">
 	                    <i class="fa fa-calendar"></i>
-	                </a>
+	                </span>
 	                <div class="media-body">
 	                    {% if link_label %}{{ link_label }}{% else %}{% trans "Show all" %}...{% endif %}
 	                </div>

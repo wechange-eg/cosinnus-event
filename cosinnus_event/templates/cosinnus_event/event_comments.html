@@ -12,24 +12,24 @@
                             <ol class="input-area comment-background">
                                 <li class="w100 font11px no-vertical-padding no-horizontal-padding fadedown-clickarea">
                                         {% comment %} Like count
-                                        <a href="#" class="pull-right nounderline">
+                                        <span class="pull-right nounderline">
                                             <i class="fa fa-heart"></i>
                                             3
-                                        </a>
+                                        </span>
                                         {% endcomment %}
-                                        <a href="#" class="pull-right nounderline">
+                                        <span class="pull-right nounderline">
                                             <i class="fa fa-comments"></i>
                                             {% if comments|length == "0" %}
                                                 0
                                             {% else %}
                                                 <b>{{ comments|length }}</b>
                                             {% endif %}
-                                        </a>
+                                        </span>
                                         {% comment %} Like button
-                                        <a href="#">Empfehlen</a>
+                                        <span>Empfehlen</span>
                                         {% endcomment %}
                                         {% if comments or user|can_create_objects_in:event.group %}
-                                            <a href="#">{% trans "Comments" %}</a>
+                                            <span>{% trans "Comments" %}</span>
                                         {% endif %}
 
                                 </li>
@@ -65,7 +65,7 @@
                                     {% if user|has_write_access:comment %}
                                         <form id="delete_comment_form_{{ comment.pk }}" action="{% group_url 'cosinnus:event:comment-delete' group=comment.event.group pk=comment.pk %}" method="post" class="form-horizontal">
                                             {% csrf_token %}
-                                            <a class="pull-right" href="#" onclick="$('#delete_comment_form_{{ comment.pk }}').submit(); return false;" title="{% trans "Delete" %}"><i class="fa fa-times"></i></a>
+                                            <a class="pull-right" onclick="$('#delete_comment_form_{{ comment.pk }}').submit(); return false;" title="{% trans "Delete" %}"><i class="fa fa-times"></i></a>
                                         </form>
                                     {% endif %}
                                 </div>
@@ -98,9 +98,9 @@
                     <button type="submit" class="btn btn-emphasized {% if comments_expanded == "True" %}large-space{% endif %}" {% if comments_expanded == "True" %}style=""{% endif %}>
                         <ul class="media-list">
                             <li class="media">
-                                <a class="pull-left" href="#">
+                                <span class="pull-left">
                                     <i class="fa fa-save"></i>
-                                </a>
+                                </span>
                                 <div class="media-body">
                                     {% trans "Post" %}
                                 </div>
