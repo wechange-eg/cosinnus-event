@@ -749,16 +749,15 @@ class BaseEventFeed(ICalFeed):
     def item_categories(self, item):
         from cosinnus.models.tagged import BaseTagObject
 
-        mt = item.media_tag.tags.all()
-        mt = ','.join(map(str, mt))
+        mt = item.media_tag.tags.values_list('name', flat=True)
+        mt = list(mt)
 
         ct = ensure_list_of_ints(item.media_tag.topics)
         choices_dict = dict(BaseTagObject.TOPIC_CHOICES)
-        topic_labels = [value for elem in ct for key, value in choices_dict.items() if elem==key]
-        tl = ','.join(map(str, topic_labels))
+        tl = [value for elem in ct for key, value in choices_dict.items() if elem==key]
 
         if mt or tl:
-            return mt, tl
+            return mt + tl
         return None
 
     def get_filename(self, response):
