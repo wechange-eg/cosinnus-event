@@ -45,7 +45,7 @@ from cosinnus.utils.permissions import check_object_read_access,\
 from cosinnus.core.decorators.views import require_user_token_access, dispatch_group_access, get_group_for_request,\
     redirect_to_403
 from django.contrib.sites.shortcuts import get_current_site
-from cosinnus.utils.functions import unique_aware_slugify, is_number
+from cosinnus.utils.functions import ensure_list_of_ints, unique_aware_slugify, is_number
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest
 from annoying.functions import get_object_or_None
@@ -665,6 +665,7 @@ class BaseEventFeed(ICalFeed):
     title = None # set to base_title on init
     base_description = _('Upcoming events')
     description = None # set to base_description on init
+    categories = None
     localtime = True # if given (?localtime=1), times will be converted to local server timezone time
     utc_offset = None # in hours, taken from ?utc_offset=<number> optional param
     filename = f"{_('Events')}.ics"
@@ -745,6 +746,20 @@ class BaseEventFeed(ICalFeed):
         mt = item.media_tag
         if mt and mt.location_lat and mt.location_lon:
             return (mt.location_lat, mt.location_lon)
+        return None
+
+    def item_categories(self, item):
+        from cosinnus.models.tagged import BaseTagObject
+
+        mt = item.media_tag.tags.values_list('name', flat=True)
+        mt = list(mt)
+
+        ct = ensure_list_of_ints(item.media_tag.topics)
+        choices_dict = dict(BaseTagObject.TOPIC_CHOICES)
+        tl = [value for elem in ct for key, value in choices_dict.items() if elem==key]
+
+        if mt or tl:
+            return mt + tl
         return None
 
     def get_filename(self, response):
