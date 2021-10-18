@@ -55,9 +55,9 @@
                 <div type="button" class="{{ button_classes }}">
                     <ul class="media-list {% if not forloop.last %}fine-space{% endif %}">
                         <li class="media">
-                            <span class="pull-left" href="{{ comment.creator|profile_url }}">
+                            <a class="pull-left" href="{{ comment.creator|profile_url }}">
                                 {% include 'cosinnus/user/user_avatar_image.html' with user=comment.creator %}
-                            </span>
+                            </a>
                             <div class="media-body comment-background">
                                 <strong><a href="{{ comment.creator|profile_url }}">{{ comment.creator|full_name }}</a></strong>
                                 <a href="{{ comment.get_absolute_url }}"><span class="annotation moment-data-date" data-date="{{ comment.created_on|date:'c' }}" ></span></a>
@@ -65,7 +65,7 @@
                                     {% if user|has_write_access:comment %}
                                         <form id="delete_comment_form_{{ comment.pk }}" action="{% group_url 'cosinnus:event:comment-delete' group=comment.event.group pk=comment.pk %}" method="post" class="form-horizontal">
                                             {% csrf_token %}
-                                            <span class="pull-right" onclick="$('#delete_comment_form_{{ comment.pk }}').submit(); return false;" title="{% trans "Delete" %}"><i class="fa fa-times"></i></span>
+                                            <a class="pull-right" onclick="$('#delete_comment_form_{{ comment.pk }}').submit(); return false;" title="{% trans "Delete" %}"><i class="fa fa-times"></i></a>
                                         </form>
                                     {% endif %}
                                 </div>
@@ -84,9 +84,9 @@
                     <div type="button" class="{{ button_classes }}">
                         <ul class="media-list">
                             <li class="media">
-                                <span class="pull-left" href="{% url 'cosinnus:profile-detail' username=user.username %}">
+                                <a class="pull-left" href="{% url 'cosinnus:profile-detail' username=user.username %}">
                                     {% include 'cosinnus/user/user_avatar_image.html' with user=user %}
-                                </span>
+                                </a>
                                 <div class="media-body media-body-form-control">
                                     {% if form and form.text and form.text.errors %}{{ form.text.errors }}{% endif %}
                                     <textarea id="id_text" name="text" class="form-control next-button-is-for-sending autogrow oneline" placeholder="{% trans "Write comment..." %}"></textarea>

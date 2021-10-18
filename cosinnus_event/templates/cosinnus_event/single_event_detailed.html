@@ -16,7 +16,7 @@
         {% endif %}
         <ul class="media-list">
             <li class="media">
-                <span class="pull-left square-date-iconspan>
+                <span class="pull-left square-date-icon">
                     {% if event.from_date %}
 	                    <div>{{ event.from_date|date:"d" }}</div>
 	                    <div>{{ event.from_date|date:"M" }}</div>
@@ -28,16 +28,16 @@
                         {% endif %}
 	                {% endif %}
                 </span>
-                <span class="pull-right fadedown-clickareaspan>
+                <span class="pull-right fadedown-clickarea">
                     <i class="fa fa-chevron-down"></i>
                 </span>
                 <div class="media-body">
                 	{% with creator=event.creator %}
                         <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
                     {% endwith %}
-                    <span href="{{ event.get_absolute_url }}">
+                    <a href="{{ event.get_absolute_url }}">
                         {{ event.title }}
-                    </span>
+					</a>
                 </div>
             </li>
         </ul>
@@ -157,7 +157,7 @@
     <ul class="media-list">
         <li class="media">
             <div class="media-body">
-                <span href="{{ event.url }}">{{ event.url }}</span>
+                <a href="{{ event.url }}">{{ event.url }}</a>
             </div>
         </li>
     </ul>
@@ -210,13 +210,13 @@
 		                {% if attendants_not_going %}
 			                <div class="fadedown">
 			                	<div class="btn" style="float:none; width: auto; margin: 0 0 6px 0;" >
-					                <span class="fadedown-clickarea">
+					                <a class="fadedown-clickarea">
 					                	<em>
 						                	<b>{{ attendants_not_going|length }}</b> 
 						                	{% blocktrans context "one or many people are not going" count counter=attendants_not_going|length %}Can't go{% plural %}Can't go{% endblocktrans %}
 						                    <i class="fa fa-chevron-down"></i>
 					                    </em>
-					                </span>
+					                </a>
 			                	</div>
 			                	<div>
 			                		{% for attendance in attendants_not_going %}
@@ -245,10 +245,10 @@
 			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
-			                <span class="pull-leftspan>
+			                <span class="pull-left">
 			                    <i class="fa fa-fw  fa-check"></i>
 			                </span>
-			                <span class="pull-rightspan>
+			                <span class="pull-right">
 			                    <i class="fa fa-caret-down"></i>
 			                </span>
 			                <div class="media-body">
@@ -386,7 +386,7 @@
 	                </span>
 	                <div class="media-body">
 	                    <span class="annotation">
-	                        <span class="fullscreen-button fullscreen-togglespan title="{% trans "Fullscreen" %}">
+	                        <span class="fullscreen-button fullscreen-toggle" title="{% trans "Fullscreen" %}">
 	                            <span>{% trans "Fullscreen" %}</span>
 	                            <i class="fa fa-expand"></i>
 	                        </span>
