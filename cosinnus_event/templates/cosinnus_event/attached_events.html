@@ -20,7 +20,14 @@
                                 <a href="{{ creator|profile_url }}">
                                     <i class="fa fa-user"></i>
                                     {{ creator|full_name }}
-                                </a> 
+                                </a>
+                                <a>
+                                    {% if event.video_conference_type == 2 %}
+                                        <i class="fa fa-fw fa-eye" style="padding-left: 30%;"><strong style="font-family: inherit;"> Fairmeeting</strong></i>
+                                    {% elif event.video_conference_type == 1 %}
+                                        <i class="fa fa-fw fa-eye" style="padding-left: 30%;"><strong style="font-family: inherit;"> BBB-Meeting</strong></i>
+                                    {% endif %}
+                                </a>
                             </div>
                         {% endwith %}
                     </div>
