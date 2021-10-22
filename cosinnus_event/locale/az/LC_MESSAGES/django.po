@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,6 +254,15 @@ msgstr "Ən Yeni Yaradılan"
 msgid "Title"
 msgstr "Titul"
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr ""
 
@@ -286,6 +295,9 @@ msgstr "Qeyd"
 
 msgid "Event date"
 msgstr "Tədbir tarixi"
+
+msgid "Type of video conference available for the event"
+msgstr ""
 
 msgid "Location"
 msgstr "Yerləşmə"
@@ -742,6 +754,14 @@ msgstr "Tədbir əlavə et"
 msgid "Enter a title for the new event."
 msgstr "Yeni tədbir üçün başlıq daxil edin."
 
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference type"
+msgstr "Tədbir yaratmaq"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "İlk yüklənən şəkil divar kağızı şəklində göstəriləcək."
 
@@ -1126,6 +1146,11 @@ msgid "No Choice"
 msgstr "Seçim yoxdur"
 
 msgid "Start/join video chat for this event"
+msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+
+#, fuzzy
+#| msgid "Start/join video chat for this event"
+msgid "Start/join BBB video conference for this event"
 msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
 
 msgid "Fullscreen"

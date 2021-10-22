@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: 2021-04-26 12:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,6 +254,15 @@ msgstr "Πιο Πρόσφατη Δημιουργία"
 msgid "Title"
 msgstr "Τίτλος"
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr "Παρουσιαστές"
 
@@ -286,6 +295,9 @@ msgstr "Σημείωση"
 
 msgid "Event date"
 msgstr "Ημερομηνία εκδήλωσης"
+
+msgid "Type of video conference available for the event"
+msgstr ""
 
 msgid "Location"
 msgstr "Τοποθεσία"
@@ -731,6 +743,14 @@ msgstr "Προσθήκη εκδήλωσης"
 msgid "Enter a title for the new event."
 msgstr "Εισάγετε τίτλο για τη νέα εκδήλωση."
 
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference type"
+msgstr "Είδος Εκδήλωσης Σύσκεψης"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Η εικόνα που ανέβηκε πρώτη θα εμφανιστεί ως ταπετσαρία."
 
@@ -1109,6 +1129,11 @@ msgid "No Choice"
 msgstr "Καμία Επιλογή"
 
 msgid "Start/join video chat for this event"
+msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
+
+#, fuzzy
+#| msgid "Start/join video chat for this event"
+msgid "Start/join BBB video conference for this event"
 msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
 msgid "Fullscreen"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: 2020-04-01 12:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,6 +254,15 @@ msgstr "Նորագույն ստեղծված"
 msgid "Title"
 msgstr "Վերնագիր"
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr ""
 
@@ -286,6 +295,9 @@ msgstr "Նշում"
 
 msgid "Event date"
 msgstr "Իրադարձության ամսաթիվը"
+
+msgid "Type of video conference available for the event"
+msgstr ""
 
 msgid "Location"
 msgstr "Գտնվելու վայրը"
@@ -742,6 +754,14 @@ msgstr "Ավելացնել իրադարձություն"
 msgid "Enter a title for the new event."
 msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
 
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference type"
+msgstr "Ստեղծել Իրադարձություն"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Առաջին վերբեռնված պատկերը կցուցադրվի որպես էջի գլխավոր պաստառ."
 
@@ -1126,6 +1146,11 @@ msgid "No Choice"
 msgstr "Ոչ մի ընտրություն"
 
 msgid "Start/join video chat for this event"
+msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
+
+#, fuzzy
+#| msgid "Start/join video chat for this event"
+msgid "Start/join BBB video conference for this event"
 msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
 
 msgid "Fullscreen"
