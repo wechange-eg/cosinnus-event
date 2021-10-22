@@ -113,18 +113,18 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
         related_name='selected_name',
     )
 
-    NO_MEETING = 0
+    NO_VIDEO_CONFERENCE = 0
     BBB_MEETING = 1
     FAIRMEETING = 2
 
     VIDEO_CONFERENCE_TYPE_CHOICES = (
         (BBB_MEETING, _('BBB-Meeting')),
         (FAIRMEETING, _('Fairmeeting')),
-        (NO_MEETING, _('Meeting is not available')),
+        (NO_VIDEO_CONFERENCE, _('No video conference')),
     )
 
     video_conference_type = models.PositiveIntegerField(
-        _('Type of video conference available for the event'), blank=False, null=False, choices=VIDEO_CONFERENCE_TYPE_CHOICES, default=NO_MEETING,)
+        _('Type of video conference available for the event'), blank=False, null=False, choices=VIDEO_CONFERENCE_TYPE_CHOICES, default=NO_VIDEO_CONFERENCE,)
 
     location = OSMField(_('Location'), blank=True, null=True)
     location_lat = LatitudeField(_('Latitude'), blank=True, null=True)
