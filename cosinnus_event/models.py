@@ -379,7 +379,7 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
         return attendants_going.count()
     
     def can_have_bbb_room(self):
-        return self.video_conference_type == 1
+        return self.video_conference_type == self.BBB_MEETING
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):

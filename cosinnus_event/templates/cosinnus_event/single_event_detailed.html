@@ -33,7 +33,13 @@
                 </span>
                 <div class="media-body">
                 	{% with creator=event.creator %}
-                        <span class="annotation">{% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a></span>
+                        <span class="annotation">
+                            {% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a>
+                            {# ***********  Reflect event in projects *************** #}
+		                    {% if may_reflect and reflectable_groups %}
+		                        {% include 'cosinnus/common/reflect/reflected_object_select_link.html' with select_icon="fa-calendar-plus-o" %}
+		                    {% endif %}
+                        </span>
                     {% endwith %}
                     <a href="{{ event.get_absolute_url }}">
                         {{ event.title }}
@@ -242,7 +248,7 @@
 			{% else %}event-attendance-no-choice app-calendar{% endif %}">
 				{# This hacky invisible button fixes all kinds of CSS incongruencies because the first button has different style rules #}
 				<button style="display: none;" class="btn btn-emphasized w100 dropdown-toggle"></button>
-			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
+			    <button type="button" class="btn btn-small btn-emphasized w100 dropdown-toggle event-attendance-choice-going" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
 			                <span class="pull-left">
@@ -257,7 +263,7 @@
 			            </li>
 			        </ul>
 			    </button>
-			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-maybe" data-toggle="dropdown">
+			    <button type="button" class="btn btn-small btn-emphasized w100 dropdown-toggle event-attendance-choice-maybe" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
 			                <span class="pull-left">
@@ -272,7 +278,7 @@
 			            </li>
 			        </ul>
 			    </button>
-			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-not-going" data-toggle="dropdown">
+			    <button type="button" class="btn btn-small btn-emphasized w100 dropdown-toggle event-attendance-choice-not-going" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
 			                <span class="pull-left">
@@ -287,7 +293,7 @@
 			            </li>
 			        </ul>
 			    </button>
-			    <button type="button" class="btn btn-emphasized w100 dropdown-toggle event-attendance-choice-no-choice" data-toggle="dropdown">
+			    <button type="button" class="btn btn-small btn-emphasized w100 dropdown-toggle event-attendance-choice-no-choice" data-toggle="dropdown">
 			        <ul class="media-list">
 			            <li class="media">
 			                <span class="pull-left">
@@ -362,7 +368,7 @@
 {% if not event.video_conference_type == 0 %}
 
     <div class="white-content">
-        <button type="button" class="btn btn-emphasized btn-autosize pull-left start-video-conference">
+        <button type="button" class="btn btn-emphasized w100 pull-left start-video-conference">
             <ul class="media-list">
                 <li class="media">
                     <span class="pull-left">
@@ -501,11 +507,6 @@
 	</div>
 {% endif %}
 
-
-{# ***********  Reflect event in projects *************** #}
-{% if may_reflect and reflectable_groups %}
-    {% include 'cosinnus/common/reflect/reflected_object_select_button.html' with select_icon="fa-calendar-plus-o" %}
-{% endif %}
 
 {% if event.attached_objects.exists %}
     {% cosinnus_render_attached_objects event %}
