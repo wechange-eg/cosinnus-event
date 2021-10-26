@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -257,6 +257,15 @@ msgstr "Cel mai nou creat"
 msgid "Title"
 msgstr "Titlu"
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr "Prezentatori"
 
@@ -289,6 +298,9 @@ msgstr "Notă"
 
 msgid "Event date"
 msgstr "Data evenimentului"
+
+msgid "Type of video conference available for the event"
+msgstr ""
 
 msgid "Location"
 msgstr "Locație"
@@ -736,6 +748,14 @@ msgstr "Adăugați eveniment"
 msgid "Enter a title for the new event."
 msgstr "Introduceți un titlu pentru noul eveniment."
 
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference type"
+msgstr "Tip Conferință Eveniment"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Prima imagine încărcată va fi afișată ca tapet."
 
@@ -1122,6 +1142,11 @@ msgid "No Choice"
 msgstr "Nici o Alegere"
 
 msgid "Start/join video chat for this event"
+msgstr "Start/alătură-te chatului video pentru acest eveniment"
+
+#, fuzzy
+#| msgid "Start/join video chat for this event"
+msgid "Start/join BBB video conference for this event"
 msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
 msgid "Fullscreen"

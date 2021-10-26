@@ -43,7 +43,8 @@ from cosinnus_event import cosinnus_notifications
 from cosinnus_event.conf import settings
 from cosinnus_event.fields import RTMPURLField
 from cosinnus_event.managers import EventQuerySet
-from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
+from cosinnus_event.mixins import BBBRoomMixin
+#from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
 
 
 logger = logging.getLogger('cosinnus')
@@ -59,7 +60,7 @@ def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
-class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObjectModel):
+class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
@@ -111,6 +112,19 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObje
         blank=True,
         related_name='selected_name',
     )
+
+    NO_VIDEO_CONFERENCE = 0
+    BBB_MEETING = 1
+    FAIRMEETING = 2
+
+    VIDEO_CONFERENCE_TYPE_CHOICES = (
+        (BBB_MEETING, _('BBB-Meeting')),
+        (FAIRMEETING, _('Fairmeeting')),
+        (NO_VIDEO_CONFERENCE, _('No video conference')),
+    )
+
+    video_conference_type = models.PositiveIntegerField(
+        _('Type of video conference available for the event'), blank=False, null=False, choices=VIDEO_CONFERENCE_TYPE_CHOICES, default=NO_VIDEO_CONFERENCE,)
 
     location = OSMField(_('Location'), blank=True, null=True)
     location_lat = LatitudeField(_('Latitude'), blank=True, null=True)
@@ -364,6 +378,8 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BaseTaggableObje
         attendants_going = all_attendants.filter(state=EventAttendance.ATTENDANCE_GOING)
         return attendants_going.count()
     
+    def can_have_bbb_room(self):
+        return self.video_conference_type == 1
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
@@ -703,8 +719,6 @@ class ConferenceEvent(Event):
     stream_key = models.CharField(_('Stream Key'), 
         help_text=_('The key for this specific stream session you created at your streaming provider'),
         blank=True, max_length=250, null=True)
-    
-    conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 
     class Meta(BaseTaggableObjectModel.Meta):
         ordering = ['from_date', 'to_date', 'title']
@@ -732,26 +746,11 @@ class ConferenceEvent(Event):
         # create a "going" attendance for the event's creator
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:
             EventAttendance.objects.get_or_create(event=self, user=self.creator, defaults={'state':EventAttendance.ATTENDANCE_GOING})
-        
-        if self.can_have_bbb_room():
-            # we do not create a bbb room on the server yet, that only happens
-            # once  `get_bbb_room_url()` is called
-            try:
-                self.sync_bbb_members()
-            except Exception as e:
-                logger.exception(e)
-                
-        # save changed properties of the BBBRoom
-        self.check_and_sync_bbb_room()
-        # trigger any streamer status changes if enabled, so streamers
-        # are started/stopped instantly on changes
-        trigger_streamer_status_changes(events=[self])
-        
     
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
-        return self.type in self.BBB_ROOM_TYPES and not self.is_break
-    
+        return self.type in self.BBB_ROOM_TYPES and not self.is_break 
+
     def check_and_create_bbb_room(self, threaded=True):
         """ Can be safely called at any time to create a BBB room for this event
             if it doesn't have one yet.
@@ -788,7 +787,7 @@ class ConferenceEvent(Event):
                 event.media_tag.save()
                 # sync all bb users
                 event.sync_bbb_members()
-            
+
             if threaded:
                 class CreateBBBRoomThread(Thread):
                     def run(self):
@@ -798,7 +797,7 @@ class ConferenceEvent(Event):
                 create_room()
             return True
         return False
-    
+
     def check_and_sync_bbb_room(self):
         """ Will check if there is a BBBRoom attached to this event,
             and if so, sync the settings like participants from this event with it """
@@ -830,31 +829,11 @@ class ConferenceEvent(Event):
                 bbb_room.join_user(self.creator, as_moderator=True)
                 for user in self.presenters.all():
                     bbb_room.join_user(user, as_moderator=True)
-                    
     
     def get_absolute_url(self):
         if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:
             return super(ConferenceEvent, self).get_absolute_url()
         return group_aware_reverse('cosinnus:conference:room-event', kwargs={'group': self.group, 'slug': self.room.slug, 'event_id': self.id}).replace('%23/', '#/')
-    
-    def get_bbb_room_url(self):
-        if not self.can_have_bbb_room():
-            return None
-        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
-            self.check_and_create_bbb_room(threaded=True)
-            # redirect to a temporary URL that refreshes
-            return reverse('cosinnus:bbb-room-queue', kwargs={'mt_id': self.media_tag.id})
-        return self.media_tag.bbb_room.get_absolute_url()
-    
-    def get_bbb_room_queue_api_url(self):
-        if not self.can_have_bbb_room():
-            return None
-        if not settings.COSINNUS_TRIGGER_BBB_ROOM_CREATION_IN_QUEUE:
-            # create a room here if mode is on hesitant-creation
-            if self.can_have_bbb_room() and not self.media_tag.bbb_room:
-                self.check_and_create_bbb_room(threaded=True)
-            # redirect to a temporary URL that refreshes
-        return reverse('cosinnus:bbb-room-queue-api', kwargs={'mt_id': self.media_tag.id})
     
     def get_edit_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-edit', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
@@ -907,4 +886,3 @@ def annotate_attendants_count(qs):
                 )
             )
         )
-    

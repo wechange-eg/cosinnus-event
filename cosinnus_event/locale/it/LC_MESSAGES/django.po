@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,6 +254,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr ""
 
@@ -285,6 +294,9 @@ msgid "Note"
 msgstr ""
 
 msgid "Event date"
+msgstr ""
+
+msgid "Type of video conference available for the event"
 msgstr ""
 
 msgid "Location"
@@ -714,6 +726,12 @@ msgstr ""
 msgid "Enter a title for the new event."
 msgstr ""
 
+msgid "Video conference type"
+msgstr ""
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr ""
 
@@ -990,6 +1008,9 @@ msgid "No Choice"
 msgstr ""
 
 msgid "Start/join video chat for this event"
+msgstr ""
+
+msgid "Start/join BBB video conference for this event"
 msgstr ""
 
 msgid "Fullscreen"

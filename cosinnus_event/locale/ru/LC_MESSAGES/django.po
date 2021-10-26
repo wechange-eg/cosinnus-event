@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
-"PO-Revision-Date: 2021-09-30 16:14+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"PO-Revision-Date: 2021-10-22 12:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -256,6 +256,15 @@ msgstr "Последнее из созданных событий"
 msgid "Title"
 msgstr "Название"
 
+msgid "Fairmeeting"
+msgstr "Fairmeeting- видеоконференция"
+
+msgid "No video conference"
+msgstr "Событие не предполагает видеоконференции"
+
+msgid "BBB-Meeting"
+msgstr "BBB- видеоконференция"
+
 msgid "Presenters"
 msgstr "Презентаторы"
 
@@ -290,6 +299,9 @@ msgstr "Описание"
 
 msgid "Event date"
 msgstr "Дата события"
+
+msgid "Type of video conference available for the event"
+msgstr "Тип видеоконференции доступной для события"
 
 msgid "Location"
 msgstr "Место"
@@ -586,7 +598,7 @@ msgid "Stream this event"
 msgstr "Транслировать это событие"
 
 msgid "Please note: Streaming is only available for premium conferences. If you would like to use streaming, please request it explicitly when booking. Otherwise, these settings have no function."
-msgstr "Обратите внимание: Трансляция доступна только для премиум-конференций. Если Вы хотите использовать трансляции, пожалуйста, скажите об этом при бронировании. В ином случае, эти настройки будут неактуальны. "
+msgstr "Обратите внимание: Трансляция доступна только для премиум-конференций. Если Вы хотите использовать трансляции, пожалуйста, скажите об этом при бронировании. В ином случае, эти настройки будут неактуальны."
 
 msgid "You can set up the BBB event to be streamed to a streaming provider (e.g. YouTube)."
 msgstr "Вы можете настроить трансляцию BBB-события у Вашего провайдера / на Вашем ресурсе (например на YouTube)"
@@ -722,6 +734,12 @@ msgstr "Добавить событие"
 
 msgid "Enter a title for the new event."
 msgstr "Введите название нового события."
+
+msgid "Video conference type"
+msgstr "Тип видеоконференции"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr "Выберите тип видеоконференции"
 
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Первое загруженное изображение будет отображаться в качестве фонового рисунка."
@@ -1108,11 +1126,14 @@ msgstr "Нет выбора"
 msgid "Start/join video chat for this event"
 msgstr "Начать/присоединиться к видео чату этого события"
 
+msgid "Start/join BBB video conference for this event"
+msgstr "Начать/присоединиться к BBB- видеоконференции этого события"
+
 msgid "Fullscreen"
 msgstr "Полный экран"
 
 msgid "Video Chat"
-msgstr "Видео чат"
+msgstr "Видео-чат"
 
 msgid "Leave Fullscreen"
 msgstr "Свернуть полный экран"

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
-"PO-Revision-Date: 2021-10-01 20:53+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"PO-Revision-Date: 2021-10-22 12:12+0200\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0\n"
 
 msgid "Restart BBB rooms"
 msgstr "BBB Räume neu starten"
@@ -253,6 +253,15 @@ msgstr "Zuletzt erstellt"
 msgid "Title"
 msgstr "Titel"
 
+msgid "Fairmeeting"
+msgstr "Fairmeeting"
+
+msgid "No video conference"
+msgstr "Kein Videochat"
+
+msgid "BBB-Meeting"
+msgstr "BBB-Meeting"
+
 msgid "Presenters"
 msgstr "Präsentierende"
 
@@ -285,6 +294,9 @@ msgstr "Beschreibung"
 
 msgid "Event date"
 msgstr "Veranstaltungsdatum"
+
+msgid "Type of video conference available for the event"
+msgstr "Typ der für die Veranstaltung verfügbaren Videochats"
 
 msgid "Location"
 msgstr "Ort"
@@ -716,6 +728,12 @@ msgstr "Veranstaltung hinzufügen"
 msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
 
+msgid "Video conference type"
+msgstr "Typ des Videochats"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr "Wähle den Typ des Videochats"
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt."
 
@@ -1094,7 +1112,10 @@ msgid "No Choice"
 msgstr "Keine Auswahl"
 
 msgid "Start/join video chat for this event"
-msgstr "Videochat starten/beitreten"
+msgstr "Fairmeeting-Videochat starten/beitreten"
+
+msgid "Start/join BBB video conference for this event"
+msgstr "BBB-Videochat starten/beitreten"
 
 msgid "Fullscreen"
 msgstr "Vollbild"

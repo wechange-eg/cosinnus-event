@@ -20,7 +20,16 @@
                                 <a href="{{ creator|profile_url }}">
                                     <i class="fa fa-user"></i>
                                     {{ creator|full_name }}
-                                </a> 
+                                </a>
+                                <span class="pull-right">
+                                    {% if event.video_conference_type == 2 %}
+                                        <i class="fa fa-fw fa-eye"></i>
+                                        {% trans "Fairmeeting" %}
+                                    {% elif event.video_conference_type == 1 %}
+                                        <i class="fa fa-fw fa-eye"></i>
+                                        {% trans "BBB-Meeting" %}
+                                    {% endif %}
+                                </span>
                             </div>
                         {% endwith %}
                     </div>

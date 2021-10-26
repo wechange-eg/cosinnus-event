@@ -19,6 +19,7 @@ from cosinnus.forms.tagged import get_form, BaseTaggableObjectForm
 from cosinnus.forms.translations import TranslatedFieldsFormMixin
 from cosinnus.forms.user import UserKwargModelFormMixin
 from cosinnus.forms.widgets import SplitHiddenDateWidget
+from cosinnus.models.group import CosinnusPortal
 from cosinnus.utils.urls import group_aware_reverse
 from cosinnus.utils.user import get_user_select2_pills
 from cosinnus.utils.validators import CleanFromToDateFieldsMixin
@@ -36,7 +37,7 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
 
     class Meta(object):
         model = Event
-        fields = ('title', 'suggestion', 'from_date', 'to_date', 'note', 'street',
+        fields = ('title', 'suggestion', 'from_date', 'to_date', 'video_conference_type', 'note', 'street',
                   'zipcode', 'city', 'public', 'image', 'url')
     
     def __init__(self, *args, **kwargs):
@@ -47,7 +48,19 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
                 event=instance)
         else:
             del self.fields['suggestion']
-
+        
+        # dynamic dropdown for video conference types in events
+        self.fields['video_conference_type'].choices = Event.VIDEO_CONFERENCE_TYPE_CHOICES
+        if not settings.COSINNUS_BBB_SERVER_CHOICES:
+            custom_choices = (
+                (Event.FAIRMEETING, _('Fairmeeting')),
+                (Event.NO_VIDEO_CONFERENCE, _('No video conference')),)
+            self.fields['video_conference_type'].choices = custom_choices
+        elif not CosinnusPortal.get_current().video_conference_server:
+            custom_choices = (
+                (Event.BBB_MEETING, _('BBB-Meeting')),
+                (Event.NO_VIDEO_CONFERENCE, _('No video conference')),)
+            self.fields['video_conference_type'].choices = custom_choices
 
 EventForm = get_form(_EventForm)
 

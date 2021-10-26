@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-30 15:48+0200\n"
+"POT-Creation-Date: 2021-10-22 11:51+0200\n"
 "PO-Revision-Date: 2020-10-13 16:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -260,6 +260,15 @@ msgstr "Найновіші створені"
 msgid "Title"
 msgstr "Назва"
 
+msgid "Fairmeeting"
+msgstr ""
+
+msgid "No video conference"
+msgstr ""
+
+msgid "BBB-Meeting"
+msgstr ""
+
 msgid "Presenters"
 msgstr "Ведучі"
 
@@ -292,6 +301,9 @@ msgstr "Примітка"
 
 msgid "Event date"
 msgstr "Дата проведення події"
+
+msgid "Type of video conference available for the event"
+msgstr ""
 
 msgid "Location"
 msgstr "Розташування"
@@ -727,6 +739,14 @@ msgstr "Додати подію"
 msgid "Enter a title for the new event."
 msgstr "Введіть назву для нового заходу."
 
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference type"
+msgstr "Тип конференційного заходу"
+
+msgid "Choose the type of the video conference you would like to have"
+msgstr ""
+
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Перше зображення, що буде завантажене, відображатиметься як фоновий малюнок."
 
@@ -1108,6 +1128,11 @@ msgid "No Choice"
 msgstr "Немає вибору"
 
 msgid "Start/join video chat for this event"
+msgstr "Почати/приєднатися до відеочату цієї події"
+
+#, fuzzy
+#| msgid "Start/join video chat for this event"
+msgid "Start/join BBB video conference for this event"
 msgstr "Почати/приєднатися до відеочату цієї події"
 
 msgid "Fullscreen"
