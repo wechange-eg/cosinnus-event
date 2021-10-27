@@ -44,6 +44,21 @@ class BBBRoomMixin(object):
         """
         return False
     
+    def get_bbb_room_type(self):
+        """ Returns the type of preset this room is from `BBB_ROOM_TYPE_CHOICES`,
+            to match extra parameters for join/create events.
+            See `BBB_ROOM_TYPE_EXTRA_CREATE_PARAMETERS`, `BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS`  """
+        return settings.BBB_ROOM_TYPE_DEFAULT
+    
+    def get_max_participants(self):
+        """ Returns the number of participants allowed in the room
+            @param return: a number between 0-999. """
+        return settings.COSINNUS_CONFERENCE_COFFEETABLES_MAX_PARTICIPANTS_DEFAULT
+    
+    def get_presentation_url(self):
+        """ Stub for the presentation URL used in create calls """ 
+        return None
+    
     def check_and_create_bbb_room(self, threaded=True):
         """ Can be safely called at any time to create a BBB room for this event
             if it doesn't have one yet.
@@ -64,13 +79,14 @@ class BBBRoomMixin(object):
                 bbb_room = BBBRoom.create(
                     name=event.title,
                     meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
-                    source_object=self,
+                    presentation_url=event.get_presentation_url(),
+                    source_object=event,
                 )
                 event.media_tag.bbb_room = bbb_room
                 event.media_tag.save()
                 # sync all bb users
                 event.sync_bbb_members()
-            
+
             if threaded:
                 class CreateBBBRoomThread(Thread):
                     def run(self):
@@ -87,10 +103,12 @@ class BBBRoomMixin(object):
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             bbb_room.name = self.title
+            bbb_room.presentation_url = self.get_presentation_url()
             bbb_room.save()
     
     def sync_bbb_members(self):
-        """ Completely re-syncs all users for this room """
+        """ Completely re-syncs all users for this room 
+            TODO: properly refactor for the fitting `self.group` param """
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             with transaction.atomic():

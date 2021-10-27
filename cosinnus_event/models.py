@@ -750,76 +750,31 @@ class ConferenceEvent(Event):
     def can_have_bbb_room(self):
         """ Check if this event may have a BBB room """
         return self.type in self.BBB_ROOM_TYPES and not self.is_break 
-
-    def check_and_create_bbb_room(self, threaded=True):
-        """ Can be safely called at any time to create a BBB room for this event
-            if it doesn't have one yet.
-            @return True if a room needed to be created, False if none was created """
-        # if event is of the right type and has no BBB room yet,
-        if self.can_have_bbb_room() and not self.media_tag.bbb_room:
-            # be absolutely sure that no room has been created right now
-            self.media_tag.refresh_from_db()
-            if self.media_tag.bbb_room:
-                return False
-            
-            # start a thread and create a BBB Room
-            event = self
-            portal = CosinnusPortal.get_current()
-            
-            def create_room():
-                max_participants = None
-                if event.type in event.BBB_MAX_PARTICIPANT_TYPES and event.max_participants:
-                    max_participants = event.max_participants
-                # determine BBBRoom type from event type
-                room_type = event.BBB_ROOM_ROOM_TYPE_MAP.get(event.type, settings.BBB_ROOM_TYPE_DEFAULT)
-                presentation_url = event.presentation_file.url if event.presentation_file else None
-                    
-                from cosinnus.models.bbb_room import BBBRoom
-                bbb_room = BBBRoom.create(
-                    name=event.title,
-                    meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
-                    max_participants=max_participants,
-                    room_type=room_type,
-                    presentation_url=presentation_url,
-                    source_object=self,
-                )
-                event.media_tag.bbb_room = bbb_room
-                event.media_tag.save()
-                # sync all bb users
-                event.sync_bbb_members()
-
-            if threaded:
-                class CreateBBBRoomThread(Thread):
-                    def run(self):
-                        create_room()
-                CreateBBBRoomThread().start()
-            else:
-                create_room()
-            return True
-        return False
-
-    def check_and_sync_bbb_room(self):
-        """ Will check if there is a BBBRoom attached to this event,
-            and if so, sync the settings like participants from this event with it """
-        if self.media_tag.bbb_room:
-            bbb_room = self.media_tag.bbb_room
-            max_participants = None
-            if self.type in self.BBB_MAX_PARTICIPANT_TYPES and self.max_participants:
-                max_participants = self.max_participants
-            # monkeypatch for BBB appearently allowing one less persons to enter a room
-            if max_participants is not None and settings.BBB_ROOM_FIX_PARTICIPANT_COUNT_PLUS_ONE:
-                max_participants += 1
-            # determine BBBRoom type from event type
-            room_type = self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
-            presentation_url = self.presentation_file.url if self.presentation_file else None
-            bbb_room.name = self.title
-            bbb_room.max_participants = max_participants
-            bbb_room.room_type = room_type
-            bbb_room.presentation_url = presentation_url
-            bbb_room.save()
+    
+    def get_bbb_room_type(self):
+        """ Returns the type of preset this room is from `BBB_ROOM_TYPE_CHOICES`,
+            to match extra parameters for join/create events.
+            See `BBB_ROOM_TYPE_EXTRA_CREATE_PARAMETERS`, `BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS`  """
+        return self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
+    
+    def get_max_participants(self):
+        """ Returns the number of participants allowed in the room
+            @param return: a number between 0-999. """
+        max_participants = None
+        if self.type in self.BBB_MAX_PARTICIPANT_TYPES and self.max_participants:
+            max_participants = self.max_participants
+        # monkeypatch for BBB appearently allowing one less persons to enter a room
+        if max_participants is not None and settings.BBB_ROOM_FIX_PARTICIPANT_COUNT_PLUS_ONE:
+            max_participants += 1
+        return max_participants
+    
+    def get_presentation_url(self):
+        """ Stub for the presentation URL used in create calls """ 
+        return self.presentation_file.url if self.presentation_file else None
     
     def sync_bbb_members(self):
-        """ Completely re-syncs all users for this room """
+        """ Completely re-syncs all users for this room.
+            TODO: properly refactor for the fitting `self.group` param """
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             with transaction.atomic():
