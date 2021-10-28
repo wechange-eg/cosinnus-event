@@ -114,7 +114,12 @@ class BBBRoomMixin(object):
             with transaction.atomic():
                 bbb_room.remove_all_users()
                 bbb_room.join_group_members(self.group)
-
+    
+    def get_admin_change_url(self):
+        """ Stub that all inheriting objects should implement.
+            Returns the django admin edit page for this object. """
+        return None
+    
     def get_bbb_room_url(self):
         if not self.can_have_bbb_room():
             return None

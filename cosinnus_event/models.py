@@ -380,6 +380,11 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
     
     def can_have_bbb_room(self):
         return self.video_conference_type == self.BBB_MEETING
+    
+    def get_admin_change_url(self):
+        """ Returns the django admin edit page for this object. """
+        return reverse('admin:cosinnus_event_event_change', kwargs={'object_id': self.id})
+    
 
 @python_2_unicode_compatible
 class Suggestion(models.Model):
@@ -795,6 +800,10 @@ class ConferenceEvent(Event):
     
     def get_delete_url(self):
         return group_aware_reverse('cosinnus:event:conference-event-delete', kwargs={'group': self.group, 'room_slug': self.room.slug, 'slug': self.slug})
+    
+    def get_admin_change_url(self):
+        """ Returns the django admin edit page for this object. """
+        return reverse('admin:cosinnus_event_conferenceevent_change', kwargs={'object_id': self.id})
     
     def get_type_verbose(self):
         return dict(self.TYPE_CHOICES).get(self.type, '(unknown type)')
