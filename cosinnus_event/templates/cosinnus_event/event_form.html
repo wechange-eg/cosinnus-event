@@ -74,7 +74,7 @@
             {% else %}
                 {% trans "Video conference type" as video_conference_type_label %}
                 {% trans "Choose the type of the video conference you would like to have" as video_conference_type_legend %}
-                {% include 'cosinnus/fields/default_field.html' with field=video_conference_type field=form.forms.obj.video_conference_type label=video_conference_type_label legend=video_conference_type_legend %}
+                {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.video_conference_type label=video_conference_type_label legend=video_conference_type_legend %}
             {% endif %}
         {% endblock video_conference_type_dropdown %}
 	                    

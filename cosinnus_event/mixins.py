@@ -5,7 +5,6 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.db import transaction
 from django.urls import reverse
 
-from cosinnus.models.group import CosinnusPortal
 from cosinnus_event.conf import settings
 from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
 
@@ -57,13 +56,13 @@ class BBBRoomMixin(object):
             
             # start a thread and create a BBB Room
             event = self
-            portal = CosinnusPortal.get_current()
+            portal_slug = settings.COSINNUS_PORTAL_NAME
             
             def create_room():
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
-                    name=event.title,
-                    meeting_id=f'{portal.slug}-{event.group.id}-{event.id}',
+                    name=event.name,
+                    meeting_id=f'{portal_slug}-{event.id}',
                     source_object=self,
                 )
                 event.media_tag.bbb_room = bbb_room

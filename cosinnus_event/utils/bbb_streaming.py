@@ -4,7 +4,6 @@ import logging
 from django.utils.crypto import get_random_string
 from django.utils.timezone import now
 
-from cosinnus.apis.bigbluebutton import BigBlueButtonAPI
 from cosinnus.conf import settings
 from cosinnus_conference.bbb_streaming import create_streamer, delete_streamer, \
     start_streamer, stop_streamer
@@ -23,6 +22,7 @@ def create_streamer_for_event(event):
         not start the actual stream yet.
         Only executes if there is not already a streamer ID set. """
     
+    from cosinnus.apis.bigbluebutton import BigBlueButtonAPI
     if event.settings.get(SETTINGS_STREAMER_ID, None):
         logger.warn('BBB Streaming: Could not create a streamer because one was already created!', extra={
             'event_id': event.id,
