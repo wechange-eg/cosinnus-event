@@ -85,7 +85,7 @@ class BBBRoomMixin(object):
             and if so, sync the settings like participants from this event with it """
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
-            bbb_room.name = self.title
+            bbb_room.name = self.name
             bbb_room.save()
     
     def sync_bbb_members(self):
