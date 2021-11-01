@@ -379,7 +379,19 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
         return attendants_going.count()
     
     def can_have_bbb_room(self):
+        """ For BBBRoomMixin """
         return self.video_conference_type == self.BBB_MEETING
+    
+    def get_meeting_id_for_bbb_room(self):
+        """ For BBBRoomMixin, this one uses the group id as well as the event """
+        return f'{settings.COSINNUS_PORTAL_NAME}-{self.group.id}-{self.id}'
+
+    def get_moderators_for_bbb_room(self):
+        """ For BBBRoomMixin, overridable function to return a list of users that should be a moderator
+            of this BBB room (with higher priviledges than a member) """
+        moderators = super().get_moderators_for_bbb_room()
+        moderators.append(self.creator)
+        return moderators
     
     def get_admin_change_url(self):
         """ Returns the django admin edit page for this object. """
@@ -763,7 +775,7 @@ class ConferenceEvent(Event):
         return self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
     
     def get_max_participants(self):
-        """ Returns the number of participants allowed in the room
+        """ For BBBRoomMixin, returns the number of participants allowed in the room
             @param return: a number between 0-999. """
         max_participants = None
         if self.type in self.BBB_MAX_PARTICIPANT_TYPES and self.max_participants:
@@ -774,21 +786,20 @@ class ConferenceEvent(Event):
         return max_participants
     
     def get_presentation_url(self):
-        """ Stub for the presentation URL used in create calls """ 
+        """ For BBBRoomMixin. the presentation URL used in create calls """ 
         return self.presentation_file.url if self.presentation_file else None
     
-    def sync_bbb_members(self):
-        """ Completely re-syncs all users for this room.
-            TODO: properly refactor for the fitting `self.group` param """
-        if self.media_tag.bbb_room:
-            bbb_room = self.media_tag.bbb_room
-            with transaction.atomic():
-                bbb_room.remove_all_users()
-                bbb_room.join_group_members(self.group)
-                # creator and presenters are moderators in addition to the group admins
-                bbb_room.join_user(self.creator, as_moderator=True)
-                for user in self.presenters.all():
-                    bbb_room.join_user(user, as_moderator=True)
+    def get_meeting_id_for_bbb_room(self):
+        """ For BBBRoomMixin, this one uses the group id as well as the event """
+        return f'{settings.COSINNUS_PORTAL_NAME}-{self.group.id}-{self.id}'
+    
+    def get_moderators_for_bbb_room(self):
+        """ For BBBRoomMixin, overridable function to return a list of users that should be a moderator
+            of this BBB room (with higher priviledges than a member) """
+        moderators = super().get_moderators_for_bbb_room()
+        moderators.append(self.creator)
+        moderators.extend(list(self.presenters.all()))
+        return moderators
     
     def get_absolute_url(self):
         if settings.COSINNUS_CONFERENCES_USE_COMPACT_MODE:

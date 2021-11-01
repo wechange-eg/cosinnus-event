@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from cosinnus_event.conf import settings
 from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
+from django.contrib.auth import get_user_model
 
 logger = logging.getLogger('cosinnus')
 
@@ -58,11 +59,42 @@ class BBBRoomMixin(object):
         """ Stub for the presentation URL used in create calls """ 
         return None
     
+    def get_name_for_bbb_room(self):
+        """ Overridable function to return the name of the BBB room differently
+            depending on the source object """
+        return self.get_readable_title()
+    
+    def get_meeting_id_for_bbb_room(self):
+        """ Overridable function to return the meeting id of the BBB room differently
+            depending on the source object """
+        return f'{settings.COSINNUS_PORTAL_NAME}-{self.id}'
+    
+    def get_group_for_bbb_room(self):
+        """ Overridable function to the group for this BBB room. Can be None. """
+        return self.group
+    
+    def get_members_for_bbb_room(self):
+        """ Overridable function to return a list of users that should be a member
+            of this BBB room (as opposed to a moderator) """
+        group = self.get_group_for_bbb_room()
+        if group:
+            return list(get_user_model().objects.filter(id__in=group.members).exclude(email__startswith='__deleted_user__'))
+        return []
+    
+    def get_moderators_for_bbb_room(self):
+        """ Overridable function to return a list of users that should be a moderator
+            of this BBB room (with higher priviledges than a member) """
+        group = self.get_group_for_bbb_room()
+        if group:
+            manager_ids = group.admins + group.managers
+            return list(get_user_model().objects.filter(id__in=manager_ids).exclude(email__startswith='__deleted_user__'))
+        return []
+    
     def check_and_create_bbb_room(self, threaded=True):
-        """ Can be safely called at any time to create a BBB room for this event
+        """ Can be safely called at any time to create a BBB room for this source object
             if it doesn't have one yet.
             @return True if a room needed to be created, False if none was created """
-        # if event is of the right type and has no BBB room yet,
+        # if source object is of the right type and has no BBB room yet,
         if self.can_have_bbb_room() and not self.media_tag.bbb_room:
             # be absolutely sure that no room has been created right now
             self.media_tag.refresh_from_db()
@@ -70,21 +102,19 @@ class BBBRoomMixin(object):
                 return False
             
             # start a thread and create a BBB Room
-            event = self
-            portal_slug = settings.COSINNUS_PORTAL_NAME
-            
+            source_obj = self
             def create_room():
                 from cosinnus.models.bbb_room import BBBRoom
                 bbb_room = BBBRoom.create(
-                    name=event.name, # todo name for item
-                    meeting_id=f'{portal_slug}-TODO-{event.id}', # todo id for item
-                    source_object=event,
-                    presentation_url=event.get_presentation_url(),
+                    name=source_obj.get_name_for_bbb_room(), # todo name for item
+                    meeting_id=source_obj.get_meeting_id_for_bbb_room(),
+                    source_object=source_obj,
+                    presentation_url=source_obj.get_presentation_url(),
                 )
-                event.media_tag.bbb_room = bbb_room
-                event.media_tag.save()
+                source_obj.media_tag.bbb_room = bbb_room
+                source_obj.media_tag.save()
                 # sync all bb users
-                event.sync_bbb_members()
+                source_obj.sync_bbb_members()
 
             if threaded:
                 class CreateBBBRoomThread(Thread):
@@ -101,7 +131,7 @@ class BBBRoomMixin(object):
             and if so, sync the settings like participants from this event with it """
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
-            bbb_room.name = self.name # todo name for item
+            bbb_room.name = self.get_name_for_bbb_room()
             bbb_room.presentation_url = self.get_presentation_url()
             bbb_room.save()
     
@@ -112,8 +142,9 @@ class BBBRoomMixin(object):
             bbb_room = self.media_tag.bbb_room
             with transaction.atomic():
                 bbb_room.remove_all_users()
-                bbb_room.join_group_members(self.group)
-    
+                bbb_room.join_users(list(self.get_members_for_bbb_room()), as_moderator=False)
+                bbb_room.join_users(list(self.get_moderators_for_bbb_room()), as_moderator=True)
+                
     def get_admin_change_url(self):
         """ Stub that all inheriting objects should implement.
             Returns the django admin edit page for this object. """
