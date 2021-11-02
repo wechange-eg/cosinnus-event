@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2021-04-26 12:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -543,12 +543,6 @@ msgstr "Η εκδήλωση είναι ένα διάλειμμα"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Ελέγξτε αυτό για να δημιουργήσετε μια κενή εκδήλωση διαλείμματος που εμφανίζεται στην ατζέντα και το χρονολόγιο"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Περιγραφή και Πληροφορίες"
 
@@ -557,6 +551,12 @@ msgstr "Περιγραφή"
 
 msgid "Enter a description for the event"
 msgstr "Εισάγετε περιγραφή για την εκδήλωση"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -745,10 +745,10 @@ msgstr "Εισάγετε τίτλο για τη νέα εκδήλωση."
 
 #, fuzzy
 #| msgid "Conference Event Type"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1128,19 +1128,18 @@ msgstr "Πηγαίνεις;"
 msgid "No Choice"
 msgstr "Καμία Επιλογή"
 
-msgid "Start/join video chat for this event"
-msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
 msgid "Fullscreen"
 msgstr "Πλήρης Οθόνη"
 
-msgid "Video Chat"
-msgstr "Συνομιλία με Βίντεο"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference"
+msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
 msgid "Leave Fullscreen"
 msgstr "Να παραμείνει η Πλήρης Οθόνη"
@@ -1148,8 +1147,10 @@ msgstr "Να παραμείνει η Πλήρης Οθόνη"
 msgid "Back"
 msgstr "Πίσω"
 
-msgid "Stop Video Chat"
-msgstr "Διακοπή Συνομιλίας με Βίντεο"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Leave video conference"
+msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Θα λαμβάνετε τώρα ειδοποιήσεις για σχόλια ή όταν αυτή η εκδήλωση ενημερώνεται ή αλλάζουν οι λεπτομέρειές της."
@@ -1250,6 +1251,20 @@ msgstr "Το σχόλιό σας προστέθηκε με επιτυχία."
 
 msgid "Your comment was deleted successfully."
 msgstr "Το σχόλιό σας διαγράφηκε με επιτυχία."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
+
+#~ msgid "Video Chat"
+#~ msgstr "Συνομιλία με Βίντεο"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Διακοπή Συνομιλίας με Βίντεο"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Παράδειγμα: https://www.youtube.com/watch?v=12345"

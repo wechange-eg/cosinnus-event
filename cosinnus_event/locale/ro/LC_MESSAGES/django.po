@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -548,12 +548,6 @@ msgstr "Evenimentul este o pauză"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Verificați acest lucru pentru a crea un eveniment de pauză gol care apare în agendă și cronologie"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Descriere și Informații"
 
@@ -562,6 +556,12 @@ msgstr "Descriere"
 
 msgid "Enter a description for the event"
 msgstr "Introduceți o descriere pentru eveniment"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -750,10 +750,10 @@ msgstr "Introduceți un titlu pentru noul eveniment."
 
 #, fuzzy
 #| msgid "Conference Event Type"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Tip Conferință Eveniment"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1141,19 +1141,18 @@ msgstr "Tu mergi?"
 msgid "No Choice"
 msgstr "Nici o Alegere"
 
-msgid "Start/join video chat for this event"
-msgstr "Start/alătură-te chatului video pentru acest eveniment"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
 msgid "Fullscreen"
 msgstr "Ecran complet"
 
-msgid "Video Chat"
-msgstr "Video Chat"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference"
+msgstr "Tip Conferință Eveniment"
 
 msgid "Leave Fullscreen"
 msgstr "Lăsați pe ecran complet"
@@ -1161,8 +1160,10 @@ msgstr "Lăsați pe ecran complet"
 msgid "Back"
 msgstr "Înapoi"
 
-msgid "Stop Video Chat"
-msgstr "Stop Video Chat"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Leave video conference"
+msgstr "Tip Conferință Eveniment"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "A cum veți primi notificări pentru comentarii sau când acest eveniment este actualizat sau detaliile sale se schimbă."
@@ -1263,6 +1264,20 @@ msgstr "Comentariul dvs. a fost adăugat cu succes."
 
 msgid "Your comment was deleted successfully."
 msgstr "Comentariul dvs. a fost șters cu succes."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Start/alătură-te chatului video pentru acest eveniment"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Start/alătură-te chatului video pentru acest eveniment"
+
+#~ msgid "Video Chat"
+#~ msgstr "Video Chat"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Stop Video Chat"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Exemplu: https://www.youtybe.com/watch?v=12345"

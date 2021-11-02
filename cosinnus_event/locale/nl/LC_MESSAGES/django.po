@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2021-02-18 21:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -545,12 +545,6 @@ msgstr "Evenement is een pauze"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Aanvinken om een leeg pauze evenement aan te maken dat wordt getoond in de agenda en timeline"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Beschrijving en info"
 
@@ -559,6 +553,12 @@ msgstr "Beschrijving"
 
 msgid "Enter a description for the event"
 msgstr "Voeg een beschrijving voor het evenement toe"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -747,10 +747,10 @@ msgstr "Voer een titel in voor het nieuwe evenement."
 
 #, fuzzy
 #| msgid "Conference Event Type"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Conferentie evenement type"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1134,19 +1134,18 @@ msgstr "Ga je?"
 msgid "No Choice"
 msgstr "Geen keuze"
 
-msgid "Start/join video chat for this event"
-msgstr "Begin/doe mee aan de videochat voor dit evenement"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Begin/doe mee aan de videochat voor dit evenement"
 
 msgid "Fullscreen"
 msgstr "Volledig scherm"
 
-msgid "Video Chat"
-msgstr "Videochat"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference"
+msgstr "Conferentie evenement type"
 
 msgid "Leave Fullscreen"
 msgstr "Volledig scherm verlaten"
@@ -1154,8 +1153,10 @@ msgstr "Volledig scherm verlaten"
 msgid "Back"
 msgstr "Terug"
 
-msgid "Stop Video Chat"
-msgstr "Videochat stoppen"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Leave video conference"
+msgstr "Conferentie evenement type"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Je ontvangt nu meldingen voor reacties, wanneer dit evenement wordt bijgewerkt of de details veranderen."
@@ -1256,6 +1257,20 @@ msgstr "Je reactie is succesvol toegevoegd."
 
 msgid "Your comment was deleted successfully."
 msgstr "Je reactie is succesvol verwijderd."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Begin/doe mee aan de videochat voor dit evenement"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Begin/doe mee aan de videochat voor dit evenement"
+
+#~ msgid "Video Chat"
+#~ msgstr "Videochat"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Videochat stoppen"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Voorbeeld: https://www.youtube.com/watch?v=12345"

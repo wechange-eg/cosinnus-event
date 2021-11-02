@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
-"PO-Revision-Date: 2021-10-22 12:12+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"PO-Revision-Date: 2021-11-02 12:10+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "Restart BBB rooms"
 msgstr "BBB Räume neu starten"
@@ -257,7 +257,7 @@ msgid "Fairmeeting"
 msgstr "Fairmeeting"
 
 msgid "No video conference"
-msgstr "Kein Videochat"
+msgstr "Keine Videokonferenz"
 
 msgid "BBB-Meeting"
 msgstr "BBB-Meeting"
@@ -296,7 +296,7 @@ msgid "Event date"
 msgstr "Veranstaltungsdatum"
 
 msgid "Type of video conference available for the event"
-msgstr "Typ der für die Veranstaltung verfügbaren Videochats"
+msgstr "Typ der für die Veranstaltung verfügbaren Videokonferenz"
 
 msgid "Location"
 msgstr "Ort"
@@ -534,12 +534,6 @@ msgstr "Veranstaltung ist eine Pause"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Wähle dies aus, um eine leere Veranstaltung in der Agenda darzustellen"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr "Veranstaltungsbeschreibung ist vertraulich (Wird auf der Microsite nicht angezeigt)"
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr "Wähle dies aus, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
-
 msgid "Description and Infos"
 msgstr "Beschreibung und Infos"
 
@@ -548,6 +542,12 @@ msgstr "Beschreibung"
 
 msgid "Enter a description for the event"
 msgstr "Gib eine Beschreibung für die Veranstaltung ein"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr "Veranstaltungsbeschreibung ist vertraulich (Wird auf der Microsite nicht angezeigt)"
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr "Wähle dies aus, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
 
 msgid "Example:"
 msgstr "Beispiel:"
@@ -728,11 +728,11 @@ msgstr "Veranstaltung hinzufügen"
 msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
 
-msgid "Video conference type"
-msgstr "Typ des Videochats"
+msgid "Include a video conference"
+msgstr "Videokonferenz einbetten"
 
-msgid "Choose the type of the video conference you would like to have"
-msgstr "Wähle den Typ des Videochats"
+msgid "Choose the type of the video conference you would like for the event"
+msgstr "Wähle den Typ der Videokonferenz, die in der Veranstaltung verwendet werden soll"
 
 msgid "The first uploaded image will be displayed as a wallpaper."
 msgstr "Das erste hochgeladene Bild wird als Hintergrundbild angezeigt."
@@ -1111,17 +1111,14 @@ msgstr "Nimmst du teil?"
 msgid "No Choice"
 msgstr "Keine Auswahl"
 
-msgid "Start/join video chat for this event"
-msgstr "Fairmeeting-Videochat starten/beitreten"
-
-msgid "Start/join BBB video conference for this event"
-msgstr "BBB-Videochat starten/beitreten"
+msgid "Start/join video conference for this event"
+msgstr "Videokonferenz starten/beitreten"
 
 msgid "Fullscreen"
 msgstr "Vollbild"
 
-msgid "Video Chat"
-msgstr "Videochat"
+msgid "Video conference"
+msgstr "Videokonferenz"
 
 msgid "Leave Fullscreen"
 msgstr "Vollbild verlassen"
@@ -1129,8 +1126,8 @@ msgstr "Vollbild verlassen"
 msgid "Back"
 msgstr "Zurück"
 
-msgid "Stop Video Chat"
-msgstr "Videochat beenden"
+msgid "Leave video conference"
+msgstr "Videokonferenz verlassen"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Du wirst jetzt Benachrichtigungen für Kommentare erhalten und wenn diese Veranstaltung geändert wird oder sich ihr Termin ändert."
@@ -1231,6 +1228,18 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
+
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "BBB-Videochat starten/beitreten"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Fairmeeting-Videochat starten/beitreten"
+
+#~ msgid "Video Chat"
+#~ msgstr "Videochat"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Videochat beenden"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Beispiel: https://www.youtube.com/watch?v=12345"

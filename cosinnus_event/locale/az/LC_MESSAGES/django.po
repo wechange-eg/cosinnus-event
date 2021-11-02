@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -554,12 +554,6 @@ msgstr "Tədbir tarixi"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Təsvir və Məlumatlar"
 
@@ -568,6 +562,12 @@ msgstr "Təsvir"
 
 msgid "Enter a description for the event"
 msgstr "Tədbir üçün təsvir daxil edin"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -756,10 +756,10 @@ msgstr "Yeni tədbir üçün başlıq daxil edin."
 
 #, fuzzy
 #| msgid "Create Event"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Tədbir yaratmaq"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1145,19 +1145,18 @@ msgstr "Gedirsiniz?"
 msgid "No Choice"
 msgstr "Seçim yoxdur"
 
-msgid "Start/join video chat for this event"
-msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
 
 msgid "Fullscreen"
 msgstr "Tam ekran"
 
-msgid "Video Chat"
-msgstr "Video söhbət"
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference"
+msgstr "Tədbir yaratmaq"
 
 msgid "Leave Fullscreen"
 msgstr "Tam ekrandan çıxın"
@@ -1165,8 +1164,10 @@ msgstr "Tam ekrandan çıxın"
 msgid "Back"
 msgstr "Geri"
 
-msgid "Stop Video Chat"
-msgstr "Video Söhbəti Dayandırın"
+#, fuzzy
+#| msgid "Create Event"
+msgid "Leave video conference"
+msgstr "Tədbir yaratmaq"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Siz indi şərhlər üçün və ya bu tədbir yeniləndikdə və ya detalları dəyişdikdə bildirişlər alacaqsınız."
@@ -1267,6 +1268,20 @@ msgstr "Şərhiniz uğurla əlavə edildi."
 
 msgid "Your comment was deleted successfully."
 msgstr "Şərhiniz uğurla silindi."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+
+#~ msgid "Video Chat"
+#~ msgstr "Video söhbət"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Video Söhbəti Dayandırın"
 
 #, fuzzy
 #~| msgid "Example: http://mywebsite.com"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2020-10-13 16:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -541,6 +541,15 @@ msgstr "Подія є перервою"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Поставте цю галочку, щоб створити порожню подію перерви, яка відображається у порядку денному та на часовій шкалі"
 
+msgid "Description and Infos"
+msgstr "Опис та інформація"
+
+msgid "Description"
+msgstr "Опис"
+
+msgid "Enter a description for the event"
+msgstr "Введіть опис заходу"
+
 #, fuzzy
 #| msgid "Event\\'s description is confidencial (Not visible on microsite)"
 msgid "Event's description is confidencial (Not visible on microsite)"
@@ -550,15 +559,6 @@ msgstr "Опис події є конфіденційним (не видно н�
 #| msgid "Check this to prevent public viewing of the event\\'s description"
 msgid "Check this to prevent public viewing of the event's description"
 msgstr "Поставте галочку, щоб запобігти публічному перегляду опису події/подій"
-
-msgid "Description and Infos"
-msgstr "Опис та інформація"
-
-msgid "Description"
-msgstr "Опис"
-
-msgid "Enter a description for the event"
-msgstr "Введіть опис заходу"
 
 msgid "Example:"
 msgstr "Приклад:"
@@ -741,10 +741,10 @@ msgstr "Введіть назву для нового заходу."
 
 #, fuzzy
 #| msgid "Conference Event Type"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Тип конференційного заходу"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1127,19 +1127,18 @@ msgstr "Ви берете участь?"
 msgid "No Choice"
 msgstr "Немає вибору"
 
-msgid "Start/join video chat for this event"
-msgstr "Почати/приєднатися до відеочату цієї події"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Почати/приєднатися до відеочату цієї події"
 
 msgid "Fullscreen"
 msgstr "Повний екран"
 
-msgid "Video Chat"
-msgstr "Відеочат"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference"
+msgstr "Тип конференційного заходу"
 
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
@@ -1147,8 +1146,10 @@ msgstr "Вийти з повноекранного режиму"
 msgid "Back"
 msgstr "Назад"
 
-msgid "Stop Video Chat"
-msgstr "Зупинити відеочат"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Leave video conference"
+msgstr "Тип конференційного заходу"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Ви тепер будете отримувати сповіщення, якщо буде додано коментар або подія буде оновлена чи її деталі будуть змінені."
@@ -1249,6 +1250,20 @@ msgstr "Ваш коментар успішно додано."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Почати/приєднатися до відеочату цієї події"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Почати/приєднатися до відеочату цієї події"
+
+#~ msgid "Video Chat"
+#~ msgstr "Відеочат"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Зупинити відеочат"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Приклад: https://www.youtube.com/watch?v=12345"

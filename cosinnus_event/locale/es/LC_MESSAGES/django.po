@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2020-04-22 12:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -579,12 +579,6 @@ msgstr "Fecha del evento"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Descripción e informaciones"
 
@@ -593,6 +587,12 @@ msgstr "Descripción"
 
 msgid "Enter a description for the event"
 msgstr "Inserta una descripción para el evento"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -781,10 +781,10 @@ msgstr "Inserta un título para el nuevo evento."
 
 #, fuzzy
 #| msgid "Create Event"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Crear un evento"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1162,17 +1162,16 @@ msgstr "¿Tú atiendes?"
 msgid "No Choice"
 msgstr "Ninguna opción"
 
-msgid "Start/join video chat for this event"
-msgstr ""
-
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr ""
 
 msgid "Fullscreen"
 msgstr ""
 
-msgid "Video Chat"
-msgstr ""
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference"
+msgstr "Crear un evento"
 
 msgid "Leave Fullscreen"
 msgstr ""
@@ -1180,8 +1179,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-msgid "Stop Video Chat"
-msgstr ""
+#, fuzzy
+#| msgid "Create Event"
+msgid "Leave video conference"
+msgstr "Crear un evento"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Ahora recibirás notificaciones en caso de comentarios o cambios en el evento y si cambian detalles."

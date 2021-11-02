@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2021-03-08 11:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -579,12 +579,6 @@ msgstr "تاريخ مناسبة"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "حدد هذا لإنشاء حدث فاصل فارغ يظهر في جدول الأعمال والمخطط الزمني"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "وصف و معلومات"
 
@@ -593,6 +587,12 @@ msgstr "وصف"
 
 msgid "Enter a description for the event"
 msgstr "ادخل وصفا لهذه المناسبة"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -783,10 +783,10 @@ msgstr "ادخل عنوانا لمناسبة جديدة."
 
 #, fuzzy
 #| msgid "Create Event"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "انشاء مناسبة"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1202,19 +1202,18 @@ msgstr "هل ستذهب؟"
 msgid "No Choice"
 msgstr "لا يوجد خيار"
 
-msgid "Start/join video chat for this event"
-msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
 
 msgid "Fullscreen"
 msgstr "ملئ الشاشة"
 
-msgid "Video Chat"
-msgstr "محادثة فيديو"
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference"
+msgstr "انشاء مناسبة"
 
 msgid "Leave Fullscreen"
 msgstr "الخروج من ملئ الشاشة"
@@ -1222,8 +1221,10 @@ msgstr "الخروج من ملئ الشاشة"
 msgid "Back"
 msgstr "رجوع"
 
-msgid "Stop Video Chat"
-msgstr "إيقاف محادثة فيديو"
+#, fuzzy
+#| msgid "Create Event"
+msgid "Leave video conference"
+msgstr "انشاء مناسبة"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "ستتلقى الآن إشعارات للتعليقات أو عندما يتم تحديث هذه المناسبة أو تغيير تفاصيلها."
@@ -1324,6 +1325,20 @@ msgstr "تم إضافة تعليقك بنجاح."
 
 msgid "Your comment was deleted successfully."
 msgstr "تم حذف تعليقك بنجاح."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
+
+#~ msgid "Video Chat"
+#~ msgstr "محادثة فيديو"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "إيقاف محادثة فيديو"
 
 #, fuzzy
 #~| msgid "Example: http://mywebsite.com"

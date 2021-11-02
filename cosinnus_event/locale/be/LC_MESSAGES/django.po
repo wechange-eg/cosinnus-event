@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2019-05-08 00:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -586,12 +586,6 @@ msgstr "Дата падзеі"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr ""
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Апісанне і інфармацыя"
 
@@ -600,6 +594,12 @@ msgstr "Апісанне"
 
 msgid "Enter a description for the event"
 msgstr "Дадайце апісанне падзеі"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -787,10 +787,10 @@ msgstr "Увядзіце назву новай падзеі."
 
 #, fuzzy
 #| msgid "Create Event"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Стварыць падзею"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1184,19 +1184,16 @@ msgstr "Выбар не зроблены"
 
 #, fuzzy
 #| msgid "A user created a new event"
-msgid "Start/join video chat for this event"
-msgstr "Карыстальнік(-ца) стварыў(-ла) новую падзею"
-
-#, fuzzy
-#| msgid "A user created a new event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Карыстальнік(-ца) стварыў(-ла) новую падзею"
 
 msgid "Fullscreen"
 msgstr ""
 
-msgid "Video Chat"
-msgstr ""
+#, fuzzy
+#| msgid "Create Event"
+msgid "Video conference"
+msgstr "Стварыць падзею"
 
 msgid "Leave Fullscreen"
 msgstr ""
@@ -1204,8 +1201,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-msgid "Stop Video Chat"
-msgstr ""
+#, fuzzy
+#| msgid "Create Event"
+msgid "Leave video conference"
+msgstr "Стварыць падзею"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Вы будзеце атрымліваць апавяшчэнні пра каментары, або калі гэта падзея будзе абнаўляцца ці зменяцца яе дэталі."
@@ -1310,6 +1309,16 @@ msgstr "Ваш каментар паспяхова дададзены."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш каментар паспяхова выдалены."
+
+#, fuzzy
+#~| msgid "A user created a new event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Карыстальнік(-ца) стварыў(-ла) новую падзею"
+
+#, fuzzy
+#~| msgid "A user created a new event"
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Карыстальнік(-ца) стварыў(-ла) новую падзею"
 
 #, fuzzy
 #~| msgid "Example: http://mywebsite.com"

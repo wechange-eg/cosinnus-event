@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-22 11:51+0200\n"
+"POT-Creation-Date: 2021-11-02 12:09+0100\n"
 "PO-Revision-Date: 2021-04-01 14:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -547,12 +547,6 @@ msgstr "Wydarzenie jest przerwą"
 msgid "Check this to create an empty break event that shows up in the agenda and timeline"
 msgstr "Sprawdź to, aby stworzyć puste wydarzenie przerwy, które pokazuje się w kalendarzu i na osi czasu"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr ""
-
-msgid "Check this to prevent public viewing of the event's description"
-msgstr ""
-
 msgid "Description and Infos"
 msgstr "Opis i Informacje"
 
@@ -561,6 +555,12 @@ msgstr "Opis"
 
 msgid "Enter a description for the event"
 msgstr "Wprowadź opis wydarzenia"
+
+msgid "Event's description is confidencial (Not visible on microsite)"
+msgstr ""
+
+msgid "Check this to prevent public viewing of the event's description"
+msgstr ""
 
 msgid "Example:"
 msgstr ""
@@ -749,10 +749,10 @@ msgstr "Wpisz tytuł nowego wydarzenia."
 
 #, fuzzy
 #| msgid "Conference Event Type"
-msgid "Video conference type"
+msgid "Include a video conference"
 msgstr "Rodzaj wydarzenia konferencyjnego"
 
-msgid "Choose the type of the video conference you would like to have"
+msgid "Choose the type of the video conference you would like for the event"
 msgstr ""
 
 msgid "The first uploaded image will be displayed as a wallpaper."
@@ -1135,19 +1135,18 @@ msgstr "Weźmiesz udział?"
 msgid "No Choice"
 msgstr "Brak Wyboru"
 
-msgid "Start/join video chat for this event"
-msgstr "Zacznij/dołącz do video czata tego wydarzenia"
-
 #, fuzzy
 #| msgid "Start/join video chat for this event"
-msgid "Start/join BBB video conference for this event"
+msgid "Start/join video conference for this event"
 msgstr "Zacznij/dołącz do video czata tego wydarzenia"
 
 msgid "Fullscreen"
 msgstr "Pełen ekran"
 
-msgid "Video Chat"
-msgstr "Video Czat"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Video conference"
+msgstr "Rodzaj wydarzenia konferencyjnego"
 
 msgid "Leave Fullscreen"
 msgstr "Zamknij pełny ekran"
@@ -1155,8 +1154,10 @@ msgstr "Zamknij pełny ekran"
 msgid "Back"
 msgstr "Cofnij"
 
-msgid "Stop Video Chat"
-msgstr "Zakończ czat video"
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "Leave video conference"
+msgstr "Rodzaj wydarzenia konferencyjnego"
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Będziesz otrzymywał powiadomienia o komentarzach lub gdy to wydarzenie zostanie zaktualizowane albo jego szczegóły ulegną zmianie."
@@ -1257,6 +1258,20 @@ msgstr "Twój komentarz został dodany pomyślnie."
 
 msgid "Your comment was deleted successfully."
 msgstr "Twój komentarz został usunięty pomyślnie."
+
+#, fuzzy
+#~| msgid "Start/join video chat for this event"
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Zacznij/dołącz do video czata tego wydarzenia"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Zacznij/dołącz do video czata tego wydarzenia"
+
+#~ msgid "Video Chat"
+#~ msgstr "Video Czat"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Zakończ czat video"
 
 #~ msgid "Example: https://www.youtube.com/watch?v=12345"
 #~ msgstr "Przykład: https://www.youtube.com/watch?v=12345"

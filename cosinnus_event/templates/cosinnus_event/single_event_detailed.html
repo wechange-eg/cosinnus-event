@@ -375,11 +375,7 @@
                         <i class="fa fa-fw fa-eye"></i>
                     </span>
                     <div class="media-body">
-						{% if COSINNUS_CURRENT_PORTAL.video_conference_server and event.from_date and event.video_conference_type == 2 %}
-							{% trans "Start/join video chat for this event" %}
-						{% elif SETTINGS.COSINNUS_BBB_SERVER_CHOICES and event.from_date and event.video_conference_type == 1 %}
-							{% trans "Start/join BBB video conference for this event" %}
-						{% endif %}
+						{% trans "Start/join video conference for this event" %}
                     </div>
                 </li>
             </ul>
@@ -401,7 +397,7 @@
 	                            <i class="fa fa-expand"></i>
 	                        </span>
 	                    </span>
-	                    {% trans "Video Chat" %}
+	                    {% trans "Video conference" %}
 	                </div>
 	            </li>
 	        </ul>
@@ -444,7 +440,7 @@
                             <i class="fa fa-eye-slash"></i>
                         </span>
                         <div class="media-body">
-                            {% trans "Stop Video Chat" %}
+                            {% trans "Leave video conference" %}
                         </div>
                     </li>
                 </ul>
