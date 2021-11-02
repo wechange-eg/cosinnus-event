@@ -136,8 +136,7 @@ class BBBRoomMixin(object):
             bbb_room.save()
     
     def sync_bbb_members(self):
-        """ Completely re-syncs all users for this room 
-            TODO: properly refactor for the fitting `self.group` param """
+        """ Completely re-syncs all users for this room """
         if self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             with transaction.atomic():

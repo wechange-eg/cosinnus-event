@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from cosinnus.core import signals
 from cosinnus.models.bbb_room import BBBRoom
 from django.dispatch.dispatcher import receiver
-from cosinnus_event.models import Event
+from cosinnus_event.models import Event, ConferenceEvent
 from threading import Thread
 from cosinnus.models.group import MEMBER_STATUS, MEMBERSHIP_ADMIN
 from django.db.models.signals import post_save
@@ -18,24 +18,22 @@ logger = logging.getLogger('cosinnus')
 
 
 def update_bbb_room_memberships(group_membership, deleted):
-    """ Apply membership permission changes to BBBRoom of all events in this group  """
-    events_in_group = Event.objects.filter(group=group_membership.group).exclude(media_tag__bbb_room=None)
-    for event in events_in_group:
-        if not event.media_tag.bbb_room:
+    """ Apply membership permission changes to BBBRoom of all events and
+        conference events in this group and the BBB room for the group itself. """
+    group = group_membership.group
+    events_in_group = Event.objects.filter(group=group).exclude(media_tag__bbb_room=None)
+    bbb_room_source_objects = list(events_in_group) + [group]
+    for source_obj in bbb_room_source_objects:
+        if not source_obj.media_tag.bbb_room:
             continue
-        room = event.media_tag.bbb_room
+        room = source_obj.media_tag.bbb_room
+        user = group_membership.user
         if deleted:
-            room.remove_user(group_membership.user)
+            room.remove_user(user)
         else:
             if group_membership.status in MEMBER_STATUS:
-                as_moderator = bool(
-                    group_membership.status==MEMBERSHIP_ADMIN or \
-                    group_membership.user == event.creator
-                )
-                conference_event = event.conferenceevent
-                if conference_event:
-                    as_moderator = as_moderator or conference_event.presenters.filter(id=group_membership.user.id).count() > 0
-                room.join_user(group_membership.user, as_moderator=as_moderator)
+                as_moderator = bool(user in source_obj.get_moderators_for_bbb_room())
+                room.join_user(user, as_moderator=as_moderator)
 
 
 @receiver(signals.group_membership_has_changed)
