@@ -8,6 +8,16 @@ from cosinnus_event.models import Event, Suggestion, Vote, ConferenceEvent
 from cosinnus.admin import BaseTaggableAdmin, CosinnusConferenceSettingsInline
 
 
+def restart_bbb_rooms(modeladmin, request, queryset):
+    for event in queryset.all():
+        try:
+            bbb_room = event.media_tag.bbb_room
+            bbb_room.restart()
+        except:
+            pass
+restart_bbb_rooms.short_description = _('Restart BBB rooms')
+
+
 class VoteInlineAdmin(admin.TabularInline):
     extra = 0
     list_display = ('from_date', 'to_date', 'event')
@@ -38,23 +48,12 @@ admin.site.register(Suggestion, SuggestionAdmin)
 
 
 class EventAdmin(BaseTaggableAdmin):
-    inlines = BaseTaggableAdmin.inlines + [SuggestionInlineAdmin,]
     list_display = BaseTaggableAdmin.list_display + ['id', 'from_date', 'to_date', 'group', 'state', 'is_hidden_group_proxy']
     list_filter = BaseTaggableAdmin.list_filter + ['state', 'is_hidden_group_proxy']
+    inlines = BaseTaggableAdmin.inlines + [SuggestionInlineAdmin, CosinnusConferenceSettingsInline]
+    actions = (restart_bbb_rooms, )
 
 admin.site.register(Event, EventAdmin)
-
-
-def restart_bbb_rooms(modeladmin, request, queryset):
-    for event in queryset.all():
-        try:
-            bbb_room = event.media_tag.bbb_room
-            bbb_room.restart()
-        except:
-            pass
-
-
-restart_bbb_rooms.short_description = _('Restart BBB rooms')
 
 
 class ConferenceEventAdmin(BaseTaggableAdmin):
