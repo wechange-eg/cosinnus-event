@@ -6,8 +6,18 @@
 {% endblock page_title %}
 
 {% block breadcrumb %}
-        {{ block.super }}
-            <li class="active">{% if event_view == "upcoming" %}{% trans "Planned Events" %}{% elif event_view == "past" %}{% trans "Past Events" %}{% else %}{% trans "Events" %}{% endif %}</li>
+    {{ block.super }}
+    <li class="active">
+        {% if SETTINGS.COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS %}
+            {% trans "Events" %}
+        {% elif event_view == "upcoming" %}
+            {% trans "Planned Events" %}
+        {% elif event_view == "past" %}
+            {% trans "Past Events" %}
+        {% else %}
+            {% trans "Events" %}
+        {% endif %}
+    </li>
 {% endblock %}
 
 {% block leftnav %}
