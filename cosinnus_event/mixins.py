@@ -1,21 +1,25 @@
-from threading import Thread
 import logging
+from threading import Thread
 
+from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericRelation
+from django.db import models
 from django.db import transaction
 from django.urls import reverse
 
 from cosinnus_event.conf import settings
 from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
-from django.contrib.auth import get_user_model
 
 logger = logging.getLogger('cosinnus')
 
-class BBBRoomMixin(object):
+
+class BBBRoomMixin(models.Model):
     """ 
     Mixin that provides the functionality of BBB video conferences into event models
     """
-
+    class Meta(object):
+        abstract = True
+    
     conference_settings_assignments = GenericRelation('cosinnus.CosinnusConferenceSettings')
 
     def save(self, *args, **kwargs):        
