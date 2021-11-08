@@ -141,7 +141,7 @@ def trigger_streamer_status_changes(events=None):
         
         # creating and starting a streamer only works for conferences that are premium at this time
         # (stopping and deleting works regardless for sanity)
-        if event.group.is_premium:
+        if event.get_group_for_bbb_room().is_premium:
             # check if we should create a streamer
             if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
                     create_time <= now() <= stop_delete_time:

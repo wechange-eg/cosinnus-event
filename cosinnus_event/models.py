@@ -44,7 +44,7 @@ from cosinnus_event.conf import settings
 from cosinnus_event.fields import RTMPURLField
 from cosinnus_event.managers import EventQuerySet
 from cosinnus_event.mixins import BBBRoomMixin
-#from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
+from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
 
 
 logger = logging.getLogger('cosinnus')
@@ -759,6 +759,10 @@ class ConferenceEvent(Event):
         
         # important: super(Event), not ConferenceEvent, because we don't want to inherit the notifiers
         super(Event, self).save(*args, **kwargs)
+        
+        # trigger any streamer status changes if enabled, so streamers
+        # are started/stopped instantly on changes
+        trigger_streamer_status_changes(events=[self])
 
         # create a "going" attendance for the event's creator
         if settings.COSINNUS_EVENT_MARK_CREATOR_AS_GOING and created and self.state == ConferenceEvent.STATE_SCHEDULED:

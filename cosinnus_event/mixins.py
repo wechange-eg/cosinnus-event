@@ -32,9 +32,6 @@ class BBBRoomMixin(object):
                 
         # save changed properties of the BBBRoom
         self.check_and_sync_bbb_room()
-        # trigger any streamer status changes if enabled, so streamers
-        # are started/stopped instantly on changes
-        trigger_streamer_status_changes(events=[self])
 
     def can_have_bbb_room(self):
         """ 
