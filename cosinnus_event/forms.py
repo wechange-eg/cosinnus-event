@@ -67,13 +67,11 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
 class EventForm(get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsForm})):
         
     def dispatch_init_group(self, name, group):
-        print(f'>> disp group init {name}, {group}')
         if name in ['obj', 'media_tag']:
             return group
         return InvalidArgument
 
     def dispatch_init_user(self, name, user):
-        print(f'>> disp user init {name}, {user}')
         if name in ['obj', 'media_tag']:
             return user
         return InvalidArgument

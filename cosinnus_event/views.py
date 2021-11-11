@@ -273,8 +273,6 @@ class EntryFormMixin(RequireWriteMixin, FilterGroupMixin, GroupFormKwargsMixin,
         if self.object:
             messages.error(self.request,
                 self.message_error % {'title': self.object.title})
-            if settings.DEBUG:
-                print(f'>> errs: {form.errors}')
         
         # we need to re-convert the string-date values in our suggestion fields so our hacky form template can read them
         datefield = forms.DateTimeField()
