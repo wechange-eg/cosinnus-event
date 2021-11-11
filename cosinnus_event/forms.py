@@ -25,6 +25,8 @@ from cosinnus.utils.user import get_user_select2_pills
 from cosinnus.utils.validators import CleanFromToDateFieldsMixin
 from cosinnus_event.models import Event, Suggestion, Vote, Comment, \
     ConferenceEvent
+from cosinnus.forms.conference import CosinnusConferenceSettingsForm
+from multiform.forms import InvalidArgument
 
 
 class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargModelFormMixin,
@@ -62,7 +64,19 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
                 (Event.NO_VIDEO_CONFERENCE, _('No video conference')),)
             self.fields['video_conference_type'].choices = custom_choices
 
-EventForm = get_form(_EventForm)
+class EventForm(get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsForm})):
+        
+    def dispatch_init_group(self, name, group):
+        if name in ['obj', 'media_tag']:
+            return group
+        return InvalidArgument
+
+    def dispatch_init_user(self, name, user):
+        if name in ['obj', 'media_tag']:
+            return user
+        return InvalidArgument
+    
+    
 
 
 class _DoodleForm(_EventForm):

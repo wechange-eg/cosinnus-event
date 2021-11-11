@@ -75,6 +75,24 @@
                 {% trans "Include a video conference" as video_conference_type_label %}
                 {% trans "Choose the type of the video conference you would like for the event" as video_conference_type_legend %}
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.video_conference_type label=video_conference_type_label legend=video_conference_type_legend %}
+                <script type="text/javascript">
+                    {# show or hide a visibility warning #}
+                    $(function(){
+                        $('#id_video_conference_type').on('change', function(){
+                            if ($(this).val() == "1") {
+                                $('#bbb-settings-advanced').show();
+                            } else {
+                                $('#bbb-settings-advanced').hide();
+                            } 
+                        });
+                    });
+                </script>
+                <div id="bbb-settings-advanced" style="margin-top: 20px; {% if form.forms.obj.initial.video_conference_type != 1 %}display: none;{% endif %}">
+                    <p class="transparent">
+                        {% trans "Note: Changing some of these settings may require to restart the meeting before the changes takes effect!" %}
+                    </p>
+                    {% include 'cosinnus/conference/conference_settings_formfields.html' with form=form.forms.conference_settings_assignments %}
+                </div>
             {% endif %}
         {% endblock video_conference_type_dropdown %}
 	                    
