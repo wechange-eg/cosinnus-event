@@ -87,8 +87,10 @@
                         });
                     });
                 </script>
-                
-                <div id="bbb-settings-advanced" {% if form.forms.obj.initial.video_conference_type != 1 %} style="display: none;"{% endif %}>
+                <div id="bbb-settings-advanced" style="margin-top: 20px; {% if form.forms.obj.initial.video_conference_type != 1 %}display: none;{% endif %}">
+                    <p class="transparent">
+                        {% trans "Note: Changing some of these settings may require to restart the meeting before the changes takes effect!" %}
+                    </p>
                     {% include 'cosinnus/conference/conference_settings_formfields.html' with form=form.forms.conference_settings_assignments %}
                 </div>
             {% endif %}
