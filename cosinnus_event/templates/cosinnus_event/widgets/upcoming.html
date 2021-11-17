@@ -27,7 +27,7 @@
             {% if event.from_date %}
             {
                 id: {{ event.id }},
-                title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:25 }}{% if not event.is_hidden_group_proxy and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
+                title: $.cosinnus.decodeEntities('{{ event.title|truncatechars:25 }}{% if event.video_conference_type == 1 %} ({% trans "BBB-Meeting" %}){% elif event.video_conference_type == 2 %} ({% trans "Fairmeeting" %}){% endif %}{% if not event.is_hidden_group_proxy and group != event.group %} (&#8599; {{ event.group.name|truncatechars:14 }}){% endif %}'),
                 start: "{{ event.from_date|date:"c"}}",
                 {% if event.to_date %}
                 end: "{{ event.to_date|date:"c"}}",

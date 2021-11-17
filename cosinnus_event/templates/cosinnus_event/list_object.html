@@ -22,7 +22,8 @@
                 </a>
                 <div class="media-body">
                     {% with creator=event.creator %}
-                        <span class="annotation mobile-hidden">{% trans "by" %} 
+                        <span class="annotation mobile-hidden">
+                            {% trans "by" %} 
                             <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a>
                             {% if event.created %}
                                 &nbsp;&nbsp;
@@ -39,6 +40,19 @@
 				                </a>
 			                {% endif %}
                         </span>
+                        {% if event.video_conference_type == 2 %}
+	                        <span class="annotation">
+	                            <i class="fa fa-fw fa-eye"></i>
+	                            {% trans "Fairmeeting" %}
+	                            &nbsp;
+	                        </span>
+	                    {% elif event.video_conference_type == 1 %}
+	                        <span class="annotation">
+	                            <i class="fa fa-fw fa-eye"></i>
+	                            {% trans "BBB-Meeting" %}
+	                            &nbsp;
+	                        </span>
+	                    {% endif %}
                     {% endwith %}
                     <a href="{{ detail_url }}">
                         {% include 'cosinnus/common/likefollowstar/following_title_indicator.html' with object=event %}
