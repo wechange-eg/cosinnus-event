@@ -462,7 +462,7 @@
 					$('.video-conference-iframe').toggleClass('fullscreen');
 				});
 				var src_url = "{{ COSINNUS_CURRENT_PORTAL.video_conference_server_url }}-{{ event.slug }}-{{ event.group.id }}-{{ event.secret_from_created }}";
-				var embed_video_conf = '<iframe src="' + src_url + '" allow="display-capture *; geolocation; microphone *; camera *" width="100%" height="100%"></iframe>';
+				var embed_video_conf = '<iframe src="' + src_url + '" allow="display-capture *; geolocation *; microphone *; camera *; fullscreen *;" width="100%" height="100%"></iframe>';
 				$('.fullscreen-popout').attr('href', src_url);
 				$('.fullscreen-popout').click(function() {
                     $('.video-conference-iframe').html('<p class="textfield">{% trans "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page." %}</p>');
@@ -487,7 +487,7 @@
 					$('.video-conference-iframe').toggleClass('fullscreen');
 				});
 				var src_url = "{{ event.get_bbb_room_url }}";
-				var embed_video_conf = '<iframe src="' + src_url + '" allow="display-capture *; geolocation; microphone *; camera *; fullscreen * " width="100%" height="100%"></iframe>';
+				var embed_video_conf = '<iframe src="' + src_url + '" allow="display-capture *; geolocation *; microphone *; camera *; fullscreen *;" width="100%" height="100%"></iframe>';
 				$('.fullscreen-popout').attr('href', src_url);
 				$('.fullscreen-popout').click(function() {
                     $('.video-conference-iframe').html('<p class="textfield">{% trans "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page." %}</p>');
