@@ -83,7 +83,7 @@ class EventListView(RequireReadMixin, CosinnusFilterMixin, MixReflectedObjectsMi
     model = Event
     filterset_class = EventFilter
     event_view = 'upcoming'
-    show_past_events = getattr(settings, 'COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS', False)
+    show_past_events = getattr(settings, 'COSINNUS_EVENT_CALENDAR_ALSO_SHOWS_PAST_EVENTS', True)
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
