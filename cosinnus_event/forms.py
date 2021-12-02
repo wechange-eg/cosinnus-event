@@ -52,17 +52,20 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
             del self.fields['suggestion']
         
         # dynamic dropdown for video conference types in events
-        self.fields['video_conference_type'].choices = Event.VIDEO_CONFERENCE_TYPE_CHOICES
-        if not settings.COSINNUS_BBB_SERVER_CHOICES:
-            custom_choices = (
-                (Event.FAIRMEETING, _('Fairmeeting')),
-                (Event.NO_VIDEO_CONFERENCE, _('No video conference')),)
-            self.fields['video_conference_type'].choices = custom_choices
-        elif not CosinnusPortal.get_current().video_conference_server:
-            custom_choices = (
+        custom_choices = [
+            (Event.NO_VIDEO_CONFERENCE, _('No video conference')),
+        ]
+        if settings.COSINNUS_BBB_SERVER_CHOICES:
+            custom_choices += [
                 (Event.BBB_MEETING, _('BBB-Meeting')),
-                (Event.NO_VIDEO_CONFERENCE, _('No video conference')),)
+            ]
             self.fields['video_conference_type'].choices = custom_choices
+        if CosinnusPortal.get_current().video_conference_server:
+            custom_choices += [
+                (Event.FAIRMEETING, _('Fairmeeting')),
+            ]
+            self.fields['video_conference_type'].initial = Event.FAIRMEETING
+        self.fields['video_conference_type'].choices = custom_choices
 
 class EventForm(get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsForm})):
         

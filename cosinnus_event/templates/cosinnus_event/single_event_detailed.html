@@ -365,8 +365,7 @@
 
 {#  #########  Event video conference / BBB video conference  ########## #}   
 
-{% if not event.video_conference_type == 0 %}
-
+{% if SETTINGS.COSINNUS_BBB_SERVER_CHOICES and event.video_conference_type == 1 or COSINNUS_CURRENT_PORTAL.video_conference_server and event.video_conference_type == 2 %}
     <div class="white-content">
         <button type="button" class="btn btn-emphasized w100 pull-left start-video-conference">
             <ul class="media-list">
