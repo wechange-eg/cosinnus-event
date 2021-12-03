@@ -168,3 +168,44 @@ class BBBRoomMixin(models.Model):
                 self.check_and_create_bbb_room(threaded=True)
             # redirect to a temporary URL that refreshes
         return reverse('cosinnus:bbb-room-queue-api', kwargs={'mt_id': self.media_tag.id})
+    
+    def get_parent_bbb_chain_object(self):
+        """ Returns the parent of this object in the BBB conference settings hierarchy chain,
+            or None """
+        from cosinnus.models.conference import get_parent_object_in_conference_setting_chain
+        return get_parent_object_in_conference_setting_chain(self)
+    
+    def get_conference_settings_object(self):
+        """ Returns an inherited agglomeration of the conference settings attached to
+            this object and all higher-up objects in the inheritance chain or None, 
+            if arrived at the top.
+            @return: None or a CosinnusConferenceSettings object """
+        from cosinnus.models.conference import CosinnusConferenceSettings
+        return CosinnusConferenceSettings.get_for_object(self)
+    
+    def get_parent_conference_settings_object(self):
+        """ Like `get_conference_settings_object`, but returns an inherited agglomeration 
+            of the conference settings attached to *the parent* of this object and all 
+            higher-up objects in the inheritance chain or None, if arrived at the top.
+            @return: None or a CosinnusConferenceSettings object """
+        from cosinnus.models.conference import CosinnusConferenceSettings
+        parent = self.get_parent_bbb_chain_object()
+        if parent:
+            return CosinnusConferenceSettings.get_for_object(parent)
+        return None
+    
+    def get_finalized_bbb_params(self):
+        """ Returns a dict of BBB params configured for this object, or the portal default params. """
+        settings_object = self.get_conference_settings_object()
+        if settings_object:
+            return settings_object.get_finalized_bbb_params()
+        return settings.BBB_PARAM_PORTAL_DEFAULTS
+    
+    def get_finalized_bbb_params_for_parent(self):
+        """ Returns a dict of BBB params inherited by the parents for this object,
+            or the portal default params. """
+        settings_object = self.get_parent_conference_settings_object()
+        if settings_object:
+            return settings_object.get_finalized_bbb_params()
+        return settings.BBB_PARAM_PORTAL_DEFAULTS
+    
