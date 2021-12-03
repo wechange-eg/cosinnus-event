@@ -40,7 +40,7 @@ class BBBRoomMixin(models.Model):
     def can_have_bbb_room(self):
         """ 
         Check if this event may have a BBB room.
-        Returns 'False' since is just a plug: add a funktion with the very same name into a model 
+        Returns 'False' since this is just a stub: add a funktion with the very same name into a model 
         you are going to use the mixin with. See the 'ConferenceEvent' model for details.
         """
         return False
@@ -130,7 +130,7 @@ class BBBRoomMixin(models.Model):
     def check_and_sync_bbb_room(self):
         """ Will check if there is a BBBRoom attached to this event,
             and if so, sync the settings like participants from this event with it """
-        if self.media_tag.bbb_room:
+        if hasattr(self, 'media_tag') and self.media_tag.bbb_room:
             bbb_room = self.media_tag.bbb_room
             bbb_room.name = self.get_name_for_bbb_room()
             bbb_room.presentation_url = self.get_presentation_url()

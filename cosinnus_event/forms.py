@@ -25,7 +25,8 @@ from cosinnus.utils.user import get_user_select2_pills
 from cosinnus.utils.validators import CleanFromToDateFieldsMixin
 from cosinnus_event.models import Event, Suggestion, Vote, Comment, \
     ConferenceEvent
-from cosinnus.forms.conference import CosinnusConferenceSettingsForm
+from cosinnus.forms.conference import CosinnusConferenceSettingsMultiForm,\
+    DispatchConferenceSettingsMultiformMixin
 from multiform.forms import InvalidArgument
 
 
@@ -66,20 +67,10 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
             ]
             self.fields['video_conference_type'].initial = Event.FAIRMEETING
         self.fields['video_conference_type'].choices = custom_choices
-
-class EventForm(get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsForm})):
-        
-    def dispatch_init_group(self, name, group):
-        if name in ['obj', 'media_tag']:
-            return group
-        return InvalidArgument
-
-    def dispatch_init_user(self, name, user):
-        if name in ['obj', 'media_tag']:
-            return user
-        return InvalidArgument
     
-    
+class EventForm(DispatchConferenceSettingsMultiformMixin, 
+                get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
+    pass 
 
 
 class _DoodleForm(_EventForm):
@@ -172,7 +163,9 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
         if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
             fields += ['stream_url', 'stream_key',]
 
-ConferenceEventCoffeeTableForm = get_form(_ConferenceEventCoffeeTableForm)
+class ConferenceEventCoffeeTableForm(DispatchConferenceSettingsMultiformMixin, 
+        get_form(_ConferenceEventCoffeeTableForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
+    pass
 
 
 class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
@@ -186,13 +179,17 @@ class _ConferenceEventWorkshopForm(_ConferenceEventBaseForm):
         if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
             fields += ['enable_streaming', 'stream_url', 'stream_key',]
             
-ConferenceEventWorkshopForm = get_form(_ConferenceEventWorkshopForm)
+class ConferenceEventWorkshopForm(DispatchConferenceSettingsMultiformMixin, 
+        get_form(_ConferenceEventWorkshopForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
+    pass
 
 
 class _ConferenceEventDiscussionForm(_ConferenceEventWorkshopForm):
     pass
 
-ConferenceEventDiscussionForm = get_form(_ConferenceEventDiscussionForm)
+class ConferenceEventDiscussionForm(DispatchConferenceSettingsMultiformMixin,
+        get_form(_ConferenceEventDiscussionForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
+    pass
 
 
 class _ConferenceEventStageForm(_ConferenceEventBaseForm):
