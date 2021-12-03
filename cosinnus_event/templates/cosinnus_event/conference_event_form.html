@@ -116,7 +116,7 @@
                 {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.max_participants label=max_label legend=max_legend %}
             {% endif %}
             
-            {% if form.forms.conference_settings_assignments %}
+            {% if form.forms.conference_settings_assignments and SETTINGS.BBB_PRESET_USER_FORM_FIELDS %}
                 <div class="cosinnus-field ">
                     <label>{% trans "BBB video conference options" %}</label>
                     {% include 'cosinnus/conference/conference_settings_formfields.html' with form=form.forms.conference_settings_assignments %}
