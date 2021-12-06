@@ -668,11 +668,10 @@ class ConferenceEvent(Event):
         TYPE_COFFEE_TABLE,
         TYPE_DISCUSSION,
     )
-    # which event types will lead to which type of BBBRoom to be created.
-    # see settings BBB_ROOM_TYPE_CHOICES and BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS.
-    # (settings.BBB_ROOM_TYPE_DEFAULT is default if event type is not in this map)
-    BBB_ROOM_ROOM_TYPE_MAP = {
-        TYPE_COFFEE_TABLE: 1, # 'active' preset
+    
+    # maps ConferenceEvent types to bbb-room natures. see `BBBRoomMixin.get_bbb_room_nature()`
+    BBB_ROOM_NATURE_MAP = {
+        TYPE_COFFEE_TABLE: 'coffee',
     }
 
     TIMELESS_TYPES = (
@@ -772,11 +771,31 @@ class ConferenceEvent(Event):
         """ Check if this event may have a BBB room """
         return self.type in self.BBB_ROOM_TYPES and not self.is_break 
     
-    def get_bbb_room_type(self):
-        """ Returns the type of preset this room is from `BBB_ROOM_TYPE_CHOICES`,
-            to match extra parameters for join/create events.
-            See `BBB_ROOM_TYPE_EXTRA_CREATE_PARAMETERS`, `BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS`  """
-        return self.BBB_ROOM_ROOM_TYPE_MAP.get(self.type, settings.BBB_ROOM_TYPE_DEFAULT)
+    def get_bbb_room_nature(self):
+        """ Set the nature for coffee tables.
+        
+            Method to set the nature for a bbb-room depending on its type of source object.
+            A nature for a bbb room is a property that determines differences in its 
+            create/join API-call parameters that can be configured via
+            `settings.BBB_PARAM_PORTAL_DEFAULTS or dynamically in the 
+            `CosinnusConferenceSettings.bbb_params` json-field of each configuration object.
+            These may be set by an admin or dynamically using presets fields. 
+            
+            This allows bbb rooms to behave differently depending on what type of conference event
+            they are displayed in, like the instant-join nature of CoffeeTables
+            
+            A nature will be retrieved during CosinnusConferenceSettings agglomeration time,
+            from the source object through this method, and set for the settings object itself.
+            When the bbb params are retrieved for a BBB-API call like create/join using 
+            `CosinnusConferenceSettings.get_finalized_bbb_params` the nature-specific call params
+            for the set nature are merged over the base non-nature params of that settings object.
+            
+            Example: for a 'coffee' nature, the 'join__coffee' api-call param key in the JSON
+                is merged over the 'join' api-call param key.
+                
+            @return: a nature string or None
+        """
+        return self.BBB_ROOM_NATURE_MAP.get(self.type, None)
     
     def get_max_participants(self):
         """ For BBBRoomMixin, returns the number of participants allowed in the room

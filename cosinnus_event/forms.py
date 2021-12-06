@@ -163,8 +163,18 @@ class _ConferenceEventCoffeeTableForm(_ConferenceEventBaseForm):
         if settings.COSINNUS_CONFERENCES_STREAMING_ENABLED:
             fields += ['stream_url', 'stream_key',]
 
+
+class CosinnusConferenceCoffeeTableSettingsMultiForm(CosinnusConferenceSettingsMultiForm):
+    
+    def __init__(self, instance, *args, **kwargs):
+        kwargs.update({
+            'bbb_nature': 'coffee',
+        })
+        super().__init__(instance=instance, *args, **kwargs)
+
+
 class ConferenceEventCoffeeTableForm(DispatchConferenceSettingsMultiformMixin, 
-        get_form(_ConferenceEventCoffeeTableForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
+        get_form(_ConferenceEventCoffeeTableForm, extra_forms={'conference_settings_assignments': CosinnusConferenceCoffeeTableSettingsMultiForm})):
     pass
 
 

@@ -45,11 +45,29 @@ class BBBRoomMixin(models.Model):
         """
         return False
     
-    def get_bbb_room_type(self):
-        """ Returns the type of preset this room is from `BBB_ROOM_TYPE_CHOICES`,
-            to match extra parameters for join/create events.
-            See `BBB_ROOM_TYPE_EXTRA_CREATE_PARAMETERS`, `BBB_ROOM_TYPE_EXTRA_JOIN_PARAMETERS`  """
-        return settings.BBB_ROOM_TYPE_DEFAULT
+    def get_bbb_room_nature(self):
+        """ Stub to set the nature for a bbb-room depending on its type of source object.
+            A nature for a bbb room is a property that determines differences in its 
+            create/join API-call parameters that can be configured via
+            `settings.BBB_PARAM_PORTAL_DEFAULTS or dynamically in the 
+            `CosinnusConferenceSettings.bbb_params` json-field of each configuration object.
+            These may be set by an admin or dynamically using presets fields. 
+            
+            This allows bbb rooms to behave differently depending on what type of conference event
+            they are displayed in, like the instant-join nature of CoffeeTables
+            
+            A nature will be retrieved during CosinnusConferenceSettings agglomeration time,
+            from the source object through this method, and set for the settings object itself.
+            When the bbb params are retrieved for a BBB-API call like create/join using 
+            `CosinnusConferenceSettings.get_finalized_bbb_params` the nature-specific call params
+            for the set nature are merged over the base non-nature params of that settings object.
+            
+            Example: for a 'coffee' nature, the 'join__coffee' api-call param key in the JSON
+                is merged over the 'join' api-call param key.
+                
+            @return: a nature string or None
+        """
+        return None
     
     def get_max_participants(self):
         """ Returns the number of participants allowed in the room
@@ -195,17 +213,18 @@ class BBBRoomMixin(models.Model):
         return None
     
     def get_finalized_bbb_params(self):
-        """ Returns a dict of BBB params configured for this object, or the portal default params. """
+        """ Returns a dict of BBB params configured for this object,
+            merged for the nature of the object, or the portal default params. """
         settings_object = self.get_conference_settings_object()
         if settings_object:
             return settings_object.get_finalized_bbb_params()
         return settings.BBB_PARAM_PORTAL_DEFAULTS
     
-    def get_finalized_bbb_params_for_parent(self):
+    def get_inherited_bbb_params_from_parent(self):
         """ Returns a dict of BBB params inherited by the parents for this object,
             or the portal default params. """
         settings_object = self.get_parent_conference_settings_object()
         if settings_object:
-            return settings_object.get_finalized_bbb_params()
+            return settings_object.get_raw_bbb_params()
         return settings.BBB_PARAM_PORTAL_DEFAULTS
     
