@@ -52,21 +52,22 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
         else:
             del self.fields['suggestion']
         
-        # dynamic dropdown for video conference types in events
-        custom_choices = [
-            (Event.NO_VIDEO_CONFERENCE, _('No video conference')),
-        ]
-        if settings.COSINNUS_BBB_SERVER_CHOICES:
-            custom_choices += [
-                (Event.BBB_MEETING, _('BBB-Meeting')),
+        if 'video_conference_type' in self.fields:
+            # dynamic dropdown for video conference types in events
+            custom_choices = [
+                (Event.NO_VIDEO_CONFERENCE, _('No video conference')),
             ]
+            if settings.COSINNUS_BBB_SERVER_CHOICES:
+                custom_choices += [
+                    (Event.BBB_MEETING, _('BBB-Meeting')),
+                ]
+                self.fields['video_conference_type'].choices = custom_choices
+            if CosinnusPortal.get_current().video_conference_server:
+                custom_choices += [
+                    (Event.FAIRMEETING, _('Fairmeeting')),
+                ]
+                self.fields['video_conference_type'].initial = Event.FAIRMEETING
             self.fields['video_conference_type'].choices = custom_choices
-        if CosinnusPortal.get_current().video_conference_server:
-            custom_choices += [
-                (Event.FAIRMEETING, _('Fairmeeting')),
-            ]
-            self.fields['video_conference_type'].initial = Event.FAIRMEETING
-        self.fields['video_conference_type'].choices = custom_choices
     
 class EventForm(DispatchConferenceSettingsMultiformMixin, 
                 get_form(_EventForm, extra_forms={'conference_settings_assignments': CosinnusConferenceSettingsMultiForm})):
@@ -77,6 +78,9 @@ class _DoodleForm(_EventForm):
     
     from_date = forms.SplitDateTimeField(required=False)
     to_date = forms.SplitDateTimeField(required=False)
+    
+    class Meta(_EventForm.Meta):
+        exclude = ('video_conference_type',)
 
 DoodleForm = get_form(_DoodleForm)
 
