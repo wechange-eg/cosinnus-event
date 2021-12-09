@@ -39,7 +39,6 @@ cosinnus_group_patterns = [
     url(r'^(?P<slug>[^/]+)/edit/$', views.entry_edit_view, {'form_view': 'edit'}, name='event-edit'),
     url(r'^(?P<slug>[^/]+)/delete/$', views.entry_delete_view, {'form_view': 'delete'}, name='event-delete'),
     url(r'^(?P<slug>[^/]+)/assign_attendance/$', views.assign_attendance_view, name='event-assign-attendance'),
-    url(r'^(?P<slug>[^/]+)//$', views.event_ical_feed,  name='event-feed'),
     
     url(r'^(?P<event_slug>[^/]+)/comment/$', views.comment_create, name='comment'),
     url(r'^comment/(?P<pk>\d+)/$', views.comment_detail, name='comment-detail'),

@@ -821,15 +821,16 @@ class GlobalFeed(BaseEventFeed):
         return qs
 
 
-class SingleEventFeed(BaseEventFeed):
+class BaseSingleEventFeed(BaseEventFeed):
     """ An iCal Feed that contains the event specified """
     model = Event
 
     def __call__(self, request, *args, **kwargs):
+        # self.user is being set in either`PublicGroupSingleEventFeed`  
+        # or the decorator `require_user_token_access`
         self.group = get_group_for_request(kwargs.get('group'), request)
-        self.user = request.user
         self.slug = kwargs.get('slug')
-        return super(SingleEventFeed, self).__call__(request, *args, **kwargs)
+        return super(BaseSingleEventFeed, self).__call__(request, *args, **kwargs)
 
     def items(self, request):
         qs = self.model.objects.filter(group=self.group, state=Event.STATE_SCHEDULED)
@@ -839,6 +840,43 @@ class SingleEventFeed(BaseEventFeed):
     def get_filename(self, response):
         event = self.items(self.request).first()
         return event and f"{slugify(event.title)}.ics" or self.filename
+
+
+class UserTokenSingleEventFeed(BaseSingleEventFeed):
+    """ A group-based event feed. Uses a permanent user token for authentication
+        (the token is only used for views displaying the user's event-feeds). """
+    
+    title = _('Event')
+    description = _('Upcoming event')
+    
+    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED)
+    def __call__(self, request, *args, **kwargs):
+        return super(UserTokenSingleEventFeed, self).__call__(request, *args, **kwargs)
+
+
+class PublicGroupSingleEventFeed(BaseSingleEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
+    
+    def __call__(self, request, *args, **kwargs):
+        self.group = get_group_for_request(kwargs.get('group'), request)
+        self.user = AnonymousUser()
+        return super(PublicGroupSingleEventFeed, self).__call__(request, *args, **kwargs)
+
+
+class SingleEventFeed(BaseEventFeed):
+    """ This view is in place as first starting point for the single event Feeds, deciding whether it should
+        show a token based or a public feed for this event. """
+    
+    def __call__(self, request, *args, **kwargs):
+        if 'user' in request.GET and 'token' in request.GET:
+            return user_token_single_event_feed(request, *args, **kwargs)
+        else:
+            return public_group_single_event_feed(request, *args, **kwargs)
+
+
+
+
+
 
 
 class SingleConferenceEventFeed(SingleEventFeed):
@@ -1173,6 +1211,8 @@ doodle_vote_view = DoodleVoteView.as_view()
 doodle_complete_view = DoodleCompleteView.as_view()
 user_token_group_event_feed = UserTokenGroupEventFeed()
 public_group_event_feed = PublicGroupEventFeed()
+user_token_single_event_feed = UserTokenSingleEventFeed()
+public_group_single_event_feed = PublicGroupSingleEventFeed()
 event_ical_feed = GroupEventFeed()
 event_ical_feed_global = GlobalFeed()
 event_ical_feed_single = SingleEventFeed()

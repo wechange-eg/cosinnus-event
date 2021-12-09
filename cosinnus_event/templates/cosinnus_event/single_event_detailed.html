@@ -36,11 +36,17 @@
                         <span class="annotation">
                             {% trans "by" %} <a href="{{ creator|profile_url }}" >{{ creator|full_name }}</a>
                             {# ***********  Reflect event in projects *************** #}
-		                    {% if may_reflect and reflectable_groups %}
-		                        {% include 'cosinnus/common/reflect/reflected_object_select_link.html' with select_icon="fa-calendar-plus-o" %}
-		                    {% endif %}
+                            {% if may_reflect and reflectable_groups %}
+                                {% include 'cosinnus/common/reflect/reflected_object_select_link.html' with select_icon="fa-calendar-plus-o" %}
+                            {% endif %}
                         </span>
                     {% endwith %}
+                    <span class="annotation" style="margin-right: 16px;">
+                        <a href="#" data-toggle="modal" data-target="#feedModal">
+                            <i class="fa fa-calendar"></i>
+                            {% trans "Add event to your calendar" %}
+                        </a>
+                    </span>
                     <a href="{{ event.get_absolute_url }}">
                         {{ event.title }}
 					</a>
@@ -48,6 +54,26 @@
             </li>
         </ul>
     </div>
+    
+    {% captureas feed_modal_content %}
+        <div type="button" class="btn btn-default w100 regular-space">
+            <ul class="media-list">
+                <li class="media">
+                    <div class="media-body">
+                        <span>{% trans "Copy this iCal-link into your calendar application to import this event:" %}</span>
+                    </div>
+                    <div class="media-body media-body-form-control large-space">
+                        <input id="feedInputBox" class="form-control" onclick="this.focus();this.select()" readonly="readonly" 
+                           value="{{ event.get_feed_url }}{% if user.is_authenticated %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}{% endif %}">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix large-space"></div>
+    {% endcaptureas %}
+    {% captureas feed_modal_title %}{% trans "iCal Feed" %}{% endcaptureas %}
+    {% include "cosinnus/modal_box.html" with id="feedModal" label=feed_modal_content title=feed_modal_title title_icon="fa-calendar" %}
+    
     
     {% if user|has_write_access:event and not hide_control_buttons %}
         {% captureas modal_id %}deleteModal_{{object.slug}}{% endcaptureas %}

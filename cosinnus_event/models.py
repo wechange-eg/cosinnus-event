@@ -255,6 +255,12 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
             return self.group.get_delete_url()
         return group_aware_reverse('cosinnus:event:event-delete', kwargs=kwargs)
     
+    def get_feed_url(self):
+        """ Returns the iCal feed url. A user token as to be appended using either
+            `cosinnus.utils.permission` or `cosinnus_tags.cosinnus_user_token` """
+        kwargs = {'group': self.group, 'slug': self.slug}
+        return group_aware_reverse('cosinnus:event:feed-entry', kwargs=kwargs)
+    
     def is_user_attending(self, user):
         """ For notifications, statecheck if a user is attending this event """
         return self.attendances.filter(user=user, state__in=[EventAttendance.ATTENDANCE_GOING, EventAttendance.ATTENDANCE_MAYBE_GOING]).count() >= 1
