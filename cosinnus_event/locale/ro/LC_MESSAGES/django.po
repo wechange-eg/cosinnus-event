@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2020-10-12 00:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -257,13 +257,13 @@ msgstr "Cel mai nou creat"
 msgid "Title"
 msgstr "Titlu"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -579,6 +579,11 @@ msgstr "Câți participanți ar trebui să se alăture la o singură masă de ca
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "Tip Conferință Eveniment"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Încărcați o imagine de previzualizare pentru Evenimentul Conferinței"
@@ -1078,6 +1083,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s a comentat un sondaj de eveniment în care ați votat în %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Copiați acest iCal-link în aplicația dvs. din calendar pentru a importa evenimentele curente:"
+
 msgid "Delete Event"
 msgstr "Ștergeți Evenimentul"
 
@@ -1146,6 +1159,9 @@ msgstr "Nici o Alegere"
 msgid "Start/join video conference for this event"
 msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Ecran complet"
 
@@ -1164,6 +1180,9 @@ msgstr "Înapoi"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Tip Conferință Eveniment"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "A cum veți primi notificări pentru comentarii sau când acest eveniment este actualizat sau detaliile sale se schimbă."
@@ -1258,6 +1277,11 @@ msgstr "Evenimentul nu poate fi finalizat: Nici o dată nu a fost furnizată."
 
 msgid "The event was created successfully at the specified date."
 msgstr "Evenimentul a fost creat cu succes la data specificată."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Evenimente viitoare"
 
 msgid "Your comment was added successfully."
 msgstr "Comentariul dvs. a fost adăugat cu succes."

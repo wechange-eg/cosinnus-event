@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,13 +254,13 @@ msgstr "Ən Yeni Yaradılan"
 msgid "Title"
 msgstr "Titul"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -585,6 +585,11 @@ msgstr ""
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "BBB video conference options"
+msgstr "Tədbir yaratmaq"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr ""
@@ -1085,6 +1090,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s %(team_name)s komandasında səs verdiyi tədbir anketinə şərh yazdı."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Bu iCal-linkini cari tədbirləri import etmək üçün təqvim proqramınıza kopyalayın:"
+
 msgid "Delete Event"
 msgstr "Tədbiri ləğv et"
 
@@ -1150,6 +1163,9 @@ msgstr "Seçim yoxdur"
 msgid "Start/join video conference for this event"
 msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Tam ekran"
 
@@ -1168,6 +1184,9 @@ msgstr "Geri"
 #| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "Tədbir yaratmaq"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Siz indi şərhlər üçün və ya bu tədbir yeniləndikdə və ya detalları dəyişdikdə bildirişlər alacaqsınız."
@@ -1262,6 +1281,11 @@ msgstr "Tədbir başa çatdırıla bilməz: Heç bir tarix təyin edilmədi."
 
 msgid "The event was created successfully at the specified date."
 msgstr "Tədbir göstərilən tarixdə uğurla yaradıldı."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Qarşıdan gələn tədbirlər"
 
 msgid "Your comment was added successfully."
 msgstr "Şərhiniz uğurla əlavə edildi."

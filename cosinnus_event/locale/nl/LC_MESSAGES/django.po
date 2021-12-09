@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2021-02-18 21:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,13 +254,13 @@ msgstr "Laatst aangemaakt"
 msgid "Title"
 msgstr "Titel"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -576,6 +576,11 @@ msgstr "Hoeveel deelnemers mogen aan één koffietafel aanschuiven voordat deze 
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "Conferentie evenement type"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Preview afbeelding voor het conferentie evenement uploaden"
@@ -1074,6 +1079,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s heeft gereageerd op een evenement poll waarop je hebt gestemd in %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Kopieer deze iCal-link in je kalender applicatie om huidige evenementen te importeren:"
+
 msgid "Delete Event"
 msgstr "Evenement verwijderen"
 
@@ -1139,6 +1152,9 @@ msgstr "Geen keuze"
 msgid "Start/join video conference for this event"
 msgstr "Begin/doe mee aan de videochat voor dit evenement"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Volledig scherm"
 
@@ -1157,6 +1173,9 @@ msgstr "Terug"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Conferentie evenement type"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Je ontvangt nu meldingen voor reacties, wanneer dit evenement wordt bijgewerkt of de details veranderen."
@@ -1251,6 +1270,11 @@ msgstr "Evenement kan niet worden voltooid: er is geen datum opgegeven."
 
 msgid "The event was created successfully at the specified date."
 msgstr "Het evenement is met succes aangemaakt op de opgegeven datum."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Aankomende evenementen"
 
 msgid "Your comment was added successfully."
 msgstr "Je reactie is succesvol toegevoegd."

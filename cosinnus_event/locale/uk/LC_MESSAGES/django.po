@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2020-10-13 16:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -260,13 +260,13 @@ msgstr "Найновіші створені"
 msgid "Title"
 msgstr "Назва"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -574,6 +574,11 @@ msgstr "Скільки учасників може приєднатися до �
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr "Зверніть увагу, що зміна цього параметра не матиме ефекту під час виконання події."
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "Тип конференційного заходу"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Завантажте зображення попереднього перегляду для події конференції"
@@ -1061,6 +1066,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s прокоментував/-ла пропозицію дати, за яку ви проголосували у %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
+
 msgid "Delete Event"
 msgstr "Видалити подію"
 
@@ -1132,6 +1145,9 @@ msgstr "Немає вибору"
 msgid "Start/join video conference for this event"
 msgstr "Почати/приєднатися до відеочату цієї події"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Повний екран"
 
@@ -1150,6 +1166,9 @@ msgstr "Назад"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Тип конференційного заходу"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Ви тепер будете отримувати сповіщення, якщо буде додано коментар або подія буде оновлена чи її деталі будуть змінені."
@@ -1244,6 +1263,11 @@ msgstr "Подія не може бути завершена: не вказан�
 
 msgid "The event was created successfully at the specified date."
 msgstr "Захід успішно створено із вказаною датою."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Майбутні події"
 
 msgid "Your comment was added successfully."
 msgstr "Ваш коментар успішно додано."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2021-04-26 12:18+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,13 +254,13 @@ msgstr "Πιο Πρόσφατη Δημιουργία"
 msgid "Title"
 msgstr "Τίτλος"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -574,6 +574,11 @@ msgstr "Πόσοι συμμετέχοντες μπορούν να καθίσου
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Ανεβάστε μια εικόνα προεπισκόπησης για την Εκδήλωση Σύσκεψης"
@@ -1068,6 +1073,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "Ο/η %(sender_name)s σχολίασε μια δημοσκόπηση για εκδήλωση στην οποία ψηφίσατε σε %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Αντιγράψτε αυτό τον σύνδεσμο iCal στην εφαρμογή ημερολογίου για να εισάγετε τις τρέχουσες εκδηλώσεις:"
+
 msgid "Delete Event"
 msgstr "Διαγραφή Εκδήλωσης"
 
@@ -1133,6 +1146,9 @@ msgstr "Καμία Επιλογή"
 msgid "Start/join video conference for this event"
 msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Πλήρης Οθόνη"
 
@@ -1151,6 +1167,9 @@ msgstr "Πίσω"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Θα λαμβάνετε τώρα ειδοποιήσεις για σχόλια ή όταν αυτή η εκδήλωση ενημερώνεται ή αλλάζουν οι λεπτομέρειές της."
@@ -1245,6 +1264,11 @@ msgstr "Δεν είναι δυνατή η ολοκλήρωση της εκδήλ
 
 msgid "The event was created successfully at the specified date."
 msgstr "Η εκδήλωση δημιουργήθηκε με επιτυχία τη συγκεκριμένη ημερομηνία."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Προσεχείς εκδηλώσεις"
 
 msgid "Your comment was added successfully."
 msgstr "Το σχόλιό σας προστέθηκε με επιτυχία."

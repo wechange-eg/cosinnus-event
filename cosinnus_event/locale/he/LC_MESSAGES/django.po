@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2021-04-14 14:36+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,13 +254,13 @@ msgstr "החדש ביותר שנוצר"
 msgid "Title"
 msgstr "כותרת"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -575,6 +575,11 @@ msgstr "כמה משתתפים יכולים להצטרף אל שולחן קפה �
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "סוג אירוע ועידה"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "העלה/י תמונה מקדימה עבור אירוע הוועידה"
@@ -1069,6 +1074,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s הגיב/ה על סקר אירוע שהצבעתם בו ב-%(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "העתק קישור iCal זה ליישום היומן שלך כדי לייבא אירועים עכשוויים:"
+
 msgid "Delete Event"
 msgstr "מחק אירוע"
 
@@ -1134,6 +1147,9 @@ msgstr "אין ברירה"
 msgid "Start/join video conference for this event"
 msgstr "התחילו/הצטרפו לשיחת וידאו עבור אירוע זה"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "מסך מלא"
 
@@ -1152,6 +1168,9 @@ msgstr "חזור"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "סוג אירוע ועידה"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "כעת תקבלו עדכונים אודות תגובות, שינויים ועדכונים שיעלו באירוע."
@@ -1246,6 +1265,11 @@ msgstr "אין אפשרות להוסיף אירוע חדש: לא סופק תאר
 
 msgid "The event was created successfully at the specified date."
 msgstr "האירוע נוצר בהצלחה בתאריך שצויין."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "אירועים קרובים"
 
 msgid "Your comment was added successfully."
 msgstr "תגובתך נוספה בהצלחה."

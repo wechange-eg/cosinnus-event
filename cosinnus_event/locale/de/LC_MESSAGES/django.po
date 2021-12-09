@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
-"PO-Revision-Date: 2021-11-02 12:10+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
+"PO-Revision-Date: 2021-12-09 17:04+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -253,14 +253,14 @@ msgstr "Zuletzt erstellt"
 msgid "Title"
 msgstr "Titel"
 
-msgid "Fairmeeting"
-msgstr "Fairmeeting"
-
 msgid "No video conference"
 msgstr "Keine Videokonferenz"
 
 msgid "BBB-Meeting"
 msgstr "BBB-Meeting"
+
+msgid "Fairmeeting"
+msgstr "Fairmeeting"
 
 msgid "Presenters"
 msgstr "Präsentierende"
@@ -563,6 +563,9 @@ msgstr "Wie viele Teilnehmende der Video-Veranstaltung bevor sie voll ist."
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr "Bitte beachte, dass das Ändern dieser Einstellung auf laufende Veranstaltungen keine Auswirkungen hat."
+
+msgid "BBB video conference options"
+msgstr "BBB Videokonferenz-Optionen"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Lade ein Vorschaubild für die Tagungsveranstaltung hoch"
@@ -1051,6 +1054,12 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr "Veranstaltung in meinen Kalender einfügen"
+
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
+
 msgid "Delete Event"
 msgstr "Veranstaltung Löschen"
 
@@ -1114,6 +1123,9 @@ msgstr "Keine Auswahl"
 msgid "Start/join video conference for this event"
 msgstr "Videokonferenz starten/beitreten"
 
+msgid "Popout"
+msgstr "Popout"
+
 msgid "Fullscreen"
 msgstr "Vollbild"
 
@@ -1128,6 +1140,9 @@ msgstr "Zurück"
 
 msgid "Leave video conference"
 msgstr "Videokonferenz verlassen"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr "Diese Videokonferenz wurde in einem neuen Tab geöffnet. Um der Videokonferenz wieder beizutreten, lade bitte diese Seite neu."
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Du wirst jetzt Benachrichtigungen für Kommentare erhalten und wenn diese Veranstaltung geändert wird oder sich ihr Termin ändert."
@@ -1222,6 +1237,9 @@ msgstr "Die Terminfindung konnte nicht abgeschlossen werden: Es wurde kein Zield
 
 msgid "The event was created successfully at the specified date."
 msgstr "Die Veranstaltung wurde erfolgreich an dem angegebenen Termin erstellt."
+
+msgid "Upcoming event"
+msgstr "Aktuelle Veranstaltung"
 
 msgid "Your comment was added successfully."
 msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."

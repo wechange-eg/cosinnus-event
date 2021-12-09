@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2021-04-01 12:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -260,13 +260,13 @@ msgstr "Nejnovější vytvořené"
 msgid "Title"
 msgstr "Název"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -580,6 +580,11 @@ msgstr "Kolik účastníků se má připojit ke coffee table, než je plný"
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Conference Event Type"
+msgid "BBB video conference options"
+msgstr "Typ konferenčního eventu"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Nahrajte obrázek předběžného náhledu pro konferenční event"
@@ -1072,6 +1077,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s okomentoval/a hlasování o události, ve kterém jste hlasovali v %(team_name)s."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
+
 msgid "Delete Event"
 msgstr "Smazat událost"
 
@@ -1143,6 +1156,9 @@ msgstr "Žádná volba"
 msgid "Start/join video conference for this event"
 msgstr "Zahájit/připojit se k videochatu pro tuto událost"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
@@ -1161,6 +1177,9 @@ msgstr "Zpět"
 #| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Typ konferenčního eventu"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Nyní budete dostávat oznámení o komentářích nebo o aktualizaci této události nebo změně jejích podrobností."
@@ -1255,6 +1274,11 @@ msgstr "Událost nelze dokončit: Nebylo zadáno žádné datum."
 
 msgid "The event was created successfully at the specified date."
 msgstr "Událost byla úspěšně vytvořena k uvedenému datu."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Nadcházející události"
 
 msgid "Your comment was added successfully."
 msgstr "Váš komentář byl úspěšně přidán."

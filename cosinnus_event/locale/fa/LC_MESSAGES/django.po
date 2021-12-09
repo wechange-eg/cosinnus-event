@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,13 +254,13 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -563,6 +563,9 @@ msgid "How many participants can join the video call before it is full."
 msgstr ""
 
 msgid "Note that changing this setting will have no effect while an event is running."
+msgstr ""
+
+msgid "BBB video conference options"
 msgstr ""
 
 msgid "Upload a preview image for the Conference Event"
@@ -947,6 +950,12 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr ""
 
+msgid "Add event to your calendar"
+msgstr ""
+
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr ""
+
 msgid "Delete Event"
 msgstr ""
 
@@ -1010,6 +1019,9 @@ msgstr ""
 msgid "Start/join video conference for this event"
 msgstr ""
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr ""
 
@@ -1023,6 +1035,9 @@ msgid "Back"
 msgstr ""
 
 msgid "Leave video conference"
+msgstr ""
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
 msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
@@ -1117,6 +1132,9 @@ msgid "Event cannot be completed: No date was supplied."
 msgstr ""
 
 msgid "The event was created successfully at the specified date."
+msgstr ""
+
+msgid "Upcoming event"
 msgstr ""
 
 msgid "Your comment was added successfully."

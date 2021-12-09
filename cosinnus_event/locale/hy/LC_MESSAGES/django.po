@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 12:09+0100\n"
+"POT-Creation-Date: 2021-12-09 17:01+0100\n"
 "PO-Revision-Date: 2020-04-01 12:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -254,13 +254,13 @@ msgstr "Նորագույն ստեղծված"
 msgid "Title"
 msgstr "Վերնագիր"
 
-msgid "Fairmeeting"
-msgstr ""
-
 msgid "No video conference"
 msgstr ""
 
 msgid "BBB-Meeting"
+msgstr ""
+
+msgid "Fairmeeting"
 msgstr ""
 
 msgid "Presenters"
@@ -585,6 +585,11 @@ msgstr ""
 
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr ""
+
+#, fuzzy
+#| msgid "Create Event"
+msgid "BBB video conference options"
+msgstr "Ստեղծել Իրադարձություն"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr ""
@@ -1085,6 +1090,14 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s -ը հրապարակել է մեկնաբանություն իրադարձության հարցման վերաբերյալ, որին քվեարկել եք %(team_name)s -ում."
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Պատճենեք այս iCal- ի հղումը ձեր օրացուցի ծրագրում ընթացիկ իրադարձությունները ներմուծելու համար:"
+
 msgid "Delete Event"
 msgstr "Ջնջել իրադարձությունը"
 
@@ -1150,6 +1163,9 @@ msgstr "Ոչ մի ընտրություն"
 msgid "Start/join video conference for this event"
 msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
 
+msgid "Popout"
+msgstr ""
+
 msgid "Fullscreen"
 msgstr "Ամբողջ էկրանով"
 
@@ -1168,6 +1184,9 @@ msgstr "Հետ"
 #| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "Ստեղծել Իրադարձություն"
+
+msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
+msgstr ""
 
 msgid "You will now receive notifications for comments or when this event is updated or its details change."
 msgstr "Այժմ դուք կստանաք ծանուցումներ մեկնաբանությունների համար, կամ երբ այս իրադարձությունը թարմացվի կամ դրա մանրամասները փոփոխվեն."
@@ -1262,6 +1281,11 @@ msgstr "Իրադարձությունը հնարավոր չէ ավարտել. Ա�
 
 msgid "The event was created successfully at the specified date."
 msgstr "Միջոցառումը հաջողությամբ ստեղծվել է նշված ամսաթվին."
+
+#, fuzzy
+#| msgid "Upcoming events"
+msgid "Upcoming event"
+msgstr "Սպասվող իրադարձությունները"
 
 msgid "Your comment was added successfully."
 msgstr "Ձեր մեկնաբանությունը հաջողությամբ ավելացվել է."
