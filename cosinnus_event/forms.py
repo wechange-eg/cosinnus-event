@@ -57,11 +57,10 @@ class _EventForm(TranslatedFieldsFormMixin, GroupKwargModelFormMixin, UserKwargM
             custom_choices = [
                 (Event.NO_VIDEO_CONFERENCE, _('No video conference')),
             ]
-            if settings.COSINNUS_BBB_SERVER_CHOICES:
+            if settings.COSINNUS_BBB_ENABLE_GROUP_AND_EVENT_BBB_ROOMS:
                 custom_choices += [
                     (Event.BBB_MEETING, _('BBB-Meeting')),
                 ]
-                self.fields['video_conference_type'].choices = custom_choices
             if CosinnusPortal.get_current().video_conference_server:
                 custom_choices += [
                     (Event.FAIRMEETING, _('Fairmeeting')),
