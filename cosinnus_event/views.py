@@ -18,7 +18,7 @@ from django.views.generic.list import ListView
 from django.utils.timezone import now, localtime
 from django import forms
 
-from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSetView,
+from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSetFactory,
     UpdateWithInlinesView)
 
 from django_ical.views import ICalFeed
@@ -215,7 +215,7 @@ class ConferencesListView(EventListView):
     filterset_class = EventFilter
 
 
-class SuggestionInlineView(InlineFormSetView):
+class SuggestionInlineView(InlineFormSetFactory):
     extra = 1
     form_class = SuggestionForm
     model = Suggestion
