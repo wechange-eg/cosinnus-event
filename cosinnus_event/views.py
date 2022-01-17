@@ -136,6 +136,7 @@ class PastEventListView(EventListView):
 
     template_name = 'cosinnus_event/event_list_detailed_past.html'
     event_view = 'past'
+    filterset_class = EventFilter
     show_past_events = True
     
     def get_queryset(self):
@@ -173,6 +174,7 @@ class ConferenceEventListView(RequireWriteMixin, FilterGroupMixin, ListView):
 
 class DoodleListView(EventListView):
     template_name = 'cosinnus_event/doodle_list.html'
+    filterset_class = EventFilter
 
     def get_queryset(self):
         """In the doodle list we only show events with open votings"""
@@ -186,6 +188,7 @@ class ArchivedDoodlesListView(EventListView):
 
     template_name = 'cosinnus_event/doodle_list_detailed_archived.html'
     event_view = 'archived'
+    filterset_class = EventFilter
     
     def get_queryset(self):
         """ In the calendar we only show scheduled events """
@@ -202,12 +205,14 @@ class ArchivedDoodlesListView(EventListView):
 
 class DetailedEventListView(EventListView):
     template_name = 'cosinnus_event/event_list_detailed.html'
+    filterset_class = EventFilter
 
 
 class ConferencesListView(EventListView):
     """ Displays all conferences reflected into this group as events """
     template_name = 'cosinnus_event/event_list_detailed_conferences.html'
     event_view = 'conferences'
+    filterset_class = EventFilter
 
 
 class SuggestionInlineView(InlineFormSet):

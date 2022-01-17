@@ -23,11 +23,11 @@ class EventFilter(CosinnusFilterSet):
             ('title', 'title'),
         ),
         choices=(
-            ('from_date', _('Soonest Upcoming')),
+            ('-from_date', _('Soonest Upcoming')),
             ('-created', _('Newest Created')),
             ('title', _('Title')),
         ),
-        default='from_date',
+        default='-from_date',
         widget=DropdownChoiceWidget
     )
     
