@@ -39,6 +39,7 @@ following_doodle_voted = dispatch.Signal(providing_args=["user", "obj", "audienc
         :object_url The url of the object, if defined by get_absolute_url()
         :object_name The title of the object (only available if it is a BaseTaggableObject)
         :group_name The name of the group the object is housed in (only available if it is a BaseTaggableObject)
+        :team_name_short The same variable as `team_name` (`group_name`) but truncated to its first 10 characters
         :site_name Current django site's name
         :domain_url The complete base domain needed to prefix URLs. (eg: 'http://sinnwerkstatt.com')
         :notification_settings_url The URL to the cosinnus notification settings page.
@@ -62,7 +63,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s created a new event'),
-        'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - A new event: "%(object_name)s" was announced in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -87,7 +88,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s created a new event poll'),
-        'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - A new event poll: "%(object_name)s" was created in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -111,7 +112,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s commented on your event'),
-        'subject_text': _('%(sender_name)s commented on one of your events'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s commented on one of your events'),
         'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title', 
@@ -138,7 +139,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s commented on an event you were tagged in'),
-        'subject_text': _('%(sender_name)s commented on an event you were tagged in in %(team_name)s'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s commented on an event you were tagged in in %(team_name)s'),
         'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title',
@@ -165,7 +166,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s commented on an event you voted in'),
-        'subject_text': _('%(sender_name)s commented on an event you voted in in %(team_name)s'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s commented on an event you voted in in %(team_name)s'),
         'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title',
@@ -194,7 +195,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s commented on an event you are attending'),
-        'subject_text': _('%(sender_name)s commented on an event you are attending in %(team_name)s'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s commented on an event you are attending in %(team_name)s'),
         'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title',
@@ -220,7 +221,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s created a new event in %(team_name)s (which you follow)'),
-        'subject_text': _('A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
+        'subject_text': _('[%(team_name_short)s] - A new event: "%(object_name)s" was announced in %(team_name)s (which you follow).'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -245,7 +246,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s created a new event pollin %(team_name)s (which you follow)'),
-        'subject_text': _('A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
+        'subject_text': _('[%(team_name_short)s] - A new event poll: "%(object_name)s" was created in %(team_name)s (which you follow).'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -270,7 +271,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s commented on an event you are following'),
-        'subject_text': _('%(sender_name)s commented on an event you are following in %(team_name)s'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s commented on an event you are following in %(team_name)s'),
         'display_object_name': False,
         'data_attributes': {
             'object_name': 'event.title',
@@ -295,7 +296,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s updated an event you are following'),
-        'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -316,7 +317,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s updated an event you are attending'),
-        'subject_text': _('The event "%(object_name)s" was updated in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - The event "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -338,7 +339,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s updated an event poll you are following'),
-        'subject_text': _('The event poll "%(object_name)s" was updated in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - The event poll "%(object_name)s" was updated in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
@@ -361,7 +362,7 @@ notifications = {
         
         'is_html': True,
         'event_text': _('%(sender_name)s voted in an event poll you are following'),
-        'subject_text': _('%(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
+        'subject_text': _('[%(team_name_short)s] - %(sender_name)s voted in the event poll "%(object_name)s" in %(team_name)s.'),
         'data_attributes': {
             'object_name': 'title', 
             'object_url': 'get_absolute_url', 
