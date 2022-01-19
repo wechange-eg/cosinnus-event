@@ -577,7 +577,7 @@ class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin,
         if not self.object.is_hidden_group_proxy:
             # send notification to followers
             followers_except_voter = [pk for pk in self.object.get_followed_user_ids() if not pk in [self.request.user.id]]
-            cosinnus_notifications.following_doodle_voted.send(sender=self, user=self.object.creator, obj=self.object, audience=get_user_model().objects.filter(id__in=followers_except_voter))
+            cosinnus_notifications.following_doodle_voted.send(sender=self, user=self.request.user, obj=self.object, audience=get_user_model().objects.filter(id__in=followers_except_voter))
         
         messages.success(self.request, self.message_success )
         return ret
