@@ -48,6 +48,9 @@ cosinnus_group_patterns = [
 
 
 cosinnus_root_patterns = [
+    url(r'^events/team/(?P<team_id>\d+)/feed/$', views.team_event_ical_feed, name='team-feed'),
+    url(r'^events/team/(?P<team_id>\d+)/feed/(?P<slug>[^/]+)/$', views.team_event_ical_feed_single, name='team-feed-entry'),
+    url(r'^events/team/(?P<team_id>\d+)/conference/feed/(?P<slug>[^/]+)/$', views.team_conference_event_ical_feed_single, name='team-conference-event-entry'),
     url(r'^events/feed/all/$', views.event_ical_feed_global, name='feed-global'),
     url(r'^events/(?P<pk>\d+)/update', views.event_api_update, name='event_api_update')
 ]
