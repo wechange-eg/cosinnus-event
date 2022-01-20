@@ -46,6 +46,7 @@ from cosinnus.core.decorators.views import require_user_token_access, dispatch_g
     redirect_to_403
 from django.contrib.sites.shortcuts import get_current_site
 from cosinnus.utils.functions import ensure_list_of_ints, unique_aware_slugify, is_number
+from cosinnus.utils.group import get_cosinnus_group_model
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest
 from annoying.functions import get_object_or_None
@@ -67,6 +68,8 @@ from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
     AjaxFormsCommentCreateViewMixin, AjaxFormsDeleteViewMixin
 from uuid import uuid1
 from cosinnus.models.conference import CosinnusConferenceRoom
+from cosinnus.models.group import CosinnusPortal
+from cosinnus.models.group_extra import ensure_group_type
 from cosinnus_conference.views import FilterConferenceRoomMixin
 logger = logging.getLogger('cosinnus')
 
@@ -776,8 +779,9 @@ class BaseGroupEventFeed(BaseEventFeed):
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
-        self.title = '%s - %s' %  (self.group.name, self.base_title)
-        self.description = '%s - %s' % (self.base_description, self.group.name)
+        team_id = kwargs.get('team_id')
+        self.title = '%s - %s' %  (team_id, self.base_title)
+        self.description = '%s - %s' % (self.base_description, team_id)
         if not self.product_id:
             self.product_id = UserTokenGroupEventFeed.PROTO_PRODUCT_ID % site.domain
         return super(BaseGroupEventFeed, self).__call__(request, *args, **kwargs)
@@ -802,6 +806,18 @@ class PublicGroupEventFeed(BaseGroupEventFeed):
         self.group = get_group_for_request(kwargs.get('group'), request)
         self.user = AnonymousUser()
         return super(PublicGroupEventFeed, self).__call__(request, *args, **kwargs)
+
+
+class PublicTeamEventFeed(BaseGroupEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only).
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamEventFeed, self).__call__(request, *args, **kwargs)
 
 
 class GroupEventFeed(BaseEventFeed):
@@ -868,6 +884,18 @@ class PublicGroupSingleEventFeed(BaseSingleEventFeed):
         return super(PublicGroupSingleEventFeed, self).__call__(request, *args, **kwargs)
 
 
+class PublicTeamSingleEventFeed(BaseSingleEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only).
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamSingleEventFeed).__call__(request, *args, **kwargs)
+
+
 class SingleEventFeed(BaseEventFeed):
     """ This view is in place as first starting point for the single event Feeds, deciding whether it should
         show a token based or a public feed for this event. """
@@ -882,6 +910,17 @@ class SingleEventFeed(BaseEventFeed):
 
 
 
+
+class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
+    """ An iCal Feed that contains the conference event specified.
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamSingleConferenceEventFeed).__call__(request, *args, **kwargs)
 
 
 class SingleConferenceEventFeed(SingleEventFeed):
@@ -1219,9 +1258,12 @@ public_group_event_feed = PublicGroupEventFeed()
 user_token_single_event_feed = UserTokenSingleEventFeed()
 public_group_single_event_feed = PublicGroupSingleEventFeed()
 event_ical_feed = GroupEventFeed()
+team_event_ical_feed = PublicTeamEventFeed()
 event_ical_feed_global = GlobalFeed()
 event_ical_feed_single = SingleEventFeed()
+team_event_ical_feed_single = PublicTeamSingleEventFeed()
 conference_event_ical_feed_single = SingleConferenceEventFeed()
+team_conference_event_ical_feed_single = PublicTeamSingleConferenceEventFeed()
 comment_create = CommentCreateView.as_view()
 comment_delete = CommentDeleteView.as_view()
 comment_detail = CommentDetailView.as_view()
