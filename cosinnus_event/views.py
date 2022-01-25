@@ -814,7 +814,7 @@ class PublicTeamEventFeed(BaseGroupEventFeed):
 
     def __call__(self, request, *args, **kwargs):
         team_id = kwargs.get('team_id')
-        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
         self.group = ensure_group_type(team)
         self.user = AnonymousUser()
         return super(PublicTeamEventFeed, self).__call__(request, *args, **kwargs)
@@ -890,7 +890,7 @@ class PublicTeamSingleEventFeed(BaseSingleEventFeed):
 
     def __call__(self, request, *args, **kwargs):
         team_id = kwargs.get('team_id')
-        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
         self.group = ensure_group_type(team)
         self.user = AnonymousUser()
         return super(PublicTeamSingleEventFeed).__call__(request, *args, **kwargs)
@@ -917,7 +917,7 @@ class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
 
     def __call__(self, request, *args, **kwargs):
         team_id = kwargs.get('team_id')
-        team = get_cosinnus_group_model().objects.get_by_id(id=team_id, portal_id=CosinnusPortal.get_current().id)
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
         self.group = ensure_group_type(team)
         self.user = AnonymousUser()
         return super(PublicTeamSingleConferenceEventFeed).__call__(request, *args, **kwargs)
