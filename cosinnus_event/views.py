@@ -893,7 +893,7 @@ class PublicTeamSingleEventFeed(BaseSingleEventFeed):
         team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
         self.group = ensure_group_type(team)
         self.user = AnonymousUser()
-        return super(PublicTeamSingleEventFeed).__call__(request, *args, **kwargs)
+        return super(PublicTeamSingleEventFeed, self).__call__(request, *args, **kwargs)
 
 
 class SingleEventFeed(BaseEventFeed):
@@ -920,7 +920,7 @@ class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
         team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
         self.group = ensure_group_type(team)
         self.user = AnonymousUser()
-        return super(PublicTeamSingleConferenceEventFeed).__call__(request, *args, **kwargs)
+        return super(PublicTeamSingleConferenceEventFeed, self).__call__(request, *args, **kwargs)
 
 
 class SingleConferenceEventFeed(SingleEventFeed):
