@@ -954,6 +954,17 @@ class TeamSingleEventFeed(BaseEventFeed):
         else:
             return public_team_single_event_feed(request, *args, **kwargs)
 
+class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
+    """ An iCal Feed that contains the conference event specified.
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamSingleConferenceEventFeed).__call__(request, *args, **kwargs)
+
 
 class SingleConferenceEventFeed(SingleEventFeed):
     """ An iCal Feed that contains the conference event specified """
