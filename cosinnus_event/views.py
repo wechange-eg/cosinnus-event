@@ -18,7 +18,7 @@ from django.views.generic.list import ListView
 from django.utils.timezone import now, localtime
 from django import forms
 
-from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSet,
+from extra_views import (CreateWithInlinesView, FormSetView, InlineFormSetFactory,
     UpdateWithInlinesView)
 
 from django_ical.views import ICalFeed
@@ -215,7 +215,7 @@ class ConferencesListView(EventListView):
     filterset_class = EventFilter
 
 
-class SuggestionInlineView(InlineFormSet):
+class SuggestionInlineView(InlineFormSetFactory):
     extra = 1
     form_class = SuggestionForm
     model = Suggestion
@@ -460,7 +460,7 @@ class DoodleVoteView(RequireReadMixin, RecordLastVisitedMixin, FilterGroupMixin,
     message_success = _('Your votes were saved successfully.')
     message_error = _('Your votes could not be saved.')
 
-    extra = 0
+    factory_kwargs = {'extra': 0}
     form_class = VoteForm
     model = Event
     template_name = 'cosinnus_event/doodle_vote.html'

@@ -8,6 +8,7 @@ from osm_field.fields import OSMField, LatitudeField, LongitudeField
 from threading import Thread
 import time
 from uuid import uuid1
+import six
 
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericRelation
@@ -21,7 +22,6 @@ from django.template.defaultfilters import date as django_date_filter
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import dateformat
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.formats import date_format
 from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
@@ -59,7 +59,7 @@ def localize(value, format):
 def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
@@ -404,7 +404,7 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
         return reverse('admin:cosinnus_event_event_change', kwargs={'object_id': self.id})
     
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class Suggestion(models.Model):
     from_date = models.DateTimeField(
         _('Start'), default=None, blank=False, null=False)
@@ -458,7 +458,7 @@ class Suggestion(models.Model):
     def sorted_votes(self):
         return self.votes.order_by('voter__first_name', 'voter__last_name')
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class Vote(models.Model):
     
     VOTE_YES = 2
@@ -504,7 +504,7 @@ class Vote(models.Model):
     def get_absolute_url(self):
         return self.suggestion.event.get_absolute_url()
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class EventAttendance(models.Model):
     """ Model for attendance choices of a User for an Event.
         The choices do not include a "no choice selected" state on purpose,
@@ -540,7 +540,7 @@ class EventAttendance(models.Model):
         }
     
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class Comment(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('Creator'), on_delete=models.PROTECT, related_name='event_comments')
     created_on = models.DateTimeField(_('Created'), default=now, editable=False)
@@ -639,7 +639,7 @@ class Comment(models.Model):
 
 
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class ConferenceEvent(Event):
     
     # translatable fields are only enabled for conference events for now
