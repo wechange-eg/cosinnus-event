@@ -834,7 +834,9 @@ class PublicTeamEventFeed(BaseGroupEventFeed):
 
 class GroupEventFeed(BaseEventFeed):
     """ This view is in place as first starting point for the Feeds, deciding whether it should
-        show a token based or a public feed for this group. """
+        show a token based or a public feed for this group. 
+    
+        DEPRECATED, in favor of TeamEventFeed. Left in for backwards compatibility for old ical imports."""
     
     def __call__(self, request, *args, **kwargs):
         if 'user' in request.GET and 'token' in request.GET:
@@ -935,7 +937,9 @@ class PublicTeamSingleEventFeed(BaseSingleEventFeed):
 
 class SingleEventFeed(BaseEventFeed):
     """ This view is in place as first starting point for the single event Feeds, deciding whether it should
-        show a token based or a public feed for this event. """
+        show a token based or a public feed for this event. 
+    
+        DEPRECATED, in favor of TeamSingleEventFeed. Left in for backwards compatibility for old ical imports."""
     
     def __call__(self, request, *args, **kwargs):
         if 'user' in request.GET and 'token' in request.GET:
@@ -954,6 +958,7 @@ class TeamSingleEventFeed(BaseEventFeed):
         else:
             return public_team_single_event_feed(request, *args, **kwargs)
 
+
 class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
     """ An iCal Feed that contains the conference event specified.
         Refers to the id of a group directly. """
@@ -967,7 +972,9 @@ class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
 
 
 class SingleConferenceEventFeed(SingleEventFeed):
-    """ An iCal Feed that contains the conference event specified """
+    """ An iCal Feed that contains the conference event specified.
+    
+        DEPRECATED, in favor of TeamSingleConferenceEventFeed. Left in for backwards compatibility for old ical imports. """
     model = ConferenceEvent
 
     def item_location(self, item):

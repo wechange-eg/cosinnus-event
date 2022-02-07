@@ -11,7 +11,9 @@ cosinnus_group_patterns = [
     url(r'^$', views.index_view, name='index'),
     url(r'^calendar/$', views.list_view, name='list'),
     url(r'^calendar/(?P<tag>[^/]+)/$', views.list_view, name='list-filtered'),
+    # deprecated URL, see 'team-feed' for the new URL. left as backwards compatibility for old ical imports. 
     url(r'^feed/$', views.event_ical_feed, name='feed'),
+    # deprecated URL, see 'team-feed-entry' for the new URL. left as backwards compatibility for old ical imports. 
     url(r'^feed/(?P<slug>[^/]+)/$', views.event_ical_feed_single, name='feed-entry'),
 
     url(r'^doodle/list/$', views.doodle_list_view,  name='doodle-list'),
@@ -33,6 +35,7 @@ cosinnus_group_patterns = [
     url(r'^conference/(?P<room_slug>[^/]+)/add/$', views.conference_event_add_view, {'form_view': 'add'}, name='conference-event-add'),
     url(r'^conference/(?P<room_slug>[^/]+)/edit/(?P<slug>[^/]+)/$', views.conference_event_edit_view, {'form_view': 'edit'}, name='conference-event-edit'),
     url(r'^conference/(?P<room_slug>[^/]+)/delete/(?P<slug>[^/]+)/$', views.conference_event_delete_view, {'form_view': 'delete'}, name='conference-event-delete'),
+    # deprecated URL, see 'team-conference-event-entry' for the new URL. left as backwards compatibility for old ical imports. 
     url(r'^conference/feed/(?P<slug>[^/]+)/$', views.conference_event_ical_feed_single, name='conference-event-entry'),
 
     url(r'^(?P<slug>[^/]+)/$', views.entry_detail_view, {'form_view': 'edit'},  name='event-detail'),
