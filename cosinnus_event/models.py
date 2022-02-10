@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from builtins import object
 import datetime
+from email.policy import default
 import logging
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
 from threading import Thread
@@ -705,10 +706,15 @@ class ConferenceEvent(Event):
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
         default=False)
 
+    # Checkbox for visible / hidden mode of the particular event
+    is_visible = models.BooleanField(_('Event is visible'), 
+        help_text='Provides an option to choose if the particular event should be shown on microsite or not',
+        default=True)
+
     # Checkbox for public / private mode of the event's description
-    is_confidential = models.BooleanField(_('Event is confidential'), 
+    is_public = models.BooleanField(_('Event is public'), 
         help_text='Provides an option to choose if the event\'s description should be shown publicly or not',
-        default=False)
+        default=True)
     
     # Type: Coffee-Tables
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),

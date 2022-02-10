@@ -89,11 +89,20 @@
 		        {% trans "Enter a description for the event" as description_legend %}
 		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_form=form.forms.obj %}
 	        {% endif %}
+			<hr class="invisible"/>
+
+			{% if form.forms.obj.fields.is_visible %}
+				{% trans "Show this event on microsite" as event_visibility_label %}
+				{% trans "Uncheck this to hide the event on microsite" as event_visibility_legend %}
+				{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_visible label=event_visibility_label legend=event_visibility_legend checkbox_label=event_visibility_label %}
+			{% endif %}
 	        
-            {% if form.forms.obj.fields.is_confidential %}
-                {% trans "Event's description is confidencial (Not visible on microsite)" as events_confidentiality_label %}
-                {% trans "Check this to prevent public viewing of the event's description" as events_confidentiality_legend %}
-                {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_confidential label=events_confidentiality_label legend=events_confidentiality_legend checkbox_label=events_confidentiality_label %}
+            {% if form.forms.obj.fields.is_public %}
+				<div id="is_public">
+                	{% trans "Show the event's description on microsite" as events_public_label %}
+                	{% trans "Uncheck this to disable public viewing of the event's description" as events_public_legend %}
+                	{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_public label=events_public_label legend=events_public_legend checkbox_label=events_public_label %}
+				</div>
             {% endif %}
 	        
 	        {% if form.forms.obj.fields.url %}
@@ -245,4 +254,14 @@ You can adjust the meeting times on-the-fly to allow for longer streaming if the
 
 	</form>
 
+	<script type="text/javascript">
+		{# show or hide `event.is_public` option based on `event.is_visible` checkbox #}
+		$("#id_is_visible").on("click", function(){
+			if($("#id_is_visible").is(':checked'))
+				$("#is_public").show('slow');
+			else
+				$("#is_public").hide('slow');
+		});
+	</script>
+	
 {% endblock content %}
