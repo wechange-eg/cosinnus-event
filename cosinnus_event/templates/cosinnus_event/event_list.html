@@ -22,7 +22,7 @@
     
 	<!-- a box with semi transparent background -->
 	<div class="content-box">
-	    {% captureas feed_url %}{{ COSINNUS_BASE_URL|slice:":-1" }}{% group_url 'cosinnus:event:feed' group=group %}{% if user.is_authenticated %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}{% endif %}{% endcaptureas %}
+	    {% captureas feed_url %}{{ COSINNUS_BASE_URL|slice:":-1" }}{% url 'cosinnus:team-feed' team_id=group.id %}{% if user.is_authenticated %}?{% cosinnus_user_token SETTINGS.COSINNUS_EVENT_TOKEN_EVENT_FEED %}{% endif %}{% endcaptureas %}
         {% captureas feed_url_group %}{{ feed_url }}{% if user.is_authenticated %}&{% else %}?{% endif %}include_sub_projects=1{% endcaptureas %}
         
 	    {% captureas content %}

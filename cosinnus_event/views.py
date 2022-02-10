@@ -46,6 +46,7 @@ from cosinnus.core.decorators.views import require_user_token_access, dispatch_g
     redirect_to_403
 from django.contrib.sites.shortcuts import get_current_site
 from cosinnus.utils.functions import ensure_list_of_ints, unique_aware_slugify, is_number
+from cosinnus.utils.group import get_cosinnus_group_model
 from django.views.decorators.csrf import csrf_protect
 from django.http.response import HttpResponseBadRequest
 from annoying.functions import get_object_or_None
@@ -67,6 +68,8 @@ from ajax_forms.ajax_forms import AjaxFormsCreateViewMixin,\
     AjaxFormsCommentCreateViewMixin, AjaxFormsDeleteViewMixin
 from uuid import uuid1
 from cosinnus.models.conference import CosinnusConferenceRoom
+from cosinnus.models.group import CosinnusPortal
+from cosinnus.models.group_extra import ensure_group_type
 from cosinnus_conference.views import FilterConferenceRoomMixin
 logger = logging.getLogger('cosinnus')
 
@@ -776,8 +779,9 @@ class BaseGroupEventFeed(BaseEventFeed):
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
-        self.title = '%s - %s' %  (self.group.name, self.base_title)
-        self.description = '%s - %s' % (self.base_description, self.group.name)
+        team_id = kwargs.get('team_id')
+        self.title = '%s - %s' %  (team_id, self.base_title)
+        self.description = '%s - %s' % (self.base_description, team_id)
         if not self.product_id:
             self.product_id = UserTokenGroupEventFeed.PROTO_PRODUCT_ID % site.domain
         return super(BaseGroupEventFeed, self).__call__(request, *args, **kwargs)
@@ -795,6 +799,18 @@ class UserTokenGroupEventFeed(BaseGroupEventFeed):
         return super(UserTokenGroupEventFeed, self).__call__(request, *args, **kwargs)
 
 
+class UserTokenTeamEventFeed(BaseGroupEventFeed):
+    """ A group-id-based event feed. Uses a permanent user token for authentication
+        (the token is only used for views displaying the user's event-feeds). """
+
+    title = _('Events')
+    description = _('Upcoming events')
+
+    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED, id_url_kwarg='team_id')
+    def __call__(self, request, *args, **kwargs):
+        return super(UserTokenTeamEventFeed, self).__call__(request, *args, **kwargs)
+
+
 class PublicGroupEventFeed(BaseGroupEventFeed):
     """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
     
@@ -804,15 +820,40 @@ class PublicGroupEventFeed(BaseGroupEventFeed):
         return super(PublicGroupEventFeed, self).__call__(request, *args, **kwargs)
 
 
+class PublicTeamEventFeed(BaseGroupEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only).
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamEventFeed, self).__call__(request, *args, **kwargs)
+
+
 class GroupEventFeed(BaseEventFeed):
     """ This view is in place as first starting point for the Feeds, deciding whether it should
-        show a token based or a public feed for this group. """
+        show a token based or a public feed for this group. 
+    
+        DEPRECATED, in favor of TeamEventFeed. Left in for backwards compatibility for old ical imports."""
     
     def __call__(self, request, *args, **kwargs):
         if 'user' in request.GET and 'token' in request.GET:
             return user_token_group_event_feed(request, *args, **kwargs)
         else:
             return public_group_event_feed(request, *args, **kwargs)
+
+
+class TeamEventFeed(BaseEventFeed):
+    """ This view is in place as first starting point for the Feeds, deciding whether it should
+        show a token based or a public feed for this group. Uses the group-id based views. """
+
+    def __call__(self, request, *args, **kwargs):
+        if 'user' in request.GET and 'token' in request.GET:
+            return user_token_team_event_feed(request, *args, **kwargs)
+        else:
+            return public_team_event_feed(request, *args, **kwargs)
 
 
 class GlobalFeed(BaseEventFeed):
@@ -859,6 +900,19 @@ class UserTokenSingleEventFeed(BaseSingleEventFeed):
         return super(UserTokenSingleEventFeed, self).__call__(request, *args, **kwargs)
 
 
+class TeamUserTokenSingleEventFeed(BaseSingleEventFeed):
+    """ A group-id-based event feed. Uses a permanent user token for authentication
+        (the token is only used for views displaying the user's event-feeds). """
+
+    title = _('Event')
+    description = _('Upcoming event')
+
+    @require_user_token_access(settings.COSINNUS_EVENT_TOKEN_EVENT_FEED, id_url_kwarg='team_id')
+    def __call__(self, request, *args, **kwargs):
+        self.slug = kwargs.get('slug')
+        return super(BaseSingleEventFeed, self).__call__(request, *args, **kwargs)
+
+
 class PublicGroupSingleEventFeed(BaseSingleEventFeed):
     """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only) """
     
@@ -868,9 +922,24 @@ class PublicGroupSingleEventFeed(BaseSingleEventFeed):
         return super(PublicGroupSingleEventFeed, self).__call__(request, *args, **kwargs)
 
 
+class PublicTeamSingleEventFeed(BaseSingleEventFeed):
+    """ A public iCal Feed that contains all publicly visible upcoming events (from the current portal only).
+        Refers to the id of a group directly. """
+
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.slug = kwargs.get('slug')
+        self.user = AnonymousUser()
+        return super(BaseSingleEventFeed, self).__call__(request, *args, **kwargs)
+
+
 class SingleEventFeed(BaseEventFeed):
     """ This view is in place as first starting point for the single event Feeds, deciding whether it should
-        show a token based or a public feed for this event. """
+        show a token based or a public feed for this event. 
+    
+        DEPRECATED, in favor of TeamSingleEventFeed. Left in for backwards compatibility for old ical imports."""
     
     def __call__(self, request, *args, **kwargs):
         if 'user' in request.GET and 'token' in request.GET:
@@ -879,13 +948,46 @@ class SingleEventFeed(BaseEventFeed):
             return public_group_single_event_feed(request, *args, **kwargs)
 
 
+class TeamSingleEventFeed(BaseEventFeed):
+    """ This view is in place as first starting point for the Feeds, deciding whether it should
+        show a token based or a public feed for this group. Uses the group-id based views. """
+
+    def __call__(self, request, *args, **kwargs):
+        if 'user' in request.GET and 'token' in request.GET:
+            return team_user_token_single_event_feed(request, *args, **kwargs)
+        else:
+            return public_team_single_event_feed(request, *args, **kwargs)
 
 
+class PublicTeamSingleConferenceEventFeed(BaseSingleEventFeed):
+    """ An iCal Feed that contains the conference event specified.
+        Refers to the id of a group directly. """
 
+    def __call__(self, request, *args, **kwargs):
+        team_id = kwargs.get('team_id')
+        team = get_object_or_404(get_cosinnus_group_model(), id=team_id, portal_id=CosinnusPortal.get_current().id)
+        self.group = ensure_group_type(team)
+        self.user = AnonymousUser()
+        return super(PublicTeamSingleConferenceEventFeed).__call__(request, *args, **kwargs)
 
 
 class SingleConferenceEventFeed(SingleEventFeed):
-    """ An iCal Feed that contains the conference event specified """
+    """ An iCal Feed that contains the conference event specified.
+    
+        DEPRECATED, in favor of TeamSingleConferenceEventFeed. Left in for backwards compatibility for old ical imports. """
+    model = ConferenceEvent
+
+    def item_location(self, item):
+        return item.room.title
+
+    def item_geolocation(self, item):
+        return None
+
+
+class TeamSingleConferenceEventFeed(TeamSingleEventFeed):
+    """ An iCal Feed that contains the conference event specified.
+        Refers to the id of a group directly. """
+
     model = ConferenceEvent
 
     def item_location(self, item):
@@ -1215,13 +1317,20 @@ entry_detail_view = EntryDetailView.as_view()
 doodle_vote_view = DoodleVoteView.as_view()
 doodle_complete_view = DoodleCompleteView.as_view()
 user_token_group_event_feed = UserTokenGroupEventFeed()
+user_token_team_event_feed = UserTokenTeamEventFeed()
 public_group_event_feed = PublicGroupEventFeed()
+public_team_event_feed = PublicTeamEventFeed()
 user_token_single_event_feed = UserTokenSingleEventFeed()
+team_user_token_single_event_feed = TeamUserTokenSingleEventFeed()
 public_group_single_event_feed = PublicGroupSingleEventFeed()
+public_team_single_event_feed = PublicTeamSingleEventFeed()
 event_ical_feed = GroupEventFeed()
+team_event_ical_feed = TeamEventFeed()
 event_ical_feed_global = GlobalFeed()
 event_ical_feed_single = SingleEventFeed()
+team_event_ical_feed_single = TeamSingleEventFeed()
 conference_event_ical_feed_single = SingleConferenceEventFeed()
+team_conference_event_ical_feed_single = TeamSingleConferenceEventFeed()
 comment_create = CommentCreateView.as_view()
 comment_delete = CommentDeleteView.as_view()
 comment_detail = CommentDetailView.as_view()
