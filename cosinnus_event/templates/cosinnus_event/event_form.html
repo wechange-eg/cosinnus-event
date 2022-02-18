@@ -45,6 +45,21 @@
 	    
 	    <!-- a box with semi transparent background -->
 		<div class="content-box">
+
+            {% get_forum_name as forum %}
+            {% if group.name == forum.name %}
+                <div class="alert alert-warning alert-dismissable">
+                    <i class="fa fa-exclamation-circle fa-3x"></i>
+                    <div class="v-offset-s">
+                        <p>
+                            {% blocktrans with forum_name=forum.name %}
+                            Note: After this event will be posted, each user of {{ forum_name }} may be able to see it.<br>
+                            If you do not want this, please, use another group or project of your choice.
+                            {% endblocktrans %}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
         
         {% block event_form_name_field %}
 	        {% trans "Title" as title_label %}
