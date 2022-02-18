@@ -780,8 +780,8 @@ class BaseGroupEventFeed(BaseEventFeed):
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
         team_id = kwargs.get('team_id')
-        self.title = '%s - %s' %  (team_id, self.base_title)
-        self.description = '%s - %s' % (self.base_description, team_id)
+        self.title = '%s- %s - %s' %  (team_id, self.group.name, self.base_title)
+        self.description = '%s- %s - %s' % (self.base_description, self.group.name, team_id)
         if not self.product_id:
             self.product_id = UserTokenGroupEventFeed.PROTO_PRODUCT_ID % site.domain
         return super(BaseGroupEventFeed, self).__call__(request, *args, **kwargs)
