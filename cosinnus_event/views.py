@@ -779,7 +779,6 @@ class BaseGroupEventFeed(BaseEventFeed):
     
     def __call__(self, request, *args, **kwargs):
         site = get_current_site(request)
-        team_id = kwargs.get('team_id')
         self.title = '%s- %s' %  (self.group.name, self.base_title)
         self.description = '%s- %s' % (self.base_description, self.group.name)
         if not self.product_id:
