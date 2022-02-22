@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-12-09 17:04+0100\n"
+"POT-Creation-Date: 2022-02-18 08:55+0100\n"
+"PO-Revision-Date: 2022-02-18 09:02+0100\n"
 "Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Restart BBB rooms"
 msgstr "BBB Räume neu starten"
@@ -728,6 +728,18 @@ msgstr "Posten"
 msgid "Add event"
 msgstr "Veranstaltung hinzufügen"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+"\n"
+"                            Bitte beachte: Das legt eine Veranstaltung für alle User im %(forum_name)s ein.<br>\n"
+"                            Falls du das nicht möchtest, nutze bitte ein Projekt oder eine Gruppe deiner Wahl.\n"
+"                            "
+
 msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
 
@@ -1054,12 +1066,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr "Veranstaltung in meinen Kalender einfügen"
-
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
-
 msgid "Delete Event"
 msgstr "Veranstaltung Löschen"
 
@@ -1119,6 +1125,12 @@ msgstr "Nimmst du teil?"
 
 msgid "No Choice"
 msgstr "Keine Auswahl"
+
+msgid "Add event to your calendar"
+msgstr "Veranstaltung in meinen Kalender einfügen"
+
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
 
 msgid "Start/join video conference for this event"
 msgstr "Videokonferenz starten/beitreten"

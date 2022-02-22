@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
+"POT-Creation-Date: 2022-02-18 08:55+0100\n"
 "PO-Revision-Date: 2020-05-10 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -756,6 +756,14 @@ msgstr "Post"
 msgid "Add event"
 msgstr "Tədbir əlavə et"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Yeni tədbir üçün başlıq daxil edin."
 
@@ -1090,14 +1098,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s %(team_name)s komandasında səs verdiyi tədbir anketinə şərh yazdı."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Bu iCal-linkini cari tədbirləri import etmək üçün təqvim proqramınıza kopyalayın:"
-
 msgid "Delete Event"
 msgstr "Tədbiri ləğv et"
 
@@ -1157,6 +1157,14 @@ msgstr "Gedirsiniz?"
 
 msgid "No Choice"
 msgstr "Seçim yoxdur"
+
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Bu iCal-linkini cari tədbirləri import etmək üçün təqvim proqramınıza kopyalayın:"
 
 #, fuzzy
 #| msgid "Start/join video chat for this event"

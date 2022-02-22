@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
+"POT-Creation-Date: 2022-02-18 08:55+0100\n"
 "PO-Revision-Date: 2019-05-08 00:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -787,6 +787,14 @@ msgstr "Апублікаваць"
 msgid "Add event"
 msgstr "Дадаць падзею"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Увядзіце назву новай падзеі."
 
@@ -1121,14 +1129,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s пракаментаваў(-ла) апытанне да падзеі, у якім Вы прагаласавалі, у %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Скапіруйце гэту iCal-спасылку ў сваё прыкладанне з календаром, каб імпартаваць бягучыя падзеі:"
-
 msgid "Delete Event"
 msgstr "Выдаліць падзею"
 
@@ -1194,6 +1194,14 @@ msgstr "Вы наведаеце падзею?"
 
 msgid "No Choice"
 msgstr "Выбар не зроблены"
+
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Скапіруйце гэту iCal-спасылку ў сваё прыкладанне з календаром, каб імпартаваць бягучыя падзеі:"
 
 #, fuzzy
 #| msgid "A user created a new event"

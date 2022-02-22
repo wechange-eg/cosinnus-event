@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
+"POT-Creation-Date: 2022-02-18 08:55+0100\n"
 "PO-Revision-Date: 2021-04-01 12:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -751,6 +751,14 @@ msgstr "Publikovat příspěvek"
 msgid "Add event"
 msgstr "Přidat událost"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Zadejte název nové události."
 
@@ -1077,14 +1085,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s okomentoval/a hlasování o události, ve kterém jste hlasovali v %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
-
 msgid "Delete Event"
 msgstr "Smazat událost"
 
@@ -1150,6 +1150,14 @@ msgstr "Zúčastníte se?"
 
 msgid "No Choice"
 msgstr "Žádná volba"
+
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+#| msgid "Copy this iCal-link into your calendar application to import current events:"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
 
 #, fuzzy
 #| msgid "Start/join video chat for this event"
