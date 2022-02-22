@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 08:55+0100\n"
-"PO-Revision-Date: 2022-02-18 09:10+0100\n"
+"POT-Creation-Date: 2022-02-18 16:52+0100\n"
+"PO-Revision-Date: 2022-02-18 17:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -438,8 +438,11 @@ msgstr "Тип события конференции"
 msgid "Is a Break"
 msgstr "Пауза"
 
-msgid "Event is confidential"
-msgstr "Событие конфиденциально"
+msgid "Event is visible on the conference microsite"
+msgstr "Событие доступно для показа на майкросайте"
+
+msgid "Event's description is visible on the conference microsite"
+msgstr "Описание события доступно для показа на майкросайте"
 
 msgid "Maximum Event Participants"
 msgstr "Максимальное число участников"
@@ -549,11 +552,20 @@ msgstr "Описание"
 msgid "Enter a description for the event"
 msgstr "Введите описание события"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr "Описание события приватно (Недоступно для показа на майкросайте)"
+msgid "Show this event on microsite"
+msgstr "Показать это мероприятие на майкросайте"
 
-msgid "Check this to prevent public viewing of the event's description"
-msgstr "Отметьте, чтобы предотвратить публичный показ описания события"
+msgid "Uncheck this to hide the event on microsite"
+msgstr "Деактивируйте, чтобы не показывать это событие на майкросайте"
+
+msgid "Show the event's description on microsite"
+msgstr "Показать описание мероприятия на майкросайте"
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr "Деактивируйте, чтобы предотвратить показ описания события"
+
+msgid "Uncheck this to disable public viewing of the event's description"
+msgstr "Деактивируйте, чтобы предотвратить публичный показ описания события"
 
 msgid "Example:"
 msgstr "Пример:"
@@ -570,10 +582,8 @@ msgstr "Сколько участников могут присоединить�
 msgid "Note that changing this setting will have no effect while an event is running."
 msgstr "Обратите внимание, что изменение этой настройки не будет иметь эффекта во время непосредственного проведения трансляции."
 
-#, fuzzy
-#| msgid "No video conference"
 msgid "BBB video conference options"
-msgstr "Событие не предполагает видеоконференции"
+msgstr "Параметры BBB-видеоконференции"
 
 msgid "Upload a preview image for the Conference Event"
 msgstr "Загрузить картинку предпросмотра для события конференции"
@@ -752,13 +762,9 @@ msgstr ""
 msgid "Enter a title for the new event."
 msgstr "Введите название нового события."
 
-#, fuzzy
-#| msgid "No video conference"
 msgid "Include a video conference"
-msgstr "Событие не предполагает видеоконференции"
+msgstr "Включает в себя видео-конференцию"
 
-#, fuzzy
-#| msgid "Choose the type of the video conference you would like to have"
 msgid "Choose the type of the video conference you would like for the event"
 msgstr "Выберите тип видеоконференции"
 
@@ -1147,15 +1153,12 @@ msgstr "Нет выбора"
 msgid "Add event to your calendar"
 msgstr "Добавить мероприятие в Ваш календарь"
 
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
 msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Скопируйте эту ссылку iCal в Ваш календарь, чтобы импортировать текущие события:"
+msgstr "Скопируйте эту ссылку iCal в Ваш календарь, чтобы импортировать это событие:"
 
-#, fuzzy
 #| msgid "Start/join BBB video conference for this event"
 msgid "Start/join video conference for this event"
-msgstr "Начать/присоединиться к BBB- видеоконференции этого события"
+msgstr "Начать/присоединиться к BBB-видеоконференции этого события"
 
 msgid "Popout"
 msgstr ""
@@ -1163,10 +1166,8 @@ msgstr ""
 msgid "Fullscreen"
 msgstr "Полный экран"
 
-#, fuzzy
-#| msgid "Video conference type"
 msgid "Video conference"
-msgstr "Тип видеоконференции"
+msgstr "Видеоконференции"
 
 msgid "Leave Fullscreen"
 msgstr "Свернуть полный экран"
@@ -1174,10 +1175,8 @@ msgstr "Свернуть полный экран"
 msgid "Back"
 msgstr "Назад"
 
-#, fuzzy
-#| msgid "No video conference"
 msgid "Leave video conference"
-msgstr "Событие не предполагает видеоконференции"
+msgstr "Покинуть видео-конференцию"
 
 msgid "The video conference has been opened in a new tab. To rejoin the video conference, please reload the page."
 msgstr "Эта видео-конференция была открыта в новой вкладке. Перезагрузите страницу, чтобы снова присоединиться к конференции."
@@ -1276,16 +1275,17 @@ msgstr "Невозможно внести событие: Отсутствует
 msgid "The event was created successfully at the specified date."
 msgstr "Событие создано и привязано к указанной дате."
 
-#, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
-msgstr "Предстоящие события"
+msgstr "Предстоящее событие"
 
 msgid "Your comment was added successfully."
 msgstr "Ваш комментарий добавлен."
 
 msgid "Your comment was deleted successfully."
 msgstr "Ваш комментарий удален."
+
+#~ msgid "Event is confidential"
+#~ msgstr "Событие конфиденциально"
 
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "Начать/присоединиться к BBB- видеоконференции этого события"
