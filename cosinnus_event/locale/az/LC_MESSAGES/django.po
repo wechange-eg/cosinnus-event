@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-05-10 13:42+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -333,7 +322,6 @@ msgid "Event"
 msgstr "Tədbir"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (arxivləşdirilib)"
 
@@ -358,12 +346,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (arxivləşdirilib)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (baxılır)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Xeyr"
 
@@ -433,14 +419,18 @@ msgid "Room"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
 msgstr "Tədbir yaratmaq"
 
 msgid "Is a Break"
 msgstr ""
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Event is visible on the conference microsite"
+msgstr "Yeni tədbir üçün başlıq daxil edin."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -453,7 +443,6 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Hamısını göstər"
 
@@ -467,7 +456,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Küçə"
 
@@ -475,17 +463,14 @@ msgid "The key for this specific stream session you created at your streaming pr
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
 msgstr "Tədbir yaratmaq"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
 msgstr "Tədbir yaratmaq"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s %(type)s"
 msgstr "%(event)s (baxılır)"
 
@@ -542,12 +527,10 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "Girdiyiniz xanalardan birində səhv oldu. Xahiş edirəm yaddaşda saxlamazdan əvvəl redaktə edin!"
 
 #, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
 msgstr "Yeni tədbir üçün başlıq daxil edin."
 
 #, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
 msgstr "Tədbir tarixi"
 
@@ -563,17 +546,25 @@ msgstr "Təsvir"
 msgid "Enter a description for the event"
 msgstr "Tədbir üçün təsvir daxil edin"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
 msgstr "Tədbir üçün xarici link"
 
@@ -587,7 +578,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "BBB video conference options"
 msgstr "Tədbir yaratmaq"
 
@@ -610,7 +600,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Siz bu tədbirdə iştirak edirsiniz"
 
@@ -618,7 +607,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream this event"
 msgstr "Tədbir üçün xarici link"
 
@@ -648,9 +636,11 @@ msgid "Save"
 msgstr "Yadda saxla"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "tədbir yarat"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "tədbir yarat"
 
 msgid "Add unscheduled event"
@@ -756,11 +746,18 @@ msgstr "Post"
 msgid "Add event"
 msgstr "Tədbir əlavə et"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Yeni tədbir üçün başlıq daxil edin."
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Include a video conference"
 msgstr "Tədbir yaratmaq"
 
@@ -792,7 +789,6 @@ msgid "Export event feed"
 msgstr "Tədbir lentini eksport edin"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
 msgstr "Tədbir yaratmaq"
 
@@ -800,12 +796,10 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Room Management"
 msgstr "Tədbir yaratmaq"
 
 #, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
 msgstr "Açıq tədbir anketləri yoxdur."
 
@@ -1090,14 +1084,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s %(team_name)s komandasında səs verdiyi tədbir anketinə şərh yazdı."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Bu iCal-linkini cari tədbirləri import etmək üçün təqvim proqramınıza kopyalayın:"
-
 msgid "Delete Event"
 msgstr "Tədbiri ləğv et"
 
@@ -1158,8 +1144,14 @@ msgstr "Gedirsiniz?"
 msgid "No Choice"
 msgstr "Seçim yoxdur"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Bu iCal-linkini cari tədbirləri import etmək üçün təqvim proqramınıza kopyalayın:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
 
@@ -1170,7 +1162,6 @@ msgid "Fullscreen"
 msgstr "Tam ekran"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Video conference"
 msgstr "Tədbir yaratmaq"
 
@@ -1181,7 +1172,6 @@ msgid "Back"
 msgstr "Geri"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "Tədbir yaratmaq"
 
@@ -1283,7 +1273,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Tədbir göstərilən tarixdə uğurla yaradıldı."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Qarşıdan gələn tədbirlər"
 
@@ -1293,39 +1282,27 @@ msgstr "Şərhiniz uğurla əlavə edildi."
 msgid "Your comment was deleted successfully."
 msgstr "Şərhiniz uğurla silindi."
 
-#, fuzzy
-#~| msgid "Start/join video chat for this event"
-#~ msgid "Start/join BBB video conference for this event"
-#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
 
-#~ msgid "Start/join video chat for this event"
-#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
-
-#~ msgid "Video Chat"
-#~ msgstr "Video söhbət"
-
-#~ msgid "Stop Video Chat"
-#~ msgstr "Video Söhbəti Dayandırın"
-
-#, fuzzy
-#~| msgid "Example: http://mywebsite.com"
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Nümunə: http://mywebsite.com"
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s səs verdi"
 
 #~ msgid "Date"
 #~ msgstr "Tarix"
 
-#~ msgid "From"
-#~ msgstr "Dan/dən"
-
-#~ msgid "Start date."
-#~ msgstr "Başlanğıc tarixi."
-
-#~ msgid "Until"
-#~ msgstr "Qədər"
-
 #~ msgid "End date."
 #~ msgstr "Bitmə vaxtı."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "%(sender_name)s tərəfindən tədbir səsəqoyması yeniləndi"
+
+#, fuzzy
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Nümunə: http://mywebsite.com"
+
+#~ msgid "From"
+#~ msgstr "Dan/dən"
 
 #~ msgid "Kalender"
 #~ msgstr "Təqvim"
@@ -1333,20 +1310,30 @@ msgstr "Şərhiniz uğurla silindi."
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "%(sender_name)s tərəfindən Yeni tədbir"
 
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "%(sender_name)s tərəfindən yeni tədbir anketi"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
 #~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "%(sender_name)s tərəfindən yeni tədbir anketi"
 
 #~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "%(team_name)s komandasında (izlədiyiniz) %(sender_name)s tərəfindən yeni tədbir sorğusu"
 
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "%(sender_name)s tərəfindən tədbir səsəqoyması yeniləndi"
+#~ msgid "Start date."
+#~ msgstr "Başlanğıc tarixi."
 
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s səs verdi"
+#, fuzzy
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Bu tədbir üçün video söhbət başlat/qoşul"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Video Söhbəti Dayandırın"
+
+#~ msgid "Until"
+#~ msgstr "Qədər"
+
+#~ msgid "Video Chat"
+#~ msgstr "Video söhbət"

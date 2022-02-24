@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-04-22 12:37+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -32,12 +21,10 @@ msgid "A user created a new event"
 msgstr "Un usuario ha creado un nuevo evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event poll"
 msgid "%(sender_name)s created the event %(object_name)s"
 msgstr "%(sender_name)s ha creado un nuevo sondeo de evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event"
 msgid "%(sender_name)s created %(count)d events"
 msgstr "%(sender_name)s ha creado un nuevo evento"
 
@@ -53,12 +40,10 @@ msgid "A user created a new event poll"
 msgstr "Un usuario ha creado un nuevo sondeo de evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgid "%(sender_name)s created the event poll %(object_name)s"
 msgstr "%(sender_name)s ha votado en el sondeo de evento ´\"%(object_name)s\" en %(team_name)s."
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s created a new event poll"
 msgid "%(sender_name)s created %(count)d event polls"
 msgstr "%(sender_name)s ha creado un nuevo sondeo de evento"
 
@@ -74,12 +59,10 @@ msgid "A user commented on one of your events"
 msgstr "Un usuario ha comentado un evento tuyo"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgid "%(sender_name)s commented on your event %(object_name)s"
 msgstr "%(sender_name)s ha comentado uno de tus evento en %(team_name)s."
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgid "%(sender_name)s and %(count_minus_one)d other commented on your event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on your event %(object_name)s"
 msgstr[0] "%(sender_name)s ha comentado uno de tus evento en %(team_name)s."
@@ -97,19 +80,16 @@ msgid "A user commented on a event you were tagged in"
 msgstr "Un usuario ha comentado un evento en el que has sido etiquetado"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgid "%(sender_name)s commented on the event %(object_name)s"
 msgstr "%(sender_name)s ha comentado uno de tus evento en %(team_name)s."
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s commented on one of your events in %(team_name)s."
 msgid "%(sender_name)s and %(count_minus_one)d other commented on the event %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others commented on the event %(object_name)s"
 msgstr[0] "%(sender_name)s ha comentado uno de tus evento en %(team_name)s."
 msgstr[1] "%(sender_name)s ha comentado uno de tus evento en %(team_name)s."
 
 #, fuzzy
-#| msgid "You created an event"
 msgid "You were tagged in this event"
 msgstr "Has creado un evento"
 
@@ -125,7 +105,6 @@ msgid "A user commented on an event you voted in"
 msgstr "Un usuario ha comentao un evento en el que has votado"
 
 #, fuzzy
-#| msgid "You created an event"
 msgid "You voted on this event"
 msgstr "Has creado un evento"
 
@@ -141,7 +120,6 @@ msgid "A user commented on an event you are attending"
 msgstr "Un usuario ha comentado un evento al que atiendes"
 
 #, fuzzy
-#| msgid "You created an event"
 msgid "You are attending this event"
 msgstr "Has creado un evento"
 
@@ -193,7 +171,6 @@ msgid "A user updated an event"
 msgstr "Un usuario ha actualizado un evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgid "%(sender_name)s updated the event %(object_name)s"
 msgstr "%(sender_name)s ha votado en el sondeo de evento ´\"%(object_name)s\" en %(team_name)s."
 
@@ -206,12 +183,10 @@ msgid "The event \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "El evento \"%(object_name)s\" ha sido actualizado en %(team_name)s (grupo al que sigues)."
 
 #, fuzzy
-#| msgid "A user commented on an event you are attending"
 msgid "A user updated an event you are attending"
 msgstr "Un usuario ha comentado un evento al que atiendes"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s updated an event you are following"
 msgid "%(sender_name)s updated an event you are attending"
 msgstr "%(sender_name)s ha actualizado un evento al que sigues"
 
@@ -219,12 +194,10 @@ msgid "A user updated an event poll"
 msgstr "Un usuario ha actualizado un sondeo de evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgid "%(sender_name)s changed the event poll %(object_name)s"
 msgstr "%(sender_name)s ha votado en el sondeo de evento ´\"%(object_name)s\" en %(team_name)s."
 
 #, fuzzy
-#| msgid "Nobody has voted for this event poll yet."
 msgid "You are following this event poll"
 msgstr "Nadie ha votado aún para este sondeo de evento."
 
@@ -237,17 +210,14 @@ msgid "The event poll \"%(object_name)s\" was updated in %(team_name)s."
 msgstr "El sondeo de evento \"%(object_name)s\" ha sido actualizado en %(team_name)s."
 
 #, fuzzy
-#| msgid "A user updated an event poll"
 msgid "A user voted in an event poll"
 msgstr "Un usuario ha actualizado un sondeo de evento"
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgid "%(sender_name)s voted in the event poll %(object_name)s"
 msgstr "%(sender_name)s ha votado en el sondeo de evento ´\"%(object_name)s\" en %(team_name)s."
 
 #, fuzzy, python-format
-#| msgid "%(sender_name)s voted in the event poll \"%(object_name)s\" in %(team_name)s."
 msgid "%(sender_name)s and %(count_minus_one)d other voted in the event poll %(object_name)s"
 msgid_plural "%(sender_name)s and %(count_minus_one)d others voted in the event poll %(object_name)s"
 msgstr[0] "%(sender_name)s ha votado en el sondeo de evento ´\"%(object_name)s\" en %(team_name)s."
@@ -358,7 +328,6 @@ msgid "Event"
 msgstr "Evento"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (archived)"
 
@@ -383,12 +352,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (archived)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (pending)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "No"
 
@@ -458,14 +425,18 @@ msgid "Room"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
 msgstr "Crear un evento"
 
 msgid "Is a Break"
 msgstr ""
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Event is visible on the conference microsite"
+msgstr "Inserta un título para el nuevo evento."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -478,7 +449,6 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Muestra todo"
 
@@ -492,7 +462,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Calle"
 
@@ -500,17 +469,14 @@ msgid "The key for this specific stream session you created at your streaming pr
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
 msgstr "Crear un evento"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
 msgstr "Crear un evento"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s %(type)s"
 msgstr "%(event)s (pending)"
 
@@ -567,12 +533,10 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "Hay un error en una de las casillas que has insertado. ¡Por favor corrígelo antes de guardar!"
 
 #, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
 msgstr "Inserta un título para el nuevo evento."
 
 #, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
 msgstr "Fecha del evento"
 
@@ -588,17 +552,25 @@ msgstr "Descripción"
 msgid "Enter a description for the event"
 msgstr "Inserta una descripción para el evento"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
 msgstr "Enlace externo  para el evento"
 
@@ -612,7 +584,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "BBB video conference options"
 msgstr "Crear un evento"
 
@@ -635,7 +606,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You created an event"
 msgid "Show room chat in the event"
 msgstr "Has creado un evento"
 
@@ -643,7 +613,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream this event"
 msgstr "Enlace externo  para el evento"
 
@@ -673,9 +642,11 @@ msgid "Save"
 msgstr "Guardar"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "ha creado un evento"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "ha creado un evento"
 
 msgid "Add unscheduled event"
@@ -781,11 +752,18 @@ msgstr "Crear un post"
 msgid "Add event"
 msgstr "Añadir evento"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Inserta un título para el nuevo evento."
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Include a video conference"
 msgstr "Crear un evento"
 
@@ -817,7 +795,6 @@ msgid "Export event feed"
 msgstr "Exporta feed de eventos"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
 msgstr "Crear un evento"
 
@@ -825,12 +802,10 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Room Management"
 msgstr "Crear un evento"
 
 #, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
 msgstr "No hay sondeos de evento abiertos."
 
@@ -1107,14 +1082,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s ha comentado un sondeo de evento en %(team_name)sen el que has votado."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Copia este enlace-iCal a tu aplicación de calendariopara importar eventos actuales:"
-
 msgid "Delete Event"
 msgstr "Eliminar Evento"
 
@@ -1175,6 +1142,13 @@ msgstr "¿Tú atiendes?"
 msgid "No Choice"
 msgstr "Ninguna opción"
 
+msgid "Add event to your calendar"
+msgstr ""
+
+#, fuzzy
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Copia este enlace-iCal a tu aplicación de calendariopara importar eventos actuales:"
+
 msgid "Start/join video conference for this event"
 msgstr ""
 
@@ -1185,7 +1159,6 @@ msgid "Fullscreen"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Video conference"
 msgstr "Crear un evento"
 
@@ -1196,7 +1169,6 @@ msgid "Back"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "Crear un evento"
 
@@ -1298,7 +1270,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "El evento ha sido creado exitosamente en la fecha especificada."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Eventos próximos"
 
@@ -1308,25 +1279,27 @@ msgstr "Tu comentario ha sido añadido exitosamente."
 msgid "Your comment was deleted successfully."
 msgstr "Tu comentario ha sido eliminado exitosamente."
 
-#, fuzzy
-#~| msgid "Example: http://mywebsite.com"
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Ejemplo: : http://mywebsite.com"
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s ha votado en"
 
 #~ msgid "Date"
 #~ msgstr "Fecha"
 
-#~ msgid "From"
-#~ msgstr "Desde"
-
-#~ msgid "Start date."
-#~ msgstr "Fecha de inicio."
-
-#~ msgid "Until"
-#~ msgstr "Hasta"
-
 #~ msgid "End date."
 #~ msgstr "Fecha final."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Sondeo de evento actualizado por %(sender_name)s"
+
+#, fuzzy
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Ejemplo: : http://mywebsite.com"
+
+#~ msgid "From"
+#~ msgstr "Desde"
 
 #~ msgid "Kalender"
 #~ msgstr "Calendario"
@@ -1334,20 +1307,17 @@ msgstr "Tu comentario ha sido eliminado exitosamente."
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Nuevo evento de %(sender_name)s"
 
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Nuevo sondeo de evento de %(sender_name)s"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
 #~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "Nuevo evento de %(sender_name)s en %(team_name)s (grupo al que sigues)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nuevo sondeo de evento de %(sender_name)s"
 
 #~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "Un nuevo sondeo de evento de %(sender_name)s en %(team_name)s (grupo al que sigues)"
 
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "Sondeo de evento actualizado por %(sender_name)s"
+#~ msgid "Start date."
+#~ msgstr "Fecha de inicio."
 
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s ha votado en"
+#~ msgid "Until"
+#~ msgstr "Hasta"

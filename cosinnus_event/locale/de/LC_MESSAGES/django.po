@@ -1,20 +1,17 @@
-# Copyright (C) 2013
-#
-# Markus Holtermann <info@markusholtermann.eu>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-12-09 17:04+0100\n"
-"Last-Translator: Sebastian Henschel <sh@sinnwerkstatt.com>\n"
-"Language-Team: German <>\n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 msgid "Restart BBB rooms"
 msgstr "BBB Räume neu starten"
@@ -433,8 +430,11 @@ msgstr "Tagungsveranstaltungstyp"
 msgid "Is a Break"
 msgstr "Ist Pause"
 
-msgid "Event is confidential"
-msgstr "Veranstaltung ist vertraulich"
+msgid "Event is visible on the conference microsite"
+msgstr "Die Veranstaltung wird auf der Tagungs-Microsite angezeigt"
+
+msgid "Event's description is visible on the conference microsite"
+msgstr "Veranstaltungsbeschreibung wird auf der Tagungs-Microsite angezeigt"
 
 msgid "Maximum Event Participants"
 msgstr "Max. Teilnehmendenzahl"
@@ -543,11 +543,20 @@ msgstr "Beschreibung"
 msgid "Enter a description for the event"
 msgstr "Gib eine Beschreibung für die Veranstaltung ein"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
-msgstr "Veranstaltungsbeschreibung ist vertraulich (Wird auf der Microsite nicht angezeigt)"
+msgid "Show this event on microsite"
+msgstr "Die Veranstaltung auf der Microsite anzeigen"
 
-msgid "Check this to prevent public viewing of the event's description"
-msgstr "Wähle dies aus, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
+msgid "Uncheck this to hide the event on microsite"
+msgstr "Deaktiviere dies, um die Veranstaltung auf der Microsite nicht anzuzeigen"
+
+msgid "Show the event's description on microsite"
+msgstr "Die Veranstaltungsbeschreibung auf der Microsite anzeigen"
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr "Deaktiviere dies, um die portalweite Anzeige der Veranstaltungsbeschreibung zu verhindern"
+
+msgid "Uncheck this to disable public viewing of the event's description"
+msgstr "Deaktiviere dies, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
 
 msgid "Example:"
 msgstr "Beispiel:"
@@ -624,6 +633,9 @@ msgstr "Speichern"
 
 msgid "Create and create another"
 msgstr "Erstellen und weitere erstellen"
+
+msgid "Save and create another"
+msgstr "Sichern und weitere erstellen"
 
 msgid "Add unscheduled event"
 msgstr "Terminabstimmung hinzufügen"
@@ -727,6 +739,18 @@ msgstr "Posten"
 
 msgid "Add event"
 msgstr "Veranstaltung hinzufügen"
+
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+"\n"
+"                            Bitte beachte: Das legt eine Veranstaltung für alle User im %(forum_name)s ein.<br>\n"
+"                            Falls du das nicht möchtest, nutze bitte ein Projekt oder eine Gruppe deiner Wahl.\n"
+"                            "
 
 msgid "Enter a title for the new event."
 msgstr "Gib einen Titel für die Veranstaltung an."
@@ -1054,12 +1078,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s hat eine Terminabstimmung kommentiert zu dem du abgestimmt hast in %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr "Veranstaltung in meinen Kalender einfügen"
-
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
-
 msgid "Delete Event"
 msgstr "Veranstaltung Löschen"
 
@@ -1119,6 +1137,12 @@ msgstr "Nimmst du teil?"
 
 msgid "No Choice"
 msgstr "Keine Auswahl"
+
+msgid "Add event to your calendar"
+msgstr "Veranstaltung in meinen Kalender einfügen"
+
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
 
 msgid "Start/join video conference for this event"
 msgstr "Videokonferenz starten/beitreten"
@@ -1247,153 +1271,162 @@ msgstr "Dein Kommentar wurde erfolgreich hinzugefügt."
 msgid "Your comment was deleted successfully."
 msgstr "Dein Kommentar wurde erfolgreich gelöscht."
 
+#~ msgid "Check this to prevent public viewing of the event's description"
+#~ msgstr "Wähle dies aus, um die öffentliche Anzeige der Veranstaltungsbeschreibung zu verhindern"
+
+#~ msgid "Event is confidential"
+#~ msgstr "Veranstaltung ist vertraulich"
+
+#~ msgid "Event's description is confidencial (Not visible on microsite)"
+#~ msgstr "Veranstaltungsbeschreibung ist vertraulich (Wird auf der Microsite nicht angezeigt)"
+
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s hat abgestimmt"
+
+#~ msgid "%s - Events"
+#~ msgstr "%s - Veranstaltungen"
+
+#~ msgid "Actions"
+#~ msgstr "Aktionen"
+
+#~ msgid "Add"
+#~ msgstr "Hinzufügen"
+
+#~ msgid "Add suggestion"
+#~ msgstr "Terminabstimmung hinzufügen"
+
+#~ msgid "Are you sure to remove this event with all its suggestions and votes?"
+#~ msgstr "Sind Sie sicher, dass Sie diese Veranstaltung mit den dazugehörigen Vorschlägen und Abstimmungen löschen möchten?"
+
+#~ msgid "Automatically selected the only given date suggestion as event date."
+#~ msgstr "Es wurde automatisch die einzig eingetragene Terminabstimmung als Veranstaltungsdatum gewählt."
+
+#~ msgid "Created by"
+#~ msgstr "Erstellt durch"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "End date."
+#~ msgstr "Enddatum"
+
+#~ msgid "Event does not exist or you are not allowed to modify it."
+#~ msgstr "Entweder existiert diese Veranstaltung nicht oder Ihnen fehlen die Rechte um die Veranstaltung zu bearbeiten."
+
+#~ msgid "Event löschen"
+#~ msgstr "Veranstaltung löschen"
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Terminumfrage geändert von %(sender_name)s"
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Beispiel: https://www.youtube.com/watch?v=12345"
+
+#~ msgctxt "the verb"
+#~ msgid "Export"
+#~ msgstr "Exportieren"
+
+#~ msgid "From"
+#~ msgstr "Von"
+
+#~ msgid "Future events"
+#~ msgstr "Aktuelle Veranstaltungen"
+
+#~ msgid "Kalender"
+#~ msgstr "Calendar"
+
+#~ msgid "Link label"
+#~ msgstr "Widget-Button-Titel"
+
+#~ msgid "Location (optional)."
+#~ msgstr "Ort (optional)."
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Max. Anzahl an Plätzen am Café-Tisch"
+
+#~ msgid "More"
+#~ msgstr "Mehr"
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Neue Veranstaltung von %(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Neue Veranstaltung von %(sender_name)s in %(team_name)s (dem du folgst)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Neue Terminumfrage von %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Neue Terminumfrage von %(sender_name)s in %(team_name)s (dem du folgst)"
+
+#~ msgid "No tags available."
+#~ msgstr "Keine Schlagwörter vorhanden."
+
+#~ msgctxt "sinn"
+#~ msgid "Save"
+#~ msgstr "Speichern"
+
+#~ msgid "Schedule an event"
+#~ msgstr "Termin finden"
+
+#~ msgid "Show in my projects..."
+#~ msgstr "In Projekten anzeigen..."
+
+#~ msgid "Shown in my projects..."
+#~ msgstr "In Projekten angezeigt..."
+
+#~ msgid "Start date."
+#~ msgstr "Startdatum"
+
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "BBB-Videochat starten/beitreten"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "Fairmeeting-Videochat starten/beitreten"
 
-#~ msgid "Video Chat"
-#~ msgstr "Videochat"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "Videochat beenden"
 
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Beispiel: https://www.youtube.com/watch?v=12345"
+#~ msgid "Tags"
+#~ msgstr "Schlagwörter"
 
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Max. Anzahl an Plätzen am Café-Tisch"
+#~ msgid "Template was called but no events are passed to be shown."
+#~ msgstr "Das Template wurde gerufen, aber keine Veranstaltungen wurden übergeben."
 
-#~ msgid "Date"
-#~ msgstr "Datum"
+#~ msgid "There are no events to be scheduled."
+#~ msgstr "Es gibt keine aktuellen Terminabstimmungen."
 
-#~ msgid "From"
-#~ msgstr "Von"
-
-#~ msgid "Start date."
-#~ msgstr "Startdatum"
+#~ msgid "There are no upcoming events posts yet"
+#~ msgstr "Es gibt keine anstehenden Veranstaltungen."
 
 #~ msgid "Until"
 #~ msgstr "Bis"
 
-#~ msgid "End date."
-#~ msgstr "Enddatum"
-
-#~ msgid "Kalender"
-#~ msgstr "Calendar"
-
-#~ msgid "New event by %(sender_name)s"
-#~ msgstr "Neue Veranstaltung von %(sender_name)s"
-
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Neue Terminumfrage von %(sender_name)s"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
-#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Neue Veranstaltung von %(sender_name)s in %(team_name)s (dem du folgst)"
-
-#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Neue Terminumfrage von %(sender_name)s in %(team_name)s (dem du folgst)"
-
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "Terminumfrage geändert von %(sender_name)s"
-
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s hat abgestimmt"
-
-#~ msgid "Schedule an event"
-#~ msgstr "Termin finden"
-
-#~ msgid "More"
-#~ msgstr "Mehr"
-
-#~ msgid "Shown in my projects..."
-#~ msgstr "In Projekten angezeigt..."
-
-#~ msgid "Show in my projects..."
-#~ msgstr "In Projekten anzeigen..."
-
 #~ msgid "Upcoming events in"
 #~ msgstr "Aktuelle Veranstaltungen in"
 
-#~ msgid "Location (optional)."
-#~ msgstr "Ort (optional)."
+#~ msgid "Upcoming events in %s."
+#~ msgstr "Aktuelle Veranstaltungen in %s"
+
+#~ msgid "Video Chat"
+#~ msgstr "Videochat"
+
+#~ msgctxt "the verb"
+#~ msgid "Vote"
+#~ msgstr "Abstimmen"
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"
 #~ msgstr "Abstimmen"
 
-#~ msgid "%s - Events"
-#~ msgstr "%s - Veranstaltungen"
-
-#~ msgid "Upcoming events in %s."
-#~ msgstr "Aktuelle Veranstaltungen in %s"
-
-#~ msgid "There are no events to be scheduled."
-#~ msgstr "Es gibt keine aktuellen Terminabstimmungen."
-
-#~ msgid "Event löschen"
-#~ msgstr "Veranstaltung löschen"
-
-#~ msgid "There are no upcoming events posts yet"
-#~ msgstr "Es gibt keine anstehenden Veranstaltungen."
-
-#~ msgid "Are you sure to remove this event with all its suggestions and votes?"
-#~ msgstr "Sind Sie sicher, dass Sie diese Veranstaltung mit den dazugehörigen Vorschlägen und Abstimmungen löschen möchten?"
-
-#~ msgid "Created by"
-#~ msgstr "Erstellt durch"
-
-#~ msgid "Actions"
-#~ msgstr "Aktionen"
-
-#~ msgctxt "the verb"
-#~ msgid "Vote"
-#~ msgstr "Abstimmen"
-
-#~ msgid "Add"
-#~ msgstr "Hinzufügen"
-
-#~ msgctxt "sinn"
-#~ msgid "Save"
-#~ msgstr "Speichern"
-
-#~ msgid "Add suggestion"
-#~ msgstr "Terminabstimmung hinzufügen"
-
-#~ msgid "No tags available."
-#~ msgstr "Keine Schlagwörter vorhanden."
-
-#~ msgctxt "the verb"
-#~ msgid "Export"
-#~ msgstr "Exportieren"
-
-#~ msgid "Future events"
-#~ msgstr "Aktuelle Veranstaltungen"
-
-#~ msgid "Tags"
-#~ msgstr "Schlagwörter"
+#~ msgid "Widget Icon (FA)"
+#~ msgstr "Widget-Icon (fa)"
 
 #~ msgid "Widget title"
 #~ msgstr "Widget-Titel"
 
-#~ msgid "Widget Icon (FA)"
-#~ msgstr "Widget-Icon (fa)"
-
-#~ msgid "Link label"
-#~ msgstr "Widget-Button-Titel"
-
-#~ msgid "Automatically selected the only given date suggestion as event date."
-#~ msgstr "Es wurde automatisch die einzig eingetragene Terminabstimmung als Veranstaltungsdatum gewählt."
-
-#~ msgid "Event does not exist or you are not allowed to modify it."
-#~ msgstr "Entweder existiert diese Veranstaltung nicht oder Ihnen fehlen die Rechte um die Veranstaltung zu bearbeiten."
-
 #~ msgid "attached__cosinnus_event__Event"
 #~ msgstr "Angehängte Veranstaltungen"
-
-#~ msgid "Template was called but no events are passed to be shown."
-#~ msgstr "Das Template wurde gerufen, aber keine Veranstaltungen wurden übergeben."

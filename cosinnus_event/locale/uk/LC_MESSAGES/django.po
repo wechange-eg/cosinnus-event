@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-10-13 16:23+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.1\n"
 
 msgid "Restart BBB rooms"
 msgstr "Перезапустити кімнати BBB"
@@ -440,8 +429,15 @@ msgstr "Тип конференційного заходу"
 msgid "Is a Break"
 msgstr "Триває перерва"
 
-msgid "Event is confidential"
-msgstr "Подія є конфіденційною"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "Введіть назву події конференції."
+
+#, fuzzy
+#| msgid "Event\\'s description is confidencial (Not visible on microsite)"
+msgid "Event's description is visible on the conference microsite"
+msgstr "Опис події є конфіденційним (не видно на мікросайті)"
 
 msgid "Maximum Event Participants"
 msgstr "Максимальна кількість учасників події"
@@ -550,14 +546,25 @@ msgstr "Опис"
 msgid "Enter a description for the event"
 msgstr "Введіть опис заходу"
 
+msgid "Show this event on microsite"
+msgstr ""
+
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
 #, fuzzy
 #| msgid "Event\\'s description is confidencial (Not visible on microsite)"
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show the event's description on microsite"
 msgstr "Опис події є конфіденційним (не видно на мікросайті)"
 
 #, fuzzy
 #| msgid "Check this to prevent public viewing of the event\\'s description"
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr "Поставте галочку, щоб запобігти публічному перегляду опису події/подій"
+
+#, fuzzy
+#| msgid "Check this to prevent public viewing of the event\\'s description"
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr "Поставте галочку, щоб запобігти публічному перегляду опису події/подій"
 
 msgid "Example:"
@@ -576,7 +583,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr "Зверніть увагу, що зміна цього параметра не матиме ефекту під час виконання події."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "Тип конференційного заходу"
 
@@ -636,6 +642,11 @@ msgid "Save"
 msgstr "Зберегти"
 
 msgid "Create and create another"
+msgstr "Створити та створити інший"
+
+#, fuzzy
+#| msgid "Create and create another"
+msgid "Save and create another"
 msgstr "Створити та створити інший"
 
 msgid "Add unscheduled event"
@@ -741,11 +752,18 @@ msgstr "Опублікувати"
 msgid "Add event"
 msgstr "Додати подію"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Введіть назву для нового заходу."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "Тип конференційного заходу"
 
@@ -1066,14 +1084,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s прокоментував/-ла пропозицію дати, за яку ви проголосували у %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
-
 msgid "Delete Event"
 msgstr "Видалити подію"
 
@@ -1140,8 +1150,14 @@ msgstr "Ви берете участь?"
 msgid "No Choice"
 msgstr "Немає вибору"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Скопіюйте це посилання iCal у ваш календар, щоб імпортувати поточні заходи:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Почати/приєднатися до відеочату цієї події"
 
@@ -1152,7 +1168,6 @@ msgid "Fullscreen"
 msgstr "Повний екран"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "Тип конференційного заходу"
 
@@ -1163,7 +1178,6 @@ msgid "Back"
 msgstr "Назад"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Тип конференційного заходу"
 
@@ -1265,7 +1279,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Захід успішно створено із вказаною датою."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Майбутні події"
 
@@ -1276,69 +1289,69 @@ msgid "Your comment was deleted successfully."
 msgstr "Ваш коментар успішно видалено."
 
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
-#~ msgid "Start/join BBB video conference for this event"
-#~ msgstr "Почати/приєднатися до відеочату цієї події"
+#~ msgid "Check this to prevent public viewing of the event's description"
+#~ msgstr "Поставте галочку, щоб запобігти публічному перегляду опису події/подій"
 
-#~ msgid "Start/join video chat for this event"
-#~ msgstr "Почати/приєднатися до відеочату цієї події"
+#~ msgid "Event is confidential"
+#~ msgstr "Подія є конфіденційною"
 
-#~ msgid "Video Chat"
-#~ msgstr "Відеочат"
-
-#~ msgid "Stop Video Chat"
-#~ msgstr "Зупинити відеочат"
-
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Приклад: https://www.youtube.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Максимум учасників за Coffee Table"
-
-#~ msgid "Date"
-#~ msgstr "Дата"
-
-#~ msgid "From"
-#~ msgstr "З"
-
-#~ msgid "Start date."
-#~ msgstr "Дата початку."
-
-#~ msgid "Until"
-#~ msgstr "До"
-
-#~ msgid "End date."
-#~ msgstr "Дата завершення."
-
-#~ msgid "Kalender"
-#~ msgstr "Календар"
-
-#~ msgid "New event by %(sender_name)s"
-#~ msgstr "Нова подія від %(sender_name)s"
-
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Нова пропозиція дати заходу від %(sender_name)s"
+#, fuzzy
+#~ msgid "Event's description is confidencial (Not visible on microsite)"
+#~ msgstr "Опис події є конфіденційним (не видно на мікросайті)"
 
 #~ msgid "%(sender_name)s"
 #~ msgstr "%(sender_name)s"
 
-#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Нова подія від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s проголосував у"
 
-#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Нове опитування щодо заходу від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
+#~ msgid "Add Photos or Files"
+#~ msgstr "Додати фото чи файли"
+
+#~ msgid "Date"
+#~ msgstr "Дата"
+
+#~ msgid "End date."
+#~ msgstr "Дата завершення."
 
 #~ msgid "Event poll updated by %(sender_name)s"
 #~ msgstr "Опитування щодо події було нововлено %(sender_name)s"
 
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s проголосував у"
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Приклад: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "From"
+#~ msgstr "З"
+
+#~ msgid "Kalender"
+#~ msgstr "Календар"
+
+#~ msgid "Location (optional)."
+#~ msgstr "Місце (додатково)."
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Максимум учасників за Coffee Table"
+
+#~ msgid "More"
+#~ msgstr "Більше"
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Нова подія від %(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Нова подія від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Нова пропозиція дати заходу від %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Нове опитування щодо заходу від %(sender_name)s в %(team_name)s (яку Ви відслідковуєте)"
 
 #~ msgid "Schedule an event"
 #~ msgstr "Визначити дату"
 
-#~ msgid "More"
-#~ msgstr "Більше"
+#~ msgid "Show in my projects..."
+#~ msgstr "Показати в моїх проектах..."
 
 #~ msgid "Shown in my projects..."
 #~ msgstr ""
@@ -1347,17 +1360,27 @@ msgstr "Ваш коментар успішно видалено."
 #~ "Femininum Показана в моїх проектах...\n"
 #~ "Neutrum Показано в моїх проектах..."
 
-#~ msgid "Show in my projects..."
-#~ msgstr "Показати в моїх проектах..."
+#~ msgid "Start date."
+#~ msgstr "Дата початку."
+
+#, fuzzy
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Почати/приєднатися до відеочату цієї події"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Почати/приєднатися до відеочату цієї події"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Зупинити відеочат"
+
+#~ msgid "Until"
+#~ msgstr "До"
 
 #~ msgid "Upcoming events in"
 #~ msgstr "Прийдешні заходи через"
 
-#~ msgid "Location (optional)."
-#~ msgstr "Місце (додатково)."
-
-#~ msgid "Add Photos or Files"
-#~ msgstr "Додати фото чи файли"
+#~ msgid "Video Chat"
+#~ msgstr "Відеочат"
 
 #~ msgctxt "the_verb"
 #~ msgid "Vote"

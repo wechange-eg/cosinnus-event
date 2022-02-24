@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-04-01 12:38+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.3\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -333,7 +322,6 @@ msgid "Event"
 msgstr "Իրադարձություն"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (արխիվացված)"
 
@@ -358,12 +346,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (արխիվացված)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (սպասվող)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Ոչ"
 
@@ -433,14 +419,18 @@ msgid "Room"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
 msgstr "Ստեղծել Իրադարձություն"
 
 msgid "Is a Break"
 msgstr ""
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Event is visible on the conference microsite"
+msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -453,7 +443,6 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Ցուցադրել բոլորը"
 
@@ -467,7 +456,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Փողոց"
 
@@ -475,17 +463,14 @@ msgid "The key for this specific stream session you created at your streaming pr
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
 msgstr "Ստեղծել Իրադարձություն"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
 msgstr "Ստեղծել Իրադարձություն"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s %(type)s"
 msgstr "%(event)s (սպասվող)"
 
@@ -542,12 +527,10 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "Ձեր մուտքագրած դաշտերից մեկում առկա է սխալ: Խնդրում ենք ուղղել այն նախքան պահպանելը!"
 
 #, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
 msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
 
 #, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
 msgstr "Իրադարձության ամսաթիվը"
 
@@ -563,17 +546,25 @@ msgstr "Նկարագրություն"
 msgid "Enter a description for the event"
 msgstr "Մուտքագրեք իրադարձության նկարագրություն"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
 msgstr "Արտաքին Հղում միջոցառման համար"
 
@@ -587,7 +578,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "BBB video conference options"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -610,7 +600,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Դուք մասնակցում եք այս իրադարձությանը"
 
@@ -618,7 +607,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream this event"
 msgstr "Արտաքին Հղում միջոցառման համար"
 
@@ -648,9 +636,11 @@ msgid "Save"
 msgstr "Պահպանել"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "ստեղծել է իրադարձություն"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "ստեղծել է իրադարձություն"
 
 msgid "Add unscheduled event"
@@ -756,11 +746,18 @@ msgstr "Հրապարակել"
 msgid "Add event"
 msgstr "Ավելացնել իրադարձություն"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Մուտքագրեք վերնագիր նոր իրադարձության համար."
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Include a video conference"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -792,7 +789,6 @@ msgid "Export event feed"
 msgstr "Արտահանել իրադարձության ցանկը"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -800,12 +796,10 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Room Management"
 msgstr "Ստեղծել Իրադարձություն"
 
 #, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
 msgstr "Բաց միջոցառումների հարցում չկա."
 
@@ -1090,14 +1084,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s -ը հրապարակել է մեկնաբանություն իրադարձության հարցման վերաբերյալ, որին քվեարկել եք %(team_name)s -ում."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Պատճենեք այս iCal- ի հղումը ձեր օրացուցի ծրագրում ընթացիկ իրադարձությունները ներմուծելու համար:"
-
 msgid "Delete Event"
 msgstr "Ջնջել իրադարձությունը"
 
@@ -1158,8 +1144,14 @@ msgstr "Դուք գնալու եք?"
 msgid "No Choice"
 msgstr "Ոչ մի ընտրություն"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Պատճենեք այս iCal- ի հղումը ձեր օրացուցի ծրագրում ընթացիկ իրադարձությունները ներմուծելու համար:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
 
@@ -1170,7 +1162,6 @@ msgid "Fullscreen"
 msgstr "Ամբողջ էկրանով"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Video conference"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -1181,7 +1172,6 @@ msgid "Back"
 msgstr "Հետ"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "Ստեղծել Իրադարձություն"
 
@@ -1283,7 +1273,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Միջոցառումը հաջողությամբ ստեղծվել է նշված ամսաթվին."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Սպասվող իրադարձությունները"
 
@@ -1293,39 +1282,27 @@ msgstr "Ձեր մեկնաբանությունը հաջողությամբ ավե�
 msgid "Your comment was deleted successfully."
 msgstr "Ձեր մեկնաբանությունը հաջողությամբ ջնջվել է."
 
-#, fuzzy
-#~| msgid "Start/join video chat for this event"
-#~ msgid "Start/join BBB video conference for this event"
-#~ msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
 
-#~ msgid "Start/join video chat for this event"
-#~ msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
-
-#~ msgid "Video Chat"
-#~ msgstr "Տեսազրույց"
-
-#~ msgid "Stop Video Chat"
-#~ msgstr "Դադարեցրել տեսազրույցը"
-
-#, fuzzy
-#~| msgid "Example: http://mywebsite.com"
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Օրինակ: http://mywebsite.com"
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s -ը քվեարկել է"
 
 #~ msgid "Date"
 #~ msgstr "Ամսաթիվ"
 
-#~ msgid "From"
-#~ msgstr "Սկսած"
-
-#~ msgid "Start date."
-#~ msgstr "Մեկնարկի ամսաթիվ."
-
-#~ msgid "Until"
-#~ msgstr "Մինչև"
-
 #~ msgid "End date."
 #~ msgstr "Ավարտի ամսաթիվ."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "%(sender_name)s -ը թարմացրել է իրադարձության հարցումը"
+
+#, fuzzy
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Օրինակ: http://mywebsite.com"
+
+#~ msgid "From"
+#~ msgstr "Սկսած"
 
 #~ msgid "Kalender"
 #~ msgstr "Օրացույց"
@@ -1333,20 +1310,30 @@ msgstr "Ձեր մեկնաբանությունը հաջողությամբ ջնջ�
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "Նոր իրադարձություն %(sender_name)s-ի կողմից"
 
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Նոր իրադարձության հարցում %(sender_name)s -ից"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
 #~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "Նոր իրադարձություն %(sender_name)s -ից %(team_name)s -ում (որին հետևում եք)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Նոր իրադարձության հարցում %(sender_name)s -ից"
 
 #~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "Նոր իրադարձությունների հարցում %(sender_name)s -ից %(team_name)s -ում (որին դուք հետևում եք)"
 
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "%(sender_name)s -ը թարմացրել է իրադարձության հարցումը"
+#~ msgid "Start date."
+#~ msgstr "Մեկնարկի ամսաթիվ."
 
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s -ը քվեարկել է"
+#, fuzzy
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "Սկսել/միանալ վիդեո զրույցին այս իրադարձության համար"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "Դադարեցրել տեսազրույցը"
+
+#~ msgid "Until"
+#~ msgstr "Մինչև"
+
+#~ msgid "Video Chat"
+#~ msgstr "Տեսազրույց"

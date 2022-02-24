@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-04-26 12:18+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
 
 msgid "Restart BBB rooms"
 msgstr "Επανεκκίνηση δωματίων BBB"
@@ -361,7 +350,6 @@ msgid "%(event)s (state unknown)"
 msgstr "%(event)s (άγνωστη κατάσταση)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Όχι"
 
@@ -436,7 +424,12 @@ msgstr "Είδος Εκδήλωσης Σύσκεψης"
 msgid "Is a Break"
 msgstr "Είναι Διάλειμμα"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "Εισάγετε τίτλο για την εκδήλωση σύσκεψης."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -449,12 +442,10 @@ msgid "Presentation file"
 msgstr "Αρχείο Παρουσίασης"
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Εμφάνιση όλων"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "Ζωντανή Μετάδοση σε Σκηνή"
 
@@ -465,7 +456,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Οδός"
 
@@ -552,10 +542,19 @@ msgstr "Περιγραφή"
 msgid "Enter a description for the event"
 msgstr "Εισάγετε περιγραφή για την εκδήλωση"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
@@ -568,7 +567,6 @@ msgid "Custom embed code (HTML)"
 msgstr "Προσαρμοσμένος ενσωματωμένος κώδικας (HTML)"
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "Πόσοι συμμετέχοντες μπορούν να καθίσουν σε ένα τραπέζι μέσης πριν γεμίσει"
 
@@ -576,7 +574,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
@@ -599,7 +596,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr "Μπορείτε να τερματίσετε ενεργά ένα δωμάτιο υπάρχουσας εκδήλωσης επιλέγοντας \"Τερματισμός Συνάντησης\" στην επάνω δεξιά γωνία του δωματίου στο \"Μενού Τριών Κουκίδων\"."
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Παρακολουθείτε αυτή την εκδήλωση"
 
@@ -607,7 +603,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
 msgstr "Ροή URL για την Εκδήλωση"
 
@@ -637,9 +632,11 @@ msgid "Save"
 msgstr "Αποθήκευση"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "δημιούργησε μια εκδήλωση"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "δημιούργησε μια εκδήλωση"
 
 msgid "Add unscheduled event"
@@ -745,11 +742,18 @@ msgstr "Ανάρτηση"
 msgid "Add event"
 msgstr "Προσθήκη εκδήλωσης"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Εισάγετε τίτλο για τη νέα εκδήλωση."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
@@ -1073,14 +1077,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "Ο/η %(sender_name)s σχολίασε μια δημοσκόπηση για εκδήλωση στην οποία ψηφίσατε σε %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Αντιγράψτε αυτό τον σύνδεσμο iCal στην εφαρμογή ημερολογίου για να εισάγετε τις τρέχουσες εκδηλώσεις:"
-
 msgid "Delete Event"
 msgstr "Διαγραφή Εκδήλωσης"
 
@@ -1141,8 +1137,14 @@ msgstr "Πηγαίνεις;"
 msgid "No Choice"
 msgstr "Καμία Επιλογή"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Αντιγράψτε αυτό τον σύνδεσμο iCal στην εφαρμογή ημερολογίου για να εισάγετε τις τρέχουσες εκδηλώσεις:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
@@ -1153,7 +1155,6 @@ msgid "Fullscreen"
 msgstr "Πλήρης Οθόνη"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
@@ -1164,7 +1165,6 @@ msgid "Back"
 msgstr "Πίσω"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Είδος Εκδήλωσης Σύσκεψης"
 
@@ -1266,7 +1266,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Η εκδήλωση δημιουργήθηκε με επιτυχία τη συγκεκριμένη ημερομηνία."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Προσεχείς εκδηλώσεις"
 
@@ -1276,22 +1275,21 @@ msgstr "Το σχόλιό σας προστέθηκε με επιτυχία."
 msgid "Your comment was deleted successfully."
 msgstr "Το σχόλιό σας διαγράφηκε με επιτυχία."
 
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Παράδειγμα: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Μέγιστος Αριθμός Συμμετεχόντων σε Τραπέζι Μέσης"
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "Έναρξη/συμμετοχή σε συνομιλία με βίντεο για αυτή την εκδήλωση"
 
-#~ msgid "Video Chat"
-#~ msgstr "Συνομιλία με Βίντεο"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "Διακοπή Συνομιλίας με Βίντεο"
 
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Παράδειγμα: https://www.youtube.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Μέγιστος Αριθμός Συμμετεχόντων σε Τραπέζι Μέσης"
+#~ msgid "Video Chat"
+#~ msgstr "Συνομιλία με Βίντεο"

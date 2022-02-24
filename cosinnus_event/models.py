@@ -659,10 +659,15 @@ class ConferenceEvent(Event):
         help_text='If an event is a break, no rooms will be created for it, and it will be displayed differently',
         default=False)
 
-    # Checkbox for public / private mode of the event's description
-    is_confidential = models.BooleanField(_('Event is confidential'), 
-        help_text='Provides an option to choose if the event\'s description should be shown publicly or not',
-        default=False)
+    # Checkbox for visible / hidden mode of the particular conference event on the conference microsite
+    is_visible_on_microsite = models.BooleanField(_('Event is visible on the conference microsite'),
+        help_text='Provides an option to choose if the particular conference event should be shown on microsite or not',
+        default=True)
+
+    # Checkbox for visible / hidden mode of the conference event's description on the conference microsite 
+    is_description_visible_on_microsite = models.BooleanField(_('Event\'s description is visible on the conference microsite'),
+        help_text='Provides an option to choose if the particular conference event\'s description should be shown on microsite or not',
+        default=True)
     
     # Type: Coffee-Tables
     max_participants = models.PositiveSmallIntegerField(_('Maximum Event Participants'),
