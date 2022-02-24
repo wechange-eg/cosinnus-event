@@ -98,7 +98,7 @@
 			{% endif %}
 	        
             {% if form.forms.obj.fields.is_description_visible_on_microsite %}
-				<div id="is_description_visible_on_microsite" {% if not object or not object.is_visible_on_microsite %}style="display: none;"{% endif %}>
+				<div id="is_description_visible_on_microsite" {% if object and not object.is_visible_on_microsite %}style="display: none"{% endif %}>
                 	{% trans "Show the event's description on microsite" as events_confidentiality_label %}
 						{% if SETTINGS.COSINNUS_USER_EXTERNAL_USERS_FORBIDDEN %}
 							{% trans "Uncheck this to disable platform-wide viewing of the event's description" as events_confidentiality_legend %}
