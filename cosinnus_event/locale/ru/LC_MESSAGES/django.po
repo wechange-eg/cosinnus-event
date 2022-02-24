@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wechange RU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 16:52+0100\n"
-"PO-Revision-Date: 2022-02-18 17:10+0100\n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
+"PO-Revision-Date: 2022-02-24 11:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -643,6 +643,9 @@ msgstr "Сохранить"
 msgid "Create and create another"
 msgstr "Создать, а затем создать другое событие"
 
+msgid "Save and create another"
+msgstr "Сохранить, а затем создать другое событие"
+
 msgid "Add unscheduled event"
 msgstr "Добавить событие"
 
@@ -1156,7 +1159,6 @@ msgstr "Добавить мероприятие в Ваш календарь"
 msgid "Copy this iCal-link into your calendar application to import this event:"
 msgstr "Скопируйте эту ссылку iCal в Ваш календарь, чтобы импортировать это событие:"
 
-#| msgid "Start/join BBB video conference for this event"
 msgid "Start/join video conference for this event"
 msgstr "Начать/присоединиться к BBB-видеоконференции этого события"
 
