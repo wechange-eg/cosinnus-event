@@ -260,7 +260,11 @@ You can adjust the meeting times on-the-fly to allow for longer streaming if the
 	                    <i class="fa fa-pencil"></i>
 	                </span>
 	                <div class="media-body">
+						{% if form_view == 'add' %}
 	                      {% trans "Create and create another" %}
+						{% elif form_view == 'edit' %}
+							{% trans "Save and create another" %}
+						{% endif %}
 	                </div>
 	            </li>
 	        </ul>
