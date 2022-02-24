@@ -4,16 +4,12 @@ from django.db import migrations
 
 def set_is_confidential_to_is_description_visible_on_microsite(apps, schema_editor):
     ConferenceEvent = apps.get_model('cosinnus_event', 'ConferenceEvent')
-    for event in ConferenceEvent.objects.all():
-        event.is_description_visible_on_microsite = not event.is_confidential
-        event.save()
+    ConferenceEvent.objects.filter(is_confidential=True).update(is_description_visible_on_microsite=False)
         
         
 def set_is_description_visible_on_microsite_to_is_confidential(apps, schema_editor):
     ConferenceEvent = apps.get_model('cosinnus_event', 'ConferenceEvent')
-    for event in ConferenceEvent.objects.all():
-        event.is_confidential = not event.is_description_visible_on_microsite
-        event.save()
+    ConferenceEvent.objects.filter(is_description_visible_on_microsite=False).update(is_confidential=True)
         
         
 class Migration(migrations.Migration):
