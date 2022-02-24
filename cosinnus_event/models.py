@@ -856,9 +856,9 @@ class ConferenceEvent(Event):
     @property
     def streaming_allowed(self):
         group = self.room.group
-        is_premium = group.has_premium_blocks or group.is_premium_permanently
-        settings_allow_streaming = settings.COSINNUS_CONFERENCES_STREAMING_ENABLED and settings.COSINNUS_PREMIUM_CONFERENCES_ENABLED
-        return is_premium and settings_allow_streaming
+        settings_allow_streaming = (settings.COSINNUS_CONFERENCES_STREAMING_ENABLED and
+                                    settings.COSINNUS_PREMIUM_CONFERENCES_ENABLED)
+        return group.has_premium_rights and settings_allow_streaming
 
 
 @receiver(post_delete, sender=Vote)
