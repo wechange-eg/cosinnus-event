@@ -853,6 +853,13 @@ class ConferenceEvent(Event):
     def get_type_verbose(self):
         return dict(self.TYPE_CHOICES).get(self.type, '(unknown type)')
 
+    @property
+    def streaming_allowed(self):
+        group = self.room.group
+        settings_allow_streaming = (settings.COSINNUS_CONFERENCES_STREAMING_ENABLED and
+                                    settings.COSINNUS_PREMIUM_CONFERENCES_ENABLED)
+        return group.has_premium_rights and settings_allow_streaming
+
 
 @receiver(post_delete, sender=Vote)
 def post_vote_delete(sender, **kwargs):

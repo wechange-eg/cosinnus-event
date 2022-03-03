@@ -186,7 +186,7 @@
                 {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.show_chat label=show_chat_label legend=show_chat_legend checkbox_label=show_chat_label %}
             {% endif %}
             
-            {% if SETTINGS.COSINNUS_CONFERENCES_STREAMING_ENABLED and SETTINGS.COSINNUS_PREMIUM_CONFERENCES_ENABLED and form.forms.obj.enable_streaming %}
+            {% if form.forms.obj.instance.streaming_allowed %}
                 <div class="panel panel-default large-space">
                     <div class="panel-heading">
                         <h4 class="panel-title {% if not form.forms.obj.instance.enable_streaming %}collapsed{% endif %}" data-toggle="collapse" data-target="#collapseStreamingOptions">
