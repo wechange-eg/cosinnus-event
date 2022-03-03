@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from haystack import indexes
 
 from cosinnus.utils.search import BaseTaggableObjectIndex, StoredDataIndexMixin,\
-    CommaSeperatedIntegerMultiValueField
+    CommaSeperatedIntegerMultiValueField, TimezoneAwareHaystackDateTimeField
 
 from cosinnus_event.models import Event, EventAttendance,\
     annotate_attendants_count
@@ -14,10 +14,9 @@ from django.utils.timezone import now
 
 class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexable):
     
-    from_date = indexes.DateTimeField(model_attr='from_date', null=True)
-    to_date = indexes.DateTimeField(model_attr='to_date', null=True)
+    from_date = TimezoneAwareHaystackDateTimeField(model_attr='from_date', null=True)
+    to_date = TimezoneAwareHaystackDateTimeField(model_attr='to_date', null=True)
     event_state = indexes.IntegerField(model_attr='state', null=True)
-    humanized_event_time_html = indexes.CharField(stored=True, indexed=False)
     participants = indexes.MultiValueField(stored=True, indexed=False)
     liked_user_ids = CommaSeperatedIntegerMultiValueField(indexed=False, stored=True)
     
@@ -41,9 +40,6 @@ class EventIndex(BaseTaggableObjectIndex, StoredDataIndexMixin, indexes.Indexabl
         if not hasattr(obj, '_participants'):
             obj._participants = list(obj.attendances.filter(state__gt=EventAttendance.ATTENDANCE_NOT_GOING).values_list('user__id', flat=True))
         return obj._participants
-    
-    def prepare_humanized_event_time_html(self, obj):
-        return obj.get_humanized_event_time_html()
     
     def boost_model(self, obj, indexed_data):
         """ We boost a combined measure of 2 added factors: soonishnes (50%) and participant count (50%).

@@ -17,12 +17,10 @@ from django.db import models, transaction
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.template.defaultfilters import date as django_date_filter
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import dateformat
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.formats import date_format
+
 from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
 from django.utils.timezone import localtime, now
@@ -45,22 +43,18 @@ from cosinnus_event.fields import RTMPURLField
 from cosinnus_event.managers import EventQuerySet
 from cosinnus_event.mixins import BBBRoomMixin
 from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
+from cosinnus.utils.dates import localize, HumanizedEventTimeMixin
 
 
 logger = logging.getLogger('cosinnus')
 
 
-def localize(value, format):
-    if (not format) or ("FORMAT" in format):
-        return date_format(localtime(value), format)
-    else:
-        return dateformat.format(localtime(value), format)
-
 def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
 @python_2_unicode_compatible
-class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, BaseTaggableObjectModel):
+class Event(HumanizedEventTimeMixin, TranslateableFieldsModelMixin, LikeableObjectMixin, 
+            BBBRoomMixin, BaseTaggableObjectModel):
 
     SORT_FIELDS_ALIASES = [
         ('title', 'title'),
@@ -298,28 +292,6 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
             return
         self.save(update_fields=update_fields)
 
-    @property
-    def single_day(self):
-        return localtime(self.from_date).date() == localtime(self.to_date).date()
-    
-    def get_humanized_event_time_html(self):
-        return mark_safe(render_to_string('cosinnus_event/common/humanized_event_time.html', {'event': self})).strip()
-    
-    def get_date_or_now_starting_time(self):
-        """ Returns a dict like {'is_date': True, 'date': <date>}
-            with is_date=False date as string "Now" if the event is running, 
-            else is_date=True and date as the moment-usable datetime of the from_date. """
-        _now = now()
-        if self.from_date and self.from_date < _now and self.to_date > _now:
-            return {'is_date': False, 'date': str(_("Now"))}
-        return {'is_date': True, 'date': django_date_filter(self.from_date, 'c')}
-    
-    def get_period(self):
-        if self.single_day:
-            return localize(self.from_date, "d.m.Y")
-        else:
-            return "%s - %s" % (localize(self.from_date, "d.m."), localize(self.to_date, "d.m.Y"))
-    
     @classmethod
     def get_current(self, group, user, include_sub_projects=False):
         """ Returns a queryset of the current upcoming events """
@@ -347,24 +319,6 @@ class Event(TranslateableFieldsModelMixin, LikeableObjectMixin, BBBRoomMixin, Ba
         """ Returns a queryset of the current upcoming events in this portal """
         qs = Event.objects.filter(group__portal=CosinnusPortal.get_current()).filter(state__in=[Event.STATE_SCHEDULED])
         return upcoming_event_filter(qs)
-    
-    @property
-    def is_same_day(self):
-        if not self.from_date or not self.to_date:
-            return True
-        return localtime(self.from_date).date() == localtime(self.to_date).date()
-    
-    @property
-    def is_same_time(self):
-        if not self.from_date or not self.to_date:
-            return True
-        return self.from_date.time() == self.to_date.time()
-    
-    @property
-    def is_all_day(self):
-        if not self.from_date or not self.to_date:
-            return False
-        return (localize(self.from_date, "H:i") == '00:00') and (localize(self.to_date, "H:i") == '23:59')
     
     def get_voters_pks(self):
         """ Gets the pks of all Users that have voted for this event.
