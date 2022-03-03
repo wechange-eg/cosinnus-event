@@ -5,36 +5,29 @@ from builtins import object
 import datetime
 import logging
 from osm_field.fields import OSMField, LatitudeField, LongitudeField
-from threading import Thread
 import time
 from uuid import uuid1
-import six
 
 from django.contrib.auth import get_user_model
-from django.contrib.contenttypes.fields import GenericRelation
 from django.core.exceptions import ImproperlyConfigured
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db import models, transaction
+from django.db import models
 from django.db.models import Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import dateformat
-from django.utils.formats import date_format
-from django.utils.encoding import python_2_unicode_compatible
-
 from django.utils.functional import cached_property
-from django.utils.safestring import mark_safe
 from django.utils.timezone import localtime, now
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy, pgettext_lazy as p_
+import six
 
 from cosinnus.models import BaseTaggableObjectModel
 from cosinnus.models.conference import CosinnusConferenceRoom
 from cosinnus.models.group import CosinnusPortal
 from cosinnus.models.mixins.translations import TranslateableFieldsModelMixin
 from cosinnus.models.tagged import LikeableObjectMixin
-from cosinnus.utils.files import _get_avatar_filename, get_cosinnus_media_file_folder, get_presentation_filename
+from cosinnus.utils.dates import localize, HumanizedEventTimeMixin
+from cosinnus.utils.files import _get_avatar_filename, get_presentation_filename
 from cosinnus.utils.permissions import filter_tagged_object_queryset_for_user, \
     check_object_read_access
 from cosinnus.utils.urls import group_aware_reverse
@@ -46,7 +39,6 @@ from cosinnus_event.fields import RTMPURLField
 from cosinnus_event.managers import EventQuerySet
 from cosinnus_event.mixins import BBBRoomMixin
 from cosinnus_event.utils.bbb_streaming import trigger_streamer_status_changes
-from cosinnus.utils.dates import localize, HumanizedEventTimeMixin
 
 
 logger = logging.getLogger('cosinnus')
@@ -55,7 +47,7 @@ logger = logging.getLogger('cosinnus')
 def get_event_image_filename(instance, filename):
     return _get_avatar_filename(instance, filename, 'images', 'events')
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class Event(HumanizedEventTimeMixin, TranslateableFieldsModelMixin, LikeableObjectMixin, 
             BBBRoomMixin, BaseTaggableObjectModel):
 
