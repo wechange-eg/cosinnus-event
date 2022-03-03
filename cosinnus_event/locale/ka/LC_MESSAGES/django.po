@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-04-07 12:43+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -330,7 +319,6 @@ msgid "Event"
 msgstr "ღონისძიება"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (დაარქივებულია)"
 
@@ -355,12 +343,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (დაარქივებულია)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (პროცესშია)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "არა"
 
@@ -430,14 +416,18 @@ msgid "Room"
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
 msgstr "ღონისძიების შექმნა"
 
 msgid "Is a Break"
 msgstr ""
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Event is visible on the conference microsite"
+msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -450,7 +440,6 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "ყველას ჩვენება"
 
@@ -464,7 +453,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "ქუჩა"
 
@@ -472,17 +460,14 @@ msgid "The key for this specific stream session you created at your streaming pr
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
 msgstr "ღონისძიების შექმნა"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
 msgstr "ღონისძიების შექმნა"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s %(type)s"
 msgstr "%(event)s (პროცესშია)"
 
@@ -539,12 +524,10 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "შეცდომა დაფიქსირდა ერთ-ერთ გრაფაში, რომელშიც ინფორმაცია შეიყვანეთ. გთხოვთ შეასწოროთ შენახვამდე!"
 
 #, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
 msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის."
 
 #, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
 msgstr "ღონისძიების თარიღი"
 
@@ -560,17 +543,25 @@ msgstr "აღწერა"
 msgid "Enter a description for the event"
 msgstr "აღწერის შეყვანა ღონისძიებისთვის"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
 msgstr "გარე ბმული ღონისძიებისათვის"
 
@@ -584,7 +575,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "BBB video conference options"
 msgstr "ღონისძიების შექმნა"
 
@@ -607,7 +597,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "თქვენ ესწრებით ამ ღონისძიებას"
 
@@ -615,7 +604,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream this event"
 msgstr "გარე ბმული ღონისძიებისათვის"
 
@@ -645,9 +633,11 @@ msgid "Save"
 msgstr "შენახვა"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "შექმნა ღონისძიება"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "შექმნა ღონისძიება"
 
 msgid "Add unscheduled event"
@@ -753,11 +743,18 @@ msgstr "პოსტი"
 msgid "Add event"
 msgstr "ღონისძიების დამატება"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "შეიყვანეთ სათაური ახალი ღონისძიებისათვის."
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Include a video conference"
 msgstr "ღონისძიების შექმნა"
 
@@ -789,7 +786,6 @@ msgid "Export event feed"
 msgstr "ღონისძიების feed-ის ექსპორტი"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
 msgstr "ღონისძიების შექმნა"
 
@@ -797,12 +793,10 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Room Management"
 msgstr "ღონისძიების შექმნა"
 
 #, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
 msgstr "ღია ღონისძიების გამოკითხვები არ არის."
 
@@ -1087,14 +1081,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s-მა დააკომენტარა ღონისძიების გამოკითხვაზე %(team_name)s-ში, სადაც თქვენ ხმა მიეცით."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "გდააკოპირეთ ეს iCal ბმული თქვენი კალენდარის აპლიკაციაში, რომ გადმოიტანოთ მიმდინარე ღონისძიებები:"
-
 msgid "Delete Event"
 msgstr "ღონისძიების წაშლა"
 
@@ -1152,8 +1138,14 @@ msgstr "მიდიხართ?"
 msgid "No Choice"
 msgstr "არ არის არჩცევანი"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "გდააკოპირეთ ეს iCal ბმული თქვენი კალენდარის აპლიკაციაში, რომ გადმოიტანოთ მიმდინარე ღონისძიებები:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "დაწყება/ჩართვა ვიდეო ჩატში ამ ღონისძიებებისთვის"
 
@@ -1164,7 +1156,6 @@ msgid "Fullscreen"
 msgstr "სრული ეკრანი"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Video conference"
 msgstr "ღონისძიების შექმნა"
 
@@ -1175,7 +1166,6 @@ msgid "Back"
 msgstr "უკან"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "ღონისძიების შექმნა"
 
@@ -1277,7 +1267,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "ღონისძიება კონკრეტულ თარიღზე წარმატებით შეიქმნა."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "მომავალი ღონისძიებები"
 
@@ -1287,39 +1276,27 @@ msgstr "თქვენი კომენტარი წარმატებ�
 msgid "Your comment was deleted successfully."
 msgstr "თქვენი კომენტარი წარმატებით წაიშალა."
 
-#, fuzzy
-#~| msgid "Start/join video chat for this event"
-#~ msgid "Start/join BBB video conference for this event"
-#~ msgstr "დაწყება/ჩართვა ვიდეო ჩატში ამ ღონისძიებებისთვის"
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
 
-#~ msgid "Start/join video chat for this event"
-#~ msgstr "დაწყება/ჩართვა ვიდეო ჩატში ამ ღონისძიებებისთვის"
-
-#~ msgid "Video Chat"
-#~ msgstr "ვიდეო ჩატი"
-
-#~ msgid "Stop Video Chat"
-#~ msgstr "ვიდეო ჩატის გამორთვა"
-
-#, fuzzy
-#~| msgid "Example: http://mywebsite.com"
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "მაგალითი: http://mywebsite.com"
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s-(ებ)მა ხმა მისცა"
 
 #~ msgid "Date"
 #~ msgstr "თარიღი"
 
-#~ msgid "From"
-#~ msgstr "- დან"
-
-#~ msgid "Start date."
-#~ msgstr "საწყისი თარიღი."
-
-#~ msgid "Until"
-#~ msgstr "- მდე"
-
 #~ msgid "End date."
 #~ msgstr "დასასრულის თარიღი."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "ღონისძიების გამოკითხვა განახლდა %(sender_name)s-ის მიერ"
+
+#, fuzzy
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "მაგალითი: http://mywebsite.com"
+
+#~ msgid "From"
+#~ msgstr "- დან"
 
 #~ msgid "Kalender"
 #~ msgstr "კალენდარი"
@@ -1327,20 +1304,30 @@ msgstr "თქვენი კომენტარი წარმატებ�
 #~ msgid "New event by %(sender_name)s"
 #~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ"
 
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "ახალი ღონისძიების გამოკითხვა %(sender_name)s -ის მიერ"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
 #~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "ახალი ღონისძიების გამოკითხვა %(sender_name)s -ის მიერ"
 
 #~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
 #~ msgstr "ახალი ღონისძიება %(sender_name)s -ის მიერ %(team_name)s -ში (რომელსაც თქვენ გაყევით)"
 
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "ღონისძიების გამოკითხვა განახლდა %(sender_name)s-ის მიერ"
+#~ msgid "Start date."
+#~ msgstr "საწყისი თარიღი."
 
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s-(ებ)მა ხმა მისცა"
+#, fuzzy
+#~ msgid "Start/join BBB video conference for this event"
+#~ msgstr "დაწყება/ჩართვა ვიდეო ჩატში ამ ღონისძიებებისთვის"
+
+#~ msgid "Start/join video chat for this event"
+#~ msgstr "დაწყება/ჩართვა ვიდეო ჩატში ამ ღონისძიებებისთვის"
+
+#~ msgid "Stop Video Chat"
+#~ msgstr "ვიდეო ჩატის გამორთვა"
+
+#~ msgid "Until"
+#~ msgstr "- მდე"
+
+#~ msgid "Video Chat"
+#~ msgstr "ვიდეო ჩატი"

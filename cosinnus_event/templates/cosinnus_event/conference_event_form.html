@@ -89,12 +89,35 @@
 		        {% trans "Enter a description for the event" as description_legend %}
 		        {% include 'cosinnus/fields/default_field.html' with field=form.forms.obj.note legend=description_legend label=description_label placeholder=description_placeholder large_field=True translation_form=form.forms.obj %}
 	        {% endif %}
+			<hr class="invisible"/>
+
+			{% if form.forms.obj.fields.is_visible_on_microsite %}
+					{% trans "Show this event on microsite" as event_visibility_label %}
+					{% trans "Uncheck this to hide the event on microsite" as event_visibility_legend %}
+					{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_visible_on_microsite label=event_visibility_label legend=event_visibility_legend checkbox_label=event_visibility_label %}
+			{% endif %}
 	        
-            {% if form.forms.obj.fields.is_confidential %}
-                {% trans "Event's description is confidencial (Not visible on microsite)" as events_confidentiality_label %}
-                {% trans "Check this to prevent public viewing of the event's description" as events_confidentiality_legend %}
-                {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_confidential label=events_confidentiality_label legend=events_confidentiality_legend checkbox_label=events_confidentiality_label %}
-            {% endif %}
+            {% if form.forms.obj.fields.is_description_visible_on_microsite %}
+				<div id="is_description_visible_on_microsite" {% if object and not object.is_visible_on_microsite %}style="display: none"{% endif %}>
+                	{% trans "Show the event's description on microsite" as events_confidentiality_label %}
+						{% if SETTINGS.COSINNUS_USER_EXTERNAL_USERS_FORBIDDEN %}
+							{% trans "Uncheck this to disable platform-wide viewing of the event's description" as events_confidentiality_legend %}
+						{% else %}
+							{% trans "Uncheck this to disable public viewing of the event's description" as events_confidentiality_legend %}
+						{% endif %}
+                	{% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.is_description_visible_on_microsite label=events_confidentiality_label legend=events_confidentiality_legend checkbox_label=events_confidentiality_label %}
+				</div>
+			{% endif %}
+
+			<script type="text/javascript">
+				{# show or hide `event.is_description_visible_on_microsite` option based on `event.is_visible_on_microsite` checkbox #}
+				$("#id_is_visible_on_microsite").on("click", function(){
+					if($("#id_is_visible_on_microsite").is(':checked'))
+						$("#is_description_visible_on_microsite").show('slow');
+					else
+						$("#is_description_visible_on_microsite").hide('slow');
+				});
+			</script>
 	        
 	        {% if form.forms.obj.fields.url %}
                 {% captureas url_placeholder %}{% trans "Example:" %} https://www.youtube.com/watch?v=12345{% endcaptureas %}
@@ -163,7 +186,7 @@
                 {% include 'cosinnus/fields/checkbox_field.html' with field=form.forms.obj.show_chat label=show_chat_label legend=show_chat_legend checkbox_label=show_chat_label %}
             {% endif %}
             
-            {% if SETTINGS.COSINNUS_CONFERENCES_STREAMING_ENABLED and SETTINGS.COSINNUS_PREMIUM_CONFERENCES_ENABLED and form.forms.obj.enable_streaming %}
+            {% if form.forms.obj.instance.streaming_allowed %}
                 <div class="panel panel-default large-space">
                     <div class="panel-heading">
                         <h4 class="panel-title {% if not form.forms.obj.instance.enable_streaming %}collapsed{% endif %}" data-toggle="collapse" data-target="#collapseStreamingOptions">
@@ -237,7 +260,11 @@ You can adjust the meeting times on-the-fly to allow for longer streaming if the
 	                    <i class="fa fa-pencil"></i>
 	                </span>
 	                <div class="media-body">
+						{% if form_view == 'add' %}
 	                      {% trans "Create and create another" %}
+						{% elif form_view == 'edit' %}
+							{% trans "Save and create another" %}
+						{% endif %}
 	                </div>
 	            </li>
 	        </ul>

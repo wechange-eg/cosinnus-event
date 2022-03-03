@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-03-08 11:44+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Poedit 2.4.1\n"
 
 msgid "Restart BBB rooms"
 msgstr "أعد تشغيل غرف BBB"
@@ -356,7 +345,6 @@ msgid "Event"
 msgstr "مناسبة"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (تمت أرشفة)"
 
@@ -381,12 +369,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (تمت أرشفة)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (معلقة)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "لا"
 
@@ -456,14 +442,18 @@ msgid "Room"
 msgstr "غرفة"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event Type"
 msgstr "انشاء مناسبة"
 
 msgid "Is a Break"
 msgstr "استراحة"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the new event."
+msgid "Event is visible on the conference microsite"
+msgstr "ادخل عنوانا لمناسبة جديدة."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -476,12 +466,10 @@ msgid "Presentation file"
 msgstr "ملف العرض التقديمي"
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "عرض الكل"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "منصة العرض"
 
@@ -492,7 +480,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "شارع"
 
@@ -500,17 +487,14 @@ msgid "The key for this specific stream session you created at your streaming pr
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Event"
 msgstr "انشاء مناسبة"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Conference Events"
 msgstr "انشاء مناسبة"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s %(type)s"
 msgstr "%(event)s (معلقة)"
 
@@ -567,12 +551,10 @@ msgid "There was an error in one of the fields you entered. Please correct it be
 msgstr "حدث خطأ في أحد الحقول التي أدخلتها. يرجى تصحيحها قبل الحفظ!"
 
 #, fuzzy
-#| msgid "Enter a title for the new event."
 msgid "Enter a title for the conference event."
 msgstr "ادخل عنوانا لمناسبة جديدة."
 
 #, fuzzy
-#| msgid "Event date"
 msgid "Event is a break"
 msgstr "تاريخ مناسبة"
 
@@ -588,17 +570,25 @@ msgstr "وصف"
 msgid "Enter a description for the event"
 msgstr "ادخل وصفا لهذه المناسبة"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream URL for the Event"
 msgstr "رابط خارجي للمناسبة"
 
@@ -606,7 +596,6 @@ msgid "Custom embed code (HTML)"
 msgstr "كود التضمين المخصص (HTML)"
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "كم عدد المشاركين الذين يمكنهم الانضمام إلى طاولة القهوة قبل أن تمتلئ"
 
@@ -614,7 +603,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "BBB video conference options"
 msgstr "انشاء مناسبة"
 
@@ -637,7 +625,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "أنت ستحضر هذه المناسبة"
 
@@ -645,7 +632,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "External Link for the event"
 msgid "Stream this event"
 msgstr "رابط خارجي للمناسبة"
 
@@ -675,9 +661,11 @@ msgid "Save"
 msgstr "حفظ"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "انشاء مناسبة"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "انشاء مناسبة"
 
 msgid "Add unscheduled event"
@@ -783,11 +771,18 @@ msgstr "نشر"
 msgid "Add event"
 msgstr "إضافة مناسبة"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "ادخل عنوانا لمناسبة جديدة."
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Include a video conference"
 msgstr "انشاء مناسبة"
 
@@ -820,7 +815,6 @@ msgid "Export event feed"
 msgstr "تقديم مناسبة موجزة"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Create Conference Event"
 msgstr "انشاء مناسبة"
 
@@ -831,7 +825,6 @@ msgid "Conference Room Management"
 msgstr "إدارة غرفة الاجتماعات"
 
 #, fuzzy
-#| msgid "There are no open event polls."
 msgid "There are no conference events."
 msgstr "لا توجد مناسبة استطلاعات مفتوحة."
 
@@ -1129,14 +1122,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)sعلق على مناسبة استطلاع قمت بالتصويت فيه في%(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "انسخ رابط iCal هذا في تطبيق التقويم الخاص بك لادخال المناسبات الحالية:"
-
 msgid "Delete Event"
 msgstr "حذف مناسبة"
 
@@ -1215,8 +1200,14 @@ msgstr "هل ستذهب؟"
 msgid "No Choice"
 msgstr "لا يوجد خيار"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "انسخ رابط iCal هذا في تطبيق التقويم الخاص بك لادخال المناسبات الحالية:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
 
@@ -1227,7 +1218,6 @@ msgid "Fullscreen"
 msgstr "ملئ الشاشة"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Video conference"
 msgstr "انشاء مناسبة"
 
@@ -1238,7 +1228,6 @@ msgid "Back"
 msgstr "رجوع"
 
 #, fuzzy
-#| msgid "Create Event"
 msgid "Leave video conference"
 msgstr "انشاء مناسبة"
 
@@ -1340,7 +1329,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "تم إنشاء المناسبة بنجاح في التاريخ المحدد."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "المناسبات القادمة"
 
@@ -1350,42 +1338,40 @@ msgstr "تم إضافة تعليقك بنجاح."
 msgid "Your comment was deleted successfully."
 msgstr "تم حذف تعليقك بنجاح."
 
+#~ msgid "Date"
+#~ msgstr "تاريخ"
+
+#~ msgid "End date."
+#~ msgstr "تاريخ الانتهاء."
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "مثال: http://mywebsite.com"
+
+#~ msgid "From"
+#~ msgstr "من"
+
+#~ msgid "Kalender"
+#~ msgstr "تقويم"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "الحد الأقصى من المشاركين في طاولة القهوة"
+
+#~ msgid "Start date."
+#~ msgstr "تاريخ البدء."
+
+#, fuzzy
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "بدء / الانضمام إلى محادثة الفيديو لهذه المناسبة"
 
-#~ msgid "Video Chat"
-#~ msgstr "محادثة فيديو"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "إيقاف محادثة فيديو"
-
-#, fuzzy
-#~| msgid "Example: http://mywebsite.com"
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "مثال: http://mywebsite.com"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "الحد الأقصى من المشاركين في طاولة القهوة"
-
-#~ msgid "Date"
-#~ msgstr "تاريخ"
-
-#~ msgid "From"
-#~ msgstr "من"
-
-#~ msgid "Start date."
-#~ msgstr "تاريخ البدء."
 
 #~ msgid "Until"
 #~ msgstr "ل"
 
-#~ msgid "End date."
-#~ msgstr "تاريخ الانتهاء."
-
-#~ msgid "Kalender"
-#~ msgstr "تقويم"
+#~ msgid "Video Chat"
+#~ msgstr "محادثة فيديو"

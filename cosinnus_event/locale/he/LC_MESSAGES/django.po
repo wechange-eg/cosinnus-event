@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-04-14 14:36+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
 
 msgid "Restart BBB rooms"
 msgstr "הפעל מחדש חדרי BBB"
@@ -362,7 +351,6 @@ msgid "%(event)s (state unknown)"
 msgstr "%(event)s (מצב לא ידוע)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "לא"
 
@@ -437,7 +425,12 @@ msgstr "סוג אירוע ועידה"
 msgid "Is a Break"
 msgstr "היא הפסקה"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "הזן כותרת עבור אירוע הוועידה."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -450,12 +443,10 @@ msgid "Presentation file"
 msgstr "קובץ מצגת"
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "הצג הכל"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "צפייה ישירה בבמה"
 
@@ -466,7 +457,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "רחוב"
 
@@ -553,10 +543,19 @@ msgstr "תיאור"
 msgid "Enter a description for the event"
 msgstr "הזינו תיאור עבור האירוע"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
@@ -569,7 +568,6 @@ msgid "Custom embed code (HTML)"
 msgstr "קוד הטמעה"
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "כמה משתתפים יכולים להצטרף אל שולחן קפה לפני שהוא יהיה מלא"
 
@@ -577,7 +575,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "סוג אירוע ועידה"
 
@@ -600,7 +597,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr "באפשרותך לסיים באופן פעיל חדר אירועים קיים על-ידי לחיצה על \"סיים פגישה\" בפינה השמאלית העליונה של החדר ב\"תפריט שלוש הנקודות\"."
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "אתם משתתפים באירוע זה"
 
@@ -608,7 +604,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
 msgstr "כתובת Stream URL עבור האירוע"
 
@@ -638,9 +633,11 @@ msgid "Save"
 msgstr "שמור"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "יצר/ה אירוע חדש"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "יצר/ה אירוע חדש"
 
 msgid "Add unscheduled event"
@@ -746,11 +743,18 @@ msgstr "פרסם"
 msgid "Add event"
 msgstr "הוסף אירוע"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "הזינו כותרת עבור האירוע החדש."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "סוג אירוע ועידה"
 
@@ -1074,14 +1078,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s הגיב/ה על סקר אירוע שהצבעתם בו ב-%(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "העתק קישור iCal זה ליישום היומן שלך כדי לייבא אירועים עכשוויים:"
-
 msgid "Delete Event"
 msgstr "מחק אירוע"
 
@@ -1142,8 +1138,14 @@ msgstr "האם אתה הולך?"
 msgid "No Choice"
 msgstr "אין ברירה"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "העתק קישור iCal זה ליישום היומן שלך כדי לייבא אירועים עכשוויים:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "התחילו/הצטרפו לשיחת וידאו עבור אירוע זה"
 
@@ -1154,7 +1156,6 @@ msgid "Fullscreen"
 msgstr "מסך מלא"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "סוג אירוע ועידה"
 
@@ -1165,7 +1166,6 @@ msgid "Back"
 msgstr "חזור"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "סוג אירוע ועידה"
 
@@ -1267,7 +1267,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "האירוע נוצר בהצלחה בתאריך שצויין."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "אירועים קרובים"
 
@@ -1277,40 +1276,39 @@ msgstr "תגובתך נוספה בהצלחה."
 msgid "Your comment was deleted successfully."
 msgstr "תגובתך נמחקה בהצלחה."
 
+#~ msgid "Date"
+#~ msgstr "תאריך"
+
+#~ msgid "End date."
+#~ msgstr "תאריך סיום."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "דוגמה: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "From"
+#~ msgstr "מ"
+
+#~ msgid "Kalender"
+#~ msgstr "יומן"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "מספר משתתפים מקסימלי עבור שולחן קפה"
+
+#~ msgid "Start date."
+#~ msgstr "תאריך התחלה."
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "התחילו/הצטרפו לשיחת וידאו עבור אירוע זה"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "התחילו/הצטרפו לשיחת וידאו עבור אירוע זה"
 
-#~ msgid "Video Chat"
-#~ msgstr "שיחת וידאו"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "הפסק צ'אט וידאו"
-
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "דוגמה: https://www.youtube.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "מספר משתתפים מקסימלי עבור שולחן קפה"
-
-#~ msgid "Date"
-#~ msgstr "תאריך"
-
-#~ msgid "From"
-#~ msgstr "מ"
-
-#~ msgid "Start date."
-#~ msgstr "תאריך התחלה."
 
 #~ msgid "Until"
 #~ msgstr "עד"
 
-#~ msgid "End date."
-#~ msgstr "תאריך סיום."
-
-#~ msgid "Kalender"
-#~ msgstr "יומן"
+#~ msgid "Video Chat"
+#~ msgstr "שיחת וידאו"

@@ -141,7 +141,7 @@ def trigger_streamer_status_changes(events=None):
         
         # creating and starting a streamer only works for conferences that are premium at this time
         # (stopping and deleting works regardless for sanity)
-        if event.get_group_for_bbb_room().is_premium:
+        if event.streaming_allowed:
             # check if we should create a streamer
             if event.enable_streaming and not event.settings.get(SETTINGS_STREAMER_ID, None) and \
                     create_time <= now() <= stop_delete_time:
@@ -164,7 +164,7 @@ def trigger_streamer_status_changes(events=None):
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but are still running
         if event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
-                (event.enable_streaming == False or stop_delete_time <= now() or now() <= start_time):
+                (event.enable_streaming == False or not event.streaming_allowed or stop_delete_time <= now() or now() <= start_time):
             try:
                 stop_streamer_for_event(event)
             except Exception as e:
@@ -174,7 +174,7 @@ def trigger_streamer_status_changes(events=None):
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but were still running
         if event.settings.get(SETTINGS_STREAMER_ID, None) and \
-                (event.enable_streaming == False or stop_delete_time <= now() or now() <= create_time):
+                (event.enable_streaming == False or not event.streaming_allowed or stop_delete_time <= now() or now() <= create_time):
             try:
                 delete_streamer_for_event(event)
             except Exception as e:

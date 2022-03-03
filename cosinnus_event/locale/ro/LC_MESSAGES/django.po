@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2020-10-12 00:18+0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Poedit 2.2.4\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -336,7 +325,6 @@ msgid "Event"
 msgstr "Eveniment"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (arhivată)"
 
@@ -361,12 +349,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (arhivată)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (în așteptare)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Nu"
 
@@ -441,7 +427,12 @@ msgstr "Tip Conferință Eveniment"
 msgid "Is a Break"
 msgstr "Este o Pauză"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "Introduceți un titlu pentru evenimentul conferinței."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -454,12 +445,10 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Arată tot"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "Flux de Scenă"
 
@@ -470,7 +459,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Strada"
 
@@ -557,10 +545,19 @@ msgstr "Descriere"
 msgid "Enter a description for the event"
 msgstr "Introduceți o descriere pentru eveniment"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
@@ -573,7 +570,6 @@ msgid "Custom embed code (HTML)"
 msgstr ""
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "Câți participanți ar trebui să se alăture la o singură masă de cafea înainte ca aceasta să fie plină"
 
@@ -581,7 +577,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "Tip Conferință Eveniment"
 
@@ -604,7 +599,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Participi la acest eveniment"
 
@@ -612,7 +606,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
 msgstr "URL-ul fluxului pentru Eveniment"
 
@@ -642,9 +635,11 @@ msgid "Save"
 msgstr "Salvați"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "a creat un eveniment"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "a creat un eveniment"
 
 msgid "Add unscheduled event"
@@ -750,11 +745,18 @@ msgstr "Post"
 msgid "Add event"
 msgstr "Adăugați eveniment"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Introduceți un titlu pentru noul eveniment."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "Tip Conferință Eveniment"
 
@@ -786,7 +788,6 @@ msgid "Export event feed"
 msgstr "Export de furaj pentru evenimente"
 
 #, fuzzy
-#| msgid "Conference Event"
 msgid "Create Conference Event"
 msgstr "Conferință Eveniment"
 
@@ -794,7 +795,6 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event"
 msgid "Conference Room Management"
 msgstr "Conferință Eveniment"
 
@@ -1083,14 +1083,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s a comentat un sondaj de eveniment în care ați votat în %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Copiați acest iCal-link în aplicația dvs. din calendar pentru a importa evenimentele curente:"
-
 msgid "Delete Event"
 msgstr "Ștergeți Evenimentul"
 
@@ -1154,8 +1146,14 @@ msgstr "Tu mergi?"
 msgid "No Choice"
 msgstr "Nici o Alegere"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Copiați acest iCal-link în aplicația dvs. din calendar pentru a importa evenimentele curente:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
@@ -1166,7 +1164,6 @@ msgid "Fullscreen"
 msgstr "Ecran complet"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "Tip Conferință Eveniment"
 
@@ -1177,7 +1174,6 @@ msgid "Back"
 msgstr "Înapoi"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Tip Conferință Eveniment"
 
@@ -1279,7 +1275,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Evenimentul a fost creat cu succes la data specificată."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Evenimente viitoare"
 
@@ -1289,61 +1284,60 @@ msgstr "Comentariul dvs. a fost adăugat cu succes."
 msgid "Your comment was deleted successfully."
 msgstr "Comentariul dvs. a fost șters cu succes."
 
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s votat în"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "End date."
+#~ msgstr "Data de sfârșit."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Sondaj de eveniment actualizat de %(sender_name)s"
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Exemplu: https://www.youtybe.com/watch?v=12345"
+
+#~ msgid "From"
+#~ msgstr "Din"
+
+#~ msgid "Kalender"
+#~ msgstr "Calendar"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Participanți la Masa Maximă de Cafea"
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Eveniment nou de %(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Eveniment nou de %(sender_name)s în %(team_name)s (pe care le urmezi)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nou sondaj de evenimente %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nou sondaj de evenimente %(sender_name)s în %(team_name)s (pe care le urmezi)"
+
+#~ msgid "Start date."
+#~ msgstr "Data de început."
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "Start/alătură-te chatului video pentru acest eveniment"
 
-#~ msgid "Video Chat"
-#~ msgstr "Video Chat"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "Stop Video Chat"
-
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Exemplu: https://www.youtybe.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Participanți la Masa Maximă de Cafea"
-
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#~ msgid "From"
-#~ msgstr "Din"
-
-#~ msgid "Start date."
-#~ msgstr "Data de început."
 
 #~ msgid "Until"
 #~ msgstr "Până când"
 
-#~ msgid "End date."
-#~ msgstr "Data de sfârșit."
-
-#~ msgid "Kalender"
-#~ msgstr "Calendar"
-
-#~ msgid "New event by %(sender_name)s"
-#~ msgstr "Eveniment nou de %(sender_name)s"
-
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Nou sondaj de evenimente %(sender_name)s"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
-#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Eveniment nou de %(sender_name)s în %(team_name)s (pe care le urmezi)"
-
-#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Nou sondaj de evenimente %(sender_name)s în %(team_name)s (pe care le urmezi)"
-
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "Sondaj de eveniment actualizat de %(sender_name)s"
-
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s votat în"
+#~ msgid "Video Chat"
+#~ msgstr "Video Chat"

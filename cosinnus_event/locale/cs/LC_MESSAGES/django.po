@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-04-01 12:42+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Poedit 2.4.2\n"
 
 msgid "Restart BBB rooms"
 msgstr "Restartujte BBB místnosti"
@@ -367,7 +356,6 @@ msgid "%(event)s (state unknown)"
 msgstr "%(event)s (stav neznámý)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Ne"
 
@@ -442,7 +430,12 @@ msgstr "Typ konferenčního eventu"
 msgid "Is a Break"
 msgstr "Je přestávka"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "Zadejte název konferenční události."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -455,12 +448,10 @@ msgid "Presentation file"
 msgstr "Prezentační soubor"
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Zobrazit vše"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "Stage stream"
 
@@ -471,7 +462,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Ulice"
 
@@ -558,10 +548,19 @@ msgstr "Popis"
 msgid "Enter a description for the event"
 msgstr "Zadejte popis události"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
@@ -574,7 +573,6 @@ msgid "Custom embed code (HTML)"
 msgstr "Customizovaný embedovaný kód (HTML)"
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "Kolik účastníků se má připojit ke coffee table, než je plný"
 
@@ -582,7 +580,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "Typ konferenčního eventu"
 
@@ -605,7 +602,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr "Otevřenou konferenční místnost můžete aktivně ukončit kliknutím tři tečky v pravém horním rohu a následně na „Ukončit setkání“."
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Zúčastníte se této události"
 
@@ -613,7 +609,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
 msgstr "Streamujte URL pro event"
 
@@ -643,9 +638,11 @@ msgid "Save"
 msgstr "Uložit"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "vytvořil/a událost"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "vytvořil/a událost"
 
 msgid "Add unscheduled event"
@@ -751,11 +748,18 @@ msgstr "Publikovat příspěvek"
 msgid "Add event"
 msgstr "Přidat událost"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Zadejte název nové události."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "Typ konferenčního eventu"
 
@@ -1077,14 +1081,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s okomentoval/a hlasování o události, ve kterém jste hlasovali v %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
-
 msgid "Delete Event"
 msgstr "Smazat událost"
 
@@ -1151,8 +1147,14 @@ msgstr "Zúčastníte se?"
 msgid "No Choice"
 msgstr "Žádná volba"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Zkopírujte tento odkaz iCal do aplikace kalendáře a importujte aktuální události:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Zahájit/připojit se k videochatu pro tuto událost"
 
@@ -1163,7 +1165,6 @@ msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "Typ konferenčního eventu"
 
@@ -1174,7 +1175,6 @@ msgid "Back"
 msgstr "Zpět"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Typ konferenčního eventu"
 
@@ -1276,7 +1276,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Událost byla úspěšně vytvořena k uvedenému datu."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Nadcházející události"
 
@@ -1286,40 +1285,39 @@ msgstr "Váš komentář byl úspěšně přidán."
 msgid "Your comment was deleted successfully."
 msgstr "Váš komentář byl úspěšně smazán."
 
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "End date."
+#~ msgstr "Konečné datum."
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Příklad: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "Kalender"
+#~ msgstr "Kalendář"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Maximum účastníků pro Coffee table"
+
+#~ msgid "Start date."
+#~ msgstr "Počáteční datum."
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "Zahájit/připojit se k videochatu pro tuto událost"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "Zahájit/připojit se k videochatu pro tuto událost"
 
-#~ msgid "Video Chat"
-#~ msgstr "Videochat"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "Zastavit videochat"
-
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Příklad: https://www.youtube.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Maximum účastníků pro Coffee table"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "From"
-#~ msgstr "Od"
-
-#~ msgid "Start date."
-#~ msgstr "Počáteční datum."
 
 #~ msgid "Until"
 #~ msgstr "Do"
 
-#~ msgid "End date."
-#~ msgstr "Konečné datum."
-
-#~ msgid "Kalender"
-#~ msgstr "Kalendář"
+#~ msgid "Video Chat"
+#~ msgstr "Videochat"

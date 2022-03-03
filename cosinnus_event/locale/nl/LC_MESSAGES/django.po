@@ -1,22 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 17:01+0100\n"
-"PO-Revision-Date: 2021-02-18 21:45+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2022-02-24 11:06+0100\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
 
 msgid "Restart BBB rooms"
 msgstr ""
@@ -333,7 +322,6 @@ msgid "Event"
 msgstr "Evenement"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (archived)"
 msgid "%(event)s (hidden proxy)"
 msgstr "%(event)s (gearchiveerd)"
 
@@ -358,12 +346,10 @@ msgid "%(event)s (archived)"
 msgstr "%(event)s (gearchiveerd)"
 
 #, fuzzy, python-format
-#| msgid "%(event)s (pending)"
 msgid "%(event)s (state unknown)"
 msgstr "%(event)s (in afwachting)"
 
 #, fuzzy
-#| msgid "No"
 msgid "Now"
 msgstr "Nee"
 
@@ -438,7 +424,12 @@ msgstr "Conferentie evenement type"
 msgid "Is a Break"
 msgstr "Is een pauze"
 
-msgid "Event is confidential"
+#, fuzzy
+#| msgid "Enter a title for the conference event."
+msgid "Event is visible on the conference microsite"
+msgstr "Voer een titel in voor het conferentie evenement."
+
+msgid "Event's description is visible on the conference microsite"
 msgstr ""
 
 msgid "Maximum Event Participants"
@@ -451,12 +442,10 @@ msgid "Presentation file"
 msgstr ""
 
 #, fuzzy
-#| msgid "Show all"
 msgid "Show chat"
 msgstr "Toon alles"
 
 #, fuzzy
-#| msgid "Stage Stream"
 msgid "Enable Streaming"
 msgstr "Podiumstream"
 
@@ -467,7 +456,6 @@ msgid "The URL of your streaming provider to receive the incoming stream"
 msgstr ""
 
 #, fuzzy
-#| msgid "Street"
 msgid "Stream Key"
 msgstr "Straat"
 
@@ -554,10 +542,19 @@ msgstr "Beschrijving"
 msgid "Enter a description for the event"
 msgstr "Voeg een beschrijving voor het evenement toe"
 
-msgid "Event's description is confidencial (Not visible on microsite)"
+msgid "Show this event on microsite"
 msgstr ""
 
-msgid "Check this to prevent public viewing of the event's description"
+msgid "Uncheck this to hide the event on microsite"
+msgstr ""
+
+msgid "Show the event's description on microsite"
+msgstr ""
+
+msgid "Uncheck this to disable platform-wide viewing of the event's description"
+msgstr ""
+
+msgid "Uncheck this to disable public viewing of the event's description"
 msgstr ""
 
 msgid "Example:"
@@ -570,7 +567,6 @@ msgid "Custom embed code (HTML)"
 msgstr ""
 
 #, fuzzy
-#| msgid "How many participants should can join one coffee table before it is full"
 msgid "How many participants can join the video call before it is full."
 msgstr "Hoeveel deelnemers mogen aan één koffietafel aanschuiven voordat deze vol is"
 
@@ -578,7 +574,6 @@ msgid "Note that changing this setting will have no effect while an event is run
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "BBB video conference options"
 msgstr "Conferentie evenement type"
 
@@ -601,7 +596,6 @@ msgid "You can actively end an existing event room by clicking on \"End Meeting\
 msgstr ""
 
 #, fuzzy
-#| msgid "You are attending this event"
 msgid "Show room chat in the event"
 msgstr "Je neemt deel aan dit evenement"
 
@@ -609,7 +603,6 @@ msgid "Check this to show rocket chat in the sidebar."
 msgstr ""
 
 #, fuzzy
-#| msgid "Stream URL for the Event"
 msgid "Stream this event"
 msgstr "Streaming URL voor het evenement"
 
@@ -639,9 +632,11 @@ msgid "Save"
 msgstr "Opslaan"
 
 #, fuzzy
-#| msgctxt "This appears next to new items in the timeline, as in '<Jane> created a new item'"
-#| msgid "created an event"
 msgid "Create and create another"
+msgstr "heeft een evenement aangemaakt"
+
+#, fuzzy
+msgid "Save and create another"
 msgstr "heeft een evenement aangemaakt"
 
 msgid "Add unscheduled event"
@@ -747,11 +742,18 @@ msgstr "Plaatsen"
 msgid "Add event"
 msgstr "Evenement toevoegen"
 
+#, python-format
+msgid ""
+"\n"
+"                            Note: After this event will be posted, each user of %(forum_name)s may be able to see it.<br>\n"
+"                            If you do not want this, please, use another group or project of your choice.\n"
+"                            "
+msgstr ""
+
 msgid "Enter a title for the new event."
 msgstr "Voer een titel in voor het nieuwe evenement."
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Include a video conference"
 msgstr "Conferentie evenement type"
 
@@ -783,7 +785,6 @@ msgid "Export event feed"
 msgstr "Evenementen feed exporteren"
 
 #, fuzzy
-#| msgid "Conference Event"
 msgid "Create Conference Event"
 msgstr "Conferentie evenement"
 
@@ -791,7 +792,6 @@ msgid "Conference events can be created directly from the rooms themselves of th
 msgstr ""
 
 #, fuzzy
-#| msgid "Conference Event"
 msgid "Conference Room Management"
 msgstr "Conferentie evenement"
 
@@ -1079,14 +1079,6 @@ msgstr ""
 msgid "%(sender_name)s commented on an event poll you voted in in %(team_name)s."
 msgstr "%(sender_name)s heeft gereageerd op een evenement poll waarop je hebt gestemd in %(team_name)s."
 
-msgid "Add event to your calendar"
-msgstr ""
-
-#, fuzzy
-#| msgid "Copy this iCal-link into your calendar application to import current events:"
-msgid "Copy this iCal-link into your calendar application to import this event:"
-msgstr "Kopieer deze iCal-link in je kalender applicatie om huidige evenementen te importeren:"
-
 msgid "Delete Event"
 msgstr "Evenement verwijderen"
 
@@ -1147,8 +1139,14 @@ msgstr "Ga je?"
 msgid "No Choice"
 msgstr "Geen keuze"
 
+msgid "Add event to your calendar"
+msgstr ""
+
 #, fuzzy
-#| msgid "Start/join video chat for this event"
+msgid "Copy this iCal-link into your calendar application to import this event:"
+msgstr "Kopieer deze iCal-link in je kalender applicatie om huidige evenementen te importeren:"
+
+#, fuzzy
 msgid "Start/join video conference for this event"
 msgstr "Begin/doe mee aan de videochat voor dit evenement"
 
@@ -1159,7 +1157,6 @@ msgid "Fullscreen"
 msgstr "Volledig scherm"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Video conference"
 msgstr "Conferentie evenement type"
 
@@ -1170,7 +1167,6 @@ msgid "Back"
 msgstr "Terug"
 
 #, fuzzy
-#| msgid "Conference Event Type"
 msgid "Leave video conference"
 msgstr "Conferentie evenement type"
 
@@ -1272,7 +1268,6 @@ msgid "The event was created successfully at the specified date."
 msgstr "Het evenement is met succes aangemaakt op de opgegeven datum."
 
 #, fuzzy
-#| msgid "Upcoming events"
 msgid "Upcoming event"
 msgstr "Aankomende evenementen"
 
@@ -1282,61 +1277,60 @@ msgstr "Je reactie is succesvol toegevoegd."
 msgid "Your comment was deleted successfully."
 msgstr "Je reactie is succesvol verwijderd."
 
+#~ msgid "%(sender_name)s"
+#~ msgstr "%(sender_name)s"
+
+#~ msgid "%(sender_name)s voted in"
+#~ msgstr "%(sender_name)s heeft gestemd in"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "End date."
+#~ msgstr "Einddatum."
+
+#~ msgid "Event poll updated by %(sender_name)s"
+#~ msgstr "Evenement poll bijgewerkt door %(sender_name)s"
+
+#~ msgid "Example: https://www.youtube.com/watch?v=12345"
+#~ msgstr "Voorbeeld: https://www.youtube.com/watch?v=12345"
+
+#~ msgid "From"
+#~ msgstr "Van"
+
+#~ msgid "Kalender"
+#~ msgstr "Kalender"
+
+#~ msgid "Maximum Coffee Table Participants"
+#~ msgstr "Max. aantal deelnemers koffietafel"
+
+#~ msgid "New event by %(sender_name)s"
+#~ msgstr "Nieuw evenement door %(sender_name)s"
+
+#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nieuw evenement door %(sender_name)s in %(team_name)s (die u volgt)"
+
+#~ msgid "New event poll by %(sender_name)s"
+#~ msgstr "Nieuwe poll door %(sender_name)s"
+
+#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
+#~ msgstr "Nieuwe poll voor evenement door %(sender_name)s in %(team_name)s (die u volgt)"
+
+#~ msgid "Start date."
+#~ msgstr "Begindatum."
+
 #, fuzzy
-#~| msgid "Start/join video chat for this event"
 #~ msgid "Start/join BBB video conference for this event"
 #~ msgstr "Begin/doe mee aan de videochat voor dit evenement"
 
 #~ msgid "Start/join video chat for this event"
 #~ msgstr "Begin/doe mee aan de videochat voor dit evenement"
 
-#~ msgid "Video Chat"
-#~ msgstr "Videochat"
-
 #~ msgid "Stop Video Chat"
 #~ msgstr "Videochat stoppen"
-
-#~ msgid "Example: https://www.youtube.com/watch?v=12345"
-#~ msgstr "Voorbeeld: https://www.youtube.com/watch?v=12345"
-
-#~ msgid "Maximum Coffee Table Participants"
-#~ msgstr "Max. aantal deelnemers koffietafel"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "From"
-#~ msgstr "Van"
-
-#~ msgid "Start date."
-#~ msgstr "Begindatum."
 
 #~ msgid "Until"
 #~ msgstr "Tot"
 
-#~ msgid "End date."
-#~ msgstr "Einddatum."
-
-#~ msgid "Kalender"
-#~ msgstr "Kalender"
-
-#~ msgid "New event by %(sender_name)s"
-#~ msgstr "Nieuw evenement door %(sender_name)s"
-
-#~ msgid "New event poll by %(sender_name)s"
-#~ msgstr "Nieuwe poll door %(sender_name)s"
-
-#~ msgid "%(sender_name)s"
-#~ msgstr "%(sender_name)s"
-
-#~ msgid "New event by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Nieuw evenement door %(sender_name)s in %(team_name)s (die u volgt)"
-
-#~ msgid "New event poll by %(sender_name)s in %(team_name)s (which you follow)"
-#~ msgstr "Nieuwe poll voor evenement door %(sender_name)s in %(team_name)s (die u volgt)"
-
-#~ msgid "Event poll updated by %(sender_name)s"
-#~ msgstr "Evenement poll bijgewerkt door %(sender_name)s"
-
-#~ msgid "%(sender_name)s voted in"
-#~ msgstr "%(sender_name)s heeft gestemd in"
+#~ msgid "Video Chat"
+#~ msgstr "Videochat"
