@@ -164,6 +164,7 @@ def trigger_streamer_status_changes(events=None):
         # events which have streamer settings still will be stopped/deleted *even if* their `enable_streaming`
         # is set to false, so we can stop streams that have just had their streaming disabled but are still running
         if event.settings.get(SETTINGS_STREAMER_RUNNING, None) and \
+                event.settings.get(SETTINGS_STREAMER_ID, None) and \
                 (event.enable_streaming == False or not event.streaming_allowed or stop_delete_time <= now() or now() <= start_time):
             try:
                 stop_streamer_for_event(event)
