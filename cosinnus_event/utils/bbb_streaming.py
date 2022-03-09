@@ -28,24 +28,26 @@ def create_streamer_for_event(event):
             'event_id': event.id,
             'streamer_id': event.settings.get(SETTINGS_STREAMER_ID),
         })
-        return 
+        return
     if not event.enable_streaming or not event.stream_url or not event.stream_key:
         logger.error('BBB Streaming: Could not create a streamer for event because streaming was not enabled for it or stream url or key was missing!', extra={
             'event_id': event.id,
         })
         return
+    if not event.media_tag.bbb_room:
+        success = event.check_and_create_bbb_room()
+        if not success:
+            logger.error('BBB Streaming: Could not create a streamer for event because no BBBRoom exists for it!', extra={
+                'event_id': event.id,
+            })
+            return
     bbb_room = event.media_tag.bbb_room
-    if not bbb_room:
-        logger.error('BBB Streaming: Could not create a streamer for event because no BBBRoom exists for it!', extra={
-            'event_id': event.id,
-        })
-        return
     stream_url = event.stream_url.strip()
     if not stream_url.endswith('/'):
         stream_url += '/'
     stream_url += event.stream_key
     bbb_api_obj = BigBlueButtonAPI(source_object=event)
-    
+
     streamer_uuid_name = f'Streamer-{event.group.portal.slug}-{event.id}-{get_random_string(8)}'
     streamer_id = create_streamer(
         name=streamer_uuid_name,
@@ -73,7 +75,8 @@ def start_streamer_for_event(event):
         logger.warn('BBB Streaming: Could not start a streamer because it was already running!', extra={
             'event_id': event.id,
         })
-        return 
+        return
+    event.check_and_create_bbb_room()
     ret = start_streamer(event.settings.get(SETTINGS_STREAMER_ID))
     if ret is True:
         event.settings[SETTINGS_STREAMER_RUNNING] = True
