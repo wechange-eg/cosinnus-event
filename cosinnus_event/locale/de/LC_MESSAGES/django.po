@@ -1142,7 +1142,7 @@ msgid "Copy this iCal-link into your calendar application to import this event:"
 msgstr "Kopiere diesen iCal-Link in deinen Terminkalender, um die Veranstaltung zu importieren und anzuzeigen:"
 
 msgid "Please register or login to join the video conference for this event"
-msgstr "Bitte registriere dich oder logge dich ein, um das BBB-Meeting dieser Veranstaltung beizutreten"
+msgstr "Bitte registriere dich oder logge dich ein, um dem BBB-Meeting dieser Veranstaltung beizutreten"
 
 msgid "Start/join video conference for this event"
 msgstr "Videokonferenz starten/beitreten"
